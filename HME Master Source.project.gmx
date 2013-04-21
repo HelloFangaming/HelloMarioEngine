@@ -1808,9 +1808,6 @@
       <room>rooms\rmGameOver</room>
     </rooms>
   </rooms>
-  <constants number="1">
-    <constant name="c_title">"Hello Mario Engine"</constant>
-  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>

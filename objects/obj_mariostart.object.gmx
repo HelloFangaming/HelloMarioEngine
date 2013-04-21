@@ -26,7 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>alarm[0] = 1
-room_caption = c_title
 //screen_redraw()
 global.mariostart = 1
 if global.midwaypoint = 1
