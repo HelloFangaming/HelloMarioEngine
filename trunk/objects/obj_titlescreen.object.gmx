@@ -150,9 +150,9 @@ if fade != 0
 {
     draw_set_alpha(fade)
     draw_set_color(c_white)
-    draw_text(2,230,"PRESS F1 FOR MORE INFO")
+    //draw_text(2,230,"PRESS F1 FOR MORE INFO") //Obsolete...
     //You are allowed to remove the line below if you mention the Hello Mario Engine at least somewhere else.
-    draw_text(129,2,"POWERED BY HELLO MARIO ENGINE")
+    draw_text(2,2,"POWERED BY HELLO MARIO ENGINE")
 }
 draw_set_halign(fa_center)
 draw_set_valign(fa_center)

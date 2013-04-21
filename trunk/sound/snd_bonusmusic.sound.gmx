@@ -2,9 +2,9 @@
 <sound>
   <kind>0</kind>
   <extension>.wav</extension>
-  <origname>bonus.wav</origname>
+  <origname>C:\Users\Play\Documents\GameMaker\Projects\HME Master Source.gmx\\sound\audio\snd_bonusmusic.wav</origname>
   <effects>0</effects>
-  <volume>0.86</volume>
+  <volume>1</volume>
   <pan>0</pan>
   <mp3BitRate>192</mp3BitRate>
   <oggQuality>21</oggQuality>

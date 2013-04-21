@@ -28,9 +28,6 @@
             <string>//Place these in the object creation code.
 //leveltime = The level's timelimit.
 //levelmusic = The level's music.
-if global.pswitch = 0
-and global.star = 0
-    alarm[0] = 1
 leveltime = 0
 if not instance_exists(obj_camera)
     instance_create(0,0,obj_camera)
@@ -197,7 +194,17 @@ and not instance_exists(obj_goalmario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.mariostart = 0
+            <string>if global.levelmusic != levelmusic
+{
+    audio_stop_sound(global.levelmusic)
+    if global.star = 0
+        alarm[0] = 1
+    global.levelmusic = levelmusic
+}
+else if global.pswitch = 0
+and global.star = 0
+    alarm[0] = 1
+if global.mariostart = 0
     instance_create(0,0,obj_mariostart)
 else
     view_object = obj_camera
