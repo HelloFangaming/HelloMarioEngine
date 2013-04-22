@@ -3,7 +3,7 @@
   <spriteName>spr_qblock_large</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1</depth>
+  <depth>1</depth>
   <persistent>0</persistent>
   <parentName>obj_parblock</parentName>
   <maskName>spr_mask32x32</maskName>

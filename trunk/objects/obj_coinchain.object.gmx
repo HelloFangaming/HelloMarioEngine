@@ -3,7 +3,7 @@
   <spriteName>spr_coin</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-2</depth>
+  <depth>2</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -79,6 +79,7 @@ alarm[1] = 513
             <string>ready = 1
 move_snap(16,16)
 alarm[0] = 16
+depth = -2
 direction = nextdir
 if sprite_index = spr_brick
 {

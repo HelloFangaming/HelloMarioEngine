@@ -3,7 +3,7 @@
   <spriteName>spr_donut</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1</depth>
+  <depth>1</depth>
   <persistent>0</persistent>
   <parentName>obj_solid</parentName>
   <maskName>&lt;undefined&gt;</maskName>

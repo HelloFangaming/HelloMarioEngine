@@ -25,10 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 1
-//screen_redraw()
-global.mariostart = 1
-if global.midwaypoint = 1
+            <string>if global.midwaypoint = 1
 and instance_exists(obj_midwayspot)
 {
     if instance_exists(obj_mario)
@@ -52,7 +49,10 @@ and instance_exists(obj_midwayspot)
         with obj_vinespawn instance_destroy()
     }
 }
-//sleep(1000)
+alarm[0] = 60
+global.mariostart = 1
+instance_deactivate_all(1)
+instance_activate_object(obj_persistent)
 </string>
           </argument>
         </arguments>
@@ -75,8 +75,11 @@ and instance_exists(obj_midwayspot)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>view_object[0] = obj_camera
-instance_destroy()</string>
+            <string>instance_activate_all()
+view_object[0] = obj_camera
+obj_persistent.done = 0
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
