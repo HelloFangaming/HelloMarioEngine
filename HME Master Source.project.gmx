@@ -1726,6 +1726,7 @@
         <object>objects\obj_pauseshade</object>
         <object>objects\obj_savemenu</object>
         <object>objects\obj_inventoryprev</object>
+        <object>objects\obj_sleeper</object>
         <object>objects\obj_blockbumper</object>
         <object>objects\obj_stomp</object>
       </objects>

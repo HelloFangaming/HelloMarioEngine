@@ -30,8 +30,7 @@
     audio_stop_all()
     audio_play_sound(snd_key,1,0)
     global.clear = 2
-    //sleep(2000)
-    room_goto(rmMapScreen)
+    with instance_create(0,0,obj_sleeper) alarm[0] = 120
 }
 </string>
           </argument>

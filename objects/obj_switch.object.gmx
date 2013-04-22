@@ -60,8 +60,7 @@ if sprite_index = spr_switch_yellow
 if sprite_index = spr_switch_green
     global.palacegreen = 1
 global.clear = 1
-//sleep(6500)
-room_goto(rmMapScreen)
+with instance_create(0,0,obj_sleeper) alarm[0] = 390
 </string>
           </argument>
         </arguments>
