@@ -94,7 +94,7 @@ or audio_is_playing(snd_switchsong)
     alarm[3] = 60
 else
 {
-    audio_play_sound(snd_hurryup,1,1)
+    audio_play_sound(snd_hurryup,1,0)
     alarm[1] = 1
     alarm[0] = 120
 }

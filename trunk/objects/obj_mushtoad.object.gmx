@@ -73,7 +73,8 @@ room_goto(rmMapScreen)</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_message("Pick a box. Its contents will help you on your way.")</string>
+            <string>with instance_create(0,0,obj_messagebox) varmsg = "Pick a box. Its contents will help you on your way."
+</string>
           </argument>
         </arguments>
       </action>
