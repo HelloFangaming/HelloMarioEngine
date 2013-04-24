@@ -1079,7 +1079,6 @@
     </scripts>
     <script>scripts\scr_score.gml</script>
     <script>scripts\scr_time.gml</script>
-    <script>scripts\scr_message.gml</script>
     <script>scripts\scr_pointscale.gml</script>
     <script>scripts\scr_pointscale_silent.gml</script>
     <script>scripts\scr_canpull.gml</script>
@@ -1723,6 +1722,7 @@
         <object>objects\obj_explosion</object>
         <object>objects\obj_flag</object>
         <object>objects\obj_lightningsheet</object>
+        <object>objects\obj_messagebox</object>
         <object>objects\obj_pauseshade</object>
         <object>objects\obj_savemenu</object>
         <object>objects\obj_inventoryprev</object>

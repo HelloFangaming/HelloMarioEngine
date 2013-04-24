@@ -190,6 +190,23 @@
     <instance objName="obj_solid" x="2096" y="384" name="inst_E277477A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="864" y="368" name="inst_8053DB9C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solidtop" x="1856" y="352" name="inst_DCC1DD89" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="448" y="256" name="inst_F77D1E7C" locked="0" code="varmsg = &quot;Boarded up doors can be blown up. Try throwing a bob-omb there! Also, you can unlock locked doors with keys!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_brick" x="432" y="256" name="inst_9D532F29" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_brick" x="416" y="256" name="inst_83FF6516" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_brick" x="464" y="256" name="inst_C6E5A19D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_view" x="624" y="336" name="inst_8D1F5EE5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_sprout" x="928" y="48" name="inst_9F4A7E11" locked="0" code="sprout = 23&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_noteblock_yellow" x="496" y="352" name="inst_BA656ECD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_coin" x="1376" y="144" name="inst_B94507AE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_sprout" x="464" y="80" name="inst_07D18425" locked="0" code="sprout = 15" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_multicoin" x="832" y="352" name="inst_8623AA5B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_brick" x="1984" y="304" name="inst_FA941939" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_sprout" x="128" y="64" name="inst_8C062B54" locked="0" code="sprout = 29&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_sprout" x="80" y="304" name="inst_56F0D37F" locked="0" code="sprout = 1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_sprout" x="160" y="336" name="inst_885909B5" locked="0" code="sprout = 26&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_sprout" x="176" y="336" name="inst_3AC5AAE5" locked="0" code="sprout = 6" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_sprout" x="1040" y="160" name="inst_5A2BF4F1" locked="0" code="sprout = 16&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_sprout" x="1968" y="304" name="inst_628B3E5B" locked="0" code="sprout = 2" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ballpiranha" x="1088" y="336" name="inst_42941B01" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ptooie" x="1120" y="336" name="inst_ED972314" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slope_r" x="640" y="384" name="inst_6475732E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -270,7 +287,6 @@
     <instance objName="obj_chainchomp" x="1152" y="160" name="inst_CC8FFC45" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bobomb" x="488" y="304" name="inst_E139FA74" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brickgoomba" x="720" y="352" name="inst_A82341B7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_dinotorch" x="1256" y="352" name="inst_A3675FB6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bubble_item" x="1824" y="224" name="inst_E0D20646" locked="0" code="item = 2&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ninji" x="344" y="80" name="inst_488C21B0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bouncer" x="176" y="128" name="inst_60065A80" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -350,13 +366,6 @@
     <instance objName="obj_piranhaplant_right" x="1296" y="256" name="inst_6804F7D6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_piranhaplant_left" x="1296" y="352" name="inst_FC6824A8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jumppiranha" x="144" y="304" name="inst_0CE4BE84" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="448" y="256" name="inst_F77D1E7C" locked="0" code="varmsg = &quot;Boarded up doors can be blown up. Try throwing a bob-omb there! Also, you can unlock locked doors with keys!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_brick" x="432" y="256" name="inst_9D532F29" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_brick" x="416" y="256" name="inst_83FF6516" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_brick" x="464" y="256" name="inst_C6E5A19D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_view" x="624" y="336" name="inst_8D1F5EE5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="928" y="48" name="inst_9F4A7E11" locked="0" code="sprout = 23&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_noteblock_yellow" x="496" y="352" name="inst_BA656ECD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hurtsolid" x="1472" y="272" name="inst_1E8B00AD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hurtsolid" x="1488" y="272" name="inst_943AB3AB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hurtsolid" x="1504" y="272" name="inst_D938ED20" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -368,16 +377,6 @@
     <instance objName="obj_hurtsolid" x="1600" y="272" name="inst_C0920711" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hurtsolid" x="1616" y="272" name="inst_A6282D5E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hurtsolid" x="1632" y="272" name="inst_011F17D6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_coin" x="1376" y="144" name="inst_B94507AE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="464" y="80" name="inst_07D18425" locked="0" code="sprout = 15" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_multicoin" x="832" y="352" name="inst_8623AA5B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_brick" x="1984" y="304" name="inst_FA941939" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="128" y="64" name="inst_8C062B54" locked="0" code="sprout = 29&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="80" y="304" name="inst_56F0D37F" locked="0" code="sprout = 1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="160" y="336" name="inst_885909B5" locked="0" code="sprout = 26&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="176" y="336" name="inst_3AC5AAE5" locked="0" code="sprout = 6" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="1040" y="160" name="inst_5A2BF4F1" locked="0" code="sprout = 16&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="1968" y="304" name="inst_628B3E5B" locked="0" code="sprout = 2" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hurtsolid" x="1472" y="192" name="inst_EBFBE439" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hurtsolid" x="1488" y="192" name="inst_B8EEEAFA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hurtsolid" x="1504" y="192" name="inst_F6E8F718" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

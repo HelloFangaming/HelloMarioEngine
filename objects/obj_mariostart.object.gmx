@@ -51,8 +51,8 @@ and instance_exists(obj_midwayspot)
 }
 alarm[0] = 60
 global.mariostart = 1
-instance_deactivate_all(1)
-instance_activate_object(obj_persistent)
+//instance_deactivate_all(1)
+//instance_activate_object(obj_persistent)
 </string>
           </argument>
         </arguments>
