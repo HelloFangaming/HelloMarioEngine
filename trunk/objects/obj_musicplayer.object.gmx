@@ -31,7 +31,7 @@
 leveltime = 0
 if global.pswitch = 0
 and global.star = 0
-    alarm[0] = 1
+    alarm[0] = 2
 if not instance_exists(obj_camera)
     instance_create(0,0,obj_camera)
 </string>

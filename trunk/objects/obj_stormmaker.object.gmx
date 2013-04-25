@@ -28,7 +28,8 @@
             <string>//Place these in the object creation code.
 //image_blend = Rain color.
 alarm[0] = random(60)+100
-alarm[1] = 1</string>
+alarm[1] = 2
+</string>
           </argument>
         </arguments>
       </action>

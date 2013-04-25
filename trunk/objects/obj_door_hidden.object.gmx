@@ -67,7 +67,6 @@ if position_meeting(x,y,obj_warproom)
     room_goto(mine.myroom)
     exit
 }
-with obj_persistent event_user(0)
 instance_create(x+8,y-16,obj_mario)
 with obj_doormario instance_destroy()
 obj_camera.docamera = 1
@@ -77,6 +76,7 @@ if position_meeting(x,y,obj_postchange)
     obj_mario.x = postx
     obj_mario.y = posty
 }
+with obj_persistent event_user(0)
 </string>
           </argument>
         </arguments>
