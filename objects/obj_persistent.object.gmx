@@ -48,6 +48,29 @@ event_user(1)
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_activate_object(obj_mariostart)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
@@ -90,7 +113,6 @@ event_user(1)
             <kind>1</kind>
             <string>done = 0
 mode = 0
-instance_activate_object(obj_mariostart)
 if not instance_exists(obj_mariostart)
     instance_activate_all()
 background_delete(back)
@@ -181,6 +203,7 @@ if mode = 0
 done = 0
 mode = 1
 alarm[0] = 30
+alarm[2] = 29
 </string>
           </argument>
         </arguments>
@@ -282,6 +305,7 @@ if done &lt; 1
         draw_set_alpha(1-done)
     else
     {
+        draw_sprite_ext(spr_viewcover,0,view_xview[0],view_yview[0],1,1,0,c_white,1)
         if background_exists(back)
             draw_background_ext(back,view_xview[0],view_yview[0],1,1,0,c_white,1)
         draw_set_alpha(done)
