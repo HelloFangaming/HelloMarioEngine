@@ -130,7 +130,7 @@ and collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left+hspeed,bbox_bottom-1
 if collision_rectangle(x-8,y,x+8,y,obj_solid,0,0)
 {
     gravity = 0
-    if not vspeed &gt; 0
+    if vspeed &lt;= 0
         vspeed = 0
 }
 else
@@ -146,7 +146,7 @@ if collision_rectangle(x-8,y,x+8,y-2,obj_solid,0,0)
         if obj_mario.x &lt; x
             direct = -1
     }
-    if not hspeed = 0
+    if hspeed != 0
         hspeed = 0
     sprite_index = spr_swooper
 }

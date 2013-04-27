@@ -38,7 +38,7 @@ docamera = 1
 switchon = 0
 pmeter = 0
 slowdown = 0
-alarm[4] = 2
+alarm[4] = 3
 alarm[7] = 15
 if global.yoshi = 1
     instance_create(0,0,obj_yoshi)

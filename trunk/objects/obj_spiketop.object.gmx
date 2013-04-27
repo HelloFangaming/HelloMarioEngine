@@ -52,15 +52,15 @@ dir = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
+            <string>if instance_exists(obj_mario)
 {
-    direct = -1
-    exit
+    if obj_mario.x &lt; x
+        direct = -1
+    else
+        direct = 1
 }
-if obj_mario.x &lt; x
-    direct = -1
 else
-    direct = 1
+    direct = -1
 if collision_point(x,y+20,obj_solidtop,0,0)
 {
     hspeed = 0.5*direct
