@@ -461,6 +461,11 @@ else if instance_exists(obj_vinespawn)
     x = obj_vinespawn.x
     y = obj_vinespawn.y
 }
+if instance_exists(obj_classicscroll)
+{
+    if x &lt; obj_classicscroll.x
+        x = obj_classicscroll.x
+}
 background_x[0] = view_xview[0]/2
 instance_deactivate_object(obj_parenemy)
 instance_deactivate_object(obj_parenemy2)

@@ -28,11 +28,34 @@
             <string>menu_choice = 0
 fade = 1
 alarm[0] = 120
-audio_play_sound(snd_titlemusic,99,1)
+alarm[1] = 1
 ds_map_clear(global.mapscreen)
 menu[0] = "File A"
 menu[1] = "File B"
 menu[2] = "File C"
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>audio_play_sound(snd_titlemusic,99,1)
 </string>
           </argument>
         </arguments>
