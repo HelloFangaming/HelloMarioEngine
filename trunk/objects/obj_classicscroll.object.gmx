@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-10</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -26,10 +26,12 @@
           <argument>
             <kind>1</kind>
             <string>if instance_exists(obj_camera)
-and obj_camera.docamera = 0
 {
-    if obj_camera.x &lt; obj_camera.xprevious
-        obj_camera.x = obj_camera.xprevious
+    if obj_camera.docamera = 0
+    and obj_camera.x &lt; x
+        obj_camera.x = x
+    else
+        x = obj_camera.x
 }
 </string>
           </argument>
