@@ -470,7 +470,7 @@ background_x[0] = view_xview[0]/2
 instance_deactivate_object(obj_parenemy)
 instance_deactivate_object(obj_parenemy2)
 instance_deactivate_object(obj_deactivation)
-instance_activate_region(view_xview[0]-32,view_yview[0]-32,view_xview[0]+352,view_yview[0]+272,1)
+instance_activate_region(view_xview[0]-32,view_yview[0]-32,view_wview[0]+32,view_hview[0]+32,true)
 if docamera = 0
 and instance_exists(obj_mario)
 {
