@@ -53,16 +53,16 @@ image_speed = 0.15
             <string>if obj_mario.vspeed &gt; 0
 or obj_mario.vspeed &lt; -2
 {
+    obj_mario.vspeed = 0
     if keyboard_check_pressed(vk_shift)
     {
         audio_play_sound(snd_jump,0,0)
         obj_mario.y-=3
         obj_mario.jumpnow = 1
-        obj_mario.vspeed = -3
+        obj_mario.vspeed = -3.85
     }
     else
         obj_mario.y+=0.5
-    obj_mario.vspeed = 0
 }
 </string>
           </argument>

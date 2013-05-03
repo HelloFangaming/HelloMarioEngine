@@ -3,7 +3,7 @@
   <spriteName>spr_flipblock</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>2</depth>
   <persistent>0</persistent>
   <parentName>obj_solid</parentName>
   <maskName>spr_square</maskName>
@@ -27,10 +27,11 @@
             <kind>1</kind>
             <string>image_speed = 0
 alarm[0] = 60
+myblock3 = instance_create(x,y,obj_expandplatblock)
+myblock4 = instance_create(x,y,obj_expandplatblock)
 myblock1 = instance_create(x,y,obj_expandplatblock)
 myblock2 = instance_create(x,y,obj_expandplatblock)
-myblock3 = instance_create(x,y,obj_expandplatblock)
-myblock4 = instance_create(x,y,obj_expandplatblock)</string>
+</string>
           </argument>
         </arguments>
       </action>
