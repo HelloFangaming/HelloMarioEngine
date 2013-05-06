@@ -145,6 +145,7 @@ alarm[1] = 10
     imdead.sprite_index = sprite_index
     imdead.image_xscale = image_xscale
     imdead.image_index = image_index
+    imdead.image_speed = 0
     instance_destroy()
 }
 </string>
