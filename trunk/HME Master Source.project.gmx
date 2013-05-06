@@ -1525,8 +1525,8 @@
           <object>objects\obj_wallrunner</object>
           <object>objects\obj_inshell</object>
         </objects>
-        <objects name="Powerup Stuff">
-          <objects name="Powerups">
+        <objects name="Powerup">
+          <objects name="Pickup">
             <object>objects\obj_1up</object>
             <object>objects\obj_poison</object>
             <object>objects\obj_mushroom</object>
@@ -1568,7 +1568,7 @@
           <object>objects\obj_shuriken</object>
           <object>objects\obj_invincibility</object>
         </objects>
-        <objects name="Enemy Stuff">
+        <objects name="Enemy">
           <objects name="Land">
             <object>objects\obj_roundgoomba_hold</object>
             <object>objects\obj_rex2</object>
@@ -1658,7 +1658,7 @@
           <object>objects\obj_flyingbro_rider</object>
           <object>objects\obj_generatorcheep</object>
         </objects>
-        <objects name="Item Stuff">
+        <objects name="Item">
           <objects name="Blocks">
             <object>objects\obj_blockcoin</object>
             <object>objects\obj_viner</object>

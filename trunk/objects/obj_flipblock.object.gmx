@@ -106,7 +106,7 @@ and ready = 0
     vspeed = -2
     alarm[0] = 4
 }
-if collision_rectangle(x,y-3,x+15,y,obj_mario,0,0)
+if collision_rectangle(x,y-4,x+15,y,obj_mario,0,0)
 and obj_mario.stompstyle = 1
 and obj_mario.vspeed &gt; 0
 and global.state &gt; 0
