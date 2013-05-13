@@ -125,7 +125,12 @@ event_user(1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if obj_mario.x &lt; x
+            <string>if not instance_exists(obj_mario)
+{
+    alarm[0] = 1
+    exit
+}
+if obj_mario.x &lt; x
 and hspeed &gt; 0
 {
     hspeed = -1
