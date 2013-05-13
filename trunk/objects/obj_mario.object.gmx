@@ -819,13 +819,6 @@ if collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_solid,1,0)
     vspeed = 0
     jumpnow = 2
 }
-if vspeed &gt; 0
-and collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
-and not collision_rectangle(bbox_left,bbox_bottom-2,bbox_right,bbox_bottom-1,obj_solidtop,0,0)
-{
-    state = 0
-    jumpnow = 0
-}
 if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0)
 {
     isswim = 1
@@ -954,15 +947,6 @@ and global.yoshi &lt; 2
     stompstyle = 0
 if floatnow = 1
     audio_stop_sound(snd_spin)
-if collision_rectangle(bbox_left,bbox_bottom-1,bbox_right,bbox_bottom,obj_solidtop,0,0)
-and not collision_rectangle(bbox_left,bbox_bottom-2,bbox_right,bbox_bottom-1,obj_solidtop,0,0)
-and vspeed &gt;= 0
-{
-    gravity = 0
-    vspeed = 0
-}
-else if state = 2
-    gravity = 0.125
 if (global.state != 6 and global.state != 14)
 or holding &gt; 0
 {
@@ -1035,6 +1019,7 @@ or holding &gt; 0
             hspeed = 1.5
         if hspeed &lt; -1.5
             hspeed = -1.5
+        gravity = 0.125
     }
     else
     {
@@ -1424,14 +1409,7 @@ if canturn = 0
                 hspeed = 0
         }
 }
-if collision_rectangle(bbox_left,bbox_bottom-1,bbox_left,bbox_bottom,obj_solidtop,0,0)
-and not collision_rectangle(bbox_left,bbox_bottom-2,bbox_left,bbox_bottom-1,obj_solidtop,0,0)
-and vspeed &gt;= 0
-{
-    gravity = 0
-    vspeed = 0
-}
-else if state = 2
+if state = 2
 {
     if vspeed &gt; -1
     or jumpnow != 1
