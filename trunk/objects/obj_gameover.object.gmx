@@ -49,7 +49,10 @@ alarm[0] = 300
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>game_restart()</string>
+            <string>audio_stop_all()
+with obj_persistent event_user(1)
+room_goto(rmTitleScreen)
+</string>
           </argument>
         </arguments>
       </action>
