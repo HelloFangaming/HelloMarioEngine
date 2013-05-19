@@ -85,8 +85,6 @@ if x&lt;view_xview[0]-16
 or x&gt;view_xview[0]+336
 or y&gt;view_yview[0]+256
     instance_destroy()
-if collision_rectangle(x-4,y+15,x+3,y+15,obj_parenemy,0,0)
-    y += 5
 if collision_rectangle(x-12,y+2,x+11,y+15,obj_icecoin,0,0)
 {
     with collision_rectangle(x-12,y+2,x+11,y+15,obj_icecoin,0,0) event_user(0)
@@ -117,7 +115,7 @@ if collision_rectangle(x-12,y+2,x+11,y+15,obj_icecoin,0,0)
             <string>if y &lt; other.y-9 and vspeed &gt; 0
 and other.object_index != obj_parenemy
 and other.object_index != obj_icecoin
-and other.object_index != obj_iceplant
+and other.object_index != obj_icemuncher
 {
     y = other.y-16
     vspeed = -3
