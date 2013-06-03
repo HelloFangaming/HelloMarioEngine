@@ -84,9 +84,9 @@ if instance_number(myenemy) &lt; 6
             ID = instance_create(x+9,y+16,myenemy)
         ID.hspeed = 0.5
     }
+    ID.depth = 10
+    ID.alarm[11] = 30
 }
-ID.depth = 10
-ID.alarm[11] = 30
 </string>
           </argument>
         </arguments>

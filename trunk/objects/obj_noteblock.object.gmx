@@ -42,7 +42,10 @@
 //13 = Ninja Suit
 //14 = Blue Shell
 //15 = Penguin Suit
-//16 = Yoshi Egg
+//16 = Green Yoshi
+//17 = Red Yoshi
+//18 = Yellow Yoshi
+//19 = Blue Yoshi
 image_speed = 0.15
 ready = 0
 mysolid = instance_create(x,y,obj_solid)
@@ -106,6 +109,12 @@ if mypowerup &gt; 0
         ID.sprite_index = spr_penguinsuit
     if mypowerup = 16
         ID.sprite_index = spr_hatch
+    if mypowerup = 17
+        ID.sprite_index = spr_hatch_r
+    if mypowerup = 18
+        ID.sprite_index = spr_hatch_y
+    if mypowerup = 19
+        ID.sprite_index = spr_hatch_b
     mypowerup = 0
 }
 </string>
