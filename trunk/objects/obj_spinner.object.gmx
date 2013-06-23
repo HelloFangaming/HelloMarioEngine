@@ -53,7 +53,9 @@ hitpoint = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_mario.visible = 1</string>
+            <string>if instance_exists(obj_mario)
+    obj_mario.visible = 1
+</string>
           </argument>
         </arguments>
       </action>

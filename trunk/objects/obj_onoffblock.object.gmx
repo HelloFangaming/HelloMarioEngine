@@ -54,7 +54,7 @@ mysolid = instance_create(x,y,obj_solid)
             <string>vspeed = 0
 y = ystart
 audio_play_sound(snd_magic,0,0)
-obj_onoffblock.image_index = global.onoffblock
+with obj_onoffblock image_index = global.onoffblock
 with obj_onoffplatform event_user(0)
 ready = 0
 </string>
