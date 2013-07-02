@@ -1495,7 +1495,7 @@ and jumpnow = 0
 if stompstyle != 0
 and holding != 0
     stompstyle = 0
-if (global.state = 10 or (global.state = 12 and beefly &lt; 120))
+if (global.state = 10 or (global.state = 12 and beefly &lt; 128))
 and isjump = 1
 and stompstyle = 0
 and global.yoshi = 0
@@ -1507,7 +1507,10 @@ and keyboard_check(vk_shift)
         isfloating = 1
         if global.state = 12
         and not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,0)
+        {
             vspeed = -1.5
+            beefly += 8
+        }
     }
     else
     {
