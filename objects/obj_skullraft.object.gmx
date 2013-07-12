@@ -79,14 +79,14 @@ if collision_rectangle(obj_mario.x-8,obj_mario.y+32,obj_mario.x+7,obj_mario.y+35
 and obj_mario.state &lt; 2
 and hspeed != 0
 {
-    if not collision_rectangle(obj_mario.x+9,obj_mario.bbox_top,obj_mario.x+9,obj_mario.y+31,obj_solid,0,1)
+    if not collision_rectangle(obj_mario.bbox_right+1,obj_mario.bbox_top,obj_mario.bbox_right+1,obj_mario.y+31,obj_solid,0,0)
     and hspeed &gt; 0
     and permission = 1
     {
         obj_mario.x += hspeed
         with obj_skullraft permission = 0
     }
-    temp = collision_rectangle(obj_mario.x-8,obj_mario.y+32,obj_mario.x+7,obj_mario.y+35,obj_skullraft,0,1)
+    temp = collision_rectangle(obj_mario.bbox_left,obj_mario.y+32,obj_mario.bbox_right,obj_mario.y+35,obj_skullraft,0,1)
     if temp != 0
     {
         if haveleft = 1
