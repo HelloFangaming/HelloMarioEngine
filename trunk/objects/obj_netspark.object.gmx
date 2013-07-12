@@ -194,7 +194,7 @@ event_inherited()
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_roundgoomba_hold">
+    <event eventtype="4" ename="obj_shell">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -219,7 +219,7 @@ event_inherited()
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_shell">
+    <event eventtype="4" ename="obj_roundgoomba_hold">
       <action>
         <libid>1</libid>
         <id>603</id>

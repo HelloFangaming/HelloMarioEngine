@@ -170,7 +170,8 @@ alarm[1] = 10
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 1
+            <string>event_user(1)
+if ready = 1
 {
     if not instance_exists(mebelow)
     {
@@ -214,8 +215,7 @@ alarm[1] = 10
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_user(1)
-if ready = 0
+            <string>if ready = 0
 {
     if position_meeting(x,y+24,obj_pokey_green)
     {

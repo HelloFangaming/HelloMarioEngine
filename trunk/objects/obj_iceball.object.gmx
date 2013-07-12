@@ -151,7 +151,7 @@ if collision_rectangle(x-4,y+15,x+3,y+15,obj_parenemy,0,0)
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_spikeball">
+    <event eventtype="4" ename="obj_shell">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -173,7 +173,7 @@ if collision_rectangle(x-4,y+15,x+3,y+15,obj_parenemy,0,0)
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_shell">
+    <event eventtype="4" ename="obj_spikeball">
       <action>
         <libid>1</libid>
         <id>603</id>

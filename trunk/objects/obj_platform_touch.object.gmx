@@ -87,9 +87,11 @@ if collision_rectangle(x,y-5,x+47,y+4,obj_mario,0,0)
 and obj_mario.y &lt; y-27
 and obj_mario.state &lt; 2
 {
-    if not collision_rectangle(obj_mario.x+9,obj_mario.bbox_top,obj_mario.x+9,obj_mario.y+31,obj_solid,0,0) and hspeed &gt; 0
+    if not collision_rectangle(obj_mario.bbox_right+1,obj_mario.bbox_top,obj_mario.bbox_right+1,obj_mario.y+31,obj_solid,0,0)
+    and hspeed &gt; 0
         obj_mario.x += hspeed
-    if not collision_rectangle(obj_mario.x-9,obj_mario.bbox_top,obj_mario.x-9,obj_mario.y+31,obj_solid,0,0) and hspeed &lt; 0
+    if not collision_rectangle(obj_mario.bbox_left-1,obj_mario.bbox_top,obj_mario.bbox_left-1,obj_mario.y+31,obj_solid,0,0)
+    and hspeed &lt; 0
         obj_mario.x += hspeed
     obj_mario.y = y-32
 }

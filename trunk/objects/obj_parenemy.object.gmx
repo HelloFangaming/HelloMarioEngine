@@ -278,14 +278,17 @@ instance_destroy()</string>
             <kind>1</kind>
             <string>if not instance_exists(obj_mario)
     exit
-if collision_rectangle(obj_mario.x-10,obj_mario.y+32,obj_mario.x+11,obj_mario.y+35,id,0,0)
+if collision_rectangle(x-16,y-5,x+15,y+4,obj_mario,0,0)
+and obj_mario.y &lt; y-27
 and obj_mario.state &lt; 2
 {
+    if not collision_rectangle(obj_mario.bbox_right+1,obj_mario.bbox_top,obj_mario.bbox_right+1,obj_mario.y+31,obj_solid,0,0)
+    and hspeed &gt; 0
+        obj_mario.x += hspeed
+    if not collision_rectangle(obj_mario.bbox_left-1,obj_mario.bbox_top,obj_mario.bbox_left-1,obj_mario.y+31,obj_solid,0,0)
+    and hspeed &lt; 0
+        obj_mario.x += hspeed
     obj_mario.y = y-32
-    if not collision_rectangle(obj_mario.x+9,obj_mario.y+5,obj_mario.x+9,obj_mario.y+31,obj_solid,0,0) and hspeed &gt; 0
-        obj_mario.x += hspeed
-    if not collision_rectangle(obj_mario.x-9,obj_mario.y+5,obj_mario.x-9,obj_mario.y+31,obj_solid,0,0) and hspeed &lt; 0
-        obj_mario.x += hspeed
     if scr_canpull()
     {
         if obj_mario.image_index = 2 and obj_mario.image_speed = 0
@@ -321,14 +324,17 @@ and obj_mario.state &lt; 2
             <kind>1</kind>
             <string>if not instance_exists(obj_mario)
     exit
-if collision_rectangle(obj_mario.x-10,obj_mario.y+32,obj_mario.x+11,obj_mario.y+35,id,0,0)
+if collision_rectangle(x-8,y-5,x+7,y+4,obj_mario,0,0)
+and obj_mario.y &lt; y-27
 and obj_mario.state &lt; 2
 {
+    if not collision_rectangle(obj_mario.bbox_right+1,obj_mario.bbox_top,obj_mario.bbox_right+1,obj_mario.y+31,obj_solid,0,0)
+    and hspeed &gt; 0
+        obj_mario.x += hspeed
+    if not collision_rectangle(obj_mario.bbox_left-1,obj_mario.bbox_top,obj_mario.bbox_left-1,obj_mario.y+31,obj_solid,0,0)
+    and hspeed &lt; 0
+        obj_mario.x += hspeed
     obj_mario.y = y-32
-    if not collision_rectangle(obj_mario.x+9,obj_mario.y+5,obj_mario.x+9,obj_mario.y+31,obj_solid,0,0) and hspeed &gt; 0
-        obj_mario.x += hspeed
-    if not collision_rectangle(obj_mario.x-9,obj_mario.y+5,obj_mario.x-9,obj_mario.y+31,obj_solid,0,0) and hspeed &lt; 0
-        obj_mario.x += hspeed
     if scr_canpull()
     {
         if obj_mario.image_index = 2 and obj_mario.image_speed = 0

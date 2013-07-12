@@ -250,6 +250,31 @@ instance_destroy()</string>
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_powkiller">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>hitpoints = 0
+event_user(0)
+scr_pointscale()
+instance_destroy()</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_redbrick_th">
       <action>
         <libid>1</libid>
@@ -310,7 +335,7 @@ scr_pointscale()
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_powkiller">
+    <event eventtype="4" ename="obj_shell">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -327,10 +352,17 @@ scr_pointscale()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hitpoints = 0
+            <string>if ready = 1
+    exit
+if other.harmmario = 0
+and other.held = 0
+    exit
 event_user(0)
 scr_pointscale()
-instance_destroy()</string>
+if other.held = 1
+    obj_mario.holding = 0
+with other event_user(0)
+</string>
           </argument>
         </arguments>
       </action>
@@ -361,38 +393,6 @@ if other.thrown = 1
     with other event_user(0)
     with other instance_destroy()
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_shell">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if ready = 1
-    exit
-if other.harmmario = 0
-and other.held = 0
-    exit
-event_user(0)
-scr_pointscale()
-if other.held = 1
-    obj_mario.holding = 0
-with other event_user(0)
 </string>
           </argument>
         </arguments>
