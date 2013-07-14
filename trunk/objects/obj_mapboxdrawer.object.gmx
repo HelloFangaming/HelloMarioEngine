@@ -27,102 +27,10 @@
             <kind>1</kind>
             <string>ready = 0
 image_speed = 0.15
-alarm[0] = 7
 mytext = " "
 inventory = 0
-boxselection = 1</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="3">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>background_index[0] = bg_aniwater1
-alarm[0] = 7</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>background_index[0] = bg_aniwater2
-alarm[3] = 7</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>background_index[0] = bg_aniwater3
-alarm[2] = 7</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>background_index[0] = bg_aniwater2
-alarm[1] = 7</string>
+boxselection = 1
+</string>
           </argument>
         </arguments>
       </action>
@@ -299,7 +207,6 @@ if inventory = 0
 }
 else if inventory = 1
 {
-    draw_sprite(spr_mapevent,0,fakex,fakey)
     draw_sprite_ext(spr_mapscreenbox,1,view_xview[0],view_yview[0]+210,1,1,0,c_white,0.7)
     i = 1
     while i &lt; global.inventory[0]+1
@@ -417,9 +324,7 @@ and instance_exists(obj_mapmario)
     and obj_mapmario.speed = 0
     {
         audio_play_sound(snd_inventory,0,0)
-        fakex = obj_mapmario.x
-        fakey = obj_mapmario.y
-        instance_deactivate_object(obj_mapmario)
+        obj_mapmario.ready = 1
         inventory = 1
         boxselection = 1
         if global.inventory[0] = 0
@@ -433,7 +338,7 @@ and instance_exists(obj_mapmario)
 else
 {
     audio_play_sound(snd_inventory,0,0)
-    instance_activate_object(obj_mapmario)
+    obj_mapmario.ready = 0
     inventory = 0
 }
 </string>
@@ -464,13 +369,13 @@ else
         exit
     if boxselection = 16
     {
-        instance_activate_object(obj_mapmario)
+        obj_mapmario.ready = 0
         with obj_mapmario event_user(2)
         inventory = 0
     }
     else if global.inventory[boxselection] != 0
     {
-        instance_activate_object(obj_mapmario)
+        obj_mapmario.ready = 0
         blah = global.state
         with obj_mapmario event_user(3)
         if blah = 0

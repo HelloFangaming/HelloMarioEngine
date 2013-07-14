@@ -275,7 +275,7 @@ alarm[1] = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Fade from black
+            <string>//Fades the screen to and from black
 if done &lt; 1
 {
     if mode = 0
@@ -313,17 +313,15 @@ draw_set_alpha(1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Toggle Fullscreen
-if window_get_fullscreen()
-    window_set_fullscreen(0)
-else
-    window_set_fullscreen(1)
+            <string>//Quit the game when ALT+F4 is pressed
+if keyboard_check(vk_alt)
+    game_end()
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="9" enumb="113">
+    <event eventtype="9" enumb="82">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -340,34 +338,13 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Restart the game
-audio_stop_all()
-event_user(1)
-room_goto(rmTitleScreen)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="27">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//Ends the Game
-game_end()
+            <string>//Restart the game when ALT+R is pressed
+if keyboard_check(vk_alt)
+{
+    audio_stop_all()
+    event_user(1)
+    room_goto(rmTitleScreen)
+}
 </string>
           </argument>
         </arguments>
