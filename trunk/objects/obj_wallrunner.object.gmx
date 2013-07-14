@@ -95,7 +95,7 @@ if ready = 0
     and not collision_rectangle(x+16,y,x+20,y+32,obj_solid,0,0)
     {
         obj_mario.visible = 1
-        obj_mario.vspeed = vspeed
+        obj_mario.hspeed = -vspeed
         instance_destroy()
     }
     if mydir = 1
@@ -164,7 +164,7 @@ if ready = 1
     and not collision_rectangle(x-17,y,x-21,y+32,obj_solid,0,0)
     {
         obj_mario.visible = 1
-        obj_mario.vspeed = vspeed
+        obj_mario.hspeed = vspeed
         instance_destroy()
     }
     if mydir = 1

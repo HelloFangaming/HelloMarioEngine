@@ -25,29 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>type = 0
-ready = 0
-haveleft = 0
-haveright = 0
-permission = 1
+            <string>length = 0
 y+=4
-gravity = 0.25
 image_speed = 0.15
-if collision_point(x+24,y+8,obj_skullraft,0,1)
+myleft = collision_point(x-8,y+8,obj_skullraft,0,1)
+myright = collision_point(x+24,y+8,obj_skullraft,0,1)
+if myright != noone
     type = 1
-if collision_point(x-8,y+8,obj_skullraft,0,1)
+else
 {
-    myleft = collision_point(x-8,y+8,obj_skullraft,0,1)
-    haveleft = 1
-}
-if collision_point(x+24,y+8,obj_skullraft,0,1)
-{
-    myright = collision_point(x+24,y+8,obj_skullraft,0,1)
-    haveright = 1
-}
-if type = 0
-{
-    length = 0
+    type = 0
     while collision_point(x-8-length,y+8,obj_skullraft,0,1)
         length += 16
 }
@@ -74,29 +61,37 @@ if type = 0
           <argument>
             <kind>1</kind>
             <string>if not instance_exists(obj_mario)
+or hspeed = 0
     exit
-if collision_rectangle(obj_mario.x-8,obj_mario.y+32,obj_mario.x+7,obj_mario.y+35,id,0,0)
+if collision_rectangle(x,y-5,x+15,y+4,obj_mario,0,0)
+and obj_mario.y &lt; y-27
 and obj_mario.state &lt; 2
-and hspeed != 0
 {
-    if not collision_rectangle(obj_mario.bbox_right+1,obj_mario.bbox_top,obj_mario.bbox_right+1,obj_mario.y+31,obj_solid,0,0)
-    and hspeed &gt; 0
+    if not collision_rectangle(obj_mario.bbox_right+1,obj_mario.bbox_top,obj_mario.bbox_right+1,obj_mario.y+30,obj_solid,0,0)
     and permission = 1
     {
         obj_mario.x += hspeed
         with obj_skullraft permission = 0
     }
     temp = collision_rectangle(obj_mario.bbox_left,obj_mario.y+32,obj_mario.bbox_right,obj_mario.y+35,obj_skullraft,0,1)
-    if temp != 0
+    if temp != noone
     {
-        if haveleft = 1
-            if myleft.y &lt; y and myleft.id = temp
-                exit
-        if haveright = 1
-            if myright.y &lt; y and myright.id = temp
-                exit
+        if temp.y &lt; y
+        {
+            obj_mario.y = ceil(temp.y-32)
+            exit
+        }
     }
-    obj_mario.y = y-32
+    /*if temp != noone
+    {
+        if myleft = temp
+            if myleft.y &lt; y
+                exit
+        if myright = temp
+            if myright.y &lt; y
+                exit
+    }*/
+    obj_mario.y = ceil(y-32)
 }
 </string>
           </argument>
@@ -122,26 +117,16 @@ and hspeed != 0
             <kind>1</kind>
             <string>if type = 0
 {
-    if ready = 0
+    if hspeed = 0
     and collision_rectangle(x-length,y-2,x+15,y+4,obj_mario,0,0)
-    {
-        ready = 1
-        hspeed = 1
-        if haveleft = 1
-            with myleft event_user(0)
-    }
-    if ready = 1
+        event_user(0)
+    else if hspeed = 1
     and collision_rectangle(x+15,y,x+15,y+15,obj_solid,0,1)
     {
-        hspeed = 0
-        ddd = collision_rectangle(x+15,y,x+15,y+15,obj_solid,0,1)
-        x = ddd.x-16
-        if haveleft = 1
-        {
-            with myleft event_user(1)
-            myleft.x = x-16
-        }
         type = 1
+        ID = collision_rectangle(x+15,y,x+15,y+15,obj_solid,0,1)
+        x = ID.x-16
+        event_user(1)
     }
 }
 if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-3,obj_lava,1,0)
@@ -149,11 +134,13 @@ if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-3,obj_lava,1,0)
     while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-4,obj_lava,1,0)
         y-=1
     vspeed = 0
+    gravity = 0
 }
+else
+    gravity = 0.25
 if vspeed &gt; 4
     vspeed = 4
 permission = 1
-permission2 = 0
 </string>
           </argument>
         </arguments>
@@ -177,12 +164,11 @@ permission2 = 0
           <argument>
             <kind>1</kind>
             <string>hspeed = 0
-if haveleft = 1
+if myleft != noone
 {
-    with myleft event_user(1)
     myleft.x = x-16
+    with myleft event_user(1)
 }
-ready = 2
 </string>
           </argument>
         </arguments>
@@ -205,9 +191,8 @@ ready = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 1
-hspeed = 1
-if haveleft = 1
+            <string>hspeed = 1
+if myleft != noone
     with myleft event_user(0)
 </string>
           </argument>
