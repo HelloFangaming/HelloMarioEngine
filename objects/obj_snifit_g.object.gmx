@@ -295,7 +295,7 @@ instance_destroy()</string>
             <kind>1</kind>
             <string>if instance_exists(obj_invincibility)
     exit
-if other.y &lt; y-26
+if other.y &lt; y-26-vspeed
 and obj_mario.stompstyle = 1
 {
     obj_mario.vspeed = 0
@@ -303,7 +303,7 @@ and obj_mario.stompstyle = 1
     instance_destroy()
     exit
 }
-if other.y &gt; y-27
+if other.y &gt; y-27-vspeed
 and other.invincible = 0
     with other event_user(0)
 </string>
