@@ -79,6 +79,8 @@ if global.carrieditem &gt; 0
             <kind>1</kind>
             <string>if instance_exists(obj_mario)
     obj_mario.holding = 0
+if instance_exists(obj_tounge)
+    with obj_tounge instance_destroy()
 if instance_exists(obj_mario)
 and global.yoshi = 0
 and fullmouth = 1
