@@ -17,7 +17,7 @@
   <option_android_arch_mipsr2>True</option_android_arch_mipsr2>
   <option_android_arch_mipsr2sf>True</option_android_arch_mipsr2sf>
   <option_android_arch_x86>True</option_android_arch_x86>
-  <option_android_build_version>0</option_android_build_version>
+  <option_android_build_version>2</option_android_build_version>
   <option_android_color_depth>0</option_android_color_depth>
   <option_android_display_name>Hello Mario Engine</option_android_display_name>
   <option_android_flurry_enable>0</option_android_flurry_enable>
@@ -34,15 +34,15 @@
   <option_android_interpolate>0</option_android_interpolate>
   <option_android_licensing_enable>0</option_android_licensing_enable>
   <option_android_licensing_key></option_android_licensing_key>
-  <option_android_major_version>1</option_android_major_version>
-  <option_android_minor_version>0</option_android_minor_version>
+  <option_android_major_version>5</option_android_major_version>
+  <option_android_minor_version>2</option_android_minor_version>
   <option_android_orient_landscape>true</option_android_orient_landscape>
   <option_android_orient_portrait>true</option_android_orient_portrait>
-  <option_android_orientation>2</option_android_orientation>
+  <option_android_orientation>1</option_android_orientation>
   <option_android_package_company>hellofangaming</option_android_package_company>
   <option_android_package_domain>com</option_android_package_domain>
-  <option_android_package_product>HME</option_android_package_product>
-  <option_android_permission_flags>8</option_android_permission_flags>
+  <option_android_package_product>hellomarioengine</option_android_package_product>
+  <option_android_permission_flags>0</option_android_permission_flags>
   <option_android_pocketchange_enable>0</option_android_pocketchange_enable>
   <option_android_pocketchange_id></option_android_pocketchange_id>
   <option_android_set_device_id></option_android_set_device_id>
@@ -76,7 +76,7 @@
   <option_html5_advertising_type>Supersonic Ads</option_html5_advertising_type>
   <option_html5_allow_fullscreen>True</option_html5_allow_fullscreen>
   <option_html5_alwaysreload>False</option_html5_alwaysreload>
-  <option_html5_centergame>False</option_html5_centergame>
+  <option_html5_centergame>True</option_html5_centergame>
   <option_html5_flurry_enable>0</option_html5_flurry_enable>
   <option_html5_flurry_id></option_html5_flurry_id>
   <option_html5_foldername>Hello Mario Engine</option_html5_foldername>
@@ -103,7 +103,7 @@
   <option_ios_advertising_key></option_ios_advertising_key>
   <option_ios_advertising_type>iAds</option_ios_advertising_type>
   <option_ios_app_id></option_ios_app_id>
-  <option_ios_build_version>0</option_ios_build_version>
+  <option_ios_build_version>2</option_ios_build_version>
   <option_ios_certificate>&lt; Press refresh to fetch certificate list from Mac&gt;</option_ios_certificate>
   <option_ios_device_type>3</option_ios_device_type>
   <option_ios_display_name>Hello Mario Engine</option_ios_display_name>
@@ -125,7 +125,7 @@
   <option_ios_minor_version>2</option_ios_minor_version>
   <option_ios_orient_landscape>true</option_ios_orient_landscape>
   <option_ios_orient_portrait>true</option_ios_orient_portrait>
-  <option_ios_orientation>2</option_ios_orientation>
+  <option_ios_orientation>1</option_ios_orientation>
   <option_ios_provisioning>&lt; Press refresh to fetch provisioning list from Mac&gt;</option_ios_provisioning>
   <option_ios_splash_png>Configs\Default\ios\splash.png</option_ios_splash_png>
   <option_ios_texture_page>1024</option_ios_texture_page>
@@ -149,9 +149,9 @@
   <option_mac_app_id></option_mac_app_id>
   <option_mac_appstore_incoming_allow>0</option_mac_appstore_incoming_allow>
   <option_mac_appstore_outgoing_allow>0</option_mac_appstore_outgoing_allow>
-  <option_mac_build_version>1</option_mac_build_version>
-  <option_mac_copyright_info>(c)2012 CompanyName Ltd...</option_mac_copyright_info>
-  <option_mac_create_app_store>-1</option_mac_create_app_store>
+  <option_mac_build_version>2</option_mac_build_version>
+  <option_mac_copyright_info>(c)</option_mac_copyright_info>
+  <option_mac_create_app_store>0</option_mac_create_app_store>
   <option_mac_display_name>Hello Mario Engine</option_mac_display_name>
   <option_mac_enable_steam>0</option_mac_enable_steam>
   <option_mac_fullscreen>0</option_mac_fullscreen>
@@ -160,7 +160,7 @@
   <option_mac_major_version>5</option_mac_major_version>
   <option_mac_menu_dock>0</option_mac_menu_dock>
   <option_mac_minor_version>2</option_mac_minor_version>
-  <option_mac_output_dir>~/GameMaker-Studio/HME Master Source</option_mac_output_dir>
+  <option_mac_output_dir>~/GameMaker-Studio/Hello Mario Engine</option_mac_output_dir>
   <option_mac_scale>0</option_mac_scale>
   <option_mac_screenkey>-1</option_mac_screenkey>
   <option_mac_showcursor>0</option_mac_showcursor>
@@ -208,7 +208,7 @@
   <option_tizen_usesplash>False</option_tizen_usesplash>
   <option_use_new_audio>True</option_use_new_audio>
   <option_variableerrors>False</option_variableerrors>
-  <option_version>5.2</option_version>
+  <option_version>5.2.2</option_version>
   <option_version_build>0</option_version_build>
   <option_version_company>Hello Fangaming</option_version_company>
   <option_version_copyright></option_version_copyright>
@@ -216,7 +216,7 @@
   <option_version_major>5</option_version_major>
   <option_version_minor>2</option_version_minor>
   <option_version_product></option_version_product>
-  <option_version_release>1</option_version_release>
+  <option_version_release>2</option_version_release>
   <option_win8_advertising_appid></option_win8_advertising_appid>
   <option_win8_advertising_enable>0</option_win8_advertising_enable>
   <option_win8_advertising_key></option_win8_advertising_key>
@@ -263,7 +263,7 @@
   <option_windows_major_version>5</option_windows_major_version>
   <option_windows_nsis_file>Configs\Default\windows\RunnerInstaller.nsi</option_windows_nsis_file>
   <option_windows_product_info></option_windows_product_info>
-  <option_windows_release_version>1</option_windows_release_version>
+  <option_windows_release_version>2</option_windows_release_version>
   <option_windows_runner_finished>Configs\Default\windows\Runner_finish.bmp</option_windows_runner_finished>
   <option_windows_runner_header>Configs\Default\windows\Runner_header.bmp</option_windows_runner_header>
   <option_windows_splash_screen>Configs\Default\windows\splash.png</option_windows_splash_screen>
@@ -278,7 +278,7 @@
   <option_winphone_advertising_testing_enable>0</option_winphone_advertising_testing_enable>
   <option_winphone_advertising_type></option_winphone_advertising_type>
   <option_winphone_author>You</option_winphone_author>
-  <option_winphone_build_version>0</option_winphone_build_version>
+  <option_winphone_build_version>2</option_winphone_build_version>
   <option_winphone_cycle_small_image>Configs\Default\WinPhone\CycleSmall.png</option_winphone_cycle_small_image>
   <option_winphone_cycle_wide_image_1>Configs\Default\WinPhone\CycleWide1.png</option_winphone_cycle_wide_image_1>
   <option_winphone_cycle_wide_image_2>Configs\Default\WinPhone\CycleWide2.png</option_winphone_cycle_wide_image_2>
@@ -314,8 +314,8 @@
   <option_winphone_iconic_wide_image>Configs\Default\WinPhone\IconicWide.png</option_winphone_iconic_wide_image>
   <option_winphone_landscape_allowed>-1</option_winphone_landscape_allowed>
   <option_winphone_landscape_flipped_allowed>-1</option_winphone_landscape_flipped_allowed>
-  <option_winphone_major_version>1</option_winphone_major_version>
-  <option_winphone_minor_version>0</option_winphone_minor_version>
+  <option_winphone_major_version>5</option_winphone_major_version>
+  <option_winphone_minor_version>2</option_winphone_minor_version>
   <option_winphone_portrait_allowed>-1</option_winphone_portrait_allowed>
   <option_winphone_publisher>YourPublisherName</option_winphone_publisher>
   <option_winphone_publisher_id>f47823f0-220d-459a-bf68-b6ea984b24a8</option_winphone_publisher_id>

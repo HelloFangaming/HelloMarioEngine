@@ -1444,7 +1444,7 @@ and collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,0)
     audio_play_sound(snd_bump,0,0)
     vspeed = 1
     jumpnow = 2
-    beefly = 120
+    beefly = 128
 }
 if hspeed &gt; 0
 and collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,1,0)
