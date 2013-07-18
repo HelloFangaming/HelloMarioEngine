@@ -132,7 +132,8 @@ showing = 1
             <string>draw_set_color(c_white)
 draw_set_font(global.messagefont)
 if background_exists(back)
-    draw_background(back,view_xview[0],view_yview[0])
+    repeat(10)
+        draw_background(back,view_xview[0],view_yview[0])
 draw_sprite_ext(spr_messagebox,0,view_xview[0]+48,view_yview[0]+39,1,1,0,c_white,0.7)
 if showing = 1
 {

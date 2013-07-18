@@ -150,7 +150,7 @@ alarm[1] = 60
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_mapmusic,99,1)
+            <string>ready = 0
 if global.clear &gt; 0
 and collision_point(x+8,y+8,obj_saver,1,1)
     instance_create(0,0,obj_savemenu)
@@ -167,7 +167,7 @@ and not instance_exists(obj_mapcard)
 global.clear = 0
 returnx = x
 returny = y
-ready = 0
+alarm[3] = 1
 </string>
           </argument>
         </arguments>

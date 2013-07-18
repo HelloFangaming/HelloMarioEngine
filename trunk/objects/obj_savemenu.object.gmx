@@ -25,9 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>fakex = obj_mapmario.x
-fakey = obj_mapmario.y
-instance_deactivate_object(obj_mapmario)
+            <string>obj_mapmario.ready = 1
 audio_play_sound(snd_message,0,0)
 audio_play_sound(snd_hoohoo,0,0)
 menu_choice = 0
@@ -155,8 +153,7 @@ file_text_close(file)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(spr_mapevent,0,fakex,fakey)
-draw_sprite_ext(spr_viewcover,0,view_xview[0],view_yview[0],1,1,0,c_white,0.4)
+            <string>draw_sprite_ext(spr_viewcover,0,view_xview[0],view_yview[0],1,1,0,c_white,0.4)
 draw_sprite_ext(spr_pause,2,view_xview[0]+160,view_yview[0]+120,1,1,0,c_white,0.7)
 draw_set_halign(fa_center)
 draw_set_valign(fa_center)
@@ -252,14 +249,14 @@ draw_set_alpha(1)
             <string>if menu_choice = 0
 {
     audio_play_sound(snd_whistle,0,0)
-    instance_activate_object(obj_mapmario)
+    obj_mapmario.ready = 0
     alarm[0] = 1
     event_user(0)
 }
 if menu_choice = 1
 {
     audio_play_sound(snd_whistle,0,0)
-    instance_activate_object(obj_mapmario)
+    obj_mapmario.ready = 0
     alarm[0] = 1
     event_user(0)
     game_end()
@@ -267,7 +264,7 @@ if menu_choice = 1
 if menu_choice=2
 {
     audio_play_sound(snd_correct,0,0)
-    instance_activate_object(obj_mapmario)
+    obj_mapmario.ready = 0
     instance_destroy()
 }
 io_clear()
