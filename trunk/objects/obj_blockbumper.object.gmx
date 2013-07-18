@@ -72,6 +72,8 @@
             <string>if other.ready = 0
 {
     audio_play_sound(snd_bump,0,0)
+    if other.sprite_index = spr_qblock_large
+        audio_play_sound(snd_thwomp,0,0)
     other.ready = 1
     other.vspeed = -2
     other.alarm[0] = 4
