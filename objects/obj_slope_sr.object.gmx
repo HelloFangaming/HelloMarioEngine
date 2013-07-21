@@ -26,8 +26,14 @@
           <argument>
             <kind>1</kind>
             <string>if place_meeting(x,y-8,obj_mario)
-    if obj_mario.hspeed &lt; 0
-        obj_mario.y+=abs(obj_mario.hspeed)
+{
+    with obj_mario
+    {
+        if hspeed &lt; 0
+        and not place_meeting(x,y-hspeed,obj_solidtop)
+            y += -hspeed
+    }
+}
 </string>
           </argument>
         </arguments>
