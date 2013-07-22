@@ -79,7 +79,7 @@ image_index = 0
     ID = instance_create(x,y,obj_panserfire)
     if instance_exists(obj_mario)
     {
-        if obj_mario.x &gt; x-8
+        if obj_mario.x &gt; x+8
             ID.hspeed = 1
         else
             ID.hspeed = -1
@@ -116,7 +116,7 @@ else
             <string>ID = instance_create(x,y,obj_panserfire)
 if instance_exists(obj_mario)
 {
-    if obj_mario.x &gt; x-8
+    if obj_mario.x &gt; x+8
         ID.hspeed = 1
     else
         ID.hspeed = -1

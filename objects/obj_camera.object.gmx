@@ -316,9 +316,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>view_xview[0] -= 4
-view_yview[0] += 4
-alarm[2] = 2</string>
+            <string>view_yview[0] += 4
+alarm[2] = 2
+</string>
           </argument>
         </arguments>
       </action>
@@ -342,9 +342,8 @@ alarm[2] = 2</string>
             <kind>1</kind>
             <string>if audio_is_playing(snd_thwomp)
 {
-    alarm[3] = 2
-    view_xview[0] += 4
     view_yview[0] -= 4
+    alarm[3] = 2
 }
 </string>
           </argument>
