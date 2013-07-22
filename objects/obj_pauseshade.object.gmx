@@ -248,7 +248,8 @@ if menu_choice=2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 1
+            <string>if not keyboard_check(vk_alt)
+and ready = 1
 {
     instance_activate_all()
     background_delete(back)

@@ -778,7 +778,8 @@ and docamera = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if canpause = 0
+            <string>if not keyboard_check(vk_alt)
+and canpause = 0
 {
     canpause = 1
     alarm[10] = 4
