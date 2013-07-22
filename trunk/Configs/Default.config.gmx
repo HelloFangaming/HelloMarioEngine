@@ -140,7 +140,7 @@
   <option_linux_screenkey>-1</option_linux_screenkey>
   <option_linux_sizeable>-1</option_linux_sizeable>
   <option_linux_steam_app_id>0</option_linux_steam_app_id>
-  <option_linux_sync>0</option_linux_sync>
+  <option_linux_sync>-1</option_linux_sync>
   <option_linux_texture_page>2048</option_linux_texture_page>
   <option_loadalpha>255</option_loadalpha>
   <option_loadimage>nil</option_loadimage>
@@ -167,7 +167,7 @@
   <option_mac_sizeable>-1</option_mac_sizeable>
   <option_mac_splash_png>Configs\Default\mac\splash.png</option_mac_splash_png>
   <option_mac_steam_app_id>0</option_mac_steam_app_id>
-  <option_mac_sync>0</option_mac_sync>
+  <option_mac_sync>1</option_mac_sync>
   <option_mac_texture_page>2048</option_mac_texture_page>
   <option_noborder>false</option_noborder>
   <option_nobuttons>false</option_nobuttons>
@@ -184,7 +184,7 @@
   <option_showprogress>1</option_showprogress>
   <option_sizeable>True</option_sizeable>
   <option_stayontop>false</option_stayontop>
-  <option_sync_vertex>0</option_sync_vertex>
+  <option_sync_vertex>1</option_sync_vertex>
   <option_textureGroup0_border>2</option_textureGroup0_border>
   <option_textureGroup0_nocropping>0</option_textureGroup0_nocropping>
   <option_textureGroup0_scaled>0</option_textureGroup0_scaled>
@@ -224,17 +224,17 @@
   <option_win8_advertising_type>MS Advertising</option_win8_advertising_type>
   <option_win8_analytics_enable>0</option_win8_analytics_enable>
   <option_win8_analytics_id></option_win8_analytics_id>
-  <option_win8_build_version>0</option_win8_build_version>
+  <option_win8_build_version>2</option_win8_build_version>
   <option_win8_certificate_location>Windows8_TemporaryKey.pfx</option_win8_certificate_location>
-  <option_win8_display_name>HME Master Source</option_win8_display_name>
+  <option_win8_display_name>Hello Mario Engine</option_win8_display_name>
   <option_win8_internet_capable>0</option_win8_internet_capable>
   <option_win8_landscape_allowed>-1</option_win8_landscape_allowed>
   <option_win8_landscape_flipped_allowed>-1</option_win8_landscape_flipped_allowed>
   <option_win8_logo>Configs\Default\Windows8\logos\logo150.png</option_win8_logo>
   <option_win8_logo_background_colour>#000000</option_win8_logo_background_colour>
   <option_win8_logo_foreground_text>light</option_win8_logo_foreground_text>
-  <option_win8_major_version>1</option_win8_major_version>
-  <option_win8_minor_version>0</option_win8_minor_version>
+  <option_win8_major_version>5</option_win8_major_version>
+  <option_win8_minor_version>2</option_win8_minor_version>
   <option_win8_native_certificate_location>Win8NativeRunner_TemporaryKey.pfx</option_win8_native_certificate_location>
   <option_win8_native_cpu>x86</option_win8_native_cpu>
   <option_win8_package_display_name>YourPackageDisplayName</option_win8_package_display_name>
