@@ -94,7 +94,6 @@ if instance_number(myenemy) &lt; 6
     if type = 0
     {
         ID = instance_create(x+7,y+16,myenemy)
-
         ID.hspeed = -0.5
     }
     else
@@ -105,36 +104,9 @@ if instance_number(myenemy) &lt; 6
     if myenemy = obj_goomba
         ID.x -= 8
     ID.depth = 10
+    ID.alarm[10] = 0
     alarm[1] = 30
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_parenemy2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if type = 0
-and other.hspeed = 0.5
-    other.hspeed = -0.5
-else if type = 1
-and other.hspeed = -0.5
-    other.hspeed = 0.5
 </string>
           </argument>
         </arguments>
