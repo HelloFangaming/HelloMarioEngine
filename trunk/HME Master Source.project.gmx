@@ -815,6 +815,7 @@
         <sprite>sprites\spr_conveyor_right</sprite>
         <sprite>sprites\spr_movingrope</sprite>
         <sprite>sprites\spr_movingsaw</sprite>
+        <sprite>sprites\spr_skullraft</sprite>
       </sprites>
       <sprites name="Collectables">
         <sprite>sprites\spr_coin</sprite>
@@ -843,7 +844,6 @@
         <sprite>sprites\spr_walltriangle_ir</sprite>
         <sprite>sprites\spr_walltriangle_l</sprite>
         <sprite>sprites\spr_walltriangle_il</sprite>
-        <sprite>sprites\spr_skullraft</sprite>
         <sprite>sprites\spr_flippers_top</sprite>
         <sprite>sprites\spr_flippers_bottom</sprite>
         <sprite>sprites\spr_flippers_left</sprite>
