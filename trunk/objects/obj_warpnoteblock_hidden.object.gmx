@@ -51,9 +51,9 @@
             <string>if other.vspeed &lt; 0
 and other.bbox_top &gt; y+15+other.vspeed
 {
-    ID = instance_create(x,y,obj_noteblock_warp)
-    ID.myroom = myroom
-    with ID
+    varid = instance_create(x,y,obj_noteblock_warp)
+    varid.myroom = myroom
+    with varid
     {
         ready = 1
         vspeed = -2

@@ -71,8 +71,8 @@ ready = 0</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID = instance_create(x,y,obj_roundgoomba)
-ID.hspeed = image_xscale/2
+            <string>varid = instance_create(x,y,obj_roundgoomba)
+varid.hspeed = image_xscale/2
 instance_destroy()</string>
           </argument>
         </arguments>

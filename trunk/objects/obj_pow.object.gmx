@@ -214,8 +214,8 @@ image_speed = 0.3
 gravity = 0
 vspeed = 0
 hspeed = 0
-ID = instance_create(x,y-16,obj_smoke)
-ID.sprite_index = spr_powsquish
+varid = instance_create(x,y-16,obj_smoke)
+varid.sprite_index = spr_powsquish
 instance_destroy()
 </string>
           </argument>

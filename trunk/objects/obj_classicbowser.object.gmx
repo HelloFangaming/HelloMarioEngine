@@ -152,11 +152,11 @@ alarm[2] = 7
     if obj_mario.x &gt; xmin
     {
         if x&lt;view_xview[0]+336
-            ID = instance_create(x,y+8,obj_bowserstatue_fire)
+            varid = instance_create(x,y+8,obj_bowserstatue_fire)
         else
-            ID = instance_create(view_xview[0]+327,ystart-32+irandom(4)*16,obj_bowserstatue_fire)
-        ID.sprite_index = spr_bowserfire
-        ID.image_xscale = -1
+            varid = instance_create(view_xview[0]+327,ystart-32+irandom(4)*16,obj_bowserstatue_fire)
+        varid.sprite_index = spr_bowserfire
+        varid.image_xscale = -1
         audio_play_sound(snd_podoboo,0,0)
     }
 }

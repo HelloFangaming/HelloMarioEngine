@@ -67,11 +67,11 @@ or y &lt; view_yview[0]-16
 }
 alarm[0] = 180
 audio_play_sound(snd_thwomp,0,0)
-ID = instance_create(x+8,y-17,obj_cannonbomb)
+varid = instance_create(x+8,y-17,obj_cannonbomb)
 if image_index = 0
-    with ID hspeed = -1
+    with varid hspeed = -1
 if image_index = 1
-    with ID hspeed = 1
+    with varid hspeed = 1
 instance_create(x,y,obj_smoke)
 </string>
           </argument>

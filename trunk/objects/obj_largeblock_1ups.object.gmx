@@ -51,8 +51,8 @@ mysolid.image_yscale = 2</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID = instance_create(x+8,y,obj_powerupsprout)
-with ID sprite_index = spr_1up</string>
+            <string>varid = instance_create(x+8,y,obj_powerupsprout)
+with varid sprite_index = spr_1up</string>
           </argument>
         </arguments>
       </action>
@@ -74,8 +74,8 @@ with ID sprite_index = spr_1up</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID = instance_create(x+8,y,obj_powerupsprout)
-with ID sprite_index = spr_1up
+            <string>varid = instance_create(x+8,y,obj_powerupsprout)
+with varid sprite_index = spr_1up
 alarm[3] = 48</string>
           </argument>
         </arguments>
@@ -100,8 +100,8 @@ alarm[3] = 48</string>
             <kind>1</kind>
             <string>vspeed = 0
 y = ystart
-ID = instance_create(x+8,y,obj_powerupsprout)
-with ID sprite_index = spr_1up
+varid = instance_create(x+8,y,obj_powerupsprout)
+with varid sprite_index = spr_1up
 image_index = 1
 alarm[2] = 48
 </string>

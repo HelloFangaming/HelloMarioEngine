@@ -79,8 +79,8 @@ varmsg = "No message has been set."
 y = ystart
 audio_play_sound(snd_message,0,0)
 audio_play_sound(snd_hoohoo,0,0)
-ID = instance_create(0,0,obj_messagebox)
-ID.varmsg = varmsg
+varid = instance_create(0,0,obj_messagebox)
+varid.varmsg = varmsg
 alarm[2] = 24
 </string>
           </argument>

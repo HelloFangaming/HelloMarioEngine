@@ -56,8 +56,8 @@ heehee = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID = instance_create(x+8,y,obj_brohammer)
-ID.hspeed = 2*direct
+            <string>varid = instance_create(x+8,y,obj_brohammer)
+varid.hspeed = 2*direct
 audio_play_sound(snd_hammer,0,0)
 sprite_index = spr_hammerbro
 alarm[2] = 75

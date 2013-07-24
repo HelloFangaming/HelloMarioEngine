@@ -78,9 +78,9 @@ heehee = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID = instance_create(x+8,y,obj_brofire)
-ID.hspeed = 3*direct
-ID.image_xscale = direct
+            <string>varid = instance_create(x+8,y,obj_brofire)
+varid.hspeed = 3*direct
+varid.image_xscale = direct
 sprite_index = spr_firebro_spit
 alarm[3] = 5
 alarm[2] = 100

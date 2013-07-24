@@ -52,21 +52,21 @@ gravity = 0.125</string>
             <string>if vspeed &gt; 0
 {
     if sprite_index = spr_mushroom
-        ID = instance_create(x,y,obj_mushroom)
+        varid = instance_create(x,y,obj_mushroom)
     if sprite_index = spr_1up
-        ID = instance_create(x,y,obj_1up)
+        varid = instance_create(x,y,obj_1up)
     if sprite_index = spr_poison
-        ID = instance_create(x,y,obj_poison)
+        varid = instance_create(x,y,obj_poison)
     if sprite_index = spr_bombshroom
-        ID = instance_create(x,y,obj_bombshroom)
+        varid = instance_create(x,y,obj_bombshroom)
     if sprite_index = spr_beeshroom
-        ID = instance_create(x,y,obj_beeshroom)
+        varid = instance_create(x,y,obj_beeshroom)
     if sprite_index = spr_star
     {
-        ID = instance_create(x,y,obj_star)
-        ID.vspeed = 0
+        varid = instance_create(x,y,obj_star)
+        varid.vspeed = 0
     }
-    ID.hspeed = hspeed
+    varid.hspeed = hspeed
     instance_destroy()
 }
 if hspeed &gt; 0

@@ -77,8 +77,8 @@ else
 {
     image_index = 1
     audio_play_sound(snd_castlebreak,0,0)
-    ID = instance_create(x,y,obj_smoke)
-    ID.sprite_index = spr_castlesmoke
+    varid = instance_create(x,y,obj_smoke)
+    varid.sprite_index = spr_castlesmoke
     beaten = 1
 }
 </string>

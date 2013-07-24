@@ -114,18 +114,18 @@ and global.yoshi = 0
 {
     with obj_mario event_user(1)
     audio_play_sound(snd_break,0,0)
-    ID = instance_create(x+8,y,obj_shard)
-    with (ID) motion_set(45,3)
-    with (ID) sprite_index = spr_shard_y
-    ID = instance_create(x+8,y,obj_shard)
-    with (ID) motion_set(60,3)
-    with (ID) sprite_index = spr_shard_y
-    ID = instance_create(x,y,obj_shard)
-    with (ID) motion_set(120,3)
-    with (ID) sprite_index = spr_shard_y
-    ID = instance_create(x,y,obj_shard)
-    with (ID) motion_set(135,3)
-    with (ID) sprite_index = spr_shard_y
+    varid = instance_create(x+8,y,obj_shard)
+    with (varid) motion_set(45,3)
+    with (varid) sprite_index = spr_shard_y
+    varid = instance_create(x+8,y,obj_shard)
+    with (varid) motion_set(60,3)
+    with (varid) sprite_index = spr_shard_y
+    varid = instance_create(x,y,obj_shard)
+    with (varid) motion_set(120,3)
+    with (varid) sprite_index = spr_shard_y
+    varid = instance_create(x,y,obj_shard)
+    with (varid) motion_set(135,3)
+    with (varid) sprite_index = spr_shard_y
     instance_destroy()
 }
 </string>

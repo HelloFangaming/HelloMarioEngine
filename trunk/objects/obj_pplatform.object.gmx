@@ -49,7 +49,7 @@ sprite_index = spr_poutline</string>
           <argument>
             <kind>1</kind>
             <string>sprite_index = spr_poutline
-with ID instance_destroy()</string>
+with varid instance_destroy()</string>
           </argument>
         </arguments>
       </action>
@@ -74,7 +74,7 @@ with ID instance_destroy()</string>
             <string>if sprite_index = spr_poutline
 {
     sprite_index = spr_pplatform
-    ID = instance_create(x,y,obj_solid)
+    varid = instance_create(x,y,obj_solid)
 }
 </string>
           </argument>

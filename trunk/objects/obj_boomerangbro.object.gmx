@@ -56,8 +56,8 @@ heehee = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID = instance_create(x,y,obj_boomerang)
-ID.hspeed = 1.5*direct
+            <string>varid = instance_create(x,y,obj_boomerang)
+varid.hspeed = 1.5*direct
 audio_play_sound(snd_hammer,0,0)
 sprite_index = spr_boomerangbro
 alarm[2] = 100

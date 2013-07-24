@@ -138,8 +138,8 @@ and obj_mario.x &gt; x+26
     if global.time &gt; 0
         obj_musicplayer.alarm[2] = 0
     instance_create(x,y,obj_solid1x4)
-    ID = instance_create(obj_camera.x,obj_camera.y,obj_autoscroll)
-    ID.speed = 3
+    varid = instance_create(obj_camera.x,obj_camera.y,obj_autoscroll)
+    varid.speed = 3
     audio_play_sound(snd_castlebreak,0,0)
     instance_create(x,y,obj_smoke)
     visible = 1

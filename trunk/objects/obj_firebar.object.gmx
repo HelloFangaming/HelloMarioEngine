@@ -56,21 +56,21 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID = instance_create(x,y-8,obj_firebarball)
-ID.hspeed = 0.25*ready
-ID.ready = ready
-ID = instance_create(x,y-16,obj_firebarball)
-ID.hspeed = 0.5*ready
-ID.ready = ready
-ID = instance_create(x,y-24,obj_firebarball)
-ID.hspeed = 0.75*ready
-ID.ready = ready
-ID = instance_create(x,y-32,obj_firebarball)
-ID.hspeed = ready
-ID.ready = ready
-ID = instance_create(x,y-40,obj_firebarball)
-ID.hspeed = 1.25*ready
-ID.ready = ready
+            <string>varid = instance_create(x,y-8,obj_firebarball)
+varid.hspeed = 0.25*ready
+varid.ready = ready
+varid = instance_create(x,y-16,obj_firebarball)
+varid.hspeed = 0.5*ready
+varid.ready = ready
+varid = instance_create(x,y-24,obj_firebarball)
+varid.hspeed = 0.75*ready
+varid.ready = ready
+varid = instance_create(x,y-32,obj_firebarball)
+varid.hspeed = ready
+varid.ready = ready
+varid = instance_create(x,y-40,obj_firebarball)
+varid.hspeed = 1.25*ready
+varid.ready = ready
 </string>
           </argument>
         </arguments>

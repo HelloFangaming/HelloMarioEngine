@@ -52,10 +52,10 @@ alarm[0] = 128
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID = instance_create(x,y,obj_mario)
-ID.vspeed = -1
-ID.gravity = 0
-ID.state = 3
+            <string>varid = instance_create(x,y,obj_mario)
+varid.vspeed = -1
+varid.gravity = 0
+varid.state = 3
 instance_destroy()
 </string>
           </argument>

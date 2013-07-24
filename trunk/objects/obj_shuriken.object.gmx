@@ -127,8 +127,8 @@ or y&gt;view_yview[0]+256
           <argument>
             <kind>1</kind>
             <string>audio_play_sound(snd_bump,0,0)
-ID = instance_create(x-4,y-4,obj_smoke)
-ID.sprite_index = spr_skidsmoke
+varid = instance_create(x-4,y-4,obj_smoke)
+varid.sprite_index = spr_skidsmoke
 instance_destroy()</string>
           </argument>
         </arguments>

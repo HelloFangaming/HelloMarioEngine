@@ -136,8 +136,8 @@ and instance_exists(obj_mario)
     audio_play_sound(snd_hah,0,0)
     audio_play_sound(snd_throw,0,0)
     obj_mario.alarm[0] = 1
-    ID = instance_create(x,y-16,obj_shell)
-    with ID
+    varid = instance_create(x,y-16,obj_shell)
+    with varid
     {
         thrownow = 1
         hspeed = 3*obj_mario.direct

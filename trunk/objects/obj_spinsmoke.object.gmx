@@ -35,10 +35,10 @@ alarm[1] = 16
 if global.yoshi = 2
 and global.ycolor = 1
 {
-    ID = instance_create(x+8,y,obj_fireball)
-    ID.hspeed = 3
-    ID = instance_create(x+8,y,obj_fireball)
-    ID.hspeed = -3
+    varid = instance_create(x+8,y,obj_fireball)
+    varid.hspeed = 3
+    varid = instance_create(x+8,y,obj_fireball)
+    varid.hspeed = -3
 }
 </string>
           </argument>

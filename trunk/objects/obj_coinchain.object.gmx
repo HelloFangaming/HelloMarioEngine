@@ -85,14 +85,14 @@ if sprite_index = spr_brick
 {
     if not position_meeting(x+8,y+8,obj_brick)
     {
-        ID = instance_create(x,y,obj_brick)
-        ID.image_index = image_index
+        varid = instance_create(x,y,obj_brick)
+        varid.image_index = image_index
     }
 }
 else if not position_meeting(x+8,y+8,obj_coin)
 {
-    ID = instance_create(x,y,obj_coin)
-    ID.image_index = image_index
+    varid = instance_create(x,y,obj_coin)
+    varid.image_index = image_index
 }
 </string>
           </argument>

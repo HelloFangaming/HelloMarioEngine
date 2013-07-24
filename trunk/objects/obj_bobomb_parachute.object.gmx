@@ -71,8 +71,8 @@ ready = 0</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID = instance_create(x,y,obj_cannonbomb)
-ID.hspeed = image_xscale
+            <string>varid = instance_create(x,y,obj_cannonbomb)
+varid.hspeed = image_xscale
 instance_destroy()</string>
           </argument>
         </arguments>

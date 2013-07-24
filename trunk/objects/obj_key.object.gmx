@@ -104,8 +104,8 @@ and instance_exists(obj_mario)
             <kind>1</kind>
             <string>if other.visible = 1
 {
-    ID = instance_create(other.x,other.y,obj_door_hidden)
-    with ID visible = 1
+    varid = instance_create(other.x,other.y,obj_door_hidden)
+    with varid visible = 1
     with (other) instance_create(x,y,obj_smoke)
     with (other) instance_destroy()
     audio_play_sound(snd_chest,0,0)

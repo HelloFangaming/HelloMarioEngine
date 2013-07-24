@@ -50,8 +50,8 @@
             <string>if other.vspeed &lt; 0
 and visible = 1
 {
-    ID = instance_create(x,ystart,obj_veggiecoin)
-    ID.sprite_index = spr_pcoin
+    varid = instance_create(x,ystart,obj_veggiecoin)
+    varid.sprite_index = spr_pcoin
     instance_destroy()
 }
 </string>

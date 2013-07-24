@@ -53,8 +53,8 @@
     obj_mario.visible = 1
     obj_mario.holding = 0
     with (obj_puller) instance_destroy()
-    ID = instance_create(x,y,obj_smoke)
-    ID.sprite_index = spr_digsand
+    varid = instance_create(x,y,obj_smoke)
+    varid.sprite_index = spr_digsand
     instance_destroy()
 }
 </string>

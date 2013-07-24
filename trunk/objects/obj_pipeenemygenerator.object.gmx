@@ -57,7 +57,7 @@ enemy = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID.depth = 0
+            <string>varid.depth = 0
 </string>
           </argument>
         </arguments>
@@ -93,18 +93,18 @@ if instance_number(myenemy) &lt; 6
 {
     if type = 0
     {
-        ID = instance_create(x+7,y+16,myenemy)
-        ID.hspeed = -0.5
+        varid = instance_create(x+7,y+16,myenemy)
+        varid.hspeed = -0.5
     }
     else
     {
-        ID = instance_create(x+9,y+16,myenemy)
-        ID.hspeed = 0.5
+        varid = instance_create(x+9,y+16,myenemy)
+        varid.hspeed = 0.5
     }
     if myenemy = obj_goomba
-        ID.x -= 8
-    ID.depth = 10
-    ID.alarm[10] = 0
+        varid.x -= 8
+    varid.depth = 10
+    varid.alarm[10] = 0
     alarm[1] = 30
 }
 </string>

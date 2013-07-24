@@ -62,8 +62,8 @@ newstar = 0
             <string>alarm[3] = 8
 if visible = 1
 {
-    ID = instance_create(x-8+random(16),y-8+random(16),obj_sparkletrail)
-    ID.depth = depth
+    varid = instance_create(x-8+random(16),y-8+random(16),obj_sparkletrail)
+    varid.depth = depth
 }
 </string>
           </argument>

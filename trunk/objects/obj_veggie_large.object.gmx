@@ -55,14 +55,14 @@
     obj_mario.visible = 1
     with (obj_puller) instance_destroy()
     instance_create(obj_mario.x-8,obj_mario.y-5,obj_vegetable_large)
-    ID = instance_create(x+8,y,obj_shard)
-    with (ID) motion_set(45,3)
-    ID = instance_create(x+8,y,obj_shard)
-    with (ID) motion_set(60,3)
-    ID = instance_create(x,y,obj_shard)
-    with (ID) motion_set(120,3)
-    ID = instance_create(x,y,obj_shard)
-    with (ID) motion_set(135,3)
+    varid = instance_create(x+8,y,obj_shard)
+    with (varid) motion_set(45,3)
+    varid = instance_create(x+8,y,obj_shard)
+    with (varid) motion_set(60,3)
+    varid = instance_create(x,y,obj_shard)
+    with (varid) motion_set(120,3)
+    varid = instance_create(x,y,obj_shard)
+    with (varid) motion_set(135,3)
     instance_destroy()
 }
 </string>

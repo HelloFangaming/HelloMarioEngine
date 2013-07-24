@@ -259,13 +259,13 @@ instance_create(x,y,obj_tounge)</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID = instance_create(x,y,obj_yoshi_abandon)
+            <string>varid = instance_create(x,y,obj_yoshi_abandon)
 if global.ycolor = 1
-    ID.sprite_index = spr_yoshi_walk_r
+    varid.sprite_index = spr_yoshi_walk_r
 else if global.ycolor = 2
-    ID.sprite_index = spr_yoshi_walk_y
+    varid.sprite_index = spr_yoshi_walk_y
 else if global.ycolor = 3
-    ID.sprite_index = spr_yoshi_walk_b
+    varid.sprite_index = spr_yoshi_walk_b
 with obj_mario
 {
     visible = 1
@@ -296,13 +296,13 @@ instance_destroy()
             <kind>1</kind>
             <string>if instance_exists(obj_mario)
     obj_mario.visible = 1
-ID = instance_create(x,y,obj_yoshi_runaway)
+varid = instance_create(x,y,obj_yoshi_runaway)
 if global.ycolor = 1
-    ID.sprite_index = spr_yoshi_hold_r
+    varid.sprite_index = spr_yoshi_hold_r
 else if global.ycolor = 2
-    ID.sprite_index = spr_yoshi_hold_y
+    varid.sprite_index = spr_yoshi_hold_y
 else if global.ycolor = 3
-    ID.sprite_index = spr_yoshi_hold_b
+    varid.sprite_index = spr_yoshi_hold_b
 instance_destroy()
 </string>
           </argument>

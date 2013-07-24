@@ -187,14 +187,14 @@ else
 {
     sprite_index = spr_lavalotus_spit
     image_speed = 0
-    ID = instance_create(x+12,y,obj_lavalotusball)
-    with ID motion_set(135,1.5)
-    ID = instance_create(x+12,y,obj_lavalotusball)
-    with ID motion_set(45,1.5)
-    ID = instance_create(x+12,y,obj_lavalotusball)
-    with ID motion_set(120,1.5)
-    ID = instance_create(x+12,y,obj_lavalotusball)
-    with ID motion_set(60,1.5)
+    varid = instance_create(x+12,y,obj_lavalotusball)
+    with varid motion_set(135,1.5)
+    varid = instance_create(x+12,y,obj_lavalotusball)
+    with varid motion_set(45,1.5)
+    varid = instance_create(x+12,y,obj_lavalotusball)
+    with varid motion_set(120,1.5)
+    varid = instance_create(x+12,y,obj_lavalotusball)
+    with varid motion_set(60,1.5)
     alarm[0] = 30
 }
 </string>

@@ -47,16 +47,16 @@ if global.yoshi = 2
 if global.carrieditem &gt; 0
 and global.yoshi = 0
 {
-    ID = instance_create(x-8,y+15,global.carrieditem)
+    varid = instance_create(x-8,y+15,global.carrieditem)
     if object_get_parent(global.carrieditem) = obj_parcarry
         global.shallihold = 1
     else
     {
         global.shallihold = 2
         keyboard_key_press(vk_control)
-        ID.held = 1
+        varid.held = 1
         if global.carrieditem = obj_shell
-            ID.bam = 1
+            varid.bam = 1
     }
     if instance_exists(obj_mario)
     {
@@ -78,9 +78,9 @@ if global.star &gt; 0
 {
     if global.star &lt; 30
         global.star = 30
-    ID = instance_create(x,y,obj_invincibility)
-    ID.alarm[0] = global.star
-    ID.alarm[1] = 0
+    varid = instance_create(x,y,obj_invincibility)
+    varid.alarm[0] = global.star
+    varid.alarm[1] = 0
     global.star = 0
 }
 </string>
@@ -594,35 +594,35 @@ switchon = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID = instance_create(view_xview+152,view_yview+8,obj_reserveitem)
+            <string>varid = instance_create(view_xview+152,view_yview+8,obj_reserveitem)
 if global.reserveitem = 1
-    with ID sprite_index = spr_mushroom
+    with varid sprite_index = spr_mushroom
 if global.reserveitem = 2
-    with ID sprite_index = spr_fireflower
+    with varid sprite_index = spr_fireflower
 if global.reserveitem = 3
-    with ID sprite_index = spr_hammersuit
+    with varid sprite_index = spr_hammersuit
 if global.reserveitem = 4
-    with ID sprite_index = spr_leaf
+    with varid sprite_index = spr_leaf
 if global.reserveitem = 5
-    with ID sprite_index = spr_tanookisuit
+    with varid sprite_index = spr_tanookisuit
 if global.reserveitem = 6
-    with ID sprite_index = spr_frogsuit
+    with varid sprite_index = spr_frogsuit
 if global.reserveitem = 7
-    with ID sprite_index = spr_bombshroom
+    with varid sprite_index = spr_bombshroom
 if global.reserveitem = 8
-    with ID sprite_index = spr_iceflower
+    with varid sprite_index = spr_iceflower
 if global.reserveitem = 9
-    with ID sprite_index = spr_superflower
+    with varid sprite_index = spr_superflower
 if global.reserveitem = 10
-    with ID sprite_index = spr_carrot
+    with varid sprite_index = spr_carrot
 if global.reserveitem = 11
-    with ID sprite_index = spr_ninjasuit
+    with varid sprite_index = spr_ninjasuit
 if global.reserveitem = 12
-    with ID sprite_index = spr_beeshroom
+    with varid sprite_index = spr_beeshroom
 if global.reserveitem = 13
-    with ID sprite_index = spr_blueshell
+    with varid sprite_index = spr_blueshell
 if global.reserveitem = 14
-    with ID sprite_index = spr_penguinsuit
+    with varid sprite_index = spr_penguinsuit
 global.reserveitem = 0
 </string>
           </argument>

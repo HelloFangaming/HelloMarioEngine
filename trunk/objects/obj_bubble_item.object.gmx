@@ -75,18 +75,18 @@ else if item = 6
     instance_create(x+8,y+8,obj_getshoe)
 else if item = 7
 {
-    ID = instance_create(x+8,y+8,obj_getshoe)
-    ID.sprite_index = spr_baburushoe
+    varid = instance_create(x+8,y+8,obj_getshoe)
+    varid.sprite_index = spr_baburushoe
 }
 else if item = 8
 {
-    ID = instance_create(x+8,y+8,obj_getshoe)
-    ID.sprite_index = spr_dossunshoe
+    varid = instance_create(x+8,y+8,obj_getshoe)
+    varid.sprite_index = spr_dossunshoe
 }
 else if item = 9
 {
-    ID = instance_create(x+8,y+8,obj_getshoe)
-    ID.sprite_index = spr_jugemushoe
+    varid = instance_create(x+8,y+8,obj_getshoe)
+    varid.sprite_index = spr_jugemushoe
 }
 instance_destroy()
 </string>

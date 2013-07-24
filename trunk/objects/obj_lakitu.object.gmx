@@ -58,10 +58,10 @@ xmax = room_width
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID = instance_create(x,y,obj_lakituticker)
-ID.type = 0
-ID.xmin = xmin
-ID.xmax = xmax
+            <string>varid = instance_create(x,y,obj_lakituticker)
+varid.type = 0
+varid.xmin = xmin
+varid.xmax = xmax
 </string>
           </argument>
         </arguments>
@@ -362,8 +362,8 @@ else if other.invincible = 0
             <string>if sprite_index = spr_lakitu_throw
 {
     sprite_index = spr_lakitu
-    ID = instance_create(x,y,obj_lakitu_egg)
-    ID.hspeed = hspeed
+    varid = instance_create(x,y,obj_lakitu_egg)
+    varid.hspeed = hspeed
     audio_play_sound(snd_hammer,0,0)
 }
 </string>

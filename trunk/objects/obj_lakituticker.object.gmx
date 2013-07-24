@@ -50,11 +50,11 @@
             <string>if not instance_exists(obj_goalmario)
 {
     if type = 0
-        ID = instance_create(x,y,obj_lakitu)
+        varid = instance_create(x,y,obj_lakitu)
     if type = 1
-        ID = instance_create(x,y,obj_lakitu_ball)
-    ID.xmin = xmin
-    ID.xmax = xmax
+        varid = instance_create(x,y,obj_lakitu_ball)
+    varid.xmin = xmin
+    varid.xmax = xmax
     instance_destroy()
 }
 </string>

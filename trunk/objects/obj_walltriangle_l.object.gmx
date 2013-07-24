@@ -57,8 +57,8 @@ and obj_mario.isswim = 0
 and not instance_exists(obj_spinner)
 and not instance_exists(obj_wallrunner)
 {
-    ID = instance_create(x+15,y-32,obj_wallrunner)
-    ID.ready = 1
+    varid = instance_create(x+15,y-32,obj_wallrunner)
+    varid.ready = 1
 }
 </string>
           </argument>

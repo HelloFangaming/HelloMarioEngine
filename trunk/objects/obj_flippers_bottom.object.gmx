@@ -28,7 +28,7 @@
             <string>image_speed = 0
 ready = 0
 issolid = 1
-ID = instance_create(x,y,obj_solid4x1)
+varid = instance_create(x,y,obj_solid4x1)
 </string>
           </argument>
         </arguments>
@@ -157,11 +157,11 @@ else if image_index = 3
         ready = 0
 }
 if issolid = 1
-and not instance_exists(ID)
-    ID = instance_create(x,y,obj_solid4x1)
+and not instance_exists(varid)
+    varid = instance_create(x,y,obj_solid4x1)
 else if issolid = 0
-and instance_exists(ID)
-    with ID instance_destroy()
+and instance_exists(varid)
+    with varid instance_destroy()
 </string>
           </argument>
         </arguments>

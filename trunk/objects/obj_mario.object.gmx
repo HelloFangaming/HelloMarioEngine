@@ -115,15 +115,15 @@ if floatnow = 1
 {
     if direct = -1
     {
-        ID = instance_create(x-8,y+24,obj_smoke)
-        ID.sprite_index = spr_skidsmoke
-        ID.depth = -6
+        varid = instance_create(x-8,y+24,obj_smoke)
+        varid.sprite_index = spr_skidsmoke
+        varid.depth = -6
     }
     if direct = 1
     {
-        ID = instance_create(x+1,y+24,obj_smoke)
-        ID.sprite_index = spr_skidsmoke
-        ID.depth = -6
+        varid = instance_create(x+1,y+24,obj_smoke)
+        varid.sprite_index = spr_skidsmoke
+        varid.depth = -6
     }
 }
 alarm[11] = 8
@@ -223,32 +223,32 @@ alarm[9] = 24 + random(96)
             <string>if global.state = 2
 and instance_number(obj_fireball) &lt; 2
 {
-    ID = instance_create(x,y+16,obj_fireball)
-    ID.hspeed = -3*direct
+    varid = instance_create(x,y+16,obj_fireball)
+    varid.hspeed = -3*direct
 }
 if global.state = 3
 and instance_number(obj_hammer) &lt; 2
 {
-    ID = instance_create(x,y+16,obj_hammer)
-    ID.hspeed = -2*direct
+    varid = instance_create(x,y+16,obj_hammer)
+    varid.hspeed = -2*direct
 }
 if (global.state = 8 or global.state = 14)
 and instance_number(obj_iceball) &lt; 1
 {
-    ID = instance_create(x,y+16,obj_iceball)
-    ID.hspeed = -3*direct
+    varid = instance_create(x,y+16,obj_iceball)
+    varid.hspeed = -3*direct
 }
 if global.state = 9
 and instance_number(obj_superball) &lt; 2
 {
-    ID = instance_create(x,y+16,obj_superball)
-    ID.hspeed = -2*direct
+    varid = instance_create(x,y+16,obj_superball)
+    varid.hspeed = -2*direct
 }
 if global.state = 11
 and instance_number(obj_shuriken) &lt; 2
 {
-    ID = instance_create(x,y+16,obj_shuriken)
-    ID.hspeed = -5*direct
+    varid = instance_create(x,y+16,obj_shuriken)
+    varid.hspeed = -5*direct
 }
 </string>
           </argument>
@@ -276,8 +276,8 @@ and instance_number(obj_shuriken) &lt; 2
 {
     if instance_number(obj_fireball) &lt; 2
     {
-        ID = instance_create(x,y+16,obj_fireball)
-        ID.hspeed = 3*direct
+        varid = instance_create(x,y+16,obj_fireball)
+        varid.hspeed = 3*direct
     }
     alarm[8] = 10
 }
@@ -285,8 +285,8 @@ if global.state = 3
 {
     if instance_number(obj_hammer) &lt; 2
     {
-        ID = instance_create(x,y+16,obj_hammer)
-        ID.hspeed = 2*direct
+        varid = instance_create(x,y+16,obj_hammer)
+        varid.hspeed = 2*direct
     }
     alarm[8] = 10
 }
@@ -295,8 +295,8 @@ or global.state = 14
 {
     if instance_number(obj_iceball) &lt; 1
     {
-        ID = instance_create(x,y+16,obj_iceball)
-        ID.hspeed = 3*direct
+        varid = instance_create(x,y+16,obj_iceball)
+        varid.hspeed = 3*direct
     }
     alarm[8] = 10
 }
@@ -304,8 +304,8 @@ if global.state = 9
 {
     if instance_number(obj_superball) &lt; 2
     {
-        ID = instance_create(x,y+16,obj_superball)
-        ID.hspeed = 2*direct
+        varid = instance_create(x,y+16,obj_superball)
+        varid.hspeed = 2*direct
     }
     alarm[8] = 10
 }
@@ -313,8 +313,8 @@ if global.state = 11
 {
     if instance_number(obj_shuriken) &lt; 2
     {
-        ID = instance_create(x,y+20,obj_shuriken)
-        ID.hspeed = 5*direct
+        varid = instance_create(x,y+20,obj_shuriken)
+        varid.hspeed = 5*direct
     }
     alarm[8] = 10
 }
@@ -826,8 +826,8 @@ if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0)
     if collision_point(x,y+33,obj_swim,0,0)
     and not collision_point(x,y,obj_swim,0,0)
     {
-        ID = instance_create(x-8,y+17,obj_smoke)
-        ID.sprite_index = spr_splash
+        varid = instance_create(x-8,y+17,obj_smoke)
+        varid.sprite_index = spr_splash
     }
 }
 </string>
@@ -1156,8 +1156,8 @@ if not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,
     isswim = 0
     if collision_point(x,y+33,obj_swim,1,1)
     {
-        ID = instance_create(x-8,y+17,obj_smoke)
-        ID.sprite_index = spr_splash
+        varid = instance_create(x-8,y+17,obj_smoke)
+        varid.sprite_index = spr_splash
         if keyboard_check(vk_shift)
         {
             vspeed = -3.85
@@ -1479,8 +1479,8 @@ if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0)
     if collision_point(x,y+33,obj_swim,0,0)
     and not collision_point(x,y,obj_swim,0,0)
     {
-        ID = instance_create(x-8,y+17,obj_smoke)
-        ID.sprite_index = spr_splash
+        varid = instance_create(x-8,y+17,obj_smoke)
+        varid.sprite_index = spr_splash
     }
     isfloating = 0
 }
@@ -1630,13 +1630,13 @@ if global.yoshi = 1
     global.yoshi = 0
     invincible = 1
     visible = 1
-    ID = instance_create(obj_yoshi.x,obj_yoshi.y,obj_yoshi_runaway)
+    varid = instance_create(obj_yoshi.x,obj_yoshi.y,obj_yoshi_runaway)
     if global.ycolor = 1
-        ID.sprite_index = spr_yoshi_hold_r
+        varid.sprite_index = spr_yoshi_hold_r
     else if global.ycolor = 2
-        ID.sprite_index = spr_yoshi_hold_y
+        varid.sprite_index = spr_yoshi_hold_y
     else if global.ycolor = 3
-        ID.sprite_index = spr_yoshi_hold_b
+        varid.sprite_index = spr_yoshi_hold_b
     with obj_yoshi instance_destroy()
     alarm[3] = 120
     alarm[1] = 1

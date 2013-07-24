@@ -59,11 +59,11 @@ alarm[0] = 7
           <argument>
             <kind>1</kind>
             <string>alarm[0] = 7
-ID = instance_create(x,y,obj_boosnake_trail)
+varid = instance_create(x,y,obj_boosnake_trail)
 if hspeed &gt; 0
-    ID.direct = 1
+    varid.direct = 1
 else
-    ID.direct = -1
+    varid.direct = -1
 </string>
           </argument>
         </arguments>

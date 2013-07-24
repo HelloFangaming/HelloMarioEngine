@@ -158,8 +158,8 @@ and image_index = 0
 {
     if sprout = 0
     {
-        ID = instance_create(x,y,obj_block_coin)
-        with ID
+        varid = instance_create(x,y,obj_block_coin)
+        with varid
         {
             instance_create(x,y,obj_blockcoin)
             ready = 1
@@ -169,9 +169,9 @@ and image_index = 0
     }
     else
     {
-        ID = instance_create(x,y,obj_block_sprout)
-        ID.sprout = sprout
-        with ID
+        varid = instance_create(x,y,obj_block_sprout)
+        varid.sprout = sprout
+        with varid
         {
             ready = 1
             vspeed = -2

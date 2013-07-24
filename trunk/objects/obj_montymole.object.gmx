@@ -51,18 +51,18 @@ if position_meeting(x+8,y+20,obj_solidtop)
           <argument>
             <kind>1</kind>
             <string>audio_play_sound(snd_break,0,0)
-ID = instance_create(x+8,y,obj_shard)
-with (ID) motion_set(45,3)
-ID.sprite_index = spr_shard_m
-ID = instance_create(x,y,obj_shard)
-with (ID) motion_set(135,3)
-ID.sprite_index = spr_shard_m
-ID = instance_create(x,y,obj_shard)
-with (ID) motion_set(225,1)
-ID.sprite_index = spr_shard_m
-ID = instance_create(x+8,y,obj_shard)
-with (ID) motion_set(315,1)
-ID.sprite_index = spr_shard_m
+varid = instance_create(x+8,y,obj_shard)
+with (varid) motion_set(45,3)
+varid.sprite_index = spr_shard_m
+varid = instance_create(x,y,obj_shard)
+with (varid) motion_set(135,3)
+varid.sprite_index = spr_shard_m
+varid = instance_create(x,y,obj_shard)
+with (varid) motion_set(225,1)
+varid.sprite_index = spr_shard_m
+varid = instance_create(x+8,y,obj_shard)
+with (varid) motion_set(315,1)
+varid.sprite_index = spr_shard_m
 if sprite_index = spr_montymole_dirt
 {
     instance_create(x,y,obj_montyjump)

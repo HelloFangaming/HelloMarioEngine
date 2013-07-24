@@ -55,16 +55,16 @@ and x&lt;view_xview[0]+336
 and y&lt;view_yview[0]+256
 and y&gt;view_yview[0]-16
 {
-    ID = instance_create(x,y,obj_brohammer)
+    varid = instance_create(x,y,obj_brohammer)
     audio_play_sound(snd_hammer,0,0)
     if direct = 1
     {
-        ID.hspeed = 2
+        varid.hspeed = 2
         direct = -1
     }
     else
     {
-        ID.hspeed = -2
+        varid.hspeed = -2
         direct = 1
     }
     alarm[0] = 28

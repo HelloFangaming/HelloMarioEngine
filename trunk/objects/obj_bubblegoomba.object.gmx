@@ -361,11 +361,11 @@ else
           <argument>
             <kind>1</kind>
             <string>audio_play_sound(snd_pop,0,0)
-ID = instance_create(x+8,y+8,obj_goomba)
+varid = instance_create(x+8,y+8,obj_goomba)
 if hspeed &lt; 0
-    ID.hspeed = -0.5
+    varid.hspeed = -0.5
 else
-    ID.hspeed = 0.5
+    varid.hspeed = 0.5
 instance_destroy()
 </string>
           </argument>

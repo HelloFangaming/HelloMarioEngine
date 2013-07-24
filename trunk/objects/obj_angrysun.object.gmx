@@ -109,9 +109,9 @@ if other.invincible = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID = instance_create(256,64,obj_angrysun_movement)
-ID.xmin = xmin
-ID.xmax = xmax
+            <string>varid = instance_create(256,64,obj_angrysun_movement)
+varid.xmin = xmin
+varid.xmax = xmax
 </string>
           </argument>
         </arguments>

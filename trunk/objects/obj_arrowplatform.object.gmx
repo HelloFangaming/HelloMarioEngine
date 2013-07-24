@@ -28,8 +28,8 @@
             <string>image_speed = 0
 ready = 0
 //Bug Fix
-ID = instance_create(x,y,obj_solidtop)
-with ID instance_destroy()
+varid = instance_create(x,y,obj_solidtop)
+with varid instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -78,10 +78,10 @@ with ID instance_destroy()
 and obj_mario.y &lt; y-27
 {
     ready = 1
-    if instance_exists(ID)
-    and ID &gt; 0
-        with ID instance_destroy()
-    ID = instance_create(x,y,obj_arrowplatform_move)
+    if instance_exists(varid)
+    and varid &gt; 0
+        with varid instance_destroy()
+    varid = instance_create(x,y,obj_arrowplatform_move)
     alarm[0] = 15
 }
 </string>
