@@ -52,7 +52,7 @@ event_inherited()
           <argument>
             <kind>1</kind>
             <string>event_inherited()
-ID.type = 1
+varid.type = 1
 </string>
           </argument>
         </arguments>
@@ -78,12 +78,12 @@ ID.type = 1
             <string>if sprite_index = spr_lakitu_throw
 {
     sprite_index = spr_lakitu
-    ID = instance_create(x,y,obj_lakitu_egg)
-    ID.sprite_index = spr_lakitu_ball
+    varid = instance_create(x,y,obj_lakitu_egg)
+    varid.sprite_index = spr_lakitu_ball
     if hspeed &gt; 0
-        ID.hspeed = 1
+        varid.hspeed = 1
     else
-        ID.hspeed = -1
+        varid.hspeed = -1
     audio_play_sound(snd_hammer,0,0)
 }
 </string>

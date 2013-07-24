@@ -163,8 +163,8 @@ if other.invincible = 0
     hspeed = 2.5
 else
     hspeed = -2.5
-ID = instance_create(x,y,obj_rotodisc_path)
-ID.ready = ready
+varid = instance_create(x,y,obj_rotodisc_path)
+varid.ready = ready
 </string>
           </argument>
         </arguments>

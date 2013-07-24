@@ -83,130 +83,130 @@ mysolid = instance_create(x,y,obj_solid)</string>
 y = ystart
 if image_index = 0
 {
-    ID = instance_create(x,y,obj_powerupsprout)
-    with ID sprite_index = spr_mushroom
+    varid = instance_create(x,y,obj_powerupsprout)
+    with varid sprite_index = spr_mushroom
 }
 if image_index = 1
 {
-    ID = instance_create(x,y,obj_powerupsprout)
-    with ID sprite_index = spr_fireflower
+    varid = instance_create(x,y,obj_powerupsprout)
+    with varid sprite_index = spr_fireflower
 }
 if image_index = 2
 {
-    ID = instance_create(x,y,obj_powerupsprout)
-    with ID sprite_index = spr_hammersuit
+    varid = instance_create(x,y,obj_powerupsprout)
+    with varid sprite_index = spr_hammersuit
 }
 if image_index = 3
     instance_create(x,y,obj_leaf)
 if image_index = 4
 {
-    ID = instance_create(x,y,obj_powerupsprout)
-    with ID sprite_index = spr_tanookisuit
+    varid = instance_create(x,y,obj_powerupsprout)
+    with varid sprite_index = spr_tanookisuit
 }
 if image_index = 5
 {
-    ID = instance_create(x,y,obj_powerupsprout)
-    with ID sprite_index = spr_frogsuit
+    varid = instance_create(x,y,obj_powerupsprout)
+    with varid sprite_index = spr_frogsuit
 }
 if image_index = 6
 {
-    ID = instance_create(x,y,obj_powerupsprout)
-    with ID sprite_index = spr_bombshroom
+    varid = instance_create(x,y,obj_powerupsprout)
+    with varid sprite_index = spr_bombshroom
 }
 if image_index = 7
 {
-    ID = instance_create(x,y,obj_powerupsprout)
-    with ID sprite_index = spr_iceflower
+    varid = instance_create(x,y,obj_powerupsprout)
+    with varid sprite_index = spr_iceflower
 }
 if image_index = 8
 {
-    ID = instance_create(x,y,obj_powerupsprout)
-    with ID sprite_index = spr_superflower
+    varid = instance_create(x,y,obj_powerupsprout)
+    with varid sprite_index = spr_superflower
 }
 if image_index = 9
 {
-    ID = instance_create(x,y,obj_powerupsprout)
-    with ID sprite_index = spr_carrot
+    varid = instance_create(x,y,obj_powerupsprout)
+    with varid sprite_index = spr_carrot
 }
 if image_index = 10
 {
-    ID = instance_create(x,y,obj_powerupsprout)
-    with ID sprite_index = spr_ninjasuit
+    varid = instance_create(x,y,obj_powerupsprout)
+    with varid sprite_index = spr_ninjasuit
 }
 if image_index = 11
 {
-    ID = instance_create(x,y,obj_powerupsprout)
-    with ID sprite_index = spr_beeshroom
+    varid = instance_create(x,y,obj_powerupsprout)
+    with varid sprite_index = spr_beeshroom
 }
 if image_index = 12
 {
-    ID = instance_create(x,y,obj_powerupsprout)
-    with ID sprite_index = spr_blueshell
+    varid = instance_create(x,y,obj_powerupsprout)
+    with varid sprite_index = spr_blueshell
 }
 if image_index = 13
 {
-    ID = instance_create(x,y,obj_powerupsprout)
-    with ID sprite_index = spr_penguinsuit
+    varid = instance_create(x,y,obj_powerupsprout)
+    with varid sprite_index = spr_penguinsuit
 }
 if image_index = 14
 {
-    ID = instance_create(x,y,obj_powerupsprout)
-    with ID sprite_index = spr_hatch
+    varid = instance_create(x,y,obj_powerupsprout)
+    with varid sprite_index = spr_hatch
 }
 if image_index = 15
 {
-    ID = instance_create(x,y,obj_powerupsprout)
-    with ID sprite_index = spr_hatch_r
+    varid = instance_create(x,y,obj_powerupsprout)
+    with varid sprite_index = spr_hatch_r
 }
 if image_index = 16
 {
-    ID = instance_create(x,y,obj_powerupsprout)
-    with ID sprite_index = spr_hatch_y
+    varid = instance_create(x,y,obj_powerupsprout)
+    with varid sprite_index = spr_hatch_y
 }
 if image_index = 17
 {
-    ID = instance_create(x,y,obj_powerupsprout)
-    with ID sprite_index = spr_hatch_b
+    varid = instance_create(x,y,obj_powerupsprout)
+    with varid sprite_index = spr_hatch_b
 }
 if image_index = 18
 {
-    ID = instance_create(x,y,obj_powerupsprout)
-    with ID sprite_index = spr_kuriboshoe
+    varid = instance_create(x,y,obj_powerupsprout)
+    with varid sprite_index = spr_kuriboshoe
 }
 if image_index = 19
 {
-    ID = instance_create(x,y,obj_powerupsprout)
-    with ID sprite_index = spr_baburushoe
+    varid = instance_create(x,y,obj_powerupsprout)
+    with varid sprite_index = spr_baburushoe
 }
 if image_index = 20
 {
-    ID = instance_create(x,y,obj_powerupsprout)
-    with ID sprite_index = spr_dossunshoe
+    varid = instance_create(x,y,obj_powerupsprout)
+    with varid sprite_index = spr_dossunshoe
 }
 if image_index = 21
 {
-    ID = instance_create(x,y,obj_powerupsprout)
-    with ID sprite_index = spr_jugemushoe
+    varid = instance_create(x,y,obj_powerupsprout)
+    with varid sprite_index = spr_jugemushoe
 }
 if image_index = 22
 {
-    ID = instance_create(x,y,obj_powerupsprout)
-    with ID sprite_index = spr_1up
+    varid = instance_create(x,y,obj_powerupsprout)
+    with varid sprite_index = spr_1up
 }
 if image_index = 23
 {
-    ID = instance_create(x,y,obj_powerupsprout)
-    with ID sprite_index = spr_star
+    varid = instance_create(x,y,obj_powerupsprout)
+    with varid sprite_index = spr_star
 }
 if image_index = 24
 {
-    ID = instance_create(x,y,obj_powerupsprout)
-    with ID sprite_index = spr_poison
+    varid = instance_create(x,y,obj_powerupsprout)
+    with varid sprite_index = spr_poison
 }
 if image_index = 25
 {
-    ID = instance_create(x,y,obj_powerupsprout)
-    with ID sprite_index = spr_3upmoon
+    varid = instance_create(x,y,obj_powerupsprout)
+    with varid sprite_index = spr_3upmoon
 }
 sprite_index = spr_viewblock_em
 </string>

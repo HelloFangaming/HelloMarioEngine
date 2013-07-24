@@ -49,21 +49,21 @@ depth = 10</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID = instance_create(x,y+1,obj_plantfire)
+            <string>varid = instance_create(x,y+1,obj_plantfire)
 if image_index = 0
 or image_index = 1
 or image_index = 2
 or image_index = 3
-    ID.hspeed = -0.5
+    varid.hspeed = -0.5
 else
-    ID.hspeed = 0.5
+    varid.hspeed = 0.5
 if image_index = 0
 or image_index = 1
 or image_index = 6
 or image_index = 7
-    ID.vspeed = -0.5
+    varid.vspeed = -0.5
 else
-    ID.vspeed = 0.5
+    varid.vspeed = 0.5
 </string>
           </argument>
         </arguments>
@@ -86,21 +86,21 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID = instance_create(x,y+1,obj_plantfire)
+            <string>varid = instance_create(x,y+1,obj_plantfire)
 if image_index = 0
 or image_index = 1
 or image_index = 2
 or image_index = 3
-    ID.hspeed = -0.5
+    varid.hspeed = -0.5
 else
-    ID.hspeed = 0.5
+    varid.hspeed = 0.5
 if image_index = 0
 or image_index = 1
 or image_index = 6
 or image_index = 7
-    ID.vspeed = -0.5
+    varid.vspeed = -0.5
 else
-    ID.vspeed = 0.5
+    varid.vspeed = 0.5
 alarm[5] = 60
 </string>
           </argument>

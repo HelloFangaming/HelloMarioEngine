@@ -28,8 +28,8 @@
             <string>if other.vspeed &lt; 0
 and other.bbox_top &gt; y+15+other.vspeed
 {
-    ID = instance_create(x,y,obj_block_coin)
-    with ID
+    varid = instance_create(x,y,obj_block_coin)
+    with varid
     {
         instance_create(x,y,obj_blockcoin)
         ready = 1

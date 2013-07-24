@@ -115,9 +115,9 @@ instance_destroy()</string>
             <string>if mytails &gt; 0
 {
     image_index = 2
-    ID = instance_create(x+8,y,obj_reznor_fire)
-    ID.sprite_index = spr_firechomp_fire
-    ID.speed = 1
+    varid = instance_create(x+8,y,obj_reznor_fire)
+    varid.sprite_index = spr_firechomp_fire
+    varid.speed = 1
     mytails -= 1
     if mytails = 0
         with mytail[0] instance_destroy()

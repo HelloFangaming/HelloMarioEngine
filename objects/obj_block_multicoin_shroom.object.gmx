@@ -109,8 +109,8 @@ y = ystart
 if mush = 1
 {
     sprite_index = spr_qblock_empty
-    ID = instance_create(x,y,obj_powerupsprout)
-    with ID sprite_index = spr_mushroom
+    varid = instance_create(x,y,obj_powerupsprout)
+    with varid sprite_index = spr_mushroom
 }
 else
     ready = 0

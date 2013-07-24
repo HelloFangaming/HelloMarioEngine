@@ -157,8 +157,8 @@ and hspeed &lt; 0
     {
         if sprout = 0
         {
-            ID = instance_create(x,y,obj_block_coin)
-            with ID
+            varid = instance_create(x,y,obj_block_coin)
+            with varid
             {
                 instance_create(x,y,obj_blockcoin)
                 ready = 1
@@ -168,16 +168,16 @@ and hspeed &lt; 0
         }
         else
         {
-            ID = instance_create(x,y,obj_block_sprout)
-            ID.sprout = sprout
-            with ID
+            varid = instance_create(x,y,obj_block_sprout)
+            varid.sprout = sprout
+            with varid
             {
                 ready = 1
                 vspeed = -2
                 alarm[0] = 4
             }
         }
-        ID.sprite_index = spr_qblock_winged
+        varid.sprite_index = spr_qblock_winged
         instance_destroy()
     }
 </string>

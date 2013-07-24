@@ -35,8 +35,8 @@ if obj_mario.direct = -1
     image_xscale = -1
 }
 image_speed = 0.15
-ID = instance_create(x,y-8,obj_smoke)
-ID.sprite_index = spr_sparkles
+varid = instance_create(x,y-8,obj_smoke)
+varid.sprite_index = spr_sparkles
 alarm[0] = 25
 </string>
           </argument>
@@ -60,8 +60,8 @@ alarm[0] = 25
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID = instance_create(x,y-8,obj_smoke)
-ID.sprite_index = spr_sparkles
+            <string>varid = instance_create(x,y-8,obj_smoke)
+varid.sprite_index = spr_sparkles
 alarm[0] = 25
 </string>
           </argument>
@@ -85,8 +85,8 @@ alarm[0] = 25
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID.x = x
-ID.y = y-8
+            <string>varid.x = x
+varid.y = y-8
 </string>
           </argument>
         </arguments>
@@ -321,10 +321,10 @@ with other
     if sprite_height &lt; 34
     and sprite_width &lt; 34
     {
-        ID = instance_create(x,y,obj_enemy_frozen)
+        varid = instance_create(x,y,obj_enemy_frozen)
         //if variable_local_exists("direct")
-            //ID.direct = direct
-        ID.sprite_index = sprite_index
+            //varid.direct = direct
+        varid.sprite_index = sprite_index
         audio_play_sound(snd_magic,0,0)
         instance_destroy()
     }

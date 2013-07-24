@@ -87,8 +87,8 @@ alarm[3] = 100
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID2 = instance_create(shx,shy,obj_magiccircle)
-ID2.direction = ID.direction</string>
+            <string>varid2 = instance_create(shx,shy,obj_magiccircle)
+varid2.direction = varid.direction</string>
           </argument>
         </arguments>
       </action>
@@ -110,8 +110,8 @@ ID2.direction = ID.direction</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID2 = instance_create(shx,shy,obj_magiccircle)
-ID2.direction = ID.direction
+            <string>varid2 = instance_create(shx,shy,obj_magiccircle)
+varid2.direction = varid.direction
 alarm[5] = 4</string>
           </argument>
         </arguments>
@@ -664,8 +664,8 @@ if hitpoints = 0
             <string>if sprite_index = spr_larry_attack
 {
     sprite_index = spr_larry
-    ID = instance_create(x,y,obj_magiccircle)
-    ID.first = 1
+    varid = instance_create(x,y,obj_magiccircle)
+    varid.first = 1
     shx = x
     shy = y
     audio_play_sound(snd_magic,0,0)

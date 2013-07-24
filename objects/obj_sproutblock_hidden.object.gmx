@@ -83,9 +83,9 @@ sprout = 0
             <string>if other.vspeed &lt; 0
 and other.bbox_top &gt; y+15+other.vspeed
 {
-    ID = instance_create(x,y,obj_block_sprout)
-    ID.sprout = sprout
-    with ID
+    varid = instance_create(x,y,obj_block_sprout)
+    varid.sprout = sprout
+    with varid
     {
         ready = 1
         vspeed = -2

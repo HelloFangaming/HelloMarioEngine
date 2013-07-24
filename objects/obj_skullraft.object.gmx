@@ -124,8 +124,8 @@ and obj_mario.state &lt; 2
     and collision_rectangle(x+15,y,x+15,y+15,obj_solid,0,1)
     {
         type = 1
-        ID = collision_rectangle(x+15,y,x+15,y+15,obj_solid,0,1)
-        x = ID.x-16
+        varid = collision_rectangle(x+15,y,x+15,y+15,obj_solid,0,1)
+        x = varid.x-16
         event_user(1)
     }
 }

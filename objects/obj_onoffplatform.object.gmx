@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>image_speed = 0.15
 if global.onoffblock = 0
-    ID = instance_create(x,y,obj_solid)
+    varid = instance_create(x,y,obj_solid)
 else
     sprite_index = spr_poutline
 </string>
@@ -54,12 +54,12 @@ else
             <kind>1</kind>
             <string>if global.onoffblock = 0
 {
-    ID = instance_create(x,y,obj_solid)
+    varid = instance_create(x,y,obj_solid)
     sprite_index = spr_onoffplatform
 }
 else
 {
-    with ID instance_destroy()
+    with varid instance_destroy()
     sprite_index = spr_poutline
 }
 </string>

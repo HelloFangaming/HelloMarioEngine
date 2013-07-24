@@ -85,8 +85,8 @@ if holding = 2
             <kind>1</kind>
             <string>if y &lt; ystart
 {
-    ID = instance_create(x,y,obj_mario)
-    ID.vspeed = -6
+    varid = instance_create(x,y,obj_mario)
+    varid.vspeed = -6
     instance_destroy()
 }
 </string>

@@ -119,14 +119,14 @@ else if global.ycolor = 3
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID = instance_create(x-8,y,obj_getshoe)
-ID.direct = obj_mario.direct
+            <string>varid = instance_create(x-8,y,obj_getshoe)
+varid.direct = obj_mario.direct
 if global.ycolor = 1
-    ID.sprite_index = spr_baburushoe
+    varid.sprite_index = spr_baburushoe
 else if global.ycolor = 2
-    ID.sprite_index = spr_dossunshoe
+    varid.sprite_index = spr_dossunshoe
 else if global.ycolor = 3
-    ID.sprite_index = spr_jugemushoe
+    varid.sprite_index = spr_jugemushoe
 global.yoshi = 0
 with obj_mario
 {

@@ -50,10 +50,10 @@
             <string>if vspeed = 0
 {
     if direct = 1
-        ID = instance_create(x-16,y+random(8),obj_smoke)
+        varid = instance_create(x-16,y+random(8),obj_smoke)
     else
-        ID = instance_create(x+8,y+random(8),obj_smoke)
-    ID.sprite_index = spr_bubble2
+        varid = instance_create(x+8,y+random(8),obj_smoke)
+    varid.sprite_index = spr_bubble2
 }
 alarm[0] = 4
 </string>

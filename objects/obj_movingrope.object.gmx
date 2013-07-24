@@ -29,7 +29,7 @@
 //ropelength = How long you want the rope to be.
 alarm[0] = 15
 type = 0
-ID = instance_create(x,y+16,obj_movingrope_rope)
+varid = instance_create(x,y+16,obj_movingrope_rope)
 ropelength = 1
 if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_clockwise,0,0)
 {
@@ -108,10 +108,10 @@ and y&gt;view_yview[0]-16-ropelength*16
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID.x = x
-ID.y = y+16
-ID.xspeed = hspeed
-ID.yspeed = vspeed
+            <string>varid.x = x
+varid.y = y+16
+varid.xspeed = hspeed
+varid.yspeed = vspeed
 if type = 1
     direction += -0.89625
 if type = 2
@@ -254,7 +254,7 @@ and hspeed &lt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID.image_yscale = ropelength
+            <string>varid.image_yscale = ropelength
 </string>
           </argument>
         </arguments>

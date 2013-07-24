@@ -55,8 +55,8 @@ and y&lt;view_yview[0]+256
 and y&gt;view_yview[0]-16
 {
     audio_play_sound(snd_podoboo,0,0)
-    ID = instance_create(x,y-4,obj_smoke)
-    ID.sprite_index = spr_lavasplash
+    varid = instance_create(x,y-4,obj_smoke)
+    varid.sprite_index = spr_lavasplash
 }
 </string>
           </argument>
@@ -207,8 +207,8 @@ and ready = 1
 {
     ready = 1
     alarm[0] = 10
-    ID = instance_create(x,y+4,obj_smoke)
-    ID.sprite_index = spr_lavasplash
+    varid = instance_create(x,y+4,obj_smoke)
+    varid.sprite_index = spr_lavasplash
 }
 </string>
           </argument>

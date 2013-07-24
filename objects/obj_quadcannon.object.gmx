@@ -27,8 +27,8 @@
             <kind>1</kind>
             <string>image_speed = 0
 alarm[0] = 100
-ID = instance_create(x,y,obj_solid)
-ID.mask_index = mask_index</string>
+varid = instance_create(x,y,obj_solid)
+varid.mask_index = mask_index</string>
           </argument>
         </arguments>
       </action>
@@ -83,23 +83,23 @@ else
 }
 alarm[0] = 100
 audio_play_sound(snd_thwomp,0,0)
-IDA = instance_create(x+8,y+8,obj_cannonball)
-IDB = instance_create(x+8,y+8,obj_cannonball)
-IDC = instance_create(x+8,y+8,obj_cannonball)
-IDD = instance_create(x+8,y+8,obj_cannonball)
+varidA = instance_create(x+8,y+8,obj_cannonball)
+varidB = instance_create(x+8,y+8,obj_cannonball)
+varidC = instance_create(x+8,y+8,obj_cannonball)
+varidD = instance_create(x+8,y+8,obj_cannonball)
 if image_index = 0
 {
-    with IDA motion_set(225,1.5)
-    with IDB motion_set(45,1.5)
-    with IDC motion_set(135,1.5)
-    with IDD motion_set(315,1.5)
+    with varidA motion_set(225,1.5)
+    with varidB motion_set(45,1.5)
+    with varidC motion_set(135,1.5)
+    with varidD motion_set(315,1.5)
 }
 if image_index = 1
 {
-    with IDA motion_set(0,1.5)
-    with IDB motion_set(90,1.5)
-    with IDC motion_set(180,1.5)
-    with IDD motion_set(270,1.5)
+    with varidA motion_set(0,1.5)
+    with varidB motion_set(90,1.5)
+    with varidC motion_set(180,1.5)
+    with varidD motion_set(270,1.5)
 }
 alarm[1] = 50
 </string>

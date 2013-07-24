@@ -28,7 +28,7 @@
             <string>//Place these in the object creation code.
 //ropelength = How long you want the rope to be.
 alarm[0] = 15
-ID = instance_create(x,y+16,obj_movingrope_rope)
+varid = instance_create(x,y+16,obj_movingrope_rope)
 ropelength = 1
 type = 0
 if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_right,0,0)
@@ -93,10 +93,10 @@ and y&gt;view_yview[0]-16-ropelength*16
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID.x = x
-ID.y = y+16
-ID.xspeed = hspeed
-ID.yspeed = vspeed
+            <string>varid.x = x
+varid.y = y+16
+varid.xspeed = hspeed
+varid.yspeed = vspeed
 if not instance_exists(obj_mario)
     exit
 if collision_rectangle(x,y-5,x+15,y+4,obj_mario,0,0)
@@ -141,7 +141,7 @@ and hspeed &lt; 0
             <kind>1</kind>
             <string>if type &lt; 4
 and speed = 0
-and ID.ison = 1
+and varid.ison = 1
 {
     speed = 1
     if type = 0
@@ -321,7 +321,7 @@ and ID.ison = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID.image_yscale = ropelength
+            <string>varid.image_yscale = ropelength
 </string>
           </argument>
         </arguments>

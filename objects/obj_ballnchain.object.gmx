@@ -165,12 +165,12 @@ if other.invincible = 0
     hspeed = 1.75
 else
     hspeed = -1.75
-ID = instance_create(x,y-16,obj_chains)
-ID.ready = ready
-ID.hspeed = 0.5*ready
-ID = instance_create(x,y-32,obj_chains)
-ID.ready = ready
-ID.hspeed = 1*ready
+varid = instance_create(x,y-16,obj_chains)
+varid.ready = ready
+varid.hspeed = 0.5*ready
+varid = instance_create(x,y-32,obj_chains)
+varid.ready = ready
+varid.hspeed = 1*ready
 y-=56
 </string>
           </argument>

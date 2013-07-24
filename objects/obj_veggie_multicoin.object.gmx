@@ -55,22 +55,22 @@
     obj_mario.holding = 0
     with (obj_puller) instance_destroy()
     audio_play_sound(snd_break,0,0)
-    ID = instance_create(x,y,obj_shard);
-    with (ID) motion_set(45,3);
-    ID = instance_create(x,y,obj_shard);
-    with (ID) motion_set(60,3);
-    ID = instance_create(x,y,obj_shard);
-    with (ID) motion_set(120,3);
-    ID = instance_create(x,y,obj_shard);
-    with (ID) motion_set(135,3);
-    ID = instance_create(x,y,obj_multiveggiecoin)
-    with ID hspeed = 1.5
-    ID = instance_create(x,y,obj_multiveggiecoin)
-    with ID hspeed = 0.75
-    ID = instance_create(x,y,obj_multiveggiecoin)
-    with ID hspeed = -0.75
-    ID = instance_create(x,y,obj_multiveggiecoin)
-    with ID hspeed = -1.5
+    varid = instance_create(x,y,obj_shard);
+    with (varid) motion_set(45,3);
+    varid = instance_create(x,y,obj_shard);
+    with (varid) motion_set(60,3);
+    varid = instance_create(x,y,obj_shard);
+    with (varid) motion_set(120,3);
+    varid = instance_create(x,y,obj_shard);
+    with (varid) motion_set(135,3);
+    varid = instance_create(x,y,obj_multiveggiecoin)
+    with varid hspeed = 1.5
+    varid = instance_create(x,y,obj_multiveggiecoin)
+    with varid hspeed = 0.75
+    varid = instance_create(x,y,obj_multiveggiecoin)
+    with varid hspeed = -0.75
+    varid = instance_create(x,y,obj_multiveggiecoin)
+    with varid hspeed = -1.5
     instance_create(x,y,obj_multiveggiecoin)
     instance_destroy()
 }

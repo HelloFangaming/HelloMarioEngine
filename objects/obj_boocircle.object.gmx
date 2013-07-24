@@ -25,26 +25,26 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID = instance_create(x,y,obj_boocircle_boo)
-ID.trig = 0
-ID = instance_create(x,y,obj_boocircle_boo)
-ID.trig = pi/6
-ID = instance_create(x,y,obj_boocircle_boo)
-ID.trig = 2*pi/6
-ID = instance_create(x,y,obj_boocircle_boo)
-ID.trig = pi/2
-ID = instance_create(x,y,obj_boocircle_boo)
-ID.trig = 4*pi/6
-ID = instance_create(x,y,obj_boocircle_boo)
-ID.trig = 5*pi/6
-ID = instance_create(x,y,obj_boocircle_boo)
-ID.trig = pi
-ID = instance_create(x,y,obj_boocircle_boo)
-ID.trig = 7*pi/6
-ID = instance_create(x,y,obj_boocircle_boo)
-ID.trig = 8*pi/6
-ID = instance_create(x,y,obj_boocircle_boo)
-ID.trig = 3*pi/2
+            <string>varid = instance_create(x,y,obj_boocircle_boo)
+varid.trig = 0
+varid = instance_create(x,y,obj_boocircle_boo)
+varid.trig = pi/6
+varid = instance_create(x,y,obj_boocircle_boo)
+varid.trig = 2*pi/6
+varid = instance_create(x,y,obj_boocircle_boo)
+varid.trig = pi/2
+varid = instance_create(x,y,obj_boocircle_boo)
+varid.trig = 4*pi/6
+varid = instance_create(x,y,obj_boocircle_boo)
+varid.trig = 5*pi/6
+varid = instance_create(x,y,obj_boocircle_boo)
+varid.trig = pi
+varid = instance_create(x,y,obj_boocircle_boo)
+varid.trig = 7*pi/6
+varid = instance_create(x,y,obj_boocircle_boo)
+varid.trig = 8*pi/6
+varid = instance_create(x,y,obj_boocircle_boo)
+varid.trig = 3*pi/2
 instance_destroy()
 </string>
           </argument>

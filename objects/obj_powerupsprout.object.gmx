@@ -155,35 +155,35 @@ if sprite_index = spr_hatch
     instance_create(x,y,obj_hatch)
 if sprite_index = spr_hatch_r
 {
-    ID = instance_create(x,y,obj_hatch)
-    ID.sprite_index = spr_hatch_r
+    varid = instance_create(x,y,obj_hatch)
+    varid.sprite_index = spr_hatch_r
 }
 if sprite_index = spr_hatch_y
 {
-    ID = instance_create(x,y,obj_hatch)
-    ID.sprite_index = spr_hatch_y
+    varid = instance_create(x,y,obj_hatch)
+    varid.sprite_index = spr_hatch_y
 }
 if sprite_index = spr_hatch_b
 {
-    ID = instance_create(x,y,obj_hatch)
-    ID.sprite_index = spr_hatch_b
+    varid = instance_create(x,y,obj_hatch)
+    varid.sprite_index = spr_hatch_b
 }
 if sprite_index = spr_kuriboshoe
     instance_create(x,y,obj_getshoe)
 if sprite_index = spr_baburushoe
 {
-    ID = instance_create(x,y,obj_getshoe)
-    ID.sprite_index = spr_baburushoe
+    varid = instance_create(x,y,obj_getshoe)
+    varid.sprite_index = spr_baburushoe
 }
 if sprite_index = spr_dossunshoe
 {
-    ID = instance_create(x,y,obj_getshoe)
-    ID.sprite_index = spr_dossunshoe
+    varid = instance_create(x,y,obj_getshoe)
+    varid.sprite_index = spr_dossunshoe
 }
 if sprite_index = spr_jugemushoe
 {
-    ID = instance_create(x,y,obj_getshoe)
-    ID.sprite_index = spr_jugemushoe
+    varid = instance_create(x,y,obj_getshoe)
+    varid.sprite_index = spr_jugemushoe
 }
 instance_destroy()
 </string>

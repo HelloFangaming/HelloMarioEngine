@@ -331,14 +331,14 @@ else if other.invincible = 0
             <string>imdead = instance_create(x+4,y+8,obj_enemy_stomped)
 imdead.sprite_index = spr_microgoomba
 audio_play_sound(snd_break,0,0)
-ID = instance_create(x+8,y,obj_shard)
-with (ID) motion_set(45,3)
-ID = instance_create(x+8,y,obj_shard)
-with (ID) motion_set(60,3)
-ID = instance_create(x,y,obj_shard)
-with (ID) motion_set(120,3)
-ID = instance_create(x,y,obj_shard)
-with (ID) motion_set(135,3)</string>
+varid = instance_create(x+8,y,obj_shard)
+with (varid) motion_set(45,3)
+varid = instance_create(x+8,y,obj_shard)
+with (varid) motion_set(60,3)
+varid = instance_create(x,y,obj_shard)
+with (varid) motion_set(120,3)
+varid = instance_create(x,y,obj_shard)
+with (varid) motion_set(135,3)</string>
           </argument>
         </arguments>
       </action>

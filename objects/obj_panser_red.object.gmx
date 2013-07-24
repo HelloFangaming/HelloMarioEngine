@@ -76,13 +76,13 @@ image_index = 0
             <kind>1</kind>
             <string>if (random(100) &gt;= 75)
 {
-    ID = instance_create(x,y,obj_panserfire)
+    varid = instance_create(x,y,obj_panserfire)
     if instance_exists(obj_mario)
     {
         if obj_mario.x &gt; x+8
-            ID.hspeed = 1
+            varid.hspeed = 1
         else
-            ID.hspeed = -1
+            varid.hspeed = -1
     }
     alarm[3] = 16
 }
@@ -113,13 +113,13 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID = instance_create(x,y,obj_panserfire)
+            <string>varid = instance_create(x,y,obj_panserfire)
 if instance_exists(obj_mario)
 {
     if obj_mario.x &gt; x+8
-        ID.hspeed = 1
+        varid.hspeed = 1
     else
-        ID.hspeed = -1
+        varid.hspeed = -1
 }
 alarm[2] = 32
 image_index = 2

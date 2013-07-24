@@ -87,9 +87,9 @@ else
     if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
     or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,0,0)
     {
-        ID = instance_create(x-8,y,obj_shell)
-        with ID sprite_index = spr_shell_buzzy_down
-        with ID alarm[0] = 1
+        varid = instance_create(x-8,y,obj_shell)
+        with varid sprite_index = spr_shell_buzzy_down
+        with varid alarm[0] = 1
         instance_destroy()
     }
     if vspeed &gt; 4

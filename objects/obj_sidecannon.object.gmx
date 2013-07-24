@@ -60,17 +60,17 @@ direct = 0
 }
 alarm[0] = 200
 audio_play_sound(snd_thwomp,0,0)
-ID = instance_create(x+8,y+8,obj_cannonball)
+varid = instance_create(x+8,y+8,obj_cannonball)
 if image_index = 0
 {
     if x &gt; obj_mario.x
     {
-        with ID motion_set(225,1.5)
+        with varid motion_set(225,1.5)
         instance_create(x,y+16,obj_smoke)
     }
     else
     {
-        with ID motion_set(45,1.5)
+        with varid motion_set(45,1.5)
         instance_create(x+16,y,obj_smoke)
     }
 }
@@ -78,12 +78,12 @@ if image_index = 1
 {
     if x &gt; obj_mario.x
     {
-        with ID motion_set(135,1.5)
+        with varid motion_set(135,1.5)
         instance_create(x,y,obj_smoke)
     }
     else
     {
-        with ID motion_set(315,1.5)
+        with varid motion_set(315,1.5)
         instance_create(x+16,y+16,obj_smoke)
     }
 }

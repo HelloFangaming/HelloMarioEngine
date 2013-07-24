@@ -25,10 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID = instance_create(x-16,y,obj_smoke)
-ID.hspeed = -1
-ID = instance_create(x,y,obj_smoke)
-ID.hspeed = 1
+            <string>varid = instance_create(x-16,y,obj_smoke)
+varid.hspeed = -1
+varid = instance_create(x,y,obj_smoke)
+varid.hspeed = 1
 audio_play_sound(snd_stomp2,0,0)
 image_speed = 0.5
 hitpoint = 0

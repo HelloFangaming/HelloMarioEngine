@@ -27,8 +27,8 @@
             <kind>1</kind>
             <string>if collision_rectangle(x+16,y+12,x+20,y+20,obj_mario,1,1)
 {
-    ID = instance_create(x+32,y,obj_warpmario)
-    with ID direction = 180
+    varid = instance_create(x+32,y,obj_warpmario)
+    with varid direction = 180
     with (obj_mario) instance_destroy()
 }
 </string>

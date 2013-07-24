@@ -109,18 +109,18 @@ else if sprite_index = spr_hatch
     instance_create(x,y,obj_hatch)
 else if sprite_index = spr_hatch_r
 {
-    ID = instance_create(x,y,obj_hatch)
-    ID.sprite_index = spr_hatch_r
+    varid = instance_create(x,y,obj_hatch)
+    varid.sprite_index = spr_hatch_r
 }
 else if sprite_index = spr_hatch_y
 {
-    ID = instance_create(x,y,obj_hatch)
-    ID.sprite_index = spr_hatch_y
+    varid = instance_create(x,y,obj_hatch)
+    varid.sprite_index = spr_hatch_y
 }
 else if sprite_index = spr_hatch_b
 {
-    ID = instance_create(x,y,obj_hatch)
-    ID.sprite_index = spr_hatch_b
+    varid = instance_create(x,y,obj_hatch)
+    varid.sprite_index = spr_hatch_b
 }
 instance_destroy()
 </string>

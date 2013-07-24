@@ -53,8 +53,8 @@ mysolid.image_yscale = 2</string>
             <kind>1</kind>
             <string>vspeed = 0
 y = ystart
-ID = instance_create(x+8,y,obj_powerupsprout)
-with ID sprite_index = spr_tanookisuit
+varid = instance_create(x+8,y,obj_powerupsprout)
+with varid sprite_index = spr_tanookisuit
 image_index = 1
 </string>
           </argument>

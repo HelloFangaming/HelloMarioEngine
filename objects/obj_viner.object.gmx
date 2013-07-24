@@ -137,8 +137,8 @@ and place_snapped(1,16)
 {
     if warp = 1
     {
-        ID = instance_create(x,-16,obj_vinewarp)
-        ID.myroom = myroom
+        varid = instance_create(x,-16,obj_vinewarp)
+        varid.myroom = myroom
     }
     instance_destroy()
 }

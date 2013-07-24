@@ -93,16 +93,16 @@ hitpoint = 0
             <string>if collision_rectangle(x-8,y+32,x+7,y+34,obj_slope_l,1,1)
 or collision_rectangle(x-8,y+32,x+7,y+34,obj_slope_sl,1,1)
 {
-    ID = instance_create(x-8,y+24,obj_smoke)
-    ID.sprite_index = spr_skidsmoke
-    ID.depth = -6
+    varid = instance_create(x-8,y+24,obj_smoke)
+    varid.sprite_index = spr_skidsmoke
+    varid.depth = -6
 }
 if collision_rectangle(x-8,y+32,x+7,y+34,obj_slope_r,1,1)
 or collision_rectangle(x-8,y+32,x+7,y+34,obj_slope_sr,1,1)
 {
-    ID = instance_create(x+1,y+24,obj_smoke)
-    ID.sprite_index = spr_skidsmoke
-    ID.depth = -6
+    varid = instance_create(x+1,y+24,obj_smoke)
+    varid.sprite_index = spr_skidsmoke
+    varid.depth = -6
 }
 alarm[0] = 8
 </string>

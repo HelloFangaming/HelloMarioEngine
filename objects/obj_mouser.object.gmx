@@ -175,10 +175,10 @@ alarm[1] = 7
 {
     image_index = 2
     if direct = 1
-        ID = instance_create(x-16,y,obj_mouser_thrownbomb)
+        varid = instance_create(x-16,y,obj_mouser_thrownbomb)
     else
-        ID = instance_create(x,y,obj_mouser_thrownbomb)
-    ID.hspeed = direct*(random(2)+2)
+        varid = instance_create(x,y,obj_mouser_thrownbomb)
+    varid.hspeed = direct*(random(2)+2)
     audio_play_sound(snd_hammer,0,0)
     alarm[3] = 60
 }

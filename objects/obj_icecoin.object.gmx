@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ID = instance_create(x,y,obj_slippery)
+            <string>varid = instance_create(x,y,obj_slippery)
 </string>
           </argument>
         </arguments>
@@ -48,7 +48,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with ID instance_destroy()
+            <string>with varid instance_destroy()
 </string>
           </argument>
         </arguments>
