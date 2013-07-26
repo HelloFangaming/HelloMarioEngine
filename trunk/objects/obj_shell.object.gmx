@@ -706,6 +706,7 @@ if held = 1
 and obj_mario.holding = 2
 {
     obj_mario.holding = 0
+    vspeed = 0
     held = 0
 }
 </string>
