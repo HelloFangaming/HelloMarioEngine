@@ -388,6 +388,7 @@ and obj_mario.holding = 2
         hspeed = 3
     if obj_mario.direct = -1
         hspeed = -3
+    vspeed = 0
 }
 </string>
           </argument>
