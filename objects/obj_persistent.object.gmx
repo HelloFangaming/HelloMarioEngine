@@ -174,7 +174,7 @@ done=0
             <string>//Fade to black
 if mode = 0
 {
-    background_create_from_surface(view_surface_id[0],0,0,view_wview[0],view_hview[0],0,0)
+    back = background_create_from_surface(view_surface_id[0],0,0,view_wview[0],view_hview[0],0,0)
     effect_clear()
     instance_deactivate_all(1)
 }
