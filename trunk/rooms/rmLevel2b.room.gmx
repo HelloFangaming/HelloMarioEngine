@@ -12,7 +12,7 @@
   <showcolour>0</showcolour>
   <code></code>
   <enableViews>-1</enableViews>
-  <clearViewBackground>-1</clearViewBackground>
+  <clearViewBackground>0</clearViewBackground>
   <makerSettings>
     <isSet>0</isSet>
     <w>0</w>
@@ -105,7 +105,6 @@
     <instance objName="obj_solid3x2" x="784" y="192" name="inst_973B622F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid8x1" x="624" y="288" name="inst_20654305" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid1x8" x="192" y="208" name="inst_41856665" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_musicplayer" x="0" y="0" name="inst_9712091D" locked="0" code="leveltime = 250&#xA;levelmusic = snd_music_water" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="272" y="160" name="inst_63002A16" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="352" y="224" name="inst_A3B63679" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="368" y="224" name="inst_1A89E5C3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -114,6 +113,11 @@
     <instance objName="obj_solidtop" x="832" y="224" name="inst_DA009C1C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solidtop" x="352" y="112" name="inst_35DE5737" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solidtop" x="272" y="112" name="inst_117E0EE6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="640" y="304" name="inst_B366CECC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="64" y="128" name="inst_287565DA" locked="0" code="varmsg = &quot;Hold the up key to swim higher, and hold the down key to not swim as high.&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_sprout" x="16" y="224" name="inst_B77648F6" locked="0" code="sprout = 5" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_multicoin" x="16" y="128" name="inst_35999AE8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_musicplayer" x="0" y="0" name="inst_9712091D" locked="0" code="leveltime = 250&#xA;levelmusic = snd_music_water" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_midwayline" x="64" y="272" name="inst_BB17636D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_midwayspot" x="40" y="256" name="inst_F80B4C0A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_3upmoon" x="288" y="304" name="inst_6E50A5D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -133,7 +137,6 @@
     <instance objName="obj_blowpipe_left" x="384" y="272" name="inst_BF09956D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_3upmoon" x="880" y="384" name="inst_7196931F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_fillwater" x="16" y="0" name="inst_5A92B5E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solid" x="640" y="304" name="inst_B366CECC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_down" x="64" y="96" name="inst_E3B59138" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_right" x="224" y="80" name="inst_5E643564" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_up" x="160" y="272" name="inst_6D134C40" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -143,12 +146,9 @@
     <instance objName="obj_left" x="384" y="176" name="inst_BFBA0035" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_down" x="160" y="96" name="inst_795E2887" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_up" x="352" y="384" name="inst_0C6F38A4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_endmarker" x="208" y="176" name="inst_FDB94669" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_torpedolaunch" x="896" y="336" name="inst_160AC001" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_torpedolaunch" x="752" y="272" name="inst_A3BF89D0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="64" y="128" name="inst_287565DA" locked="0" code="varmsg = &quot;Hold the up key to swim higher, and hold the down key to not swim as high.&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="16" y="224" name="inst_B77648F6" locked="0" code="sprout = 5" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_multicoin" x="16" y="128" name="inst_35999AE8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_endmarker" x="208" y="176" name="inst_FDB94669" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpright" x="816" y="192" name="inst_09CC2BC2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warproom" x="768" y="208" name="inst_E577DAAB" locked="0" code="postchange = 1&#xA;postx = 1968&#xA;posty = 368&#xA;posttype = 1&#xA;myroom = rmLevel2" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpmario" x="48" y="96" name="inst_91CEA717" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

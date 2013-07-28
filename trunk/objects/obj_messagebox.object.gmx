@@ -30,7 +30,7 @@
 varmsg = "Message not set."
 showing = 0
 effect_clear()
-back = background_create_from_screen(0,0,view_wview[0],view_hview[0],0,0)
+back = background_create_from_surface(view_surface_id[0],0,0,640,480,0,0)
 instance_deactivate_all(1)
 instance_activate_object(obj_persistent)
 alarm[0] = 1

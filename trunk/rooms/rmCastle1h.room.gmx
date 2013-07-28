@@ -12,7 +12,7 @@
   <showcolour>0</showcolour>
   <code></code>
   <enableViews>-1</enableViews>
-  <clearViewBackground>-1</clearViewBackground>
+  <clearViewBackground>0</clearViewBackground>
   <makerSettings>
     <isSet>0</isSet>
     <w>0</w>
@@ -102,14 +102,14 @@
     <instance objName="obj_lava" x="720" y="208" name="inst_4AF8F5D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_lava" x="736" y="208" name="inst_08F7264D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_axe" x="752" y="112" name="inst_CF9619EB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_musicplayer" x="0" y="0" name="inst_EAD637E3" locked="0" code="leveltime = 1&#xA;levelmusic = snd_music_castle" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_endboss" x="936" y="80" name="inst_E55C0580" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="768" y="32" name="inst_CA035BED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="112" y="32" name="inst_B5DAEBFF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_classicbowser" x="704" y="112" name="inst_4CA2EF57" locked="0" code="xmin = 128&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_classicscroll" x="16" y="0" name="inst_5734FDAB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="0" y="96" name="inst_4FE01BBD" locked="0" code="varmsg = &quot;This room has classic scrolling, so the camera won't move backwards!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_musicplayer" x="0" y="0" name="inst_EAD637E3" locked="0" code="leveltime = 1&#xA;levelmusic = snd_music_castle" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_endboss" x="936" y="80" name="inst_E55C0580" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_classicbowser" x="704" y="112" name="inst_4CA2EF57" locked="0" code="xmin = 128&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mario" x="40" y="128" name="inst_5DA80AF7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_classicscroll" x="16" y="0" name="inst_5734FDAB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset" x="0" y="208" w="16" h="16" xo="288" yo="144" id="10011401" name="tile_DA7BAEBD" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

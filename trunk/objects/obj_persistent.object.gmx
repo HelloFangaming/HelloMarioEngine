@@ -174,7 +174,7 @@ done=0
             <string>//Fade to black
 if mode = 0
 {
-    back = background_create_from_screen(0,0,view_wview[0],view_hview[0],0,0)
+    background_create_from_surface(view_surface_id[0],0,0,view_wview[0],view_hview[0],0,0)
     effect_clear()
     instance_deactivate_all(1)
 }
@@ -205,7 +205,8 @@ alarm[0] = 30
             <kind>1</kind>
             <string>//Prepare to fade to black
 mode = 1
-back = background_create_from_screen(0,0,320,240,0,0)
+back = background_create_from_surface(view_surface_id[0],0,0,view_wview[0],view_hview[0],0,0)
+surface_free(view_surface_id[0])
 alarm[1] = 1
 </string>
           </argument>
@@ -229,7 +230,8 @@ alarm[1] = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if mode = 1
+            <string>view_surface_id[0] = surface_create(view_wview[0],view_hview[0])
+if mode = 1
     event_user(0)
 </string>
           </argument>
@@ -254,6 +256,36 @@ alarm[1] = 1
           <argument>
             <kind>1</kind>
             <string>keyboard_key_release(vk_control)</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Surface Post-Processing Can Go Here
+if surface_exists(view_surface_id[0])
+{
+    repeat(10)
+        draw_surface(view_surface_id[0],0,0)
+}
+else
+    view_surface_id[0] = surface_create(view_wview[0],view_hview[0])
+</string>
           </argument>
         </arguments>
       </action>

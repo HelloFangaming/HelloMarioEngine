@@ -12,7 +12,7 @@
   <showcolour>0</showcolour>
   <code></code>
   <enableViews>-1</enableViews>
-  <clearViewBackground>-1</clearViewBackground>
+  <clearViewBackground>0</clearViewBackground>
   <makerSettings>
     <isSet>0</isSet>
     <w>0</w>
@@ -72,9 +72,6 @@
     <instance objName="obj_solid" x="480" y="320" name="inst_0DBD2449" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="576" y="320" name="inst_D938DD41" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="592" y="336" name="inst_B2ABD4E7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_musicplayer" x="0" y="0" name="inst_0EE3C0AE" locked="0" code="leveltime = 1&#xA;levelmusic = snd_music_land" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_flagpole_secret" x="720" y="224" name="inst_527FDF54" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_3upmoon" x="656" y="384" name="inst_4C67A700" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="208" y="16" name="inst_8F17E70D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="192" y="16" name="inst_0E359450" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="240" y="48" name="inst_96965424" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -93,6 +90,14 @@
     <instance objName="obj_coin" x="272" y="32" name="inst_6F39DFA4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="256" y="32" name="inst_237431EA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="240" y="32" name="inst_C16F1D55" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="160" y="336" name="inst_74320BD5" locked="0" code="varmsg = &quot;If a powerup is blocked from coming out of its block, it will spawn out of the side!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_sprout" x="288" y="336" name="inst_8AF48B98" locked="0" code="sprout = 1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_sprout" x="384" y="336" name="inst_B3A13D74" locked="0" code="sprout = 2" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_sprout" x="480" y="336" name="inst_8870BEE7" locked="0" code="sprout = 13&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_sprout" x="576" y="336" name="inst_EDC45872" locked="0" code="sprout = 9" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_musicplayer" x="0" y="0" name="inst_0EE3C0AE" locked="0" code="leveltime = 1&#xA;levelmusic = snd_music_land" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_flagpole_secret" x="720" y="224" name="inst_527FDF54" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_3upmoon" x="656" y="384" name="inst_4C67A700" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_parakoopa_red" x="104" y="112" name="inst_FC1991F3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_spiketop" x="376" y="48" name="inst_19AB4B50" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_spiketop" x="440" y="48" name="inst_136E115B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -101,11 +106,6 @@
     <instance objName="obj_up" x="64" y="384" name="inst_16C55B8C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_up" x="96" y="112" name="inst_B271CCDF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_down" x="96" y="16" name="inst_D845D469" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="160" y="336" name="inst_74320BD5" locked="0" code="varmsg = &quot;If a powerup is blocked from coming out of its block, it will spawn out of the side!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="288" y="336" name="inst_8AF48B98" locked="0" code="sprout = 1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="384" y="336" name="inst_B3A13D74" locked="0" code="sprout = 2" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="480" y="336" name="inst_8870BEE7" locked="0" code="sprout = 13&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="576" y="336" name="inst_EDC45872" locked="0" code="sprout = 9" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpmario" x="48" y="368" name="inst_E5B2A05D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>

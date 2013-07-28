@@ -12,7 +12,7 @@
   <showcolour>0</showcolour>
   <code></code>
   <enableViews>-1</enableViews>
-  <clearViewBackground>-1</clearViewBackground>
+  <clearViewBackground>0</clearViewBackground>
   <makerSettings>
     <isSet>0</isSet>
     <w>0</w>
@@ -81,11 +81,7 @@
     <instance objName="obj_slippery5x1" x="1536" y="352" name="inst_9AF8AB2D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slippery5x1" x="1408" y="240" name="inst_3995A262" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid3x2" x="1072" y="160" name="inst_D43D6175" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_musicplayer" x="0" y="0" name="inst_A10D5566" locked="0" code="leveltime = 1&#xA;levelmusic = snd_music_athletic&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_winged" x="96" y="256" name="inst_BB896752" locked="0" code="sprout = 13&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="272" y="128" name="inst_AF20F652" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_parakoopa" x="104" y="128" name="inst_79D296C7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_movingrope_touch" x="1280" y="272" name="inst_96F816FE" locked="0" code="ropelength = 4&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="256" y="128" name="inst_8BDC2590" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="240" y="128" name="inst_73252395" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="240" y="112" name="inst_0B8318E9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -93,6 +89,14 @@
     <instance objName="obj_coin" x="272" y="112" name="inst_8354C9F5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="288" y="112" name="inst_548AA265" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="288" y="128" name="inst_3BE850E8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="0" y="256" name="inst_60B1AB05" locked="0" code="varmsg = &quot;Be careful! The ground here is extra slippery!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="960" y="256" name="inst_508E408C" locked="0" code="varmsg = &quot;Red E-Switches can not be moved, but they can be reused!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_coinchain" x="1024" y="256" name="inst_F61D4DE6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="1088" y="96" name="inst_919981D5" locked="0" code="varmsg = &quot;Use the arrow keys to control the coin chain block!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_musicplayer" x="0" y="0" name="inst_A10D5566" locked="0" code="leveltime = 1&#xA;levelmusic = snd_music_athletic&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_winged" x="96" y="256" name="inst_BB896752" locked="0" code="sprout = 13&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_parakoopa" x="104" y="128" name="inst_79D296C7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_movingrope_touch" x="1280" y="272" name="inst_96F816FE" locked="0" code="ropelength = 4&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bubble_item" x="176" y="192" name="inst_6F9CB1A8" locked="0" code="item = 3&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bubble_item" x="848" y="160" name="inst_164BA83E" locked="0" code="item = 4&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bubble_item" x="1600" y="96" name="inst_813CE96D" locked="0" code="item = 9&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -106,20 +110,16 @@
     <instance objName="obj_pipeenemygenerator" x="1488" y="208" name="inst_3B124FC8" locked="0" code="type = 0&#xA;enemy = 3&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_koopa_red" x="1240" y="336" name="inst_EB3C11C0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_rex" x="1592" y="176" name="inst_A57F4628" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="0" y="256" name="inst_60B1AB05" locked="0" code="varmsg = &quot;Be careful! The ground here is extra slippery!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_clockwiseb" x="272" y="288" name="inst_44ED003B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_left" x="688" y="288" name="inst_C50CBC59" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_right" x="576" y="288" name="inst_5D23A05D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_cclockwiseb" x="96" y="256" name="inst_D7B780BC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="960" y="256" name="inst_508E408C" locked="0" code="varmsg = &quot;Red E-Switches can not be moved, but they can be reused!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_cclockwise" x="96" y="128" name="inst_D83E65BC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_up" x="1376" y="272" name="inst_42C5FC0B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_right" x="1360" y="96" name="inst_9F1BDC14" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_down" x="1712" y="112" name="inst_CE6A8C8F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_left" x="1696" y="288" name="inst_B94934D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_endmarker" x="1632" y="272" name="inst_ADFF67B0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_coinchain" x="1024" y="256" name="inst_F61D4DE6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="1088" y="96" name="inst_919981D5" locked="0" code="varmsg = &quot;Use the arrow keys to control the coin chain block!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_speedmarker" x="1376" y="112" name="inst_C3850074" locked="0" code="setspeed = 2&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_speedmarker" x="1696" y="128" name="inst_3869AA8D" locked="0" code="setspeed = 1&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpbottom" x="1536" y="288" name="inst_E5A5F074" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
