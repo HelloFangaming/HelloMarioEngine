@@ -12,7 +12,7 @@
   <showcolour>0</showcolour>
   <code></code>
   <enableViews>-1</enableViews>
-  <clearViewBackground>-1</clearViewBackground>
+  <clearViewBackground>0</clearViewBackground>
   <makerSettings>
     <isSet>0</isSet>
     <w>0</w>
@@ -50,6 +50,11 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
+    <instance objName="obj_expandplatform_h" x="192" y="320" name="inst_59BAD4C7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_expandplatform_h" x="304" y="272" name="inst_05708F6F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_expandplatform_hv" x="720" y="352" name="inst_BD0CF95F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_expandplatform_v" x="608" y="304" name="inst_590D8161" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_expandplatform_h" x="704" y="224" name="inst_06D013AC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solidtop8x1" x="-16" y="352" name="inst_4E98341B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid1x4" x="928" y="368" name="inst_C64DB5EE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid1x4" x="944" y="368" name="inst_48E66954" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -67,15 +72,12 @@
     <instance objName="obj_parabeetle" x="720" y="160" name="inst_B839A7F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_parabeetle" x="752" y="112" name="inst_E5ED43BC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_parabeetle" x="784" y="176" name="inst_E8F63F9E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_view" x="992" y="320" name="inst_6829B334" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="0" y="288" name="inst_739B1B9F" locked="0" code="varmsg = &quot;Get ready for some autoscrolling!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_musicplayer" x="32" y="0" name="inst_123B4639" locked="0" code="leveltime = 1&#xA;levelmusic = snd_music_athletic" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_autoscroll" x="80" y="304" name="inst_E8764773" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_angrysun" x="0" y="0" name="inst_57388A05" locked="0" code="xmin = 112&#xA;xmax = 832&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_movingrope" x="224" y="64" name="inst_A9E642F5" locked="0" code="ropelength = 6" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_expandplatform_h" x="192" y="320" name="inst_59BAD4C7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_expandplatform_h" x="304" y="272" name="inst_05708F6F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_expandplatform_hv" x="720" y="352" name="inst_BD0CF95F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_expandplatform_v" x="608" y="304" name="inst_590D8161" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_expandplatform_h" x="704" y="224" name="inst_06D013AC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_up" x="272" y="304" name="inst_37E13C58" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_right" x="256" y="128" name="inst_CFFCADB7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_down" x="672" y="144" name="inst_2C160721" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -83,8 +85,6 @@
     <instance objName="obj_endmarker" x="896" y="336" name="inst_A704054D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_down" x="224" y="64" name="inst_F4EBEC77" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_up" x="224" y="128" name="inst_631636C5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_view" x="992" y="320" name="inst_6829B334" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="0" y="288" name="inst_739B1B9F" locked="0" code="varmsg = &quot;Get ready for some autoscrolling!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_speedmarker" x="672" y="336" name="inst_DFBBB4E6" locked="0" code="setspeed = 1&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warptop" x="928" y="368" name="inst_2C5E39CF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warproom" x="944" y="416" name="inst_67AE4CCB" locked="0" code="postchange = 1&#xA;postx = 1648&#xA;posty = 368&#xA;posttype = 1&#xA;myroom = rmLevel3" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

@@ -12,7 +12,7 @@
   <showcolour>-1</showcolour>
   <code></code>
   <enableViews>-1</enableViews>
-  <clearViewBackground>-1</clearViewBackground>
+  <clearViewBackground>0</clearViewBackground>
   <makerSettings>
     <isSet>0</isSet>
     <w>0</w>
@@ -218,6 +218,24 @@
     <instance objName="obj_coin" x="1824" y="48" name="inst_A09C2652" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="1840" y="64" name="inst_0D091F19" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="1824" y="80" name="inst_A6823037" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bluebrick" x="368" y="352" name="inst_EA7E144F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bluebrick" x="384" y="352" name="inst_26718D26" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bluebrick" x="384" y="336" name="inst_2E84951F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bluebrick" x="1664" y="128" name="inst_DCDC8D9C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bluebrick" x="1664" y="144" name="inst_2A6C23E9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bluebrick" x="1680" y="144" name="inst_8BCB5464" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_redbrick" x="992" y="288" name="inst_EA87A61C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_redbrick" x="992" y="304" name="inst_A9995B8A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_redbrick" x="992" y="320" name="inst_FA4D1882" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_redbrick" x="976" y="320" name="inst_52B2FBD4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_redbrick" x="960" y="320" name="inst_9EAC864F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_redbrick" x="976" y="304" name="inst_4268AAE9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_redbrick" x="1696" y="304" name="inst_E5727179" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_redbrick" x="1696" y="320" name="inst_39318EAA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_redbrick" x="1696" y="336" name="inst_60B23A77" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_redbrick" x="1712" y="336" name="inst_8E3CCCB1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_redbrick" x="1728" y="336" name="inst_CAA3B701" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_redbrick" x="1712" y="320" name="inst_FCF19648" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ballpiranha" x="1088" y="336" name="inst_42941B01" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ptooie" x="1120" y="336" name="inst_ED972314" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slope_r" x="640" y="384" name="inst_6475732E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -280,12 +298,6 @@
     <instance objName="obj_bubble_coin" x="1600" y="48" name="inst_AC855033" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bubble_coin" x="1744" y="160" name="inst_67A71594" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bubble_coin" x="1744" y="256" name="inst_204D7178" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bluebrick" x="368" y="352" name="inst_EA7E144F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bluebrick" x="384" y="352" name="inst_26718D26" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bluebrick" x="384" y="336" name="inst_2E84951F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bluebrick" x="1664" y="128" name="inst_DCDC8D9C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bluebrick" x="1664" y="144" name="inst_2A6C23E9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bluebrick" x="1680" y="144" name="inst_8BCB5464" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_koopa_hyper" x="808" y="352" name="inst_1130F99D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_buzzybeetle" x="712" y="352" name="inst_AF619AD0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_paragoomba" x="896" y="352" name="inst_9211125E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -306,18 +318,6 @@
     <instance objName="obj_bombblock" x="160" y="352" name="inst_4B23B2EF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bganimator" x="32" y="0" name="inst_D9CD3BFB" locked="0" code="bgs = 4&#xA;anibg[0] = bg_starrynight_0&#xA;anibg[1] = bg_starrynight_1&#xA;anibg[2] = bg_starrynight_2&#xA;anibg[3] = bg_starrynight_1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_shoegoomba" x="528" y="304" name="inst_E8EFC324" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_redbrick" x="992" y="288" name="inst_EA87A61C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_redbrick" x="992" y="304" name="inst_A9995B8A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_redbrick" x="992" y="320" name="inst_FA4D1882" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_redbrick" x="976" y="320" name="inst_52B2FBD4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_redbrick" x="960" y="320" name="inst_9EAC864F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_redbrick" x="976" y="304" name="inst_4268AAE9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_redbrick" x="1696" y="304" name="inst_E5727179" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_redbrick" x="1696" y="320" name="inst_39318EAA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_redbrick" x="1696" y="336" name="inst_60B23A77" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_redbrick" x="1712" y="336" name="inst_8E3CCCB1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_redbrick" x="1728" y="336" name="inst_CAA3B701" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_redbrick" x="1712" y="320" name="inst_FCF19648" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_nokobon" x="312" y="384" name="inst_5C4295F1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bobomb_parachute" x="1344" y="32" name="inst_4B436EF0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_fallingspike" x="1552" y="192" name="inst_4C8C5A2C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

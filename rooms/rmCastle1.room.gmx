@@ -12,7 +12,7 @@
   <showcolour>0</showcolour>
   <code></code>
   <enableViews>-1</enableViews>
-  <clearViewBackground>-1</clearViewBackground>
+  <clearViewBackground>0</clearViewBackground>
   <makerSettings>
     <isSet>0</isSet>
     <w>0</w>
@@ -54,6 +54,7 @@
     <instance objName="obj_rockywrench" x="1264" y="352" name="inst_A57975BF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_giantspike" x="2400" y="176" name="inst_CD37A3B3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_podoboo" x="464" y="304" name="inst_E3CB05B4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_powblock" x="2256" y="320" name="inst_36392455" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solidtop16x1" x="944" y="320" name="inst_069C299C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid1x2" x="768" y="352" name="inst_22593599" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid8x1" x="528" y="304" name="inst_401C5B6A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -211,11 +212,36 @@
     <instance objName="obj_climb" x="1936" y="224" name="inst_9322C378" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="896" y="80" name="inst_8B47BDDF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="256" y="192" name="inst_5DAAD4D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin" x="32" y="256" name="inst_6B78A806" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin" x="48" y="256" name="inst_D3C3F434" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin" x="64" y="256" name="inst_E5094316" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin" x="32" y="240" name="inst_2733F570" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin" x="48" y="240" name="inst_BF62EB3C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin" x="64" y="240" name="inst_8BDCADDC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin" x="80" y="256" name="inst_599654B5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin" x="80" y="240" name="inst_0C66A30E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_brick" x="304" y="320" name="inst_705511CE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_brick" x="336" y="320" name="inst_E55F23AB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_coin" x="2960" y="272" name="inst_EB0D06E9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_brick" x="976" y="32" name="inst_0C83ABBA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_brick" x="928" y="32" name="inst_3DECD0BC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_brick" x="944" y="32" name="inst_96AD4641" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="2464" y="272" name="inst_6E1B9BF1" locked="0" code="varmsg = &quot;This door will take you to Boom Boom, the guardian of many forts!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="2528" y="272" name="inst_38C3FC2A" locked="0" code="varmsg = &quot;This door will take you to Larry Koopa, one of the seven koopalings!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="2912" y="272" name="inst_B1103809" locked="0" code="varmsg = &quot;Do you really think that you can reach Bowser's room?&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_sprout" x="320" y="320" name="inst_7C7A2964" locked="0" code="sprout = 10" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_sprout" x="1184" y="256" name="inst_CEFBED19" locked="0" code="sprout = 25&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_sprout" x="2976" y="272" name="inst_C28EDC2E" locked="0" code="sprout = 2" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="2784" y="272" name="inst_3871D5A3" locked="0" code="varmsg = &quot;This door will take you to Reznor. Four is better than one!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_brick" x="288" y="320" name="inst_EC6A1E38" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="2592" y="272" name="inst_4C0E837C" locked="0" code="varmsg = &quot;This door will take you to Wendy Koopa. Do not disturb!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="2656" y="272" name="inst_B2669E67" locked="0" code="varmsg = &quot;This door will take you to Birdo. Throw it's eggs right back at it!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="2720" y="272" name="inst_3578E38B" locked="0" code="varmsg = &quot;This door will take you to Mouser. Fight bombs with bombs!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="2848" y="272" name="inst_00141EB1" locked="0" code="varmsg = &quot;This door will take you to Classic Bowser! Why does he have that axe anyways?&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_stopblock" x="848" y="0" name="inst_54E5ED45" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_stopblock" x="1168" y="0" name="inst_E7C75C35" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_midwayline" x="2144" y="320" name="inst_F7EE2CCE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_midwayspot" x="2104" y="304" name="inst_6FFA7A6C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_powblock" x="2256" y="320" name="inst_36392455" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_musicplayer" x="0" y="0" name="inst_63F2AF1E" locked="0" code="leveltime = 275&#xA;levelmusic = snd_music_castle" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_swooper" x="728" y="208" name="inst_213B7BD0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_drybones" x="616" y="368" name="inst_E577C1D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -259,38 +285,12 @@
     <instance objName="obj_sproutblock_hidden" x="656" y="304" name="inst_83BD8B8E" locked="0" code="sprout = 25&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_spiked" x="960" y="32" name="inst_E26BA5E2" locked="0" code="sprout = 7" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_boocircle" x="192" y="288" name="inst_D44E6864" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="32" y="256" name="inst_6B78A806" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="48" y="256" name="inst_D3C3F434" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="64" y="256" name="inst_E5094316" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="32" y="240" name="inst_2733F570" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="48" y="240" name="inst_BF62EB3C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="64" y="240" name="inst_8BDCADDC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="80" y="256" name="inst_599654B5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="80" y="240" name="inst_0C66A30E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_boosnake" x="848" y="256" name="inst_612D2592" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_left" x="544" y="384" name="inst_BCDC0EA9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_right" x="400" y="384" name="inst_8FA2A107" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_down" x="1072" y="32" name="inst_FA537D64" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_brick" x="304" y="320" name="inst_705511CE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_brick" x="336" y="320" name="inst_E55F23AB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_coin" x="2960" y="272" name="inst_EB0D06E9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_brick" x="976" y="32" name="inst_0C83ABBA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_brick" x="928" y="32" name="inst_3DECD0BC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_brick" x="944" y="32" name="inst_96AD4641" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_rotodisc" x="656" y="208" name="inst_1A46FCC2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_rotodisc" x="2272" y="320" name="inst_16655DEB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="2464" y="272" name="inst_6E1B9BF1" locked="0" code="varmsg = &quot;This door will take you to Boom Boom, the guardian of many forts!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="2528" y="272" name="inst_38C3FC2A" locked="0" code="varmsg = &quot;This door will take you to Larry Koopa, one of the seven koopalings!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="2912" y="272" name="inst_B1103809" locked="0" code="varmsg = &quot;Do you really think that you can reach Bowser's room?&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="320" y="320" name="inst_7C7A2964" locked="0" code="sprout = 10" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="1184" y="256" name="inst_CEFBED19" locked="0" code="sprout = 25&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="2976" y="272" name="inst_C28EDC2E" locked="0" code="sprout = 2" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="2784" y="272" name="inst_3871D5A3" locked="0" code="varmsg = &quot;This door will take you to Reznor. Four is better than one!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_brick" x="288" y="320" name="inst_EC6A1E38" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="2592" y="272" name="inst_4C0E837C" locked="0" code="varmsg = &quot;This door will take you to Wendy Koopa. Do not disturb!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="2656" y="272" name="inst_B2669E67" locked="0" code="varmsg = &quot;This door will take you to Birdo. Throw it's eggs right back at it!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="2720" y="272" name="inst_3578E38B" locked="0" code="varmsg = &quot;This door will take you to Mouser. Fight bombs with bombs!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="2848" y="272" name="inst_00141EB1" locked="0" code="varmsg = &quot;This door will take you to Classic Bowser! Why does he have that axe anyways?&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warptop" x="864" y="48" name="inst_E6FC7BB5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_postchange" x="864" y="96" name="inst_91BBB776" locked="0" code="postx = 1120&#xA;posty = 208&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpbottom" x="1584" y="256" name="inst_79D82836" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
