@@ -66,6 +66,7 @@ event_user(1)
           <argument>
             <kind>1</kind>
             <string>instance_deactivate_all(1)
+instance_activate_object(obj_mariostart)
 </string>
           </argument>
         </arguments>
@@ -90,7 +91,6 @@ event_user(1)
             <kind>1</kind>
             <string>done = 0
 mode = 0
-instance_activate_object(obj_mariostart)
 if not instance_exists(obj_mariostart)
     instance_activate_all()
 background_delete(back)
@@ -255,7 +255,9 @@ if mode = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>keyboard_key_release(vk_control)</string>
+            <string>//Sticky Control Key Bug Fix
+keyboard_key_release(vk_control)
+</string>
           </argument>
         </arguments>
       </action>

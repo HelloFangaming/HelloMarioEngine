@@ -250,7 +250,7 @@
     <instance objName="obj_boo" x="1088" y="16" name="inst_005D9935" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bigboo" x="1248" y="208" name="inst_FE621BAA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bonybeetle" x="1000" y="80" name="inst_22F4E06A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_firebar" x="536" y="304" name="inst_57867B7A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_firebar" x="536" y="304" name="inst_57867B7A" locked="0" code="ready = 1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_firebar_large" x="776" y="352" name="inst_9D0D349C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grinder" x="2352" y="272" name="inst_8905C34E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_netkoopa" x="2016" y="320" name="inst_7DF6FB82" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -274,9 +274,7 @@
     <instance objName="obj_largecannon" x="1392" y="256" name="inst_EDA85DA3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bombcannon" x="1504" y="272" name="inst_C4AB232F" locked="0" code="direct = 1&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_engine" x="1504" y="384" name="inst_9ABC10FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_vengine" x="1376" y="384" name="inst_0FAD88A3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_vengine" x="1392" y="384" name="inst_C16CCB84" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_vengine" x="1408" y="384" name="inst_9E591C72" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_vengine2" x="1568" y="224" name="inst_22EC0808" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ballnchain" x="1168" y="80" name="inst_A0B286B6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_podoboo_bounce" x="1728" y="96" name="inst_E119F887" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -2655,9 +2653,7 @@
     <tile bgName="bg_tileset" x="240" y="176" w="16" h="16" xo="288" yo="144" id="10009245" name="tile_C8390DC0" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_tileset" x="224" y="176" w="16" h="16" xo="288" yo="144" id="10009246" name="tile_432631A4" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_tileset" x="1376" y="288" w="16" h="16" xo="928" yo="320" id="10009247" name="tile_E940A2BC" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_tileset" x="1376" y="384" w="16" h="16" xo="896" yo="384" id="10009248" name="tile_6F8C0BC2" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_tileset" x="1392" y="384" w="16" h="16" xo="896" yo="384" id="10009249" name="tile_9042E747" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_tileset" x="1408" y="384" w="16" h="16" xo="896" yo="384" id="10009250" name="tile_6577D7F5" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_tileset" x="1504" y="384" w="16" h="16" xo="336" yo="224" id="10009251" name="tile_8FDCC7D2" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_tileset" x="2272" y="320" w="16" h="16" xo="304" yo="128" id="10009252" name="tile_28ACC67A" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_tileset" x="1168" y="80" w="16" h="16" xo="304" yo="128" id="10009253" name="tile_5369C0BF" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -3436,6 +3432,8 @@
     <tile bgName="bg_tileset" x="2736" y="0" w="16" h="16" xo="288" yo="144" id="10010026" name="tile_0A1AF1C5" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_tileset" x="2720" y="0" w="16" h="16" xo="288" yo="144" id="10010027" name="tile_70FE053C" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_tileset" x="2704" y="0" w="16" h="16" xo="288" yo="144" id="10010028" name="tile_B09A27D3" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_tileset" x="1376" y="384" w="16" h="16" xo="288" yo="144" id="10015196" name="inst_399346B1" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_tileset" x="1408" y="384" w="16" h="16" xo="288" yo="144" id="10015197" name="inst_80AF72D2" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
   </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>
