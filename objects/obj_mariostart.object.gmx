@@ -2,7 +2,7 @@
 <object>
   <spriteName>spr_mariostart</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>-100</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -75,6 +75,7 @@ alarm[0] = 30
             <string>instance_activate_all()
 view_object[0] = obj_camera
 obj_persistent.done = 0
+global.mariostart = 1
 instance_destroy()
 </string>
           </argument>
@@ -98,7 +99,7 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.mariostart = 1
+            <string>visible = 1
 alarm[1] = 60
 </string>
           </argument>
@@ -122,11 +123,8 @@ alarm[1] = 60
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.mariostart = 1
-{
-    draw_sprite(spr_viewcover,0,view_xview[0],view_yview[0])
-    draw_sprite(spr_mariostart,0,view_xview[0]+160,view_yview[0]+120)
-}
+            <string>draw_sprite(spr_viewcover,0,view_xview[0],view_yview[0])
+draw_sprite(spr_mariostart,0,view_xview[0]+160,view_yview[0]+120)
 </string>
           </argument>
         </arguments>
