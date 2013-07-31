@@ -1,22 +1,23 @@
 //Tail Wiggling
-if wiggle > 1
-    wiggle -= 1
-if state != 2
-and wiggle != 0
-    wiggle = 0
-else
+if state = 2
 {
+    if wiggle > 1
+        wiggle -= 1
     if wiggle > 12
         image_index = 3
-    if wiggle > 8 and wiggle < 12
+    else if wiggle > 8
         image_index = 2
-    if wiggle > 4 and wiggle < 8
+    else if wiggle > 4
         image_index = 1
-    if wiggle > 1 and wiggle < 4
+    else if wiggle > 1
         image_index = 2
-    if wiggle = 1
+    else if wiggle = 1
         image_index = 1
+    else
+        image_index = 0
 }
+else
+    wiggle = 0
 //End Tail Wiggling
 if holding = 0
 {
