@@ -1498,6 +1498,7 @@ and holding != 0
 if (global.state = 10 or (global.state = 12 and beefly &lt; 128))
 and isjump = 1
 and stompstyle = 0
+and isduck = 0
 and global.yoshi = 0
 and keyboard_check(vk_shift)
 {
