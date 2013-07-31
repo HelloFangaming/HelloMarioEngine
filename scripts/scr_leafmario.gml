@@ -1,5 +1,6 @@
 //Tail Wiggling
 if state = 2
+and stompstyle = 0
 {
     if wiggle > 1
         wiggle -= 1
