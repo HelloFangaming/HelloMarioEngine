@@ -1764,6 +1764,7 @@
     <room>rooms\rmLogo</room>
     <room>rooms\rmTitleScreen</room>
     <room>rooms\rmMapScreen</room>
+    <room>rooms\rmTemplate</room>
     <rooms name="Level 1">
       <room>rooms\rmLevel1</room>
       <room>rooms\rmLevel1b</room>

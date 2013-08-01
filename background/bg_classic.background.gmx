@@ -7,8 +7,8 @@
   <tileyoff>0</tileyoff>
   <tilehsep>0</tilehsep>
   <tilevsep>0</tilevsep>
-  <HTile>-1</HTile>
-  <VTile>-1</VTile>
+  <HTile>0</HTile>
+  <VTile>0</VTile>
   <TextureGroups>
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
