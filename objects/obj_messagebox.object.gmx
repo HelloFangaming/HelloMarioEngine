@@ -129,11 +129,14 @@ showing = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(c_white)
+            <string>if background_exists(back)
+{
+    draw_set_blend_mode_ext(bm_one,bm_src_alpha_sat)
+    draw_background(back,view_xview[0],view_yview[0])
+    draw_set_blend_mode(bm_normal)
+}
+draw_set_color(c_white)
 draw_set_font(global.messagefont)
-if background_exists(back)
-    repeat(10)
-        draw_background(back,view_xview[0],view_yview[0])
 draw_sprite_ext(spr_messagebox,0,view_xview[0]+48,view_yview[0]+39,1,1,0,c_white,0.7)
 if showing = 1
 {

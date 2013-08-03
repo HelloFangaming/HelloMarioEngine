@@ -282,8 +282,9 @@ keyboard_key_release(vk_control)
             <string>//Surface Post-Processing Can Go Here
 if surface_exists(view_surface_id[0])
 {
-    repeat(10)
-        draw_surface(view_surface_id[0],0,0)
+    draw_set_blend_mode_ext(bm_one,bm_src_alpha_sat)
+    draw_surface(view_surface_id[0],0,0)
+    draw_set_blend_mode(bm_normal)
 }
 else
     view_surface_id[0] = surface_create(view_wview[0],view_hview[0])
@@ -317,8 +318,11 @@ if done &lt; 1
     else
     {
         if background_exists(back)
-            repeat(10)
-                draw_background(back,view_xview[0],view_yview[0])
+        {
+            draw_set_blend_mode_ext(bm_one,bm_src_alpha_sat)
+            draw_background(back,view_xview[0],view_yview[0])
+            draw_set_blend_mode(bm_normal)
+        }
         draw_set_alpha(done)
     }
     draw_rectangle_color(0,0,room_width,room_height,c_black,c_black,c_black,c_black,0)
