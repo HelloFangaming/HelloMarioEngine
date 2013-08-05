@@ -608,7 +608,7 @@ if isswim = 0
     else if state = 4
         event_user(5)
 }
-else if isswim = 1
+else
     event_user(3)
 </string>
           </argument>
@@ -740,6 +740,7 @@ and stompstyle = 0
 if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_climb,0,0)
 and holding = 0
 and state &lt; 3
+and isswim = 0
 and not instance_exists(obj_statue)
 {
     state = 3
