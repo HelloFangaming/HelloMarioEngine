@@ -60,7 +60,8 @@ menu[2] = "Quit Game"
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>background_delete(back)
+            <string>if background_exists(back)
+    background_delete(back)
 audio_stop_all()
 audio_play_sound(snd_correct,0,0)
 if lives = 0
@@ -213,7 +214,8 @@ draw_set_alpha(1)
             <string>if menu_choice = 0
 {
     instance_activate_all()
-    background_delete(back)
+    if background_exists(back)
+        background_delete(back)
     audio_play_sound(snd_pause,0,0)
     io_clear()
     instance_destroy()
@@ -255,7 +257,8 @@ if menu_choice=2
 and ready = 1
 {
     instance_activate_all()
-    background_delete(back)
+    if background_exists(back)
+        background_delete(back)
     audio_play_sound(snd_pause,0,0)
     io_clear()
     instance_destroy()
