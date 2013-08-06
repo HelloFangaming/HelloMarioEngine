@@ -93,7 +93,8 @@ instance_activate_object(obj_mariostart)
 mode = 0
 if not instance_exists(obj_mariostart)
     instance_activate_all()
-background_delete(back)
+if background_exists(back)
+    background_delete(back)
 </string>
           </argument>
         </arguments>
@@ -206,7 +207,8 @@ alarm[0] = 30
             <string>//Prepare to fade to black
 mode = 1
 back = background_create_from_surface(view_surface_id[0],0,0,view_wview[0],view_hview[0],0,0)
-surface_free(view_surface_id[0])
+if surface_exists(view_surface_id[0])
+    surface_free(view_surface_id[0])
 alarm[1] = 1
 </string>
           </argument>

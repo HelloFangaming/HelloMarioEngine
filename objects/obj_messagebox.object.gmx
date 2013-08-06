@@ -182,7 +182,8 @@ if showing = 1
     else
     {
         instance_activate_all()
-        background_delete(back)
+        if background_exists(back)
+            background_delete(back)
         io_clear()
         instance_destroy()
     }
