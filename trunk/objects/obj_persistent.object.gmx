@@ -89,10 +89,12 @@ instance_activate_object(obj_mariostart)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>done = 0
-mode = 0
+            <string>mode = 0
 if not instance_exists(obj_mariostart)
+{
+    done = 0
     instance_activate_all()
+}
 if background_exists(back)
     background_delete(back)
 </string>
@@ -281,7 +283,7 @@ keyboard_key_release(vk_control)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Surface Post-Processing Can Go Here
+            <string>//Draws the game surface
 if surface_exists(view_surface_id[0])
 {
     draw_set_blend_mode_ext(bm_one,bm_src_alpha_sat)
@@ -290,29 +292,7 @@ if surface_exists(view_surface_id[0])
 }
 else
     view_surface_id[0] = surface_create(view_wview[0],view_hview[0])
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//Fades the screen to and from black
+//Fades the screen to and from black
 if done &lt; 1
 {
     if mode = 0
@@ -322,15 +302,15 @@ if done &lt; 1
         if background_exists(back)
         {
             draw_set_blend_mode_ext(bm_one,bm_src_alpha_sat)
-            draw_background(back,view_xview[0],view_yview[0])
+            draw_background(back,0,0)
             draw_set_blend_mode(bm_normal)
         }
         draw_set_alpha(done)
     }
-    draw_rectangle_color(0,0,room_width,room_height,c_black,c_black,c_black,c_black,0)
+    draw_rectangle_color(0,0,view_wview[0],view_hview[0],c_black,c_black,c_black,c_black,0)
     done += 1/30
+    draw_set_alpha(1)
 }
-draw_set_alpha(1)
 </string>
           </argument>
         </arguments>
