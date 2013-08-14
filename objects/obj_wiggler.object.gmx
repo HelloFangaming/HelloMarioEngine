@@ -167,15 +167,13 @@ else
           <argument>
             <kind>1</kind>
             <string>if not instance_exists(mybody[0])
-or not instance_exists(mybody[1])
-or not instance_exists(mybody[2])
-or not instance_exists(mybody[3])
-{
     instance_activate_object(mybody[0])
+if not instance_exists(mybody[1])
     instance_activate_object(mybody[1])
+if not instance_exists(mybody[2])
     instance_activate_object(mybody[2])
+if not instance_exists(mybody[3])
     instance_activate_object(mybody[3])
-}
 </string>
           </argument>
         </arguments>
