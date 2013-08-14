@@ -86,6 +86,16 @@ if ready = 1
             <kind>1</kind>
             <string>if not instance_exists(parent)
     instance_activate_object(parent)
+if hspeed &gt; 0
+{
+    if alarm[0] &lt;= 0
+        x = parent.x-offset
+}
+else if hspeed &lt; 0
+{
+    if alarm[0] &lt;= 0
+        x = parent.x+offset
+}
 </string>
           </argument>
         </arguments>
