@@ -21,6 +21,7 @@
     <bitDepth>16</bitDepth>
   </bitDepths>
   <preload>-1</preload>
+  <data>snd_rain.ogg</data>
   <compressed>1</compressed>
   <streamed>0</streamed>
   <uncompressOnLoad>1</uncompressOnLoad>
