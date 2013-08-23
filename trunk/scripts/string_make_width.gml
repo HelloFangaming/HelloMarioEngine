@@ -3,7 +3,6 @@ str = string(argument[0] + " ");
 if (string_length(str) != 0) then
 {
     width = real(abs(argument[1]));
-    str = string_replace_all(str, ord(10) + ord(13), "")
     a = 1;
     length = string_count(" ", str);
     while (a <= length)
