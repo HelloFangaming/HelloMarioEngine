@@ -374,7 +374,7 @@ if other.invincible = 0
 or firing = 2
     draw_sprite(sprite_index,bugfix+firing,round(x),y)
 else
-    draw_sprite(sprite_index,-1,round(x),y)
+    draw_sprite(sprite_index,image_index,round(x),y)
 </string>
           </argument>
         </arguments>
@@ -392,5 +392,8 @@ else
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>16,0</point>
+    <point>24,24</point>
+  </PhysicsShapePoints>
 </object>

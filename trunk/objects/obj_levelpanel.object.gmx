@@ -215,7 +215,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(sprite_index,-1,x,y)
+            <string>draw_sprite(sprite_index,image_index,x,y)
 if sprite_index = spr_levelpanel
     draw_sprite(spr_levelnumbers,levelnumb-1,x+7,y+7)
 </string>
@@ -235,5 +235,8 @@ if sprite_index = spr_levelpanel
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>0,0</point>
+    <point>8,8</point>
+  </PhysicsShapePoints>
 </object>

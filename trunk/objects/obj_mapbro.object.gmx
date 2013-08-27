@@ -245,9 +245,9 @@ and other.speed = 0
           <argument>
             <kind>1</kind>
             <string>if direct = 1
-    draw_sprite_ext(sprite_index,-1,round(x),y,1,1,0,c_white,1)
+    draw_sprite_ext(sprite_index,image_index,round(x),y,1,1,0,c_white,1)
 else
-    draw_sprite_ext(sprite_index,-1,round(x)+16,y,-1,1,0,c_white,1)
+    draw_sprite_ext(sprite_index,image_index,round(x)+16,y,-1,1,0,c_white,1)
 </string>
           </argument>
         </arguments>
@@ -265,5 +265,8 @@ else
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>0,0</point>
+    <point>8,8</point>
+  </PhysicsShapePoints>
 </object>
