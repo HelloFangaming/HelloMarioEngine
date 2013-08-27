@@ -261,9 +261,9 @@ and other.invincible = 0
           <argument>
             <kind>1</kind>
             <string>if direct = 1
-    draw_sprite_ext(sprite_index,-1,x,round(y),1,1,0,c_white,1)
+    draw_sprite_ext(sprite_index,image_index,x,round(y),1,1,0,c_white,1)
 if direct = -1
-    draw_sprite_ext(sprite_index,-1,x,round(y)+16,1,-1,0,c_white,1)
+    draw_sprite_ext(sprite_index,image_index,x,round(y)+16,1,-1,0,c_white,1)
 </string>
           </argument>
         </arguments>

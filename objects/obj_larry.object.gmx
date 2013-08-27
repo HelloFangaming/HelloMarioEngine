@@ -696,7 +696,7 @@ if hitpoints = 0
             <string>if sprite_index = spr_larry
     draw_sprite_ext(sprite_index,bugfix,round(x),y,direct,1,0,c_white,1)
 else
-    draw_sprite_ext(sprite_index,-1,round(x),y,direct,1,0,c_white,1)
+    draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
 </string>
           </argument>
         </arguments>
@@ -714,5 +714,8 @@ else
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>16,0</point>
+    <point>16,16</point>
+  </PhysicsShapePoints>
 </object>

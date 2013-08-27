@@ -269,7 +269,7 @@ imdead.image_xscale = -1</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,-1,round(x)+32,y,-1,1,0,c_white,1)</string>
+            <string>draw_sprite_ext(sprite_index,image_index,round(x)+32,y,-1,1,0,c_white,1)</string>
           </argument>
         </arguments>
       </action>

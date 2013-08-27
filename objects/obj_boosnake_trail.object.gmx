@@ -99,9 +99,9 @@ and global.yoshi &lt; 2
           <argument>
             <kind>1</kind>
             <string>if direct = 1
-    draw_sprite_ext(sprite_index,-1,round(x),y,1,1,0,c_white,0.6)
+    draw_sprite_ext(sprite_index,image_index,round(x),y,1,1,0,c_white,0.6)
 else
-    draw_sprite_ext(sprite_index,-1,round(x)+16,y,-1,1,0,c_white,0.6)
+    draw_sprite_ext(sprite_index,image_index,round(x)+16,y,-1,1,0,c_white,0.6)
 </string>
           </argument>
         </arguments>

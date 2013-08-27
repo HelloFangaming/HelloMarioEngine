@@ -76,9 +76,9 @@ alarm[0] = 15</string>
             <string>if not instance_exists(obj_mario)
     exit
 if collision_rectangle(x,y-5,x+15,y+4,obj_mario,0,0)
-and vspeed = 1
+and obj_mario.y &lt; y-27
 and obj_mario.state &lt; 2
-    obj_mario.y = y-32
+    obj_mario.y = ceil(y-32)
 </string>
           </argument>
         </arguments>
@@ -188,5 +188,8 @@ move_snap(16,16)</string>
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>0,0</point>
+    <point>8,8</point>
+  </PhysicsShapePoints>
 </object>

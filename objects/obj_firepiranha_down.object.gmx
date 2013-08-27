@@ -387,7 +387,7 @@ if other.invincible = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,-1,x,round(y)+32,1,-1,0,c_white,1)</string>
+            <string>draw_sprite_ext(sprite_index,image_index,x,round(y)+32,1,-1,0,c_white,1)</string>
           </argument>
         </arguments>
       </action>

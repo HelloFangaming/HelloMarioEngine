@@ -308,7 +308,7 @@ imdead.sprite_index = spr_shell</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,-1,round(x),y,direct,1,0,c_white,1)</string>
+            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)</string>
           </argument>
         </arguments>
       </action>
@@ -325,5 +325,8 @@ imdead.sprite_index = spr_shell</string>
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>8,16</point>
+    <point>16,16</point>
+  </PhysicsShapePoints>
 </object>

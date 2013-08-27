@@ -534,7 +534,7 @@ if global.postchange = 1
             <string>if myitem &gt; 0
 and hspeed != 0
     draw_sprite(myitem,0,x-8+10*direct+bugfix,y+15)
-draw_sprite_ext(sprite_index,-1,round(x),y,direct,1,0,color,alpha)
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,color,alpha)
 if myitem &gt; 0
 and hspeed = 0
     draw_sprite(myitem,0,x-8+bugfix,y+16)

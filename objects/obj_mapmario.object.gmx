@@ -442,22 +442,22 @@ ds_map_replace(global.mapscreen,"from",from)
             <kind>1</kind>
             <string>if ready = 1
 {
-    draw_sprite(spr_mapevent,-1,x,y)
+    draw_sprite(spr_mapevent,0,x,y)
     exit
 }
 if global.yoshi = 0
-    draw_sprite(sprite_index,-1,x,y)
+    draw_sprite(sprite_index,image_index,x,y)
 else if global.yoshi = 1
 {
-    draw_sprite(sprite_index,-1,x,y-7)
+    draw_sprite(sprite_index,image_index,x,y-7)
     if global.ycolor = 0
-        draw_sprite(spr_mapyoshi,-1,x,y)
+        draw_sprite(spr_mapyoshi,image_index,x,y)
     else if global.ycolor = 1
-        draw_sprite(spr_mapyoshi_r,-1,x,y)
+        draw_sprite(spr_mapyoshi_r,image_index,x,y)
     else if global.ycolor = 2
-        draw_sprite(spr_mapyoshi_y,-1,x,y)
+        draw_sprite(spr_mapyoshi_y,image_index,x,y)
     else if global.ycolor = 3
-        draw_sprite(spr_mapyoshi_b,-1,x,y)
+        draw_sprite(spr_mapyoshi_b,image_index,x,y)
 }
 </string>
           </argument>
@@ -644,5 +644,8 @@ and speed = 0
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>0,0</point>
+    <point>8,8</point>
+  </PhysicsShapePoints>
 </object>

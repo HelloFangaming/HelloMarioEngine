@@ -1,6 +1,6 @@
 var str, width, a, length, word, aa, ret, ret2;
 str = string(argument[0] + " ");
-if (string_length(str) != 0) then
+if (string_length(str) != 0)
 {
     width = real(abs(argument[1]));
     a = 1;
@@ -16,7 +16,7 @@ if (string_length(str) != 0) then
     {
         ret2 = ret;
         ret2 += word[aa] + " ";
-        if (string_width(ret2) > width) then
+        if (string_width(ret2) > width)
         {
             ret2 = ret;
             ret2 += "#";
@@ -29,4 +29,4 @@ if (string_length(str) != 0) then
     return (ret);
 }
 else
-exit;
+    exit;

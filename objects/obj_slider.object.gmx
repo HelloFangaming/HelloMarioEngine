@@ -239,7 +239,7 @@ if collision_rectangle(bbox_left-1+hspeed,bbox_top+4,bbox_left,bbox_bottom-1,obj
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,-1,round(x),y,direct,1,0,obj_mario.color,obj_mario.image_alpha)</string>
+            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,obj_mario.color,obj_mario.image_alpha)</string>
           </argument>
         </arguments>
       </action>

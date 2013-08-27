@@ -210,9 +210,9 @@ if other.invincible = 0
           <argument>
             <kind>1</kind>
             <string>if ready = 0
-    draw_sprite_ext(sprite_index,-1,round(x),round(y)+16,direct,-1,0,c_white,1)
+    draw_sprite_ext(sprite_index,image_index,round(x),round(y)+16,direct,-1,0,c_white,1)
 else
-    draw_sprite(sprite_index,-1,x-8,y)
+    draw_sprite(sprite_index,image_index,x-8,y)
 </string>
           </argument>
         </arguments>

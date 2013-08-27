@@ -217,7 +217,7 @@ if other.invincible = 0
             <string>if direct = 0
     draw_sprite(sprite_index,0,round(x),y)
 else
-    draw_sprite_ext(sprite_index,-1,round(x),y,direct,1,0,c_white,1)
+    draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
 </string>
           </argument>
         </arguments>

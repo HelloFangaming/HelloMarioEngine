@@ -447,20 +447,20 @@ and mydir = 2
             <string>if ready = 0
 {
     if mydir = 0
-        draw_sprite_ext(sprite_index,-1,round(x)-16,round(y)+16,1,1,90,obj_mario.color,obj_mario.image_alpha)
+        draw_sprite_ext(sprite_index,image_index,round(x)-16,round(y)+16,1,1,90,obj_mario.color,obj_mario.image_alpha)
     if mydir = 1
-        draw_sprite_ext(sprite_index,-1,round(x),round(y)+31,1,1,180,obj_mario.color,obj_mario.image_alpha)
+        draw_sprite_ext(sprite_index,image_index,round(x),round(y)+31,1,1,180,obj_mario.color,obj_mario.image_alpha)
     if mydir = 2
-        draw_sprite_ext(sprite_index,-1,round(x)+16,round(y)+16,1,1,270,obj_mario.color,obj_mario.image_alpha)
+        draw_sprite_ext(sprite_index,image_index,round(x)+16,round(y)+16,1,1,270,obj_mario.color,obj_mario.image_alpha)
 }
 if ready = 1
 {
     if mydir = 0
-        draw_sprite_ext(sprite_index,-1,round(x)+16,round(y)+16,-1,1,270,obj_mario.color,obj_mario.image_alpha)
+        draw_sprite_ext(sprite_index,image_index,round(x)+16,round(y)+16,-1,1,270,obj_mario.color,obj_mario.image_alpha)
     if mydir = 1
-        draw_sprite_ext(sprite_index,-1,round(x),round(y)+31,-1,1,180,obj_mario.color,obj_mario.image_alpha)
+        draw_sprite_ext(sprite_index,image_index,round(x),round(y)+31,-1,1,180,obj_mario.color,obj_mario.image_alpha)
     if mydir = 2
-        draw_sprite_ext(sprite_index,-1,round(x)-16,round(y)+16,-1,1,90,obj_mario.color,obj_mario.image_alpha)
+        draw_sprite_ext(sprite_index,image_index,round(x)-16,round(y)+16,-1,1,90,obj_mario.color,obj_mario.image_alpha)
 }
 </string>
           </argument>

@@ -390,13 +390,13 @@ if other.invincible = 0
           <argument>
             <kind>1</kind>
             <string>if dir = 0
-    draw_sprite_ext(sprite_index,-1,round(x),y,direct,1,0,c_white,1)
+    draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
 if dir = 1
-    draw_sprite_ext(sprite_index,-1,round(x)-8,round(y)+8,direct,1,90,c_white,1)
+    draw_sprite_ext(sprite_index,image_index,round(x)-8,round(y)+8,direct,1,90,c_white,1)
 if dir = 2
-    draw_sprite_ext(sprite_index,-1,round(x),round(y)+15,direct,1,180,c_white,1)
+    draw_sprite_ext(sprite_index,image_index,round(x),round(y)+15,direct,1,180,c_white,1)
 if dir = 3
-    draw_sprite_ext(sprite_index,-1,round(x)+7,round(y)+8,direct,1,270,c_white,1)
+    draw_sprite_ext(sprite_index,image_index,round(x)+7,round(y)+8,direct,1,270,c_white,1)
 </string>
           </argument>
         </arguments>
@@ -414,5 +414,8 @@ if dir = 3
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>8,0</point>
+    <point>8,8</point>
+  </PhysicsShapePoints>
 </object>

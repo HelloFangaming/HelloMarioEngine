@@ -129,7 +129,7 @@ else if item = 8
     draw_sprite(spr_dossunshoe,-1,x+8,y+8)
 else if item = 9
     draw_sprite(spr_jugemushoe,-1,x+8,y+8)
-draw_sprite(sprite_index,-1,x,y)
+draw_sprite(sprite_index,image_index,x,y)
 </string>
           </argument>
         </arguments>
@@ -147,5 +147,8 @@ draw_sprite(sprite_index,-1,x,y)
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>0,0</point>
+    <point>16,16</point>
+  </PhysicsShapePoints>
 </object>

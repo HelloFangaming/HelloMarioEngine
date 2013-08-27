@@ -358,7 +358,8 @@ imdead.image_xscale = image_xscale</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(spr_magikoopa,-1,round(x),y,direct,1,0,c_white,image_alpha)</string>
+            <string>draw_sprite_ext(spr_magikoopa,image_index,round(x),y,direct,1,0,c_white,image_alpha)
+</string>
           </argument>
         </arguments>
       </action>

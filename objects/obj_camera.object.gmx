@@ -210,7 +210,7 @@ alarm[7] = 15
     }
     else
     {
-        if pmeter &gt; -1
+        if pmeter &gt; 0
         and slowdown = 2
             pmeter -= 1
     }
@@ -218,7 +218,7 @@ alarm[7] = 15
     if slowdown = 3
         slowdown = 0
 }
-else if pmeter &gt; -1
+else if pmeter &gt; 0
     pmeter -= 1
 if pmeter = 6
 {
@@ -677,58 +677,58 @@ draw_set_font(global.wdigits)
 draw_set_color(c_white)
 draw_set_alpha(0.7)
 //HudBar
-draw_sprite_ext(spr_hudbar,-1,view_xview[0]+4,view_yview[0]+1,1,1,0,c_white,0.7)
+draw_sprite_ext(spr_hudbar,0,view_xview[0]+4,view_yview[0]+1,1,1,0,c_white,0.7)
 //Lives
-draw_sprite_ext(spr_mariohud,-1,view_xview[0]+58,view_yview[0]+10,1,1,0,c_white,0.7)
+draw_sprite_ext(spr_mariohud,0,view_xview[0]+58,view_yview[0]+10,1,1,0,c_white,0.7)
 draw_text(view_xview[0]+82,view_yview[0]+10,string_format(lives,2,0))
 //Score
 draw_text(view_xview[0]+view_wview-66,view_yview[0]+10,scr_score())
 //Coins
-draw_sprite_ext(spr_coinhud,-1,view_xview[0]+194,view_yview[0]+10,1,1,0,c_white,0.7)
+draw_sprite_ext(spr_coinhud,0,view_xview[0]+194,view_yview[0]+10,1,1,0,c_white,0.7)
 draw_text(view_xview[0]+201,view_yview[0]+10,string_format(global.coins,2,0))
 //World
-draw_sprite_ext(spr_worldhud,-1,view_xview[0]+10,view_yview[0]+10,1,1,0,c_white,0.7)
+draw_sprite_ext(spr_worldhud,0,view_xview[0]+10,view_yview[0]+10,1,1,0,c_white,0.7)
 draw_sprite_ext(spr_numbersgold,global.world,view_xview[0]+42,view_yview[0]+10,1,1,0,c_white,0.7)
 //Font Change
 draw_set_font(global.gdigits)
 //Time
-draw_sprite_ext(spr_timehud,-1,view_xview[0]+104,view_yview[0]+10,1,1,0,c_white,0.7)
+draw_sprite_ext(spr_timehud,0,view_xview[0]+104,view_yview[0]+10,1,1,0,c_white,0.7)
 draw_text(view_xview[0]+114,view_yview[0]+10,scr_time(global.time))
 //P Meter
 draw_sprite_ext(spr_pmeter,pmeter,view_xview[0]+16,view_yview[0]+228,1,1,0,c_white,0.7)
 //Reserve Items
 if global.reserveitem = 1
-    draw_sprite_ext(spr_mushroom,-1,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
+    draw_sprite_ext(spr_mushroom,0,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
 else if global.reserveitem = 2
     draw_sprite_ext(spr_fireflower,weird,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
 else if global.reserveitem = 3
-    draw_sprite_ext(spr_hammersuit,-1,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
+    draw_sprite_ext(spr_hammersuit,0,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
 else if global.reserveitem = 4
     draw_sprite_ext(spr_leaf,2,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
 else if global.reserveitem = 5
-    draw_sprite_ext(spr_tanookisuit,-1,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
+    draw_sprite_ext(spr_tanookisuit,0,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
 else if global.reserveitem = 6
-    draw_sprite_ext(spr_frogsuit,-1,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
+    draw_sprite_ext(spr_frogsuit,0,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
 else if global.reserveitem = 7
-    draw_sprite_ext(spr_bombshroom,-1,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
+    draw_sprite_ext(spr_bombshroom,0,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
 else if global.reserveitem = 8
     draw_sprite_ext(spr_iceflower,weird,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
 else if global.reserveitem = 9
     draw_sprite_ext(spr_superflower,weird,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
 else if global.reserveitem = 10
-    draw_sprite_ext(spr_carrot,-1,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
+    draw_sprite_ext(spr_carrot,0,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
 else if global.reserveitem = 11
-    draw_sprite_ext(spr_ninjasuit,-1,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
+    draw_sprite_ext(spr_ninjasuit,0,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
 else if global.reserveitem = 12
-    draw_sprite_ext(spr_beeshroom,-1,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
+    draw_sprite_ext(spr_beeshroom,0,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
 else if global.reserveitem = 13
-    draw_sprite_ext(spr_blueshell,-1,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
+    draw_sprite_ext(spr_blueshell,0,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
 else if global.reserveitem = 14
-    draw_sprite_ext(spr_penguinsuit,-1,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
+    draw_sprite_ext(spr_penguinsuit,0,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
 //Reset Alpha
 draw_set_alpha(1)
 //Uncomment the line below if you want to see the fps on the bottom right corner of the screen.
-//draw_text(view_xview[0]+302,view_yview[0]+231,string_format(floor(fps),2,0))
+//draw_text(view_xview[0]+302,view_yview[0]+231,fps_real)
 </string>
           </argument>
         </arguments>
@@ -801,5 +801,8 @@ and canpause = 0
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>0,0</point>
+    <point>8,8</point>
+  </PhysicsShapePoints>
 </object>

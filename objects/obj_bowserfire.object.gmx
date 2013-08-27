@@ -141,7 +141,7 @@ or y &lt; view_yview[0]-16
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,-1,round(x),y,direct,1,0,c_white,1)</string>
+            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)</string>
           </argument>
         </arguments>
       </action>
@@ -158,5 +158,8 @@ or y &lt; view_yview[0]-16
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>9,0</point>
+    <point>10,10</point>
+  </PhysicsShapePoints>
 </object>

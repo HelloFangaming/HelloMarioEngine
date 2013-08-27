@@ -399,9 +399,9 @@ else if other.invincible = 0
             <kind>1</kind>
             <string>if hopnow = 0
 and round(y) = swimspot
-    draw_sprite_ext(sprite_index,-1,round(x),swimspot+offset,direct,1,0,c_white,1)
+    draw_sprite_ext(sprite_index,image_index,round(x),swimspot+offset,direct,1,0,c_white,1)
 else
-    draw_sprite_ext(sprite_index,-1,round(x),y,direct,1,0,c_white,1)
+    draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
 </string>
           </argument>
         </arguments>
