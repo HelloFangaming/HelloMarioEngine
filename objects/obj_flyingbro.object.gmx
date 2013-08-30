@@ -6,7 +6,7 @@
   <depth>9</depth>
   <persistent>0</persistent>
   <parentName>obj_solid</parentName>
-  <maskName>spr_solid2x1</maskName>
+  <maskName>spr_movingpipe</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -210,5 +210,8 @@ and offset = 0
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>11,10</point>
+    <point>27,27</point>
+  </PhysicsShapePoints>
 </object>
