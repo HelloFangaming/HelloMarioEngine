@@ -28,7 +28,8 @@
             <string>image_speed = 0
 ready = 0
 issolid = 1
-varid = instance_create(x,y,obj_solid1x4)
+varid = instance_create(x,y,obj_solid)
+varid.image_yscale = 4
 </string>
           </argument>
         </arguments>
@@ -158,7 +159,10 @@ else if image_index = 3
 }
 if issolid = 1
 and not instance_exists(varid)
-    varid = instance_create(x,y,obj_solid1x4)
+{
+    varid = instance_create(x,y,obj_solid)
+    varid.image_yscale = 4
+}
 else if issolid = 0
 and instance_exists(varid)
     with varid instance_destroy()
@@ -179,5 +183,8 @@ and instance_exists(varid)
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>0,0</point>
+    <point>32,32</point>
+  </PhysicsShapePoints>
 </object>

@@ -6,7 +6,7 @@
   <depth>9</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
-  <maskName>spr_solid1x4</maskName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -137,7 +137,7 @@ and obj_mario.x &gt; x+26
     ready = 1
     if global.time &gt; 0
         obj_musicplayer.alarm[2] = 0
-    instance_create(x,y,obj_solid1x4)
+    with instance_create(x,y,obj_solid) image_yscale = 4
     varid = instance_create(obj_camera.x,obj_camera.y,obj_autoscroll)
     varid.speed = 3
     audio_play_sound(snd_castlebreak,0,0)
@@ -162,5 +162,8 @@ and obj_mario.x &gt; x+26
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>0,0</point>
+    <point>32,32</point>
+  </PhysicsShapePoints>
 </object>
