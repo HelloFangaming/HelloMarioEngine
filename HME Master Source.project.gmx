@@ -888,36 +888,6 @@
       <sprite>sprites\spr_gameover</sprite>
     </sprites>
     <sprites name="Masks">
-      <sprites name="Big Collisions">
-        <sprite>sprites\spr_solid2x1</sprite>
-        <sprite>sprites\spr_solid3x1</sprite>
-        <sprite>sprites\spr_solid4x1</sprite>
-        <sprite>sprites\spr_solid5x1</sprite>
-        <sprite>sprites\spr_solid8x1</sprite>
-        <sprite>sprites\spr_solid16x1</sprite>
-        <sprite>sprites\spr_solid1x2</sprite>
-        <sprite>sprites\spr_solid1x3</sprite>
-        <sprite>sprites\spr_solid1x4</sprite>
-        <sprite>sprites\spr_solid1x5</sprite>
-        <sprite>sprites\spr_solid1x8</sprite>
-        <sprite>sprites\spr_solid1x16</sprite>
-        <sprite>sprites\spr_solid3x2</sprite>
-        <sprite>sprites\spr_solid2x3</sprite>
-        <sprite>sprites\spr_solidtop2x1</sprite>
-        <sprite>sprites\spr_solidtop3x1</sprite>
-        <sprite>sprites\spr_solidtop4x1</sprite>
-        <sprite>sprites\spr_solidtop5x1</sprite>
-        <sprite>sprites\spr_solidtop8x1</sprite>
-        <sprite>sprites\spr_solidtop16x1</sprite>
-        <sprite>sprites\spr_slippery2x1</sprite>
-        <sprite>sprites\spr_slippery3x1</sprite>
-        <sprite>sprites\spr_slippery4x1</sprite>
-        <sprite>sprites\spr_slippery5x1</sprite>
-        <sprite>sprites\spr_slippery8x1</sprite>
-        <sprite>sprites\spr_slippery16x1</sprite>
-        <sprite>sprites\spr_climb3x3</sprite>
-        <sprite>sprites\spr_swim3x3</sprite>
-      </sprites>
       <sprite>sprites\spr_square</sprite>
       <sprite>sprites\spr_square_b</sprite>
       <sprite>sprites\spr_square_c</sprite>
@@ -1105,36 +1075,6 @@
       <object>objects\obj_classicscroll</object>
     </objects>
     <objects name="Collision">
-      <objects name="Big Collisions">
-        <object>objects\obj_solid2x1</object>
-        <object>objects\obj_solid3x1</object>
-        <object>objects\obj_solid4x1</object>
-        <object>objects\obj_solid5x1</object>
-        <object>objects\obj_solid8x1</object>
-        <object>objects\obj_solid16x1</object>
-        <object>objects\obj_solid1x2</object>
-        <object>objects\obj_solid1x3</object>
-        <object>objects\obj_solid1x4</object>
-        <object>objects\obj_solid1x5</object>
-        <object>objects\obj_solid1x8</object>
-        <object>objects\obj_solid1x16</object>
-        <object>objects\obj_solid3x2</object>
-        <object>objects\obj_solid2x3</object>
-        <object>objects\obj_solidtop2x1</object>
-        <object>objects\obj_solidtop3x1</object>
-        <object>objects\obj_solidtop4x1</object>
-        <object>objects\obj_solidtop5x1</object>
-        <object>objects\obj_solidtop8x1</object>
-        <object>objects\obj_solidtop16x1</object>
-        <object>objects\obj_slippery2x1</object>
-        <object>objects\obj_slippery3x1</object>
-        <object>objects\obj_slippery4x1</object>
-        <object>objects\obj_slippery5x1</object>
-        <object>objects\obj_slippery8x1</object>
-        <object>objects\obj_slippery16x1</object>
-        <object>objects\obj_climb3x3</object>
-        <object>objects\obj_swim3x3</object>
-      </objects>
       <object>objects\obj_solid</object>
       <object>objects\obj_solidtop</object>
       <object>objects\obj_climb</object>
