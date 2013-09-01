@@ -50,25 +50,6 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="obj_solidtop16x1" x="32" y="208" name="inst_D29E6629" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solidtop16x1" x="288" y="208" name="inst_439CEF02" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solidtop16x1" x="704" y="208" name="inst_75404F13" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solidtop16x1" x="928" y="208" name="inst_1A7977F6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solid1x16" x="1184" y="0" name="inst_19884AE1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solid1x16" x="592" y="0" name="inst_C7F61C7D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solid1x16" x="16" y="0" name="inst_558A8DDE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solid16x1" x="32" y="16" name="inst_674BACFB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solid16x1" x="288" y="16" name="inst_7B7D489B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solid16x1" x="336" y="112" name="inst_A6187BE0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solid16x1" x="32" y="80" name="inst_414BDD28" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solid3x1" x="544" y="16" name="inst_C718CEC5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solid16x1" x="672" y="160" name="inst_ABC4333F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solid16x1" x="928" y="32" name="inst_14E2072C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solid1x8" x="912" y="48" name="inst_128DB8A6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solid8x1" x="544" y="192" name="inst_43FE5F5F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solid8x1" x="544" y="176" name="inst_2C66F706" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solid3x2" x="656" y="176" name="inst_701A3927" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solid16x1" x="32" y="144" name="inst_C534629C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pcoin" x="32" y="32" name="inst_8A20E139" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pcoin" x="48" y="32" name="inst_E0EB11C9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pcoin" x="64" y="32" name="inst_7766441E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -399,6 +380,17 @@
     <instance objName="obj_pcoin" x="480" y="96" name="inst_A586D3CF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pcoin" x="496" y="96" name="inst_D8C8A1EC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pcoin" x="512" y="96" name="inst_81EE365A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solidtop" x="32" y="208" name="inst_AE121141" locked="0" code="" scaleX="72" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="16" y="32" name="inst_498EB433" locked="0" code="" scaleX="1" scaleY="11" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="32" y="16" name="inst_9D36F5F7" locked="0" code="" scaleX="35" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="32" y="80" name="inst_ED99F940" locked="0" code="" scaleX="16" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="336" y="112" name="inst_22ABF58A" locked="0" code="" scaleX="16" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="32" y="144" name="inst_AE7F1FFC" locked="0" code="" scaleX="16" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="592" y="32" name="inst_3A8A407E" locked="0" code="" scaleX="1" scaleY="9" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="544" y="176" name="inst_6283175E" locked="0" code="" scaleX="10" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="704" y="48" name="inst_DFA2CE4D" locked="0" code="" scaleX="14" scaleY="8" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="928" y="32" name="inst_1E52F73B" locked="0" code="" scaleX="16" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="1184" y="48" name="inst_6E122D0C" locked="0" code="" scaleX="1" scaleY="10" colour="4294967295" rotation="0"/>
     <instance objName="obj_switch" x="1040" y="176" name="inst_18F3CE2A" locked="0" code="sprite_index = spr_switch_green" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_musicplayer" x="0" y="0" name="inst_5D5118D1" locked="0" code="leveltime = 0&#xA;levelmusic = snd_palacemusic" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpleft" x="544" y="176" name="inst_1CF433AB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

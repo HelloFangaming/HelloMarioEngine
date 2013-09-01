@@ -51,11 +51,8 @@
   </views>
   <instances>
     <instance objName="obj_hammerprize" x="48" y="192" name="inst_B6A3B1B9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solidtop16x1" x="0" y="208" name="inst_24A5A808" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solidtop4x1" x="256" y="208" name="inst_752F03E1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solid1x2" x="160" y="176" name="inst_85CF8900" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solid1x2" x="256" y="176" name="inst_E13D4FB0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solidtop5x1" x="176" y="176" name="inst_C2A6431F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solidtop" x="0" y="208" name="inst_BD4742E3" locked="0" code="" scaleX="20" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="160" y="176" name="inst_AD70EC87" locked="0" code="" scaleX="7" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_musicplayer" x="0" y="0" name="inst_F4331EC7" locked="0" code="leveltime = 0&#xA;levelmusic = snd_hammerbattle" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_firebro" x="224" y="160" name="inst_CA2C286C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mario" x="40" y="176" name="inst_CAF5FB69" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

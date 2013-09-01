@@ -51,13 +51,10 @@
   </views>
   <instances>
     <instance objName="obj_bossdoor" x="192" y="144" name="inst_C30EA71D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solidtop16x1" x="0" y="208" name="inst_7C7BBBB3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solidtop16x1" x="256" y="208" name="inst_8A14550C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solid1x16" x="496" y="0" name="inst_47E8F1F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solid16x1" x="240" y="16" name="inst_325AF34D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solid1x8" x="192" y="16" name="inst_F60C28C3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solid16x1" x="-48" y="128" name="inst_8D458B54" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solid2x1" x="208" y="16" name="inst_3FE5D283" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="0" y="32" name="inst_63BB536B" locked="0" code="" scaleX="13" scaleY="7" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="208" y="16" name="inst_01625C4C" locked="0" code="" scaleX="18" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="496" y="32" name="inst_41C63E3F" locked="0" code="" scaleX="1" scaleY="11" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solidtop" x="0" y="208" name="inst_D34BD270" locked="0" code="" scaleX="31" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_musicplayer" x="0" y="0" name="inst_0D31E9E6" locked="0" code="leveltime = 1&#xA;levelmusic = snd_music_castle" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_endboss" x="344" y="64" name="inst_03DB24C6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_birdo" x="432" y="176" name="inst_982B2069" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
