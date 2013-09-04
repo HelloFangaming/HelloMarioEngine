@@ -74,7 +74,7 @@
 or count = 18
 {
     audio_stop_sound(snd_bonusmusic)
-    room_goto(rmMapScreen)
+    scr_return()
 }
 else
     ready = 0
@@ -212,5 +212,8 @@ lastcard = 0
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>16,21</point>
+    <point>21,21</point>
+  </PhysicsShapePoints>
 </object>

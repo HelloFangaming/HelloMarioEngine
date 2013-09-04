@@ -1,3 +1,10 @@
+/*
+**  Usage:
+**      scr_score()
+**
+**  Returns:
+**      The score as a formatted string with leading zeroes.
+*/
 switch (string_length(string(score)))
 {
     case 6: str = "0"+string(score); break;

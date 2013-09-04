@@ -64,10 +64,7 @@ menu[2] = "Quit Game"
     background_delete(back)
 audio_stop_all()
 audio_play_sound(snd_correct,0,0)
-if lives = 0
-    room_goto(rmGameOver)
-else
-    room_goto(rmMapScreen)
+scr_return()
 </string>
           </argument>
         </arguments>

@@ -1,3 +1,10 @@
+/*
+**  Usage:
+**      scr_canpull()
+**
+**  Returns:
+**      Whether or not Mario is able to start pulling on a Subcon item.
+*/
 if not instance_exists(obj_mario)
     return false
 if keyboard_check_pressed(vk_control)

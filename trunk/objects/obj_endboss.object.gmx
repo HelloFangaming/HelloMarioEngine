@@ -49,7 +49,7 @@ else
     audio_play_sound(snd_count,0,0)
 if global.time &gt; 0
     exit
-room_goto(rmMapScreen)
+scr_return()
 </string>
           </argument>
         </arguments>
@@ -205,5 +205,8 @@ instance_create(x,y,obj_smoke)
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>0,0</point>
+    <point>8,8</point>
+  </PhysicsShapePoints>
 </object>

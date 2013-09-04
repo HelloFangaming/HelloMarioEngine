@@ -1,3 +1,10 @@
+/*
+**  Usage:
+**      scr_pointscale()
+**
+**  Purpose:
+**      Creates the appropriate amount of points based on the variable hitpoint.
+*/
 if other.hitpoint = 0
 {
     audio_play_sound(snd_kick,0,0)
