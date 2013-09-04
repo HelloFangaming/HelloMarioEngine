@@ -1,3 +1,10 @@
+/*
+**  Usage:
+**      scr_pointscale_silent()
+**
+**  Purpose:
+**      Creates the appropriate amount of points based on the variable hitpoint, without sound.
+*/
 if other.hitpoint = 0
     instance_create(round(x)-8,round(y),obj_100pts)
 if other.hitpoint = 1

@@ -54,7 +54,7 @@ instance_activate_object(obj_persistent)
             <string>if background_exists(back)
     background_delete(back)
 audio_stop_all()
-room_goto(rmMapScreen)
+scr_return()
 </string>
           </argument>
         </arguments>

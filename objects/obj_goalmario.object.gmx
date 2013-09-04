@@ -298,7 +298,7 @@ and ready2 = 0
 }
 if not audio_is_playing(snd_flagsong)
 and global.time = 0
-    room_goto(rmMapScreen)
+    scr_return()
 </string>
           </argument>
         </arguments>

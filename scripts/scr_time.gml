@@ -1,3 +1,13 @@
+/*
+**  Usage:
+**      scr_time(variable)
+**
+**  Given:
+**      vatiable    The variable to format
+**
+**  Returns:
+**      The variable as a formatted string with leading zeroes.
+*/
 switch (string_length(string(argument0)))
 {
     case 2: str = "0"+string(argument0); break;

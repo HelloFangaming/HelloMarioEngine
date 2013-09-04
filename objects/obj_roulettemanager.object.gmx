@@ -74,7 +74,8 @@ alarm[2] = 2
             <kind>1</kind>
             <string>global.clear = 1
 audio_stop_sound(snd_bonusmusic)
-room_goto(rmMapScreen)</string>
+scr_return()
+</string>
           </argument>
         </arguments>
       </action>

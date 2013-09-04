@@ -1052,6 +1052,7 @@
     <script>scripts\scr_pointscale.gml</script>
     <script>scripts\scr_pointscale_silent.gml</script>
     <script>scripts\scr_canpull.gml</script>
+    <script>scripts\scr_return.gml</script>
     <script>scripts\string_reverse.gml</script>
     <script>scripts\string_make_width.gml</script>
     <script>scripts\turn_towards_direction.gml</script>
