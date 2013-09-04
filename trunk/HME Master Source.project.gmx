@@ -392,6 +392,7 @@
         <sprite>sprites\spr_mario_penguin_ride</sprite>
       </sprites>
       <sprite>sprites\spr_mario_dead</sprite>
+      <sprite>sprites\spr_mario_pull</sprite>
       <sprite>sprites\spr_mario_leaf_spin</sprite>
       <sprite>sprites\spr_mario_tanooki_spin</sprite>
       <sprite>sprites\spr_statue</sprite>
@@ -925,6 +926,7 @@
       <sprite>sprites\spr_hammer2</sprite>
       <sprite>sprites\spr_minibomb</sprite>
       <sprite>sprites\spr_iceball</sprite>
+      <sprite>sprites\spr_superball</sprite>
       <sprite>sprites\spr_frozenenemy</sprite>
       <sprite>sprites\spr_frozenenemy_big</sprite>
       <sprite>sprites\spr_frozenenemy_tall</sprite>

@@ -239,7 +239,9 @@ if collision_rectangle(bbox_left-1+hspeed,bbox_top+4,bbox_left,bbox_bottom-1,obj
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,obj_mario.color,obj_mario.image_alpha)</string>
+            <string>if instance_exists(obj_mario)
+    draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,obj_mario.color,obj_mario.image_alpha)
+</string>
           </argument>
         </arguments>
       </action>
@@ -256,5 +258,8 @@ if collision_rectangle(bbox_left-1+hspeed,bbox_top+4,bbox_left,bbox_bottom-1,obj
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>8,-16</point>
+    <point>8,8</point>
+  </PhysicsShapePoints>
 </object>
