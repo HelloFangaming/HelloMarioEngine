@@ -87,7 +87,7 @@ x = round(obj_mario.x)
 y = obj_mario.y
 image_alpha = obj_mario.image_alpha
 image_blend = obj_mario.color
-image_index = global.state+1
+image_index = global.state
 </string>
           </argument>
         </arguments>
