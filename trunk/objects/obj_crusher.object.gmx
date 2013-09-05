@@ -200,5 +200,8 @@ and y &lt; 1
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>72,208</point>
+    <point>104,104</point>
+  </PhysicsShapePoints>
 </object>

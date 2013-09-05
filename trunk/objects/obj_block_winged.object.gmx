@@ -293,5 +293,8 @@ and hspeed &lt; 0
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>11,10</point>
+    <point>19,19</point>
+  </PhysicsShapePoints>
 </object>

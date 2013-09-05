@@ -142,5 +142,8 @@ draw_sprite(spr_mariostart,0,view_xview[0]+160,view_yview[0]+120)
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>48,7</point>
+    <point>48,48</point>
+  </PhysicsShapePoints>
 </object>

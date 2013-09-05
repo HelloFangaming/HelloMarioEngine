@@ -598,5 +598,8 @@ if hitpoints = 0
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>9,4</point>
+    <point>18,18</point>
+  </PhysicsShapePoints>
 </object>

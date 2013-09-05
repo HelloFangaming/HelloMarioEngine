@@ -27,44 +27,18 @@
             <kind>1</kind>
             <string>obj_mario.invincible = 1
 if not audio_is_playing(snd_starman)
+{
+    audio_play_sound(snd_starman,99,1)
     audio_play_sound(snd_letsgo,0,0)
+}
 obj_musicplayer.alarm[1] = 1
 obj_mario.image_alpha = 0.7
 obj_mario.alarm[10] = 1
 alarm[0] = 1000
-alarm[1] = 2
-alarm[3] = 1
+alarm[1] = 1
 hitpoint = 0
 ready = 0
 newstar = 0
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="3">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>alarm[3] = 8
-if visible = 1
-{
-    varid = instance_create(x-8+random(16),y-8+random(16),obj_sparkletrail)
-    varid.depth = depth
-}
 </string>
           </argument>
         </arguments>
@@ -112,7 +86,12 @@ instance_destroy()</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_starman,99,1)
+            <string>alarm[1] = 8
+if visible = 1
+{
+    varid = instance_create(x-8+random(16),y-8+random(16),obj_sparkletrail)
+    varid.depth = depth
+}
 </string>
           </argument>
         </arguments>

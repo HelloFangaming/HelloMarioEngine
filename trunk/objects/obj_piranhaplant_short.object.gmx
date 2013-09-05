@@ -244,5 +244,8 @@ if other.invincible = 0
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>8,-9</point>
+    <point>12,12</point>
+  </PhysicsShapePoints>
 </object>
