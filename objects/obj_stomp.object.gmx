@@ -49,5 +49,8 @@ hitpoint = 0
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>40,0</point>
+    <point>40,40</point>
+  </PhysicsShapePoints>
 </object>

@@ -244,5 +244,8 @@ if collision_rectangle(x,y-28,x+15,y-1,obj_mario,0,0)
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>0,32</point>
+    <point>24,24</point>
+  </PhysicsShapePoints>
 </object>
