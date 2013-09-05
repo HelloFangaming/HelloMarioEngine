@@ -1,30 +1,25 @@
-if global.state = 0
-    sprite_index = spr_mario_small_climb
-if global.state = 1
-    sprite_index = spr_mario_big_climb
-if global.state = 2
-    sprite_index = spr_mario_fire_climb
-if global.state = 3
-    sprite_index = spr_mario_hammer_climb
-if global.state = 4
-    sprite_index = spr_mario_leaf_climb
-if global.state = 5
-    sprite_index = spr_mario_tanooki_climb
-if global.state = 6
-    sprite_index = spr_mario_frog_climb
-if global.state = 7
-    sprite_index = spr_mario_bomb_climb
-if global.state = 8
-    sprite_index = spr_mario_ice_climb
-if global.state = 9
-    sprite_index = spr_mario_super_climb
-if global.state = 10
-    sprite_index = spr_mario_carrot_climb
-if global.state = 11
-    sprite_index = spr_mario_ninja_climb
-if global.state = 12
-    sprite_index = spr_mario_bee_climb
-if global.state = 13
-    sprite_index = spr_mario_shell_climb
-if global.state = 14
-    sprite_index = spr_mario_penguin_climb
+/*
+**  Usage:
+**      scr_marioclimb()
+**
+**  Returns:
+**      The sprite_index of Mario's climbing sprite based on the current powerup.
+*/
+switch global.powerup
+{
+    case cs_small: return spr_mario_small_climb
+    case cs_big: return spr_mario_big_climb
+    case cs_fire: return spr_mario_fire_climb
+    case cs_hammer: return spr_mario_hammer_climb
+    case cs_leaf: return spr_mario_leaf_climb
+    case cs_tanooki: return spr_mario_tanooki_climb
+    case cs_frog: return spr_mario_frog_climb
+    case cs_bomb: return spr_mario_bomb_climb
+    case cs_ice: return spr_mario_ice_climb
+    case cs_super: return spr_mario_super_climb
+    case cs_carrot: return spr_mario_carrot_climb
+    case cs_ninja: return spr_mario_ninja_climb
+    case cs_bee: return spr_mario_bee_climb
+    case cs_shell: return spr_mario_shell_climb
+    case cs_penguin: return spr_mario_penguin_climb
+}

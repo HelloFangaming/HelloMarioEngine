@@ -143,7 +143,7 @@ and y&gt;view_yview[0]-96
             <kind>1</kind>
             <string>if not instance_exists(obj_mario)
     exit
-if (global.state = 6 or global.state = 14)
+if (global.powerup = cs_frog or global.powerup = cs_penguin)
 and obj_mario.holding = 0
     exit
 if collision_rectangle(x,y+16,x+32,y+96,obj_mario,0,0)
@@ -166,5 +166,8 @@ and obj_mario.vspeed &lt; 4
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>0,0</point>
+    <point>16,16</point>
+  </PhysicsShapePoints>
 </object>

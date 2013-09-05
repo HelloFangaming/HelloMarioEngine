@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>audio_play_sound(snd_spin,0,0)
 image_speed = 0.3
-if global.state = 5
+if global.powerup = cs_tanooki
     sprite_index = spr_mario_tanooki_spin
 obj_mario.visible = 0
 hitpoint = 0
@@ -78,7 +78,7 @@ hitpoint = 0
           <argument>
             <kind>1</kind>
             <string>if instance_exists(obj_mario)
-and (global.state = 4 or global.state = 5)
+and (global.powerup = cs_leaf or global.powerup = cs_tanooki)
 {
     x = obj_mario.x
     y = obj_mario.y

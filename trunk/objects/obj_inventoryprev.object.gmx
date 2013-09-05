@@ -49,36 +49,36 @@
           <argument>
             <kind>1</kind>
             <string>blah = 0
-if global.inventory[i] = 1
+if global.inventory[i] = cs_big
     sprite_index = spr_mushroom
-else if global.inventory[i] = 2
+else if global.inventory[i] = cs_fire
     sprite_index = spr_fireflower
-else if global.inventory[i] = 3
+else if global.inventory[i] = cs_hammer
     sprite_index = spr_hammersuit
-else if global.inventory[i] = 4
+else if global.inventory[i] = cs_leaf
 {
     sprite_index = spr_leaf
     blah = 2
 }
-else if global.inventory[i] = 5
+else if global.inventory[i] = cs_tanooki
     sprite_index = spr_tanookisuit
-else if global.inventory[i] = 6
+else if global.inventory[i] = cs_frog
     sprite_index = spr_frogsuit
-else if global.inventory[i] = 7
+else if global.inventory[i] = cs_bomb
     sprite_index = spr_bombshroom
-else if global.inventory[i] = 8
+else if global.inventory[i] = cs_ice
     sprite_index = spr_iceflower
-else if global.inventory[i] = 9
+else if global.inventory[i] = cs_super
     sprite_index = spr_superflower
-else if global.inventory[i] = 10
+else if global.inventory[i] = cs_carrot
     sprite_index = spr_carrot
-else if global.inventory[i] = 11
+else if global.inventory[i] = cs_ninja
     sprite_index = spr_ninjasuit
-else if global.inventory[i] = 12
+else if global.inventory[i] = cs_bee
     sprite_index = spr_beeshroom
-else if global.inventory[i] = 13
+else if global.inventory[i] = cs_shell
     sprite_index = spr_blueshell
-else if global.inventory[i] = 14
+else if global.inventory[i] = cs_penguin
     sprite_index = spr_penguinsuit
 draw_sprite_ext(sprite_index,blah,view_xview[0]+7+(i-1)*19,view_yview[0]+217,1,1,0,c_white,0.7)
 </string>
@@ -103,34 +103,34 @@ draw_sprite_ext(sprite_index,blah,view_xview[0]+7+(i-1)*19,view_yview[0]+217,1,1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.reserveitem = 1
-    draw_sprite_ext(spr_mushroom,-1,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-else if global.reserveitem = 2
-    draw_sprite_ext(spr_fireflower,-1,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-else if global.reserveitem = 3
-    draw_sprite_ext(spr_hammersuit,-1,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-else if global.reserveitem = 4
+            <string>if global.reserveitem = cs_big
+    draw_sprite_ext(spr_mushroom,0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
+else if global.reserveitem = cs_fire
+    draw_sprite_ext(spr_fireflower,0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
+else if global.reserveitem = cs_hammer
+    draw_sprite_ext(spr_hammersuit,0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
+else if global.reserveitem = cs_leaf
     draw_sprite_ext(spr_leaf,2,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-else if global.reserveitem = 5
-    draw_sprite_ext(spr_tanookisuit,-1,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-else if global.reserveitem = 6
-    draw_sprite_ext(spr_frogsuit,-1,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-else if global.reserveitem = 7
-    draw_sprite_ext(spr_bombshroom,-1,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-else if global.reserveitem = 8
-    draw_sprite_ext(spr_iceflower,-1,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-else if global.reserveitem = 9
-    draw_sprite_ext(spr_superflower,-1,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-else if global.reserveitem = 10
-    draw_sprite_ext(spr_carrot,-1,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-else if global.reserveitem = 11
-    draw_sprite_ext(spr_ninjasuit,-1,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-else if global.reserveitem = 12
-    draw_sprite_ext(spr_beeshroom,-1,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-else if global.reserveitem = 13
-    draw_sprite_ext(spr_blueshell,-1,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-else if global.reserveitem = 14
-    draw_sprite_ext(spr_penguinsuit,-1,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
+else if global.reserveitem = cs_tanooki
+    draw_sprite_ext(spr_tanookisuit,0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
+else if global.reserveitem = cs_frog
+    draw_sprite_ext(spr_frogsuit,0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
+else if global.reserveitem = cs_bomb
+    draw_sprite_ext(spr_bombshroom,0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
+else if global.reserveitem = cs_ice
+    draw_sprite_ext(spr_iceflower,0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
+else if global.reserveitem = cs_super
+    draw_sprite_ext(spr_superflower,0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
+else if global.reserveitem = cs_carrot
+    draw_sprite_ext(spr_carrot,0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
+else if global.reserveitem = cs_ninja
+    draw_sprite_ext(spr_ninjasuit,0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
+else if global.reserveitem = cs_bee
+    draw_sprite_ext(spr_beeshroom,0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
+else if global.reserveitem = cs_shell
+    draw_sprite_ext(spr_blueshell,0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
+else if global.reserveitem = cs_penguin
+    draw_sprite_ext(spr_penguinsuit,0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
 </string>
           </argument>
         </arguments>

@@ -53,6 +53,7 @@ direct = 1
 if ds_map_exists(global.mapscreen,string(id))
     instance_destroy()
 type = 0
+powerup = 0
 </string>
           </argument>
         </arguments>
@@ -211,7 +212,7 @@ and other.speed = 0
     ready = 1
     alarm[2] = 2
     global.mariostart = 1
-    global.powerup[0] = powerup
+    global.prize[0] = powerup
     with obj_mapmario event_user(1)
     if type = 0
         room_goto(rmHammerBattle)

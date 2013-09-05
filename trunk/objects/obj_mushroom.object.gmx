@@ -59,10 +59,10 @@ image_speed = 0.15
           <argument>
             <kind>1</kind>
             <string>instance_create(x,y,obj_100pts)
-if global.state = 0
-    global.state = 1
-else if global.reserveitem = 0
-    global.reserveitem = 1
+if global.powerup = cs_small
+    global.powerup = cs_big
+else if global.reserveitem = cs_small
+    global.reserveitem = cs_big
 other.invincible = 1
 audio_play_sound(snd_powerup,0,0)
 audio_play_sound(snd_jwin,0,0)
@@ -86,5 +86,8 @@ instance_destroy()
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>0,0</point>
+    <point>8,8</point>
+  </PhysicsShapePoints>
 </object>

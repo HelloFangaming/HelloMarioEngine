@@ -3,7 +3,7 @@
   <spriteName>spr_mario_small_climb</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-5</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 0.15
-scr_marioclimb()
+sprite_index = scr_marioclimb()
 y = room_height
 instance_create(x-8,y,obj_viner)
 alarm[0] = 128
@@ -136,5 +136,8 @@ if global.postchange = 1
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>8,-16</point>
+    <point>8,8</point>
+  </PhysicsShapePoints>
 </object>

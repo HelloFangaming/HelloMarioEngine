@@ -163,7 +163,7 @@ and ready = 0
             <string>varid = instance_create(x,y,obj_powerupsprout)
 if sprout &lt; 14
 {
-    if global.state = 0
+    if global.powerup = cs_small
         varid.sprite_index = spr_mushroom
     else
     {
@@ -246,5 +246,8 @@ else if sprout = 30
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>0,0</point>
+    <point>8,8</point>
+  </PhysicsShapePoints>
 </object>

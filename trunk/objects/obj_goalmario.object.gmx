@@ -35,7 +35,7 @@ ready2 = 0
 ready3 = 0
 image_speed = 0
 obj_musicplayer.alarm[1] = 1
-scr_mariogoal()
+sprite_index = scr_mariogoal()
 x = obj_flagpole.x+9
 vspeed = 1.5
 obj_flag.vspeed = 1.5
@@ -173,7 +173,7 @@ else
     audio_play_sound(snd_flagsong,1,0)
     audio_play_sound(snd_yahoo,0,0)
     image_xscale = 1
-    scr_mariojump()
+    sprite_index = scr_mariojump()
     vspeed = -3
     gravity = 0.225
     hspeed = 1
@@ -259,7 +259,7 @@ else
 if ready3 = 1
 {
     ready3 = 2
-    scr_mariowalk()
+    sprite_index = scr_mariowalk()
     image_speed = 0.15
 }
 </string>
@@ -294,7 +294,7 @@ and ready2 = 0
     alarm[3] = 10
     image_speed = 0
     image_index = 0
-    scr_mariowarp()
+    sprite_index = scr_mariowarp()
 }
 if not audio_is_playing(snd_flagsong)
 and global.time = 0

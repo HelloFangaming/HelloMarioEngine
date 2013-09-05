@@ -28,7 +28,7 @@
             <string>image_speed = 0.3
 vspeed = -3
 obj_mario.visible = 0
-scr_mariorun()
+sprite_index = scr_mariorun()
 fix = 0
 alarm[0] = 1
 mydir = 0
@@ -85,7 +85,7 @@ ready = 0
 if fix = 0
     exit
 if obj_mario.invincible = 1
-    scr_mariorun()
+    sprite_index = scr_mariorun()
 obj_mario.speed = 0
 obj_mario.x = x
 obj_mario.y = y

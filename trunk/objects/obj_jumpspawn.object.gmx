@@ -28,7 +28,7 @@
             <string>y = room_height
 vspeed = -6
 image_speed = 0
-scr_mariojump()
+sprite_index = scr_mariojump()
 </string>
           </argument>
         </arguments>
@@ -53,12 +53,12 @@ scr_mariojump()
             <kind>1</kind>
             <string>if holding = 1
 {
-    scr_mariohold()
+    sprite_index = scr_mariohold()
     image_index = 2
 }
 if holding = 2
 {
-    scr_mariocarry()
+    sprite_index = scr_mariocarry()
     image_index = 2
 }
 </string>
@@ -144,5 +144,8 @@ if global.postchange = 1
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>8,-16</point>
+    <point>8,8</point>
+  </PhysicsShapePoints>
 </object>

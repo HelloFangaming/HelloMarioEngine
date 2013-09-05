@@ -26,12 +26,12 @@
           <argument>
             <kind>1</kind>
             <string>instance_create(x,y,obj_100pts)
-if global.state = 1
-and global.reserveitem = 0
-    global.reserveitem = 1
-else if global.state &gt; 1
-    global.reserveitem = global.state
-global.state = 6
+if global.powerup = cs_big
+and global.reserveitem = cs_small
+    global.reserveitem = cs_big
+else if global.powerup &gt; cs_big
+    global.reserveitem = global.powerup
+global.powerup = cs_frog
 other.invincible = 1
 audio_play_sound(snd_powerup,0,0)
 audio_play_sound(snd_gotcha,0,0)
@@ -55,5 +55,8 @@ instance_destroy()
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>0,0</point>
+    <point>8,8</point>
+  </PhysicsShapePoints>
 </object>

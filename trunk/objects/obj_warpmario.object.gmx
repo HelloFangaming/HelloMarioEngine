@@ -252,9 +252,9 @@ if vspeed = 0
     if cannon = 0
     {
         if myitem = 0
-            scr_mariowalk()
+            sprite_index = scr_mariowalk()
         else
-            scr_mariohold()
+            sprite_index = scr_mariohold()
     }
 }
 else
@@ -263,7 +263,7 @@ else
     image_speed = 0
     image_index = 0
     if cannon = 0
-        scr_mariowarp()
+        sprite_index = scr_mariowarp()
 }
 if cannon = 0
 {
@@ -432,9 +432,9 @@ if cannon = 1
     speed = 0
     visible = 1
     if myitem = 0
-        scr_mariorunjump()
+        sprite_index = scr_mariorunjump()
     else
-        scr_mariohold()
+        sprite_index = scr_mariohold()
     image_speed = 0
     image_index = 0
     alarm[3] = 30
@@ -466,7 +466,7 @@ if cannon = 1
     cannon = 1
     speed = 0
     visible = 1
-    scr_mariowarp()
+    sprite_index = scr_mariowarp()
     image_speed = 0
     image_index = 0
     alarm[1] = 16
@@ -555,5 +555,8 @@ and hspeed = 0
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>16,0</point>
+    <point>16,16</point>
+  </PhysicsShapePoints>
 </object>

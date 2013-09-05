@@ -64,7 +64,7 @@ held = 0
     if instance_exists(obj_mario)
     {
         x = obj_mario.x-8
-        if global.state = 0
+        if global.powerup = cs_small
             y = obj_mario.y+21
         else
             y = obj_mario.y+11
@@ -88,7 +88,7 @@ held = 0
     if instance_exists(obj_warpnoteblock)
     {
         x = obj_warpnoteblock.x-8
-        if global.state = 0
+        if global.powerup = cs_small
             y = obj_warpnoteblock.y+21
         else
             y = obj_warpnoteblock.y+11
@@ -97,7 +97,7 @@ held = 0
     if instance_exists(obj_jumpspawn)
     {
         x = obj_jumpspawn.x-8
-        if global.state = 0
+        if global.powerup = cs_small
             y = obj_jumpspawn.y+21
         else
             y = obj_jumpspawn.y+11
@@ -156,5 +156,8 @@ and instance_exists(obj_mario)
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>0,0</point>
+    <point>8,8</point>
+  </PhysicsShapePoints>
 </object>

@@ -515,9 +515,9 @@ and instance_exists(obj_mario)
             <string>if instance_exists(obj_mario)
     if not instance_exists(obj_invincibility)
     and not instance_exists(obj_slider)
-    and global.state = 0
+    and global.powerup = cs_small
     and obj_mario.invincible = 1
-    and global.reserveitem &gt; 0
+    and global.reserveitem &gt; cs_small
     and docamera = 0
         event_user(0)
 if global.coins &gt; 99
@@ -595,35 +595,35 @@ switchon = 1
           <argument>
             <kind>1</kind>
             <string>varid = instance_create(view_xview+152,view_yview+8,obj_reserveitem)
-if global.reserveitem = 1
+if global.reserveitem = cs_big
     with varid sprite_index = spr_mushroom
-if global.reserveitem = 2
+if global.reserveitem = cs_fire
     with varid sprite_index = spr_fireflower
-if global.reserveitem = 3
+if global.reserveitem = cs_hammer
     with varid sprite_index = spr_hammersuit
-if global.reserveitem = 4
+if global.reserveitem = cs_leaf
     with varid sprite_index = spr_leaf
-if global.reserveitem = 5
+if global.reserveitem = cs_tanooki
     with varid sprite_index = spr_tanookisuit
-if global.reserveitem = 6
+if global.reserveitem = cs_frog
     with varid sprite_index = spr_frogsuit
-if global.reserveitem = 7
+if global.reserveitem = cs_bomb
     with varid sprite_index = spr_bombshroom
-if global.reserveitem = 8
+if global.reserveitem = cs_ice
     with varid sprite_index = spr_iceflower
-if global.reserveitem = 9
+if global.reserveitem = cs_super
     with varid sprite_index = spr_superflower
-if global.reserveitem = 10
+if global.reserveitem = cs_carrot
     with varid sprite_index = spr_carrot
-if global.reserveitem = 11
+if global.reserveitem = cs_ninja
     with varid sprite_index = spr_ninjasuit
-if global.reserveitem = 12
+if global.reserveitem = cs_bee
     with varid sprite_index = spr_beeshroom
-if global.reserveitem = 13
+if global.reserveitem = cs_shell
     with varid sprite_index = spr_blueshell
-if global.reserveitem = 14
+if global.reserveitem = cs_penguin
     with varid sprite_index = spr_penguinsuit
-global.reserveitem = 0
+global.reserveitem = cs_small
 </string>
           </argument>
         </arguments>
@@ -697,33 +697,33 @@ draw_text(view_xview[0]+114,view_yview[0]+10,scr_time(global.time))
 //P Meter
 draw_sprite_ext(spr_pmeter,pmeter,view_xview[0]+16,view_yview[0]+228,1,1,0,c_white,0.7)
 //Reserve Items
-if global.reserveitem = 1
+if global.reserveitem = cs_big
     draw_sprite_ext(spr_mushroom,0,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
-else if global.reserveitem = 2
+else if global.reserveitem = cs_fire
     draw_sprite_ext(spr_fireflower,weird,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
-else if global.reserveitem = 3
+else if global.reserveitem = cs_hammer
     draw_sprite_ext(spr_hammersuit,0,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
-else if global.reserveitem = 4
+else if global.reserveitem = cs_leaf
     draw_sprite_ext(spr_leaf,2,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
-else if global.reserveitem = 5
+else if global.reserveitem = cs_tanooki
     draw_sprite_ext(spr_tanookisuit,0,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
-else if global.reserveitem = 6
+else if global.reserveitem = cs_frog
     draw_sprite_ext(spr_frogsuit,0,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
-else if global.reserveitem = 7
+else if global.reserveitem = cs_bomb
     draw_sprite_ext(spr_bombshroom,0,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
-else if global.reserveitem = 8
+else if global.reserveitem = cs_ice
     draw_sprite_ext(spr_iceflower,weird,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
-else if global.reserveitem = 9
-    draw_sprite_ext(spr_superflower,weird,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
-else if global.reserveitem = 10
+else if global.reserveitem = cs_super
+    draw_sprite_ext(spr_superflower,0,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
+else if global.reserveitem = cs_carrot
     draw_sprite_ext(spr_carrot,0,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
-else if global.reserveitem = 11
+else if global.reserveitem = cs_ninja
     draw_sprite_ext(spr_ninjasuit,0,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
-else if global.reserveitem = 12
+else if global.reserveitem = cs_bee
     draw_sprite_ext(spr_beeshroom,0,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
-else if global.reserveitem = 13
+else if global.reserveitem = cs_shell
     draw_sprite_ext(spr_blueshell,0,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
-else if global.reserveitem = 14
+else if global.reserveitem = cs_penguin
     draw_sprite_ext(spr_penguinsuit,0,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
 //Reset Alpha
 draw_set_alpha(1)
@@ -752,7 +752,7 @@ draw_set_alpha(1)
           <argument>
             <kind>1</kind>
             <string>if instance_exists(obj_mario)
-and global.reserveitem &gt; 0
+and global.reserveitem &gt; cs_small
 and docamera = 0
     event_user(0)
 </string>

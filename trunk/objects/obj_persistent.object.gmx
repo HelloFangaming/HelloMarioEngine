@@ -126,9 +126,9 @@ global.coins = 0
 lives = 5
 score = 0
 global.clear = 0
-global.state = 0
+global.powerup = cs_small
+global.reserveitem = cs_small
 global.midwaypoint = 0
-global.reserveitem = 0
 global.palacered = 0
 global.palaceblue = 0
 global.palaceyellow = 0
@@ -144,6 +144,9 @@ global.cardscore = 80000
 global.pswitch = 0
 global.star = 0
 global.onoffblock = 0
+global.prize[0] = 0
+global.prize[1] = 0
+global.prize[2] = 0
 //Set up map inventory variables
 done=0
 repeat(16)

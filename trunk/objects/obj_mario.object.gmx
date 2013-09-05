@@ -220,31 +220,31 @@ alarm[9] = 24 + random(96)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.state = 2
+            <string>if global.powerup = cs_fire
 and instance_number(obj_fireball) &lt; 2
 {
     varid = instance_create(x,y+16,obj_fireball)
     varid.hspeed = -3*direct
 }
-if global.state = 3
+if global.powerup = cs_hammer
 and instance_number(obj_hammer) &lt; 2
 {
     varid = instance_create(x,y+16,obj_hammer)
     varid.hspeed = -2*direct
 }
-if (global.state = 8 or global.state = 14)
+if (global.powerup = cs_ice or global.powerup = cs_penguin)
 and instance_number(obj_iceball) &lt; 1
 {
     varid = instance_create(x,y+16,obj_iceball)
     varid.hspeed = -3*direct
 }
-if global.state = 9
+if global.powerup = cs_super
 and instance_number(obj_superball) &lt; 2
 {
     varid = instance_create(x,y+16,obj_superball)
     varid.hspeed = -2*direct
 }
-if global.state = 11
+if global.powerup = cs_ninja
 and instance_number(obj_shuriken) &lt; 2
 {
     varid = instance_create(x,y+16,obj_shuriken)
@@ -272,7 +272,7 @@ and instance_number(obj_shuriken) &lt; 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.state = 2
+            <string>if global.powerup = cs_fire
 {
     if instance_number(obj_fireball) &lt; 2
     {
@@ -281,7 +281,7 @@ and instance_number(obj_shuriken) &lt; 2
     }
     alarm[8] = 10
 }
-if global.state = 3
+if global.powerup = cs_hammer
 {
     if instance_number(obj_hammer) &lt; 2
     {
@@ -290,8 +290,8 @@ if global.state = 3
     }
     alarm[8] = 10
 }
-if global.state = 8
-or global.state = 14
+if global.powerup = cs_ice
+or global.powerup = cs_penguin
 {
     if instance_number(obj_iceball) &lt; 1
     {
@@ -300,7 +300,7 @@ or global.state = 14
     }
     alarm[8] = 10
 }
-if global.state = 9
+if global.powerup = cs_super
 {
     if instance_number(obj_superball) &lt; 2
     {
@@ -309,7 +309,7 @@ if global.state = 9
     }
     alarm[8] = 10
 }
-if global.state = 11
+if global.powerup = cs_ninja
 {
     if instance_number(obj_shuriken) &lt; 2
     {
@@ -501,39 +501,39 @@ alarm[2] = 4</string>
           <argument>
             <kind>1</kind>
             <string>//This script decides what sprite Mario will use.
-if global.state = 0
+if global.powerup = cs_small
     scr_smallmario()
-else if global.state = 6
+else if global.powerup = cs_frog
     scr_frogmario()
 else
 {
     if isduck = 0
     {
-        if global.state = 1
+        if global.powerup = cs_big
             scr_bigmario()
-        else if global.state = 2
+        else if global.powerup = cs_fire
             scr_firemario()
-        else if global.state = 3
+        else if global.powerup = cs_hammer
             scr_hammermario()
-        else if global.state = 4
+        else if global.powerup = cs_leaf
             scr_leafmario()
-        else if global.state = 5
+        else if global.powerup = cs_tanooki
             scr_tanookimario()
-        else if global.state = 7
+        else if global.powerup = cs_bomb
             scr_bombmario()
-        else if global.state = 8
+        else if global.powerup = cs_ice
             scr_icemario()
-        else if global.state = 9
+        else if global.powerup = cs_super
             scr_supermario()
-        else if global.state = 10
+        else if global.powerup = cs_carrot
             scr_carrotmario()
-        else if global.state = 11
+        else if global.powerup = cs_ninja
             scr_ninjamario()
-        else if global.state = 12
+        else if global.powerup = cs_bee
             scr_beemario()
-        else if global.state = 13
+        else if global.powerup = cs_shell
             scr_shellmario()
-        else if global.state = 14
+        else if global.powerup = cs_penguin
             scr_penguinmario()
     }
     else if isduck = 1
@@ -543,32 +543,7 @@ else
             isjump = 1
         else
             isjump = 0
-        if global.state = 1
-            sprite_index = spr_mario_big_duck
-        else if global.state = 2
-            sprite_index = spr_mario_fire_duck
-        else if global.state = 3
-            sprite_index = spr_mario_hammer_duck
-        else if global.state = 4
-            sprite_index = spr_mario_leaf_duck
-        else if global.state = 5
-            sprite_index = spr_mario_tanooki_duck
-        else if global.state = 7
-            sprite_index = spr_mario_bomb_duck
-        else if global.state = 8
-            sprite_index = spr_mario_ice_duck
-        else if global.state = 9
-            sprite_index = spr_mario_super_duck
-        else if global.state = 10
-            sprite_index = spr_mario_carrot_duck
-        else if global.state = 11
-            sprite_index = spr_mario_ninja_duck
-        else if global.state = 12
-            sprite_index = spr_mario_bee_duck
-        else if global.state = 13
-            sprite_index = spr_mario_shell_duck
-        else if global.state = 14
-            sprite_index = spr_mario_penguin_duck
+        sprite_index = scr_marioduck()
         if audio_is_playing(snd_skid)
             audio_stop_sound(snd_skid)
     }
@@ -704,8 +679,8 @@ else
           <argument>
             <kind>1</kind>
             <string>//Makes Mario duck.
-if global.state &gt; 0
-and global.state != 6
+if global.powerup &gt; cs_small
+and global.powerup != cs_frog
 and state &lt; 2
 and isduck = 0
 and holding = 0
@@ -772,7 +747,7 @@ and not instance_exists(obj_statue)
             <kind>1</kind>
             <string>//Ninja Mario's Wall Climbing Script
 //Executes 60 times per second when Mario meets the requirements for wall climbing.
-if global.state != 11
+if global.powerup != cs_ninja
 {
     state = 0
     jumpnow = 0
@@ -948,7 +923,7 @@ and global.yoshi &lt; 2
     stompstyle = 0
 if floatnow = 1
     audio_stop_sound(snd_spin)
-if (global.state != 6 and global.state != 14)
+if (global.powerup != cs_frog and global.powerup != cs_penguin)
 or holding &gt; 0
 {
     if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
@@ -1125,7 +1100,7 @@ and collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,0)
     and not collision_rectangle(bbox_left,bbox_bottom-1,bbox_right,bbox_bottom,obj_slopeparent,1,0)
         while collision_rectangle(bbox_left,bbox_top+1,bbox_right,bbox_top+1,obj_solid,1,0)
             y+=1
-    if (global.state != 6 and global.state != 14)
+    if (global.powerup != cs_frog and global.powerup != cs_penguin)
     or holding != 0
     {
         audio_play_sound(snd_bump,0,0)
@@ -1167,7 +1142,7 @@ if not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,
     }
     if not collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+2,obj_swim,0,0)
         jumpnow = 0
-    if (global.state = 6 or global.state = 14)
+    if (global.powerup = cs_frog or global.powerup = cs_penguin)
     and noisy = 1
     {
         noisy = 0
@@ -1225,7 +1200,7 @@ if vspeed &gt; 3
     vspeed = 3
 if keyboard_check(vk_control)
 {
-    if global.state = 6
+    if global.powerup = cs_frog
     and global.yoshi = 0
     {
         varrun = 0
@@ -1236,7 +1211,7 @@ if keyboard_check(vk_control)
         varrun = 1
         hspeedmax = 3
     }
-    if global.state = 12
+    if global.powerup = cs_bee
     and isfloating = 1
     {
         varrun = 0
@@ -1261,7 +1236,7 @@ and isjump = 0
         vspeed = -4.5
     else
     {
-        if global.state = 6
+        if global.powerup = cs_frog
         and global.yoshi = 0
             vspeed = -4.5
         else
@@ -1351,7 +1326,7 @@ if canturn = 0
             }
         }
         if isjump = 0
-        or not (global.state = 11 and global.yoshi = 0)
+        or not (global.powerup = cs_ninja and global.yoshi = 0)
             direct = 1
     }
     else if keyboard_check(vk_left)
@@ -1371,7 +1346,7 @@ if canturn = 0
             }
         }
         if isjump = 0
-        or not (global.state = 11 and global.yoshi = 0)
+        or not (global.powerup = cs_ninja and global.yoshi = 0)
             direct = -1
     }
     else if isjump = 0
@@ -1496,7 +1471,7 @@ and jumpnow = 0
 if stompstyle != 0
 and holding != 0
     stompstyle = 0
-if (global.state = 10 or (global.state = 12 and beefly &lt; 128))
+if (global.powerup = cs_carrot or (global.powerup = cs_bee and beefly &lt; 128))
 and isjump = 1
 and stompstyle = 0
 and isduck = 0
@@ -1507,7 +1482,7 @@ and keyboard_check(vk_shift)
     {
         vspeed = 0.5
         isfloating = 1
-        if global.state = 12
+        if global.powerup = cs_bee
         and not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,0)
         {
             vspeed = -1.5
@@ -1516,7 +1491,7 @@ and keyboard_check(vk_shift)
     }
     else
     {
-        if global.state = 12
+        if global.powerup = cs_bee
         and isfloating = 1
         {
             vspeed = -1.5
@@ -1544,7 +1519,7 @@ and floatnow = 1
     audio_stop_sound(snd_spin)
     floatnow = 0
 }
-if global.state = 11
+if global.powerup = cs_ninja
 and vspeed &gt; 0
 and isjump = 1
 and isduck = 0
@@ -1658,24 +1633,24 @@ if global.yoshi = 2
     alarm[1] = 1
     exit
 }
-if global.state = 0
+if global.powerup = cs_small
 {
     instance_create(x,y,obj_deadmario)
     instance_destroy()
     exit
 }
-if global.state = 1
+if global.powerup = cs_big
 {
-    global.state = 0
+    global.powerup = cs_small
     invincible = 1
     audio_play_sound(snd_warp,0,0)
     audio_play_sound(snd_ow,0,0)
     alarm[3] = 120
     alarm[1] = 1
 }
-if global.state &gt; 1
+if global.powerup &gt; cs_big
 {
-    global.state = 1
+    global.powerup = cs_big
     invincible = 1
     audio_play_sound(snd_warp,0,0)
     audio_play_sound(snd_ow,0,0)
@@ -1824,7 +1799,7 @@ if holding = 0
 and global.yoshi = 0
 and isswim = 0
 {
-    if (global.state = 13 or global.state = 14)
+    if (global.powerup = cs_shell or global.powerup = cs_penguin)
     and state = 1
         instance_create(x,y,obj_inshell)
     else if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+3,obj_slopeparent,1,0)
@@ -1864,42 +1839,42 @@ and not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_holdpa
 and stompstyle = 0
 and obj_camera.docamera = 0
 {
-    if global.state = 2
+    if global.powerup = cs_fire
     and instance_number(obj_fireball) &lt; 2
     and isduck = 0
     {
         firing = 9
         instance_create(x,y+16,obj_fireball)
     }
-    if global.state = 3
+    if global.powerup = cs_hammer
     and instance_number(obj_hammer) &lt; 2
     and isduck = 0
     {
         firing = 9
         instance_create(x,y+16,obj_hammer)
     }
-    if global.state = 7
+    if global.powerup = cs_bomb
     and instance_number(obj_minibomb) &lt; 1
     and isduck = 0
     {
         firing = 9
         instance_create(x,y+16,obj_minibomb)
     }
-    if (global.state = 8 or (global.state = 14 and isswim = 0))
+    if (global.powerup = cs_ice or (global.powerup = cs_penguin and isswim = 0))
     and instance_number(obj_iceball) &lt; 1
     and isduck = 0
     {
         firing = 9
         instance_create(x,y+16,obj_iceball)
     }
-    if global.state = 9
+    if global.powerup = cs_super
     and instance_number(obj_superball) &lt; 2
     and isduck = 0
     {
         firing = 9
         instance_create(x,y+16,obj_superball)
     }
-    if global.state = 11
+    if global.powerup = cs_ninja
     and instance_number(obj_shuriken) &lt; 2
     and isduck = 0
     and state != 4
@@ -1907,13 +1882,13 @@ and obj_camera.docamera = 0
         firing = 9
         instance_create(x,y+20,obj_shuriken)
     }
-    if global.state = 5
+    if global.powerup = cs_tanooki
     and not instance_exists(obj_spinner)
     and not instance_exists(obj_slider)
     and global.yoshi = 0
     and keyboard_check(vk_down)
         instance_create(x,y,obj_statue)
-    if (global.state = 4 or global.state = 5)
+    if (global.powerup = cs_leaf or global.powerup = cs_tanooki)
     and not instance_exists(obj_spinner)
     and not instance_exists(obj_statue)
     and isduck = 0
@@ -1951,7 +1926,7 @@ and kk = 0
           <argument>
             <kind>1</kind>
             <string>//Handles Leaf and Tanooki Mario's flying.
-if (global.state = 4 or global.state = 5)
+if (global.powerup = cs_leaf or global.powerup = cs_tanooki)
 and state = 2
 and isswim = 0
 and isduck = 0
