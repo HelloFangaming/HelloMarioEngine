@@ -54,35 +54,35 @@ and collision_rectangle(x,y,x+31,y+31,obj_mario,0,0)
     obj_mushtoad.ready = 1
     obj_mushtoad.alarm[1] = 200
     varid = instance_create(x+8,y,obj_getpowerup)
-    if global.powerup[type] = 1
+    if global.prize[type] = cs_big
         with varid sprite_index = spr_mushroom
-    if global.powerup[type] = 2
+    if global.prize[type] = cs_fire
         with varid sprite_index = spr_fireflower
-    if global.powerup[type] = 3
+    if global.prize[type] = cs_hammer
         with varid sprite_index = spr_hammersuit
-    if global.powerup[type] = 4
+    if global.prize[type] = cs_leaf
         with varid sprite_index = spr_leaf
-    if global.powerup[type] = 5
+    if global.prize[type] = cs_tanooki
         with varid sprite_index = spr_tanookisuit
-    if global.powerup[type] = 6
+    if global.prize[type] = cs_frog
         with varid sprite_index = spr_frogsuit
-    if global.powerup[type] = 7
+    if global.prize[type] = cs_bomb
         with varid sprite_index = spr_bombshroom
-    if global.powerup[type] = 8
+    if global.prize[type] = cs_ice
         with varid sprite_index = spr_iceflower
-    if global.powerup[type] = 9
+    if global.prize[type] = cs_super
         with varid sprite_index = spr_superflower
-    if global.powerup[type] = 10
+    if global.prize[type] = cs_carrot
         with varid sprite_index = spr_carrot
-    if global.powerup[type] = 11
+    if global.prize[type] = cs_ninja
         with varid sprite_index = spr_ninjasuit
-    if global.powerup[type] = 12
+    if global.prize[type] = cs_bee
         with varid sprite_index = spr_beeshroom
-    if global.powerup[type] = 13
+    if global.prize[type] = cs_shell
         with varid sprite_index = spr_blueshell
-    if global.powerup[type] = 14
+    if global.prize[type] = cs_penguin
         with varid sprite_index = spr_penguinsuit
-    if global.powerup[type] = 15
+    if global.prize[type] = cs_1up
         with varid sprite_index = spr_1up
 }
 </string>
@@ -102,5 +102,8 @@ and collision_rectangle(x,y,x+31,y+31,obj_mario,0,0)
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>0,0</point>
+    <point>16,16</point>
+  </PhysicsShapePoints>
 </object>

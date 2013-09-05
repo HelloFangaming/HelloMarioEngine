@@ -109,7 +109,7 @@ and ready = 0
 if collision_rectangle(x,y-4,x+15,y,obj_mario,0,0)
 and obj_mario.stompstyle = 1
 and obj_mario.vspeed &gt; 0
-and global.state &gt; 0
+and global.powerup &gt; cs_small
 and global.yoshi = 0
 {
     with obj_mario event_user(1)
@@ -145,5 +145,8 @@ and global.yoshi = 0
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>0,0</point>
+    <point>8,8</point>
+  </PhysicsShapePoints>
 </object>

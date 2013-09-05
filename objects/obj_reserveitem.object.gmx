@@ -111,45 +111,45 @@ else
             <kind>1</kind>
             <string>if sprite_index = spr_mushroom
 {
-    if global.state = 0
-        global.state = 1
-    else if global.reserveitem = 0
-        global.reserveitem = 1
+    if global.powerup = cs_small
+        global.powerup = cs_big
+    else if global.reserveitem = cs_small
+        global.reserveitem = cs_big
     audio_play_sound(snd_jwin,0,0)
 }
 else
 {
-    if global.state = 1
-    and global.reserveitem = 0
-        global.reserveitem = 1
-    else if global.state &gt; 1
-        global.reserveitem = global.state
+    if global.powerup = cs_big
+    and global.reserveitem = cs_small
+        global.reserveitem = cs_big
+    else if global.powerup &gt; cs_big
+        global.reserveitem = global.powerup
     if sprite_index = spr_fireflower
-        global.state = 2
+        global.powerup = cs_fire
     if sprite_index = spr_hammersuit
-        global.state = 3
+        global.powerup = cs_hammer
     if sprite_index = spr_leaf
-        global.state = 4
+        global.powerup = cs_leaf
     if sprite_index = spr_tanookisuit
-        global.state = 5
+        global.powerup = cs_tanooki
     if sprite_index = spr_frogsuit
-        global.state = 6
+        global.powerup = cs_frog
     if sprite_index = spr_bombshroom
-        global.state = 7
+        global.powerup = cs_hammer
     if sprite_index = spr_iceflower
-        global.state = 8
+        global.powerup = cs_ice
     if sprite_index = spr_superflower
-        global.state = 9
+        global.powerup = cs_super
     if sprite_index = spr_carrot
-        global.state = 10
+        global.powerup = cs_carrot
     if sprite_index = spr_ninjasuit
-        global.state = 11
+        global.powerup = cs_ninja
     if sprite_index = spr_beeshroom
-        global.state = 12
+        global.powerup = cs_bee
     if sprite_index = spr_blueshell
-        global.state = 13
+        global.powerup = cs_shell
     if sprite_index = spr_penguinsuit
-        global.state = 14
+        global.powerup = cs_penguin
     audio_play_sound(snd_gotcha,0,0)
 }
 audio_play_sound(snd_retrieve,0,0)

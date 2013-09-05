@@ -49,6 +49,9 @@ if ds_map_exists(global.mapscreen,string(id))
     ready = 1
 else
     ready = 0
+powerup1 = 0
+powerup2 = 0
+powerup3 = 0
 </string>
           </argument>
         </arguments>
@@ -101,9 +104,9 @@ and other.speed = 0
 and ready = 0
 {
     with obj_mapmario event_user(1)
-    global.powerup[0] = powerup1
-    global.powerup[1] = powerup2
-    global.powerup[2] = powerup3
+    global.prize[0] = powerup1
+    global.prize[1] = powerup2
+    global.prize[2] = powerup3
     room_goto(rmBonus)
 }
 if obj_mapmario.speed = 0
@@ -125,5 +128,8 @@ if obj_mapmario.speed = 0
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>0,0</point>
+    <point>8,8</point>
+  </PhysicsShapePoints>
 </object>

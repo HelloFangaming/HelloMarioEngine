@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_mariowarp()
+            <string>sprite_index = scr_mariowarp()
 alarm[0] = 27
 myitem = 0
 bugfix = 0

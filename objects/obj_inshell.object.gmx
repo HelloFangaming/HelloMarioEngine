@@ -31,7 +31,7 @@ if obj_mario.invincible = 0
 else
     yayaya = 0
 hitpoint = 0
-if global.state = 14
+if global.powerup = cs_penguin
     sprite_index = spr_mario_penguin_swim
 hspeed = obj_mario.hspeed
 direct = obj_mario.direct
@@ -62,7 +62,7 @@ image_speed = 0.3
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.state = 13
+            <string>if global.powerup = cs_shell
     sprite_index = spr_inshell
 else
 {
@@ -108,10 +108,10 @@ if instance_exists(obj_mario)
 }
 else
     instance_destroy()
-if (global.state != 13 and global.state != 14)
+if (global.powerup != cs_shell and global.powerup != cs_penguin)
 or not keyboard_check(vk_down)
-or (global.state = 13 and sprite_index = spr_mario_penguin_swim)
-or (global.state = 14 and sprite_index != spr_mario_penguin_swim)
+or (global.powerup = cs_shell and sprite_index = spr_mario_penguin_swim)
+or (global.powerup = cs_penguin and sprite_index != spr_mario_penguin_swim)
     instance_destroy()
 if hspeed &lt; 0.05
 and hspeed &gt; -0.05
@@ -139,7 +139,7 @@ and collision_rectangle(bbox_right+hspeed,y+20,bbox_right+hspeed,y+29,obj_solid,
 {
     while collision_rectangle(bbox_right,bbox_top+8,bbox_right,bbox_bottom-1,obj_solid,0,0)
         x-=1
-    if global.state = 13
+    if global.powerup = cs_shell
     {
         audio_play_sound(snd_bump,0,0)
         instance_create(x-8,y+16,obj_blockbumper)
@@ -153,7 +153,7 @@ and collision_rectangle(bbox_left+hspeed,y+20,bbox_left+hspeed,y+29,obj_solid,0,
 {
     while collision_rectangle(bbox_left,bbox_top+8,bbox_left,bbox_bottom-1,obj_solid,0,0)
         x+=1
-    if global.state = 13
+    if global.powerup = cs_shell
     {
         audio_play_sound(snd_bump,0,0)
         instance_create(x-8,y+16,obj_blockbumper)
@@ -164,7 +164,7 @@ and collision_rectangle(bbox_left+hspeed,y+20,bbox_left+hspeed,y+29,obj_solid,0,
 }
 if sprite_index = spr_inshell
     image_speed = speed/6
-if global.state = 14
+if global.powerup = cs_penguin
 {
     if hspeed &gt; 0
         direct = 1

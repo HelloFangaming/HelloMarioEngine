@@ -33,9 +33,9 @@ else
 hspeed = obj_mario.hspeed
 obj_mario.invincible = 1
 obj_mario.visible = 0
-if global.state &gt; 0
+if global.powerup &gt; cs_small
     mask_index = spr_bigmask
-scr_marioslide()
+sprite_index = scr_marioslide()
 direct = obj_mario.direct
 friction = 0.1
 hitpoint = 0

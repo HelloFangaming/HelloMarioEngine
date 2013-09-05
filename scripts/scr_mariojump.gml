@@ -1,30 +1,25 @@
-if global.state = 0
-    sprite_index = spr_mario_small_jump
-if global.state = 1
-    sprite_index = spr_mario_big_jump
-if global.state = 2
-    sprite_index = spr_mario_fire_jump
-if global.state = 3
-    sprite_index = spr_mario_hammer_jump
-if global.state = 4
-    sprite_index = spr_mario_leaf_jump
-if global.state = 5
-    sprite_index = spr_mario_tanooki_jump
-if global.state = 6
-    sprite_index = spr_mario_frog_jump
-if global.state = 7
-    sprite_index = spr_mario_bomb_jump
-if global.state = 8
-    sprite_index = spr_mario_ice_jump
-if global.state = 9
-    sprite_index = spr_mario_super_jump
-if global.state = 10
-    sprite_index = spr_mario_carrot_jump
-if global.state = 11
-    sprite_index = spr_mario_ninja_jump
-if global.state = 12
-    sprite_index = spr_mario_bee_jump
-if global.state = 13
-    sprite_index = spr_mario_shell_jump
-if global.state = 14
-    sprite_index = spr_mario_penguin_jump
+/*
+**  Usage:
+**      scr_mariojump()
+**
+**  Returns:
+**      The sprite_index of Mario's jumping sprite based on the current powerup.
+*/
+switch global.powerup
+{
+    case cs_small: return spr_mario_small_jump
+    case cs_big: return spr_mario_big_jump
+    case cs_fire: return spr_mario_fire_jump
+    case cs_hammer: return spr_mario_hammer_jump
+    case cs_leaf: return spr_mario_leaf_jump
+    case cs_tanooki: return spr_mario_tanooki_jump
+    case cs_frog: return spr_mario_frog_jump
+    case cs_bomb: return spr_mario_bomb_jump
+    case cs_ice: return spr_mario_ice_jump
+    case cs_super: return spr_mario_super_jump
+    case cs_carrot: return spr_mario_carrot_jump
+    case cs_ninja: return spr_mario_ninja_jump
+    case cs_bee: return spr_mario_bee_jump
+    case cs_shell: return spr_mario_shell_jump
+    case cs_penguin: return spr_mario_penguin_jump
+}

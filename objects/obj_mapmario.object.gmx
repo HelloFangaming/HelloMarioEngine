@@ -269,9 +269,9 @@ and round(y) = returny
           <argument>
             <kind>1</kind>
             <string>//Inventory Items
-global.state = global.inventory[obj_mapboxdrawer.boxselection]
+global.powerup = global.inventory[obj_mapboxdrawer.boxselection]
 audio_play_sound(snd_retrieve,0,0)
-if global.state = 1
+if global.powerup = cs_big
     audio_play_sound(snd_jwin,0,0)
 else
     audio_play_sound(snd_gotcha,0,0)
@@ -299,13 +299,13 @@ event_user(0)
           <argument>
             <kind>1</kind>
             <string>//Swaps Reserve Items
-if global.reserveitem != 0
+if global.reserveitem != cs_small
 {
-    temp = global.state
-    global.state = global.reserveitem
+    temp = global.powerup
+    global.powerup = global.reserveitem
     global.reserveitem = temp
     audio_play_sound(snd_retrieve,0,0)
-    if global.state = 1
+    if global.powerup = cs_big
         audio_play_sound(snd_jwin,0,0)
     else
         audio_play_sound(snd_gotcha,0,0)
@@ -361,36 +361,7 @@ if global.yoshi = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.state = 0
-    sprite_index = spr_mapmario_small
-if global.state = 1
-    sprite_index = spr_mapmario_big
-if global.state = 2
-    sprite_index = spr_mapmario_fire
-if global.state = 3
-    sprite_index = spr_mapmario_hammer
-if global.state = 4
-    sprite_index = spr_mapmario_leaf
-if global.state = 5
-    sprite_index = spr_mapmario_tanooki
-if global.state = 6
-    sprite_index = spr_mapmario_frog
-if global.state = 7
-    sprite_index = spr_mapmario_bomb
-if global.state = 8
-    sprite_index = spr_mapmario_ice
-if global.state = 9
-    sprite_index = spr_mapmario_super
-if global.state = 10
-    sprite_index = spr_mapmario_carrot
-if global.state = 11
-    sprite_index = spr_mapmario_ninja
-if global.state = 12
-    sprite_index = spr_mapmario_bee
-if global.state = 13
-    sprite_index = spr_mapmario_shell
-if global.state = 14
-    sprite_index = spr_mapmario_penguin
+            <string>sprite_index = scr_mariomap()
 </string>
           </argument>
         </arguments>

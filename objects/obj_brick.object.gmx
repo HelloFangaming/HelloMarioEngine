@@ -49,7 +49,7 @@ mysolid = instance_create(x,y,obj_solid)</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.state &gt; 0
+            <string>if global.powerup &gt; cs_small
 {
     audio_play_sound(snd_break,0,0)
     varid = instance_create(x,y,obj_shard)
@@ -154,7 +154,7 @@ and ready = 0
 if collision_rectangle(x,y-4,x+15,y,obj_mario,0,0)
 and obj_mario.stompstyle = 1
 and obj_mario.vspeed &gt; 0
-and global.state &gt; 0
+and global.powerup &gt; cs_small
 and global.yoshi = 0
 {
     alarm[0] = 1
@@ -177,5 +177,8 @@ and global.yoshi = 0
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>0,0</point>
+    <point>8,8</point>
+  </PhysicsShapePoints>
 </object>

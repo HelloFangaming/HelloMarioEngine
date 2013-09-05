@@ -33,7 +33,7 @@
 }
 global.yoshi = 2
 image_speed = 0
-event_user(0)
+mymario = scr_marioslide()
 alarm[0] = 2
 offset = 0
 offsetnext = 0
@@ -156,7 +156,7 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.state = 0
+            <string>if global.powerup = cs_small
     yoffset = 5
 else
     yoffset = 0
@@ -238,7 +238,7 @@ else
     obj_mario.holding = 3
     obj_mario.stompstyle = 1
     if obj_mario.invincible = 1
-        event_user(0)
+        mymario = scr_marioslide()
     if global.ycolor = 2
     {
         if stateprev = 2
@@ -287,58 +287,6 @@ if instance_exists(obj_jumpspawn)
     y = obj_jumpspawn.y+16
     obj_jumpspawn.visible = 0
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if global.state = 0
-    mymario = spr_mario_small_slide
-if global.state = 1
-    mymario = spr_mario_big_slide
-if global.state = 2
-    mymario = spr_mario_fire_slide
-if global.state = 3
-    mymario = spr_mario_hammer_slide
-if global.state = 4
-    mymario = spr_mario_leaf_slide
-if global.state = 5
-    mymario = spr_mario_tanooki_slide
-if global.state = 6
-    mymario = spr_mario_frog_slide
-if global.state = 7
-    mymario = spr_mario_bomb_slide
-if global.state = 8
-    mymario = spr_mario_ice_slide
-if global.state = 9
-    mymario = spr_mario_super_slide
-if global.state = 10
-    mymario = spr_mario_carrot_slide
-if global.state = 11
-    mymario = spr_mario_ninja_slide
-if global.state = 12
-    mymario = spr_mario_bee_slide
-if global.state = 13
-    mymario = spr_mario_shell_slide
-if global.state = 14
-    mymario = spr_mario_penguin_slide
 </string>
           </argument>
         </arguments>

@@ -1,0 +1,25 @@
+/*
+**  Usage:
+**      scr_mariomap()
+**
+**  Returns:
+**      The sprite_index of Mario's map screen sprite based on the current powerup.
+*/
+switch global.powerup
+{
+    case cs_small: return spr_mapmario_small
+    case cs_big: return spr_mapmario_big
+    case cs_fire: return spr_mapmario_fire
+    case cs_hammer: return spr_mapmario_hammer
+    case cs_leaf: return spr_mapmario_leaf
+    case cs_tanooki: return spr_mapmario_tanooki
+    case cs_frog: return spr_mapmario_frog
+    case cs_bomb: return spr_mapmario_bomb
+    case cs_ice: return spr_mapmario_ice
+    case cs_super: return spr_mapmario_super
+    case cs_carrot: return spr_mapmario_carrot
+    case cs_ninja: return spr_mapmario_ninja
+    case cs_bee: return spr_mapmario_bee
+    case cs_shell: return spr_mapmario_shell
+    case cs_penguin: return spr_mapmario_penguin
+}
