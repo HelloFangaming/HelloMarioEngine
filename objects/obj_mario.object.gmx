@@ -1896,7 +1896,8 @@ and obj_camera.docamera = 0
         instance_create(x,y,obj_spinner)
 }
 //Used to smack Net Koopas off the net.
-if state = 3
+if place_meeting(x,y,obj_climb_net)
+and state = 3
 and kk = 0
 {
     kk = 1

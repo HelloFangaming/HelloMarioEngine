@@ -289,7 +289,6 @@
     <instance objName="obj_donut_red" x="144" y="64" name="inst_DE9EF693" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_donut_red" x="128" y="64" name="inst_8297EC44" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_donut_red" x="112" y="64" name="inst_849D2133" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_climb" x="16" y="144" name="inst_32BDEA80" locked="0" code="" scaleX="7" scaleY="6" colour="4294967295" rotation="0"/>
     <instance objName="obj_solidtop" x="416" y="336" name="inst_706697FD" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solidtop" x="560" y="384" name="inst_5C91ABD0" locked="0" code="" scaleX="4" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solidtop" x="384" y="176" name="inst_890AB844" locked="0" code="" scaleX="7" scaleY="1" colour="4294967295" rotation="0"/>
@@ -345,6 +344,7 @@
     <instance objName="obj_solidtop" x="2384" y="80" name="inst_F352E617" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solidtop" x="2496" y="336" name="inst_BBA35328" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solidtop" x="2560" y="400" name="inst_27F4E48D" locked="0" code="" scaleX="30" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_climb_net" x="16" y="144" name="inst_E138BA04" locked="0" code="" scaleX="7" scaleY="6" colour="4294967295" rotation="0"/>
     <instance objName="obj_shyguy" x="456" y="320" name="inst_3246567F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slope_r" x="352" y="352" name="inst_D57455D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slope_r" x="384" y="336" name="inst_0DE7F347" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
