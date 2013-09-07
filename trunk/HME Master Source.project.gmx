@@ -894,6 +894,7 @@
       <sprite>sprites\spr_square_c</sprite>
       <sprite>sprites\spr_square_d</sprite>
       <sprite>sprites\spr_square_e</sprite>
+      <sprite>sprites\spr_square_f</sprite>
       <sprite>sprites\spr_enemymask</sprite>
       <sprite>sprites\spr_enemymaskbig</sprite>
       <sprite>sprites\spr_enemymasktall</sprite>
@@ -1085,6 +1086,7 @@
       <object>objects\obj_solid</object>
       <object>objects\obj_solidtop</object>
       <object>objects\obj_climb</object>
+      <object>objects\obj_climb_net</object>
       <object>objects\obj_swim</object>
       <object>objects\obj_slippery</object>
       <object>objects\obj_hurtsolid</object>
