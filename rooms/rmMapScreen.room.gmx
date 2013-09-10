@@ -276,7 +276,7 @@
     <instance objName="obj_mapbro" x="64" y="176" name="inst_C17C1671" locked="0" code="powerup = cs_1up&#xA;type = 1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mapbro" x="336" y="80" name="inst_06C28ADC" locked="0" code="powerup = cs_penguin&#xA;type = 2" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mapbro" x="160" y="176" name="inst_EFFDA835" locked="0" code="powerup = cs_ninja&#xA;type = 3" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bganimator" x="16" y="0" name="inst_450A19DC" locked="0" code="bgs = 4&#xA;anibg[0] = bg_aniwater1&#xA;anibg[1] = bg_aniwater2&#xA;anibg[2] = bg_aniwater3&#xA;anibg[3] = bg_aniwater2" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bganimator" x="16" y="0" name="inst_450A19DC" locked="0" code="anibg[0] = bg_aniwater1&#xA;anibg[1] = bg_aniwater2&#xA;anibg[2] = bg_aniwater3&#xA;anibg[3] = bg_aniwater2" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mapmario" x="128" y="208" name="inst_82AEF9AB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_saver" x="368" y="48" name="inst_B53B370C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_saver" x="400" y="48" name="inst_FA19C247" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
