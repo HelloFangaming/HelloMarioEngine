@@ -26,12 +26,11 @@
           <argument>
             <kind>1</kind>
             <string>//Place these in the object creation code.
-//bgs = Number of backgrounds
 //anibg[0] = The starting background
 //anibg[1] = The next background in the animation
-//anibg[2] = etc......
+//anibg[2] = etc...
 numb = 0
-alarm[0] = 1 
+alarm[0] = 1
 </string>
           </argument>
         </arguments>
@@ -56,7 +55,7 @@ alarm[0] = 1
             <kind>1</kind>
             <string>background_index[0] = anibg[numb]
 numb+=1
-if numb = bgs
+if numb = array_length_1d(anibg)
     numb = 0
 alarm[0] = 7
 </string>

@@ -275,7 +275,7 @@
     <instance objName="obj_redhoopster" x="648" y="160" name="inst_79B11B21" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_shellblock" x="768" y="352" name="inst_E541A1F0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bombblock" x="160" y="352" name="inst_4B23B2EF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bganimator" x="32" y="0" name="inst_D9CD3BFB" locked="0" code="bgs = 4&#xA;anibg[0] = bg_starrynight_0&#xA;anibg[1] = bg_starrynight_1&#xA;anibg[2] = bg_starrynight_2&#xA;anibg[3] = bg_starrynight_1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bganimator" x="32" y="0" name="inst_D9CD3BFB" locked="0" code="anibg[0] = bg_starrynight_0&#xA;anibg[1] = bg_starrynight_1&#xA;anibg[2] = bg_starrynight_2&#xA;anibg[3] = bg_starrynight_1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_shoegoomba" x="528" y="304" name="inst_E8EFC324" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_nokobon" x="312" y="384" name="inst_5C4295F1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bobomb_parachute" x="1344" y="32" name="inst_4B436EF0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
