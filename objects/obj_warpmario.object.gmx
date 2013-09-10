@@ -39,7 +39,7 @@ if instance_exists(obj_invincibility)
 color = c_white
 mycolor = 0
 alpha = 1
-direct = 0
+direct = 1
 bugfix = 0
 </string>
           </argument>
@@ -240,13 +240,14 @@ and not collision_rectangle(x-9,y,x+8,y+31,obj_solid,1,1)
     instance_create(x,y,obj_mario)
     obj_mario.vspeed = vspeed
     obj_mario.hspeed = hspeed
+    obj_mario.direct = direct
     instance_destroy()
 }
 if vspeed = 0
 {
     if hspeed &gt; 0
         direct = 1
-    if hspeed &lt; 0
+    else if hspeed &lt; 0
         direct = -1
     image_speed = 0.15
     if cannon = 0
@@ -254,7 +255,10 @@ if vspeed = 0
         if myitem = 0
             sprite_index = scr_mariowalk()
         else
+        {
             sprite_index = scr_mariohold()
+            direct = -direct
+        }
     }
 }
 else
@@ -287,6 +291,7 @@ and vspeed &gt; 0
     instance_create(x,y,obj_mario)
     obj_mario.vspeed = vspeed
     obj_mario.hspeed = hspeed
+    obj_mario.direct = direct
     instance_destroy()
 }
 </string>
