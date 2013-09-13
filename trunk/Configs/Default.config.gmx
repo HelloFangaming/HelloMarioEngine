@@ -153,7 +153,7 @@
     <option_linux_fullscreen>0</option_linux_fullscreen>
     <option_linux_icon>Configs\Default\linux\icon64.png</option_linux_icon>
     <option_linux_interpolate>0</option_linux_interpolate>
-    <option_linux_scale>1</option_linux_scale>
+    <option_linux_scale>-1</option_linux_scale>
     <option_linux_screenkey>-1</option_linux_screenkey>
     <option_linux_sizeable>-1</option_linux_sizeable>
     <option_linux_steam_app_id>0</option_linux_steam_app_id>
@@ -178,7 +178,7 @@
     <option_mac_menu_dock>0</option_mac_menu_dock>
     <option_mac_minor_version>0</option_mac_minor_version>
     <option_mac_output_dir>~/GameMaker-Studio/Hello Mario Engine</option_mac_output_dir>
-    <option_mac_scale>0</option_mac_scale>
+    <option_mac_scale>-1</option_mac_scale>
     <option_mac_screenkey>-1</option_mac_screenkey>
     <option_mac_showcursor>0</option_mac_showcursor>
     <option_mac_sizeable>-1</option_mac_sizeable>
@@ -194,7 +194,7 @@
     <option_quitkey>true</option_quitkey>
     <option_resolution>0</option_resolution>
     <option_savekey>true</option_savekey>
-    <option_scale>0</option_scale>
+    <option_scale>-1</option_scale>
     <option_scaleprogress>true</option_scaleprogress>
     <option_screenkey>True</option_screenkey>
     <option_screenshotkey>true</option_screenshotkey>
@@ -264,7 +264,7 @@
     <option_win8_portrait_flipped_allowed>0</option_win8_portrait_flipped_allowed>
     <option_win8_publisher_display_name>HelloFangaming</option_win8_publisher_display_name>
     <option_win8_revision_version>0</option_win8_revision_version>
-    <option_win8_scaling_stretch>true</option_win8_scaling_stretch>
+    <option_win8_scaling_stretch>false</option_win8_scaling_stretch>
     <option_win8_search_capable>0</option_win8_search_capable>
     <option_win8_small_logo>Configs\Default\Windows8\logos\logo30.png</option_win8_small_logo>
     <option_win8_splash_background_colour>#000000</option_win8_splash_background_colour>
