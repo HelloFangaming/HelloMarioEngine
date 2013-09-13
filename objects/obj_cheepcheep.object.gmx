@@ -171,7 +171,11 @@ while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopepar
 if vspeed &lt; 0
 and collision_rectangle(x-8,y-1,x+7,y-1,obj_solid,0,0)
 and hopnow &gt; 0
+{
     vspeed = 1
+    if hopnow = 1
+        hopnow = 2
+}
 </string>
           </argument>
         </arguments>
@@ -261,7 +265,7 @@ if hopnow = 2
     hopnow = 0
     swimspot = other.y+16
 }
-if not collision_point(x,y-32,obj_swim,0,0)
+if not collision_point(x,y-24,obj_swim,0,0)
 and hopnow = 0
 and instance_exists(obj_mario)
 {
