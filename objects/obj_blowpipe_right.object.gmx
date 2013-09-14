@@ -147,7 +147,7 @@ if (global.powerup = cs_frog or global.powerup = cs_penguin)
 and obj_mario.holding = 0
     exit
 if collision_rectangle(x+16,y,x+96,y+32,obj_mario,0,0)
-and not collision_rectangle(obj_mario.x+9,obj_mario.y+5,obj_mario.x+9,obj_mario.y+31,obj_solid,0,0)
+and not collision_rectangle(obj_mario.x+9,obj_mario.bbox_top,obj_mario.x+9,obj_mario.y+31,obj_solid,0,0)
 and obj_mario.hspeed &lt; 4
     obj_mario.hspeed += 0.25
 </string>
