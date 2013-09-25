@@ -132,7 +132,7 @@ and ready &lt; 2
         issolid = 1
     }
 }
-else if collision_rectangle(x+12,y,x+19,y+63,obj_mario,0,0)
+else if collision_rectangle(x+12,y,x+21,y+63,obj_mario,0,0)
 {
     if ready != 2
     {

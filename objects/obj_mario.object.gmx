@@ -1134,6 +1134,7 @@ if not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,
     {
         varid = instance_create(x-8,y+17,obj_smoke)
         varid.sprite_index = spr_splash
+        varid.depth = -6
         if keyboard_check(vk_shift)
         {
             vspeed = -3.85
@@ -1457,6 +1458,7 @@ if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0)
     {
         varid = instance_create(x-8,y+17,obj_smoke)
         varid.sprite_index = spr_splash
+        varid.depth = -6
     }
     isfloating = 0
 }
