@@ -150,13 +150,13 @@ if hspeed &lt; 0.05
 and hspeed &gt; -0.05
 and not collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+3,obj_slopeparent,1,0)
     instance_destroy()
-if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+3,obj_slope_r,1,0)
-    hspeed -= 0.1
-if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+3,obj_slope_l,1,0)
-    hspeed += 0.1
 if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+3,obj_slope_sr,1,0)
     hspeed -= 0.1
-if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+3,obj_slope_sl,1,0)
+else if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+3,obj_slope_sl,1,0)
+    hspeed += 0.1
+else if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+3,obj_slope_r,1,0)
+    hspeed -= 0.1
+else if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+3,obj_slope_l,1,0)
     hspeed += 0.1
 if hspeed &gt; 3
     hspeed = 3
