@@ -1130,6 +1130,8 @@ isrun = 0
 if not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0)
 {
     isswim = 0
+    jumpnow = 0
+    beefly = 0
     if collision_point(x,y+33,obj_swim,1,1)
     {
         varid = instance_create(x-8,y+17,obj_smoke)
@@ -1141,15 +1143,12 @@ if not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,
             jumpnow = 1
         }
     }
-    if not collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+2,obj_swim,0,0)
-        jumpnow = 0
     if (global.powerup = cs_frog or global.powerup = cs_penguin)
     and noisy = 1
     {
         noisy = 0
         audio_stop_sound(snd_swim)
     }
-    beefly = 0
 }
 if isduck = 1
 and not keyboard_check(vk_down)
