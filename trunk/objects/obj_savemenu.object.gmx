@@ -62,80 +62,6 @@ instance_destroy()</string>
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//Saves the game. Be careful if you edit this!
-if global.file = 0
-{
-    if file_exists("SaveA.sav")
-        file_delete("SaveA.sav")
-    file = file_text_open_write("SaveA.sav")
-}
-else if global.file = 1
-{
-    if file_exists("SaveB.sav")
-        file_delete("SaveB.sav")
-    file = file_text_open_write("SaveB.sav")
-}
-else
-{
-    if file_exists("SaveC.sav")
-        file_delete("SaveC.sav")
-    file = file_text_open_write("SaveC.sav")
-}
-file_text_write_string(file,ds_map_write(global.mapscreen))
-file_text_writeln(file)
-file_text_write_string(file,string(global.coins))
-file_text_writeln(file)
-file_text_write_string(file,string(lives))
-file_text_writeln(file)
-file_text_write_string(file,string(score))
-file_text_writeln(file)
-file_text_write_string(file,string(global.powerup))
-file_text_writeln(file)
-file_text_write_string(file,string(global.reserveitem))
-file_text_writeln(file)
-file_text_write_string(file,string(global.palacered))
-file_text_writeln(file)
-file_text_write_string(file,string(global.palaceblue))
-file_text_writeln(file)
-file_text_write_string(file,string(global.palaceyellow))
-file_text_writeln(file)
-file_text_write_string(file,string(global.palacegreen))
-file_text_writeln(file)
-file_text_write_string(file,string(global.yoshi))
-file_text_writeln(file)
-file_text_write_string(file,string(global.ycolor))
-file_text_writeln(file)
-file_text_write_string(file,string(global.cardscore))
-i=0
-repeat(16)
-{
-    file_text_writeln(file)
-    file_text_write_string(file,string(global.inventory[i]))
-    i+=1
-}
-file_text_close(file)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -251,14 +177,14 @@ draw_set_alpha(1)
     audio_play_sound(snd_whistle,0,0)
     obj_mapmario.ready = 0
     alarm[0] = 1
-    event_user(0)
+    scr_save(global.file)
 }
 if menu_choice = 1
 {
     audio_play_sound(snd_whistle,0,0)
     obj_mapmario.ready = 0
     alarm[0] = 1
-    event_user(0)
+    scr_save(global.file)
     game_end()
 }
 if menu_choice=2
