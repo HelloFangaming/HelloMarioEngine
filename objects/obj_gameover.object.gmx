@@ -73,7 +73,7 @@ alarm[1] = 2
           <argument>
             <kind>1</kind>
             <string>audio_stop_all()
-with obj_persistent event_user(1)
+scr_init_globals()
 room_goto(rmTitleScreen)
 </string>
           </argument>
