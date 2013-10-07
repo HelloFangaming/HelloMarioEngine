@@ -88,68 +88,6 @@ menu[2] = "File C"
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//Loads the game. Be careful if you edit this!
-if global.file = 0
-    file = file_text_open_read("SaveA.sav")
-else if global.file = 1
-    file = file_text_open_read("SaveB.sav")
-else
-    file = file_text_open_read("SaveC.sav")
-ds_map_read(global.mapscreen,file_text_read_string(file))
-file_text_readln(file)
-global.coins = real(file_text_read_string(file))
-file_text_readln(file)
-lives = real(file_text_read_string(file))
-file_text_readln(file)
-score = real(file_text_read_string(file))
-file_text_readln(file)
-global.powerup = real(file_text_read_string(file))
-file_text_readln(file)
-global.reserveitem = real(file_text_read_string(file))
-file_text_readln(file)
-global.palacered = real(file_text_read_string(file))
-file_text_readln(file)
-global.palaceblue = real(file_text_read_string(file))
-file_text_readln(file)
-global.palaceyellow = real(file_text_read_string(file))
-file_text_readln(file)
-global.palacegreen = real(file_text_read_string(file))
-file_text_readln(file)
-global.yoshi = real(file_text_read_string(file))
-file_text_readln(file)
-global.ycolor = real(file_text_read_string(file))
-file_text_readln(file)
-global.cardscore = real(file_text_read_string(file))
-i=0
-repeat(16)
-{
-    file_text_readln(file)
-    global.inventory[i] = real(file_text_read_string(file))
-    i+=1
-}
-file_text_close(file)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -270,23 +208,13 @@ draw_set_alpha(1)
 audio_play_sound(snd_letsgo,0,0)
 audio_stop_sound(snd_titlemusic)
 if menu_choice = 0
-{
-    global.file = 0
-    if file_exists("SaveA.sav")
-        event_user(0)
-}
+    global.file = "SaveA.sav"
 else if menu_choice = 1
-{
-    global.file = 1
-    if file_exists("SaveB.sav")
-        event_user(0)
-}
+    global.file = "SaveB.sav"
 else
-{
-    global.file = 2
-    if file_exists("SaveC.sav")
-        event_user(0)
-}
+    global.file = "SaveC.sav"
+if file_exists(global.file)
+    scr_load(global.file)
 scr_return()
 </string>
           </argument>

@@ -3,7 +3,7 @@
 **      scr_time(variable)
 **
 **  Given:
-**      vatiable    The variable to format
+**      variable    The variable to format
 **
 **  Returns:
 **      The variable as a formatted string with leading zeroes.
