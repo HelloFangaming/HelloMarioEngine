@@ -1054,6 +1054,7 @@
       <script>scripts\scr_marioride.gml</script>
       <script>scripts\scr_mariomap.gml</script>
     </scripts>
+    <script>scripts\scr_init_globals.gml</script>
     <script>scripts\scr_save.gml</script>
     <script>scripts\scr_load.gml</script>
     <script>scripts\scr_score.gml</script>

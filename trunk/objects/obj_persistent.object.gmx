@@ -42,7 +42,7 @@ global.wdigits = font_add_sprite(spr_numbers,ord('0'),0,0)
 global.gdigits = font_add_sprite(spr_numbersgold,ord('0'),0,0)
 keyboard_set_map(ord('X'),vk_shift)
 keyboard_set_map(ord('Z'),vk_control)
-event_user(1)
+scr_init_globals()
 </string>
           </argument>
         </arguments>
@@ -97,64 +97,6 @@ if not instance_exists(obj_mariostart)
 }
 if background_exists(back)
     background_delete(back)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="11">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//Variable Initialization
-global.time = 0
-global.world = 1
-global.coins = 0
-lives = 5
-score = 0
-global.clear = 0
-global.powerup = cs_small
-global.reserveitem = cs_small
-global.midwaypoint = 0
-global.palacered = 0
-global.palaceblue = 0
-global.palaceyellow = 0
-global.palacegreen = 0
-global.postchange = 0
-global.postx = 0
-global.posty = 0
-global.posttype = 0
-global.yoshi = 0
-global.ycolor = 0
-global.died = 0
-global.cardscore = 80000
-global.pswitch = 0
-global.star = 0
-global.onoffblock = 0
-global.prize[0] = 0
-global.prize[1] = 0
-global.prize[2] = 0
-//Set up map inventory variables
-done=0
-repeat(16)
-{
-    global.inventory[done] = 0
-    done+=1
-}
-done=0
 </string>
           </argument>
         </arguments>
@@ -365,7 +307,7 @@ if keyboard_check(vk_alt)
 if keyboard_check(vk_alt)
 {
     audio_stop_all()
-    event_user(1)
+    scr_init_globals()
     room_goto(rmTitleScreen)
 }
 </string>
