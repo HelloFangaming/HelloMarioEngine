@@ -11,7 +11,7 @@
 */
 
 //Open the file
-file = file_text_open_read(argument0)
+var file = file_text_open_read(argument0)
 
 //Load the mapscreen data structure
 ds_map_read(global.mapscreen,file_text_read_string(file))
