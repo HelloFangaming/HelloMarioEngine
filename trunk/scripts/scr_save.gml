@@ -8,7 +8,7 @@
 */
 
 //Open the file
-file = file_text_open_write(argument0)
+var file = file_text_open_write(argument0)
 
 //Turn the mapscreen data structure into a string, and write it
 file_text_write_string(file,ds_map_write(global.mapscreen))

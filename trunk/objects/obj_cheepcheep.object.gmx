@@ -157,9 +157,12 @@ or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slop
 }
 else if hopnow &gt; 0
     gravity = 0.125
-if hopnow = 1
-and not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0)
+if not place_meeting(x,y,obj_swim)
+{
+    if hopnow = 0
+        vspeed = -4
     hopnow = 2
+}
 if vspeed &gt; 4
     vspeed = 4
 if hspeed &gt; 0
