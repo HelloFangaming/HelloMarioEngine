@@ -106,7 +106,7 @@
     <instance objName="obj_left" x="416" y="112" name="inst_8CF07570" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_down" x="384" y="80" name="inst_A000F358" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_right" x="384" y="80" name="inst_1B94F529" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warproom" x="1088" y="208" name="inst_56E65FBD" locked="0" code="myroom = rmCastle1j&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warproom" x="1088" y="208" name="inst_56E65FBD" locked="0" code="myroom = rm_forthello_bowser" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mario" x="40" y="160" name="inst_426228D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>

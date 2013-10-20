@@ -1713,53 +1713,53 @@
     <object>objects\obj_cclockwiseb</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rmLogo</room>
-    <room>rooms\rmTitleScreen</room>
-    <room>rooms\rmMapScreen</room>
-    <room>rooms\rmTemplate</room>
-    <rooms name="Level 1">
-      <room>rooms\rmLevel1</room>
-      <room>rooms\rmLevel1b</room>
-      <room>rooms\rmLevel1c</room>
+    <room>rooms\rm_logo</room>
+    <room>rooms\rm_title</room>
+    <room>rooms\rm_worldmap</room>
+    <room>rooms\rm_template</room>
+    <rooms name="Cedar Hills">
+      <room>rooms\rm_cedarhills</room>
+      <room>rooms\rm_cedarhills_sky</room>
+      <room>rooms\rm_cedarhills_bonus</room>
     </rooms>
-    <rooms name="Level 2">
-      <room>rooms\rmLevel2</room>
-      <room>rooms\rmLevel2b</room>
-      <room>rooms\rmLevel2c</room>
-      <room>rooms\rmLevel2d</room>
+    <rooms name="Pipes at Dusk">
+      <room>rooms\rm_pipesatdusk</room>
+      <room>rooms\rm_pipesatdusk_water</room>
+      <room>rooms\rm_pipesatdusk_cave</room>
+      <room>rooms\rm_pipesatdusk_snow</room>
     </rooms>
-    <rooms name="Level 3">
-      <room>rooms\rmLevel3</room>
-      <room>rooms\rmLevel3b</room>
-      <room>rooms\rmLevel3c</room>
-      <room>rooms\rmLevel3d</room>
+    <rooms name="Wild Sands">
+      <room>rooms\rm_wildsands</room>
+      <room>rooms\rm_wildsands_cave</room>
+      <room>rooms\rm_wildsands_sky</room>
+      <room>rooms\rm_wildsands_secret</room>
     </rooms>
-    <rooms name="Castle 1">
-      <room>rooms\rmCastle1</room>
-      <room>rooms\rmCastle1b</room>
-      <room>rooms\rmCastle1c</room>
-      <room>rooms\rmCastle1d</room>
-      <room>rooms\rmCastle1e</room>
-      <room>rooms\rmCastle1f</room>
-      <room>rooms\rmCastle1g</room>
-      <room>rooms\rmCastle1h</room>
-      <room>rooms\rmCastle1i</room>
-      <room>rooms\rmCastle1j</room>
+    <rooms name="Fort Hello">
+      <room>rooms\rm_forthello</room>
+      <room>rooms\rm_forthello_boomboom</room>
+      <room>rooms\rm_forthello_larry</room>
+      <room>rooms\rm_forthello_wendy</room>
+      <room>rooms\rm_forthello_birdo</room>
+      <room>rooms\rm_forthello_mouser</room>
+      <room>rooms\rm_forthello_reznor</room>
+      <room>rooms\rm_forthello_classicbowser</room>
+      <room>rooms\rm_forthello_tobowser</room>
+      <room>rooms\rm_forthello_bowser</room>
     </rooms>
     <rooms name="Special">
-      <room>rooms\rmBonus</room>
-      <room>rooms\rmRoulette</room>
-      <room>rooms\rmCardGame</room>
-      <room>rooms\rmHammerBattle</room>
-      <room>rooms\rmFireBattle</room>
-      <room>rooms\rmBoomerangBattle</room>
-      <room>rooms\rmSledgeBattle</room>
-      <room>rooms\rmSwitchPalaceRed</room>
-      <room>rooms\rmSwitchPalaceBlue</room>
-      <room>rooms\rmSwitchPalaceYellow</room>
-      <room>rooms\rmSwitchPalaceGreen</room>
-      <room>rooms\rmMapPipeArea</room>
-      <room>rooms\rmGameOver</room>
+      <room>rooms\rm_mushroomhouse</room>
+      <room>rooms\rm_roulette</room>
+      <room>rooms\rm_cardgame</room>
+      <room>rooms\rm_hammerbattle</room>
+      <room>rooms\rm_firebattle</room>
+      <room>rooms\rm_boomerangbattle</room>
+      <room>rooms\rm_sledgebattle</room>
+      <room>rooms\rm_switchpalace_red</room>
+      <room>rooms\rm_switchpalace_blue</room>
+      <room>rooms\rm_switchpalace_yellow</room>
+      <room>rooms\rm_switchpalace_green</room>
+      <room>rooms\rm_mappipearea</room>
+      <room>rooms\rm_gameover</room>
     </rooms>
   </rooms>
   <constants number="32">

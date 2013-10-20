@@ -87,7 +87,7 @@ and other.speed = 0
 and image_index = 0
 {
     with obj_mapmario event_user(1)
-    room_goto(rmSwitchPalaceYellow)
+    room_goto(rm_switchpalace_yellow)
 }
 if obj_mapmario.speed = 0
     obj_mapboxdrawer.mytext = "yellow switch palace"

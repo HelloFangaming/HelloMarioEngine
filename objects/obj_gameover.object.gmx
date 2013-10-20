@@ -74,7 +74,7 @@ alarm[1] = 2
             <kind>1</kind>
             <string>audio_stop_all()
 scr_init_globals()
-room_goto(rmTitleScreen)
+room_goto(rm_title)
 </string>
           </argument>
         </arguments>

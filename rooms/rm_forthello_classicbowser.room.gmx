@@ -83,7 +83,7 @@
     <instance objName="obj_axe" x="752" y="112" name="inst_CF9619EB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="768" y="32" name="inst_CA035BED" locked="0" code="" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="0" y="32" name="inst_B5DAEBFF" locked="0" code="" scaleX="8" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="0" y="96" name="inst_4FE01BBD" locked="0" code="varmsg = &quot;This room has classic scrolling, so the camera won't move backwards!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="0" y="96" name="inst_4FE01BBD" locked="0" code="varmsg = &quot;This room has classic scrolling, so the camera won't move backwards!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="0" y="160" name="inst_71606AE7" locked="0" code="" scaleX="8" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="320" y="160" name="inst_F6F6A8A0" locked="0" code="" scaleX="4" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="432" y="160" name="inst_674D9D3A" locked="0" code="" scaleX="5" scaleY="5" colour="4294967295" rotation="0"/>

@@ -82,7 +82,7 @@ and other.ready = 0
 and other.speed = 0
 {
     with obj_mapmario event_user(1)
-    room_goto(rmRoulette)
+    room_goto(rm_roulette)
 }
 if obj_mapmario.speed = 0
     obj_mapboxdrawer.mytext = "roulette minigame"

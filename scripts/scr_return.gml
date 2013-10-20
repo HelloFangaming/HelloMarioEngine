@@ -3,9 +3,9 @@
 **      scr_return()
 **
 **  Purpose:
-**      Sends Mario back to the map screen, or to the game over screen if he is out of lives.
+**      Sends Mario back to the world map, or to the game over screen if he is out of lives.
 */
 if lives = 0
-    room_goto(rmGameOver)
+    room_goto(rm_gameover)
 else
-    room_goto(rmMapScreen)
+    room_goto(rm_worldmap)

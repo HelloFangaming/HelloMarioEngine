@@ -127,10 +127,10 @@
     <instance objName="obj_block_sprout" x="2976" y="272" name="inst_C28EDC2E" locked="0" code="sprout = 2" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="2784" y="272" name="inst_3871D5A3" locked="0" code="varmsg = &quot;This door will take you to Reznor. Four is better than one!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="288" y="320" name="inst_EC6A1E38" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="2592" y="272" name="inst_4C0E837C" locked="0" code="varmsg = &quot;This door will take you to Wendy Koopa. Do not disturb!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="2656" y="272" name="inst_B2669E67" locked="0" code="varmsg = &quot;This door will take you to Birdo. Throw it's eggs right back at it!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="2720" y="272" name="inst_3578E38B" locked="0" code="varmsg = &quot;This door will take you to Mouser. Fight bombs with bombs!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="2848" y="272" name="inst_00141EB1" locked="0" code="varmsg = &quot;This door will take you to Classic Bowser! Why does he have that axe anyways?&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="2592" y="272" name="inst_4C0E837C" locked="0" code="varmsg = &quot;This door will take you to Wendy Koopa. Do not disturb!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="2656" y="272" name="inst_B2669E67" locked="0" code="varmsg = &quot;This door will take you to Birdo. Throw it's eggs right back at it!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="2720" y="272" name="inst_3578E38B" locked="0" code="varmsg = &quot;This door will take you to Mouser. Fight bombs with bombs!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="2848" y="272" name="inst_00141EB1" locked="0" code="varmsg = &quot;This door will take you to Classic Bowser! Why does he have that axe anyways?&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="0" y="304" name="inst_CD3FC95E" locked="0" code="" scaleX="8" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="128" y="336" name="inst_2C801562" locked="0" code="" scaleX="8" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="256" y="384" name="inst_07BCAAB1" locked="0" code="" scaleX="8" scaleY="3" colour="4294967295" rotation="0"/>
@@ -220,7 +220,7 @@
     <instance objName="obj_engine2" x="912" y="80" name="inst_C4C61D46" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_sproutblock_hidden" x="656" y="304" name="inst_83BD8B8E" locked="0" code="sprout = 25&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_spiked" x="960" y="32" name="inst_E26BA5E2" locked="0" code="sprout = 7" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_boocircle" x="192" y="288" name="inst_D44E6864" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_boocircle" x="192" y="288" name="inst_D44E6864" locked="0" code="ready = -1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_boosnake" x="848" y="256" name="inst_612D2592" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_left" x="544" y="384" name="inst_BCDC0EA9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_right" x="400" y="384" name="inst_8FA2A107" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -233,15 +233,15 @@
     <instance objName="obj_warptop" x="1584" y="96" name="inst_2096E416" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpcannon" x="1072" y="320" name="inst_E9BCF2DF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warptop" x="1056" y="272" name="inst_EB2866C6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warproom" x="2464" y="320" name="inst_C80AC529" locked="0" code="myroom = rmCastle1b" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warproom" x="2528" y="320" name="inst_449698B0" locked="0" code="myroom = rmCastle1c" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warproom" x="2784" y="320" name="inst_A2285C7C" locked="0" code="myroom = rmCastle1g&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warproom" x="2464" y="320" name="inst_C80AC529" locked="0" code="myroom = rm_forthello_boomboom" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warproom" x="2528" y="320" name="inst_449698B0" locked="0" code="myroom = rm_forthello_larry" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warproom" x="2784" y="320" name="inst_A2285C7C" locked="0" code="myroom = rm_forthello_reznor" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_key" x="1120" y="80" name="inst_A36C8332" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warproom" x="2912" y="320" name="inst_C6D8A244" locked="0" code="myroom = rmCastle1i&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warproom" x="2592" y="320" name="inst_D378D937" locked="0" code="myroom = rmCastle1d&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warproom" x="2656" y="320" name="inst_508E481A" locked="0" code="myroom = rmCastle1e&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warproom" x="2720" y="320" name="inst_89BFD679" locked="0" code="myroom = rmCastle1f&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warproom" x="2848" y="320" name="inst_ED27F614" locked="0" code="myroom = rmCastle1h&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warproom" x="2912" y="320" name="inst_C6D8A244" locked="0" code="myroom = rm_forthello_tobowser" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warproom" x="2592" y="320" name="inst_D378D937" locked="0" code="myroom = rm_forthello_wendy" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warproom" x="2656" y="320" name="inst_508E481A" locked="0" code="myroom = rm_forthello_birdo" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warproom" x="2720" y="320" name="inst_89BFD679" locked="0" code="myroom = rm_forthello_mouser" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warproom" x="2848" y="320" name="inst_ED27F614" locked="0" code="myroom = rm_forthello_classicbowser" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mario" x="56" y="272" name="inst_1085B067" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>

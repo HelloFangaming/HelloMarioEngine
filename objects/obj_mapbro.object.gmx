@@ -215,13 +215,13 @@ and other.speed = 0
     global.prize[0] = powerup
     with obj_mapmario event_user(1)
     if type = 0
-        room_goto(rmHammerBattle)
+        room_goto(rm_hammerbattle)
     else if type = 1
-        room_goto(rmFireBattle)
+        room_goto(rm_firebattle)
     else if type = 2
-        room_goto(rmBoomerangBattle)
+        room_goto(rm_boomerangbattle)
     else
-        room_goto(rmSledgeBattle)
+        room_goto(rm_sledgebattle)
 }
 </string>
           </argument>

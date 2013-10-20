@@ -119,7 +119,7 @@
     <instance objName="obj_messageblock" x="2048" y="16" name="inst_A587A95C" locked="0" code="varmsg = &quot;Haha, you found a secret block! Too bad I don't do anything...&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="1328" y="272" name="inst_5339060E" locked="0" code="varmsg = &quot;You can use the spin jump to bounce over those pokeys, or you can use the rope if you are lazy.&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_noteblock" x="496" y="320" name="inst_5EA0BEFE" locked="0" code="mypowerup = 14" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_noteblock_warp" x="336" y="64" name="inst_5DB0F102" locked="0" code="myroom = rmLevel3c" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_noteblock_warp" x="336" y="64" name="inst_5DB0F102" locked="0" code="myroom = rm_wildsands_sky" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_sprout" x="944" y="64" name="inst_24141AE3" locked="0" code="sprout = 17&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_sprout" x="1184" y="192" name="inst_12626761" locked="0" code="sprout = 20&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_sprout" x="2016" y="80" name="inst_EC5AEBBC" locked="0" code="sprout = 25&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -230,9 +230,9 @@
     <instance objName="obj_hurtsolid" x="1360" y="352" name="inst_A2CF38D2" locked="0" code="" scaleX="18" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_cclockwiseb" x="1416" y="272" name="inst_0E246DD7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warptop" x="1328" y="336" name="inst_E981660D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warproom" x="1344" y="384" name="inst_21B5E783" locked="0" code="myroom = rmLevel3b" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warproom" x="1344" y="384" name="inst_21B5E783" locked="0" code="myroom = rm_wildsands_cave" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warptop" x="1488" y="336" name="inst_A2413645" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warproom" x="1504" y="384" name="inst_F604DF5B" locked="0" code="myroom = rmLevel3d" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warproom" x="1504" y="384" name="inst_F604DF5B" locked="0" code="myroom = rm_wildsands_secret" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_boomerangbro" x="2416" y="320" name="inst_89542161" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_firebro" x="2560" y="272" name="inst_1F569A9C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_spring_super" x="2080" y="64" name="inst_D0713583" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

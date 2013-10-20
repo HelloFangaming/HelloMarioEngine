@@ -102,6 +102,39 @@ if background_exists(back)
         </arguments>
       </action>
     </event>
+    <event eventtype="5" enumb="18">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Quit the game when ALT+F4 is pressed
+if keyboard_check_pressed(vk_f4)
+    game_end()
+
+//Restart the game when ALT+R is pressed
+if keyboard_check_pressed(ord('R'))
+{
+    audio_stop_all()
+    scr_init_globals()
+    room_goto(rm_title)
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
@@ -255,60 +288,6 @@ if done &lt; 1
     draw_rectangle_color(0,0,view_wview[0],view_hview[0],c_black,c_black,c_black,c_black,0)
     done += 1/30
     draw_set_alpha(1)
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="115">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//Quit the game when ALT+F4 is pressed
-if keyboard_check(vk_alt)
-    game_end()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="82">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//Restart the game when ALT+R is pressed
-if keyboard_check(vk_alt)
-{
-    audio_stop_all()
-    scr_init_globals()
-    room_goto(rmTitleScreen)
 }
 </string>
           </argument>
