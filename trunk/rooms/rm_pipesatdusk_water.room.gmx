@@ -125,7 +125,7 @@
     <instance objName="obj_torpedolaunch" x="896" y="336" name="inst_160AC001" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_torpedolaunch" x="752" y="272" name="inst_A3BF89D0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpright" x="816" y="192" name="inst_09CC2BC2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warproom" x="768" y="208" name="inst_E577DAAB" locked="0" code="postchange = 1&#xA;postx = 1968&#xA;posty = 368&#xA;posttype = 1&#xA;myroom = rmLevel2" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warproom" x="768" y="208" name="inst_E577DAAB" locked="0" code="postchange = 1&#xA;postx = 1968&#xA;posty = 368&#xA;posttype = 1&#xA;myroom = rm_pipesatdusk" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpmario" x="48" y="96" name="inst_91CEA717" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>

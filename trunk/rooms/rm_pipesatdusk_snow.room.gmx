@@ -61,10 +61,10 @@
     <instance objName="obj_coin" x="272" y="112" name="inst_8354C9F5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="288" y="112" name="inst_548AA265" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="288" y="128" name="inst_3BE850E8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="0" y="256" name="inst_60B1AB05" locked="0" code="varmsg = &quot;Be careful! The ground here is extra slippery!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="960" y="256" name="inst_508E408C" locked="0" code="varmsg = &quot;Red E-Switches can not be moved, but they can be reused!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="0" y="256" name="inst_60B1AB05" locked="0" code="varmsg = &quot;Be careful! The ground here is extra slippery!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="960" y="256" name="inst_508E408C" locked="0" code="varmsg = &quot;Red E-Switches can not be moved, but they can be reused!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_coinchain" x="1024" y="256" name="inst_F61D4DE6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="1088" y="96" name="inst_919981D5" locked="0" code="varmsg = &quot;Use the arrow keys to control the coin chain block!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="1088" y="96" name="inst_919981D5" locked="0" code="varmsg = &quot;Use the arrow keys to control the coin chain block!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="528" y="320" name="inst_AF0180DC" locked="0" code="" scaleX="1" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="obj_solidtop" x="0" y="320" name="inst_E99A00FC" locked="0" code="" scaleX="7" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="144" y="80" name="inst_D66A6B66" locked="0" code="" scaleX="5" scaleY="1" colour="4294967295" rotation="0"/>
@@ -88,7 +88,7 @@
     <instance objName="obj_musicplayer" x="0" y="0" name="inst_A10D5566" locked="0" code="leveltime = 1&#xA;levelmusic = snd_music_athletic&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_winged" x="96" y="256" name="inst_BB896752" locked="0" code="sprout = 13&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_parakoopa" x="104" y="128" name="inst_79D296C7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_movingrope_touch" x="1280" y="272" name="inst_96F816FE" locked="0" code="ropelength = 4&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_movingrope_touch" x="1280" y="272" name="inst_96F816FE" locked="0" code="ropelength = 4" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bubble_item" x="176" y="192" name="inst_6F9CB1A8" locked="0" code="item = 3&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bubble_item" x="848" y="160" name="inst_164BA83E" locked="0" code="item = 4&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bubble_item" x="1600" y="96" name="inst_813CE96D" locked="0" code="item = 9&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -115,7 +115,7 @@
     <instance objName="obj_speedmarker" x="1376" y="112" name="inst_C3850074" locked="0" code="setspeed = 2&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_speedmarker" x="1696" y="128" name="inst_3869AA8D" locked="0" code="setspeed = 1&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpbottom" x="1536" y="288" name="inst_E5A5F074" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warproom" x="1552" y="240" name="inst_F1244EFF" locked="0" code="postchange = 1&#xA;postx = 1968&#xA;posty = 16&#xA;posttype = 1&#xA;myroom = rmLevel2&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warproom" x="1552" y="240" name="inst_F1244EFF" locked="0" code="postchange = 1&#xA;postx = 1968&#xA;posty = 16&#xA;posttype = 1&#xA;myroom = rm_pipesatdusk" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_eswitch_red" x="928" y="240" name="inst_6B466D26" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jumpspawn" x="56" y="272" name="inst_F6205D64" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>

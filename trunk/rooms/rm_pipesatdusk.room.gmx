@@ -100,18 +100,18 @@
     <instance objName="obj_solid" x="2096" y="384" name="inst_E277477A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="864" y="368" name="inst_8053DB9C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solidtop" x="1856" y="352" name="inst_DCC1DD89" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="448" y="256" name="inst_F77D1E7C" locked="0" code="varmsg = &quot;Boarded up doors can be blown up. Try throwing a bob-omb there! Also, you can unlock locked doors with keys!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="448" y="256" name="inst_F77D1E7C" locked="0" code="varmsg = &quot;Boarded up doors can be blown up. Try throwing a bob-omb there! Also, you can unlock locked doors with keys!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="432" y="256" name="inst_9D532F29" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="416" y="256" name="inst_83FF6516" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="464" y="256" name="inst_C6E5A19D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_view" x="624" y="336" name="inst_8D1F5EE5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="928" y="48" name="inst_9F4A7E11" locked="0" code="sprout = 23&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_sprout" x="928" y="48" name="inst_9F4A7E11" locked="0" code="sprout = 23" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_noteblock_yellow" x="496" y="352" name="inst_BA656ECD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_coin" x="1376" y="144" name="inst_B94507AE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_sprout" x="464" y="80" name="inst_07D18425" locked="0" code="sprout = 15" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_multicoin" x="832" y="352" name="inst_8623AA5B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="1984" y="304" name="inst_FA941939" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="128" y="64" name="inst_8C062B54" locked="0" code="sprout = 29&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_sprout" x="128" y="64" name="inst_8C062B54" locked="0" code="sprout = 29" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_sprout" x="80" y="304" name="inst_56F0D37F" locked="0" code="sprout = 1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_sprout" x="160" y="336" name="inst_885909B5" locked="0" code="sprout = 26&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_sprout" x="176" y="336" name="inst_3AC5AAE5" locked="0" code="sprout = 6" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -281,7 +281,7 @@
     <instance objName="obj_bobomb_parachute" x="1344" y="32" name="inst_4B436EF0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_fallingspike" x="1552" y="192" name="inst_4C8C5A2C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_fallingspike" x="1456" y="192" name="inst_D0D6AAC5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warpnoteblock_hidden" x="1824" y="64" name="inst_8C6ECD5E" locked="0" code="myroom = rmLevel2d&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warpnoteblock_hidden" x="1824" y="64" name="inst_8C6ECD5E" locked="0" code="myroom = rm_pipesatdusk_snow" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bubble_item" x="1200" y="288" name="inst_FA64E2F0" locked="0" code="item = 8&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bubble_item" x="176" y="160" name="inst_0BA1DC4F" locked="0" code="item = 1&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pipeenemygenerator" x="1440" y="128" name="inst_B54E9C46" locked="0" code="type = 1&#xA;enemy = 4&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -358,8 +358,8 @@
     <instance objName="obj_postchange" x="880" y="96" name="inst_E1C7C275" locked="0" code="postx = 576&#xA;posty = 368" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_postchange" x="1088" y="96" name="inst_6B286263" locked="0" code="postx = 1728&#xA;posty = 80" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_postchange" x="288" y="384" name="inst_B67CB69D" locked="0" code="postx = 992&#xA;posty = 80" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warproom" x="1920" y="336" name="inst_7876DA13" locked="0" code="myroom = rmLevel2b" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warproom" x="416" y="304" name="inst_24847DB2" locked="0" code="myroom = rmLevel2c" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warproom" x="1920" y="336" name="inst_7876DA13" locked="0" code="myroom = rm_pipesatdusk_water" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warproom" x="416" y="304" name="inst_24847DB2" locked="0" code="myroom = rm_pipesatdusk_cave" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_eswitch" x="992" y="208" name="inst_677584B2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mario" x="24" y="368" name="inst_48E24D89" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>

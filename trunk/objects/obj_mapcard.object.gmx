@@ -129,7 +129,7 @@ and other.speed = 0
 {
     ready = 1
     with obj_mapmario event_user(1)
-    room_goto(rmCardGame)
+    room_goto(rm_cardgame)
 }
 </string>
           </argument>

@@ -57,11 +57,6 @@ global.onoffblock = 0
 if global.yoshi = 2
 global.yoshi = 0
 ds_map_clear(global.acecoins)
-if lives = 0
-{
-    room_goto(rmGameOver)
-    exit
-}
 if global.died = 1
 and global.clear = 0
 {

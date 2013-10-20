@@ -107,7 +107,7 @@ and ready = 0
     global.prize[0] = powerup1
     global.prize[1] = powerup2
     global.prize[2] = powerup3
-    room_goto(rmBonus)
+    room_goto(rm_mushroomhouse)
 }
 if obj_mapmario.speed = 0
     obj_mapboxdrawer.mytext = "mushroom house"
