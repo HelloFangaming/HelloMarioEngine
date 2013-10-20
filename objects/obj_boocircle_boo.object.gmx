@@ -51,7 +51,7 @@ direct = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>trig -= 0.02
+            <string>trig += 0.02*ready
 x = xstart+cos(trig)*72
 y = ystart+sin(trig)*72
 if instance_exists(obj_mario)

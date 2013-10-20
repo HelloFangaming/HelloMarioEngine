@@ -50,7 +50,7 @@ alarm[3] = 1
 ready = 0
 image_speed = 0.15
 direct = 1
-if ds_map_exists(global.mapscreen,string(id))
+if ds_map_exists(global.worldmap,string(id))
     instance_destroy()
 type = 0
 powerup = 0
@@ -180,7 +180,7 @@ and obj_mapmario.y = ystart
 {
     audio_play_sound(snd_magic,0,0)
     instance_create(x,y,obj_smoke)
-    ds_map_add(global.mapscreen,string(id),1)
+    ds_map_add(global.worldmap,string(id),1)
     instance_destroy()
 }
 </string>

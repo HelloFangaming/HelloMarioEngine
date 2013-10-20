@@ -26,24 +26,24 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 0.15
-if ds_map_exists(global.mapscreen,"returnx")
+if ds_map_exists(global.worldmap,"returnx")
 {
-    returnx = ds_map_find_value(global.mapscreen,"returnx")
-    returny = ds_map_find_value(global.mapscreen,"returny")
-    x = ds_map_find_value(global.mapscreen,"mapx")
-    y = ds_map_find_value(global.mapscreen,"mapy")
-    from = ds_map_find_value(global.mapscreen,"from")
+    returnx = ds_map_find_value(global.worldmap,"returnx")
+    returny = ds_map_find_value(global.worldmap,"returny")
+    x = ds_map_find_value(global.worldmap,"mapx")
+    y = ds_map_find_value(global.worldmap,"mapy")
+    from = ds_map_find_value(global.worldmap,"from")
 }
 else
 {
     returnx = x
     returny = y
     from = 0
-    ds_map_add(global.mapscreen,"returnx",x)
-    ds_map_add(global.mapscreen,"returny",y)
-    ds_map_add(global.mapscreen,"mapx",x)
-    ds_map_add(global.mapscreen,"mapy",y)
-    ds_map_add(global.mapscreen,"from",y)
+    ds_map_add(global.worldmap,"returnx",x)
+    ds_map_add(global.worldmap,"returny",y)
+    ds_map_add(global.worldmap,"mapx",x)
+    ds_map_add(global.worldmap,"mapy",y)
+    ds_map_add(global.worldmap,"from",y)
 }
 ready = 0
 io_clear()
@@ -384,11 +384,11 @@ if global.yoshi = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ds_map_replace(global.mapscreen,"returnx",returnx)
-ds_map_replace(global.mapscreen,"returny",returny)
-ds_map_replace(global.mapscreen,"mapx",x)
-ds_map_replace(global.mapscreen,"mapy",y)
-ds_map_replace(global.mapscreen,"from",from)
+            <string>ds_map_replace(global.worldmap,"returnx",returnx)
+ds_map_replace(global.worldmap,"returny",returny)
+ds_map_replace(global.worldmap,"mapx",x)
+ds_map_replace(global.worldmap,"mapy",y)
+ds_map_replace(global.worldmap,"from",from)
 </string>
           </argument>
         </arguments>

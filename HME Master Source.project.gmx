@@ -693,7 +693,7 @@
       <sprite>sprites\spr_flyingbro</sprite>
       <sprite>sprites\spr_flyingbro_platform</sprite>
     </sprites>
-    <sprites name="Map Screen">
+    <sprites name="World Map">
       <sprites name="Map Mario">
         <sprite>sprites\spr_mapmario_small</sprite>
         <sprite>sprites\spr_mapmario_big</sprite>
@@ -1327,7 +1327,7 @@
       <object>objects\obj_stormgenerator</object>
       <object>objects\obj_cheepgenerator</object>
     </objects>
-    <objects name="Map Screen">
+    <objects name="World Map">
       <object>objects\obj_mapmario</object>
       <object>objects\obj_mapblock</object>
       <object>objects\obj_lock</object>

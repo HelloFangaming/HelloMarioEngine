@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 0.15
-if ds_map_exists(global.mapscreen,string(id))
+if ds_map_exists(global.worldmap,string(id))
     instance_destroy()
 </string>
           </argument>
@@ -53,7 +53,7 @@ if ds_map_exists(global.mapscreen,string(id))
             <string>audio_play_sound(snd_magic,0,0)
 instance_create(x,y,obj_smoke)
 obj_mapboxdrawer.mytext = " "
-ds_map_add(global.mapscreen,string(id),1)
+ds_map_add(global.worldmap,string(id),1)
 instance_destroy()
 </string>
           </argument>

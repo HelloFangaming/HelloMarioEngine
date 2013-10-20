@@ -25,26 +25,66 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>//Place this in the object creation code.
+//ready = Select a starting direction
+//1 = Clockwise
+//-1 = Counterclockwise
+if place_snapped(32,16)
+    ready = 1
+else
+    ready = -1
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>varid = instance_create(x,y,obj_boocircle_boo)
 varid.trig = 0
+varid.ready = ready
 varid = instance_create(x,y,obj_boocircle_boo)
 varid.trig = pi/6
+varid.ready = ready
 varid = instance_create(x,y,obj_boocircle_boo)
 varid.trig = 2*pi/6
+varid.ready = ready
 varid = instance_create(x,y,obj_boocircle_boo)
 varid.trig = pi/2
+varid.ready = ready
 varid = instance_create(x,y,obj_boocircle_boo)
 varid.trig = 4*pi/6
+varid.ready = ready
 varid = instance_create(x,y,obj_boocircle_boo)
 varid.trig = 5*pi/6
+varid.ready = ready
 varid = instance_create(x,y,obj_boocircle_boo)
 varid.trig = pi
+varid.ready = ready
 varid = instance_create(x,y,obj_boocircle_boo)
 varid.trig = 7*pi/6
+varid.ready = ready
 varid = instance_create(x,y,obj_boocircle_boo)
 varid.trig = 8*pi/6
+varid.ready = ready
 varid = instance_create(x,y,obj_boocircle_boo)
 varid.trig = 3*pi/2
+varid.ready = ready
 instance_destroy()
 </string>
           </argument>

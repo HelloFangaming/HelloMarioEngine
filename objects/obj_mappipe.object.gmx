@@ -29,11 +29,11 @@
 //pipetype = 0 or 1 (Destination pipe must be different from current pipe.)
 //destx = x position of new pipe.
 //desty = y position of new pipe.
-if not ds_map_exists(global.mapscreen,string(id))
-    ds_map_add(global.mapscreen,string(id),0)
-if ds_map_find_value(global.mapscreen,string(id)) = 1
+if not ds_map_exists(global.worldmap,string(id))
+    ds_map_add(global.worldmap,string(id),0)
+if ds_map_find_value(global.worldmap,string(id)) = 1
     alarm[0] = 1
-ds_map_replace(global.mapscreen,string(id),0)
+ds_map_replace(global.worldmap,string(id),0)
 </string>
           </argument>
         </arguments>
@@ -101,7 +101,7 @@ and other.speed = 0
 {
     with obj_mapmario event_user(1)
     global.pipetype = pipetype
-    ds_map_replace(global.mapscreen,string(id),1)
+    ds_map_replace(global.worldmap,string(id),1)
     room_goto(rmMapPipeArea)
 }
 if obj_mapmario.speed = 0

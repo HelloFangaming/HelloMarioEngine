@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ds_map_exists(global.mapscreen,string(id))
+            <string>if ds_map_exists(global.worldmap,string(id))
     instance_destroy()
 </string>
           </argument>
