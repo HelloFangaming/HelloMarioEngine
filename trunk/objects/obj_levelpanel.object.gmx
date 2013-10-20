@@ -35,18 +35,18 @@ varmidway = 0
 beaten = 0
 levelnumb = 1
 levelname = "Undefined"
-if ds_map_exists(global.mapscreen,string(id))
+if ds_map_exists(global.worldmap,string(id))
 {
-    if ds_map_find_value(global.mapscreen,string(id)) = 1
+    if ds_map_find_value(global.worldmap,string(id)) = 1
     {
         beaten = 1
         sprite_index = spr_levelbeat
         image_index = 3
         image_speed = 0
     }
-    if ds_map_find_value(global.mapscreen,string(id)) = 2
+    if ds_map_find_value(global.worldmap,string(id)) = 2
         varmidway = 1
-    if ds_map_find_value(global.mapscreen,string(id)) = 3
+    if ds_map_find_value(global.worldmap,string(id)) = 3
     {
         beaten = 1
         varmidway = 1
@@ -56,7 +56,7 @@ if ds_map_exists(global.mapscreen,string(id))
     }
 }
 else
-    ds_map_add(global.mapscreen,string(id),0)
+    ds_map_add(global.worldmap,string(id),0)
 </string>
           </argument>
         </arguments>
@@ -182,16 +182,16 @@ if obj_mapmario.speed = 0
             <string>if beaten = 0
 {
     if varmidway = 0
-        ds_map_replace(global.mapscreen,string(id),0)
+        ds_map_replace(global.worldmap,string(id),0)
     else
-        ds_map_replace(global.mapscreen,string(id),2)
+        ds_map_replace(global.worldmap,string(id),2)
 }
 else
 {
     if varmidway = 0
-        ds_map_replace(global.mapscreen,string(id),1)
+        ds_map_replace(global.worldmap,string(id),1)
     else
-        ds_map_replace(global.mapscreen,string(id),3)
+        ds_map_replace(global.worldmap,string(id),3)
 }
 </string>
           </argument>

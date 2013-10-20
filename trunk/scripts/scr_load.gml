@@ -14,7 +14,7 @@
 var file = file_text_open_read(argument0)
 
 //Load the mapscreen data structure
-ds_map_read(global.mapscreen,file_text_read_string(file))
+ds_map_read(global.worldmap,file_text_read_string(file))
 file_text_readln(file)
 
 //Coins

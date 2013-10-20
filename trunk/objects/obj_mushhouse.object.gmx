@@ -45,7 +45,7 @@
 //13:Blue Shell
 //14:Penguin Suit
 //15:1up
-if ds_map_exists(global.mapscreen,string(id))
+if ds_map_exists(global.worldmap,string(id))
     ready = 1
 else
     ready = 0
@@ -75,7 +75,7 @@ powerup3 = 0
           <argument>
             <kind>1</kind>
             <string>ready = 1
-ds_map_add(global.mapscreen,string(id),1)
+ds_map_add(global.worldmap,string(id),1)
 </string>
           </argument>
         </arguments>
