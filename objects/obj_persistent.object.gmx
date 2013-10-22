@@ -124,11 +124,32 @@ if keyboard_check_pressed(vk_f4)
     game_end()
 
 //Restart the game when ALT+R is pressed
-if keyboard_check_pressed(ord('R'))
+else if keyboard_check_pressed(ord('R'))
 {
     audio_stop_all()
     scr_init_globals()
     room_goto(rm_title)
+}
+
+//Turn off filtering if ALT+1 is pressed
+else if keyboard_check_pressed(ord('1'))
+{
+    filter = 0
+    window_set_size(view_wview[0],view_hview[0])
+}
+
+//Turn on HQ2X filtering if ALT+2 is pressed
+else if keyboard_check_pressed(ord('2'))
+{
+    filter = 1
+    window_set_size(view_wview[0]*2,view_hview[0]*2)
+}
+
+//Turn on HQ4X filtering if ALT+3 is pressed
+else if keyboard_check_pressed(ord('3'))
+{
+    filter = 2
+    window_set_size(view_wview[0]*4,view_hview[0]*4)
 }
 </string>
           </argument>
@@ -237,8 +258,70 @@ if mode = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Sticky Control Key Bug Fix
+            <string>//Save Fullscreen + Filtering Settings
+
+//Open the file
+var file = file_text_open_write("Settings.dat")
+
+//Save fullscreen settings
+file_text_write_string(file,string(window_get_fullscreen()))
+file_text_writeln(file)
+
+//Save filtering settings
+file_text_write_string(file,string(filter))
+
+//Close the file
+file_text_close(file)
+
+//Sticky Control Key Bug Fix
 keyboard_key_release(vk_control)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Load Fullscreen + Filtering Settings
+if file_exists("Settings.dat")
+{
+    //Open the file 
+    var file = file_text_open_read("Settings.dat")
+
+    //Set fullscreen mode based on the read value
+    window_set_fullscreen(real(file_text_read_string(file)))
+    file_text_readln(file)
+
+    //Set filtering mode based on the read value
+    filter = real(file_text_read_string(file))
+
+    //Close the file
+    file_text_close(file)
+
+    //HQ2x
+    if filter = 1
+        window_set_size(view_wview[0]*2,view_hview[0]*2)
+    //HQ4X
+    else if filter = 2
+        window_set_size(view_wview[0]*4,view_hview[0]*4)
+}
+else
+    filter = 0
 </string>
           </argument>
         </arguments>
@@ -265,29 +348,78 @@ keyboard_key_release(vk_control)
 if surface_exists(view_surface_id[0])
 {
     draw_set_blend_mode_ext(bm_one,bm_src_alpha_sat)
-    draw_surface(view_surface_id[0],0,0)
+
+    //No Filter
+    if filter = 0
+        draw_surface(view_surface_id[0],0,0)
+
+    //HQ2X Filtering
+    else if filter = 1
+    {
+        shader_set(sha_hq2x)
+        draw_surface_stretched(view_surface_id[0],0,0,view_wview[0]*2,view_hview[0]*2)
+        shader_reset()
+    }
+
+    //HQ4X Filtering
+    else if filter = 2
+    {
+        shader_set(sha_hq4x)
+        draw_surface_stretched(view_surface_id[0],0,0,view_wview[0]*4,view_hview[0]*4)
+        shader_reset()
+    }
+
     draw_set_blend_mode(bm_normal)
 }
 else
     view_surface_id[0] = surface_create(view_wview[0],view_hview[0])
+
 //Fades the screen to and from black
 if done &lt; 1
 {
     if mode = 0
         draw_set_alpha(1-done)
     else
-    {
-        if background_exists(back)
-        {
-            draw_set_blend_mode_ext(bm_one,bm_src_alpha_sat)
-            draw_background(back,0,0)
-            draw_set_blend_mode(bm_normal)
-        }
         draw_set_alpha(done)
-    }
-    draw_rectangle_color(0,0,view_wview[0],view_hview[0],c_black,c_black,c_black,c_black,0)
+    draw_set_color(c_black)
+    if filter = 0
+        draw_rectangle(0,0,view_wview[0],view_hview[0],0)
+    else if filter = 1
+        draw_rectangle(0,0,view_wview[0]*2,view_hview[0]*2,0)
+    else if filter = 2
+        draw_rectangle(0,0,view_wview[0]*4,view_hview[0]*4,0)
     done += 1/30
     draw_set_alpha(1)
+    draw_set_color(c_white)
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Draws the screenshot shown when fading to black
+if background_exists(back)
+{
+    draw_set_blend_mode_ext(bm_one,bm_src_alpha_sat)
+    draw_background(back,view_xview[0],view_yview[0])
+    draw_set_blend_mode(bm_normal)
 }
 </string>
           </argument>
