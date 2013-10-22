@@ -1067,6 +1067,10 @@
     <script>scripts\string_make_width.gml</script>
     <script>scripts\turn_towards_direction.gml</script>
   </scripts>
+  <shaders name="shaders">
+    <shader type="GLSLES">shaders\sha_hq2x.shader</shader>
+    <shader type="GLSLES">shaders\sha_hq4x.shader</shader>
+  </shaders>
   <objects name="objects">
     <objects name="Main">
       <object>objects\obj_mario</object>
