@@ -81,6 +81,9 @@ global.prize[0] = 0
 global.prize[1] = 0
 global.prize[2] = 0
 
+//Map pipe area type
+global.pipetype = 0
+
 //Map inventory variables
 for(var i=0; i<16; i++)
     global.inventory[i] = 0

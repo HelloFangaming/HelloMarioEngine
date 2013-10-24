@@ -43,11 +43,11 @@
     <option_android_licensing_key></option_android_licensing_key>
     <option_android_major_version>6</option_android_major_version>
     <option_android_minor_version>0</option_android_minor_version>
-    <option_android_mobage>false</option_android_mobage>
+    <option_android_mobage>0</option_android_mobage>
     <option_android_mobage_appkey></option_android_mobage_appkey>
     <option_android_mobage_extension_location></option_android_mobage_extension_location>
     <option_android_mobage_key></option_android_mobage_key>
-    <option_android_mobage_sandbox>false</option_android_mobage_sandbox>
+    <option_android_mobage_sandbox>0</option_android_mobage_sandbox>
     <option_android_mobage_secret></option_android_mobage_secret>
     <option_android_mobage_version></option_android_mobage_version>
     <option_android_orient_landscape>true</option_android_orient_landscape>
@@ -103,7 +103,7 @@
     <option_html5_index>-1</option_html5_index>
     <option_html5_interpolate>0</option_html5_interpolate>
     <option_html5_jsprepend></option_html5_jsprepend>
-    <option_html5_loadingbar></option_html5_loadingbar>
+    <option_html5_loadingbar>-1</option_html5_loadingbar>
     <option_html5_outputdebugtoconsole>False</option_html5_outputdebugtoconsole>
     <option_html5_outputname>index.html</option_html5_outputname>
     <option_html5_scale>-1</option_html5_scale>
@@ -210,7 +210,7 @@
     <option_screenshotkey>true</option_screenshotkey>
     <option_showcursor>False</option_showcursor>
     <option_showprogress>1</option_showprogress>
-    <option_sizeable>True</option_sizeable>
+    <option_sizeable>False</option_sizeable>
     <option_stayontop>false</option_stayontop>
     <option_sync_vertex>0</option_sync_vertex>
     <option_textureGroup0_border>2</option_textureGroup0_border>

@@ -48,6 +48,30 @@ scr_init_globals()
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Center the view
+window_center()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
@@ -136,6 +160,7 @@ else if keyboard_check_pressed(ord('1'))
 {
     filter = 0
     window_set_size(view_wview[0],view_hview[0])
+    alarm[2] = 1
 }
 
 //Turn on HQ2X filtering if ALT+2 is pressed
@@ -143,6 +168,7 @@ else if keyboard_check_pressed(ord('2'))
 {
     filter = 1
     window_set_size(view_wview[0]*2,view_hview[0]*2)
+    alarm[2] = 1
 }
 
 //Turn on HQ4X filtering if ALT+3 is pressed
@@ -150,6 +176,7 @@ else if keyboard_check_pressed(ord('3'))
 {
     filter = 2
     window_set_size(view_wview[0]*4,view_hview[0]*4)
+    alarm[2] = 1
 }
 </string>
           </argument>
@@ -312,16 +339,22 @@ if file_exists("Settings.dat")
 
     //Close the file
     file_text_close(file)
-
-    //HQ2x
-    if filter = 1
-        window_set_size(view_wview[0]*2,view_hview[0]*2)
-    //HQ4X
-    else if filter = 2
-        window_set_size(view_wview[0]*4,view_hview[0]*4)
 }
 else
-    filter = 0
+{
+    //Set the default to HQ4X only if the screen is big enough to fit it
+    if display_get_height() &gt;= 960
+        filter = 2
+    else
+        filter = 1
+}
+//HQ2x
+if filter = 1
+    window_set_size(view_wview[0]*2,view_hview[0]*2)
+//HQ4X
+else if filter = 2
+    window_set_size(view_wview[0]*4,view_hview[0]*4)
+alarm[2] = 1
 </string>
           </argument>
         </arguments>
@@ -377,18 +410,13 @@ else
 //Fades the screen to and from black
 if done &lt; 1
 {
+    done += 1/30
     if mode = 0
         draw_set_alpha(1-done)
     else
         draw_set_alpha(done)
     draw_set_color(c_black)
-    if filter = 0
-        draw_rectangle(0,0,view_wview[0],view_hview[0],0)
-    else if filter = 1
-        draw_rectangle(0,0,view_wview[0]*2,view_hview[0]*2,0)
-    else if filter = 2
-        draw_rectangle(0,0,view_wview[0]*4,view_hview[0]*4,0)
-    done += 1/30
+    draw_rectangle(0,0,2000,2000,0)
     draw_set_alpha(1)
     draw_set_color(c_white)
 }
