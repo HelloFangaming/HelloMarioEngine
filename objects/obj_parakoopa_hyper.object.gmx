@@ -73,12 +73,12 @@ direct = 0
           <argument>
             <kind>1</kind>
             <string>if hspeed &gt; 0
-    if collision_rectangle(bbox_right+hspeed,bbox_top,bbox_right+hspeed,bbox_bottom,obj_parenemy,0,1)
-    or collision_rectangle(bbox_right+hspeed,bbox_top,bbox_right+hspeed,bbox_bottom,obj_parenemy2,0,1)
+    if collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_parenemy,0,1)
+    or collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_parenemy2,0,1)
         hspeed = -hspeed
 if hspeed &lt; 0
-    if collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left+hspeed,bbox_bottom,obj_parenemy,0,1)
-    or collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left+hspeed,bbox_bottom,obj_parenemy2,0,1)
+    if collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_parenemy,0,1)
+    or collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_parenemy2,0,1)
         hspeed = -hspeed
 if hspeed &gt; 0
 and collision_rectangle(bbox_right+hspeed,bbox_top,bbox_right+hspeed,bbox_bottom-1,obj_solid,0,0)
@@ -93,9 +93,9 @@ if hspeed &lt; 0
 while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
     y-=1
 if vspeed &lt; 0
-and collision_rectangle(bbox_left,bbox_top+1,bbox_right,bbox_top+1,obj_solid,0,0)
+and collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_solid,0,0)
 {
-    while collision_rectangle(bbox_left,bbox_top+1,bbox_right,bbox_top+1,obj_solid,0,0)
+    while collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_solid,0,0)
         y+=1
     vspeed = 1
 }

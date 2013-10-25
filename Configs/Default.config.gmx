@@ -8,8 +8,8 @@
     <option_android_advertising_key></option_android_advertising_key>
     <option_android_advertising_type>MoPub</option_android_advertising_type>
     <option_android_amazon_game_circle>0</option_android_amazon_game_circle>
-    <option_android_amazon_gc_achievements>-1</option_android_amazon_gc_achievements>
-    <option_android_amazon_gc_leaderboards>-1</option_android_amazon_gc_leaderboards>
+    <option_android_amazon_gc_achievements>0</option_android_amazon_gc_achievements>
+    <option_android_amazon_gc_leaderboards>0</option_android_amazon_gc_leaderboards>
     <option_android_amazon_gc_whispersync>0</option_android_amazon_gc_whispersync>
     <option_android_amazon_iap>0</option_android_amazon_iap>
     <option_android_apk_expansion>0</option_android_apk_expansion>
@@ -165,7 +165,7 @@
     <option_linux_interpolate>0</option_linux_interpolate>
     <option_linux_scale>-1</option_linux_scale>
     <option_linux_screenkey>-1</option_linux_screenkey>
-    <option_linux_sizeable>-1</option_linux_sizeable>
+    <option_linux_sizeable>0</option_linux_sizeable>
     <option_linux_steam_app_id>0</option_linux_steam_app_id>
     <option_linux_sync>0</option_linux_sync>
     <option_linux_texture_page>2048</option_linux_texture_page>
@@ -191,7 +191,7 @@
     <option_mac_scale>-1</option_mac_scale>
     <option_mac_screenkey>-1</option_mac_screenkey>
     <option_mac_showcursor>0</option_mac_showcursor>
-    <option_mac_sizeable>-1</option_mac_sizeable>
+    <option_mac_sizeable>0</option_mac_sizeable>
     <option_mac_splash_png>Configs\Default\mac\splash.png</option_mac_splash_png>
     <option_mac_steam_app_id>0</option_mac_steam_app_id>
     <option_mac_sync>0</option_mac_sync>
@@ -238,7 +238,7 @@
     <option_tizen_usesplash>False</option_tizen_usesplash>
     <option_use_new_audio>True</option_use_new_audio>
     <option_variableerrors>False</option_variableerrors>
-    <option_version>6</option_version>
+    <option_version>6.0.0.0</option_version>
     <option_version_build>0</option_version_build>
     <option_version_company>Hello Fangaming</option_version_company>
     <option_version_copyright></option_version_copyright>
