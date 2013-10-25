@@ -205,15 +205,15 @@ else
           <argument>
             <kind>1</kind>
             <string>if hspeed &gt; 0
-    if collision_rectangle(bbox_right+hspeed,bbox_top,bbox_right+hspeed,bbox_bottom,obj_parenemy,0,1)
-    or collision_rectangle(bbox_right+hspeed,bbox_top,bbox_right+hspeed,bbox_bottom,obj_parenemy2,0,1)
+    if collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_parenemy,0,1)
+    or collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_parenemy2,0,1)
     {
         hspeed = -0.5
         direct = -direct
     }
 if hspeed &lt; 0
-    if collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left+hspeed,bbox_bottom,obj_parenemy,0,1)
-    or collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left+hspeed,bbox_bottom,obj_parenemy2,0,1)
+    if collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_parenemy,0,1)
+    or collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_parenemy2,0,1)
     {
         hspeed = 0.5
         direct = -direct
