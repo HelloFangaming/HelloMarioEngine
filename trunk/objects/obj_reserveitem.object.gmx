@@ -135,7 +135,7 @@ else
     if sprite_index = spr_frogsuit
         global.powerup = cs_frog
     if sprite_index = spr_bombshroom
-        global.powerup = cs_hammer
+        global.powerup = cs_bomb
     if sprite_index = spr_iceflower
         global.powerup = cs_ice
     if sprite_index = spr_superflower
