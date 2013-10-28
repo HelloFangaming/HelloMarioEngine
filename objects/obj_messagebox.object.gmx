@@ -131,9 +131,9 @@ showing = 1
             <kind>1</kind>
             <string>if background_exists(back)
 {
-    draw_set_blend_mode_ext(bm_one,bm_src_alpha_sat)
+    draw_enable_alphablend(0)
     draw_background(back,view_xview[0],view_yview[0])
-    draw_set_blend_mode(bm_normal)
+    draw_enable_alphablend(1)
 }
 draw_set_color(c_white)
 draw_set_font(global.messagefont)
