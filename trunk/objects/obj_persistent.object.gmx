@@ -380,7 +380,7 @@ alarm[2] = 1
             <string>//Draws the game surface
 if surface_exists(view_surface_id[0])
 {
-    draw_set_blend_mode_ext(bm_one,bm_src_alpha_sat)
+    draw_enable_alphablend(0)
 
     //No Filter
     if filter = 0
@@ -402,7 +402,7 @@ if surface_exists(view_surface_id[0])
         shader_reset()
     }
 
-    draw_set_blend_mode(bm_normal)
+    draw_enable_alphablend(1)
 }
 else
     view_surface_id[0] = surface_create(view_wview[0],view_hview[0])
@@ -445,9 +445,9 @@ if done &lt; 1
             <string>//Draws the screenshot shown when fading to black
 if background_exists(back)
 {
-    draw_set_blend_mode_ext(bm_one,bm_src_alpha_sat)
+    draw_enable_alphablend(0)
     draw_background(back,view_xview[0],view_yview[0])
-    draw_set_blend_mode(bm_normal)
+    draw_enable_alphablend(1)
 }
 </string>
           </argument>
