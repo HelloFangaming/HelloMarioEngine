@@ -1020,23 +1020,6 @@
   </paths>
   <scripts name="scripts">
     <scripts name="Mario">
-      <scripts name="Powerups">
-        <script>scripts\scr_smallmario.gml</script>
-        <script>scripts\scr_bigmario.gml</script>
-        <script>scripts\scr_firemario.gml</script>
-        <script>scripts\scr_hammermario.gml</script>
-        <script>scripts\scr_leafmario.gml</script>
-        <script>scripts\scr_tanookimario.gml</script>
-        <script>scripts\scr_frogmario.gml</script>
-        <script>scripts\scr_bombmario.gml</script>
-        <script>scripts\scr_icemario.gml</script>
-        <script>scripts\scr_supermario.gml</script>
-        <script>scripts\scr_carrotmario.gml</script>
-        <script>scripts\scr_ninjamario.gml</script>
-        <script>scripts\scr_beemario.gml</script>
-        <script>scripts\scr_shellmario.gml</script>
-        <script>scripts\scr_penguinmario.gml</script>
-      </scripts>
       <script>scripts\scr_mariowalk.gml</script>
       <script>scripts\scr_mariojump.gml</script>
       <script>scripts\scr_mariorun.gml</script>
@@ -1044,11 +1027,14 @@
       <script>scripts\scr_marioskid.gml</script>
       <script>scripts\scr_marioclimb.gml</script>
       <script>scripts\scr_marioswim.gml</script>
+      <script>scripts\scr_marioswim2.gml</script>
+      <script>scripts\scr_marioswim3.gml</script>
       <script>scripts\scr_mariohold.gml</script>
       <script>scripts\scr_mariocarry.gml</script>
       <script>scripts\scr_marioduck.gml</script>
       <script>scripts\scr_mariogoal.gml</script>
       <script>scripts\scr_mariowarp.gml</script>
+      <script>scripts\scr_marioshoot.gml</script>
       <script>scripts\scr_marioslide.gml</script>
       <script>scripts\scr_mariokick.gml</script>
       <script>scripts\scr_marioride.gml</script>
