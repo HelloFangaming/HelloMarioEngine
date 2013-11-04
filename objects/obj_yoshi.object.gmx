@@ -520,34 +520,42 @@ or inmouth = obj_getshoe
             <kind>1</kind>
             <string>if instance_exists(obj_mario)
 {
+    //Make Mario flash
+    if obj_mario.isflashing = 1
+        shader_set(sha_invert)
+
     if licking = 1
     {
         if global.ycolor = 0
-            draw_sprite_ext(spr_yoshi_lick,ttttt,round(x),y,obj_mario.direct,1,0,obj_mario.color,1)
+            draw_sprite_ext(spr_yoshi_lick,ttttt,round(x),y,obj_mario.direct,1,0,c_white,1)
         else if global.ycolor = 1
-            draw_sprite_ext(spr_yoshi_lick_r,ttttt,round(x),y,obj_mario.direct,1,0,obj_mario.color,1)
+            draw_sprite_ext(spr_yoshi_lick_r,ttttt,round(x),y,obj_mario.direct,1,0,c_white,1)
         else if global.ycolor = 2
-            draw_sprite_ext(spr_yoshi_lick_y,ttttt,round(x),y,obj_mario.direct,1,0,obj_mario.color,1)
+            draw_sprite_ext(spr_yoshi_lick_y,ttttt,round(x),y,obj_mario.direct,1,0,c_white,1)
         else if global.ycolor = 3
-            draw_sprite_ext(spr_yoshi_lick_b,ttttt,round(x),y,obj_mario.direct,1,0,obj_mario.color,1)
+            draw_sprite_ext(spr_yoshi_lick_b,ttttt,round(x),y,obj_mario.direct,1,0,c_white,1)
     }
     else if fullmouth = 1
     {
         if global.ycolor = 0
-            draw_sprite_ext(spr_yoshi_hold,image_index,round(x),y,obj_mario.direct,1,0,obj_mario.color,1)
+            draw_sprite_ext(spr_yoshi_hold,image_index,round(x),y,obj_mario.direct,1,0,c_white,1)
         else if global.ycolor = 1
-            draw_sprite_ext(spr_yoshi_hold_r,image_index,round(x),y,obj_mario.direct,1,0,obj_mario.color,1)
+            draw_sprite_ext(spr_yoshi_hold_r,image_index,round(x),y,obj_mario.direct,1,0,c_white,1)
         else if global.ycolor = 2
-            draw_sprite_ext(spr_yoshi_hold_y,image_index,round(x),y,obj_mario.direct,1,0,obj_mario.color,1)
+            draw_sprite_ext(spr_yoshi_hold_y,image_index,round(x),y,obj_mario.direct,1,0,c_white,1)
         else if global.ycolor = 3
-            draw_sprite_ext(spr_yoshi_hold_b,image_index,round(x),y,obj_mario.direct,1,0,obj_mario.color,1)
+            draw_sprite_ext(spr_yoshi_hold_b,image_index,round(x),y,obj_mario.direct,1,0,c_white,1)
     }
     else
-        draw_sprite_ext(sprite_index,image_index,round(x),y,obj_mario.direct,1,0,obj_mario.color,1)
-    draw_sprite_ext(mymario,0,round(x)-5*obj_mario.direct,y-9,obj_mario.direct,1,0,obj_mario.color,obj_mario.image_alpha)
+        draw_sprite_ext(sprite_index,image_index,round(x),y,obj_mario.direct,1,0,c_white,1)
+    draw_sprite_ext(mymario,0,round(x)-5*obj_mario.direct,y-9,obj_mario.direct,1,0,c_white,obj_mario.image_alpha)
     if global.ycolor = 3
     and fullmouth = 1
-        draw_sprite_ext(spr_wing,flyanim,round(x)-6*obj_mario.direct,y+6,obj_mario.direct,1,0,obj_mario.color,obj_mario.image_alpha)
+        draw_sprite_ext(spr_wing,flyanim,round(x)-6*obj_mario.direct,y+6,obj_mario.direct,1,0,c_white,obj_mario.image_alpha)
+
+    //Reset flashing
+    if obj_mario.isflashing = 1
+        shader_reset()
 }
 if instance_exists(obj_goalmario)
 {

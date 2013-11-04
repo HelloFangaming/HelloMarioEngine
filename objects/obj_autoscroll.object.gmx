@@ -94,18 +94,18 @@ if instance_exists(obj_mario)
         if obj_mario.x &lt; view_xview[0]+6
         and collision_line(obj_mario.x+5,obj_mario.bbox_top+2,obj_mario.x+5,obj_mario.y+30,obj_solid,1,0)
         {
-            instance_create(obj_mario.x,obj_mario.y,obj_deadmario)
+            instance_create(view_xview[0]+8,obj_mario.y,obj_deadmario)
             with obj_mario instance_destroy()
         }
         else if obj_mario.x &gt; view_xview[0]+314
         and collision_line(obj_mario.x-5,obj_mario.bbox_top+2,obj_mario.x-5,obj_mario.y+30,obj_solid,1,0)
         {
-            instance_create(obj_mario.x,obj_mario.y,obj_deadmario)
+            instance_create(view_xview[0]+312,obj_mario.y,obj_deadmario)
             with obj_mario instance_destroy()
         }
-        else if obj_mario.y &gt; view_yview[0]+240
+        else if obj_mario.bbox_top &gt; view_yview[0]+240
         {
-            instance_create(obj_mario.x,obj_mario.y,obj_deadmario)
+            instance_create(obj_mario.x,view_yview[0]+208,obj_deadmario)
             with obj_mario instance_destroy()
         }
     }

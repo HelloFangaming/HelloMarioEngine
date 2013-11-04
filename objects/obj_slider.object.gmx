@@ -239,8 +239,20 @@ if collision_rectangle(bbox_left-1+hspeed,bbox_top+4,bbox_left,bbox_bottom-1,obj
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_mario)
-    draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,obj_mario.color,obj_mario.image_alpha)
+            <string>///Draws Mario
+if instance_exists(obj_mario)
+{
+    //Make Mario flash
+    if obj_mario.isflashing = 1
+        shader_set(sha_invert)
+    
+    //Draw Mario
+    draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,obj_mario.image_alpha)
+    
+    //Reset flashing
+    if obj_mario.isflashing = 1
+        shader_reset()
+}
 </string>
           </argument>
         </arguments>

@@ -36,8 +36,7 @@ image_speed = 0.15
 myitem = 0
 if instance_exists(obj_invincibility)
     alarm[5] = 4
-color = c_white
-mycolor = 0
+isflashing = 0
 alpha = 1
 direct = 1
 bugfix = 0
@@ -63,36 +62,24 @@ bugfix = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_invincibility)
+            <string>///Handle Mario's invincibility flashing
+
+//Keep flashing until the invincibility is done
+if instance_exists(obj_invincibility)
 {
-    color = c_white
-    alpha = 1
-    exit
+    if obj_invincibility.newstar = 0
+    {
+        if isflashing = 0
+            isflashing = 1
+        else
+            isflashing = 0
+        alarm[5] = 4
+    }
+    else
+        isflashing = 0
 }
-if obj_invincibility.newstar = 0
-    alarm[5] = 4
 else
-{
-    color = c_white
-    alpha = 1
-    exit
-}
-if mycolor = 0
-    color = c_blue
-else if mycolor = 1
-    color = c_red
-else if mycolor = 2
-    color = c_green
-else if mycolor = 3
-    color = c_yellow
-else if mycolor = 4
-    color = c_fuchsia
-else if mycolor = 5
-    color = c_orange
-mycolor +=1
-if mycolor &gt; 5
-    mycolor = 0
-alpha = 0.7
+    isflashing = 0
 </string>
           </argument>
         </arguments>
@@ -536,10 +523,25 @@ if global.postchange = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if myitem &gt; 0
+            <string>///Draws Mario
+
+//Draw item when Mario is moving horizontally
+if myitem &gt; 0
 and hspeed != 0
     draw_sprite(myitem,0,x-8+10*direct+bugfix,y+15)
-draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,color,alpha)
+
+//Make Mario flash
+if isflashing = 1
+    shader_set(sha_invert)
+
+//Draw Mario
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,alpha)
+
+//Reset flashing
+if isflashing = 1
+    shader_reset()
+
+//Draw item when Mario is moving vertically
 if myitem &gt; 0
 and hspeed = 0
     draw_sprite(myitem,0,x-8+bugfix,y+16)

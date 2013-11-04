@@ -32,7 +32,6 @@ if not audio_is_playing(snd_starman)
     audio_play_sound(snd_letsgo,0,0)
 }
 obj_musicplayer.alarm[1] = 1
-obj_mario.image_alpha = 0.7
 obj_mario.alarm[10] = 1
 alarm[0] = 1000
 alarm[1] = 1
@@ -63,8 +62,8 @@ newstar = 0
             <kind>1</kind>
             <string>ready = 1
 obj_mario.invincible = 0
-obj_mario.image_alpha = 1
-instance_destroy()</string>
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
@@ -156,7 +155,6 @@ if instance_exists(obj_mario)
     and ready = 0
     {
         obj_mario.invincible = 1
-        obj_mario.image_alpha = 0.7
         obj_mario.alarm[10] = 1
     }
 }
