@@ -82,8 +82,6 @@ and (global.powerup = cs_leaf or global.powerup = cs_tanooki)
 {
     x = obj_mario.x
     y = obj_mario.y
-    image_alpha = obj_mario.image_alpha
-    image_blend = obj_mario.color
 }
 else
     instance_destroy()
@@ -142,6 +140,42 @@ else
           <argument>
             <kind>1</kind>
             <string>instance_destroy()</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draws Mario
+if instance_exists(obj_mario)
+{
+    //Make Mario flash
+    if obj_mario.isflashing = 1
+        shader_set(sha_invert)
+    
+    //Draw Mario
+    draw_sprite_ext(sprite_index,image_index,round(x),y,obj_mario.direct,1,0,c_white,obj_mario.image_alpha)
+    
+    //Reset flashing
+    if obj_mario.isflashing = 1
+        shader_reset()
+}
+</string>
           </argument>
         </arguments>
       </action>

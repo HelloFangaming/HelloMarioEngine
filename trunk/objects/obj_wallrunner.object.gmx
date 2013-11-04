@@ -444,23 +444,36 @@ and mydir = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 0
+            <string>///Draws Mario
+if instance_exists(obj_mario)
 {
-    if mydir = 0
-        draw_sprite_ext(sprite_index,image_index,round(x)-16,round(y)+16,1,1,90,obj_mario.color,obj_mario.image_alpha)
-    if mydir = 1
-        draw_sprite_ext(sprite_index,image_index,round(x),round(y)+31,1,1,180,obj_mario.color,obj_mario.image_alpha)
-    if mydir = 2
-        draw_sprite_ext(sprite_index,image_index,round(x)+16,round(y)+16,1,1,270,obj_mario.color,obj_mario.image_alpha)
-}
-if ready = 1
-{
-    if mydir = 0
-        draw_sprite_ext(sprite_index,image_index,round(x)+16,round(y)+16,-1,1,270,obj_mario.color,obj_mario.image_alpha)
-    if mydir = 1
-        draw_sprite_ext(sprite_index,image_index,round(x),round(y)+31,-1,1,180,obj_mario.color,obj_mario.image_alpha)
-    if mydir = 2
-        draw_sprite_ext(sprite_index,image_index,round(x)-16,round(y)+16,-1,1,90,obj_mario.color,obj_mario.image_alpha)
+    //Make Mario flash
+    if obj_mario.isflashing = 1
+        shader_set(sha_invert)
+    
+    //Draw Mario
+    if ready = 0
+    {
+        if mydir = 0
+            draw_sprite_ext(sprite_index,image_index,round(x)-16,round(y)+16,1,1,90,c_white,obj_mario.image_alpha)
+        if mydir = 1
+            draw_sprite_ext(sprite_index,image_index,round(x),round(y)+31,1,1,180,c_white,obj_mario.image_alpha)
+        if mydir = 2
+            draw_sprite_ext(sprite_index,image_index,round(x)+16,round(y)+16,1,1,270,c_white,obj_mario.image_alpha)
+    }
+    if ready = 1
+    {
+        if mydir = 0
+            draw_sprite_ext(sprite_index,image_index,round(x)+16,round(y)+16,-1,1,270,c_white,obj_mario.image_alpha)
+        if mydir = 1
+            draw_sprite_ext(sprite_index,image_index,round(x),round(y)+31,-1,1,180,c_white,obj_mario.image_alpha)
+        if mydir = 2
+            draw_sprite_ext(sprite_index,image_index,round(x)-16,round(y)+16,-1,1,90,c_white,obj_mario.image_alpha)
+    }
+
+    //Reset flashing
+    if obj_mario.isflashing = 1
+        shader_reset()
 }
 </string>
           </argument>

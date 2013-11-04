@@ -25,37 +25,94 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.25
-jumpnow = 0
+            <string>///It's a me, Mario!
+
+//Mario's current state
+//0: Stand, 1: Walk, 2: Jump, 3: Climb 4:Wall Climb
 state = 0
+
+//Mario's direction
+//-1: Left, 1: Right
 direct = 1
-//alarm[5] = 1
-holding = 0
-isrun = 0
-isjump = 0
-skidnow = 0
-isswim = 0
-hitpoint = 0
-isduck = 0
-invincible = 0
-kk = 0
-iamkicking = 0
-canturn = 0
-stompstyle = 0
+
+//Whether Mario is holding something
+//0: Nothing, 1: Overhead, 2: On Front 3: Can't Hold Stuff
 if global.yoshi = 1
-holding = 3
-swimtype = 0
-noisy = 0
-mycolor = 0
-color = c_white
-alarm[9] = 24 + random(96)
-isfloating = 0
-floatnow = 0
-beefly = 0
+    holding = 3
+else
+    holding = 0
+
+//Is Mario running?
+isrun = 0
+
+//Is Mario jumping?
+isjump = 0
+
+//Variable jump state
+//0: Can Jump, 1: Variable Jump, 2: No Variable Jump
+jumpnow = 0
+
+//Is Mario skidding?
+skidnow = 0
+
+//Is Mario swimming?
+isswim = 0
+
+//Is Mario ducking?
+isduck = 0
+
+//Is Mario invincible?
+invincible = 0
+
+//Is Mario hitting a net?
+kk = 0
+
+//Is Mario kicking something?
+iamkicking = 0
+
+//Can Mario turn around?
+canturn = 0
+
+//Is Mario spin jumping?
+stompstyle = 0
+
+//Is Mario on a slippery surface?
 isslip = 0
+
+//Is carrot/bee Mario floating?
+isfloating = 0
+
+//Is the float sound effect playing?
+floatnow = 0
+
+//How much longer can bee Mario fly?
+beefly = 0
+
+//Is Mario firing a projectile?
 firing = 0
+
+//Is leaf/tanooki Mario wiggling his tail?
 wiggle = 0
-alarm[11] = 8
+
+//What direction is frog/penguin Mario swimming in?
+swimtype = 0
+
+//Is frog/penguin Mario's swim sound effect looping?
+noisy = 0
+
+//Is Mario flashing?
+isflashing = 0
+
+//How many consecutive stomps has Mario made?
+hitpoint = 0
+
+//Handles Mario's skid smoke
+alarm[5] = 8
+
+//Handles Mario's underwater bubbles
+alarm[9] = 24 + random(96)
+
+//Did Mario carry something over from another room?
 if global.shallihold &gt; 0
 {
     holding = global.shallihold
@@ -83,50 +140,19 @@ if global.shallihold &gt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if skidnow = 1
+            <string>///Stop these sounds from playing
+
+//Skid sound
+if skidnow = 1
     audio_stop_sound(snd_skid)
+
+//Swim sound
 if noisy = 1
     audio_stop_sound(snd_swim)
+
+//Float sound
 if floatnow = 1
     audio_stop_sound(snd_spin)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="11">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if skidnow = 1
-{
-    if direct = -1
-    {
-        varid = instance_create(x-8,y+24,obj_smoke)
-        varid.sprite_index = spr_skidsmoke
-        varid.depth = -6
-    }
-    if direct = 1
-    {
-        varid = instance_create(x+1,y+24,obj_smoke)
-        varid.sprite_index = spr_skidsmoke
-        varid.depth = -6
-    }
-}
-alarm[11] = 8
 </string>
           </argument>
         </arguments>
@@ -149,30 +175,24 @@ alarm[11] = 8
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_invincibility)
-and obj_invincibility.newstar = 0
-    alarm[10] = 4
-else
+            <string>///Handle Mario's invincibility flashing
+
+//Keep flashing until the invincibility is done
+if instance_exists(obj_invincibility)
 {
-    mycolor = 0
-    color = c_white
-    exit
+    if obj_invincibility.newstar = 0
+    {
+        if isflashing = 0
+            isflashing = 1
+        else
+            isflashing = 0
+        alarm[10] = 4
+    }
+    else
+        isflashing = 0
 }
-if mycolor = 0
-    color = c_blue
-else if mycolor = 1
-    color = c_red
-else if mycolor = 2
-    color = c_green
-else if mycolor = 3
-    color = c_yellow
-else if mycolor = 4
-    color = c_fuchsia
-else if mycolor = 5
-    color = c_orange
-mycolor +=1
-if mycolor &gt; 5
-    mycolor = 0
+else
+    isflashing = 0
 </string>
           </argument>
         </arguments>
@@ -195,7 +215,8 @@ if mycolor &gt; 5
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if isswim = 1
+            <string>///Create Mario's underwater bubble effect
+if isswim = 1
     instance_create(x-2+6*direct,bbox_top+7,obj_bubble)
 alarm[9] = 24 + random(96)
 </string>
@@ -220,31 +241,42 @@ alarm[9] = 24 + random(96)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.powerup = cs_fire
+            <string>///Create Mario's second spin jump projectile
+
+//Fire Ball
+if global.powerup = cs_fire
 and instance_number(obj_fireball) &lt; 2
 {
     varid = instance_create(x,y+16,obj_fireball)
     varid.hspeed = -3*direct
 }
-if global.powerup = cs_hammer
+
+//Hammer
+else if global.powerup = cs_hammer
 and instance_number(obj_hammer) &lt; 2
 {
     varid = instance_create(x,y+16,obj_hammer)
     varid.hspeed = -2*direct
 }
-if (global.powerup = cs_ice or global.powerup = cs_penguin)
+
+//Ice Ball
+else if (global.powerup = cs_ice or global.powerup = cs_penguin)
 and instance_number(obj_iceball) &lt; 1
 {
     varid = instance_create(x,y+16,obj_iceball)
     varid.hspeed = -3*direct
 }
-if global.powerup = cs_super
+
+//Super Ball
+else if global.powerup = cs_super
 and instance_number(obj_superball) &lt; 2
 {
     varid = instance_create(x,y+16,obj_superball)
     varid.hspeed = -2*direct
 }
-if global.powerup = cs_ninja
+
+//Shuriken
+else if global.powerup = cs_ninja
 and instance_number(obj_shuriken) &lt; 2
 {
     varid = instance_create(x,y+16,obj_shuriken)
@@ -272,52 +304,50 @@ and instance_number(obj_shuriken) &lt; 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.powerup = cs_fire
+            <string>///Create Mario's first spin jump projectile
+
+//Fire Ball
+if global.powerup = cs_fire
+and instance_number(obj_fireball) &lt; 2
 {
-    if instance_number(obj_fireball) &lt; 2
-    {
-        varid = instance_create(x,y+16,obj_fireball)
-        varid.hspeed = 3*direct
-    }
-    alarm[8] = 10
+    varid = instance_create(x,y+16,obj_fireball)
+    varid.hspeed = 3*direct
 }
-if global.powerup = cs_hammer
+
+//Hammer
+else if global.powerup = cs_hammer
+and instance_number(obj_hammer) &lt; 2
 {
-    if instance_number(obj_hammer) &lt; 2
-    {
-        varid = instance_create(x,y+16,obj_hammer)
-        varid.hspeed = 2*direct
-    }
-    alarm[8] = 10
+    varid = instance_create(x,y+16,obj_hammer)
+    varid.hspeed = 2*direct
 }
-if global.powerup = cs_ice
-or global.powerup = cs_penguin
+
+//Ice Ball
+else if (global.powerup = cs_ice or global.powerup = cs_penguin)
+and instance_number(obj_iceball) &lt; 1
 {
-    if instance_number(obj_iceball) &lt; 1
-    {
-        varid = instance_create(x,y+16,obj_iceball)
-        varid.hspeed = 3*direct
-    }
-    alarm[8] = 10
+    varid = instance_create(x,y+16,obj_iceball)
+    varid.hspeed = 3*direct
 }
-if global.powerup = cs_super
+
+//Super Ball
+else if global.powerup = cs_super
+and instance_number(obj_superball) &lt; 2
 {
-    if instance_number(obj_superball) &lt; 2
-    {
-        varid = instance_create(x,y+16,obj_superball)
-        varid.hspeed = 2*direct
-    }
-    alarm[8] = 10
+    varid = instance_create(x,y+16,obj_superball)
+    varid.hspeed = 2*direct
 }
-if global.powerup = cs_ninja
+
+//Shuriken
+else if global.powerup = cs_ninja
+and instance_number(obj_shuriken) &lt; 2
 {
-    if instance_number(obj_shuriken) &lt; 2
-    {
-        varid = instance_create(x,y+20,obj_shuriken)
-        varid.hspeed = 5*direct
-    }
-    alarm[8] = 10
+    varid = instance_create(x,y+20,obj_shuriken)
+    varid.hspeed = 5*direct
 }
+
+//Second Projectile
+alarm[8] = 10
 </string>
           </argument>
         </arguments>
@@ -340,7 +370,9 @@ if global.powerup = cs_ninja
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>iamkicking = 0</string>
+            <string>///Finish Mario's kicking animation
+iamkicking = 0
+</string>
           </argument>
         </arguments>
       </action>
@@ -362,8 +394,23 @@ if global.powerup = cs_ninja
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hspeed &lt; 0
-    direct = -1
+            <string>///Create Mario's skid smoke
+if skidnow = 1
+{
+    if direct = -1
+    {
+        varid = instance_create(x-8,y+24,obj_smoke)
+        varid.sprite_index = spr_skidsmoke
+        varid.depth = -6
+    }
+    if direct = 1
+    {
+        varid = instance_create(x+1,y+24,obj_smoke)
+        varid.sprite_index = spr_skidsmoke
+        varid.depth = -6
+    }
+}
+alarm[5] = 8
 </string>
           </argument>
         </arguments>
@@ -386,7 +433,9 @@ if global.powerup = cs_ninja
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>kk = 0</string>
+            <string>///End Mario's net kick
+kk = 0
+</string>
           </argument>
         </arguments>
       </action>
@@ -408,7 +457,9 @@ if global.powerup = cs_ninja
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>invincible = 0</string>
+            <string>///Make Mario no longer invincible
+invincible = 0
+</string>
           </argument>
         </arguments>
       </action>
@@ -430,7 +481,8 @@ if global.powerup = cs_ninja
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_alpha = 1
+            <string>///Make Mario's alpha blink stop
+image_alpha = 1
 if invincible = 1
     alarm[1] = 4
 </string>
@@ -455,8 +507,10 @@ if invincible = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_alpha = 0.4
-alarm[2] = 4</string>
+            <string>///Make Mario's alpha blink
+image_alpha = 0.4
+alarm[2] = 4
+</string>
           </argument>
         </arguments>
       </action>
@@ -478,7 +532,9 @@ alarm[2] = 4</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>holding = 0</string>
+            <string>///Reset holding variable
+holding = 0
+</string>
           </argument>
         </arguments>
       </action>
@@ -500,7 +556,9 @@ alarm[2] = 4</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Disable ducking for certain powerups
+            <string>///Handles Mario's sprites
+
+//Disable ducking for certain powerups
 if global.powerup = cs_small
 or global.powerup = cs_frog
     isduck = 0
@@ -807,7 +865,6 @@ else
             <kind>1</kind>
             <string>if y &lt; -48
     y = -48
-image_xscale = 1
 //This decides what step event script needs to be executed.
 if isswim = 0
 {
@@ -820,6 +877,13 @@ if isswim = 0
 }
 else
     event_user(3)
+
+//Kill Mario if he falls out of the room
+if bbox_top &gt; room_height
+{
+    instance_create(x,room_height-32,obj_deadmario)
+    instance_destroy()
+}
 </string>
           </argument>
         </arguments>
@@ -842,17 +906,27 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if vspeed &gt; 0
+            <string>///Handle slope collision
+if vspeed &gt; 0
 {
+    //Stop vertical movement
     vspeed = 0
     gravity = 0
+
+    //End jump state
     if hspeed = 0
         state = 0
     else
         state = 1
+
+    //Allow Mario to jump
     if jumpnow = 2
         jumpnow = 0
+
+    //Reset hit counter
     hitpoint = 0
+
+    //Reset bee flying
     beefly = 0
 }
 </string>
@@ -877,18 +951,32 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-27 and vspeed &gt; 0
+            <string>///Handle solid top collision
+
+//Is Mario hign enough to be standing on it?
+if y &lt; other.y-27 and vspeed &gt; 0
 {
+    //Snap to position
     y = other.y-32
+
+    //Stop vertical movement
     vspeed = 0
     gravity = 0
+
+    //End jump state
     if hspeed = 0
         state = 0
     else
         state = 1
+
+    //Allow Mario to jump
     if jumpnow = 2
         jumpnow = 0
+
+    //Reset hit counter
     hitpoint = 0
+
+    //Reset bee flying
     beefly = 0
 }
 </string>
@@ -913,17 +1001,14 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Makes Mario duck.
+            <string>///Makes Mario duck
 if global.powerup &gt; cs_small
 and global.powerup != cs_frog
 and state &lt; 2
 and isduck = 0
 and holding = 0
 and stompstyle = 0
-{
     isduck = 1
-    skidnow = 0
-}
 </string>
           </argument>
         </arguments>
@@ -946,17 +1031,19 @@ and stompstyle = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Makes Mario start climbing on obj_climb.
+            <string>///Makes Mario start climbing on obj_climb
 if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_climb,0,0)
 and holding = 0
 and state &lt; 3
 and isswim = 0
 and not instance_exists(obj_statue)
 {
+    //Change to climb state
     state = 3
+
+    //Stop movement
     gravity = 0
     speed = 0
-    image_xscale = 1
 }
 </string>
           </argument>
@@ -1915,12 +2002,8 @@ if global.powerup &gt; cs_big
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if skidnow = 1
-    audio_stop_sound(snd_skid)
-if noisy = 1
-    audio_stop_sound(snd_swim)
-if floatnow = 1
-    audio_stop_sound(snd_spin)
+            <string>///Execute destroy event
+instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -1964,33 +2047,6 @@ if global.postchange = 1
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if bbox_top &gt; room_height
-{
-    instance_create(x,y,obj_deadmario)
-    instance_destroy()
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -2008,7 +2064,19 @@ if global.postchange = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,color,image_alpha)</string>
+            <string>///Draws Mario
+
+//Make Mario flash
+if isflashing = 1
+    shader_set(sha_invert)
+
+//Draw Mario
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,image_alpha)
+
+//Reset flashing
+if isflashing = 1
+    shader_reset()
+</string>
           </argument>
         </arguments>
       </action>
@@ -2030,14 +2098,17 @@ if global.postchange = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Handles sliding down slopes, Shell Mario sliding, and Penguin Mario sliding.
+            <string>///Handles sliding down slopes and shell/penguin Mario sliding
 if holding = 0
 and global.yoshi = 0
 and isswim = 0
 {
+    //If shell/penguin Mario is walking
     if (global.powerup = cs_shell or global.powerup = cs_penguin)
     and state = 1
         instance_create(x,y,obj_inshell)
+
+    //If Mario is standing/walking, and the above didn't happen
     else if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+3,obj_slopeparent,1,0)
     and not collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+3,obj_solidtop,0,0)
     and state &lt; 2
@@ -2065,7 +2136,7 @@ and isswim = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Handles powerup specific projectiles, tail spinning, and statue morphing.
+            <string>///Handles powerup specific projectiles, tail spinning, and statue morphing
 if holding = 0
 and state != 3
 and not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_parpull,1,0)
@@ -2075,6 +2146,7 @@ and not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_holdpa
 and stompstyle = 0
 and obj_camera.docamera = 0
 {
+    //Fire Ball
     if global.powerup = cs_fire
     and instance_number(obj_fireball) &lt; 2
     and isduck = 0
@@ -2082,35 +2154,45 @@ and obj_camera.docamera = 0
         firing = 9
         instance_create(x,y+16,obj_fireball)
     }
-    if global.powerup = cs_hammer
+
+    //Hammer
+    else if global.powerup = cs_hammer
     and instance_number(obj_hammer) &lt; 2
     and isduck = 0
     {
         firing = 9
         instance_create(x,y+16,obj_hammer)
     }
-    if global.powerup = cs_bomb
+
+    //Bomb
+    else if global.powerup = cs_bomb
     and instance_number(obj_minibomb) &lt; 1
     and isduck = 0
     {
         firing = 9
         instance_create(x,y+16,obj_minibomb)
     }
-    if (global.powerup = cs_ice or (global.powerup = cs_penguin and isswim = 0))
+
+    //Ice Ball
+    else if (global.powerup = cs_ice or (global.powerup = cs_penguin and isswim = 0))
     and instance_number(obj_iceball) &lt; 1
     and isduck = 0
     {
         firing = 9
         instance_create(x,y+16,obj_iceball)
     }
-    if global.powerup = cs_super
+
+    //Super Ball
+    else if global.powerup = cs_super
     and instance_number(obj_superball) &lt; 2
     and isduck = 0
     {
         firing = 9
         instance_create(x,y+16,obj_superball)
     }
-    if global.powerup = cs_ninja
+
+    //Shuriken
+    else if global.powerup = cs_ninja
     and instance_number(obj_shuriken) &lt; 2
     and isduck = 0
     and state != 4
@@ -2118,20 +2200,25 @@ and obj_camera.docamera = 0
         firing = 9
         instance_create(x,y+20,obj_shuriken)
     }
-    if global.powerup = cs_tanooki
+
+    //Tanooki Statue
+    else if global.powerup = cs_tanooki
     and not instance_exists(obj_spinner)
     and not instance_exists(obj_slider)
     and global.yoshi = 0
     and keyboard_check(vk_down)
         instance_create(x,y,obj_statue)
-    if (global.powerup = cs_leaf or global.powerup = cs_tanooki)
+
+    //Tail Spin
+    else if (global.powerup = cs_leaf or global.powerup = cs_tanooki)
     and not instance_exists(obj_spinner)
     and not instance_exists(obj_statue)
     and isduck = 0
     and global.yoshi = 0
         instance_create(x,y,obj_spinner)
 }
-//Used to smack Net Koopas off the net.
+
+//Smack the net to kill Net Koopas
 if place_meeting(x,y,obj_climb_net)
 and state = 3
 and kk = 0
@@ -2162,7 +2249,7 @@ and kk = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Handles Leaf and Tanooki Mario's flying.
+            <string>///Handles leaf and tanooki Mario's flying
 if (global.powerup = cs_leaf or global.powerup = cs_tanooki)
 and state = 2
 and isswim = 0
@@ -2172,12 +2259,16 @@ and stompstyle = 0
 and global.yoshi = 0
 and not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_quicksand,0,0)
 {
+    //Fly if the P-meter is flashing, float otherwise
     if obj_camera.pmeter &gt; 5
         vspeed = -4
     else
         vspeed = -0.5
+
+    //Wiggle animation
     wiggle = 16
-    image_index = 3
+
+    //Sound effect
     audio_play_sound(snd_spin,0,0)
 }
 </string>

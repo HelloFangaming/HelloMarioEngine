@@ -311,8 +311,16 @@ if instance_exists(obj_jumpspawn)
             <kind>1</kind>
             <string>if instance_exists(obj_mario)
 {
-    draw_sprite_ext(mymario,0,round(x)-obj_mario.direct,y-19-offset-yoffset,obj_mario.direct,1,0,obj_mario.color,obj_mario.image_alpha)
-    draw_sprite_ext(sprite_index,image_index,round(x)-8*obj_mario.direct,y-offset,obj_mario.direct,1,0,obj_mario.color,1)
+    //Make Mario flash
+    if obj_mario.isflashing = 1
+        shader_set(sha_invert)
+
+    draw_sprite_ext(mymario,0,round(x)-obj_mario.direct,y-19-offset-yoffset,obj_mario.direct,1,0,c_white,obj_mario.image_alpha)
+    draw_sprite_ext(sprite_index,image_index,round(x)-8*obj_mario.direct,y-offset,obj_mario.direct,1,0,c_white,1)
+
+    //Reset flashing
+    if obj_mario.isflashing = 1
+        shader_reset()
 }
 if instance_exists(obj_warpnoteblock)
 {
