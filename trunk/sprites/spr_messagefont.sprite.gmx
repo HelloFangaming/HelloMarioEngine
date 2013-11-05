@@ -9,7 +9,7 @@
   <bbox_left>0</bbox_left>
   <bbox_right>7</bbox_right>
   <bbox_top>2</bbox_top>
-  <bbox_bottom>14</bbox_bottom>
+  <bbox_bottom>15</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
@@ -113,7 +113,5 @@
     <frame index="91">images\spr_messagefont_91.png</frame>
     <frame index="92">images\spr_messagefont_92.png</frame>
     <frame index="93">images\spr_messagefont_93.png</frame>
-    <frame index="94">images\spr_messagefont_94.png</frame>
-    <frame index="95">images\spr_messagefont_95.png</frame>
   </frames>
 </sprite>
