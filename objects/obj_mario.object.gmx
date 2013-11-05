@@ -707,7 +707,12 @@ if isduck = 0
                     image_index = 1
                 else
                     image_index = 0
-                sprite_index = scr_marioswim()
+
+                //Penguin Mario Hotfix
+                if global.powerup = cs_penguin
+                    sprite_index = spr_mario_penguin_shoot2
+                else
+                    sprite_index = scr_marioswim()
             }
 
             //Default Jumping
