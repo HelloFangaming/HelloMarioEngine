@@ -25,7 +25,45 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place these in the object creation code.
+            <string>///A Bouncy Musical Block
+
+/*
+**  This item uses creation code!
+**
+**  mypowerup = Pick from below:
+**      cs_fire
+**      cs_hammer
+**      cs_tanooki
+**      cs_frog
+**      cs_ice
+**      cs_super
+**      cs_carrot
+**      cs_ninja
+**      cs_shell
+**      cs_penguin
+**      cs_greenyoshi
+**      cs_redyoshi
+**      cs_yellowyoshi
+**      cs_blueyoshi
+**      cs_kuriboshoe
+**      cs_baburushoe
+**      cs_dossunshoe
+**      cs_jugemushoe
+**      cs_3up
+**      cs_key
+**      cs_spring
+**      cs_superspring
+**      cs_pswitch
+**      cs_eswitch
+**
+*/
+
+//Default Value:
+mypowerup = -1
+
+
+
+//Place these in the object creation code.
 //mypowerup = Pick from below.
 //1 = 3up
 //2 = Spring
@@ -49,7 +87,6 @@
 image_speed = 0.15
 ready = 0
 mysolid = instance_create(x,y,obj_solid)
-mypowerup = 0
 </string>
           </argument>
         </arguments>
@@ -74,48 +111,58 @@ mypowerup = 0
             <kind>1</kind>
             <string>alarm[1] = 4
 vspeed = -2
-if mypowerup &gt; 0
+if mypowerup != -1
 {
-    varid = instance_create(x,y,obj_notepowerup)
-    if mypowerup = 1
-        varid.sprite_index = spr_3upmoon
-    if mypowerup = 2
-        varid.sprite_index = spr_spring
-    if mypowerup = 3
-        varid.sprite_index = spr_key
-    if mypowerup = 4
-        varid.sprite_index = spr_spring_super
-    if mypowerup = 5
-        varid.sprite_index = spr_pswitch
-    if mypowerup = 6
+    var varid = instance_create(x,y,obj_notepowerup)
+    if mypowerup = cs_fire
         varid.sprite_index = spr_fireflower
-    if mypowerup = 7
+    else if mypowerup = cs_hammer
         varid.sprite_index = spr_hammersuit
-    if mypowerup = 8
+    else if mypowerup = cs_tanooki
         varid.sprite_index = spr_tanookisuit
-    if mypowerup = 9
+    else if mypowerup = cs_frog
         varid.sprite_index = spr_frogsuit
-    if mypowerup = 10
+    else if mypowerup = cs_ice
         varid.sprite_index = spr_iceflower
-    if mypowerup = 11
+    else if mypowerup = cs_super
         varid.sprite_index = spr_superflower
-    if mypowerup = 12
+    else if mypowerup = cs_carrot
         varid.sprite_index = spr_carrot
-    if mypowerup = 13
+    else if mypowerup = cs_ninja
         varid.sprite_index = spr_ninjasuit
-    if mypowerup = 14
+    else if mypowerup = cs_shell
         varid.sprite_index = spr_blueshell
-    if mypowerup = 15
+    else if mypowerup = cs_penguin
         varid.sprite_index = spr_penguinsuit
-    if mypowerup = 16
+    else if mypowerup = cs_greenyoshi
         varid.sprite_index = spr_hatch
-    if mypowerup = 17
+    else if mypowerup = cs_redyoshi
         varid.sprite_index = spr_hatch_r
-    if mypowerup = 18
+    else if mypowerup = cs_yellowyoshi
         varid.sprite_index = spr_hatch_y
-    if mypowerup = 19
+    else if mypowerup = cs_blueyoshi
         varid.sprite_index = spr_hatch_b
-    mypowerup = 0
+    else if mypowerup = cs_kuriboshoe
+        varid.sprite_index = spr_kuriboshoe
+    else if mypowerup = cs_baburushoe
+        varid.sprite_index = spr_baburushoe
+    else if mypowerup = cs_dossunshoe
+        varid.sprite_index = spr_dossunshoe
+    else if mypowerup = cs_jugemushoe
+        varid.sprite_index = spr_jugemushoe
+    else if mypowerup = cs_3up
+        varid.sprite_index = spr_3upmoon
+    else if mypowerup = cs_key
+        varid.sprite_index = spr_key
+    else if mypowerup = cs_spring
+        varid.sprite_index = spr_spring
+    else if mypowerup = cs_superspring
+        varid.sprite_index = spr_spring_super
+    else if mypowerup = cs_pswitch
+        varid.sprite_index = spr_pswitch
+    else if mypowerup = cs_eswitch
+        varid.sprite_index = spr_eswitch
+    mypowerup = -1
 }
 </string>
           </argument>

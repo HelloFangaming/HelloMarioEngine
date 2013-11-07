@@ -25,19 +25,28 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place these in the object creation code.
-//item = Pick from below.
-//1 = Key
-//2 = Spring
-//3 = Super Spring
-//4 = P-Switch
-//5 = E-Switch
-//6 = Kuribo Shoe
-//7 = Baburu Shoe
-//8 = Dossun Shoe
-//9 = Jugemu Shoe
+            <string>///A bubble carrying an item!
+
+/*
+**  This item uses creation code!
+**
+**  item = Pick from below:
+**      cs_kuriboshoe
+**      cs_baburushoe
+**      cs_dossunshoe
+**      cs_jugemushoe
+**      cs_key
+**      cs_spring
+**      cs_superspring
+**      cs_pswitch
+**      cs_eswitch
+**
+*/
+
+//Default Value:
+item = -1
+
 event_inherited()
-item = 0
 </string>
           </argument>
         </arguments>
@@ -61,29 +70,29 @@ item = 0
           <argument>
             <kind>1</kind>
             <string>audio_play_sound(snd_pop,0,0)
-if item = 1
+if item = cs_key
     instance_create(x+8,y+8,obj_key)
-else if item = 2
+else if item = cs_spring
     instance_create(x+8,y+8,obj_spring)
-else if item = 3
+else if item = cs_superspring
     instance_create(x+8,y+8,obj_spring_super)
-else if item = 4
+else if item = cs_pswitch
     instance_create(x+8,y+8,obj_pswitch)
-else if item = 5
+else if item = cs_eswitch
     instance_create(x+8,y+8,obj_eswitch)
-else if item = 6
+else if item = cs_kuriboshoe
     instance_create(x+8,y+8,obj_getshoe)
-else if item = 7
+else if item = cs_baburushoe
 {
     varid = instance_create(x+8,y+8,obj_getshoe)
     varid.sprite_index = spr_baburushoe
 }
-else if item = 8
+else if item = cs_dossunshoe
 {
     varid = instance_create(x+8,y+8,obj_getshoe)
     varid.sprite_index = spr_dossunshoe
 }
-else if item = 9
+else if item = cs_jugemushoe
 {
     varid = instance_create(x+8,y+8,obj_getshoe)
     varid.sprite_index = spr_jugemushoe
@@ -111,23 +120,23 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if item = 1
+            <string>if item = cs_key
     draw_sprite(spr_key,0,x+8,y+8)
-else if item = 2
+else if item = cs_spring
     draw_sprite(spr_spring,0,x+8,y+8)
-else if item = 3
+else if item = cs_superspring
     draw_sprite(spr_spring_super,0,x+8,y+8)
-else if item = 4
+else if item = cs_pswitch
     draw_sprite(spr_pswitch,-1,x+8,y+8)
-else if item = 5
+else if item = cs_eswitch
     draw_sprite(spr_eswitch,0,x+8,y+8)
-else if item = 6
+else if item = cs_kuriboshoe
     draw_sprite(spr_kuriboshoe,-1,x+8,y+8)
-else if item = 7
+else if item = cs_baburushoe
     draw_sprite(spr_baburushoe,-1,x+8,y+8)
-else if item = 8
+else if item = cs_dossunshoe
     draw_sprite(spr_dossunshoe,-1,x+8,y+8)
-else if item = 9
+else if item = cs_jugemushoe
     draw_sprite(spr_jugemushoe,-1,x+8,y+8)
 draw_sprite(sprite_index,image_index,x,y)
 </string>

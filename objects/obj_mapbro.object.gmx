@@ -25,24 +25,41 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Set these variables in the creation code
-//powerup = Powerup in prize chest.
-//type = 0 for hammer, 1 for fire, 2 for boomerang, 3 for sledge.
-//1:Mushroom
-//2:Fire Flower
-//3:Hammer Suit
-//4:Leaf
-//5:Tanooki Suit
-//6:Frog Suit
-//7:Bomb Shroom
-//8:Ice Flower
-//9:Super Flower
-//10:Carrot
-//11:Ninja Suit
-//12:Bee Shroom
-//13:Blue Shell
-//14:Penguin Suit
-//15:1up
+            <string>///World Map Hammer Battle
+
+/*
+**  This item uses creation code!
+**
+**  type = Pick from below:
+**      0: Hammer Bros
+**      1: Fire Bros
+**      2: Boomerang Bros
+**      3: Sledge Bros
+**
+**  powerup = Powerup in prize chest:
+**      cs_small
+**      cs_fire
+**      cs_hammer
+**      cs_leaf
+**      cs_tanooki
+**      cs_frog
+**      cs_bomb
+**      cs_ice
+**      cs_super
+**      cs_carrot
+**      cs_ninja
+**      cs_bee
+**      cs_shell
+**      cs_penguin
+**      cs_1up
+**      cs_3up
+**
+*/
+
+//Default Value:
+type = 0
+powerup = -1
+
 hspeed = 0.5
 x -= 8
 alarm[0] = 32
@@ -52,8 +69,6 @@ image_speed = 0.15
 direct = 1
 if ds_map_exists(global.worldmap,string(id))
     instance_destroy()
-type = 0
-powerup = 0
 </string>
           </argument>
         </arguments>

@@ -84,6 +84,8 @@ and collision_rectangle(x,y,x+31,y+31,obj_mario,0,0)
         with varid sprite_index = spr_penguinsuit
     if global.prize[type] = cs_1up
         with varid sprite_index = spr_1up
+    if global.prize[type] = cs_3up
+        with varid sprite_index = spr_3upmoon
 }
 </string>
           </argument>

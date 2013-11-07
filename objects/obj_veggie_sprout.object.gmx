@@ -25,16 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place these in the object creation code.
-//sprout = Pick from below.
-//0 = Mushroom
-//1 = Bomb Shroom
-//2 = Bee Shroom
-//3 = 1up
-//4 = Poison Mushroom
-//5 = Star
+            <string>///Grass with a powerup underneath...
+
+/*
+**  This item uses creation code!
+**
+**  sprout = Pick from below:
+**      cs_small
+**      cs_bomb
+**      cs_bee
+**      cs_1up
+**      cs_poison
+**      cs_star
+**
+*/
+
+//Default Value:
+sprout = cs_small
+
 image_speed = 0.15
-sprout = 0
 </string>
           </argument>
         </arguments>
@@ -65,15 +74,15 @@ sprout = 0
     with (obj_puller) instance_destroy()
     varid = instance_create(x,y,obj_grasspowerup)
     varid.hspeed = obj_mario.direct
-    if sprout = 1
+    if sprout = cs_bomb
         with varid sprite_index = spr_bombshroom
-    if sprout = 2
+    if sprout = cs_bee
         with varid sprite_index = spr_beeshroom
-    if sprout = 3
+    if sprout = cs_1up
         with varid sprite_index = spr_1up
-    if sprout = 4
+    if sprout = cs_poison
         with varid sprite_index = spr_poison
-    if sprout = 5
+    if sprout = cs_star
         with varid sprite_index = spr_star
     instance_destroy()
 }

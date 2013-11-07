@@ -25,42 +25,52 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place these in the object creation code.
-//sprout = Pick from below.
-//1 = Fire Flower
-//2 = Hammer Suit
-//3 = Leaf
-//4 = Tanooki Suit
-//5 = Frog Suit
-//6 = Bomb Shroom
-//7 = Ice Flower
-//8 = Super Flower
-//9 = Carrot
-//10 = Ninja Suit
-//11 = Bee Shroom
-//12 = Blue Shell
-//13 = Penguin Suit
-//14 = Green Yoshi
-//15 = Red Yoshi
-//16 = Yellow Yoshi
-//17 = Blue Yoshi
-//18 = Kuribo Shoe
-//19 = Baburu Shoe
-//20 = Dossun Shoe
-//21 = Jugemu Shoe
-//22 = 1up
-//23 = 3up Moon
-//24 = Poison Mushroom
-//25 = Star
-//26 = Key
-//27 = Spring
-//28 = Super Spring
-//29 = P-Switch
-//30 = E-Switch
+            <string>///Standard Question Mark Block
+
+/*
+**  This item uses creation code!
+**
+**  sprout = Pick from below:
+**      cs_small
+**      cs_fire
+**      cs_hammer
+**      cs_leaf
+**      cs_tanooki
+**      cs_frog
+**      cs_bomb
+**      cs_ice
+**      cs_super
+**      cs_carrot
+**      cs_ninja
+**      cs_bee
+**      cs_shell
+**      cs_penguin
+**      cs_greenyoshi
+**      cs_redyoshi
+**      cs_yellowyoshi
+**      cs_blueyoshi
+**      cs_kuriboshoe
+**      cs_baburushoe
+**      cs_dossunshoe
+**      cs_jugemushoe
+**      cs_1up
+**      cs_3up
+**      cs_poison
+**      cs_star
+**      cs_key
+**      cs_spring
+**      cs_superspring
+**      cs_pswitch
+**      cs_eswitch
+**
+*/
+
+//Default Value:
+sprout = cs_small
+
 image_speed = 0.15
 ready = 0
 mysolid = instance_create(x,y,obj_solid)
-sprout = 0
 </string>
           </argument>
         </arguments>
@@ -161,73 +171,75 @@ and ready = 0
           <argument>
             <kind>1</kind>
             <string>varid = instance_create(x,y,obj_powerupsprout)
-if sprout &lt; 14
+if sprout = cs_small
+    varid.sprite_index = spr_mushroom
+else if sprout &gt; cs_small
 {
     if global.powerup = cs_small
         varid.sprite_index = spr_mushroom
     else
     {
-        if sprout = 1
+        if sprout = cs_fire
             varid.sprite_index = spr_fireflower
-        else if sprout = 2
+        else if sprout = cs_hammer
             varid.sprite_index = spr_hammersuit
-        else if sprout = 3
+        else if sprout = cs_leaf
             instance_create(x,y,obj_leaf)
-        else if sprout = 4
+        else if sprout = cs_tanooki
             varid.sprite_index = spr_tanookisuit
-        else if sprout = 5
+        else if sprout = cs_frog
             varid.sprite_index = spr_frogsuit
-        else if sprout = 6
+        else if sprout = cs_bomb
             varid.sprite_index = spr_bombshroom
-        else if sprout = 7
+        else if sprout = cs_ice
             varid.sprite_index = spr_iceflower
-        else if sprout = 8
+        else if sprout = cs_super
             varid.sprite_index = spr_superflower
-        else if sprout = 9
+        else if sprout = cs_carrot
             varid.sprite_index = spr_carrot
-        else if sprout = 10
+        else if sprout = cs_ninja
             varid.sprite_index = spr_ninjasuit
-        else if sprout = 11
+        else if sprout = cs_bee
             varid.sprite_index = spr_beeshroom
-        else if sprout = 12
+        else if sprout = cs_shell
             varid.sprite_index = spr_blueshell
-        else if sprout = 13
+        else if sprout = cs_penguin
             varid.sprite_index = spr_penguinsuit
     }
 }
-else if sprout = 14
+else if sprout = cs_greenyoshi
     varid.sprite_index = spr_hatch
-else if sprout = 15
+else if sprout = cs_redyoshi
     varid.sprite_index = spr_hatch_r
-else if sprout = 16
+else if sprout = cs_yellowyoshi
     varid.sprite_index = spr_hatch_y
-else if sprout = 17
+else if sprout = cs_blueyoshi
     varid.sprite_index = spr_hatch_b
-else if sprout = 18
+else if sprout = cs_kuriboshoe
     varid.sprite_index = spr_kuriboshoe
-else if sprout = 19
+else if sprout = cs_baburushoe
     varid.sprite_index = spr_baburushoe
-else if sprout = 20
+else if sprout = cs_dossunshoe
     varid.sprite_index = spr_dossunshoe
-else if sprout = 21
+else if sprout = cs_jugemushoe
     varid.sprite_index = spr_jugemushoe
-else if sprout = 22
+else if sprout = cs_1up
     varid.sprite_index = spr_1up
-else if sprout = 23
+else if sprout = cs_3up
     varid.sprite_index = spr_3upmoon
-else if sprout = 24
+else if sprout = cs_poison
     varid.sprite_index = spr_poison
-else if sprout = 25
+else if sprout = cs_star
     varid.sprite_index = spr_star
-else if sprout = 26
+else if sprout = cs_key
     varid.sprite_index = spr_key
-else if sprout = 27
+else if sprout = cs_spring
     varid.sprite_index = spr_spring
-else if sprout = 28
+else if sprout = cs_superspring
     varid.sprite_index = spr_spring_super
-else if sprout = 29
+else if sprout = cs_pswitch
     varid.sprite_index = spr_pswitch
-else if sprout = 30
+else if sprout = cs_eswitch
     varid.sprite_index = spr_eswitch
 </string>
           </argument>
