@@ -87,6 +87,12 @@ if sprite_index = spr_1up
     instance_destroy()
     exit
 }
+if sprite_index = spr_3upmoon
+{
+    instance_create(obj_mario.x-8,obj_mario.y+16,obj_3upmoon)
+    instance_destroy()
+    exit
+}
 if global.inventory[0] &lt; 15
     global.inventory[0] += 1
 if sprite_index = spr_mushroom

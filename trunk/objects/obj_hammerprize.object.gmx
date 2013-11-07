@@ -163,6 +163,8 @@ and visible = 1
         with varid sprite_index = spr_penguinsuit
     if global.prize[0] = cs_1up
         with varid sprite_index = spr_1up
+    if global.prize[0] = cs_3up
+        with varid sprite_index = spr_3upmoon
 }
 </string>
           </argument>

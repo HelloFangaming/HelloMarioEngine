@@ -25,41 +25,51 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place these in the object creation code.
-//sprout = Pick from below.
-//1 = Fire Flower
-//2 = Hammer Suit
-//3 = Leaf
-//4 = Tanooki Suit
-//5 = Frog Suit
-//6 = Bomb Shroom
-//7 = Ice Flower
-//8 = Super Flower
-//9 = Carrot
-//10 = Ninja Suit
-//11 = Bee Shroom
-//12 = Blue Shell
-//13 = Penguin Suit
-//14 = Green Yoshi
-//15 = Red Yoshi
-//16 = Yellow Yoshi
-//17 = Blue Yoshi
-//18 = Kuribo Shoe
-//19 = Baburu Shoe
-//20 = Dossun Shoe
-//21 = Jugemu Shoe
-//22 = 1up
-//23 = 3up Moon
-//24 = Poison Mushroom
-//25 = Star
-//26 = Key
-//27 = Spring
-//28 = Super Spring
-//29 = P-Switch
-//30 = E-Switch
+            <string>///Winged Question Mark Block
+
+/*
+**  This item uses creation code!
+**
+**  sprout = Pick from below:
+**      cs_small
+**      cs_fire
+**      cs_hammer
+**      cs_leaf
+**      cs_tanooki
+**      cs_frog
+**      cs_bomb
+**      cs_ice
+**      cs_super
+**      cs_carrot
+**      cs_ninja
+**      cs_bee
+**      cs_shell
+**      cs_penguin
+**      cs_greenyoshi
+**      cs_redyoshi
+**      cs_yellowyoshi
+**      cs_blueyoshi
+**      cs_kuriboshoe
+**      cs_baburushoe
+**      cs_dossunshoe
+**      cs_jugemushoe
+**      cs_1up
+**      cs_3up
+**      cs_poison
+**      cs_star
+**      cs_key
+**      cs_spring
+**      cs_superspring
+**      cs_pswitch
+**      cs_eswitch
+**
+*/
+
+//Default Value:
+sprout = cs_small
+
 image_speed = 0.15
 type = 0
-sprout = 0
 if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_clockwise,0,0)
 {
     speed = 1

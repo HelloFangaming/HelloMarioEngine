@@ -89,9 +89,9 @@
     <instance objName="obj_block_winged" x="96" y="256" name="inst_BB896752" locked="0" code="sprout = 13&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_parakoopa" x="104" y="128" name="inst_79D296C7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_movingrope_touch" x="1280" y="272" name="inst_96F816FE" locked="0" code="ropelength = 4" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bubble_item" x="176" y="192" name="inst_6F9CB1A8" locked="0" code="item = 3&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bubble_item" x="848" y="160" name="inst_164BA83E" locked="0" code="item = 4&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bubble_item" x="1600" y="96" name="inst_813CE96D" locked="0" code="item = 9&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bubble_item" x="176" y="192" name="inst_6F9CB1A8" locked="0" code="item = cs_superspring" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bubble_item" x="848" y="160" name="inst_164BA83E" locked="0" code="item = cs_pswitch" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bubble_item" x="1600" y="96" name="inst_813CE96D" locked="0" code="item = cs_jugemushoe" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bubble_coin" x="1472" y="128" name="inst_81360BE9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bubble_coin" x="1216" y="160" name="inst_BF095E03" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bubble_coin" x="896" y="112" name="inst_F0B59D9E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

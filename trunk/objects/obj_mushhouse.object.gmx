@@ -25,33 +25,42 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Set these variables in the creation code
-//powerup1 = Powerup in middle chest.
-//powerup2 = Powerup in left chest.
-//powerup3 = Powerup in right chest.
-//Leave powerup2 and powerup3 blank for only 1 chest.
-//1:Mushroom
-//2:Fire Flower
-//3:Hammer Suit
-//4:Leaf
-//5:Tanooki Suit
-//6:Frog Suit
-//7:Bomb Shroom
-//8:Ice Flower
-//9:Super Flower
-//10:Carrot
-//11:Ninja Suit
-//12:Bee Shroom
-//13:Blue Shell
-//14:Penguin Suit
-//15:1up
+            <string>///World Map Mushroom House
+
+/*
+**  This item uses creation code!
+**
+**  powerup[0] = Powerup in middle chest: (Leave the other two blank for one chest)
+**  powerup[1] = Powerup in left chest:
+**  powerup[2] = Powerup in right chest:
+**      cs_small
+**      cs_fire
+**      cs_hammer
+**      cs_leaf
+**      cs_tanooki
+**      cs_frog
+**      cs_bomb
+**      cs_ice
+**      cs_super
+**      cs_carrot
+**      cs_ninja
+**      cs_bee
+**      cs_shell
+**      cs_penguin
+**      cs_1up
+**      cs_3up
+**
+*/
+
+//Default Value:
+powerup[0] = -1
+powerup[1] = -1
+powerup[2] = -1
+
 if ds_map_exists(global.worldmap,string(id))
     ready = 1
 else
     ready = 0
-powerup1 = 0
-powerup2 = 0
-powerup3 = 0
 </string>
           </argument>
         </arguments>
@@ -104,9 +113,7 @@ and other.speed = 0
 and ready = 0
 {
     with obj_mapmario event_user(1)
-    global.prize[0] = powerup1
-    global.prize[1] = powerup2
-    global.prize[2] = powerup3
+    global.prize = powerup
     room_goto(rm_mushroomhouse)
 }
 if obj_mapmario.speed = 0

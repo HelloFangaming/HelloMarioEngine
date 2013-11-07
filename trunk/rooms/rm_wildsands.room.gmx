@@ -118,7 +118,7 @@
     <instance objName="obj_brick" x="2512" y="224" name="inst_52E75CF6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="2048" y="16" name="inst_A587A95C" locked="0" code="varmsg = &quot;Haha, you found a secret block! Too bad I don't do anything...&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="1328" y="272" name="inst_5339060E" locked="0" code="varmsg = &quot;You can use the spin jump to bounce over those pokeys, or you can use the rope if you are lazy.&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_noteblock" x="496" y="320" name="inst_5EA0BEFE" locked="0" code="mypowerup = 14" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_noteblock" x="496" y="320" name="inst_5EA0BEFE" locked="0" code="mypowerup = cs_shell" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_noteblock_warp" x="336" y="64" name="inst_5DB0F102" locked="0" code="myroom = rm_wildsands_sky" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_sprout" x="944" y="64" name="inst_24141AE3" locked="0" code="sprout = 17&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_sprout" x="1184" y="192" name="inst_12626761" locked="0" code="sprout = 20&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -220,9 +220,9 @@
     <instance objName="obj_cheepgenerator" x="40" y="0" name="inst_07EFFF91" locked="0" code="xmin = 1888&#xA;xmax = 2176" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slope_sl" x="2672" y="368" name="inst_B8C54928" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slope_sl" x="2688" y="384" name="inst_64060573" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bubble_item" x="2608" y="128" name="inst_32EABFA7" locked="0" code="item = 5&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bubble_item" x="2640" y="176" name="inst_BD35B1D9" locked="0" code="item = 6&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bubble_item" x="2672" y="96" name="inst_24F47F70" locked="0" code="item = 7&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bubble_item" x="2608" y="128" name="inst_32EABFA7" locked="0" code="item = cs_eswitch" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bubble_item" x="2640" y="176" name="inst_BD35B1D9" locked="0" code="item = cs_kuriboshoe" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bubble_item" x="2672" y="96" name="inst_24F47F70" locked="0" code="item = cs_baburushoe" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_up" x="1680" y="368" name="inst_7B4320EC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_left" x="880" y="128" name="inst_D588D6AB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_right" x="720" y="128" name="inst_EE27A9F5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
