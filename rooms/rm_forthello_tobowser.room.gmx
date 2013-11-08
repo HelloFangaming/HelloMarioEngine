@@ -67,7 +67,7 @@
     <instance objName="obj_lava" x="432" y="224" name="inst_0593AAFC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_lava" x="448" y="224" name="inst_203FB00D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_lava" x="464" y="224" name="inst_BCBE693F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="1104" y="160" name="inst_46D8B4CA" locked="0" code="sprout = 8" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_sprout" x="1104" y="160" name="inst_46D8B4CA" locked="0" code="sprout = cs_super" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="1088" y="160" name="inst_C8942F26" locked="0" code="varmsg = &quot;This door will take you to Bowser, the king of all koopas!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="0" y="16" name="inst_B0717A6B" locked="0" code="" scaleX="70" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="1024" y="192" name="inst_500717BE" locked="0" code="" scaleX="2" scaleY="3" colour="4294967295" rotation="0"/>
