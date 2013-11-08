@@ -33,7 +33,7 @@
 **  powerup[0] = Powerup in middle chest: (Leave the other two blank for one chest)
 **  powerup[1] = Powerup in left chest:
 **  powerup[2] = Powerup in right chest:
-**      cs_small
+**      cs_big
 **      cs_fire
 **      cs_hammer
 **      cs_leaf

@@ -82,9 +82,16 @@ vspeed = -0.5
           <argument>
             <kind>1</kind>
             <string>if sprite_index &gt; -1
-    audio_play_sound(snd_sprout,0,0)
-else
-    instance_destroy()
+{
+    if sprite_index = spr_leaf
+        instance_create(x,y,obj_leaf)
+    else
+    {
+        audio_play_sound(snd_sprout,0,0)
+        exit
+    }
+}
+instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -107,84 +114,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_1up
-    instance_create(x,y,obj_1up)
-if sprite_index = spr_3upmoon
-    instance_create(x,y,obj_3upmoon)
-if sprite_index = spr_poison
-    instance_create(x,y,obj_poison)
-if sprite_index = spr_spring
-    instance_create(x,y,obj_spring)
-if sprite_index = spr_key
-    instance_create(x,y,obj_key)
-if sprite_index = spr_spring_super
-    instance_create(x,y,obj_spring_super)
-if sprite_index = spr_pswitch
-    instance_create(x,y,obj_pswitch)
-if sprite_index = spr_eswitch
-    instance_create(x,y,obj_eswitch)
-if sprite_index = spr_star
-    instance_create(x,y,obj_star)
-if sprite_index = spr_mushroom
-    instance_create(x,y,obj_mushroom)
-if sprite_index = spr_fireflower
-    instance_create(x,y,obj_fireflower)
-if sprite_index = spr_hammersuit
-    instance_create(x,y,obj_hammersuit)
-if sprite_index = spr_tanookisuit
-    instance_create(x,y,obj_tanookisuit)
-if sprite_index = spr_frogsuit
-    instance_create(x,y,obj_frogsuit)
-if sprite_index = spr_bombshroom
-    instance_create(x,y,obj_bombshroom)
-if sprite_index = spr_iceflower
-    instance_create(x,y,obj_iceflower)
-if sprite_index = spr_superflower
-    instance_create(x,y,obj_superflower)
-if sprite_index = spr_carrot
-    instance_create(x,y,obj_carrot)
-if sprite_index = spr_ninjasuit
-    instance_create(x,y,obj_ninjasuit)
-if sprite_index = spr_beeshroom
-    instance_create(x,y,obj_beeshroom)
-if sprite_index = spr_blueshell
-    instance_create(x,y,obj_blueshell)
-if sprite_index = spr_penguinsuit
-    instance_create(x,y,obj_penguinsuit)
-if sprite_index = spr_hatch
-    instance_create(x,y,obj_hatch)
-if sprite_index = spr_hatch_r
-{
-    varid = instance_create(x,y,obj_hatch)
-    varid.sprite_index = spr_hatch_r
-}
-if sprite_index = spr_hatch_y
-{
-    varid = instance_create(x,y,obj_hatch)
-    varid.sprite_index = spr_hatch_y
-}
-if sprite_index = spr_hatch_b
-{
-    varid = instance_create(x,y,obj_hatch)
-    varid.sprite_index = spr_hatch_b
-}
-if sprite_index = spr_kuriboshoe
-    instance_create(x,y,obj_getshoe)
-if sprite_index = spr_baburushoe
-{
-    varid = instance_create(x,y,obj_getshoe)
-    varid.sprite_index = spr_baburushoe
-}
-if sprite_index = spr_dossunshoe
-{
-    varid = instance_create(x,y,obj_getshoe)
-    varid.sprite_index = spr_dossunshoe
-}
-if sprite_index = spr_jugemushoe
-{
-    varid = instance_create(x,y,obj_getshoe)
-    varid.sprite_index = spr_jugemushoe
-}
+            <string>scr_sprite_make_object(x,y,sprite_index)
 instance_destroy()
 </string>
           </argument>

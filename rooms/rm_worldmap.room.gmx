@@ -252,15 +252,15 @@
     <instance objName="obj_mapcoin" x="192" y="144" name="inst_0F5846EF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_levelpanel" x="192" y="208" name="inst_BE8B6EFC" locked="0" code="levelnumb = 1&#xA;levelname = &quot;Cedar Hills&quot;&#xA;myroom = rm_cedarhills&#xA;midwayroom = rm_cedarhills" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_roulettelevel" x="192" y="176" name="inst_32F0D415" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mushhouse" x="192" y="48" name="inst_87A18415" locked="0" code="powerup1 = cs_tanooki" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mushhouse" x="400" y="48" name="inst_AB07A3B2" locked="0" code="powerup1 = cs_frog&#xA;powerup2 = cs_ice&#xA;powerup3 = cs_shell" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mushhouse" x="192" y="48" name="inst_87A18415" locked="0" code="powerup[0] = cs_tanooki" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mushhouse" x="400" y="48" name="inst_AB07A3B2" locked="0" code="powerup[0] = cs_frog&#xA;powerup[1] = cs_ice&#xA;powerup[2] = cs_shell" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_palace_yellow" x="224" y="208" name="inst_A30E314F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_levelpanel" x="160" y="144" name="inst_792B2970" locked="0" code="levelnumb = 2&#xA;levelname = &quot;Pipes at Dusk&quot;&#xA;myroom = rm_pipesatdusk&#xA;midwayroom = rm_pipesatdusk_water" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappipe" x="96" y="112" name="inst_C8F77E54" locked="0" code="pipetype = 0&#xA;destx = 336&#xA;desty = 48&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappipe" x="336" y="48" name="inst_174EC755" locked="0" code="pipetype = 1&#xA;destx = 96&#xA;desty = 112&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_levelcastle" x="368" y="48" name="inst_6C62A94C" locked="0" code="levelname = &quot;Fort Hello&quot;&#xA;myroom = rm_forthello&#xA;midwayroom = rm_forthello" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_levelpanel" x="160" y="48" name="inst_BAFFAB44" locked="0" code="levelnumb = 3&#xA;levelname = &quot;Wild Sands&quot;&#xA;myroom = rm_wildsands&#xA;midwayroom = rm_wildsands_cave" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mushhouse" x="128" y="240" name="inst_DFD2863F" locked="0" code="powerup1 = cs_hammer&#xA;powerup2 = cs_fire&#xA;powerup3 = cs_leaf" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mushhouse" x="128" y="240" name="inst_DFD2863F" locked="0" code="powerup[0] = cs_hammer&#xA;powerup[1] = cs_fire&#xA;powerup[2] = cs_leaf" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_palace_green" x="64" y="208" name="inst_0E74D30F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_palace_red" x="96" y="176" name="inst_D1E824C8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_palace_blue" x="256" y="144" name="inst_1AA55A96" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
