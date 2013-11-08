@@ -31,7 +31,7 @@
 **  This item uses creation code!
 **
 **  sprout = Pick from below:
-**      cs_small
+**      cs_big
 **      cs_bomb
 **      cs_bee
 **      cs_1up
@@ -41,7 +41,7 @@
 */
 
 //Default Value:
-sprout = cs_small
+sprout = cs_big
 
 image_speed = 0.15
 </string>
@@ -71,19 +71,10 @@ image_speed = 0.15
     audio_play_sound(snd_pickup,0,0)
     obj_mario.visible = 1
     obj_mario.holding = 0
-    with (obj_puller) instance_destroy()
+    with obj_puller instance_destroy()
     varid = instance_create(x,y,obj_grasspowerup)
     varid.hspeed = obj_mario.direct
-    if sprout = cs_bomb
-        with varid sprite_index = spr_bombshroom
-    if sprout = cs_bee
-        with varid sprite_index = spr_beeshroom
-    if sprout = cs_1up
-        with varid sprite_index = spr_1up
-    if sprout = cs_poison
-        with varid sprite_index = spr_poison
-    if sprout = cs_star
-        with varid sprite_index = spr_star
+    varid.sprite_index = scr_constant_get_sprite(sprout)
     instance_destroy()
 }
 </string>

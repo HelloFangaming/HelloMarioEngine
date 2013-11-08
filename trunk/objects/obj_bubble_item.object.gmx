@@ -70,34 +70,31 @@ event_inherited()
           <argument>
             <kind>1</kind>
             <string>audio_play_sound(snd_pop,0,0)
-if item = cs_key
-    instance_create(x+8,y+8,obj_key)
-else if item = cs_spring
-    instance_create(x+8,y+8,obj_spring)
-else if item = cs_superspring
-    instance_create(x+8,y+8,obj_spring_super)
-else if item = cs_pswitch
-    instance_create(x+8,y+8,obj_pswitch)
-else if item = cs_eswitch
-    instance_create(x+8,y+8,obj_eswitch)
-else if item = cs_kuriboshoe
-    instance_create(x+8,y+8,obj_getshoe)
-else if item = cs_baburushoe
-{
-    varid = instance_create(x+8,y+8,obj_getshoe)
-    varid.sprite_index = spr_baburushoe
-}
-else if item = cs_dossunshoe
-{
-    varid = instance_create(x+8,y+8,obj_getshoe)
-    varid.sprite_index = spr_dossunshoe
-}
-else if item = cs_jugemushoe
-{
-    varid = instance_create(x+8,y+8,obj_getshoe)
-    varid.sprite_index = spr_jugemushoe
-}
+scr_sprite_make_object(x+8,y+8,sprite)
 instance_destroy()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>sprite = scr_constant_get_sprite(item)
 </string>
           </argument>
         </arguments>
@@ -120,24 +117,13 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if item = cs_key
-    draw_sprite(spr_key,0,x+8,y+8)
-else if item = cs_spring
-    draw_sprite(spr_spring,0,x+8,y+8)
-else if item = cs_superspring
-    draw_sprite(spr_spring_super,0,x+8,y+8)
-else if item = cs_pswitch
-    draw_sprite(spr_pswitch,-1,x+8,y+8)
-else if item = cs_eswitch
-    draw_sprite(spr_eswitch,0,x+8,y+8)
-else if item = cs_kuriboshoe
-    draw_sprite(spr_kuriboshoe,-1,x+8,y+8)
-else if item = cs_baburushoe
-    draw_sprite(spr_baburushoe,-1,x+8,y+8)
-else if item = cs_dossunshoe
-    draw_sprite(spr_dossunshoe,-1,x+8,y+8)
-else if item = cs_jugemushoe
-    draw_sprite(spr_jugemushoe,-1,x+8,y+8)
+            <string>if sprite = spr_key
+or sprite = spr_spring
+or sprite = spr_spring_super
+or sprite = spr_eswitch
+    draw_sprite(sprite,0,x+8,y+8)
+else
+    draw_sprite(sprite,image_index,x+8,y+8)
 draw_sprite(sprite_index,image_index,x,y)
 </string>
           </argument>

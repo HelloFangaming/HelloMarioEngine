@@ -54,38 +54,7 @@ and collision_rectangle(x,y,x+31,y+31,obj_mario,0,0)
     obj_mushtoad.ready = 1
     obj_mushtoad.alarm[1] = 200
     varid = instance_create(x+8,y,obj_getpowerup)
-    if global.prize[type] = cs_big
-        with varid sprite_index = spr_mushroom
-    if global.prize[type] = cs_fire
-        with varid sprite_index = spr_fireflower
-    if global.prize[type] = cs_hammer
-        with varid sprite_index = spr_hammersuit
-    if global.prize[type] = cs_leaf
-        with varid sprite_index = spr_leaf
-    if global.prize[type] = cs_tanooki
-        with varid sprite_index = spr_tanookisuit
-    if global.prize[type] = cs_frog
-        with varid sprite_index = spr_frogsuit
-    if global.prize[type] = cs_bomb
-        with varid sprite_index = spr_bombshroom
-    if global.prize[type] = cs_ice
-        with varid sprite_index = spr_iceflower
-    if global.prize[type] = cs_super
-        with varid sprite_index = spr_superflower
-    if global.prize[type] = cs_carrot
-        with varid sprite_index = spr_carrot
-    if global.prize[type] = cs_ninja
-        with varid sprite_index = spr_ninjasuit
-    if global.prize[type] = cs_bee
-        with varid sprite_index = spr_beeshroom
-    if global.prize[type] = cs_shell
-        with varid sprite_index = spr_blueshell
-    if global.prize[type] = cs_penguin
-        with varid sprite_index = spr_penguinsuit
-    if global.prize[type] = cs_1up
-        with varid sprite_index = spr_1up
-    if global.prize[type] = cs_3up
-        with varid sprite_index = spr_3upmoon
+    varid.sprite_index = scr_constant_get_sprite(global.prize[type])
 }
 </string>
           </argument>

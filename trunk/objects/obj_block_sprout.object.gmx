@@ -31,7 +31,7 @@
 **  This item uses creation code!
 **
 **  sprout = Pick from below:
-**      cs_small
+**      cs_big
 **      cs_fire
 **      cs_hammer
 **      cs_leaf
@@ -66,7 +66,7 @@
 */
 
 //Default Value:
-sprout = cs_small
+sprout = -1
 
 image_speed = 0.15
 ready = 0
@@ -170,77 +170,16 @@ and ready = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>varid = instance_create(x,y,obj_powerupsprout)
-if sprout = cs_small
-    varid.sprite_index = spr_mushroom
-else if sprout &gt; cs_small
+            <string>var varid = instance_create(x,y,obj_powerupsprout)
+if sprout &gt; cs_small
 {
     if global.powerup = cs_small
         varid.sprite_index = spr_mushroom
     else
-    {
-        if sprout = cs_fire
-            varid.sprite_index = spr_fireflower
-        else if sprout = cs_hammer
-            varid.sprite_index = spr_hammersuit
-        else if sprout = cs_leaf
-            instance_create(x,y,obj_leaf)
-        else if sprout = cs_tanooki
-            varid.sprite_index = spr_tanookisuit
-        else if sprout = cs_frog
-            varid.sprite_index = spr_frogsuit
-        else if sprout = cs_bomb
-            varid.sprite_index = spr_bombshroom
-        else if sprout = cs_ice
-            varid.sprite_index = spr_iceflower
-        else if sprout = cs_super
-            varid.sprite_index = spr_superflower
-        else if sprout = cs_carrot
-            varid.sprite_index = spr_carrot
-        else if sprout = cs_ninja
-            varid.sprite_index = spr_ninjasuit
-        else if sprout = cs_bee
-            varid.sprite_index = spr_beeshroom
-        else if sprout = cs_shell
-            varid.sprite_index = spr_blueshell
-        else if sprout = cs_penguin
-            varid.sprite_index = spr_penguinsuit
-    }
+        varid.sprite_index = scr_constant_get_sprite(sprout)
 }
-else if sprout = cs_greenyoshi
-    varid.sprite_index = spr_hatch
-else if sprout = cs_redyoshi
-    varid.sprite_index = spr_hatch_r
-else if sprout = cs_yellowyoshi
-    varid.sprite_index = spr_hatch_y
-else if sprout = cs_blueyoshi
-    varid.sprite_index = spr_hatch_b
-else if sprout = cs_kuriboshoe
-    varid.sprite_index = spr_kuriboshoe
-else if sprout = cs_baburushoe
-    varid.sprite_index = spr_baburushoe
-else if sprout = cs_dossunshoe
-    varid.sprite_index = spr_dossunshoe
-else if sprout = cs_jugemushoe
-    varid.sprite_index = spr_jugemushoe
-else if sprout = cs_1up
-    varid.sprite_index = spr_1up
-else if sprout = cs_3up
-    varid.sprite_index = spr_3upmoon
-else if sprout = cs_poison
-    varid.sprite_index = spr_poison
-else if sprout = cs_star
-    varid.sprite_index = spr_star
-else if sprout = cs_key
-    varid.sprite_index = spr_key
-else if sprout = cs_spring
-    varid.sprite_index = spr_spring
-else if sprout = cs_superspring
-    varid.sprite_index = spr_spring_super
-else if sprout = cs_pswitch
-    varid.sprite_index = spr_pswitch
-else if sprout = cs_eswitch
-    varid.sprite_index = spr_eswitch
+else
+    varid.sprite_index = scr_constant_get_sprite(sprout)
 </string>
           </argument>
         </arguments>
