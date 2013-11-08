@@ -96,8 +96,8 @@
     <instance objName="obj_messageblock" x="608" y="320" name="inst_967F15DA" locked="0" code="varmsg = &quot;Woah. That lava is defying gravity. Cool, huh?&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="240" y="144" name="inst_83DFBDC1" locked="0" code="varmsg = &quot;Did you know that you can carry objects between different rooms? Try bringing a key here!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_multicoin" x="576" y="256" name="inst_0C1263EC" locked="0" code="sprite_index = spr_brick" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="576" y="96" name="inst_2C469D64" locked="0" code="sprout = 8" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="592" y="256" name="inst_1BD4A9C2" locked="0" code="sprout = 19&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_sprout" x="576" y="96" name="inst_2C469D64" locked="0" code="sprout = cs_super" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_sprout" x="592" y="256" name="inst_1BD4A9C2" locked="0" code="sprout = cs_baburushoe" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="32" y="16" name="inst_05AE2147" locked="0" code="" scaleX="35" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="592" y="32" name="inst_C57C2212" locked="0" code="" scaleX="1" scaleY="8" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="608" y="224" name="inst_C2F2F814" locked="0" code="" scaleX="1" scaleY="6" colour="4294967295" rotation="0"/>
