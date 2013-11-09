@@ -22,4 +22,6 @@ switch global.powerup
     case cs_bee: return spr_mapmario_bee
     case cs_shell: return spr_mapmario_shell
     case cs_penguin: return spr_mapmario_penguin
+    case cs_propeller: return spr_mapmario_propeller
+    case cs_boomerang: return spr_mapmario_boomerang
 }

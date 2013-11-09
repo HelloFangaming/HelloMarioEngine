@@ -13,93 +13,85 @@
 switch argument2
 {
     case spr_mushroom:
-        instance_create(argument0,argument1,obj_mushroom)
-        break
+        return instance_create(argument0,argument1,obj_mushroom)
     case spr_fireflower:
-        instance_create(argument0,argument1,obj_fireflower)
-        break
+        return instance_create(argument0,argument1,obj_fireflower)
     case spr_hammersuit:
-        instance_create(argument0,argument1,obj_hammersuit)
-        break
+        return instance_create(argument0,argument1,obj_hammersuit)
     case spr_tanookisuit:
-        instance_create(argument0,argument1,obj_tanookisuit)
-        break
+        return instance_create(argument0,argument1,obj_tanookisuit)
     case spr_frogsuit:
-        instance_create(argument0,argument1,obj_frogsuit)
-        break
+        return instance_create(argument0,argument1,obj_frogsuit)
     case spr_bombshroom:
-        instance_create(argument0,argument1,obj_bombshroom)
-        break
+        return instance_create(argument0,argument1,obj_bombshroom)
     case spr_iceflower:
-        instance_create(argument0,argument1,obj_iceflower)
-        break
+        return instance_create(argument0,argument1,obj_iceflower)
     case spr_superflower:
-        instance_create(argument0,argument1,obj_superflower)
-        break
+        return instance_create(argument0,argument1,obj_superflower)
     case spr_carrot:
-        instance_create(argument0,argument1,obj_carrot)
-        break
+        return instance_create(argument0,argument1,obj_carrot)
     case spr_ninjasuit:
-        instance_create(argument0,argument1,obj_ninjasuit)
-        break
+        return instance_create(argument0,argument1,obj_ninjasuit)
     case spr_beeshroom:
-        instance_create(argument0,argument1,obj_beeshroom)
-        break
+        return instance_create(argument0,argument1,obj_beeshroom)
     case spr_blueshell:
-        instance_create(argument0,argument1,obj_blueshell)
-        break
+        return instance_create(argument0,argument1,obj_blueshell)
     case spr_penguinsuit:
-        instance_create(argument0,argument1,obj_penguinsuit)
-        break
+        return instance_create(argument0,argument1,obj_penguinsuit)
+    case spr_propellershroom:
+        return instance_create(argument0,argument1,obj_propellershroom)
+    case spr_boomerangflower:
+        return instance_create(argument0,argument1,obj_boomerangflower)
     case spr_hatch:
-        instance_create(argument0,argument1,obj_hatch)
-        break
+        return instance_create(argument0,argument1,obj_hatch)
     case spr_hatch_r:
-        with instance_create(argument0,argument1,obj_hatch) sprite_index = spr_hatch_r
-        break
+        var i;
+        i = instance_create(argument0,argument1,obj_hatch)
+        i.sprite_index = spr_hatch_r
+        return i
     case spr_hatch_y:
-        with instance_create(argument0,argument1,obj_hatch) sprite_index = spr_hatch_y
-        break
+        var i;
+        i = instance_create(argument0,argument1,obj_hatch)
+        i.sprite_index = spr_hatch_y
+        return i
     case spr_hatch_b:
-        with instance_create(argument0,argument1,obj_hatch) sprite_index = spr_hatch_b
-        break
+        var i;
+        i = instance_create(argument0,argument1,obj_hatch)
+        i.sprite_index = spr_hatch_b
+        return i
     case spr_kuriboshoe:
-        instance_create(argument0,argument1,obj_getshoe)
-        break
+        return instance_create(argument0,argument1,obj_getshoe)
     case spr_baburushoe:
-        with instance_create(argument0,argument1,obj_getshoe) sprite_index = spr_baburushoe
-        break
+        var i;
+        i = instance_create(argument0,argument1,obj_getshoe)
+        i.sprite_index = spr_baburushoe
+        return i
     case spr_dossunshoe:
-        with instance_create(argument0,argument1,obj_getshoe) sprite_index = spr_dossunshoe
-        break
+        var i;
+        i = instance_create(argument0,argument1,obj_getshoe)
+        i.sprite_index = spr_dossunshoe
+        return i
     case spr_jugemushoe:
-        with instance_create(argument0,argument1,obj_getshoe) sprite_index = spr_jugemushoe
-        break
+        var i;
+        i = instance_create(argument0,argument1,obj_getshoe)
+        i.sprite_index = spr_jugemushoe
+        return i
     case spr_1up:
-        instance_create(argument0,argument1,obj_1up)
-        break
+        return instance_create(argument0,argument1,obj_1up)
     case spr_3upmoon:
-        instance_create(argument0,argument1,obj_3upmoon)
-        break
+        return instance_create(argument0,argument1,obj_3upmoon)
     case spr_poison:
-        instance_create(argument0,argument1,obj_poison)
-        break
+        return instance_create(argument0,argument1,obj_poison)
     case spr_star:
-        instance_create(argument0,argument1,obj_star)
-        break
+        return instance_create(argument0,argument1,obj_star)
     case spr_key:
-        instance_create(argument0,argument1,obj_key)
-        break
+        return instance_create(argument0,argument1,obj_key)
     case spr_spring:
-        instance_create(argument0,argument1,obj_spring)
-        break
+        return instance_create(argument0,argument1,obj_spring)
     case spr_spring_super:
-        instance_create(argument0,argument1,obj_spring_super)
-        break
+        return instance_create(argument0,argument1,obj_spring_super)
     case spr_pswitch:
-        instance_create(argument0,argument1,obj_pswitch)
-        break
+        return instance_create(argument0,argument1,obj_pswitch)
     case spr_eswitch:
-        instance_create(argument0,argument1,obj_eswitch)
-        break
+        return instance_create(argument0,argument1,obj_eswitch)
 }
