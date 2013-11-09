@@ -75,72 +75,7 @@ or sprite_index = spr_superflower
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_3upmoon
-    instance_create(x,y,obj_3upmoon)
-else if sprite_index = spr_spring
-    instance_create(x,y,obj_spring)
-else if sprite_index = spr_key
-    instance_create(x,y,obj_key)
-else if sprite_index = spr_spring_super
-    instance_create(x,y,obj_spring_super)
-else if sprite_index = spr_pswitch
-    instance_create(x,y,obj_pswitch)
-else if sprite_index = spr_eswitch
-    instance_create(x,y,obj_eswitch)
-else if sprite_index = spr_fireflower
-    instance_create(x,y,obj_fireflower)
-else if sprite_index = spr_hammersuit
-    instance_create(x,y,obj_hammersuit)
-else if sprite_index = spr_tanookisuit
-    instance_create(x,y,obj_tanookisuit)
-else if sprite_index = spr_frogsuit
-    instance_create(x,y,obj_frogsuit)
-else if sprite_index = spr_iceflower
-    instance_create(x,y,obj_iceflower)
-else if sprite_index = spr_superflower
-    instance_create(x,y,obj_superflower)
-else if sprite_index = spr_carrot
-    instance_create(x,y,obj_carrot)
-else if sprite_index = spr_ninjasuit
-    instance_create(x,y,obj_ninjasuit)
-else if sprite_index = spr_blueshell
-    instance_create(x,y,obj_blueshell)
-else if sprite_index = spr_penguinsuit
-    instance_create(x,y,obj_penguinsuit)
-else if sprite_index = spr_hatch
-    instance_create(x,y,obj_hatch)
-else if sprite_index = spr_hatch_r
-{
-    varid = instance_create(x,y,obj_hatch)
-    varid.sprite_index = spr_hatch_r
-}
-else if sprite_index = spr_hatch_y
-{
-    varid = instance_create(x,y,obj_hatch)
-    varid.sprite_index = spr_hatch_y
-}
-else if sprite_index = spr_hatch_b
-{
-    varid = instance_create(x,y,obj_hatch)
-    varid.sprite_index = spr_hatch_b
-}
-else if sprite_index = spr_kuriboshoe
-    instance_create(x,y,obj_getshoe)
-else if sprite_index = spr_baburushoe
-{
-    varid = instance_create(x,y,obj_getshoe)
-    varid.sprite_index = spr_baburushoe
-}
-else if sprite_index = spr_dossunshoe
-{
-    varid = instance_create(x,y,obj_getshoe)
-    varid.sprite_index = spr_dossunshoe
-}
-else if sprite_index = spr_jugemushoe
-{
-    varid = instance_create(x,y,obj_getshoe)
-    varid.sprite_index = spr_jugemushoe
-}
+            <string>scr_sprite_make_object(x,y,sprite_index)
 instance_destroy()
 </string>
           </argument>

@@ -53,10 +53,7 @@ alarm[1] = 1
           <argument>
             <kind>1</kind>
             <string>if sprite_index = spr_leaf
-{
     image_speed = 0
-    image_index = 2
-}
 </string>
           </argument>
         </arguments>
@@ -95,34 +92,7 @@ if sprite_index = spr_3upmoon
 }
 if global.inventory[0] &lt; 15
     global.inventory[0] += 1
-if sprite_index = spr_mushroom
-    global.inventory[global.inventory[0]] = cs_big
-if sprite_index = spr_fireflower
-    global.inventory[global.inventory[0]] = cs_fire
-if sprite_index = spr_hammersuit
-    global.inventory[global.inventory[0]] = cs_hammer
-if sprite_index = spr_leaf
-    global.inventory[global.inventory[0]] = cs_leaf
-if sprite_index = spr_tanookisuit
-    global.inventory[global.inventory[0]] = cs_tanooki
-if sprite_index = spr_frogsuit
-    global.inventory[global.inventory[0]] = cs_frog
-if sprite_index = spr_bombshroom
-    global.inventory[global.inventory[0]] = cs_bomb
-if sprite_index = spr_iceflower
-    global.inventory[global.inventory[0]] = cs_ice
-if sprite_index = spr_superflower
-    global.inventory[global.inventory[0]] = cs_super
-if sprite_index = spr_carrot
-    global.inventory[global.inventory[0]] = cs_carrot
-if sprite_index = spr_ninjasuit
-    global.inventory[global.inventory[0]] = cs_ninja
-if sprite_index = spr_beeshroom
-    global.inventory[global.inventory[0]] = cs_bee
-if sprite_index = spr_blueshell
-    global.inventory[global.inventory[0]] = cs_shell
-if sprite_index = spr_penguinsuit
-    global.inventory[global.inventory[0]] = cs_penguin
+global.inventory[global.inventory[0]] = scr_sprite_get_constant(sprite_index)
 instance_create(0,0,obj_inventoryprev)
 instance_destroy()
 </string>

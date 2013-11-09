@@ -228,10 +228,6 @@
     <instance objName="obj_bluebrick" x="400" y="256" name="inst_A8F2F965" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bluebrick" x="416" y="240" name="inst_0D227A9B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bluebrick" x="432" y="256" name="inst_A007E8C4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_pcoin" x="1744" y="64" name="inst_CA37B273" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_pcoin" x="1760" y="48" name="inst_8F8791C6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_pcoin" x="1744" y="32" name="inst_D53C3797" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_pcoin" x="1728" y="48" name="inst_91E6A6C8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_onoffplatform" x="1216" y="128" name="inst_6ECA2606" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_onoffplatform" x="1232" y="128" name="inst_5BBE03CF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_onoffplatform" x="1248" y="128" name="inst_1CA9CCEA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -282,8 +278,8 @@
     <instance objName="obj_block_sprout" x="1184" y="240" name="inst_507A4674" locked="0" code="sprout = cs_star" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_sprout" x="1200" y="240" name="inst_7FAF92B8" locked="0" code="sprout = cs_penguin" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_sprout" x="1344" y="32" name="inst_9A9EA12F" locked="0" code="sprout = cs_poison" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="1760" y="176" name="inst_B6748133" locked="0" code="sprout = cs_tanooki" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="1728" y="176" name="inst_2414C0F9" locked="0" code="sprout = cs_hammer" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_sprout" x="1760" y="80" name="inst_B6748133" locked="0" code="sprout = cs_tanooki" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_sprout" x="1728" y="80" name="inst_2414C0F9" locked="0" code="sprout = cs_hammer" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_sprout" x="2384" y="16" name="inst_4CB703E7" locked="0" code="sprout = cs_ice" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_sprout" x="2416" y="16" name="inst_2405E426" locked="0" code="sprout = cs_carrot" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_donut_red" x="144" y="64" name="inst_DE9EF693" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -410,7 +406,6 @@
     <instance objName="obj_dinotorch" x="1960" y="352" name="inst_A61CD5B7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_netkoopa" x="80" y="160" name="inst_09690BF1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_netkoopa" x="64" y="208" name="inst_BD5455BF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_hidden" x="1744" y="48" name="inst_2A116A34" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_islope_r" x="272" y="256" name="inst_E01822B9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_islope_l" x="208" y="256" name="inst_D7DDA655" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bouncer" x="2336" y="368" name="inst_A72B59AF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -469,6 +464,9 @@
     <instance objName="obj_pswitch" x="1408" y="288" name="inst_1F92ADD6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warproom" x="448" y="112" name="inst_355F33EE" locked="0" code="myroom = rm_cedarhills_sky" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mario" x="40" y="368" name="inst_8D7AA937" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_sprout" x="1728" y="176" name="inst_2178C82C" locked="0" code="sprout = cs_boomerang" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_sprout" x="1760" y="176" name="inst_6AF36F3A" locked="0" code="sprout = cs_propeller" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_noteblock" x="1744" y="80" name="inst_8B2FC45F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset" x="16" y="144" w="32" h="32" xo="576" yo="368" id="10000398" name="tile_7C59E81B" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

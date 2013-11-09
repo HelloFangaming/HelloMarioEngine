@@ -31,111 +31,6 @@
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="11">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>blah = 0
-if global.inventory[i] = cs_big
-    sprite_index = spr_mushroom
-else if global.inventory[i] = cs_fire
-    sprite_index = spr_fireflower
-else if global.inventory[i] = cs_hammer
-    sprite_index = spr_hammersuit
-else if global.inventory[i] = cs_leaf
-{
-    sprite_index = spr_leaf
-    blah = 2
-}
-else if global.inventory[i] = cs_tanooki
-    sprite_index = spr_tanookisuit
-else if global.inventory[i] = cs_frog
-    sprite_index = spr_frogsuit
-else if global.inventory[i] = cs_bomb
-    sprite_index = spr_bombshroom
-else if global.inventory[i] = cs_ice
-    sprite_index = spr_iceflower
-else if global.inventory[i] = cs_super
-    sprite_index = spr_superflower
-else if global.inventory[i] = cs_carrot
-    sprite_index = spr_carrot
-else if global.inventory[i] = cs_ninja
-    sprite_index = spr_ninjasuit
-else if global.inventory[i] = cs_bee
-    sprite_index = spr_beeshroom
-else if global.inventory[i] = cs_shell
-    sprite_index = spr_blueshell
-else if global.inventory[i] = cs_penguin
-    sprite_index = spr_penguinsuit
-draw_sprite_ext(sprite_index,blah,view_xview[0]+7+(i-1)*19,view_yview[0]+217,1,1,0,c_white,0.7)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if global.reserveitem = cs_big
-    draw_sprite_ext(spr_mushroom,0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-else if global.reserveitem = cs_fire
-    draw_sprite_ext(spr_fireflower,0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-else if global.reserveitem = cs_hammer
-    draw_sprite_ext(spr_hammersuit,0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-else if global.reserveitem = cs_leaf
-    draw_sprite_ext(spr_leaf,2,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-else if global.reserveitem = cs_tanooki
-    draw_sprite_ext(spr_tanookisuit,0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-else if global.reserveitem = cs_frog
-    draw_sprite_ext(spr_frogsuit,0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-else if global.reserveitem = cs_bomb
-    draw_sprite_ext(spr_bombshroom,0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-else if global.reserveitem = cs_ice
-    draw_sprite_ext(spr_iceflower,0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-else if global.reserveitem = cs_super
-    draw_sprite_ext(spr_superflower,0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-else if global.reserveitem = cs_carrot
-    draw_sprite_ext(spr_carrot,0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-else if global.reserveitem = cs_ninja
-    draw_sprite_ext(spr_ninjasuit,0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-else if global.reserveitem = cs_bee
-    draw_sprite_ext(spr_beeshroom,0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-else if global.reserveitem = cs_shell
-    draw_sprite_ext(spr_blueshell,0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-else if global.reserveitem = cs_penguin
-    draw_sprite_ext(spr_penguinsuit,0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -161,12 +56,13 @@ while i &lt; global.inventory[0]+1
         draw_set_blend_mode(bm_normal)
     else
         draw_set_blend_mode_ext(bm_src_alpha,bm_one)
-    event_user(1)
+    draw_sprite_ext(scr_constant_get_sprite(global.inventory[i]),0,view_xview[0]+7+(i-1)*19,view_yview[0]+217,1,1,0,c_white,0.7)
     i += 1
 }
 //Reserve Item
 draw_set_blend_mode_ext(bm_src_alpha,bm_one)
-event_user(0)
+if global.reserveitem != cs_small
+    draw_sprite_ext(scr_constant_get_sprite(global.reserveitem),0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
 draw_set_blend_mode(bm_normal)
 </string>
           </argument>

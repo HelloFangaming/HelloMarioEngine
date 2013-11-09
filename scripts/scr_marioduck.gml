@@ -20,4 +20,6 @@ switch global.powerup
     case cs_bee: return spr_mario_bee_duck
     case cs_shell: return spr_mario_shell_duck
     case cs_penguin: return spr_mario_penguin_duck
+    case cs_propeller: return spr_mario_propeller_duck
+    case cs_boomerang: return spr_mario_boomerang_duck
 }

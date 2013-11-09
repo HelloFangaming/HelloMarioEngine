@@ -10,7 +10,7 @@
 */
 switch argument0
 {
-    case cs_small: return spr_mushroom
+    case cs_big: return spr_mushroom
     case cs_fire: return spr_fireflower
     case cs_hammer: return spr_hammersuit
     case cs_leaf: return spr_leaf
@@ -24,6 +24,8 @@ switch argument0
     case cs_bee: return spr_beeshroom
     case cs_shell: return spr_blueshell
     case cs_penguin: return spr_penguinsuit
+    case cs_propeller: return spr_propellershroom
+    case cs_boomerang: return spr_boomerangflower
     case cs_greenyoshi: return spr_hatch
     case cs_redyoshi: return spr_hatch_r
     case cs_yellowyoshi: return spr_hatch_y

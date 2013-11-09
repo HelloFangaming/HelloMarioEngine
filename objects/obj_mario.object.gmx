@@ -580,6 +580,7 @@ if isduck = 0
     or global.powerup = cs_super
     or global.powerup = cs_ninja
     or global.powerup = cs_penguin
+    or global.powerup = cs_boomerang
     {
         if firing &gt; 0
             firing -= 1
@@ -695,8 +696,20 @@ if isduck = 0
             //Spin Jumping
             else if stompstyle = 1
             {
-                image_speed = 0.5
-                sprite_index = scr_mariowarp()
+
+                //Propeller Mario Flying
+                if global.powerup = cs_propeller
+                {
+                    image_speed = vspeed/10
+                    sprite_index = spr_mario_propeller_fly
+                }
+
+                //Default Spin Jumping
+                else
+                {
+                    image_speed = 0.5
+                    sprite_index = scr_mariowarp()
+                }
             }
 
             //Shooting Projectiles
