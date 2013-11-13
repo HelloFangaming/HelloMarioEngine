@@ -242,6 +242,7 @@ alarm[9] = 24 + random(96)
           <argument>
             <kind>1</kind>
             <string>///Create Mario's second spin jump projectile
+var varid
 
 //Fire Ball
 if global.powerup = cs_fire
@@ -305,6 +306,7 @@ and instance_number(obj_shuriken) &lt; 2
           <argument>
             <kind>1</kind>
             <string>///Create Mario's first spin jump projectile
+var varid
 
 //Fire Ball
 if global.powerup = cs_fire
@@ -397,17 +399,21 @@ iamkicking = 0
             <string>///Create Mario's skid smoke
 if skidnow = 1
 {
-    if direct = -1
-    {
-        varid = instance_create(x-8,y+24,obj_smoke)
-        varid.sprite_index = spr_skidsmoke
-        varid.depth = -6
-    }
     if direct = 1
     {
-        varid = instance_create(x+1,y+24,obj_smoke)
-        varid.sprite_index = spr_skidsmoke
-        varid.depth = -6
+        with instance_create(x+1,y+24,obj_smoke)
+        {
+            sprite_index = spr_skidsmoke
+            depth = -6
+        }
+    }
+    else
+    {
+        with instance_create(x-8,y+24,obj_smoke)
+        {
+            sprite_index = spr_skidsmoke
+            depth = -6
+        }
     }
 }
 alarm[5] = 8
@@ -566,6 +572,7 @@ or global.powerup = cs_frog
 //If Mario is not ducking
 if isduck = 0
 {
+
     //Select Mask
     if global.powerup = cs_small
         mask_index = spr_smallmask
@@ -1909,15 +1916,17 @@ x = round(x*1000)/1000
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Mario's Enemy Bouncing Script
-//Executes every time Mario bounces off an enemy.
+            <string>///Make Mario bounce off an enemy
 if not instance_exists(obj_slider)
 {
+
+    //Enable variable jumping if shift is held down
     if keyboard_check(vk_shift)
-        vspeed = -6.5
+        jumpnow = 1
     else
-        vspeed = -4
-    jumpnow = 2
+        jumpnow = 2
+    vspeed = -4
+    
 }
 </string>
           </argument>
@@ -1941,62 +1950,78 @@ if not instance_exists(obj_slider)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Mario's Hurt Script
-//Executes every time Mario gets hurt.
+            <string>///Hurt Mario
+
+//Make Mario invincible
+invincible = 1
+
+//Make Mario not invincible after a cooldown
+alarm[3] = 120
+
+//Make Mario's alpha blink
+alarm[1] = 1
+
+//If Mario is on a Yoshi
 if global.yoshi = 1
 {
+
+    //No more Yoshi
     global.yoshi = 0
-    invincible = 1
     visible = 1
-    varid = instance_create(obj_yoshi.x,obj_yoshi.y,obj_yoshi_runaway)
-    if global.ycolor = 1
-        varid.sprite_index = spr_yoshi_hold_r
-    else if global.ycolor = 2
-        varid.sprite_index = spr_yoshi_hold_y
-    else if global.ycolor = 3
-        varid.sprite_index = spr_yoshi_hold_b
+
+    //Create runaway Yoshi
+    instance_create(obj_yoshi.x,obj_yoshi.y,obj_yoshi_runaway)
+
+    //Destroy Yoshi
     with obj_yoshi instance_destroy()
-    alarm[3] = 120
-    alarm[1] = 1
-    exit
+
 }
-if global.yoshi = 2
+
+//If Mario is on a shoe
+else if global.yoshi = 2
 {
+
+    //No more shoe
     global.yoshi = 0
-    invincible = 1
     visible = 1
+
+    //No more shoe kill ability
     stompstyle = 0
+
+    //Play hurt sounds
     audio_play_sound(snd_magic,0,0)
     audio_play_sound(snd_ow,0,0)
+
+    //Destroy the shoe
     instance_create(x,y+16,obj_statuesmoke)
     with obj_kuriboshoe instance_destroy()
-    alarm[3] = 120
-    alarm[1] = 1
-    exit
+
 }
-if global.powerup = cs_small
+
+//If Mario is small
+else if global.powerup = cs_small
 {
+
+    //Kill Mario
     instance_create(x,y,obj_deadmario)
     instance_destroy()
-    exit
+
 }
-if global.powerup = cs_big
+
+//If Mario is not small
+else
 {
-    global.powerup = cs_small
-    invincible = 1
+
+    //Make Mario big if he has a powerup, and small otherwise
+    if global.powerup = cs_big
+        global.powerup = cs_small
+    else
+        global.powerup = cs_big
+
+    //Play hurt sounds
     audio_play_sound(snd_warp,0,0)
     audio_play_sound(snd_ow,0,0)
-    alarm[3] = 120
-    alarm[1] = 1
-}
-if global.powerup &gt; cs_big
-{
-    global.powerup = cs_big
-    invincible = 1
-    audio_play_sound(snd_warp,0,0)
-    audio_play_sound(snd_ow,0,0)
-    alarm[3] = 120
-    alarm[1] = 1
+
 }
 </string>
           </argument>

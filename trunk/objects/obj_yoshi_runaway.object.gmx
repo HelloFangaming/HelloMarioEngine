@@ -34,6 +34,12 @@ audio_play_sound(snd_yoshi_hurt,0,0)
 obj_mario.vspeed = -4
 ready = 0
 direct = 0
+if global.ycolor = 1
+    sprite_index = spr_yoshi_hold_r
+else if global.ycolor = 2
+    sprite_index = spr_yoshi_hold_y
+else if global.ycolor = 3
+    sprite_index = spr_yoshi_hold_b
 alarm[0] = 80
 alarm[1] = 1
 </string>
