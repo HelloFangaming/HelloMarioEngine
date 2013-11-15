@@ -888,23 +888,107 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; -48
-    y = -48
-//This decides what step event script needs to be executed.
+            <string>///Handles Mario's physics and movement
+
+//Select a different step event based on Mario's state
 if isswim = 0
 {
-    if state &lt; 3
-        event_user(2)
-    else if state = 3
+
+    //Climb script
+    if state = 3
         event_user(4)
+
+    //Wall climb script
     else if state = 4
         event_user(5)
+
+    //Default movement script
+    else
+        event_user(2)
+
 }
+
+//Swim script
 else
     event_user(3)
 
+//If Mario is not climbing or wall climbing
+if state &lt; 3
+{
+
+    //If Mario is bumping into a wall to the right
+    if hspeed &gt; 0
+    and collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,1,0)
+    {
+
+        //Stop Mario's horizontal speed
+        hspeed = 0
+
+        //Prevent Mario from getting embed into the wall
+        while collision_rectangle(bbox_right,bbox_top+4,bbox_right,bbox_bottom-1,obj_solid,1,0)
+        and not collision_point(x,bbox_top+4,obj_solid,0,0)
+            x-=1
+
+    }
+
+    //If Mario is bumping into a wall to the left
+    else if hspeed &lt; 0
+    and collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,1,0)
+    {
+
+        //Stop Mario's horizontal speed
+        hspeed = 0
+
+        //Prevent Mario from getting embed into the wall
+        while collision_rectangle(bbox_left,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,1,0)
+        and not collision_point(x,bbox_top+4,obj_solid,0,0)
+            x+=1
+
+    }
+
+    //If Mario's head is bumping the ceiling
+    if vspeed &lt; 0
+    and collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,0)
+    {
+
+        //Prevent Mario's head from getting embed in the ceiling
+        if not collision_rectangle(bbox_left,bbox_bottom-1,bbox_right,bbox_bottom,obj_solidtop,0,0)
+        and not collision_rectangle(bbox_left,bbox_bottom-1,bbox_right,bbox_bottom,obj_slopeparent,1,0)
+            while collision_rectangle(bbox_left,bbox_top+1,bbox_right,bbox_top+1,obj_solid,1,0)
+                y+=1
+
+        //Bump sound
+        audio_play_sound(snd_bump,0,0)
+
+        //Send Mario downwards
+        vspeed = 1
+
+        //Stop variable jumping
+        jumpnow = 2
+
+        //Max out Bee Mario's flight timer
+        beefly = 128
+
+    }
+
+    //Stops Mario from ducking
+    if isduck = 1
+    and not keyboard_check(vk_down)
+    and isjump = 0
+        isduck = 0
+
+}
+
+//Deals with slope collisions
+while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
+    y-=1
+
+//Prevents Mario from going too high
+if y &lt; -48
+    y = -48
+
 //Kill Mario if he falls out of the room
-if bbox_top &gt; room_height
+else if bbox_top &gt; room_height
 {
     instance_create(x,room_height-32,obj_deadmario)
     instance_destroy()
@@ -1269,7 +1353,10 @@ if stompstyle != 0
 and global.yoshi &lt; 2
     stompstyle = 0
 if floatnow = 1
+{
     audio_stop_sound(snd_spin)
+    floatnow = 0
+}
 if (global.powerup != cs_frog and global.powerup != cs_penguin)
 or holding &gt; 0
 {
@@ -1427,52 +1514,6 @@ else
         state = 1
     isduck = 0
 }
-if vspeed &lt; 0
-{
-    while collision_rectangle(bbox_right,bbox_top+8,bbox_right,bbox_bottom-1,obj_solid,1,0)
-    {
-        hspeed = 0
-        x-=1
-    }
-    while collision_rectangle(bbox_left,bbox_top+8,bbox_left,bbox_bottom-1,obj_solid,1,0)
-    {
-        hspeed = 0
-        x+=1
-    }
-}
-if vspeed &lt; 0
-and collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,0)
-{
-    if not collision_rectangle(bbox_left,bbox_bottom-1,bbox_right,bbox_bottom,obj_solidtop,0,0)
-    and not collision_rectangle(bbox_left,bbox_bottom-1,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-        while collision_rectangle(bbox_left,bbox_top+1,bbox_right,bbox_top+1,obj_solid,1,0)
-            y+=1
-    if (global.powerup != cs_frog and global.powerup != cs_penguin)
-    or holding != 0
-    {
-        audio_play_sound(snd_bump,0,0)
-        vspeed = 1
-    }
-    jumpnow = 2
-}
-if hspeed &gt; 0
-and collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,1,0)
-{
-    hspeed = 0
-    while collision_rectangle(bbox_right,bbox_top+4,bbox_right,bbox_bottom-1,obj_solid,1,0)
-    and not collision_point(x,bbox_top+4,obj_solid,0,0)
-        x-=1
-}
-if hspeed &lt; 0
-and collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,1,0)
-{
-    hspeed = 0
-    while collision_rectangle(bbox_left,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,1,0)
-    and not collision_point(x,bbox_top+4,obj_solid,0,0)
-        x+=1
-}
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
 isrun = 0
 if not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0)
 {
@@ -1497,12 +1538,6 @@ if not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,
         audio_stop_sound(snd_swim)
     }
 }
-if isduck = 1
-and not keyboard_check(vk_down)
-and isjump = 0
-    isduck = 0
-hspeed = round(hspeed*1000)/1000
-x = round(x*1000)/1000
 </string>
           </argument>
         </arguments>
@@ -1525,122 +1560,154 @@ x = round(x*1000)/1000
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Mario's Step Script
-//Executes 60 times per second normally unless Mario is swimming, climbing, or wall climbing.
-if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
-or collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slopeparent,0,0)
+            <string>///Mario's default step script
+
+//Figure out Mario's state
+if (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
+or collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slopeparent,0,0))
+and vspeed &gt;= 0
 {
+
+    //Figure out if Mario is standing or walking
     if hspeed = 0
         state = 0
     else
         state = 1
-    if vspeed &lt; 0
-        state = 2
+
 }
+
+//Mario is jumping if there is no ground below him
 else
     state = 2
+
+//Check if Mario is standing on a slippery surface
 if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)
     isslip = 1
 else
     isslip = 0
+
+//Prevent Mario from falling down too fast
 if vspeed &gt; 3
     vspeed = 3
-if keyboard_check(vk_control)
+
+//Figure out what Mario's max speed should be
+
+//Frog Mario can not run
+if global.powerup = cs_frog
+and global.yoshi = 0
 {
-    if global.powerup = cs_frog
-    and global.yoshi = 0
-    {
-        varrun = 0
-        hspeedmax = 1.5
-    }
-    else
-    {
-        varrun = 1
-        hspeedmax = 3
-    }
-    if global.powerup = cs_bee
-    and isfloating = 1
-    {
-        varrun = 0
-        hspeedmax = 1
-    }
+    varrun = 0
+    hspeedmax = 1.5
 }
+
+//Bee Mario is slow when he is flying
+else if global.powerup = cs_bee
+and isfloating = 1
+{
+    varrun = 0
+    hspeedmax = 1
+}
+
+//If the run key is being held, go faster
+else if keyboard_check(vk_control)
+{
+    varrun = 1
+    hspeedmax = 3
+}
+
+//Otherwise, move slower
 else
 {
     varrun = 0
     hspeedmax = 1.5
 }
+
+//Handles Mario's jumping
 if keyboard_check_pressed(vk_shift)
-and jumpnow = 0
+
+//Make sure that Mario can jump
+and ((jumpnow = 0
 and vspeed &lt;= 0
 and not instance_exists(obj_puller)
 and not instance_exists(obj_statue)
 and not instance_exists(obj_slider)
 and not instance_exists(obj_wallrunner)
-and isjump = 0
+and isjump = 0)
+
+//Allow Mario to jump off of Yoshi or a shoe while in midair
+or (keyboard_check(vk_up)
+and isduck = 0
+and global.yoshi &gt; 0))
 {
+
+    //Jump higher if Mario is running
     if isrun = 1
         vspeed = -4.5
+
+    //If Mario is not running
     else
     {
+
+        //Jump high if you are frog Mario, and you are not riding anything
         if global.powerup = cs_frog
         and global.yoshi = 0
             vspeed = -4.5
+
+        //Jump lower if you are not running
         else
         {
+
+            //Jump even lower if you are walking super slowly
             if round(hspeed/2) = 0
                 vspeed = -3.85
+
+            //Jump slightly higher if you are walking
             else
                 vspeed = -4.05
+
         }
     }
+
+    //Make Mario spin jump
     if keyboard_check(vk_up)
     and isduck = 0
-    and holding = 0
+    and (holding = 0 or global.yoshi &gt; 0)
     {
+
+        //Set spin jump variable
         stompstyle = 1
+
+        //Play spin jump sound
         audio_play_sound(snd_spin,0,0)
+
+        //Create spin jump projectiles
         alarm[7] = 10
-    }
-    else if keyboard_check(vk_up)
-    and isduck = 0
-    and global.yoshi &gt; 0
-    {
-        stompstyle = 1
-        audio_play_sound(snd_spin,0,0)
+
+        //Get off of Yoshi if he is on one
         if global.yoshi = 1
             obj_yoshi.alarm[1] = 1
-        if global.yoshi = 2
+
+        //Get off of a shoe if he is on one
+        else if global.yoshi = 2
             obj_kuriboshoe.alarm[1] = 1
-        alarm[7] = 10
+
     }
+
+    //Play the jump sound if he is not spin jumping
     else
         audio_play_sound(snd_jump,0,0)
+
+    //Enable variable jumping
     jumpnow = 1
+
 }
-else if keyboard_check_pressed(vk_shift)
-and keyboard_check(vk_up)
-and isduck = 0
-and global.yoshi &gt; 0
-{
-    stompstyle = 1
-    audio_play_sound(snd_spin,0,0)
-    if global.yoshi = 1
-        obj_yoshi.alarm[1] = 1
-    if global.yoshi = 2
-        obj_kuriboshoe.alarm[1] = 1
-    alarm[7] = 10
-    if isrun = 1
-        vspeed = -4.5
-    else if round(hspeed/2) = 0
-        vspeed = -3.85
-    else
-        vspeed = -4.05
-    jumpnow = 1
-}
+
+//Check if Mario should still be variable jumping
 if keyboard_check_released(vk_shift)
 and jumpnow = 1
     jumpnow = 2
+
+
 if isduck = 1 and isjump = 0
 {
     if hspeed &gt; 0
@@ -1744,49 +1811,6 @@ if state = 2
     else
         gravity = 0.1
 }
-if vspeed &lt; 0
-{
-    while collision_rectangle(bbox_right,bbox_top+8,bbox_right,bbox_bottom-1,obj_solid,1,0)
-    {
-        hspeed = 0
-        x-=1
-    }
-    while collision_rectangle(bbox_left,bbox_top+8,bbox_left,bbox_bottom-1,obj_solid,1,0)
-    {
-        hspeed = 0
-        x+=1
-    }
-}
-if vspeed &lt; 0
-and collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,0)
-{
-    if not collision_rectangle(bbox_left,bbox_bottom-1,bbox_right,bbox_bottom,obj_solidtop,0,0)
-    and not collision_rectangle(bbox_left,bbox_bottom-1,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-        while collision_rectangle(bbox_left,bbox_top+1,bbox_right,bbox_top+1,obj_solid,1,0)
-            y+=1
-    audio_play_sound(snd_bump,0,0)
-    vspeed = 1
-    jumpnow = 2
-    beefly = 128
-}
-if hspeed &gt; 0
-and collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,1,0)
-{
-    hspeed = 0
-    while collision_rectangle(bbox_right,bbox_top+4,bbox_right,bbox_bottom-1,obj_solid,1,0)
-    and not collision_point(x,bbox_top+4,obj_solid,0,0)
-        x-=1
-}
-if hspeed &lt; 0
-and collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,1,0)
-{
-    hspeed = 0
-    while collision_rectangle(bbox_left,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,1,0)
-    and not collision_point(x,bbox_top+4,obj_solid,0,0)
-        x+=1
-}
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
 if hspeed &gt; 2.8
 or hspeed &lt; -2.8
     isrun = 1
@@ -1808,10 +1832,6 @@ if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0)
     }
     isfloating = 0
 }
-if isduck = 1
-and not keyboard_check(vk_down)
-and isjump = 0
-    isduck = 0
 if stompstyle != 0
 and isjump = 0
 and jumpnow = 0
@@ -1892,8 +1912,6 @@ and holding = 0
 }
 if global.yoshi = 2
     stompstyle = 1
-hspeed = round(hspeed*1000)/1000
-x = round(x*1000)/1000
 </string>
           </argument>
         </arguments>
@@ -1952,75 +1970,90 @@ if not instance_exists(obj_slider)
             <kind>1</kind>
             <string>///Hurt Mario
 
-//Make Mario invincible
-invincible = 1
-
-//Make Mario not invincible after a cooldown
-alarm[3] = 120
-
-//Make Mario's alpha blink
-alarm[1] = 1
-
-//If Mario is on a Yoshi
-if global.yoshi = 1
+//If Mario is not invincible
+if invincible = 0
 {
+ 
+    //Make Mario invincible
+    invincible = 1
 
-    //No more Yoshi
-    global.yoshi = 0
-    visible = 1
+    //Make Mario not invincible after a cooldown
+    alarm[3] = 120
 
-    //Create runaway Yoshi
-    instance_create(obj_yoshi.x,obj_yoshi.y,obj_yoshi_runaway)
+    //Make Mario's alpha blink
+    alarm[1] = 1
 
-    //Destroy Yoshi
-    with obj_yoshi instance_destroy()
+    //If Mario is not riding anything
+    if global.yoshi = 0
+    {
 
-}
+        //If Mario is small
+        if global.powerup = cs_small
+        {
+        
+            //Kill Mario
+            instance_create(x,y,obj_deadmario)
+            instance_destroy()
+        
+        }
+        
+        //If Mario is not small
+        else
+        {
+        
+            //Make Mario big if he has a powerup, and small otherwise
+            if global.powerup = cs_big
+                global.powerup = cs_small
+            else
+                global.powerup = cs_big
+        
+            //Play hurt sounds
+            audio_play_sound(snd_warp,0,0)
+            audio_play_sound(snd_ow,0,0)
+        
+        }
+    }
 
-//If Mario is on a shoe
-else if global.yoshi = 2
-{
-
-    //No more shoe
-    global.yoshi = 0
-    visible = 1
-
-    //No more shoe kill ability
-    stompstyle = 0
-
-    //Play hurt sounds
-    audio_play_sound(snd_magic,0,0)
-    audio_play_sound(snd_ow,0,0)
-
-    //Destroy the shoe
-    instance_create(x,y+16,obj_statuesmoke)
-    with obj_kuriboshoe instance_destroy()
-
-}
-
-//If Mario is small
-else if global.powerup = cs_small
-{
-
-    //Kill Mario
-    instance_create(x,y,obj_deadmario)
-    instance_destroy()
-
-}
-
-//If Mario is not small
-else
-{
-
-    //Make Mario big if he has a powerup, and small otherwise
-    if global.powerup = cs_big
-        global.powerup = cs_small
+    //If Mario is riding something
     else
-        global.powerup = cs_big
+    {
 
-    //Play hurt sounds
-    audio_play_sound(snd_warp,0,0)
-    audio_play_sound(snd_ow,0,0)
+        //If Mario is on a Yoshi
+        if global.yoshi = 1
+        {
+        
+            //Create runaway Yoshi
+            instance_create(obj_yoshi.x,obj_yoshi.y,obj_yoshi_runaway)
+        
+            //Destroy Yoshi
+            with obj_yoshi instance_destroy()
+        
+        }
+
+        //If Mario is on a shoe
+        else if global.yoshi = 2
+        {
+        
+            //No more shoe kill ability
+            stompstyle = 0
+        
+            //Play hurt sounds
+            audio_play_sound(snd_magic,0,0)
+            audio_play_sound(snd_ow,0,0)
+        
+            //Destroy the shoe
+            instance_create(x,y+16,obj_statuesmoke)
+            with obj_kuriboshoe instance_destroy()
+        
+        }
+
+        //Stop riding
+        global.yoshi = 0
+
+        //Reset visibility
+        visible = 1
+
+    }
 
 }
 </string>
