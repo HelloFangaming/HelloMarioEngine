@@ -28,11 +28,13 @@
             <string>audio_play_sound(snd_magic,0,0)
 obj_mario.invincible = 1
 obj_mario.visible = 0
+obj_mario.disablecontrols = 1
 obj_mario.speed = 0
 alarm[0] = 90
 alarm[2] = 120
 alarm[3] = 8
-instance_create(x,y+8,obj_statuesmoke)</string>
+instance_create(x,y+8,obj_statuesmoke)
+</string>
           </argument>
         </arguments>
       </action>
@@ -60,6 +62,7 @@ if instance_exists(obj_mario)
 {
     obj_mario.invincible = 0
     obj_mario.visible = 1
+    obj_mario.disablecontrols = 0
 }
 </string>
           </argument>

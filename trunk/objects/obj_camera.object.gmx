@@ -129,7 +129,7 @@ if global.star &gt; 0
           <argument>
             <kind>1</kind>
             <string>if instance_exists(obj_mario)
-    if obj_mario.isrun = 0
+    if abs(obj_mario.hspeed) &lt;= 2.8
     and obj_mario.state &lt; 2
     {
         audio_stop_sound(snd_pmeter)
@@ -169,7 +169,7 @@ alarm[9] = 7
             <string>if pmeter &lt; 6
     exit
 if instance_exists(obj_mario)
-    if obj_mario.isrun = 1
+    if abs(obj_mario.hspeed) &gt; 2.8
     and obj_mario.state &lt; 2
     {
         alarm[8] = 100
@@ -202,7 +202,7 @@ alarm[7] = 15
             <kind>1</kind>
             <string>if instance_exists(obj_mario)
 {
-    if obj_mario.isrun = 1
+    if abs(obj_mario.hspeed) &gt; 2.8
     and obj_mario.state &lt; 2
     {
         if pmeter &lt; 6

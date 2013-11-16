@@ -42,9 +42,6 @@ if global.yoshi = 1
 else
     holding = 0
 
-//Is Mario running?
-isrun = 0
-
 //Is Mario jumping?
 isjump = 0
 
@@ -70,14 +67,14 @@ kk = 0
 //Is Mario kicking something?
 iamkicking = 0
 
-//Can Mario turn around?
-canturn = 0
-
 //Is Mario spin jumping?
 stompstyle = 0
 
 //Is Mario on a slippery surface?
 isslip = 0
+
+//Is Mario's controls disabled?
+disablecontrols = 0
 
 //Is carrot/bee Mario floating?
 isfloating = 0
@@ -1514,7 +1511,6 @@ else
         state = 1
     isduck = 0
 }
-isrun = 0
 if not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0)
 {
     isswim = 0
@@ -1595,32 +1591,20 @@ if vspeed &gt; 3
 //Frog Mario can not run
 if global.powerup = cs_frog
 and global.yoshi = 0
-{
-    varrun = 0
     hspeedmax = 1.5
-}
 
 //Bee Mario is slow when he is flying
 else if global.powerup = cs_bee
 and isfloating = 1
-{
-    varrun = 0
     hspeedmax = 1
-}
 
 //If the run key is being held, go faster
 else if keyboard_check(vk_control)
-{
-    varrun = 1
     hspeedmax = 3
-}
 
 //Otherwise, move slower
 else
-{
-    varrun = 0
     hspeedmax = 1.5
-}
 
 //Handles Mario's jumping
 if keyboard_check_pressed(vk_shift)
@@ -1628,20 +1612,24 @@ if keyboard_check_pressed(vk_shift)
 //Make sure that Mario can jump
 and ((jumpnow = 0
 and vspeed &lt;= 0
-and not instance_exists(obj_puller)
-and not instance_exists(obj_statue)
-and not instance_exists(obj_slider)
-and not instance_exists(obj_wallrunner)
+and disablecontrols = 0
 and isjump = 0)
 
 //Allow Mario to jump off of Yoshi or a shoe while in midair
 or (keyboard_check(vk_up)
 and isduck = 0
-and global.yoshi &gt; 0))
+and global.yoshi &gt; 0)
+
+//Allow propeller Mario to do his special jump
+or (global.powerup = cs_propeller
+and stompstyle = 0
+and disablecontrols = 0
+and isduck = 0
+and holding = 0))
 {
 
     //Jump higher if Mario is running
-    if isrun = 1
+    if abs(hspeed) &gt; 2.8
         vspeed = -4.5
 
     //If Mario is not running
@@ -1669,9 +1657,10 @@ and global.yoshi &gt; 0))
     }
 
     //Make Mario spin jump
-    if keyboard_check(vk_up)
+    if (keyboard_check(vk_up)
     and isduck = 0
-    and (holding = 0 or global.yoshi &gt; 0)
+    and (holding = 0 or global.yoshi &gt; 0))
+    or isjump = 1
     {
 
         //Set spin jump variable
@@ -1707,211 +1696,346 @@ if keyboard_check_released(vk_shift)
 and jumpnow = 1
     jumpnow = 2
 
-
+//If Mario is ducking on the ground
 if isduck = 1 and isjump = 0
 {
+
+    //Slow down Mario's horizontal speed
     if hspeed &gt; 0
         hspeed-=0.05
     if hspeed &lt; 0
         hspeed+=0.05
-    if hspeed &lt; 0.05
-    and hspeed &gt; -0.05
+
+    //If Mario is slow enough, stop his horizontal speed entirely
+    if abs(hspeed) &lt; 0.05
         hspeed = 0
-    canturn = 1
+
 }
+
+//If Mario is not ducking on the ground
 else
-    canturn = 0
-if canturn = 0
 {
+
+    //Handles moving right
     if keyboard_check(vk_right)
-    and not instance_exists(obj_puller)
-    and not instance_exists(obj_statue)
     and not keyboard_check(vk_left)
+    and disablecontrols = 0
     {
+
+        //If Mario is not at his maximum speed
         if hspeed &lt; hspeedmax
         {
+
+            //Accelerate slower if he is on a slippery surface
             if isslip = 1
                 hspeed += 0.04
+
+            //Default acceleration
             else
             {
+
+                //Accelerate more if he is skidding
                 if hspeed &lt; 0
                     hspeed += 0.075
+
+                //Accelerate
                 hspeed += 0.06
+
             }
         }
-        if isjump = 0
-        or not (global.powerup = cs_ninja and global.yoshi = 0)
+
+        //Change Mario's direction, unless he is ninja Mario jumping and not on a Yoshi
+        if not (global.powerup = cs_ninja and global.yoshi = 0 and isjump = 1)
             direct = 1
+
     }
+
+    //Handles moving left
     else if keyboard_check(vk_left)
-    and not instance_exists(obj_puller)
-    and not instance_exists(obj_statue)
     and not keyboard_check(vk_right)
+    and disablecontrols = 0
     {
-        if hspeed &gt; hspeedmax*-1
+
+        //If Mario is not at his maximum speed
+        if hspeed &gt; -hspeedmax
         {
+
+            //Accelerate slower if he is on a slippery surface
             if isslip = 1
                 hspeed -= 0.04
+
+            //Default acceleration
             else
             {
+
+                //Accelerate more if he is skidding
                 if hspeed &gt; 0
                     hspeed += -0.075
+
+                //Accelerate
                 hspeed += -0.06
+
             }
         }
-        if isjump = 0
-        or not (global.powerup = cs_ninja and global.yoshi = 0)
+
+        //Change Mario's direction, unless he is ninja Mario jumping and not on a Yoshi
+        if not (global.powerup = cs_ninja and global.yoshi = 0 and isjump = 1)
             direct = -1
     }
+
+    //Takes care of slowing Mario down if he is not jumping and left/right is not being pressed
     else if isjump = 0
     {
+
+        //If Mario is on a slippery surface
         if isslip = 0
         {
+
+            //Slow down Mario's horizontal speed
             if hspeed &gt; 0
                 hspeed-=0.05
             else if hspeed &lt; 0
                 hspeed+=0.05
-            if hspeed &lt; 0.05
-            and hspeed &gt; -0.05
+
+            //If Mario is slow enough, stop his horizontal speed entirely
+            if abs(hspeed) &lt; 0.05
                 hspeed = 0
+
         }
         else
         {
+
+            //Slow down Mario's horizontal speed
             if hspeed &gt; 0
                 hspeed-=0.025
             else if hspeed &lt; 0
                 hspeed+=0.025
-            if hspeed &lt; 0.025
-            and hspeed &gt; -0.025
+
+            //If Mario is slow enough, stop his horizontal speed entirely
+            if abs(hspeed) &lt; 0.025
                 hspeed = 0
+
         }
     }
+
+    //Slow Mario down if he is faster than his maximum speed
     if isjump = 0
-        if hspeed &gt; hspeedmax
-        or hspeed &lt; hspeedmax*-1
-        {
-            if hspeed &gt; 0
-                hspeed-=0.025
-            else if hspeed &lt; 0
-                hspeed+=0.025
-            if hspeed &lt; 0.025
-            and hspeed &gt; -0.025
-                hspeed = 0
-        }
+    and abs(hspeed) &gt; hspeedmax
+    {
+
+        //Slow down Mario's horizontal speed
+        if hspeed &gt; 0
+            hspeed-=0.025
+        else if hspeed &lt; 0
+            hspeed+=0.025
+
+        //If Mario is slow enough, stop his horizontal speed entirely
+        if abs(hspeed) &lt; 0.025
+            hspeed = 0
+    }
+
 }
+
+//If Mario is jumping
 if state = 2
 {
+
+    //Variable jumping
     if vspeed &gt; -1
     or jumpnow != 1
     {
+
+        //Normal gravity
         gravity = 0.3
+
+        //End variable jumping if it never ends manually
         if jumpnow = 1
             jumpnow = 2
+
     }
+
+    //Lower gravity while in the middle of variable jumping
     else
         gravity = 0.1
+
+    //Propeller Mario jumping has lower gravity
+    if global.powerup = cs_propeller
+    and stompstyle = 1
+    and global.yoshi = 0
+        gravity = gravity/2
+
 }
-if hspeed &gt; 2.8
-or hspeed &lt; -2.8
-    isrun = 1
-else
-    isrun = 0
-if stompstyle != 0
-    isrun = 0
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0)
+
+//If Mario comes into contact with water
+if place_meeting(x,y,obj_swim)
 {
+
+    //Make Mario start swimming
     isswim = 1
-    if vspeed &gt; 0
-        vspeed = 0
+
+    //If Mario is entering from the top
     if collision_point(x,y+33,obj_swim,0,0)
     and not collision_point(x,y,obj_swim,0,0)
     {
-        varid = instance_create(x-8,y+17,obj_smoke)
-        varid.sprite_index = spr_splash
-        varid.depth = -6
+
+        //Reset Mario's vertical speed
+        vspeed = 0
+
+        //Create a water splash effect
+        with instance_create(x-8,y+17,obj_smoke)
+        {
+            sprite_index = spr_splash
+            depth = -6
+        }
+
     }
+
+    //Disable carrot and bee Mario floating
     isfloating = 0
+
 }
-if stompstyle != 0
-and isjump = 0
-and jumpnow = 0
-    stompstyle = 0
-if stompstyle != 0
-and holding != 0
-    stompstyle = 0
-if (global.powerup = cs_carrot or (global.powerup = cs_bee and beefly &lt; 128))
-and isjump = 1
-and stompstyle = 0
-and isduck = 0
-and global.yoshi = 0
-and keyboard_check(vk_shift)
+
+//Kuribo shoes give Mario the special stomp ability at all times
+if global.yoshi = 2
+    stompstyle = 1
+
+//Disable spin jumping if Mario is not jumping, or holding something
+else if stompstyle = 1
 {
-    if vspeed &gt; 0
-    {
-        vspeed = 0.5
-        isfloating = 1
-        if global.powerup = cs_bee
-        and not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,0)
-        {
-            vspeed = -1.5
-            beefly += 8
-        }
-    }
-    else
-    {
-        if global.powerup = cs_bee
-        and isfloating = 1
-        {
-            vspeed = -1.5
-            beefly += 1
-            if hspeed &gt; 1
-                hspeed -= 0.1
-            if hspeed &lt; -1
-                hspeed += 0.1
-        }
-        else
-            isfloating = 0
-    }
+
+    if (isjump = 0 and jumpnow = 0)
+    or holding != 0
+        stompstyle = 0
+
 }
-else
-    isfloating = 0
+
+//If Mario is jumping, and not ducking
+if isjump = 1
+and isduck = 0
+and disablecontrols = 0
+{
+
+    //Checks if ninja Mario is ready to climb a wall
+    if global.powerup = cs_ninja
+    and vspeed &gt; 0
+    and holding = 0
+    {
+
+        //If the direction ninja Mario is facing is pressed, while a wall is in front of him
+        if (keyboard_check(vk_right)
+        and collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,1,0)
+        and direct = 1)
+        or (keyboard_check(vk_left)
+        and collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,1,0)
+        and direct = -1)
+        {
+
+            //Make Mario start wall climbing
+            state = 4
+
+            //Stop all vertical movement
+            vspeed = 0
+
+            //Disable gravity
+            gravity = 0
+
+        }
+
+    }
+    
+    //Handles carrot and bee Mario's floating
+    if (global.powerup = cs_carrot or (global.powerup = cs_bee and beefly &lt; 128))
+    and stompstyle = 0
+    and global.yoshi = 0
+    and keyboard_check(vk_shift)
+    {
+    
+        //If Mario is moving downwards
+        if vspeed &gt; 0
+        {
+    
+            //Set the floating variable
+            isfloating = 1
+    
+            //Bee Mario flies upwards if the ceiling is not above him
+            if global.powerup = cs_bee
+            and not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,0)
+            {
+    
+                //Fly upwards
+                vspeed = -1.5
+    
+                //Make the bee timer tick extra because of the initial push
+                beefly += 8
+    
+            }
+    
+            //Carrot Mario floats down slowly
+            else
+                vspeed = 0.5
+    
+        }
+    
+        //If Mario is not moving downwards
+        else
+        {
+    
+            //If bee Mario is floating
+            if global.powerup = cs_bee
+            and isfloating = 1
+            {
+    
+                //Continue flying upwards
+                vspeed = -1.5
+    
+                //Make the bee timer tick
+                beefly += 1
+    
+                //Slow bee Mario down if he is moving too fast
+                if hspeed &gt; 1
+                    hspeed -= 0.1
+                if hspeed &lt; -1
+                    hspeed += 0.1
+    
+            }
+    
+            //Stop floating otherwise
+            else
+                isfloating = 0
+        }
+    
+    }
+    
+    //Stop floating
+    else
+        isfloating = 0
+}
+
+//If carrot or bee Mario is floating, but the sound is not playing
 if isfloating = 1
 and floatnow = 0
 {
+
+    //Mark that the sound is playing
     floatnow = 1
+
+    //Loop the sound
     audio_play_sound(snd_spin,0,1)
+
 }
+
+//If carrot or bee Mario is not floating, but the sound is playing
 else if isfloating = 0
 and floatnow = 1
 {
-    audio_stop_sound(snd_spin)
+
+    //Mark that the sound is not playing
     floatnow = 0
+
+    //Stop the sound
+    audio_stop_sound(snd_spin)
+
 }
-if global.powerup = cs_ninja
-and vspeed &gt; 0
-and isjump = 1
-and isduck = 0
-and holding = 0
-{
-    if keyboard_check(vk_right)
-    and collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,1,0)
-    and direct = 1
-    {
-        state = 4
-        vspeed = 0
-        gravity = 0
-    }
-    if keyboard_check(vk_left)
-    and collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,1,0)
-    and direct = -1
-    {
-        state = 4
-        vspeed = 0
-        gravity = 0
-    }
-}
-if global.yoshi = 2
-    stompstyle = 1
 </string>
           </argument>
         </arguments>
