@@ -28,11 +28,39 @@
             <string>image_speed = 0.3
 vspeed = -3
 obj_mario.visible = 0
+obj_mario.disablecontrols = 1
 sprite_index = scr_mariorun()
 fix = 0
 alarm[0] = 1
 mydir = 0
 ready = 0
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if instance_exists(obj_mario)
+{
+    obj_mario.visible = 1
+    obj_mario.disablecontrols = 0
+}
 </string>
           </argument>
         </arguments>
@@ -94,14 +122,12 @@ if ready = 0
     if mydir = 0
     and not collision_rectangle(x+16,y,x+20,y+32,obj_solid,0,0)
     {
-        obj_mario.visible = 1
         obj_mario.hspeed = -vspeed
         instance_destroy()
     }
     if mydir = 1
     and not collision_rectangle(x-15,y-1,x+14,y-5,obj_solid,0,0)
     {
-        obj_mario.visible = 1
         obj_mario.hspeed = hspeed
         with obj_mario direct = -direct
         instance_destroy()
@@ -109,14 +135,12 @@ if ready = 0
     if mydir = 2
     and not collision_rectangle(x-17,y,x-21,y+32,obj_solid,0,0)
     {
-        obj_mario.visible = 1
         obj_mario.vspeed = vspeed
         instance_destroy()
     }
     if keyboard_check_pressed(vk_shift)
     {
         audio_play_sound(snd_jump,0,0)
-        obj_mario.visible = 1
         if mydir = 0
         {
             obj_mario.vspeed = vspeed
@@ -163,14 +187,12 @@ if ready = 1
     if mydir = 0
     and not collision_rectangle(x-17,y,x-21,y+32,obj_solid,0,0)
     {
-        obj_mario.visible = 1
         obj_mario.hspeed = vspeed
         instance_destroy()
     }
     if mydir = 1
     and not collision_rectangle(x-15,y-1,x+14,y-5,obj_solid,0,0)
     {
-        obj_mario.visible = 1
         obj_mario.hspeed = hspeed
         with obj_mario direct = -direct
         instance_destroy()
@@ -178,14 +200,12 @@ if ready = 1
     if mydir = 2
     and not collision_rectangle(x+16,y,x+20,y+32,obj_solid,0,0)
     {
-        obj_mario.visible = 1
         obj_mario.vspeed = vspeed
         instance_destroy()
     }
     if keyboard_check_pressed(vk_shift)
     {
         audio_play_sound(snd_jump,0,0)
-        obj_mario.visible = 1
         if mydir = 0
         {
             obj_mario.vspeed = vspeed
@@ -233,7 +253,6 @@ if mydir = 0
     or vspeed &gt; -1.6
     or collision_rectangle(x-15,y,x+14,y,obj_solid,0,0)
     {
-        obj_mario.visible = 1
         obj_mario.vspeed = vspeed
         instance_destroy()
     }
@@ -246,7 +265,6 @@ if mydir = 1
         or hspeed &gt; -1.6
         or collision_rectangle(x-16,y+2,x-16,y+30,obj_solid,0,0)
         {
-            obj_mario.visible = 1
             obj_mario.hspeed = hspeed
             with obj_mario direct = -direct
             instance_destroy()
@@ -258,7 +276,6 @@ if mydir = 1
         or hspeed &lt; 1.6
         or collision_rectangle(x+15,y+2,x+15,y+30,obj_solid,0,0)
         {
-            obj_mario.visible = 1
             obj_mario.hspeed = hspeed
             with obj_mario direct = -direct
             instance_destroy()
@@ -271,7 +288,6 @@ if mydir = 2
     or vspeed &lt; 1.6
     or collision_rectangle(x-15,y+32,x+14,y+32,obj_solid,0,0)
     {
-        obj_mario.visible = 1
         obj_mario.vspeed = vspeed
         instance_destroy()
     }
@@ -349,7 +365,6 @@ and mydir = 0
             <string>if ready = 0
 and mydir = 2
 {
-    obj_mario.visible = 1
     obj_mario.hspeed = vspeed
     instance_destroy()
 }
@@ -418,7 +433,6 @@ and mydir = 1
             <string>if ready = 1
 and mydir = 2
 {
-    obj_mario.visible = 1
     obj_mario.hspeed = -vspeed
     instance_destroy()
 }

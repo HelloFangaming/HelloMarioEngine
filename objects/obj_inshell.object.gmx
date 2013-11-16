@@ -37,6 +37,7 @@ hspeed = obj_mario.hspeed
 direct = obj_mario.direct
 obj_mario.invincible = 1
 obj_mario.visible = 0
+obj_mario.disablecontrols = 1
 friction = 0.02
 alarm[1] = 6
 image_speed = 0.3

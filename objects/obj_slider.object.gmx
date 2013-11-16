@@ -33,6 +33,7 @@ else
 hspeed = obj_mario.hspeed
 obj_mario.invincible = 1
 obj_mario.visible = 0
+obj_mario.disablecontrols = 1
 if global.powerup &gt; cs_small
     mask_index = spr_bigmask
 sprite_index = scr_marioslide()
@@ -66,6 +67,7 @@ hitpoint = 0
     if yayaya = 1
         obj_mario.invincible = 0
     obj_mario.visible = 1
+    obj_mario.disablecontrols = 0
     obj_mario.hspeed = hspeed
 }
 </string>
