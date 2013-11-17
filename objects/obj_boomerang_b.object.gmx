@@ -26,10 +26,12 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 0.3
+audio_play_sound(snd_fireball,0,0)
 hspeed = 1.5*obj_mario.direct
 vspeed = -1
 alarm[0] = 24
-ready = 0</string>
+ready = 0
+</string>
           </argument>
         </arguments>
       </action>
