@@ -689,12 +689,16 @@ if isduck = 0
             //Swimming
             if isswim = 1
             {
-                sprite_index = scr_marioswim()
-                image_speed = 0
-                if vspeed &lt; 0
-                    image_index = 1
-                else
-                    image_index = 0
+                //If frog/penguin Mario is not swimming
+                if noisy = 0
+                {
+                    sprite_index = scr_marioswim()
+                    image_speed = 0
+                    if vspeed &lt; 0
+                        image_index = 1
+                    else
+                        image_index = 0
+                }
             }
 
             //Spin Jumping
@@ -939,24 +943,25 @@ and collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid
 
 }
 
-//If Mario is not climbing or wall climbing
-if state &lt; 3
+//If Mario's head is bumping the ceiling
+if vspeed &lt; 0
+and collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,0)
 {
 
-    //If Mario's head is bumping the ceiling
-    if vspeed &lt; 0
-    and collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,0)
-    {
+    //Prevent Mario's head from getting embed in the ceiling
+    if not collision_rectangle(bbox_left,bbox_bottom-1,bbox_right,bbox_bottom,obj_solidtop,0,0)
+    and not collision_rectangle(bbox_left,bbox_bottom-1,bbox_right,bbox_bottom,obj_slopeparent,1,0)
+        while collision_rectangle(bbox_left,bbox_top+1,bbox_right,bbox_top+1,obj_solid,1,0)
+            y+=1
 
-        //Prevent Mario's head from getting embed in the ceiling
-        if not collision_rectangle(bbox_left,bbox_bottom-1,bbox_right,bbox_bottom,obj_solidtop,0,0)
-        and not collision_rectangle(bbox_left,bbox_bottom-1,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-            while collision_rectangle(bbox_left,bbox_top+1,bbox_right,bbox_top+1,obj_solid,1,0)
-                y+=1
+    //If frog/penguin Mario is not swimming, and Mario is not climbing or wall climbing
+    if noisy = 0
+    and state &lt; 3
+    {
 
         //Bump sound
         audio_play_sound(snd_bump,0,0)
-
+    
         //Send Mario downwards
         vspeed = 1
 
@@ -968,6 +973,16 @@ if state &lt; 3
 
     }
 
+    //Otherwise, stop vertical movement
+    else
+        vspeed = 0
+
+}
+
+//If Mario is not climbing or wall climbing
+if state &lt; 3
+{
+
     //If Mario is not jumping
     if isjump = 0
     {
@@ -977,6 +992,7 @@ if state &lt; 3
         and global.powerup != cs_small
         and global.powerup != cs_frog
         and holding = 0
+        and noisy = 0
             isduck = 1
     
         //Stops Mario from ducking
@@ -1030,7 +1046,7 @@ if state &lt; 3
             
                 //Ice Ball
                 else if (global.powerup = cs_ice or (global.powerup = cs_penguin and isswim = 0))
-                and instance_number(obj_iceball) &lt; 1
+                and not instance_exists(obj_iceball)
                 {
                     firing = 9
                     instance_create(x,y+16,obj_iceball)
@@ -1050,6 +1066,14 @@ if state &lt; 3
                 {
                     firing = 9
                     instance_create(x,y+20,obj_shuriken)
+                }
+
+                //Boomerang
+                else if global.powerup = cs_boomerang
+                and not instance_exists(obj_boomerang_b)
+                {
+                    firing = 9
+                    instance_create(x-8,y+16,obj_boomerang_b)
                 }
             
                 //Tail Spin
@@ -1074,22 +1098,6 @@ if state &lt; 3
 //If Mario is climbing or wall climbing
 else
 {
-
-    //Stop Mario from climbing into the ceiling
-    if vspeed &lt; 0
-    and collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,0)
-    {
-    
-        //Prevent Mario's head from getting embed in the ceiling
-        if not collision_rectangle(bbox_left,bbox_bottom-1,bbox_right,bbox_bottom,obj_solidtop,0,0)
-        and not collision_rectangle(bbox_left,bbox_bottom-1,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-            while collision_rectangle(bbox_left,bbox_top+1,bbox_right,bbox_top+1,obj_solid,1,0)
-                y+=1
-    
-        //Stop vertical movement
-        vspeed = 0
-    
-    }
 
     //Disable ducking
     isduck = 0
