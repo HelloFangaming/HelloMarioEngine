@@ -54,7 +54,7 @@ set = 0
     mine = collision_point(x,y,obj_warproom,0,0)
     if mine.postchange != -1
     {
-        global.postchange = mine.posttype
+        global.postchange = mine.postchange
         global.postx = mine.postx+8
         global.posty = mine.posty
     }

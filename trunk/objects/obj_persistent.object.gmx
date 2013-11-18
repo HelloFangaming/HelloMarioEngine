@@ -25,24 +25,83 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//The engine's persistent object.
-//Don't delete this unless you know what you are doing.
-done = 0
+            <string>///Hello Mario Engine's persistent object
+
+//How the screen is fading
+//0: From black, 1: To black
 mode = 0
+
+//How much the screen is faded
+done = 0
+
+//Screenshot of the game, if it exists 
 back = -1
-global.carrieditem = 0
-global.carriedsprite = 0
-global.shallihold = 0
-global.levelmusic = snd_gameover
-global.acecoins = ds_map_create()
-global.worldmap = ds_map_create()
-global.messagefont = font_add_sprite_ext(spr_messagefont,'!"'+"#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~",0,0)
-global.font = font_add_sprite_ext(spr_spritefont,'!"'+"#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~",1,-1)
-global.wdigits = font_add_sprite_ext(spr_numbers,"0123456789",0,0)
-global.gdigits = font_add_sprite_ext(spr_numbersgold,"0123456789",0,0)
-keyboard_set_map(ord('X'),vk_shift)
-keyboard_set_map(ord('Z'),vk_control)
+
+//Message to display to the screen
+message = ""
+
+//Declare global variables
 scr_init_globals()
+
+//Item that is being carried between rooms
+global.carrieditem = 0
+
+//The sprite used by an item carried between rooms
+global.carriedsprite = 0
+
+//Whether Mario should hold/carry an object
+global.shallihold = 0
+
+//The level music
+global.levelmusic = snd_gameover
+
+//Data structure for storing collected ace coins
+global.acecoins = ds_map_create()
+
+//Data structure for storing the state of the world map
+global.worldmap = ds_map_create()
+
+//Font for dialog boxes
+global.messagefont = font_add_sprite_ext(spr_messagefont,'!"'+"#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~",0,0)
+
+//Font for small letters
+global.font = font_add_sprite_ext(spr_spritefont,'!"'+"#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~",1,-1)
+
+//Font for white digits
+global.wdigits = font_add_sprite_ext(spr_numbers,"0123456789",0,0)
+
+//Font for gold digits
+global.gdigits = font_add_sprite_ext(spr_numbersgold,"0123456789",0,0)
+
+//Make the x key do everything the shift key does
+keyboard_set_map(ord('X'),vk_shift)
+
+//Make the z key do everything the control key does
+keyboard_set_map(ord('Z'),vk_control)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Reset the message
+message = ""
 </string>
           </argument>
         </arguments>
@@ -65,7 +124,7 @@ scr_init_globals()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Center the view
+            <string>///Center the window
 window_center()
 </string>
           </argument>
@@ -89,7 +148,10 @@ window_center()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_deactivate_all(1)
+            <string>///Deactivate everything
+instance_deactivate_all(1)
+
+//Make sure Mario Start! is active
 instance_activate_object(obj_mariostart)
 </string>
           </argument>
@@ -113,12 +175,24 @@ instance_activate_object(obj_mariostart)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>mode = 0
+            <string>///Stop fading to black
+
+//Set mode to fade from black
+mode = 0
+
+//If Mario Start! does not exist
 if not instance_exists(obj_mariostart)
 {
+
+    //Begin fading from black
     done = 0
+
+    //Activate everything
     instance_activate_all()
+
 }
+
+//Delete the screenshot
 if background_exists(back)
     background_delete(back)
 </string>
@@ -143,7 +217,9 @@ if background_exists(back)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Quit the game when ALT+F4 is pressed
+            <string>///Handle all of the hotkeys
+
+//Quit the game when ALT+F4 is pressed
 if keyboard_check_pressed(vk_f4)
     game_end()
 
@@ -155,28 +231,62 @@ else if keyboard_check_pressed(ord('R'))
     room_goto(rm_title)
 }
 
+//Fullscreen (Handled by GM: Studio
+else if keyboard_check_pressed(vk_enter)
+{
+    if window_get_fullscreen()
+        message = "FULLSCREEN ON"
+    else
+        message = "FULLSCREEN OFF"
+    alarm[2] = 1
+    alarm[3] = 60
+}
+
+//Toggles VSync
+else if keyboard_check_pressed(ord('V'))
+{
+    if vsync = 0
+    {
+        vsync = 1
+        message = "VSYNC ON"
+    }
+    else
+    {
+        vsync = 0
+        message = "VSYNC OFF"
+    }
+    display_reset(0,vsync)
+    alarm[3] = 60
+}
+
 //Turn off filtering if ALT+1 is pressed
 else if keyboard_check_pressed(ord('1'))
 {
     filter = 0
+    message = "NO FILTERING"
     window_set_size(view_wview[0],view_hview[0])
     alarm[2] = 1
+    alarm[3] = 60
 }
 
 //Turn on HQ2X filtering if ALT+2 is pressed
 else if keyboard_check_pressed(ord('2'))
 {
     filter = 1
+    message = "HQ2X FILTERING"
     window_set_size(view_wview[0]*2,view_hview[0]*2)
     alarm[2] = 1
+    alarm[3] = 60
 }
 
 //Turn on HQ4X filtering if ALT+3 is pressed
 else if keyboard_check_pressed(ord('3'))
 {
     filter = 2
+    message = "HQ4X FILTERING"
     window_set_size(view_wview[0]*4,view_hview[0]*4)
     alarm[2] = 1
+    alarm[3] = 60
 }
 </string>
           </argument>
@@ -200,15 +310,30 @@ else if keyboard_check_pressed(ord('3'))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Fade to black
+            <string>///Fade the screen to black
+
+//If this event was called manually
 if mode = 0
 {
+
+    //Take a screenshot
     back = background_create_from_surface(view_surface_id[0],0,0,view_wview[0],view_hview[0],0,0)
+
+    //Clean up effects
     effect_clear()
+
+    //Deactivate everything
     instance_deactivate_all(1)
+
 }
+
+//Start fading
 done = 0
+
+//To black
 mode = 1
+
+//Make sure it stops when its done
 alarm[0] = 30
 </string>
           </argument>
@@ -232,11 +357,19 @@ alarm[0] = 30
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Prepare to fade to black
+            <string>///Prepare to fade to black
+
+//Fade to black
 mode = 1
+
+//Take a screenshot
 back = background_create_from_surface(view_surface_id[0],0,0,view_wview[0],view_hview[0],0,0)
+
+//Free the game surface
 if surface_exists(view_surface_id[0])
     surface_free(view_surface_id[0])
+
+//Set alarm to execute when the next room starts
 alarm[1] = 1
 </string>
           </argument>
@@ -260,7 +393,10 @@ alarm[1] = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>view_surface_id[0] = surface_create(view_wview[0],view_hview[0])
+            <string>///Create the game surface
+view_surface_id[0] = surface_create(view_wview[0],view_hview[0])
+
+//Fade the screen to black, unless you just opened up the game
 if mode = 1
     event_user(0)
 </string>
@@ -285,7 +421,7 @@ if mode = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Save Fullscreen + Filtering Settings
+            <string>///Save Fullscreen + Filtering + VSync Settings
 
 //Open the file
 var file = file_text_open_write("Settings.dat")
@@ -296,11 +432,15 @@ file_text_writeln(file)
 
 //Save filtering settings
 file_text_write_string(file,string(filter))
+file_text_writeln(file)
+
+//Save vsync settings
+file_text_write_string(file,string(vsync))
 
 //Close the file
 file_text_close(file)
 
-//Sticky Control Key Bug Fix
+//Sticky control key bug fix
 keyboard_key_release(vk_control)
 </string>
           </argument>
@@ -324,9 +464,10 @@ keyboard_key_release(vk_control)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Load Fullscreen + Filtering Settings
+            <string>///Load Fullscreen + Filtering + VSync Settings
 if file_exists("Settings.dat")
 {
+
     //Open the file 
     var file = file_text_open_read("Settings.dat")
 
@@ -336,24 +477,41 @@ if file_exists("Settings.dat")
 
     //Set filtering mode based on the read value
     filter = real(file_text_read_string(file))
+    file_text_readln(file)
+
+    //Set vsync based on the read value
+    vsync = real(file_text_read_string(file))
 
     //Close the file
     file_text_close(file)
+
 }
 else
 {
+
     //Set the default to HQ4X only if the screen is big enough to fit it
     if display_get_height() &gt;= 960
         filter = 2
     else
         filter = 1
+
+    //VSync is on by default
+    vsync = 1
+
 }
+
 //HQ2x
 if filter = 1
     window_set_size(view_wview[0]*2,view_hview[0]*2)
+
 //HQ4X
 else if filter = 2
     window_set_size(view_wview[0]*4,view_hview[0]*4)
+
+//VSync
+display_reset(0,vsync)
+
+//Center the view
 alarm[2] = 1
 </string>
           </argument>
@@ -377,7 +535,9 @@ alarm[2] = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Draws the game surface
+            <string>///Deals with the game surface, filtering, and fading
+
+//Draws the game surface if it exists
 if surface_exists(view_surface_id[0])
 {
     draw_enable_alphablend(0)
@@ -403,22 +563,34 @@ if surface_exists(view_surface_id[0])
     }
 
     draw_enable_alphablend(1)
+
 }
+
+//Repair the game surface
 else
     view_surface_id[0] = surface_create(view_wview[0],view_hview[0])
 
 //Fades the screen to and from black
 if done &lt; 1
 {
+
+    //Increment fading
     done += 1/30
+
+    //Fade from black
     if mode = 0
         draw_set_alpha(1-done)
+
+    //Fade to black
     else
         draw_set_alpha(done)
+
+    //Draw the fade
     draw_set_color(c_black)
     draw_rectangle(0,0,2000,2000,0)
     draw_set_alpha(1)
     draw_set_color(c_white)
+
 }
 </string>
           </argument>
@@ -442,13 +614,17 @@ if done &lt; 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Draws the screenshot shown when fading to black
+            <string>///Draws the screenshot shown when fading to black
 if background_exists(back)
 {
     draw_enable_alphablend(0)
     draw_background(back,view_xview[0],view_yview[0])
     draw_enable_alphablend(1)
 }
+
+//Display messages
+draw_set_font(global.font)
+draw_text(view_xview[0],view_yview[0],message)
 </string>
           </argument>
         </arguments>

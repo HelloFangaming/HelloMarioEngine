@@ -71,7 +71,7 @@ myroom = -1
             <kind>1</kind>
             <string>if postchange != 1
 {
-    global.postchange = posttype
+    global.postchange = postchange
     global.postx = postx+16
     global.posty = posty
 }
