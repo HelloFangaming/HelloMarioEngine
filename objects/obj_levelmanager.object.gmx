@@ -320,20 +320,24 @@ if global.mariostart = 0
 }
 
 //If position changing is enabled
-if global.postchange = 1
+if global.postchange != -1
 {
-
-    //Disable position changing
-    global.postchange = 0
 
     //Destroy all player objects
     event_user(0)
 
     //Create the desired object at the desired location
-    if global.posttype = 0
+    if global.postchange = 0
         instance_create(global.postx,global.posty,obj_mario)
-    else if global.posttype = 1
+    else if global.postchange = 1
         instance_create(global.postx,global.posty,obj_warpmario)
+    else if global.postchange = 2
+        instance_create(global.postx,global.posty,obj_jumpspawn)
+    else if global.postchange = 3
+        instance_create(global.postx,global.posty,obj_vinespawn)
+
+    //Disable position changing
+    global.postchange = -1
 
 }
 </string>

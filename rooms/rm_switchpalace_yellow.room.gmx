@@ -415,7 +415,7 @@
     <instance objName="obj_solid" x="928" y="32" name="inst_EFF42C69" locked="0" code="" scaleX="16" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="1184" y="48" name="inst_09315E9C" locked="0" code="" scaleX="1" scaleY="10" colour="4294967295" rotation="0"/>
     <instance objName="obj_switch" x="1040" y="176" name="inst_B1727EEE" locked="0" code="sprite_index = spr_switch_yellow" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_levelmanager" x="0" y="0" name="inst_3F179B63" locked="0" code="leveltime = 0&#xA;levelmusic = snd_palacemusic" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelmanager" x="0" y="0" name="inst_3F179B63" locked="0" code="levelmusic = snd_palacemusic" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpleft" x="544" y="176" name="inst_59FBDB70" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pswitch" x="80" y="192" name="inst_AF84F1DE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mario" x="56" y="176" name="inst_04533874" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

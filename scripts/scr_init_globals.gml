@@ -45,15 +45,12 @@ global.palaceyellow = 0
 //Green Switch Palace
 global.palacegreen = 0
 
-//Enable position changing
-global.postchange = 0
+//Position change object type
+global.postchange = -1
 
-//Position changing coordinates
+//Position change coordinates
 global.postx = 0
 global.posty = 0
-
-//Type of position change
-global.posttype = 0
 
 //Yoshi
 global.yoshi = 0

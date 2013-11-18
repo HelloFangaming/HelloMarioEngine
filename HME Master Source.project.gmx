@@ -1479,7 +1479,6 @@
       <object>objects\obj_door_bomb</object>
       <object>objects\obj_postchange</object>
       <object>objects\obj_warproom</object>
-      <object>objects\obj_warpnextroom</object>
       <object>objects\obj_warpcannon</object>
       <object>objects\obj_giantwarpcannon</object>
     </objects>

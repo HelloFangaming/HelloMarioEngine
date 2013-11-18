@@ -25,13 +25,28 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place these in the object creation code.
-//postchange = 1
-//postx = New x position.
-//posty = New y position.
-//posttype = 0 or 1 (0 for normal, 1 for pipe.)
-//myroom = Destination Room
-postchange = 0
+            <string>///Warps Mario to a different room
+
+/*
+**  This item uses creation code!
+**
+**  postchange = Pick from below: (Optional)
+**      0: Mario
+**      1: Warp Mario
+**      2: Jump Spawn
+**      3: Vine Spawn
+**
+**  postx = New x coordinate
+**  posty = New y coordinate
+**  myroom = Destination room (Optional)
+**
+*/
+
+//Default Value:
+postchange = -1
+postx = 0
+posty = 0
+myroom = -1
 </string>
           </argument>
         </arguments>
@@ -54,14 +69,37 @@ postchange = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if postchange = 1
+            <string>if postchange != 1
 {
-    global.postchange = 1
+    global.postchange = posttype
     global.postx = postx+16
     global.posty = posty
-    global.posttype = posttype
 }
 room_goto(myroom)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if myroom = -1
+    myroom = room_next(room)
 </string>
           </argument>
         </arguments>

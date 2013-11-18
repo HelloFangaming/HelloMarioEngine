@@ -32,8 +32,6 @@ vspeed = -1
 warp = 1
 if collision_point(x+8,y+8,obj_warproom,0,0)
     myroom = collision_point(x+8,y+8,obj_warproom,0,0).myroom
-else if collision_point(x+8,y+8,obj_warpnextroom,0,0)
-    myroom = room_next(room)
 else
     warp = 0
 </string>
