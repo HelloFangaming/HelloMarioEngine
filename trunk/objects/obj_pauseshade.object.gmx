@@ -219,8 +219,8 @@ draw_set_alpha(1)
 }
 if menu_choice = 1
 {
-    instance_activate_object(obj_musicplayer)
-    obj_musicplayer.alarm[1] = 1
+    instance_activate_object(obj_levelmanager)
+    obj_levelmanager.alarm[1] = 1
     alarm[1] = 2
 }
 if menu_choice=2

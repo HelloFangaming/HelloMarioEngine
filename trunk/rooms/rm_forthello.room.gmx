@@ -180,7 +180,7 @@
     <instance objName="obj_stopblock" x="1168" y="0" name="inst_E7C75C35" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_midwayline" x="2144" y="320" name="inst_F7EE2CCE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_midwayspot" x="2104" y="304" name="inst_6FFA7A6C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_musicplayer" x="0" y="0" name="inst_63F2AF1E" locked="0" code="leveltime = 275&#xA;levelmusic = snd_music_castle" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelmanager" x="0" y="0" name="inst_63F2AF1E" locked="0" code="leveltime = 275&#xA;levelmusic = snd_music_castle" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_swooper" x="728" y="208" name="inst_213B7BD0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_drybones" x="616" y="368" name="inst_E577C1D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_thwomp" x="896" y="176" name="inst_E46507AF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -219,7 +219,7 @@
     <instance objName="obj_magikoopa" x="32" y="0" name="inst_68F00CBF" locked="0" code="xmin = 576&#xA;xmax = 2080&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_engine2" x="912" y="80" name="inst_C4C61D46" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_sproutblock_hidden" x="656" y="304" name="inst_83BD8B8E" locked="0" code="sprout = cs_star" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_spiked" x="960" y="32" name="inst_E26BA5E2" locked="0" code="sprout = cs_ice" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_spiked" x="960" y="32" name="inst_E26BA5E2" locked="0" code="sprout = cs_penguin" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_boocircle" x="192" y="288" name="inst_D44E6864" locked="0" code="ready = -1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_boosnake" x="848" y="256" name="inst_612D2592" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_left" x="544" y="384" name="inst_BCDC0EA9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

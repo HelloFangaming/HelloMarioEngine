@@ -384,7 +384,7 @@ if instance_exists(obj_mario)
 or instance_exists(obj_warpmario)
     audio_stop_sound(snd_switchsong)
 switchon = 0
-obj_musicplayer.alarm[0] = 1
+obj_levelmanager.alarm[0] = 1
 </string>
           </argument>
         </arguments>
@@ -556,7 +556,7 @@ if not audio_is_playing(snd_thwomp)
             <string>if not audio_is_playing(snd_switchsong)
 {
     audio_play_sound(snd_switchsong,99,1)
-    obj_musicplayer.alarm[1] = 1
+    obj_levelmanager.alarm[1] = 1
 }
 if switchon = 1
     exit

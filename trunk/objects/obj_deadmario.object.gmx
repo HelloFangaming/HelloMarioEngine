@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_musicplayer.alarm[1] = 1
-obj_musicplayer.alarm[2] = 0
+            <string>obj_levelmanager.alarm[1] = 1
+obj_levelmanager.alarm[2] = 0
 lives -= 1
 global.died = 1
 global.powerup = cs_small

@@ -129,7 +129,7 @@ and visible = 1
 {
     alarm[0] = 200
     alarm[1] = 50
-    obj_musicplayer.alarm[1] = 199
+    obj_levelmanager.alarm[1] = 199
     ready = 2
     image_index = 1
     with instance_create(x,y,obj_getpowerup) sprite_index = scr_constant_get_sprite(global.prize[0])

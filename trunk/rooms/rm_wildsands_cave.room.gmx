@@ -116,7 +116,7 @@
     <instance objName="obj_solid" x="1888" y="96" name="inst_9E738F06" locked="0" code="" scaleX="3" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="1936" y="96" name="inst_BD5F9BB6" locked="0" code="" scaleX="2" scaleY="8" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="1824" y="32" name="inst_146AC208" locked="0" code="" scaleX="2" scaleY="3" colour="4294967295" rotation="0"/>
-    <instance objName="obj_musicplayer" x="0" y="0" name="inst_340E8CAD" locked="0" code="leveltime = 375&#xA;levelmusic = snd_music_under" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelmanager" x="0" y="0" name="inst_340E8CAD" locked="0" code="leveltime = 375&#xA;levelmusic = snd_music_under" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_midwayline" x="1296" y="176" name="inst_5E801198" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_midwayspot" x="1272" y="160" name="inst_C5F56F6A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slope_sl" x="336" y="176" name="inst_D86A1A5A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

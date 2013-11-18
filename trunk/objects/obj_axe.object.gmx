@@ -26,8 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>breakfeast.alarm[0] = 7
-obj_musicplayer.alarm[1] = 1
-obj_musicplayer.alarm[2] = 0
+obj_levelmanager.alarm[1] = 1
+obj_levelmanager.alarm[2] = 0
 obj_endboss.alarm[0] = 128
 audio_play_sound(snd_thwomp,0,0)
 instance_create(x,y,obj_smoke)

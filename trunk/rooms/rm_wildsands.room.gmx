@@ -163,7 +163,7 @@
     <instance objName="obj_slope_sl" x="2640" y="336" name="inst_482F830A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slope_sl" x="2656" y="352" name="inst_61A14AED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_flagpole" x="2784" y="224" name="inst_13ADD28F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_musicplayer" x="0" y="0" name="inst_81C1C21C" locked="0" code="leveltime = 375&#xA;levelmusic = snd_music_land" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelmanager" x="0" y="0" name="inst_81C1C21C" locked="0" code="leveltime = 375&#xA;levelmusic = snd_music_land" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_3upmoon" x="1680" y="48" name="inst_43E27DE1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_busterbeetle" x="2200" y="368" name="inst_5CE52293" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_lakitu" x="48" y="0" name="inst_9142F039" locked="0" code="xmin = 304&#xA;xmax = 1328" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

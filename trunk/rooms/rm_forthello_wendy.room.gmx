@@ -55,7 +55,7 @@
     <instance objName="obj_solid" x="208" y="16" name="inst_77B76B0E" locked="0" code="" scaleX="18" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="496" y="32" name="inst_89A6E471" locked="0" code="" scaleX="1" scaleY="11" colour="4294967295" rotation="0"/>
     <instance objName="obj_solidtop" x="0" y="208" name="inst_215E0741" locked="0" code="" scaleX="31" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_musicplayer" x="0" y="0" name="inst_53515C2D" locked="0" code="leveltime = 1&#xA;levelmusic = snd_music_castle" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelmanager" x="0" y="0" name="inst_53515C2D" locked="0" code="leveltime = 1&#xA;levelmusic = snd_music_castle" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_endboss" x="344" y="64" name="inst_69861126" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wendy" x="432" y="176" name="inst_6C7CE1E8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mario" x="40" y="176" name="inst_6A7CD174" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

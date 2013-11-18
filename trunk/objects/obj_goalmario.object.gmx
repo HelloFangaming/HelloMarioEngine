@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_musicplayer.alarm[2] = 0
+            <string>obj_levelmanager.alarm[2] = 0
 global.clear = 1
 if instance_exists(obj_flagpole_secret)
     global.clear = 2
@@ -34,7 +34,7 @@ ready = 0
 ready2 = 0
 ready3 = 0
 image_speed = 0
-obj_musicplayer.alarm[1] = 1
+obj_levelmanager.alarm[1] = 1
 sprite_index = scr_mariogoal()
 x = obj_flagpole.x+9
 vspeed = 1.5

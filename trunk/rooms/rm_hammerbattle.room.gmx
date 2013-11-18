@@ -60,7 +60,7 @@
     <instance objName="obj_brick" x="208" y="144" name="inst_2C5E175E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="256" y="144" name="inst_FAFB9616" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solidtop" x="0" y="208" name="inst_926AEF69" locked="0" code="" scaleX="20" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_musicplayer" x="0" y="0" name="inst_A3DEEF72" locked="0" code="leveltime = 0&#xA;levelmusic = snd_hammerbattle" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelmanager" x="0" y="0" name="inst_A3DEEF72" locked="0" code="leveltime = 0&#xA;levelmusic = snd_hammerbattle" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hammerbro" x="240" y="128" name="inst_66BEE9D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hammerbro" x="192" y="192" name="inst_2A305AC4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mario" x="40" y="176" name="inst_9B04B230" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
