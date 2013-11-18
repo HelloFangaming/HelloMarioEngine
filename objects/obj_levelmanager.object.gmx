@@ -25,15 +25,31 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place these in the object creation code.
-//leveltime = The level's timelimit.
-//levelmusic = The level's music.
+            <string>///Handles music, the timer, Mario Start!, checkpoints, and position changing
+
+/*
+**  This item uses creation code!
+**
+**  leveltime = The time limit in seconds (Optional)
+**
+**  levelmusic = The level music (Any sound resource you load in)
+**
+*/
+
+//Default Values:
 leveltime = 0
+levelmusic = 0
+
+//Begin playing the music if you did not carry over a star/switch effect from a previous room
 if global.pswitch = 0
 and global.star = 0
     alarm[0] = 2
-if not instance_exists(obj_camera)
-    instance_create(0,0,obj_camera)
+
+//Create the camera object
+instance_create(0,0,obj_camera)
+
+//Make the view follow the camera
+view_object[0] = obj_camera
 </string>
           </argument>
         </arguments>
@@ -56,17 +72,21 @@ if not instance_exists(obj_camera)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_mario)
+            <string>///Kill Mario
+
+//If Mario exists
+if instance_exists(obj_mario)
 {
+
+    //Kill Mario
     instance_create(obj_mario.x,obj_mario.y,obj_deadmario)
     with obj_mario instance_destroy()
+
 }
-if instance_exists(obj_warpmario)
-{
-    instance_create(obj_warpmario.x,obj_warpmario.y,obj_deadmario)
-    with obj_warpmario instance_destroy()
-}
-global.time = 0
+
+//Otherwise, delay the inevitable
+else
+    alarm[4] = 1
 </string>
           </argument>
         </arguments>
@@ -89,14 +109,24 @@ global.time = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if audio_is_playing(snd_starman)
+            <string>///Play the hurry up sound
+
+//Delay the sound if a star/switch is in effect
+if audio_is_playing(snd_starman)
 or audio_is_playing(snd_switchsong)
     alarm[3] = 60
 else
 {
+
+    //Hurry up!
     audio_play_sound(snd_hurryup,1,0)
+
+    //Stop the music
     alarm[1] = 1
+
+    //Play the music after the hurry up sound is done
     alarm[0] = 120
+
 }
 </string>
           </argument>
@@ -120,13 +150,27 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.time != 0
-    global.time -= 1
-alarm[2] = 60
-if global.time = 101
-    alarm[3] = 60
-if global.time = 1
-    alarm[4] = 60
+            <string>///Decrement the time variable
+
+//If there is time left
+if global.time &gt; 0
+{
+
+    //Decrement
+    global.time--
+
+    //Decrement the time again after a second
+    alarm[2] = 60
+
+    //Play the hurry up sound at 100 seconds left
+    if global.time = 101
+        alarm[3] = 60
+
+    //Kill Mario at 0 seconds
+    else if global.time = 1
+        alarm[4] = 60
+
+}
 </string>
           </argument>
         </arguments>
@@ -149,7 +193,9 @@ if global.time = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_stop_sound(levelmusic)</string>
+            <string>///Stop the music
+audio_stop_sound(levelmusic)
+</string>
           </argument>
         </arguments>
       </action>
@@ -171,10 +217,38 @@ if global.time = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not audio_is_playing(levelmusic)
+            <string>///Loop the music
+if not audio_is_playing(levelmusic)
 and not instance_exists(obj_deadmario)
 and not instance_exists(obj_goalmario)
     audio_play_sound(levelmusic,99,1)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Destroy all player objects
+with obj_mario instance_destroy()
+with obj_warpmario instance_destroy()
+with obj_jumpspawn instance_destroy()
+with obj_vinespawn instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -197,20 +271,70 @@ and not instance_exists(obj_goalmario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.levelmusic != levelmusic
+            <string>///Handles Mario Start!, checkpoints, and position changing
+
+//If the music is not the same as the music used in the last room
+if global.levelmusic != levelmusic
 {
+
+    //Stop the old music
     audio_stop_sound(global.levelmusic)
+
+    //Set the new music
     global.levelmusic = levelmusic
+
 }
-if global.mariostart = 0
-    instance_create(0,0,obj_mariostart)
-else
-    view_object = obj_camera
-if leveltime != 0
-{
-    if global.time = 0
-        global.time = leveltime
+
+//If the time is set to something, and was not set in a previous room, set it
+if leveltime &gt; 0
+and global.time = 0
+    global.time = leveltime
+
+//If the timer was set, begin ticking
+if global.time &gt; 0
     alarm[2] = 60
+
+//If Mario just started the level
+if global.mariostart = 0
+{
+
+    //The level has started
+    global.mariostart = 1
+
+    //Handles checkpoints
+    if global.midwaypoint = 1
+    and instance_exists(obj_midwayspot)
+    {
+
+        //Destroy all player objects
+        event_user(0)
+
+        //Create a new Mario at the desired location
+        instance_create(obj_midwayspot.x,obj_midwayspot.y,obj_mario)
+
+    }
+
+    //Create the Mario Start! effect
+    instance_create(0,0,obj_mariostart)
+
+}
+
+//If position changing is enabled
+if global.postchange = 1
+{
+
+    //Disable position changing
+    global.postchange = 0
+
+    //Destroy all player objects
+    event_user(0)
+
+    //Create the desired object at the desired location
+    if global.posttype = 0
+        instance_create(global.postx,global.posty,obj_mario)
+    else if global.posttype = 1
+        instance_create(global.postx,global.posty,obj_warpmario)
+
 }
 </string>
           </argument>

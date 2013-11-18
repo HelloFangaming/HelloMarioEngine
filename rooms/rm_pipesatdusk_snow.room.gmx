@@ -85,7 +85,7 @@
     <instance objName="obj_slippery" x="1200" y="352" name="inst_BCDE5C63" locked="0" code="" scaleX="4" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slippery" x="736" y="320" name="inst_B8833FA6" locked="0" code="" scaleX="19" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slippery" x="912" y="256" name="inst_1419FFA9" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_musicplayer" x="0" y="0" name="inst_A10D5566" locked="0" code="leveltime = 1&#xA;levelmusic = snd_music_athletic" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelmanager" x="0" y="0" name="inst_A10D5566" locked="0" code="leveltime = 1&#xA;levelmusic = snd_music_athletic" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_winged" x="96" y="256" name="inst_BB896752" locked="0" code="sprout = cs_penguin" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_parakoopa" x="104" y="128" name="inst_79D296C7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_movingrope_touch" x="1280" y="272" name="inst_96F816FE" locked="0" code="ropelength = 4" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

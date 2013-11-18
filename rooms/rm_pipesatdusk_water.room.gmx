@@ -92,7 +92,7 @@
     <instance objName="obj_solid" x="784" y="224" name="inst_C91CA2CB" locked="0" code="" scaleX="5" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="784" y="192" name="inst_DA8A42FE" locked="0" code="" scaleX="3" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="768" y="144" name="inst_2A02B10F" locked="0" code="" scaleX="1" scaleY="3" colour="4294967295" rotation="0"/>
-    <instance objName="obj_musicplayer" x="0" y="0" name="inst_9712091D" locked="0" code="leveltime = 250&#xA;levelmusic = snd_music_water" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelmanager" x="0" y="0" name="inst_9712091D" locked="0" code="leveltime = 250&#xA;levelmusic = snd_music_water" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_midwayline" x="64" y="272" name="inst_BB17636D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_midwayspot" x="40" y="256" name="inst_F80B4C0A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_3upmoon" x="288" y="304" name="inst_6E50A5D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

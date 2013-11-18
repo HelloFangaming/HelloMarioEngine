@@ -51,7 +51,7 @@ image_speed = 0</string>
             <string>audio_play_sound(snd_castlebreak,0,0)
 image_index = 3
 instance_create(x,y+48,obj_smoke)
-obj_musicplayer.levelmusic = snd_music_boss
+obj_levelmanager.levelmusic = snd_music_boss
 audio_play_sound(snd_music_boss,99,1)
 with obj_parboss alarm[10] = 1
 </string>
@@ -79,7 +79,7 @@ with obj_parboss alarm[10] = 1
             <string>audio_play_sound(snd_castlebreak,0,0)
 image_index = 2
 instance_create(x,y+32,obj_smoke)
-obj_musicplayer.alarm[1] = 19
+obj_levelmanager.alarm[1] = 19
 alarm[2] = 20
 </string>
           </argument>
@@ -136,7 +136,7 @@ and obj_mario.x &gt; x+26
 {
     ready = 1
     if global.time &gt; 0
-        obj_musicplayer.alarm[2] = 0
+        obj_levelmanager.alarm[2] = 0
     with instance_create(x,y,obj_solid) image_yscale = 4
     varid = instance_create(obj_camera.x,obj_camera.y,obj_autoscroll)
     varid.speed = 3

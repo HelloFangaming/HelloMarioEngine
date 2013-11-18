@@ -75,7 +75,7 @@
     <instance objName="obj_yellownoteblock_hidden" x="0" y="288" name="inst_5998823D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_sproutblock_hidden" x="0" y="80" name="inst_11E32C4D" locked="0" code="sprout = cs_bomb" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_blocktrain" x="128" y="336" name="inst_34831543" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_musicplayer" x="0" y="0" name="inst_4516DAA8" locked="0" code="leveltime = 300&#xA;levelmusic = snd_music_athletic" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelmanager" x="0" y="0" name="inst_4516DAA8" locked="0" code="leveltime = 300&#xA;levelmusic = snd_music_athletic" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_parakoopa_hyper" x="616" y="256" name="inst_2E4BD145" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_shyguybig_b" x="880" y="352" name="inst_3EA8E75F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_lakitu_ball" x="16" y="0" name="inst_1100E4B6" locked="0" code="xmin = 112&#xA;xmax = 832" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

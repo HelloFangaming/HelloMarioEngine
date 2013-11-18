@@ -31,7 +31,7 @@ if not audio_is_playing(snd_starman)
     audio_play_sound(snd_starman,99,1)
     audio_play_sound(snd_letsgo,0,0)
 }
-obj_musicplayer.alarm[1] = 1
+obj_levelmanager.alarm[1] = 1
 obj_mario.alarm[10] = 1
 alarm[0] = 1000
 alarm[1] = 1
@@ -117,7 +117,7 @@ if visible = 1
 or instance_exists(obj_warpmario)
 {
     audio_stop_sound(snd_starman)
-    obj_musicplayer.alarm[0] = 1
+    obj_levelmanager.alarm[0] = 1
     obj_mario.alarm[1] = 1
     alarm[2] = 60
     newstar = 1

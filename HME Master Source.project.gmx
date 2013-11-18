@@ -1113,7 +1113,7 @@
       <object>objects\obj_flagpole</object>
       <object>objects\obj_flagpole_secret</object>
       <object>objects\obj_incastle</object>
-      <object>objects\obj_musicplayer</object>
+      <object>objects\obj_levelmanager</object>
       <object>objects\obj_stormmaker</object>
       <object>objects\obj_bganimator</object>
       <object>objects\obj_autoscroll</object>
