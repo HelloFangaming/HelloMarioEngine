@@ -116,6 +116,7 @@ and ready = 0
 {
     with obj_mapmario event_user(1)
     global.prize = powerup
+    global.mariostart = 1
     room_goto(rm_mushroomhouse)
 }
 if obj_mapmario.speed = 0
