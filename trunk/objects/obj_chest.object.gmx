@@ -53,6 +53,7 @@ and collision_rectangle(x,y,x+31,y+31,obj_mario,0,0)
     image_index = 1
     obj_mushtoad.ready = 1
     obj_mushtoad.alarm[1] = 200
+    obj_levelmanager.alarm[1] = 199
     varid = instance_create(x+8,y,obj_getpowerup)
     varid.sprite_index = scr_constant_get_sprite(global.prize[type])
 }
