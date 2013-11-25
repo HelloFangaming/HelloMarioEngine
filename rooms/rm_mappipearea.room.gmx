@@ -59,13 +59,14 @@
     <instance objName="obj_solid" x="32" y="128" name="inst_37CBFCA4" locked="0" code="" scaleX="6" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="128" y="160" name="inst_6D4A90BB" locked="0" code="" scaleX="4" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_solidtop" x="192" y="192" name="inst_79D11BAA" locked="0" code="" scaleX="6" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mappipemanager" x="0" y="0" name="inst_CCDAC8DF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mappipemanager" x="16" y="0" name="inst_CCDAC8DF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpmapscreen" x="48" y="16" name="inst_27D6DDE6" locked="0" code="pipetype = 0&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpmapscreen" x="272" y="80" name="inst_6B76AA21" locked="0" code="pipetype = 1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_down" x="64" y="32" name="inst_E7AE1AA7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_down" x="288" y="96" name="inst_2B08E22D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpbottom" x="32" y="64" name="inst_361277F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpbottom" x="256" y="128" name="inst_8EBB2ACC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelmanager" x="0" y="0" name="inst_39C3A9ED" locked="0" code="levelmusic = snd_music_under" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset" x="32" y="64" w="32" h="16" xo="128" yo="304" id="10015168" name="tile_355D057E" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

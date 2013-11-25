@@ -25,12 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_number(obj_camera) &gt; 1
-{
-    instance_destroy()
-    exit
-}
-image_speed = 0.15
+            <string>image_speed = 0.15
 alarm[0] = 7
 canpause = 0
 weird = 0
@@ -40,10 +35,6 @@ pmeter = 0
 slowdown = 0
 alarm[4] = 3
 alarm[7] = 15
-if global.yoshi = 1
-    instance_create(0,0,obj_yoshi)
-if global.yoshi = 2
-    instance_create(0,0,obj_kuriboshoe)
 if global.carrieditem &gt; 0
 and global.yoshi = 0
 {

@@ -192,7 +192,7 @@ if throughsolid = 1
 and collision_rectangle(bbox_left,bbox_top+2,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
     throughsolid = 2
 if collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_solid,0,0)
-and not collision_rectangle(bbox_left,bbox_top+1,bbox_right,bbox_top+1,obj_parblock,0,0)
+and not collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_parblock,0,0)
 and throughsolid = 0
 {
     while collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_solid,0,0)
