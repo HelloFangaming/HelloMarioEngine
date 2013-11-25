@@ -69,7 +69,7 @@ myroom = -1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if postchange != 1
+            <string>if postchange != -1
 {
     global.postchange = postchange
     global.postx = postx+16

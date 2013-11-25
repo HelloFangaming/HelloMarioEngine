@@ -102,6 +102,7 @@ and other.speed = 0
     with obj_mapmario event_user(1)
     global.pipetype = pipetype
     ds_map_replace(global.worldmap,string(id),1)
+    global.mariostart = 1
     room_goto(rm_mappipearea)
 }
 if obj_mapmario.speed = 0

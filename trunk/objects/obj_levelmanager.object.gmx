@@ -340,6 +340,12 @@ if global.postchange != -1
     global.postchange = -1
 
 }
+
+//Create a Yoshi or shoe if Mario had one in a previous room
+if global.yoshi = 1
+    instance_create(0,0,obj_yoshi)
+else if global.yoshi = 2
+    instance_create(0,0,obj_kuriboshoe)
 </string>
           </argument>
         </arguments>
