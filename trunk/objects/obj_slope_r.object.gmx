@@ -7,39 +7,7 @@
   <persistent>0</persistent>
   <parentName>obj_slopeparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
-  <events>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if place_meeting(x,y-8,obj_mario)
-{
-    with obj_mario
-    {
-        if hspeed &lt; 0
-        and not place_meeting(x,y-hspeed/2,obj_solidtop)
-            y += -hspeed/2
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-  </events>
+  <events/>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>
