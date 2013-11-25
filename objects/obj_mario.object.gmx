@@ -891,6 +891,41 @@ else
             <kind>1</kind>
             <string>///Handles Mario's physics and movement
 
+//Embed Mario into the slope if he is walking to ensure correct slope mechanics
+if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+4,obj_slopeparent,1,0)
+and state = 1
+    y+=4
+
+///Handle slope collisions
+if collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom,obj_slopeparent,1,0)
+{
+
+    //If Mario is moving downwards
+    if vspeed &gt; 0
+    {
+
+        //Stop vertical movement
+        vspeed = 0
+        gravity = 0
+
+        //Allow Mario to jump
+        if jumpnow = 2
+            jumpnow = 0
+
+        //Reset hit counter
+        hitpoint = 0
+
+        //Reset bee flying
+        beefly = 0
+
+    }
+
+    //Prevent Mario from getting embed inside a slope
+    while collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom,obj_slopeparent,1,0)
+        y-=1
+
+}
+
 //Select a different step event based on Mario's state
 if isswim = 0
 {
@@ -1107,10 +1142,6 @@ else
 
 }
 
-//Deals with slope collisions
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
-
 //If Mario comes into contact with water, and is not already swimming
 if place_meeting(x,y,obj_swim)
 and isswim = 0
@@ -1167,51 +1198,6 @@ else if bbox_top &gt; room_height
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_slopeparent">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Handle slope collision
-if vspeed &gt; 0
-{
-    //Stop vertical movement
-    vspeed = 0
-    gravity = 0
-
-    //End jump state
-    if hspeed = 0
-        state = 0
-    else
-        state = 1
-
-    //Allow Mario to jump
-    if jumpnow = 2
-        jumpnow = 0
-
-    //Reset hit counter
-    hitpoint = 0
-
-    //Reset bee flying
-    beefly = 0
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="4" ename="obj_solidtop">
       <action>
         <libid>1</libid>
@@ -1240,12 +1226,6 @@ if y &lt; other.y-27 and vspeed &gt; 0
     //Stop vertical movement
     vspeed = 0
     gravity = 0
-
-    //End jump state
-    if hspeed = 0
-        state = 0
-    else
-        state = 1
 
     //Allow Mario to jump
     if jumpnow = 2
