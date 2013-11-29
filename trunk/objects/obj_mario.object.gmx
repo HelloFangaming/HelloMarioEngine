@@ -1051,8 +1051,14 @@ if state &lt; 3
         and not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_holdparent,1,0)
         {
 
+            //Tanooki Statue
+            if global.powerup = cs_tanooki
+            and not instance_exists(obj_spinner)
+            and keyboard_check(vk_down)
+                instance_create(x,y,obj_statue)
+
             //If Mario is not ducking
-            if isduck = 0
+            else if isduck = 0
             {
 
                 //Fire Ball
@@ -1062,7 +1068,7 @@ if state &lt; 3
                     firing = 9
                     instance_create(x,y+16,obj_fireball)
                 }
-            
+
                 //Hammer
                 else if global.powerup = cs_hammer
                 and instance_number(obj_hammer) &lt; 2
@@ -1070,7 +1076,12 @@ if state &lt; 3
                     firing = 9
                     instance_create(x,y+16,obj_hammer)
                 }
-            
+
+                //Tail Spin
+                else if (global.powerup = cs_leaf or global.powerup = cs_tanooki)
+                and not instance_exists(obj_spinner)
+                    instance_create(x,y,obj_spinner)
+
                 //Bomb
                 else if global.powerup = cs_bomb
                 and instance_number(obj_minibomb) &lt; 1
@@ -1078,7 +1089,7 @@ if state &lt; 3
                     firing = 9
                     instance_create(x,y+16,obj_minibomb)
                 }
-            
+
                 //Ice Ball
                 else if (global.powerup = cs_ice or (global.powerup = cs_penguin and isswim = 0))
                 and not instance_exists(obj_iceball)
@@ -1086,7 +1097,7 @@ if state &lt; 3
                     firing = 9
                     instance_create(x,y+16,obj_iceball)
                 }
-            
+
                 //Super Ball
                 else if global.powerup = cs_super
                 and instance_number(obj_superball) &lt; 2
@@ -1094,7 +1105,7 @@ if state &lt; 3
                     firing = 9
                     instance_create(x,y+16,obj_superball)
                 }
-            
+
                 //Shuriken
                 else if global.powerup = cs_ninja
                 and instance_number(obj_shuriken) &lt; 2
@@ -1110,19 +1121,8 @@ if state &lt; 3
                     firing = 9
                     instance_create(x-8,y+16,obj_boomerang_b)
                 }
-            
-                //Tail Spin
-                else if (global.powerup = cs_leaf or global.powerup = cs_tanooki)
-                and not instance_exists(obj_spinner)
-                    instance_create(x,y,obj_spinner)
 
             }
-
-            //Tanooki Statue
-            if global.powerup = cs_tanooki
-            and not instance_exists(obj_spinner)
-            and keyboard_check(vk_down)
-                instance_create(x,y,obj_statue)
 
         }
 
