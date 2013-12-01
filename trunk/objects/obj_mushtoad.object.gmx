@@ -72,7 +72,7 @@ alarm[0] = 35
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with instance_create(0,0,obj_messagebox) varmsg = "Pick a box. Its contents#will help you on your way."
+            <string>with instance_create(0,0,obj_messagebox) varmsg = "Pick a box. Its contents will help you on your way."
 </string>
           </argument>
         </arguments>
