@@ -59,11 +59,14 @@ alarm[1] = 7
             <kind>1</kind>
             <string>alarm[1] = 7
 if showing = 1
+{
+    draw_set_font(global.messagefont)
     if a &lt;= string_length(text)
     {
         audio_stop_sound(snd_kick3)
         audio_play_sound(snd_kick3,0,0)
     }
+}
 </string>
           </argument>
         </arguments>
@@ -86,7 +89,8 @@ if showing = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>text = string_make_width(string(varmsg),210)
+            <string>draw_set_font(global.messagefont)
+text = string_make_width(string(varmsg),210)
 for (c = 1; c &lt;= string_length(text); c += 1)
     if string_char_at(text,c) = " "
         text = string_delete(text,c,1)

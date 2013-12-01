@@ -708,8 +708,22 @@ if isduck = 0
                 //Propeller Mario Flying
                 if global.powerup = cs_propeller
                 {
-                    image_speed = vspeed/10
-                    sprite_index = spr_mario_propeller_fly
+
+                    //Propeller Mario floating down slowly
+                    if vspeed &gt; 0
+                    and vspeed &lt; 2
+                    {
+                        image_speed = 0.3
+                        sprite_index = spr_mario_propeller_walk
+                    }
+
+                    //Default propeller Mario flying
+                    else
+                    {
+                        image_speed = vspeed/10
+                        sprite_index = spr_mario_propeller_fly
+                    }
+
                 }
 
                 //Default Spin Jumping
@@ -989,6 +1003,9 @@ and collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,0)
         while collision_rectangle(bbox_left,bbox_top+1,bbox_right,bbox_top+1,obj_solid,1,0)
             y+=1
 
+    //Stop vertical movement
+    vspeed = 0
+
     //If frog/penguin Mario is not swimming, and Mario is not climbing or wall climbing
     if noisy = 0
     and state &lt; 3
@@ -996,9 +1013,6 @@ and collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,0)
 
         //Bump sound
         audio_play_sound(snd_bump,0,0)
-    
-        //Send Mario downwards
-        vspeed = 1
 
         //Stop variable jumping
         jumpnow = 2
@@ -1007,10 +1021,6 @@ and collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,0)
         beefly = 128
 
     }
-
-    //Otherwise, stop vertical movement
-    else
-        vspeed = 0
 
 }
 
@@ -1575,9 +1585,9 @@ else
 {
 
     //Figure out Mario's state
-    if (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
-    or collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slopeparent,1,0))
-    and vspeed &gt;= 0
+    if (collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
+    or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0))
+    and gravity = 0
     {
 
         //Figure out if Mario is standing or walking
@@ -1585,7 +1595,6 @@ else
             state = 0
         else
             state = 1
-        gravity = 0
 
     }
 
@@ -1772,9 +1781,9 @@ if global.yoshi != 2
             <string>///Mario's default step script
 
 //Figure out Mario's state
-if (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
-or collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slopeparent,0,0))
-and vspeed &gt;= 0
+if (collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
+or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,0,0))
+and gravity = 0
 {
 
     //Figure out if Mario is standing or walking
@@ -2070,11 +2079,31 @@ if state = 2
     else
         gravity = 0.1
 
-    //Propeller Mario jumping has lower gravity
+    //Propeller Mario jumping
     if global.powerup = cs_propeller
-    and stompstyle = 1
-    and global.yoshi = 0
-        gravity = gravity/2
+    {
+
+        //If Mario is spin jumping normally
+        if stompstyle = 1
+        and global.yoshi = 0
+        {
+
+            //Lower the gravity
+            gravity = gravity/2
+
+            //Allow Mario to charge downwards
+            if keyboard_check(vk_down)
+                vspeed = 3
+            else if vspeed &gt; 1
+                vspeed = 1
+
+            //Play the sound when he charges downwards
+            if keyboard_check_pressed(vk_down)
+                audio_play_sound(snd_spin,0,0)
+
+        }
+
+    }
 
 }
 
