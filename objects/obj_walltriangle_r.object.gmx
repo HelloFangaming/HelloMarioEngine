@@ -49,7 +49,7 @@
             <kind>1</kind>
             <string>if obj_mario.direct = 1
 and obj_mario.hspeed &gt; 2.9
-and obj_mario.isjump = 0
+and obj_mario.state = 1
 and global.yoshi = 0
 and obj_mario.holding = 0
 and obj_mario.isduck = 0
