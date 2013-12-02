@@ -37,13 +37,7 @@ direct = 1
 
 //Whether Mario is holding something
 //0: Nothing, 1: Overhead, 2: On Front 3: Can't Hold Stuff
-if global.yoshi = 1
-    holding = 3
-else
-    holding = 0
-
-//Is Mario jumping?
-isjump = 0
+holding = 0
 
 //Variable jump state
 //0: Can Jump, 1: Variable Jump, 2: No Variable Jump
@@ -840,8 +834,7 @@ if isduck = 0
     }
 
     //Ninja Mario Wall Climbing
-    else if global.powerup = cs_ninja
-    and state = 4
+    else if state = 4
     {
         sprite_index = spr_mario_ninja_wallclimb
         if vspeed = 0
@@ -875,12 +868,6 @@ and skidnow = 1
     audio_stop_sound(snd_skid)
     skidnow = 0
 }
-
-//Adjust isjump variable
-if state = 2
-    isjump = 1
-else
-    isjump = 0
 </string>
           </argument>
         </arguments>
@@ -1029,7 +1016,7 @@ if state &lt; 3
 {
 
     //If Mario is not jumping
-    if isjump = 0
+    if state != 2
     {
 
         //Makes Mario duck
@@ -1630,13 +1617,16 @@ else
         //Play the swim sound
         audio_play_sound(snd_swim,0,0)
 
+        //Switch to the jump state
+        state = 2
+
     }
 
     //Handles moving right
     if keyboard_check(vk_right)
     and not keyboard_check(vk_left)
     and disablecontrols = 0
-    and (isduck = 0 or isjump = 1)
+    and (isduck = 0 or state = 2)
     {
 
         //Accelerate more if he is skidding
@@ -1655,7 +1645,7 @@ else
     else if keyboard_check(vk_left)
     and not keyboard_check(vk_right)
     and disablecontrols = 0
-    and (isduck = 0 or isjump = 1)
+    and (isduck = 0 or state = 2)
     {
 
         //Accelerate more if he is skidding
@@ -1835,7 +1825,7 @@ and disablecontrols = 0
 //Make sure that Mario can jump
 and ((jumpnow = 0
 and vspeed &lt;= 0
-and isjump = 0)
+and state != 2)
 
 //Allow Mario to jump off of Yoshi or a shoe while in midair
 or (keyboard_check(vk_up)
@@ -1881,7 +1871,7 @@ and holding = 0))
     if (keyboard_check(vk_up)
     and isduck = 0
     and (holding = 0 or global.yoshi &gt; 0))
-    or isjump = 1
+    or state = 2
     {
 
         //Set spin jump variable
@@ -1910,6 +1900,9 @@ and holding = 0))
     //Enable variable jumping
     jumpnow = 1
 
+    //Switch to the jump state
+    state = 2
+
 }
 
 //Check if Mario should still be variable jumping
@@ -1918,7 +1911,7 @@ and jumpnow = 1
     jumpnow = 2
 
 //If Mario is ducking on the ground
-if isduck = 1 and isjump = 0
+if isduck = 1 and state != 2
 {
 
     //Slow down Mario's horizontal speed
@@ -1966,7 +1959,7 @@ else
         }
 
         //Change Mario's direction, unless he is ninja Mario jumping and not on a Yoshi
-        if not (global.powerup = cs_ninja and global.yoshi = 0 and isjump = 1)
+        if not (global.powerup = cs_ninja and global.yoshi = 0 and state = 2)
             direct = 1
 
     }
@@ -2000,12 +1993,12 @@ else
         }
 
         //Change Mario's direction, unless he is ninja Mario jumping and not on a Yoshi
-        if not (global.powerup = cs_ninja and global.yoshi = 0 and isjump = 1)
+        if not (global.powerup = cs_ninja and global.yoshi = 0 and state = 2)
             direct = -1
     }
 
     //Takes care of slowing Mario down if he is not jumping and left/right is not being pressed
-    else if isjump = 0
+    else if state != 2
     {
 
         //If Mario is on a slippery surface
@@ -2040,7 +2033,7 @@ else
     }
 
     //Slow Mario down if he is faster than his maximum speed
-    if isjump = 0
+    if state != 2
     and abs(hspeed) &gt; hspeedmax
     {
 
@@ -2159,14 +2152,14 @@ if global.yoshi = 2
 else if stompstyle = 1
 {
 
-    if (isjump = 0 and jumpnow = 0)
+    if state != 2
     or holding != 0
         stompstyle = 0
 
 }
 
 //If Mario is jumping, not ducking, can control himself, and is not riding anything
-if isjump = 1
+if state = 2
 and isduck = 0
 and disablecontrols = 0
 and global.yoshi = 0

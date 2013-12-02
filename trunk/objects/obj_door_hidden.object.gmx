@@ -172,7 +172,7 @@ draw_sprite(spr_door_hidden,-1,x,y)
             <string>if not instance_exists(obj_mario)
     exit
 if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_mario,0,0)
-and obj_mario.isjump = 0
+and obj_mario.state != 2
 and visible = 1
 {
     audio_play_sound(snd_door,0,0)
