@@ -1,3 +1,5 @@
+///scr_marioshoot()
+
 /*
 **  Usage:
 **      scr_marioshoot()

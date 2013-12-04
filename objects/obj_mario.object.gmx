@@ -2158,17 +2158,18 @@ else if stompstyle = 1
 
 }
 
-//If Mario is jumping, not ducking, can control himself, and is not riding anything
+//If Mario is jumping, not ducking, not spin jumping, can control himself, and is not riding anything
 if state = 2
 and isduck = 0
+and stompstyle = 0
 and disablecontrols = 0
 and global.yoshi = 0
 {
 
     //Handles leaf and tanooki Mario's flying
     if (global.powerup = cs_leaf or global.powerup = cs_tanooki)
-    and stompstyle = 0
     and keyboard_check_pressed(vk_shift)
+    and jumpnow = 2
     and not place_meeting(x,y,obj_quicksand)
     {
 
@@ -2226,7 +2227,6 @@ and global.yoshi = 0
     
     //Handles carrot and bee Mario's floating
     if (global.powerup = cs_carrot or (global.powerup = cs_bee and beefly &lt; 128))
-    and stompstyle = 0
     and keyboard_check(vk_shift)
     {
     

@@ -1,3 +1,5 @@
+///scr_init_globals()
+
 /*
 **  Usage:
 **      scr_init_globals()

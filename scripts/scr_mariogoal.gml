@@ -1,3 +1,5 @@
+///scr_mariogoal()
+
 /*
 **  Usage:
 **      scr_mariogoal()

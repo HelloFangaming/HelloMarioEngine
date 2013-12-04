@@ -1,3 +1,5 @@
+///scr_time(variable)
+
 /*
 **  Usage:
 **      scr_time(variable)

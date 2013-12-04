@@ -1,3 +1,5 @@
+///scr_sprite_make_object(x,y,sprite)
+
 /*
 **  Usage:
 **      scr_sprite_make_object(x,y,sprite)

@@ -1,3 +1,5 @@
+///scr_mariowalk()
+
 /*
 **  Usage:
 **      scr_mariowalk()

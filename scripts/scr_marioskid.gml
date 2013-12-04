@@ -1,3 +1,5 @@
+///scr_marioskid()
+
 /*
 **  Usage:
 **      scr_marioskid()
