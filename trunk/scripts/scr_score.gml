@@ -1,3 +1,5 @@
+///scr_score()
+
 /*
 **  Usage:
 **      scr_score()

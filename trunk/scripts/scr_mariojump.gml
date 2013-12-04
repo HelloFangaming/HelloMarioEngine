@@ -1,3 +1,5 @@
+///scr_mariojump()
+
 /*
 **  Usage:
 **      scr_mariojump()

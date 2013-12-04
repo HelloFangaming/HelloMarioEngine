@@ -1,3 +1,5 @@
+///scr_mariomap()
+
 /*
 **  Usage:
 **      scr_mariomap()

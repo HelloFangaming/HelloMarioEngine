@@ -1,3 +1,5 @@
+///scr_mariokick()
+
 /*
 **  Usage:
 **      scr_mariokick()

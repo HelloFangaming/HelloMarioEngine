@@ -1,3 +1,5 @@
+///scr_sprite_get_constant(sprite)
+
 /*
 **  Usage:
 **      scr_sprite_get_constant(sprite)

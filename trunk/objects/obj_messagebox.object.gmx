@@ -91,9 +91,9 @@ if showing = 1
             <kind>1</kind>
             <string>draw_set_font(global.messagefont)
 text = string_make_width(string(varmsg),210)
-for (c = 1; c &lt;= string_length(text); c += 1)
-    if string_char_at(text,c) = " "
-        text = string_delete(text,c,1)
+for (var i = 1; i &lt;= string_length(text); i++)
+    if string_char_at(text,i) = " "
+        text = string_delete(text,i,1)
     else
         break
 new_text = ""
@@ -101,13 +101,12 @@ a = 1
 b = string_length(text)
 if string_height(text) &gt; 70
 {
-    do
+    while string_height(text) &gt; 70
     {
         new_text += string_char_at(text,b)
         text = string_delete(text,b,1)
-        b -= 1
+        b--
     }
-    until string_height(text) &lt;= 70
     new_text = string_reverse(string_make_width(new_text,210))
 }
 showing = 1

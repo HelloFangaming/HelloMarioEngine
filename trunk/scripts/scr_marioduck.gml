@@ -1,3 +1,5 @@
+///scr_marioduck()
+
 /*
 **  Usage:
 **      scr_marioduck()

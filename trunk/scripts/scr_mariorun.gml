@@ -1,3 +1,5 @@
+///scr_mariorun()
+
 /*
 **  Usage:
 **      scr_mariorun()

@@ -1,3 +1,5 @@
+///scr_mariorunjump()
+
 /*
 **  Usage:
 **      scr_mariorunjump()

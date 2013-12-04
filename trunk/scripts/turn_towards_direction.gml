@@ -1,34 +1,40 @@
-var wdir, tempdir, turnspeed;
-wdir = argument0;
-turnspeed = argument1;
-if (abs(wdir-direction) > 180)
+///turn_towards_direction(direction,turnspeed)
+
+/*
+**  Usage:
+**      turn_towards_direction(direction,turnspeed)
+**
+**  Given:
+**      direction   The direction to turn to
+**      turnspeed   The rate at which to turn at
+**
+*/
+if (abs(argument0 - direction) > 180)
 {
-    if (wdir > 180)
+    if (argument0 > 180)
     {
-        tempdir = wdir - 360;
-        if (abs(tempdir-direction) > turnspeed)
-            direction -= turnspeed;
+        if (abs(argument0 - 360 - direction) > argument1)
+            direction -= argument1
         else
-            direction = wdir;
+            direction = argument0
     }
     else
     {
-        tempdir = wdir + 360;
-        if (abs(tempdir-direction) > turnspeed)
-            direction += turnspeed;
+        if (abs(argument0 + 360 - direction) > argument1)
+            direction += argument1
         else
-            direction = wdir;
+            direction = argument0
     }
 }
 else
 {
-    if (abs(wdir - direction) > turnspeed)
+    if (abs(argument0 - direction) > argument1)
     {
-        if (wdir > direction)
-            direction += turnspeed;
+        if (argument0 > direction)
+            direction += argument1
         else
-            direction -= turnspeed;
+            direction -= argument1
     }
     else
-        direction = wdir;
+        direction = argument0
 }
