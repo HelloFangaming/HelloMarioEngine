@@ -25,8 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x-9,y+17,obj_flag)
-image_speed = 0</string>
+            <string>instance_create(x+10,y+17,obj_flag)
+image_speed = 0
+</string>
           </argument>
         </arguments>
       </action>
@@ -81,7 +82,8 @@ image_speed = 0</string>
           <argument>
             <kind>1</kind>
             <string>instance_create(other.x,other.y,obj_goalmario)
-with (obj_mario) instance_destroy()</string>
+with other instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
