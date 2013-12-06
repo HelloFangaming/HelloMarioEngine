@@ -1002,8 +1002,9 @@
       </sprites>
       <sprite>sprites\spr_warptop</sprite>
       <sprite>sprites\spr_warpsides</sprite>
-      <sprite>sprites\spr_midwaypoint</sprite>
-      <sprite>sprites\spr_midwayline</sprite>
+      <sprite>sprites\spr_checkpoint</sprite>
+      <sprite>sprites\spr_flag_bowser</sprite>
+      <sprite>sprites\spr_flag_mario</sprite>
       <sprite>sprites\spr_flagpole</sprite>
       <sprite>sprites\spr_flag</sprite>
       <sprite>sprites\spr_flag_secret</sprite>
@@ -1029,6 +1030,8 @@
     <sprite>sprites\spr_right</sprite>
     <sprite>sprites\spr_endmarker</sprite>
     <sprite>sprites\spr_speedmarker</sprite>
+    <sprite>sprites\spr_midwaypoint</sprite>
+    <sprite>sprites\spr_midwayline</sprite>
   </sprites>
   <backgrounds name="background">
     <backgrounds name="Level Backgrounds">
