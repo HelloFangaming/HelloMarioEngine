@@ -50,7 +50,6 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="obj_midwaypoint" x="2144" y="272" name="inst_980A9ACE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_rockywrench" x="1264" y="352" name="inst_A57975BF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_giantspike" x="2400" y="176" name="inst_CD37A3B3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_podoboo" x="464" y="304" name="inst_E3CB05B4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -178,8 +177,6 @@
     <instance objName="obj_climb_net" x="2000" y="304" name="inst_5D181FC2" locked="0" code="" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_stopblock" x="848" y="0" name="inst_54E5ED45" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_stopblock" x="1168" y="0" name="inst_E7C75C35" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_midwayline" x="2144" y="320" name="inst_F7EE2CCE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_midwayspot" x="2104" y="304" name="inst_6FFA7A6C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_levelmanager" x="0" y="0" name="inst_63F2AF1E" locked="0" code="leveltime = 275&#xA;levelmusic = snd_music_castle" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_swooper" x="728" y="208" name="inst_213B7BD0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_drybones" x="616" y="368" name="inst_E577C1D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -243,6 +240,7 @@
     <instance objName="obj_warproom" x="2720" y="320" name="inst_89BFD679" locked="0" code="myroom = rm_forthello_mouser" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warproom" x="2848" y="320" name="inst_ED27F614" locked="0" code="myroom = rm_forthello_classicbowser" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mario" x="56" y="272" name="inst_1085B067" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_checkpoint" x="2144" y="288" name="inst_A0150AC7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset" x="864" y="48" w="32" h="48" xo="96" yo="320" id="10006903" name="tile_4666FAEF" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

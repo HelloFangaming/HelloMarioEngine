@@ -302,15 +302,14 @@ if global.mariostart = 0
     global.mariostart = 1
 
     //Handles checkpoints
-    if global.midwaypoint = 1
-    and instance_exists(obj_midwayspot)
+    if instance_exists(global.checkpoint)
     {
 
         //Destroy all player objects
         event_user(0)
 
         //Create a new Mario at the desired location
-        instance_create(obj_midwayspot.x,obj_midwayspot.y,obj_mario)
+        instance_create(global.checkpoint.x+8,global.checkpoint.y+16,obj_mario)
 
     }
 

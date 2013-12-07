@@ -184,7 +184,7 @@ instance_create(x,y,obj_smoke)
     instance_create(x,y,obj_smoke)
     audio_play_sound(snd_bossclear,1,0)
     global.clear = 1
-    global.midwaypoint = 0
+    global.checkpoint = noone
     alarm[1] = 350
     visible = 0
 }

@@ -32,8 +32,11 @@ global.powerup = cs_small
 //Reserve Item
 global.reserveitem = cs_small
 
-//Midway Point
-global.midwaypoint = 0
+//Checkpoint
+global.checkpoint = noone
+
+//Checkpoint Room
+global.checkpointroom = noone
 
 //Red Switch Palace
 global.palacered = 0

@@ -29,7 +29,7 @@
 global.clear = 1
 if instance_exists(obj_flagpole_secret)
     global.clear = 2
-global.midwaypoint = 0
+global.checkpoint = noone
 ready = 0
 ready2 = 0
 ready3 = 0
