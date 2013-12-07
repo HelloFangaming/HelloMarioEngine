@@ -1030,8 +1030,6 @@
     <sprite>sprites\spr_right</sprite>
     <sprite>sprites\spr_endmarker</sprite>
     <sprite>sprites\spr_speedmarker</sprite>
-    <sprite>sprites\spr_midwaypoint</sprite>
-    <sprite>sprites\spr_midwayline</sprite>
   </sprites>
   <backgrounds name="background">
     <backgrounds name="Level Backgrounds">
@@ -1108,11 +1106,9 @@
     <objects name="Main">
       <object>objects\obj_mario</object>
       <object>objects\obj_warpmario</object>
-      <object>objects\obj_midwayspot</object>
       <object>objects\obj_jumpspawn</object>
       <object>objects\obj_vinespawn</object>
-      <object>objects\obj_midwaypoint</object>
-      <object>objects\obj_midwayline</object>
+      <object>objects\obj_checkpoint</object>
       <object>objects\obj_flagpole</object>
       <object>objects\obj_flagpole_secret</object>
       <object>objects\obj_incastle</object>

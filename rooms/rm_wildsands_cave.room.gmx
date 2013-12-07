@@ -50,7 +50,6 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="obj_midwaypoint" x="1296" y="128" name="inst_0B2FB906" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_movingpipe" x="1344" y="160" name="inst_1EDFCAA8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_movingpipe" x="1424" y="240" name="inst_6155C4F3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_veggie_large" x="208" y="256" name="inst_1175122A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -117,8 +116,6 @@
     <instance objName="obj_solid" x="1936" y="96" name="inst_BD5F9BB6" locked="0" code="" scaleX="2" scaleY="8" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="1824" y="32" name="inst_146AC208" locked="0" code="" scaleX="2" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_levelmanager" x="0" y="0" name="inst_340E8CAD" locked="0" code="leveltime = 375&#xA;levelmusic = snd_music_under" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_midwayline" x="1296" y="176" name="inst_5E801198" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_midwayspot" x="1272" y="160" name="inst_C5F56F6A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slope_sl" x="336" y="176" name="inst_D86A1A5A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slope_sl" x="352" y="192" name="inst_DB367991" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slope_sr" x="320" y="176" name="inst_F7A10D0D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -175,6 +172,7 @@
     <instance objName="obj_warpbottom" x="816" y="160" name="inst_A2F2E474" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_sledgebro" x="688" y="208" name="inst_47D248F4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpmario" x="48" y="32" name="inst_0B9E0593" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_checkpoint" x="1296" y="144" name="inst_463D4E7D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset" x="32" y="64" w="16" h="16" xo="320" yo="304" id="10005711" name="tile_7C8F3BB9" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

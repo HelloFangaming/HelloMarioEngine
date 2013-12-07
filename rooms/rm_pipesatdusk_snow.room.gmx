@@ -118,6 +118,7 @@
     <instance objName="obj_warproom" x="1552" y="240" name="inst_F1244EFF" locked="0" code="postchange = 1&#xA;postx = 1968&#xA;posty = 16&#xA;myroom = rm_pipesatdusk" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_eswitch_red" x="928" y="240" name="inst_6B466D26" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jumpspawn" x="56" y="272" name="inst_F6205D64" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_checkpoint" x="160" y="272" name="inst_254E1733" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset" x="0" y="320" w="16" h="16" xo="192" yo="176" id="10004495" name="tile_D16AA869" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
