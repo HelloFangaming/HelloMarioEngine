@@ -25,11 +25,24 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place these in the object creation code.
-//anibg[0] = The starting background
-//anibg[1] = The next background in the animation
-//anibg[2] = etc...
+            <string>///The background is changing!
+
+/*
+**  This item uses creation code!
+**
+**  anibg[0] = The starting background
+**  anibg[1] = The next background in the animation
+**  anibg[2] = etc...
+**
+*/
+
+//Default Value:
+anibg[0] = -1
+
+//Current frame of animation
 numb = 0
+
+//Begin animation
 alarm[0] = 1
 </string>
           </argument>
@@ -53,10 +66,19 @@ alarm[0] = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>background_index[0] = anibg[numb]
-numb+=1
+            <string>///Animates the background
+
+//Set the background to the next one
+background_index[0] = anibg[numb]
+
+//Increment the current frame of animation
+numb++
+
+//Go back to the first image if there are no more left
 if numb = array_length_1d(anibg)
     numb = 0
+
+//Continue the animation later
 alarm[0] = 7
 </string>
           </argument>

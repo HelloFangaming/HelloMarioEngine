@@ -75,7 +75,7 @@ if sprite_index = spr_flag_bowser
         audio_play_sound(snd_gotcha,0,0)
 
     //Special effects
-    instance_create(x+19,y+26,obj_spinthump)
+    instance_create(x+18,y+24,obj_spinthump)
 
 }
 </string>
@@ -127,7 +127,7 @@ if global.checkpoint = id
             <kind>1</kind>
             <string>///Draw the checkpoint and flag
 draw_sprite(spr_checkpoint,0,x,y)
-draw_sprite(sprite_index,image_index,x+10,y+17)
+draw_sprite(sprite_index,image_index,x+10,y+16)
 </string>
           </argument>
         </arguments>

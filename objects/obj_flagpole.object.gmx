@@ -25,7 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x+10,y+17,obj_flag)
+            <string>///A flagpole! Lets Mario complete a level
+
+//Make a flag
+instance_create(x+10,y+17,obj_flag)
+
+//Do not animate
 image_speed = 0
 </string>
           </argument>
@@ -49,15 +54,21 @@ image_speed = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_mario)
+            <string>///Stop Mario from jumping over the flagpole.
+if instance_exists(obj_mario)
 {
+
+    //Stop Mario if he goes too far
     if obj_mario.x &gt; x
         obj_mario.x = x
+
+    //Workaround to prevent sliding Mario from going over the flagpole.
     if instance_exists(obj_slider)
     {
         if obj_slider.x &gt; x
             obj_slider.x = x
     }
+
 }
 </string>
           </argument>
@@ -81,8 +92,12 @@ image_speed = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(other.x,other.y,obj_goalmario)
-with other instance_destroy()
+            <string>///Turn Mario into Goal Mario
+with other
+{
+    instance_create(x,y,obj_goalmario)
+    instance_destroy()
+}
 </string>
           </argument>
         </arguments>
