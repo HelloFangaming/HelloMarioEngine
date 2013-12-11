@@ -12,8 +12,12 @@
 //Open the file
 var file = file_text_open_write(argument0)
 
-//Turn the mapscreen data structure into a string, and write it
+//Turn the world map data structure into a string, and write it
 file_text_write_string(file,ds_map_write(global.worldmap))
+file_text_writeln(file)
+
+//Turn the card minigame data structure into a string, and write it
+file_text_write_string(file,ds_map_write(global.cardgame))
 file_text_writeln(file)
 
 //Coins

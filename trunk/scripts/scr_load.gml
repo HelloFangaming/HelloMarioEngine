@@ -15,8 +15,12 @@
 //Open the file
 var file = file_text_open_read(argument0)
 
-//Load the mapscreen data structure
+//Load the world map data structure
 ds_map_read(global.worldmap,file_text_read_string(file))
+file_text_readln(file)
+
+//Load the card minigame data structure
+ds_map_read(global.cardgame,file_text_read_string(file))
 file_text_readln(file)
 
 //Coins

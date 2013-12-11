@@ -61,6 +61,9 @@ global.acecoins = ds_map_create()
 //Data structure for storing the state of the world map
 global.worldmap = ds_map_create()
 
+//Data structure for storing the state of the card minigame
+global.cardgame = ds_map_create()
+
 //Font for dialog boxes
 global.messagefont = font_add_sprite_ext(spr_messagefont,'!"'+"#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~",0,0)
 
