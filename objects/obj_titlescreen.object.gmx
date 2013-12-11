@@ -30,6 +30,7 @@ fade = 1
 alarm[0] = 120
 alarm[1] = 1
 ds_map_clear(global.worldmap)
+ds_map_clear(global.cardgame)
 menu[0] = "File A"
 menu[1] = "File B"
 menu[2] = "File C"

@@ -167,7 +167,7 @@ if global.time &gt; 0
 
     //Kill Mario at 0 seconds
     else if global.time = 1
-        alarm[4] = 60
+        alarm[4] = 61
 
 }
 </string>

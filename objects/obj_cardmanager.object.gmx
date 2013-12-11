@@ -25,7 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>count = 0</string>
+            <string>count = ds_map_find_value(global.cardgame,"COUNT")
+with obj_card
+{
+    if ds_map_exists(global.cardgame,string(id))
+    {
+        sprite_index = spr_cardgame_cards
+        image_index = mycard
+    }
+}
+ready = 0
+cardcount = 0
+wrong = 0
+oncard = -1
+lastcard = 0
+alarm[1] = 2
+</string>
           </argument>
         </arguments>
       </action>
@@ -72,10 +87,7 @@
             <kind>1</kind>
             <string>if wrong = 2
 or count = 18
-{
-    audio_stop_sound(snd_bonusmusic)
     scr_return()
-}
 else
     ready = 0
 </string>
@@ -163,7 +175,7 @@ and other.sprite_index = spr_cardgame_flip
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="4">
+    <event eventtype="7" enumb="5">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -180,21 +192,18 @@ and other.sprite_index = spr_cardgame_flip
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>io_clear()
+            <string>audio_stop_sound(snd_bonusmusic)
 if count = 18
+    ds_map_clear(global.cardgame)
+else
 {
-    count = 0
-    obj_card.sprite_index = spr_cardgame_flip
-    obj_card.image_index = 0
+    ds_map_replace(global.cardgame,"COUNT",count)
+    with obj_card
+    {
+        if sprite_index = spr_cardgame_cards
+            ds_map_replace(global.cardgame,string(id),1)
+    }
 }
-alarm[1] = 2
-x = 40
-y = 56
-ready = 0
-cardcount = 0
-wrong = 0
-oncard = -1
-lastcard = 0
 </string>
           </argument>
         </arguments>
