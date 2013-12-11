@@ -26,11 +26,23 @@
           <argument>
             <kind>1</kind>
             <string>hspeed = 0.5
-audio_play_sound(snd_magic,0,0)
-instance_create(x,y,obj_smoke)
 x -= 8
 alarm[0] = 32
-ready = 0</string>
+ready = ds_map_find_value(global.worldmap,"cardgame")
+if ready = 0
+{
+    ds_map_replace(global.worldmap,"cardgame",1)
+    ready = 1
+    audio_play_sound(snd_magic,0,0)
+    instance_create(x,y,obj_smoke)
+}
+else if ready = 2
+{
+    ds_map_replace(global.worldmap,"cardgame",0)
+    alarm[2] = 30
+}
+
+</string>
           </argument>
         </arguments>
       </action>
@@ -123,11 +135,12 @@ alarm[1] = 32</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 0
+            <string>if ready = 1
 and other.ready = 0
 and other.speed = 0
 {
-    ready = 1
+    ready = 2
+    ds_map_replace(global.worldmap,"cardgame",2)
     with obj_mapmario event_user(1)
     room_goto(rm_cardgame)
 }
@@ -136,7 +149,7 @@ and other.speed = 0
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="4">
+    <event eventtype="7" enumb="5">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -153,8 +166,8 @@ and other.speed = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 1
-    alarm[2] = 30
+            <string>ds_map_replace(global.worldmap,"cardgamex",xstart)
+ds_map_replace(global.worldmap,"cardgamey",y)
 </string>
           </argument>
         </arguments>
