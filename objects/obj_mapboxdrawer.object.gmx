@@ -289,7 +289,7 @@ else
             global.inventory[boxselection] = blah
         inventory = 0
     }
-    io_clear()
+    keyboard_clear(vk_shift)
 }
 </string>
           </argument>

@@ -25,16 +25,33 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place these in the object creation code.
-//varmsg = Message to display
-varmsg = "Message not set."
+            <string>///Displays a message inside a box!
+
+/*
+**  This item uses creation code!
+**
+**  varmsg = Message to display in the message box
+**
+*/
+
+//Default Values:
+varmsg = "No message set!"
+
+//Can the text be seen?
 showing = 0
+
+//Clean up particles
 effect_clear()
+
+//Create a screenshot
 back = background_create_from_surface(view_surface_id[0],0,0,640,480,0,0)
+
+//Deactivate everything except the persistent object
 instance_deactivate_all(1)
 instance_activate_object(obj_persistent)
+
+//Set the alarm to format the text
 alarm[0] = 1
-alarm[1] = 7
 </string>
           </argument>
         </arguments>
@@ -57,15 +74,25 @@ alarm[1] = 7
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[1] = 7
+            <string>///Makes sounds play as the message is being displayed
+
+//If the message is being displayed
 if showing = 1
 {
-    draw_set_font(global.messagefont)
+
+    //If all of the characters have not been displayed yet
     if a &lt;= string_length(text)
     {
+
+        //Play the sound
         audio_stop_sound(snd_kick3)
         audio_play_sound(snd_kick3,0,0)
+
+        //Play the sound again later
+        alarm[1] = 7
+
     }
+
 }
 </string>
           </argument>
@@ -89,27 +116,81 @@ if showing = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_font(global.messagefont)
+            <string>///Prepare the message to be displayed
+
+//Make sure that the font is correct before formatting
+draw_set_font(global.messagefont)
+
+//Format the text to the correct width
 text = string_make_width(string(varmsg),210)
-for (var i = 1; i &lt;= string_length(text); i++)
-    if string_char_at(text,i) = " "
-        text = string_delete(text,i,1)
-    else
-        break
+
+//The text that should display next if it is too long
 new_text = ""
-a = 1
-b = string_length(text)
-if string_height(text) &gt; 70
-{
-    while string_height(text) &gt; 70
-    {
-        new_text += string_char_at(text,b)
-        text = string_delete(text,b,1)
-        b--
-    }
-    new_text = string_reverse(string_make_width(new_text,210))
-}
+
+//Prepare to display the text
+event_user(0)
+
+//The text should start displaying now
 showing = 1
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Get ready to display the message
+
+//The number of newlines in the message
+var newlines = 0
+
+//Iterate over all the characters in the message
+for(var i = 1; i &lt;= string_length(text); i++)
+{
+
+    //If the current character is a newline
+    if string_char_at(text,i) = "#"
+    {
+
+        //Increment the number of newlines
+        newlines++
+
+        //At the fourth newline
+        if newlines = 4
+        {
+
+            //Split off the lines after the fourth line to be displayed later
+            new_text = string_copy(text,i+1,string_length(text)-i)
+            text = string_copy(text,1,i)
+
+            //Break out of the loop
+            break
+
+        }
+    }
+
+}
+
+//Set the number of characters being displayed
+a = 0
+
+//Set the alarm for playing the sound effects
+alarm[1] = 1
 </string>
           </argument>
         </arguments>
@@ -132,20 +213,34 @@ showing = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if background_exists(back)
+            <string>///Display the message box
+
+//Draw the screenshot if it exists
+if background_exists(back)
 {
     draw_enable_alphablend(0)
     draw_background(back,view_xview[0],view_yview[0])
     draw_enable_alphablend(1)
 }
-draw_set_color(c_white)
-draw_set_font(global.messagefont)
+
+//Draw the message vox
 draw_sprite_ext(spr_messagebox,0,view_xview[0]+48,view_yview[0]+39,1,1,0,c_white,0.7)
+
+//If the text should be displayed
 if showing = 1
 {
+
+    //Increment the number of letters that should be displayed
     if a &lt;= string_length(text)
-        a += 1
+        a++
+
+    //Set the color and font for drawing
+    draw_set_color(c_white)
+    draw_set_font(global.messagefont)
+
+    //Draw the text up to the number of letters that should be displayed
     draw_text(view_xview[0]+54,view_yview[0]+43,string_copy(string_make_width(text,210),1,a))
+
 }
 </string>
           </argument>
@@ -169,27 +264,54 @@ if showing = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if showing = 1
+            <string>///Advance the text
+
+//If text is being displayed
+if showing = 1
 {
+
+    //If the full message is not displayed yer, display it all
     if a &lt;= string_length(text)
-    {
         a = string_length(text)+1
-        exit
-    }
-    showing = 0
-    if new_text != ""
-    {
-        varmsg = new_text
-        alarm[0] = 1
-    }
+
+    //Otherwise
     else
     {
-        instance_activate_all()
-        if background_exists(back)
-            background_delete(back)
-        io_clear()
-        instance_destroy()
+
+        //If there is more to be displayed
+        if new_text != ""
+        {
+
+            //Make the new text the current text
+            text = new_text
+            new_text = ""
+
+            //Prepare to display the text
+            event_user(0)
+
+        }
+
+        //Otherwise
+        else
+        {
+
+            //Activate everything
+            instance_activate_all()
+
+            //Delete the screenshot
+            if background_exists(back)
+                background_delete(back)
+
+            //Reset the state of the shift key
+            keyboard_clear(vk_shift)
+
+            //Destroy the message box
+            instance_destroy()
+
+        }
+
     }
+
 }
 </string>
           </argument>
