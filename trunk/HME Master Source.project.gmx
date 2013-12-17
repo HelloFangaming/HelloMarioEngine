@@ -1081,6 +1081,10 @@
       <script>scripts\scr_marioride.gml</script>
       <script>scripts\scr_mariomap.gml</script>
     </scripts>
+    <scripts name="Utility">
+      <script>scripts\turn_towards_direction.gml</script>
+      <script>scripts\string_make_width.gml</script>
+    </scripts>
     <script>scripts\scr_init_globals.gml</script>
     <script>scripts\scr_save.gml</script>
     <script>scripts\scr_load.gml</script>
@@ -1093,9 +1097,6 @@
     <script>scripts\scr_constant_get_sprite.gml</script>
     <script>scripts\scr_sprite_get_constant.gml</script>
     <script>scripts\scr_sprite_make_object.gml</script>
-    <script>scripts\string_reverse.gml</script>
-    <script>scripts\string_make_width.gml</script>
-    <script>scripts\turn_towards_direction.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\sha_hq2x.shader</shader>

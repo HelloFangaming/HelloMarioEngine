@@ -33,7 +33,7 @@ instance_activate_object(obj_persistent)
 audio_play_sound(snd_pause,0,0)
 alarm[0] = 2
 menu_choice = 0
-io_clear()
+keyboard_clear(vk_enter)
 draw_set_color(c_white)
 menu[0] = "Continue"
 menu[1] = "Return to Mapscreen"
@@ -214,7 +214,7 @@ draw_set_alpha(1)
     if background_exists(back)
         background_delete(back)
     audio_play_sound(snd_pause,0,0)
-    io_clear()
+    keyboard_clear(vk_shift)
     instance_destroy()
 }
 if menu_choice = 1
@@ -257,7 +257,7 @@ and ready = 1
     if background_exists(back)
         background_delete(back)
     audio_play_sound(snd_pause,0,0)
-    io_clear()
+    keyboard_clear(vk_enter)
     instance_destroy()
 }
 </string>

@@ -22,12 +22,11 @@ while a <= length
     a++
 }
 ret = ""
-for (var i = 1; i < a; i++)
+for(var i = 1; i < a; i++)
 {
-    ret2 = ret
-    ret2 += word[i] + " "
+    ret2 = ret + word[i]
     if string_width(ret2) > argument1
-        ret2 = ret + "#" + word[i] + " "
-    ret = ret2
+        ret2 = ret + "#" + word[i]
+    ret = ret2 + " "
 }
 return ret
