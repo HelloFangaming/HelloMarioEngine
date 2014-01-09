@@ -1084,12 +1084,11 @@
     <scripts name="Utility">
       <script>scripts\turn_towards_direction.gml</script>
       <script>scripts\string_make_width.gml</script>
+      <script>scripts\string_add_zeros.gml</script>
     </scripts>
     <script>scripts\scr_init_globals.gml</script>
     <script>scripts\scr_save.gml</script>
     <script>scripts\scr_load.gml</script>
-    <script>scripts\scr_score.gml</script>
-    <script>scripts\scr_time.gml</script>
     <script>scripts\scr_pointscale.gml</script>
     <script>scripts\scr_pointscale_silent.gml</script>
     <script>scripts\scr_canpull.gml</script>

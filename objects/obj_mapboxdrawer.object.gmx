@@ -96,7 +96,7 @@ if inventory = 0
     draw_set_font(global.wdigits)
     draw_text(view_xview[0]+32,view_yview[0]+222,string_format(lives,2,0))
     //Score
-    draw_text(view_xview[0]+65,view_yview[0]+222,scr_score())
+    draw_text(view_xview[0]+65,view_yview[0]+222,string_add_zeros(score,7))
     //Reserve Items
     if global.reserveitem != cs_small
         draw_sprite_ext(scr_constant_get_sprite(global.reserveitem),0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
