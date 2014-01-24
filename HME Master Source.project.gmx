@@ -1362,7 +1362,6 @@
     </objects>
     <objects name="World Map">
       <object>objects\obj_mapmario</object>
-      <object>objects\obj_mapblock</object>
       <object>objects\obj_lock</object>
       <object>objects\obj_levelpanel</object>
       <object>objects\obj_levelcastle</object>
