@@ -268,11 +268,8 @@
     <instance objName="obj_lock" x="208" y="208" name="inst_F9BF31A0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_lock" x="384" y="48" name="inst_30BF89D0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mapbro" x="96" y="80" name="inst_04BB6B8B" locked="0" code="powerup = cs_carrot" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mapblock" x="336" y="96" name="inst_3E3D119A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mapblock" x="192" y="32" name="inst_055A95A6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_lock" x="176" y="48" name="inst_CC43F219" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_lock" x="176" y="144" name="inst_F85F005C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mapblock" x="320" y="80" name="inst_859E118F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mapbro" x="64" y="176" name="inst_C17C1671" locked="0" code="powerup = cs_1up&#xA;type = 1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mapbro" x="336" y="80" name="inst_06C28ADC" locked="0" code="powerup = cs_boomerang&#xA;type = 2" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mapbro" x="160" y="176" name="inst_EFFDA835" locked="0" code="powerup = cs_ninja&#xA;type = 3" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -287,6 +284,9 @@
     <instance objName="obj_saver" x="96" y="176" name="inst_B8580D77" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_saver" x="256" y="144" name="inst_5FF47BBB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mapboxdrawer" x="0" y="0" name="inst_5C0EBE52" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="192" y="32" name="inst_ABC04122" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="336" y="96" name="inst_E71866FB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="320" y="80" name="inst_00F04BC5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_maptileset" x="64" y="192" w="16" h="16" xo="16" yo="32" id="10000061" name="tile_8F35A3FA" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

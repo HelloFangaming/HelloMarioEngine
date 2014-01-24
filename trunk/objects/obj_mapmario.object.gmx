@@ -73,7 +73,7 @@ if global.clear &gt; 0
 }
 if ready = 0
     alarm[3] = 1
-event_user(0)
+sprite_index = scr_mariomap()
 </string>
           </argument>
         </arguments>
@@ -242,6 +242,86 @@ and round(y) = returny
     y = round(y)
     alarm[1] = 60
 }
+else if ready = 0
+and speed = 0
+{
+    if keyboard_check_pressed(vk_up)
+    {
+        if not position_meeting(x+8,y-8,obj_solid)
+        {
+            if collision_point(x+8,y+8,obj_panelparent,0,0)
+                if from != 1
+                and collision_point(x+8,y+8,obj_panelparent,0,0).beaten = 0
+                {
+                    audio_play_sound(snd_bump,0,0)
+                    exit
+                }
+            audio_play_sound(snd_move,0,0)
+            vspeed = -2
+            alarm[0] = 16
+            from = 0
+        }
+        else
+            audio_play_sound(snd_bump,0,0)
+    }
+    else if keyboard_check_pressed(vk_down)
+    {
+        if not position_meeting(x+8,y+23,obj_solid)
+        {
+            if collision_point(x+8,y+8,obj_panelparent,0,0)
+                if from != 0
+                and collision_point(x+8,y+8,obj_panelparent,0,0).beaten = 0
+                {
+                    audio_play_sound(snd_bump,0,0)
+                    exit
+                }
+            audio_play_sound(snd_move,0,0)
+            vspeed = 2
+            alarm[0] = 16
+            from = 1
+        }
+        else
+            audio_play_sound(snd_bump,0,0)
+    }
+    else if keyboard_check_pressed(vk_left) 
+    {
+        if not position_meeting(x-4,y+8,obj_solid)
+        {
+            if collision_point(x+8,y+8,obj_panelparent,0,0)
+                if from != 3
+                and collision_point(x+8,y+8,obj_panelparent,0,0).beaten = 0
+                {
+                    audio_play_sound(snd_bump,0,0)
+                    exit
+                }
+            audio_play_sound(snd_move,0,0)
+            hspeed = -2
+            alarm[0] = 16
+            from = 2
+        }
+        else
+            audio_play_sound(snd_bump,0,0)
+    }
+    else if keyboard_check_pressed(vk_right)
+    {
+        if not position_meeting(x+23,y+8,obj_solid)
+        {
+            if collision_point(x+8,y+8,obj_panelparent,0,0)
+                if from != 2
+                and collision_point(x+8,y+8,obj_panelparent,0,0).beaten = 0
+                {
+                    audio_play_sound(snd_bump,0,0)
+                    exit
+                }
+            audio_play_sound(snd_move,0,0)
+            hspeed = 2
+            alarm[0] = 16
+            from = 3
+        }
+        else
+            audio_play_sound(snd_bump,0,0)
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -271,7 +351,7 @@ if global.powerup = cs_big
     audio_play_sound(snd_jwin,0,0)
 else
     audio_play_sound(snd_gotcha,0,0)
-event_user(0)
+sprite_index = scr_mariomap()
 </string>
           </argument>
         </arguments>
@@ -306,7 +386,7 @@ if global.reserveitem != cs_small
     else
         audio_play_sound(snd_gotcha,0,0)
     temp = 0
-    event_user(0)
+    sprite_index = scr_mariomap()
 }
 </string>
           </argument>
@@ -357,7 +437,7 @@ if global.yoshi = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index = scr_mariomap()
+            <string>//sprite_index = scr_mariomap()
 </string>
           </argument>
         </arguments>
@@ -408,11 +488,8 @@ ds_map_replace(global.worldmap,"from",from)
           <argument>
             <kind>1</kind>
             <string>if ready = 1
-{
     draw_sprite(spr_mapevent,0,x,y)
-    exit
-}
-if global.yoshi = 0
+else if global.yoshi = 0
     draw_sprite(sprite_index,image_index,x,y)
 else if global.yoshi = 1
 {
@@ -425,174 +502,6 @@ else if global.yoshi = 1
         draw_sprite(spr_mapyoshi_y,image_index,x,y)
     else if global.ycolor = 3
         draw_sprite(spr_mapyoshi_b,image_index,x,y)
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="40">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if ready = 0
-and speed = 0
-{
-    if place_free(x,y+12)
-    {
-        if collision_point(x+8,y+8,obj_panelparent,0,0)
-            if from != 0
-            and collision_point(x+8,y+8,obj_panelparent,0,0).beaten = 0
-            {
-                audio_play_sound(snd_bump,0,0)
-                exit
-            }
-        audio_play_sound(snd_move,0,0)
-        vspeed = 2
-        alarm[0] = 16
-        from = 1
-    }
-    else
-        audio_play_sound(snd_bump,0,0)
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="39">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if ready = 0
-and speed = 0
-{
-    if place_free(x+12,y)
-    {
-        if collision_point(x+8,y+8,obj_panelparent,0,0)
-            if from != 2
-            and collision_point(x+8,y+8,obj_panelparent,0,0).beaten = 0
-            {
-                audio_play_sound(snd_bump,0,0)
-                exit
-            }
-        audio_play_sound(snd_move,0,0)
-        hspeed = 2
-        alarm[0] = 16
-        from = 3
-    }
-    else
-        audio_play_sound(snd_bump,0,0)
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="38">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if ready = 0
-and speed = 0
-{
-    if place_free(x,y-4)
-    {
-        if collision_point(x+8,y+8,obj_panelparent,0,0)
-            if from != 1
-            and collision_point(x+8,y+8,obj_panelparent,0,0).beaten = 0
-            {
-                audio_play_sound(snd_bump,0,0)
-                exit
-            }
-        audio_play_sound(snd_move,0,0)
-        vspeed = -2
-        alarm[0] = 16
-        from = 0
-    }
-    else
-        audio_play_sound(snd_bump,0,0)
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="37">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if ready = 0
-and speed = 0
-{
-    if place_free(x-4,y)
-    {
-        if collision_point(x+8,y+8,obj_panelparent,0,0)
-            if from != 3
-            and collision_point(x+8,y+8,obj_panelparent,0,0).beaten = 0
-            {
-                audio_play_sound(snd_bump,0,0)
-                exit
-            }
-        audio_play_sound(snd_move,0,0)
-        hspeed = -2
-        alarm[0] = 16
-        from = 2
-    }
-    else
-        audio_play_sound(snd_bump,0,0)
 }
 </string>
           </argument>
