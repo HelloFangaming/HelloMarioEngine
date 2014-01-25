@@ -8,6 +8,73 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if not ds_map_exists(global.worldmap,string(id))
+    ds_map_replace(global.worldmap,string(id),"0000")
+var value = ds_map_find_value(global.worldmap,string(id))
+if value = "W"
+{
+    beaten = 1
+    event_user(0)
+}
+else
+{
+    beaten = 0
+    open[0] = real(string_char_at(value,1))
+    open[1] = real(string_char_at(value,2))
+    open[2] = real(string_char_at(value,3))
+    open[3] = real(string_char_at(value,4))
+}
+cpoint = noone
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_opener">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if beaten = 0
+{
+    beaten = 1
+    ds_map_replace(global.worldmap,string(id),"W")
+    event_user(1)
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_mapmario">
       <action>
         <libid>1</libid>
@@ -46,6 +113,30 @@ if other.speed = 0
         }
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if beaten = 0
+    ds_map_replace(global.worldmap,string(id),string(open[0])+string(open[1])+string(open[2])+string(open[3]))
 </string>
           </argument>
         </arguments>

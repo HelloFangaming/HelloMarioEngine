@@ -32,18 +32,15 @@ if ds_map_exists(global.worldmap,"returnx")
     returny = ds_map_find_value(global.worldmap,"returny")
     x = ds_map_find_value(global.worldmap,"mapx")
     y = ds_map_find_value(global.worldmap,"mapy")
-    from = ds_map_find_value(global.worldmap,"from")
 }
 else
 {
     returnx = x
     returny = y
-    from = 0
     ds_map_add(global.worldmap,"returnx",x)
     ds_map_add(global.worldmap,"returny",y)
     ds_map_add(global.worldmap,"mapx",x)
     ds_map_add(global.worldmap,"mapy",y)
-    ds_map_add(global.worldmap,"from",y)
 }
 if ds_map_find_value(global.worldmap,"cardgame") &gt; 0
     instance_create(ds_map_find_value(global.worldmap,"cardgamex"),ds_map_find_value(global.worldmap,"cardgamey"),obj_mapcard)
@@ -144,8 +141,35 @@ sprite_index = scr_mariomap()
             <kind>1</kind>
             <string>if global.clear = 1
     instance_create(x,y,obj_opener)
-if global.clear = 2
-    instance_create(x,y,obj_opener2)
+else if global.clear = 2
+{
+    audio_play_sound(snd_openpath,0,0)
+    panel = collision_point(x+8,y+8,obj_panelparent,0,0)
+    lock = collision_point(x+8,y-8,obj_lock,0,0)
+    if lock
+    {
+        panel.open[1] = 1
+        with lock event_user(0)
+    }
+    lock = collision_point(x+8,y+23,obj_lock,0,0)
+    if lock
+    {
+        panel.open[0] = 1
+        with lock event_user(0)
+    }
+    lock = collision_point(x-8,y+8,obj_lock,0,0)
+    if lock
+    {
+        panel.open[3] = 1
+        with lock event_user(0)
+    }
+    lock = collision_point(x+23,y+8,obj_lock,0,0)
+    if lock
+    {
+        panel.open[2] = 1
+        with lock event_user(0)
+    }
+}
 alarm[1] = 60
 </string>
           </argument>
@@ -243,83 +267,93 @@ and round(y) = returny
     alarm[1] = 60
 }
 else if ready = 0
-and speed = 0
 {
-    if keyboard_check_pressed(vk_up)
+    panel = collision_point(x+8,y+8,obj_panelparent,0,0)
+    if speed = 0
     {
-        if not position_meeting(x+8,y-8,obj_solid)
+        if keyboard_check_pressed(vk_up)
         {
-            if collision_point(x+8,y+8,obj_panelparent,0,0)
-                if from != 1
-                and collision_point(x+8,y+8,obj_panelparent,0,0).beaten = 0
-                {
-                    audio_play_sound(snd_bump,0,0)
-                    exit
-                }
-            audio_play_sound(snd_move,0,0)
-            vspeed = -2
-            alarm[0] = 16
-            from = 0
+            if not position_meeting(x+8,y-8,obj_solid)
+            {
+                if panel
+                    if panel.beaten = 0
+                        if panel.open[1] = 0
+                        {
+                            audio_play_sound(snd_bump,0,0)
+                            exit
+                        }
+                audio_play_sound(snd_move,0,0)
+                vspeed = -2
+                alarm[0] = 16
+            }
+            else
+                audio_play_sound(snd_bump,0,0)
         }
-        else
-            audio_play_sound(snd_bump,0,0)
+        else if keyboard_check_pressed(vk_down)
+        {
+            if not position_meeting(x+8,y+23,obj_solid)
+            {
+                if panel
+                    if panel.beaten = 0
+                        if panel.open[0] = 0
+                        {
+                            audio_play_sound(snd_bump,0,0)
+                            exit
+                        }
+                audio_play_sound(snd_move,0,0)
+                vspeed = 2
+                alarm[0] = 16
+            }
+            else
+                audio_play_sound(snd_bump,0,0)
+        }
+        else if keyboard_check_pressed(vk_left) 
+        {
+            if not position_meeting(x-4,y+8,obj_solid)
+            {
+                if panel
+                    if panel.beaten = 0
+                        if panel.open[3] = 0
+                        {
+                            audio_play_sound(snd_bump,0,0)
+                            exit
+                        }
+                audio_play_sound(snd_move,0,0)
+                hspeed = -2
+                alarm[0] = 16
+            }
+            else
+                audio_play_sound(snd_bump,0,0)
+        }
+        else if keyboard_check_pressed(vk_right)
+        {
+            if not position_meeting(x+23,y+8,obj_solid)
+            {
+                if panel
+                    if panel.beaten = 0
+                        if panel.open[2] = 0
+                        {
+                            audio_play_sound(snd_bump,0,0)
+                            exit
+                        }
+                audio_play_sound(snd_move,0,0)
+                hspeed = 2
+                alarm[0] = 16
+            }
+            else
+                audio_play_sound(snd_bump,0,0)
+        }
     }
-    else if keyboard_check_pressed(vk_down)
+    else if panel
     {
-        if not position_meeting(x+8,y+23,obj_solid)
-        {
-            if collision_point(x+8,y+8,obj_panelparent,0,0)
-                if from != 0
-                and collision_point(x+8,y+8,obj_panelparent,0,0).beaten = 0
-                {
-                    audio_play_sound(snd_bump,0,0)
-                    exit
-                }
-            audio_play_sound(snd_move,0,0)
-            vspeed = 2
-            alarm[0] = 16
-            from = 1
-        }
-        else
-            audio_play_sound(snd_bump,0,0)
-    }
-    else if keyboard_check_pressed(vk_left) 
-    {
-        if not position_meeting(x-4,y+8,obj_solid)
-        {
-            if collision_point(x+8,y+8,obj_panelparent,0,0)
-                if from != 3
-                and collision_point(x+8,y+8,obj_panelparent,0,0).beaten = 0
-                {
-                    audio_play_sound(snd_bump,0,0)
-                    exit
-                }
-            audio_play_sound(snd_move,0,0)
-            hspeed = -2
-            alarm[0] = 16
-            from = 2
-        }
-        else
-            audio_play_sound(snd_bump,0,0)
-    }
-    else if keyboard_check_pressed(vk_right)
-    {
-        if not position_meeting(x+23,y+8,obj_solid)
-        {
-            if collision_point(x+8,y+8,obj_panelparent,0,0)
-                if from != 2
-                and collision_point(x+8,y+8,obj_panelparent,0,0).beaten = 0
-                {
-                    audio_play_sound(snd_bump,0,0)
-                    exit
-                }
-            audio_play_sound(snd_move,0,0)
-            hspeed = 2
-            alarm[0] = 16
-            from = 3
-        }
-        else
-            audio_play_sound(snd_bump,0,0)
+        if direction = 90
+            panel.open[0] = 1
+        else if direction = 270
+            panel.open[1] = 1
+        else if direction = 180
+            panel.open[2] = 1
+        else if direction = 0
+            panel.open[3] = 1
     }
 }
 </string>
@@ -464,7 +498,6 @@ if global.yoshi = 1
 ds_map_replace(global.worldmap,"returny",returny)
 ds_map_replace(global.worldmap,"mapx",x)
 ds_map_replace(global.worldmap,"mapy",y)
-ds_map_replace(global.worldmap,"from",from)
 </string>
           </argument>
         </arguments>
