@@ -6,7 +6,7 @@
   <depth>1</depth>
   <persistent>0</persistent>
   <parentName>obj_panelparent</parentName>
-  <maskName>spr_square</maskName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -40,20 +40,13 @@ levelname = ""
 myroom = -1
 
 image_speed = 0
-if ds_map_exists(global.worldmap,string(id))
-{
-    beaten = 1
-    image_index = 1
-}
-else
-    beaten = 0
-cpoint = noone
+event_inherited()
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_opener">
+    <event eventtype="7" enumb="11">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -70,14 +63,32 @@ cpoint = noone
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if image_index = 0
-{
-    beaten = 1
-    image_index = 1
-    audio_play_sound(snd_castlebreak,0,0)
-    with instance_create(x,y,obj_smoke) sprite_index = spr_castlesmoke
-    ds_map_add(global.worldmap,string(id),1)
-}
+            <string>image_index = 1
+audio_play_sound(snd_castlebreak,0,0)
+with instance_create(x,y,obj_smoke) sprite_index = spr_castlesmoke
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>image_index = 1
 </string>
           </argument>
         </arguments>

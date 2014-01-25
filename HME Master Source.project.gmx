@@ -1702,7 +1702,6 @@
           <object>objects\obj_sparkletrail</object>
         </objects>
         <object>objects\obj_opener</object>
-        <object>objects\obj_opener2</object>
         <object>objects\obj_mapcard</object>
         <object>objects\obj_explosion</object>
         <object>objects\obj_flag</object>
