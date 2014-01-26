@@ -755,7 +755,6 @@
       <sprite>sprites\spr_mapyoshi_b</sprite>
       <sprite>sprites\spr_mapevent</sprite>
       <sprite>sprites\spr_mapspot</sprite>
-      <sprite>sprites\spr_opener</sprite>
       <sprite>sprites\spr_levelpanel</sprite>
       <sprite>sprites\spr_levelnumbers</sprite>
       <sprite>sprites\spr_mappipe</sprite>
@@ -1493,6 +1492,7 @@
         <object>objects\obj_parblock</object>
         <object>objects\obj_parprojectile</object>
         <object>objects\obj_deactivation</object>
+        <object>objects\obj_worldparent</object>
         <object>objects\obj_panelparent</object>
       </objects>
       <objects name="Do Not Use">
@@ -1701,7 +1701,6 @@
           <object>objects\obj_bubble</object>
           <object>objects\obj_sparkletrail</object>
         </objects>
-        <object>objects\obj_opener</object>
         <object>objects\obj_mapcard</object>
         <object>objects\obj_explosion</object>
         <object>objects\obj_flag</object>

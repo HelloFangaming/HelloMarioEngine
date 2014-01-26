@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>1</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_worldparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -28,33 +28,6 @@
             <string>image_speed = 0.15
 if ds_map_exists(global.worldmap,string(id))
     instance_destroy()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_opener">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>audio_play_sound(snd_magic,0,0)
-instance_create(x,y,obj_smoke)
-obj_mapboxdrawer.mytext = " "
-ds_map_add(global.worldmap,string(id),1)
-instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -86,6 +59,33 @@ and other.speed = 0
 }
 if obj_mapmario.speed = 0
     obj_mapboxdrawer.mytext = "roulette minigame"
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>audio_play_sound(snd_magic,0,0)
+instance_create(x,y,obj_smoke)
+obj_mapboxdrawer.mytext = " "
+ds_map_add(global.worldmap,string(id),1)
+instance_destroy()
 </string>
           </argument>
         </arguments>

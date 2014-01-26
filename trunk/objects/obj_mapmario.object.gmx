@@ -139,35 +139,38 @@ sprite_index = scr_mariomap()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.clear = 1
-    instance_create(x,y,obj_opener)
-else if global.clear = 2
+            <string>panel = collision_point(x+8,y+8,obj_worldparent,0,0)
+if panel
 {
-    audio_play_sound(snd_openpath,0,0)
-    panel = collision_point(x+8,y+8,obj_panelparent,0,0)
-    lock = collision_point(x+8,y-8,obj_lock,0,0)
-    if lock
+    if global.clear = 1
+        with panel event_user(2)
+    else if global.clear = 2
     {
-        panel.open[1] = 1
-        with lock event_user(0)
-    }
-    lock = collision_point(x+8,y+23,obj_lock,0,0)
-    if lock
-    {
-        panel.open[0] = 1
-        with lock event_user(0)
-    }
-    lock = collision_point(x-8,y+8,obj_lock,0,0)
-    if lock
-    {
-        panel.open[3] = 1
-        with lock event_user(0)
-    }
-    lock = collision_point(x+23,y+8,obj_lock,0,0)
-    if lock
-    {
-        panel.open[2] = 1
-        with lock event_user(0)
+        audio_play_sound(snd_openpath,0,0)
+        lock = collision_point(x+8,y-8,obj_lock,0,0)
+        if lock
+        {
+            panel.open[1] = 1
+            with lock event_user(0)
+        }
+        lock = collision_point(x+8,y+23,obj_lock,0,0)
+        if lock
+        {
+            panel.open[0] = 1
+            with lock event_user(0)
+        }
+        lock = collision_point(x-8,y+8,obj_lock,0,0)
+        if lock
+        {
+            panel.open[3] = 1
+            with lock event_user(0)
+        }
+        lock = collision_point(x+23,y+8,obj_lock,0,0)
+        if lock
+        {
+            panel.open[2] = 1
+            with lock event_user(0)
+        }
     }
 }
 alarm[1] = 60
