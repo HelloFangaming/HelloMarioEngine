@@ -166,6 +166,7 @@
     <option_linux_scale>-1</option_linux_scale>
     <option_linux_screenkey>-1</option_linux_screenkey>
     <option_linux_sizeable>0</option_linux_sizeable>
+    <option_linux_splash_png>Configs\Default\linux\splash.png</option_linux_splash_png>
     <option_linux_steam_app_id>0</option_linux_steam_app_id>
     <option_linux_sync>0</option_linux_sync>
     <option_linux_texture_page>2048</option_linux_texture_page>
@@ -208,6 +209,7 @@
     <option_scaleprogress>true</option_scaleprogress>
     <option_screenkey>True</option_screenkey>
     <option_screenshotkey>true</option_screenshotkey>
+    <option_shortcircuit>True</option_shortcircuit>
     <option_showcursor>False</option_showcursor>
     <option_showprogress>1</option_showprogress>
     <option_sizeable>False</option_sizeable>
