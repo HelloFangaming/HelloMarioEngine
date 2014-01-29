@@ -63,12 +63,13 @@ if ds_map_exists(global.worldmap,string(id))
     ready = 1
 else
     ready = 0
+levelname = "mushroom house"
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_mapmario">
+    <event eventtype="7" enumb="13">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -85,18 +86,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if keyboard_check_pressed(vk_shift)
-and other.ready = 0
-and other.speed = 0
-and ready = 0
-{
-    with obj_mapmario event_user(1)
-    global.prize = powerup
-    global.mariostart = 1
-    room_goto(rm_mushroomhouse)
-}
-if obj_mapmario.speed = 0
-    obj_mapboxdrawer.mytext = "mushroom house"
+            <string>global.prize = powerup
+global.mariostart = 1
+room_goto(rm_mushroomhouse)
 </string>
           </argument>
         </arguments>

@@ -28,12 +28,14 @@
             <string>image_speed = 0.15
 if ds_map_exists(global.worldmap,string(id))
     instance_destroy()
+levelname = "roulette minigame"
+ready = 0
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_mapmario">
+    <event eventtype="7" enumb="13">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -50,15 +52,7 @@ if ds_map_exists(global.worldmap,string(id))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if keyboard_check_pressed(vk_shift)
-and other.ready = 0
-and other.speed = 0
-{
-    with obj_mapmario event_user(1)
-    room_goto(rm_roulette)
-}
-if obj_mapmario.speed = 0
-    obj_mapboxdrawer.mytext = "roulette minigame"
+            <string>room_goto(rm_roulette)
 </string>
           </argument>
         </arguments>
@@ -83,7 +77,7 @@ if obj_mapmario.speed = 0
             <kind>1</kind>
             <string>audio_play_sound(snd_magic,0,0)
 instance_create(x,y,obj_smoke)
-obj_mapboxdrawer.mytext = " "
+obj_mapmario.mytext = ""
 ds_map_add(global.worldmap,string(id),1)
 instance_destroy()
 </string>

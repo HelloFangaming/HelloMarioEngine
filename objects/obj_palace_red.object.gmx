@@ -28,12 +28,14 @@
             <string>image_speed = 0
 if ds_map_exists(global.worldmap,string(id))
     image_index = 1
+levelname = "red switch palace"
+ready = image_index
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_mapmario">
+    <event eventtype="7" enumb="13">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -50,16 +52,7 @@ if ds_map_exists(global.worldmap,string(id))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if keyboard_check_pressed(vk_shift)
-and other.ready = 0
-and other.speed = 0
-and image_index = 0
-{
-    with obj_mapmario event_user(1)
-    room_goto(rm_switchpalace_red)
-}
-if obj_mapmario.speed = 0
-    obj_mapboxdrawer.mytext = "red switch palace"
+            <string>room_goto(rm_switchpalace_red)
 </string>
           </argument>
         </arguments>
@@ -85,6 +78,7 @@ if obj_mapmario.speed = 0
             <string>if image_index = 0
 {
     image_index = 1
+    ready = 1
     audio_play_sound(snd_castlebreak,0,0)
     with instance_create(x,y,obj_smoke) sprite_index = spr_castlesmoke
     ds_map_add(global.worldmap,string(id),1)

@@ -45,6 +45,9 @@ else
 if ds_map_find_value(global.worldmap,"cardgame") &gt; 0
     instance_create(ds_map_find_value(global.worldmap,"cardgamex"),ds_map_find_value(global.worldmap,"cardgamey"),obj_mapcard)
 ready = 0
+mytext = " "
+inventory = 0
+boxselection = 1
 global.time = 0
 global.mariostart = 0
 global.carrieditem = 0
@@ -271,23 +274,24 @@ and round(y) = returny
 }
 else if ready = 0
 {
-    panel = collision_point(x+8,y+8,obj_panelparent,0,0)
+    panel = collision_point(x+8,y+8,obj_worldparent,0,0)
     if speed = 0
     {
+        panel = collision_point(x+8,y+8,obj_panelparent,0,0)
         if keyboard_check_pressed(vk_up)
         {
             if not position_meeting(x+8,y-8,obj_solid)
             {
                 if panel
-                    if panel.beaten = 0
-                        if panel.open[1] = 0
-                        {
-                            audio_play_sound(snd_bump,0,0)
-                            exit
-                        }
-                audio_play_sound(snd_move,0,0)
-                vspeed = -2
-                alarm[0] = 16
+                and panel.beaten = 0
+                and panel.open[1] = 0
+                    audio_play_sound(snd_bump,0,0)
+                else
+                {
+                    audio_play_sound(snd_move,0,0)
+                    vspeed = -2
+                    alarm[0] = 16
+                }
             }
             else
                 audio_play_sound(snd_bump,0,0)
@@ -297,15 +301,15 @@ else if ready = 0
             if not position_meeting(x+8,y+23,obj_solid)
             {
                 if panel
-                    if panel.beaten = 0
-                        if panel.open[0] = 0
-                        {
-                            audio_play_sound(snd_bump,0,0)
-                            exit
-                        }
-                audio_play_sound(snd_move,0,0)
-                vspeed = 2
-                alarm[0] = 16
+                and panel.beaten = 0
+                and panel.open[0] = 0
+                    audio_play_sound(snd_bump,0,0)
+                else
+                {
+                    audio_play_sound(snd_move,0,0)
+                    vspeed = 2
+                    alarm[0] = 16
+                }
             }
             else
                 audio_play_sound(snd_bump,0,0)
@@ -315,15 +319,15 @@ else if ready = 0
             if not position_meeting(x-4,y+8,obj_solid)
             {
                 if panel
-                    if panel.beaten = 0
-                        if panel.open[3] = 0
-                        {
-                            audio_play_sound(snd_bump,0,0)
-                            exit
-                        }
-                audio_play_sound(snd_move,0,0)
-                hspeed = -2
-                alarm[0] = 16
+                and panel.beaten = 0
+                and panel.open[3] = 0
+                    audio_play_sound(snd_bump,0,0)
+                else
+                {
+                    audio_play_sound(snd_move,0,0)
+                    hspeed = -2
+                    alarm[0] = 16
+                }
             }
             else
                 audio_play_sound(snd_bump,0,0)
@@ -333,18 +337,43 @@ else if ready = 0
             if not position_meeting(x+23,y+8,obj_solid)
             {
                 if panel
-                    if panel.beaten = 0
-                        if panel.open[2] = 0
-                        {
-                            audio_play_sound(snd_bump,0,0)
-                            exit
-                        }
-                audio_play_sound(snd_move,0,0)
-                hspeed = 2
-                alarm[0] = 16
+                and panel.beaten = 0
+                and panel.open[2] = 0
+                    audio_play_sound(snd_bump,0,0)
+                else
+                {
+                    audio_play_sound(snd_move,0,0)
+                    hspeed = 2
+                    alarm[0] = 16
+                }
             }
             else
                 audio_play_sound(snd_bump,0,0)
+        }
+        else if inventory = 0
+        and keyboard_check_pressed(vk_space)
+        {
+            audio_play_sound(snd_inventory,0,0)
+            ready = 1
+            inventory = 1
+            boxselection = 1
+            if global.inventory[0] = 0
+            {
+                boxselection = 16
+                if global.reserveitem = cs_small
+                    boxselection = 0
+            }
+        }
+        panel = collision_point(x+8,y+8,obj_worldparent,0,0)
+        if panel
+        {
+            mytext = panel.levelname
+            if keyboard_check_pressed(vk_shift)
+            and panel.ready = 0
+            {
+                event_user(1)
+                with panel event_user(3)
+            }
         }
     }
     else if panel
@@ -357,6 +386,71 @@ else if ready = 0
             panel.open[2] = 1
         else if direction = 0
             panel.open[3] = 1
+        mytext = ""
+    }
+}
+else if inventory = 1
+{
+    if keyboard_check_pressed(vk_space)
+    {
+        audio_play_sound(snd_inventory,0,0)
+        ready = 0
+        inventory = 0
+    }
+    else if keyboard_check_pressed(vk_shift)
+    {
+        if boxselection = 0
+            exit
+        if boxselection = 16
+        {
+            ready = 0
+            event_user(2)
+            inventory = 0
+        }
+        else if global.inventory[boxselection] != cs_small
+        {
+            ready = 0
+            var previous = global.powerup
+            event_user(3)
+            if previous = 0
+            {
+                var i = boxselection
+                while i &lt; global.inventory[0]
+                {
+                    global.inventory[i] = global.inventory[i+1]
+                    i++
+                }
+                global.inventory[0] -= 1
+            }
+            else
+                global.inventory[boxselection] = previous
+            inventory = 0
+        }
+        keyboard_clear(vk_shift)
+    }
+    else if boxselection &gt; 1
+    and keyboard_check_pressed(vk_left)
+    {
+        if global.inventory[0] = 0
+            exit
+        if boxselection = 16
+            boxselection = global.inventory[0]
+        else
+            boxselection-=1
+        audio_play_sound(snd_move,0,0)
+    }
+    else if boxselection &lt; 16
+    and keyboard_check_pressed(vk_right)
+    {
+        if boxselection = 0
+            exit
+        if boxselection &lt; global.inventory[0]
+            boxselection+=1
+        else if global.reserveitem &gt; cs_small
+            boxselection = 16
+        else
+            exit
+        audio_play_sound(snd_move,0,0)
     }
 }
 </string>
@@ -382,7 +476,7 @@ else if ready = 0
           <argument>
             <kind>1</kind>
             <string>//Inventory Items
-global.powerup = global.inventory[obj_mapboxdrawer.boxselection]
+global.powerup = global.inventory[boxselection]
 audio_play_sound(snd_retrieve,0,0)
 if global.powerup = cs_big
     audio_play_sound(snd_jwin,0,0)
@@ -457,29 +551,6 @@ if global.yoshi = 1
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//sprite_index = scr_mariomap()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="7" enumb="5">
       <action>
         <libid>1</libid>
@@ -539,6 +610,45 @@ else if global.yoshi = 1
     else if global.ycolor = 3
         draw_sprite(spr_mapyoshi_b,image_index,x,y)
 }
+draw_set_color(c_white)
+draw_set_alpha(0.7)
+if inventory = 0
+{
+    //Box
+    draw_sprite_ext(spr_mapscreenbox,0,view_xview[0],view_yview[0]+210,1,1,0,c_white,0.7)
+    //Text
+    draw_set_font(global.font)
+    draw_text(view_xview[0]+132,view_yview[0]+221,mytext)
+    //Lives
+    draw_set_font(global.wdigits)
+    draw_text(view_xview[0]+32,view_yview[0]+222,string_format(lives,2,0))
+    //Score
+    draw_text(view_xview[0]+65,view_yview[0]+222,string_add_zeros(score,7))
+    //Reserve Items
+    if global.reserveitem != cs_small
+        draw_sprite_ext(scr_constant_get_sprite(global.reserveitem),0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
+}
+else
+{
+    draw_sprite_ext(spr_mapscreenbox,1,view_xview[0],view_yview[0]+210,1,1,0,c_white,0.7)
+    for(var i=1; i&lt;=global.inventory[0]; i++)
+    {
+        if boxselection = i
+            draw_set_blend_mode(bm_normal)
+        else
+            draw_set_blend_mode_ext(bm_src_alpha,bm_one)
+        draw_sprite_ext(scr_constant_get_sprite(global.inventory[i]),0,view_xview[0]+7+(i-1)*19,view_yview[0]+217,1,1,0,c_white,0.7)
+    }
+    //Reserve Items
+    if boxselection = 16
+        draw_set_blend_mode(bm_normal)
+    else
+        draw_set_blend_mode_ext(bm_src_alpha,bm_one)
+    if global.reserveitem != cs_small
+        draw_sprite_ext(scr_constant_get_sprite(global.reserveitem),0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
+    draw_set_blend_mode(bm_normal)
+}
+draw_set_alpha(1)
 </string>
           </argument>
         </arguments>

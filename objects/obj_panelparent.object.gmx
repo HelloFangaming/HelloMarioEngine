@@ -42,12 +42,14 @@ else
     open[3] = real(string_char_at(value,4))
 }
 cpoint = noone
+ready = 0
+alarm[0] = 1
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_mapmario">
+    <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -65,25 +67,39 @@ cpoint = noone
           <argument>
             <kind>1</kind>
             <string>if global.checkpoint != noone
+and place_meeting(x,y,obj_mapmario)
 {
     cpoint = global.checkpoint
     global.checkpoint = noone
 }
-if other.speed = 0
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="13">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if cpoint = noone
+    room_goto(myroom)
+else
 {
-    obj_mapboxdrawer.mytext = levelname
-    if keyboard_check_pressed(vk_shift)
-    and other.ready = 0
-    {
-        with obj_mapmario event_user(1)
-        if cpoint = noone
-            room_goto(myroom)
-        else
-        {
-            global.checkpoint = cpoint
-            room_goto(global.checkpointroom)
-        }
-    }
+    global.checkpoint = cpoint
+    room_goto(global.checkpointroom)
 }
 </string>
           </argument>
