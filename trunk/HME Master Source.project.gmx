@@ -1376,7 +1376,6 @@
       <object>objects\obj_palace_yellow</object>
       <object>objects\obj_palace_green</object>
       <object>objects\obj_saver</object>
-      <object>objects\obj_mapboxdrawer</object>
     </objects>
     <objects name="Decoration">
       <object>objects\obj_watertop</object>

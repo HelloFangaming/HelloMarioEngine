@@ -65,63 +65,13 @@ powerup = -1
 hspeed = 0.5
 x -= 8
 alarm[0] = 32
-alarm[3] = 1
-ready = 0
+levelname = ""
+ready = 1
 image_speed = 0.15
 direct = 1
 if ds_map_exists(global.worldmap,string(id))
     instance_destroy()
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="3">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if type = 1
-    sprite_index = spr_mapfbro
-else if type = 2
-    sprite_index = spr_mapbbro
-else if type = 3
-    sprite_index = spr_mapsbro
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>ready = 0</string>
           </argument>
         </arguments>
       </action>
@@ -192,15 +142,12 @@ direct = -1</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 0
-and other.ready = 0
+            <string>if other.ready = 0
 and other.speed = 0
 {
-    ready = 1
-    alarm[2] = 2
     global.mariostart = 1
     global.prize[0] = powerup
-    with obj_mapmario event_user(1)
+    with other event_user(1)
     if type = 0
         room_goto(rm_hammerbattle)
     else if type = 1
@@ -240,6 +187,34 @@ and obj_mapmario.y = ystart
     ds_map_add(global.worldmap,string(id),1)
     instance_destroy()
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if type = 1
+    sprite_index = spr_mapfbro
+else if type = 2
+    sprite_index = spr_mapbbro
+else if type = 3
+    sprite_index = spr_mapsbro
 </string>
           </argument>
         </arguments>
