@@ -639,7 +639,6 @@ if audio_is_playing(snd_pmeter)
 
 //Set Font
 draw_set_font(global.wdigits)
-draw_set_color(c_white)
 draw_set_alpha(0.7)
 
 //HUD Bar
