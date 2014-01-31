@@ -29,7 +29,6 @@
 audio_play_sound(snd_message,0,0)
 audio_play_sound(snd_hoohoo,0,0)
 menu_choice = 0
-draw_set_color(c_white)
 menu[0] = "Save and Continue"
 menu[1] = "Save and Quit"
 menu[2] = "Continue without Saving"

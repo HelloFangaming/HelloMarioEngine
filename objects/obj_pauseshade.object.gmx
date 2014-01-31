@@ -34,7 +34,6 @@ audio_play_sound(snd_pause,0,0)
 alarm[0] = 2
 menu_choice = 0
 keyboard_clear(vk_enter)
-draw_set_color(c_white)
 menu[0] = "Continue"
 menu[1] = "Return to Mapscreen"
 menu[2] = "Quit Game"

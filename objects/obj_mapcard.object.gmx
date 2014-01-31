@@ -141,7 +141,7 @@ and other.speed = 0
 {
     ready = 2
     ds_map_replace(global.worldmap,"cardgame",2)
-    with obj_mapmario event_user(1)
+    with other event_user(0)
     room_goto(rm_cardgame)
 }
 </string>

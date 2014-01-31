@@ -147,7 +147,7 @@ and other.speed = 0
 {
     global.mariostart = 1
     global.prize[0] = powerup
-    with other event_user(1)
+    with other event_user(0)
     if type = 0
         room_goto(rm_hammerbattle)
     else if type = 1

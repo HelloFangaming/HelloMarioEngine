@@ -234,8 +234,7 @@ if showing = 1
     if a &lt;= string_length(text)
         a++
 
-    //Set the color and font for drawing
-    draw_set_color(c_white)
+    //Set the font
     draw_set_font(global.messagefont)
 
     //Draw the text up to the number of letters that should be displayed
