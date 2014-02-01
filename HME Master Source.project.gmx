@@ -1100,6 +1100,7 @@
     <shader type="GLSLES">shaders\sha_hq2x.shader</shader>
     <shader type="GLSLES">shaders\sha_hq4x.shader</shader>
     <shader type="GLSLES">shaders\sha_invert.shader</shader>
+    <shader type="GLSLES">shaders\sha_outline.shader</shader>
   </shaders>
   <objects name="objects">
     <objects name="Main">
