@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-8</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_mapmario</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -26,12 +26,16 @@
           <argument>
             <kind>1</kind>
             <string>audio_play_sound(snd_inventory,0,0)
+ready = 1
+inventory = 1
+boxselection = global.inventory[0]
+x = -16
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -48,22 +52,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(spr_mapscreenbox,1,view_xview[0],view_yview[0]+210,1,1,0,c_white,0.7)
-i = 1
-while i &lt; global.inventory[0]+1
-{
-    if global.inventory[0] = i
-        draw_set_blend_mode(bm_normal)
-    else
-        draw_set_blend_mode_ext(bm_src_alpha,bm_one)
-    draw_sprite_ext(scr_constant_get_sprite(global.inventory[i]),0,view_xview[0]+7+(i-1)*19,view_yview[0]+217,1,1,0,c_white,0.7)
-    i += 1
-}
-//Reserve Item
-draw_set_blend_mode_ext(bm_src_alpha,bm_one)
-if global.reserveitem != cs_small
-    draw_sprite_ext(scr_constant_get_sprite(global.reserveitem),0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
-draw_set_blend_mode(bm_normal)
+            <string>//Do nothing
 </string>
           </argument>
         </arguments>

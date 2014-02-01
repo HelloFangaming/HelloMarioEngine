@@ -383,7 +383,7 @@ speed = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Handles Mario's logic
+            <string>///Handles Mario's logic in the world map
 
 //If Mario is death skidding, and reached his location
 if ready = 2
@@ -629,90 +629,167 @@ else if ready = 0
     }
 
 }
+
+//If the inventory is open
 else if inventory = 1
 {
+
+    //If space is pressed
     if keyboard_check_pressed(vk_space)
     {
+
+        //Play the inventory sound
         audio_play_sound(snd_inventory,0,0)
+
+        //Go back to the normal state
         ready = 0
+
+        //Close the inventory
         inventory = 0
+
     }
-    else if keyboard_check_pressed(vk_shift)
+
+    //If the inventory is not empty
+    else if boxselection != 0
     {
-        if boxselection = 0
-            exit
-        if boxselection = 16
+
+        //If shift is pressed
+        if keyboard_check_pressed(vk_shift)
         {
-            ready = 0
-            //Swaps Reserve Items
-            if global.reserveitem != cs_small
+
+            //If the item selected is the reserve item
+            if boxselection = 16
             {
-                temp = global.powerup
+
+                //Swap the current powerup with the reserve item
+                var previous = global.powerup
                 global.powerup = global.reserveitem
-                global.reserveitem = temp
-                audio_play_sound(snd_retrieve,0,0)
-                if global.powerup = cs_big
-                    audio_play_sound(snd_jwin,0,0)
-                else
-                    audio_play_sound(snd_gotcha,0,0)
-                temp = 0
-                sprite_index = scr_mariomap()
+                global.reserveitem = previous
+
+                //Finish item retrieval
+                event_user(1)
+
             }
-            inventory = 0
-        }
-        else if global.inventory[boxselection] != cs_small
-        {
-            ready = 0
-            var previous = global.powerup
-            //Inventory Items
-            global.powerup = global.inventory[boxselection]
-            audio_play_sound(snd_retrieve,0,0)
-            if global.powerup = cs_big
-                audio_play_sound(snd_jwin,0,0)
+
+            //If the item selected is not the reserve item
             else
-                audio_play_sound(snd_gotcha,0,0)
-            sprite_index = scr_mariomap()
-            if previous = 0
             {
-                var i = boxselection
-                while i &lt; global.inventory[0]
+
+                //Remember the last powerup
+                var previous = global.powerup
+
+                //Change the powerup to the selected item
+                global.powerup = global.inventory[boxselection]
+
+                //If Mario had no powerup previously
+                if previous = 0
                 {
-                    global.inventory[i] = global.inventory[i+1]
-                    i++
+
+                    //Shift the inventory items over by one
+                    for(var i = boxselection; i &lt; global.inventory[0]; i++)
+                        global.inventory[i] = global.inventory[i+1]
+
+                    //Subtract from the number of items in the inventory
+                    global.inventory[0]--
+
                 }
-                global.inventory[0] -= 1
+
+                //Otherwise, put the old powerup in the inventory
+                else
+                    global.inventory[boxselection] = previous
+
+                //Finish item retrieval
+                event_user(1)
+
             }
-            else
-                global.inventory[boxselection] = previous
-            inventory = 0
+
         }
-        keyboard_clear(vk_shift)
+
+        //If left is pressed, there are items in the inventory, and the selected item is not the leftmost item
+        else if boxselection &gt; 1
+        and global.inventory[0] != 0
+        and keyboard_check_pressed(vk_left)
+        {
+
+            //If the reserve item is selected, go to the last inventory item
+            if boxselection = 16
+                boxselection = global.inventory[0]
+
+            //Otherwise, go left one item
+            else
+                boxselection--
+
+            //Play the move sound
+            audio_play_sound(snd_move,0,0)
+
+        }
+
+        //If right is pressed, and the selected item is not the rightmost item
+        else if boxselection &lt; 16
+        and keyboard_check_pressed(vk_right)
+        {
+
+            //If there are more inventory items, go right one
+            if boxselection &lt; global.inventory[0]
+                boxselection++
+
+            //Otherwise, if there is a reserve item, go to it
+            else if global.reserveitem &gt; cs_small
+                boxselection = 16
+
+            //Otherwise, do not play the move sound
+            else
+                exit
+
+            //Play the move sound
+            audio_play_sound(snd_move,0,0)
+
+        }
+
     }
-    else if boxselection &gt; 1
-    and keyboard_check_pressed(vk_left)
-    {
-        if global.inventory[0] = 0
-            exit
-        if boxselection = 16
-            boxselection = global.inventory[0]
-        else
-            boxselection-=1
-        audio_play_sound(snd_move,0,0)
-    }
-    else if boxselection &lt; 16
-    and keyboard_check_pressed(vk_right)
-    {
-        if boxselection = 0
-            exit
-        if boxselection &lt; global.inventory[0]
-            boxselection+=1
-        else if global.reserveitem &gt; cs_small
-            boxselection = 16
-        else
-            exit
-        audio_play_sound(snd_move,0,0)
-    }
+
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Inventory retrieval script
+
+//Play the reserve item sound
+audio_play_sound(snd_retrieve,0,0)
+
+//Make Mario speak words
+if global.powerup = cs_big
+    audio_play_sound(snd_jwin,0,0)
+else
+    audio_play_sound(snd_gotcha,0,0)
+
+//Update the sprite
+sprite_index = scr_mariomap()
+
+//Go back to the normal state
+ready = 0
+
+//Close the inventory
+inventory = 0
 </string>
           </argument>
         </arguments>
@@ -847,32 +924,32 @@ else
 {
 
     //Iterate over the inventory items
-    for(var i=1; i&lt;=global.inventory[0]; i++)
+    for(var i = 1; i &lt;= global.inventory[0]; i++)
     {
 
-        //Set a blend mode if this item is not selected
+        //Use an outline shader if this item is not selected
         if boxselection = i
-            draw_set_blend_mode(bm_normal)
+            shader_reset()
         else
-            draw_set_blend_mode_ext(bm_src_alpha,bm_one)
+            shader_set(sha_outline)
 
         //Draw the item
         draw_sprite_ext(scr_constant_get_sprite(global.inventory[i]),0,view_xview[0]+7+(i-1)*19,view_yview[0]+217,1,1,0,c_white,0.7)
 
     }
 
-    //Set a blend mode if the reserve item is not selected
+    //Use an outline shader if the reserve item is not selected
     if boxselection = 16
-        draw_set_blend_mode(bm_normal)
+        shader_reset()
     else
-        draw_set_blend_mode_ext(bm_src_alpha,bm_one)
+        shader_set(sha_outline)
 
     //Draw the reserve item
     if global.reserveitem != cs_small
         draw_sprite_ext(scr_constant_get_sprite(global.reserveitem),0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
 
-    //Reset the blend mode
-    draw_set_blend_mode(bm_normal)
+    //Reset shaders
+    shader_reset()
 
 }
 </string>
