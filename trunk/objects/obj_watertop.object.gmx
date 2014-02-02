@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15</string>
+            <string>///Animating sparkly water
+
+//Animate
+image_speed = 0.15
+</string>
           </argument>
         </arguments>
       </action>

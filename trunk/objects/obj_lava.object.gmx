@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15</string>
+            <string>///Deadly molten bubbly rock
+
+//Animate
+image_speed = 0.15
+</string>
           </argument>
         </arguments>
       </action>
@@ -47,8 +51,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(other.x,other.y,obj_deadmario)
-with other instance_destroy()</string>
+            <string>///Instant death
+with other
+{
+    instance_create(x,y,obj_deadmario)
+    instance_destroy()
+}
+</string>
           </argument>
         </arguments>
       </action>

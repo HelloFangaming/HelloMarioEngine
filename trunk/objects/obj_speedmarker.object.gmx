@@ -25,12 +25,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place these in the object creation code.
-//setspeed = The speed to set it to
-//This works with the following objects only:
-//obj_autoscroll
-//obj_platform_touch
-//obj_movingrope_touch
+            <string>///Speed Marker
+
+/*
+**  This item uses creation code!
+**
+**  setspeed = The speed to set things to
+**
+**  This works with the following objects only:
+**      obj_autoscroll
+**      obj_platform_touch
+**      obj_blocktrain
+**      obj_movingrope_touch
+*/
+
+//Default Value:
 setspeed = 1
 </string>
           </argument>

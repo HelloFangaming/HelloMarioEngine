@@ -93,6 +93,8 @@
     <instance objName="obj_left" x="400" y="208" name="inst_6EB3F7AC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warptop" x="928" y="368" name="inst_E7202C51" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warproom" x="944" y="416" name="inst_782A00FA" locked="0" code="postchange = 1&#xA;postx = 1168&#xA;posty = 96&#xA;myroom = rm_cedarhills" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_speedmarker" x="544" y="336" name="inst_7045FCA7" locked="0" code="setspeed = 2&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_speedmarker" x="640" y="352" name="inst_4B8E5ED7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset" x="0" y="336" w="16" h="32" xo="80" yo="144" id="10001489" name="tile_B44C490A" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

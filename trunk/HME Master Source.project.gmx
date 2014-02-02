@@ -1454,7 +1454,6 @@
         <object>objects\obj_veggie_multicoin</object>
         <object>objects\obj_veggie_sprout</object>
         <object>objects\obj_veggie_bomb</object>
-        <object>objects\obj_veggie_boomerang</object>
         <object>objects\obj_veggie_shell</object>
         <object>objects\obj_powblock</object>
         <object>objects\obj_mblock</object>
@@ -1551,6 +1550,7 @@
           <object>objects\obj_iceball</object>
           <object>objects\obj_superball</object>
           <object>objects\obj_shuriken</object>
+          <object>objects\obj_boomerang_b</object>
           <object>objects\obj_invincibility</object>
         </objects>
         <objects name="Enemy">
@@ -1671,8 +1671,6 @@
             <object>objects\obj_veggiecoin</object>
             <object>objects\obj_multiveggiecoin</object>
             <object>objects\obj_grassbomb</object>
-            <object>objects\obj_bmangup</object>
-            <object>objects\obj_boomerang_b</object>
             <object>objects\obj_smb2shellup</object>
             <object>objects\obj_pow</object>
             <object>objects\obj_powkiller</object>
