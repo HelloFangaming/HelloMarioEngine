@@ -25,10 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = 0
+            <string>///Fill the entire level with water
+
+//Start at the top left corner...
+x = 0
 y = 0
+
+//...and stretch the water over to the other corner!
 image_xscale = room_width
-image_yscale = room_height</string>
+image_yscale = room_height
+</string>
           </argument>
         </arguments>
       </action>

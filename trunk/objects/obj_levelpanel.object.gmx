@@ -41,7 +41,10 @@ levelnumb = 1
 levelname = ""
 myroom = -1
 
+//Image speed
 image_speed = 0.15
+
+//Inherit from the panel parent
 event_inherited()
 </string>
           </argument>
@@ -65,8 +68,11 @@ event_inherited()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index = spr_levelbeat
+            <string>///Start up the level beat animation
+sprite_index = spr_levelbeat
 image_index = 0
+
+//Play the inventory sound
 audio_play_sound(snd_inventory,0,0)
 </string>
           </argument>
@@ -90,7 +96,8 @@ audio_play_sound(snd_inventory,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index = spr_levelbeat
+            <string>///This level should be beaten now
+sprite_index = spr_levelbeat
 image_speed = 0
 image_index = 3
 </string>
@@ -115,7 +122,8 @@ image_index = 3
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_levelbeat
+            <string>///Finish the level beat animation
+if sprite_index = spr_levelbeat
 {
     image_index = 3
     image_speed = 0
@@ -142,7 +150,8 @@ image_index = 3
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>levelname = string_upper(levelname)
+            <string>///White letters
+levelname = string_upper(levelname)
 </string>
           </argument>
         </arguments>
@@ -165,7 +174,10 @@ image_index = 3
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(sprite_index,image_index,x,y)
+            <string>///Draw the panel
+draw_sprite(sprite_index,image_index,x,y)
+
+//Draw the number on the panel if the level is not beaten
 if sprite_index = spr_levelpanel
     draw_sprite(spr_levelnumbers,levelnumb-1,x+7,y+7)
 </string>

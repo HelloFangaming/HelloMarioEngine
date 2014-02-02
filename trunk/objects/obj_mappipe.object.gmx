@@ -25,16 +25,38 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Set these variables in the creation code
-//pipetype = 0 or 1 (Destination pipe must be different from current pipe.)
-//destx = x position of new pipe.
-//desty = y position of new pipe.
+            <string>///World Map Warp Pipes
+
+/*
+**  This item uses creation code!
+**
+**  pipetype = 0 or 1 (Destination pipe must be different from current pipe)
+**  destx = X position of new pipe
+**  desty = Y position of new pipe
+**
+*/
+
+//Default Value:
+pipetype = 0
+destx = 0
+desty = 0
+
+//Was this pipe just entered
 if ds_map_exists(global.worldmap,string(id))
 {
+
+    //Forget that it was entered
     ds_map_delete(global.worldmap,string(id))
+
+    //Deal with that fact
     alarm[0] = 1
+
 }
+
+//Name to display
 levelname = "warp pipe"
+
+//Able to enter
 ready = 0
 </string>
           </argument>
@@ -58,18 +80,19 @@ ready = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if pipetype = 0
-and global.pipetype = 1
+            <string>///What happens after the pipe is entered
+
+//If you entered a different pipe
+if pipetype != global.pipetype
 {
+
+    //Go to the new destination
     obj_mapmario.x = destx
     obj_mapmario.y = desty
+
 }
-if pipetype = 1
-and global.pipetype = 0
-{
-    obj_mapmario.x = destx
-    obj_mapmario.y = desty
-}
+
+//Reset return values
 with obj_mapmario
 {
     returnx = x
@@ -97,9 +120,18 @@ with obj_mapmario
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.pipetype = pipetype
+            <string>///Enters the level
+
+//Remember which pipe was entered
+global.pipetype = pipetype
+
+//Remember that the pipe was entered
 ds_map_replace(global.worldmap,string(id),1)
+
+//Do not display Mario Start!
 global.mariostart = 1
+
+//Go to the pipe area
 room_goto(rm_mappipearea)
 </string>
           </argument>

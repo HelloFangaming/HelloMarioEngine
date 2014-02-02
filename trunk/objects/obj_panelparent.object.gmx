@@ -25,24 +25,49 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not ds_map_exists(global.worldmap,string(id))
+            <string>///Panels with checkpoints that need to be beaten to pass
+
+//Initialise its open list
+if not ds_map_exists(global.worldmap,string(id))
     ds_map_replace(global.worldmap,string(id),"0000")
+
+//Load the open list
 var value = ds_map_find_value(global.worldmap,string(id))
+
+//If the level should be beaten
 if value = "W"
 {
+
+    //Mark as beaten
     beaten = 1
+
+    //Beat the level
     event_user(0)
+
 }
+
+//If the level is unbeaten
 else
 {
+
+    //Mark as unbeaten
     beaten = 0
+
+    //Prepare the open list
     open[0] = real(string_char_at(value,1))
     open[1] = real(string_char_at(value,2))
     open[2] = real(string_char_at(value,3))
     open[3] = real(string_char_at(value,4))
+
 }
-cpoint = noone
+
+//Able to enter
 ready = 0
+
+//No checkpoints yet
+cpoint = noone
+
+//Mark checkpoints
 alarm[0] = 1
 </string>
           </argument>
@@ -66,11 +91,19 @@ alarm[0] = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.checkpoint != noone
+            <string>///Mark checkpoints
+
+//If a checkpoint was passed in this level
+if global.checkpoint != noone
 and place_meeting(x,y,obj_mapmario)
 {
+
+    //Save that info in this panel
     cpoint = global.checkpoint
+
+    //Forget that info globally
     global.checkpoint = noone
+
 }
 </string>
           </argument>
@@ -94,12 +127,22 @@ and place_meeting(x,y,obj_mapmario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if cpoint = noone
+            <string>///Enters the level
+
+//If no checkpoint was gotten, just enter normally
+if cpoint = noone
     room_goto(myroom)
+
+//If a checkpoint was reached
 else
 {
+
+    //Remember it globally
     global.checkpoint = cpoint
+
+    //Go to the checkpoint room
     room_goto(global.checkpointroom)
+
 }
 </string>
           </argument>
@@ -123,11 +166,21 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if beaten = 0
+            <string>///Beats the level
+
+//If the level is not beaten
+if beaten = 0
 {
+
+    //Beat it!
     beaten = 1
+
+    //Remember it!
     ds_map_replace(global.worldmap,string(id),"W")
+
+    //Show it!
     event_user(1)
+
 }
 </string>
           </argument>
@@ -151,7 +204,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if beaten = 0
+            <string>///Remember the open list
+if beaten = 0
     ds_map_replace(global.worldmap,string(id),string(open[0])+string(open[1])+string(open[2])+string(open[3]))
 </string>
           </argument>

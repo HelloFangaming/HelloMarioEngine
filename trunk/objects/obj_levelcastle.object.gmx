@@ -39,7 +39,10 @@
 levelname = ""
 myroom = -1
 
+//Do not animate
 image_speed = 0
+
+//Inherit from the panel parent
 event_inherited()
 </string>
           </argument>
@@ -63,8 +66,15 @@ event_inherited()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 1
+            <string>///Level beat animation
+
+//Smash the castle
+image_index = 1
+
+//Play a smashing sound
 audio_play_sound(snd_castlebreak,0,0)
+
+//Make some castle smashing smoke
 with instance_create(x,y,obj_smoke) sprite_index = spr_castlesmoke
 </string>
           </argument>
@@ -88,7 +98,8 @@ with instance_create(x,y,obj_smoke) sprite_index = spr_castlesmoke
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 1
+            <string>///This level should be beaten now
+image_index = 1
 </string>
           </argument>
         </arguments>
@@ -111,7 +122,8 @@ with instance_create(x,y,obj_smoke) sprite_index = spr_castlesmoke
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>levelname = string_lower(levelname)
+            <string>///Gold letters
+levelname = string_lower(levelname)
 </string>
           </argument>
         </arguments>

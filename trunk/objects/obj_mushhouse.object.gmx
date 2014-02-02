@@ -59,10 +59,13 @@ powerup[0] = -1
 powerup[1] = -1
 powerup[2] = -1
 
+//Figure out if this mushroom house has already been entered
 if ds_map_exists(global.worldmap,string(id))
     ready = 1
 else
     ready = 0
+
+//Name to display
 levelname = "mushroom house"
 </string>
           </argument>
@@ -86,8 +89,15 @@ levelname = "mushroom house"
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.prize = powerup
+            <string>///Enters the level
+
+//Remember the prize
+global.prize = powerup
+
+//Do not display Mario Start!
 global.mariostart = 1
+
+//Visit the mushroom house
 room_goto(rm_mushroomhouse)
 </string>
           </argument>
@@ -111,7 +121,12 @@ room_goto(rm_mushroomhouse)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 1
+            <string>///Beats the level
+
+//Lock Mario out...
+ready = 1
+
+//...and stay out!
 ds_map_add(global.worldmap,string(id),1)
 </string>
           </argument>

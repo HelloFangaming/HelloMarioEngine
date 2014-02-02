@@ -25,10 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
+            <string>///Red switch palace
+
+//No animation
+image_speed = 0
+
+//If the switch was pressed before, press it
 if ds_map_exists(global.worldmap,string(id))
     image_index = 1
+
+//Name to display
 levelname = "red switch palace"
+
+//Can be entered if not pressed
 ready = image_index
 </string>
           </argument>
@@ -52,7 +61,8 @@ ready = image_index
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(rm_switchpalace_red)
+            <string>///Enters the level
+room_goto(rm_switchpalace_red)
 </string>
           </argument>
         </arguments>
@@ -75,13 +85,25 @@ ready = image_index
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if image_index = 0
+            <string>///Switch press animation
+if image_index = 0
 {
+
+    //Press the switch
     image_index = 1
+
+    //Lock Mario out
     ready = 1
+
+    //Make the sound of castles being smashed
     audio_play_sound(snd_castlebreak,0,0)
+
+    //Make some spectacular smoke
     with instance_create(x,y,obj_smoke) sprite_index = spr_castlesmoke
+
+    //Remember that it was pressed
     ds_map_add(global.worldmap,string(id),1)
+
 }
 </string>
           </argument>

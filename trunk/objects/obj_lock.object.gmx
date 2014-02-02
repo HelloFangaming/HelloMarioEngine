@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ds_map_exists(global.worldmap,string(id))
+            <string>///Lock away secret exits!
+
+//Destroy if this path is already open
+if ds_map_exists(global.worldmap,string(id))
     instance_destroy()
 </string>
           </argument>
@@ -49,9 +52,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_magic,0,0)
+            <string>///Open up this path!
+
+//Play a magical sound
+audio_play_sound(snd_magic,0,0)
+
+//Make some smoke
 instance_create(x,y,obj_smoke)
+
+//Save the fact that this path is open
 ds_map_add(global.worldmap,string(id),1)
+
+//Destroy
 instance_destroy()
 </string>
           </argument>

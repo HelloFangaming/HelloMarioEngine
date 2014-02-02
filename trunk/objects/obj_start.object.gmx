@@ -25,8 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
+            <string>///This is the beginning...
+
+//Animate
+image_speed = 0.15
+
+//Name to display
 levelname = "start"
+
+//You can't enter here!
 ready = 1
 </string>
           </argument>

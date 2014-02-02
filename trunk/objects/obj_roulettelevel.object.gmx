@@ -25,10 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
+            <string>///To play a game of roulette
+
+//Animate!
+image_speed = 0.15
+
+//Figure out if this panel has already been used
 if ds_map_exists(global.worldmap,string(id))
     instance_destroy()
+
+//Name to display
 levelname = "roulette minigame"
+
+//Able to enter
 ready = 0
 </string>
           </argument>
@@ -52,7 +61,8 @@ ready = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(rm_roulette)
+            <string>///Enters the level
+room_goto(rm_roulette)
 </string>
           </argument>
         </arguments>
@@ -75,10 +85,21 @@ ready = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_magic,0,0)
+            <string>///Beats the level
+
+//Make a magical sound
+audio_play_sound(snd_magic,0,0)
+
+//Make smoke
 instance_create(x,y,obj_smoke)
+
+//Clear the name
 obj_mapmario.mytext = ""
+
+//Make it go away forever
 ds_map_add(global.worldmap,string(id),1)
+
+//Destroy
 instance_destroy()
 </string>
           </argument>

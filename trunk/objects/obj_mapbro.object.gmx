@@ -62,13 +62,24 @@
 type = 0
 powerup = -1
 
+//Start at the left and move right 1 block
 hspeed = 0.5
 x -= 8
 alarm[0] = 32
+
+//Don't display a name
 levelname = ""
+
+//No conventional level entering
 ready = 1
+
+//Animate!
 image_speed = 0.15
+
+//Face right
 direct = 1
+
+//Figure out if this battle has already been fought
 if ds_map_exists(global.worldmap,string(id))
     instance_destroy()
 </string>
@@ -93,10 +104,12 @@ if ds_map_exists(global.worldmap,string(id))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed = 0.5
+            <string>///Move right 1 block
+hspeed = 0.5
 x = xstart-8
 alarm[0] = 32
-direct = 1</string>
+direct = 1
+</string>
           </argument>
         </arguments>
       </action>
@@ -118,9 +131,11 @@ direct = 1</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed = -0.5
+            <string>///Move left 1 block
+hspeed = -0.5
 alarm[1] = 32
-direct = -1</string>
+direct = -1
+</string>
           </argument>
         </arguments>
       </action>
@@ -142,12 +157,21 @@ direct = -1</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.ready = 0
+            <string>///Force Mario into this battle
+if other.ready = 0
 and other.speed = 0
 {
+
+    //No Mario Start!
     global.mariostart = 1
+
+    //Remember the prize
     global.prize[0] = powerup
+
+    //End the world map properly
     with other event_user(0)
+
+    //Go to a battle based on the creation code
     if type = 0
         room_goto(rm_hammerbattle)
     else if type = 1
@@ -156,6 +180,7 @@ and other.speed = 0
         room_goto(rm_boomerangbattle)
     else
         room_goto(rm_sledgebattle)
+
 }
 </string>
           </argument>
@@ -179,13 +204,23 @@ and other.speed = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if obj_mapmario.x = xstart
+            <string>///Destroy animation
+if obj_mapmario.x = xstart
 and obj_mapmario.y = ystart
 {
+
+    //Play a magical sound
     audio_play_sound(snd_magic,0,0)
+
+    //Make smoke
     instance_create(x,y,obj_smoke)
+
+    //Remember that this battle is done
     ds_map_add(global.worldmap,string(id),1)
+
+    //Bye bye!
     instance_destroy()
+
 }
 </string>
           </argument>
@@ -209,7 +244,8 @@ and obj_mapmario.y = ystart
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type = 1
+            <string>///Change to the correct sprite
+if type = 1
     sprite_index = spr_mapfbro
 else if type = 2
     sprite_index = spr_mapbbro
@@ -237,7 +273,8 @@ else if type = 3
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if direct = 1
+            <string>///Draw the bros
+if direct = 1
     draw_sprite_ext(sprite_index,image_index,round(x),y,1,1,0,c_white,1)
 else
     draw_sprite_ext(sprite_index,image_index,round(x)+16,y,-1,1,0,c_white,1)
