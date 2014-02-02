@@ -54,7 +54,7 @@
 **
 */
 
-//Default Value:
+//Default Values:
 powerup[0] = -1
 powerup[1] = -1
 powerup[2] = -1

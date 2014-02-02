@@ -36,7 +36,7 @@
 **
 */
 
-//Default Value:
+//Default Values:
 pipetype = 0
 destx = 0
 desty = 0

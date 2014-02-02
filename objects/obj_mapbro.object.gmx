@@ -58,7 +58,7 @@
 **
 */
 
-//Default Value:
+//Default Values:
 type = 0
 powerup = -1
 

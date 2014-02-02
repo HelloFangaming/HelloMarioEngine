@@ -70,7 +70,7 @@
     <instance objName="obj_veggie_large" x="320" y="384" name="inst_F8B66621" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_veggie_small" x="1056" y="320" name="inst_871C35DC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_veggie_bomb" x="608" y="384" name="inst_4A0DBA99" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_veggie_boomerang" x="240" y="384" name="inst_0673FA1B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mario" x="24" y="368" name="inst_48E24D89" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_veggie_sprout" x="1184" y="352" name="inst_38E5B1AE" locked="0" code="sprout = cs_bomb" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pullmush" x="112" y="352" name="inst_DFFBB538" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_door" x="288" y="240" name="inst_BEF48094" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -361,7 +361,6 @@
     <instance objName="obj_warproom" x="1920" y="336" name="inst_7876DA13" locked="0" code="myroom = rm_pipesatdusk_water" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warproom" x="416" y="304" name="inst_24847DB2" locked="0" code="myroom = rm_pipesatdusk_cave" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_eswitch" x="992" y="208" name="inst_677584B2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mario" x="24" y="368" name="inst_48E24D89" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset" x="1120" y="416" w="16" h="16" xo="432" yo="32" id="10002335" name="tile_4E9CEC3A" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

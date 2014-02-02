@@ -25,8 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x,y,obj_hurtsolid2)
-image_speed = 0.15</string>
+            <string>///Some kind of solid jellyfish
+
+//Animate
+image_speed = 0.15
+
+//Hurt all around
+instance_create(x,y,obj_hurtsolid2)
+</string>
           </argument>
         </arguments>
       </action>

@@ -113,12 +113,12 @@
     <instance objName="obj_left" x="1696" y="288" name="inst_B94934D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_endmarker" x="1632" y="272" name="inst_ADFF67B0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_speedmarker" x="1376" y="112" name="inst_C3850074" locked="0" code="setspeed = 2&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_speedmarker" x="1696" y="128" name="inst_3869AA8D" locked="0" code="setspeed = 1&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_checkpoint" x="160" y="272" name="inst_254E1733" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpbottom" x="1536" y="288" name="inst_E5A5F074" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warproom" x="1552" y="240" name="inst_F1244EFF" locked="0" code="postchange = 1&#xA;postx = 1968&#xA;posty = 16&#xA;myroom = rm_pipesatdusk" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_eswitch_red" x="928" y="240" name="inst_6B466D26" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jumpspawn" x="56" y="272" name="inst_F6205D64" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_checkpoint" x="160" y="272" name="inst_254E1733" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_speedmarker" x="1696" y="128" name="inst_B2657F84" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset" x="0" y="320" w="16" h="16" xo="192" yo="176" id="10004495" name="tile_D16AA869" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

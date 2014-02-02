@@ -51,17 +51,20 @@ audio_play_sound(snd_engine,0,0)</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if speed = 1
+            <string>move_snap(16,16)
+instance_create(x,y,obj_blocktrain_middle)
+with myback
 {
     move_snap(16,16)
-    instance_create(x,y,obj_blocktrain_middle)
-    if x&gt;view_xview[0]-16
-    and x&lt;view_xview[0]+336
-    and y&lt;view_yview[0]+256
-    and y&gt;view_yview[0]-16
-        audio_play_sound(snd_engine,0,0)
-    alarm[0] = 15
+    instance_create(x,y,obj_blocktrain_killer)
 }
+if x&gt;view_xview[0]-16
+and x&lt;view_xview[0]+336
+and y&lt;view_yview[0]+256
+and y&gt;view_yview[0]-16
+    audio_play_sound(snd_engine,0,0)
+if speed != 0
+    alarm[0] = 15/speed
 </string>
           </argument>
         </arguments>
@@ -101,6 +104,35 @@ and hspeed &lt; 0
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_speedmarker">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if speed != other.setspeed
+{
+    speed = other.setspeed
+    myback.speed = other.setspeed
+    move_snap(16,16)
+    alarm[0] = 15/speed
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_endmarker">
       <action>
         <libid>1</libid>
@@ -120,7 +152,8 @@ and hspeed &lt; 0
             <kind>1</kind>
             <string>speed = 0
 move_snap(16,16)
-with myback speed = 0</string>
+myback.speed = 0
+</string>
           </argument>
         </arguments>
       </action>
