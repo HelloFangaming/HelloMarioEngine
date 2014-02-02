@@ -25,21 +25,44 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed = 0.5
+            <string>///The card minigame
+
+//Start at the left and move right 1 block
+hspeed = 0.5
 x -= 8
 alarm[0] = 32
+
+//Figure out the state of this game
 ready = ds_map_find_value(global.worldmap,"cardgame")
+
+//If this panel is new
 if ready = 0
 {
+
+    //Remember that it exists
     ds_map_replace(global.worldmap,"cardgame",1)
+
+    //Allow Mario in
     ready = 1
+
+    //Make a magical sound
     audio_play_sound(snd_magic,0,0)
+
+    //Make smoke
     instance_create(x,y,obj_smoke)
+
 }
+
+//If this panel is ready to be destroyed
 else if ready = 2
 {
+
+    //Remember that it is gone
     ds_map_replace(global.worldmap,"cardgame",0)
+
+    //Destroy it after a bit
     alarm[2] = 30
+
 }
 
 </string>
@@ -64,9 +87,17 @@ else if ready = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_magic,0,0)
+            <string>///Destroy this panel
+
+//Make a magical sound
+audio_play_sound(snd_magic,0,0)
+
+//Make smoke
 instance_create(x,y,obj_smoke)
-instance_destroy()</string>
+
+//Destroy
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
@@ -88,9 +119,11 @@ instance_destroy()</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed = 0.5
+            <string>///Move right 1 block
+hspeed = 0.5
 x = xstart-8
-alarm[0] = 32</string>
+alarm[0] = 32
+</string>
           </argument>
         </arguments>
       </action>
@@ -112,8 +145,10 @@ alarm[0] = 32</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed = -0.5
-alarm[1] = 32</string>
+            <string>///Move left 1 block
+hspeed = -0.5
+alarm[1] = 32
+</string>
           </argument>
         </arguments>
       </action>
@@ -135,14 +170,21 @@ alarm[1] = 32</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 1
+            <string>///Force Mario into this game
+if ready = 1
 and other.ready = 0
 and other.speed = 0
 {
-    ready = 2
+
+    //Remember that this game is entered
     ds_map_replace(global.worldmap,"cardgame",2)
+
+    //End the world map properly
     with other event_user(0)
+
+    //Go to the game
     room_goto(rm_cardgame)
+
 }
 </string>
           </argument>
@@ -166,7 +208,8 @@ and other.speed = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ds_map_replace(global.worldmap,"cardgamex",xstart)
+            <string>///Remember this panel's coordinates
+ds_map_replace(global.worldmap,"cardgamex",xstart)
 ds_map_replace(global.worldmap,"cardgamey",y)
 </string>
           </argument>

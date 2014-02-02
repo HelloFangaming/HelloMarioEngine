@@ -25,10 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.yoshi = 2
-and other.y &lt; y-11
-    exit
-if other.invincible = 0
+            <string>///Make Mario take damage!
+
+//...but only if he is not walking on it with a shoe
+if global.yoshi != 2
+or other.y &gt; y-11
     with other event_user(0)
 </string>
           </argument>

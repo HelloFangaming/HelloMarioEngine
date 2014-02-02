@@ -25,7 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited()
+            <string>///Blue switch palace
+
+//Steal code from the red palace
+event_inherited()
+
+//Name to display
 levelname = "blue switch palace"
 </string>
           </argument>
@@ -49,7 +54,8 @@ levelname = "blue switch palace"
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(rm_switchpalace_blue)
+            <string>///Enters the level
+room_goto(rm_switchpalace_blue)
 </string>
           </argument>
         </arguments>
