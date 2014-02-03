@@ -464,14 +464,26 @@ or other.hspeed != 0
             <kind>1</kind>
             <string>audio_play_sound(snd_bump,0,0)
 audio_play_sound(snd_shatter,0,0)
-varid = instance_create(x,y,obj_shard_flash)
-with (varid) motion_set(45,3)
-varid = instance_create(x,y,obj_shard_flash)
-with (varid) motion_set(60,3)
-varid = instance_create(x,y,obj_shard_flash)
-with (varid) motion_set(120,3)
-varid = instance_create(x,y,obj_shard_flash)
-with (varid) motion_set(135,3)
+with instance_create(x,y,obj_shard)
+{
+    sprite_index = spr_shard_th
+    direction = 45
+}
+with instance_create(x,y,obj_shard)
+{
+    sprite_index = spr_shard_th
+    direction = 60
+}
+with instance_create(x,y,obj_shard)
+{
+    sprite_index = spr_shard_th
+    direction = 120
+}
+with instance_create(x,y,obj_shard)
+{
+    sprite_index = spr_shard_th
+    direction = 135
+}
 instance_destroy()
 </string>
           </argument>

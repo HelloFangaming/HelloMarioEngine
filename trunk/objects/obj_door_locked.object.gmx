@@ -8,6 +8,39 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Make a door
+instance_create(x,y,obj_door)
+
+//Play an unlocking sound
+audio_play_sound(snd_chest,0,0)
+
+//Make smoke
+instance_create(x,y,obj_smoke)
+
+//Destroy
+instance_destroy()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -25,8 +58,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(spr_door,0,x,y)
-draw_sprite(spr_door_lock,0,x,y-4)</string>
+            <string>///Draw the door
+draw_sprite(sprite_index,0,x,y)
+
+//Draw a lock on the door
+draw_sprite(spr_door_lock,0,x,y-4)
+</string>
           </argument>
         </arguments>
       </action>

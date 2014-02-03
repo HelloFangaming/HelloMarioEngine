@@ -25,8 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
-set = 0
+            <string>///A door
+
+//Do not animate
+image_speed = 0
 </string>
           </argument>
         </arguments>
@@ -49,55 +51,65 @@ set = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if position_meeting(x,y,obj_warproom)
+            <string>///What happens after Mario enters the door
+
+//Check for a warp room
+mywarp = instance_place(x,y,obj_warproom)
+
+//If a warp room object exists
+if mywarp
 {
-    mine = collision_point(x,y,obj_warproom,0,0)
-    if mine.postchange != -1
+
+    //With the warp room object
+    with mywarp
     {
-        global.postchange = mine.postchange
-        global.postx = mine.postx+8
-        global.posty = mine.posty
+
+        //If the position needs to be changed in the next room
+        if postchange != -1
+        {
+
+            //Remember what needs to be created at what coordinates
+            global.postchange = postchange
+            global.postx = postx+8
+            global.posty = posty
+
+        }
+
+        //Go to the set room
+        room_goto(myroom)
+
     }
-    room_goto(mine.myroom)
-    exit
+
 }
-instance_create(x+8,y-16,obj_mario)
-with obj_doormario instance_destroy()
-obj_camera.docamera = 1
-obj_camera.alarm[4] = 2
-if position_meeting(x,y,obj_postchange)
+
+//If no warp room object is there
+else
 {
-    obj_mario.x = postx
-    obj_mario.y = posty
-}
-with obj_persistent event_user(0)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_postchange">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if set = 0
-{
-    set = 1
-    postx = other.postx+8
-    posty = other.posty
+
+    //Get rid of door Mario
+    with obj_doormario instance_destroy()
+
+    //Check for a position change
+    mywarp = instance_place(x,y,obj_postchange)
+
+    //If the position change exists, create Mario at that position
+    if mywarp
+        instance_create(mywarp.postx+8,mywarp.posty,obj_mario)
+
+    //Otherwise, have Mario come out the same door
+    else
+        instance_create(x+8,y-16,obj_mario)
+
+    //Notify the camera
+    with obj_camera
+    {
+        docamera = 1
+        alarm[4] = 2
+    }
+
+    //Fade the screen
+    with obj_persistent event_user(0)
+
 }
 </string>
           </argument>
@@ -121,8 +133,10 @@ with obj_persistent event_user(0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
-image_index = 0</string>
+            <string>///Close the door
+image_speed = 0
+image_index = 0
+</string>
           </argument>
         </arguments>
       </action>
@@ -144,9 +158,14 @@ image_index = 0</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if image_index &lt; 4
+            <string>///Draw the door
+
+//Draw the inside of the door when needed
+if image_index &lt; 4
     draw_sprite(spr_door_inside,0,x,y)
-draw_sprite(spr_door,-1,x,y)
+
+//Draw the door on top
+draw_sprite(sprite_index,image_index,x,y)
 </string>
           </argument>
         </arguments>
@@ -169,16 +188,29 @@ draw_sprite(spr_door,-1,x,y)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-    exit
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_mario,0,0)
+            <string>///Let Mario in the door
+
+//If Mario is on the door, not jumping, and visible
+if place_meeting(x,y,obj_mario)
 and obj_mario.state != 2
+and visible = 1
 {
+
+    //Play the door sound
     audio_play_sound(snd_door,0,0)
+
+    //Animate
     image_speed = 0.15
+
+    //Create a door Mario
     instance_create(x+8,y-16,obj_doormario)
+
+    //Get rid of the real Mario
     with obj_mario instance_destroy()
+
+    //Mario enters the door after 55 frames
     alarm[0] = 55
+
 }
 </string>
           </argument>

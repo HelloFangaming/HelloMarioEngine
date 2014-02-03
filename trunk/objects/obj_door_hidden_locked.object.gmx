@@ -5,10 +5,10 @@
   <visible>0</visible>
   <depth>1</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_door_locked</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="8" enumb="0">
+    <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,8 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(spr_door_hidden,0,x,y)
-draw_sprite(spr_door_lock,0,x,y-4)</string>
+            <string>///Make a visible hidden door
+with instance_create(x,y,obj_door_hidden) visible = 1
+
+//Play an unlocking sound
+audio_play_sound(snd_chest,0,0)
+
+//Make smoke
+instance_create(x,y,obj_smoke)
+
+//Destroy
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
