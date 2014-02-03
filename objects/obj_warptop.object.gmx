@@ -25,11 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if collision_rectangle(x+12,y-2,x+20,y,obj_mario,1,1)
+            <string>///Warp from the top
+if place_meeting(x,y-2,obj_mario)
 {
-    varid = instance_create(x+16,y-32,obj_warpmario)
-    with varid direction = 270
-    with (obj_mario) instance_destroy()
+
+    //Create a downwards moving warp Mario
+    with instance_create(x+16,y-32,obj_warpmario) direction = 270
+
+    //Destroy Mario
+    with obj_mario instance_destroy()
+
 }
 </string>
           </argument>

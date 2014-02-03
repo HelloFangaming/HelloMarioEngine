@@ -318,14 +318,27 @@ and other.invincible = 0
           <argument>
             <kind>1</kind>
             <string>audio_play_sound(snd_break,0,0)
-varid = instance_create(x+8,y,obj_shard_flash)
-with (varid) motion_set(45,3)
-varid = instance_create(x+8,y,obj_shard_flash)
-with (varid) motion_set(60,3)
-varid = instance_create(x,y,obj_shard_flash)
-with (varid) motion_set(120,3)
-varid = instance_create(x,y,obj_shard_flash)
-with (varid) motion_set(135,3)</string>
+with instance_create(x+8,y,obj_shard)
+{
+    sprite_index = spr_shard_th
+    direction = 45
+}
+with instance_create(x+8,y,obj_shard)
+{
+    sprite_index = spr_shard_th
+    direction = 60
+}
+with instance_create(x,y,obj_shard)
+{
+    sprite_index = spr_shard_th
+    direction = 120
+}
+with instance_create(x,y,obj_shard)
+{
+    sprite_index = spr_shard_th
+    direction = 135
+}
+</string>
           </argument>
         </arguments>
       </action>

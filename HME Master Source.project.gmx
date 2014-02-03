@@ -1653,7 +1653,6 @@
             <object>objects\obj_thrownbrick</object>
             <object>objects\obj_redbrick_th</object>
             <object>objects\obj_shard</object>
-            <object>objects\obj_shard_flash</object>
           </objects>
           <objects name="Platforms">
             <object>objects\obj_spinmask</object>
