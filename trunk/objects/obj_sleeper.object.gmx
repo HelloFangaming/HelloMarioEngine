@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>effect_clear()
+            <string>part_system_automatic_update(1,0)
 back = background_create_from_surface(view_surface_id[0],0,0,640,480,0,0)
 instance_deactivate_all(1)
 instance_activate_object(obj_persistent)

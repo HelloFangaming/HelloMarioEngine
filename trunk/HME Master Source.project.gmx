@@ -967,12 +967,12 @@
       <sprite>sprites\spr_minibomb</sprite>
       <sprite>sprites\spr_iceball</sprite>
       <sprite>sprites\spr_superball</sprite>
+      <sprite>sprites\spr_shuriken</sprite>
+      <sprite>sprites\spr_boomerang_b</sprite>
       <sprite>sprites\spr_frozenenemy</sprite>
       <sprite>sprites\spr_frozenenemy_big</sprite>
       <sprite>sprites\spr_frozenenemy_tall</sprite>
       <sprite>sprites\spr_frozenenemy_wide</sprite>
-      <sprite>sprites\spr_shuriken</sprite>
-      <sprite>sprites\spr_boomerang_b</sprite>
     </sprites>
     <sprites name="Special">
       <sprites name="Eyecandy">
@@ -1712,7 +1712,6 @@
       </objects>
       <object>objects\obj_persistent</object>
       <object>objects\obj_titlescreen</object>
-      <object>objects\obj_skipper</object>
       <object>objects\obj_mushtoad</object>
       <object>objects\obj_chest</object>
       <object>objects\obj_gameover</object>
