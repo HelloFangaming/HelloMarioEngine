@@ -25,9 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place these in the object creation code.
-//image_blend = Rain color.
+            <string>///Create a storm!
+
+/*
+**  This item uses creation code!
+**
+**  image_blend = Rain color
+**
+*/
+
+//Create thunder after a random amount of time
 alarm[0] = random(60)+100
+
+//Play the rain sound
 alarm[1] = 2
 </string>
           </argument>
@@ -51,7 +61,8 @@ alarm[1] = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_rain,1,1)
+            <string>///Play the rain sound
+audio_play_sound(snd_rain,1,1)
 </string>
           </argument>
         </arguments>
@@ -74,9 +85,14 @@ alarm[1] = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = random(120)+130
+            <string>///Create thunder
 instance_create(0,0,obj_lightningsheet)
+
+//Make the sound of thunder
 audio_play_sound(snd_thunder,0,0)
+
+//Create more thunder after a random amount of time
+alarm[0] = random(120)+130
 </string>
           </argument>
         </arguments>
@@ -99,7 +115,9 @@ audio_play_sound(snd_thunder,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>effect_create_above(ef_rain,0,0,0,image_blend)</string>
+            <string>///Generate rain particles
+effect_create_above(ef_rain,0,0,0,image_blend)
+</string>
           </argument>
         </arguments>
       </action>
@@ -121,7 +139,9 @@ audio_play_sound(snd_thunder,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_stop_sound(snd_rain)</string>
+            <string>///Stop the rain sound
+audio_stop_sound(snd_rain)
+</string>
           </argument>
         </arguments>
       </action>

@@ -86,6 +86,30 @@ keyboard_set_map(ord('Z'),vk_control)
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Go to the title screen
+room_goto(rm_title)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="3">
       <action>
         <libid>1</libid>
@@ -192,6 +216,9 @@ if not instance_exists(obj_mariostart)
 
     //Activate everything
     instance_activate_all()
+
+    //Resume particles
+    part_system_automatic_update(1,1)
 
 }
 
@@ -322,8 +349,8 @@ if mode = 0
     //Take a screenshot
     back = background_create_from_surface(view_surface_id[0],0,0,view_wview[0],view_hview[0],0,0)
 
-    //Clean up effects
-    effect_clear()
+    //Pause particles
+    part_system_automatic_update(1,0)
 
     //Deactivate everything
     instance_deactivate_all(1)
@@ -516,6 +543,12 @@ display_reset(0,vsync)
 
 //Center the view
 alarm[2] = 1
+
+//Play the coin sound at the splash screen
+audio_play_sound(snd_coin,0,0)
+
+//Go to the title screen
+alarm[4] = 200
 </string>
           </argument>
         </arguments>
@@ -645,5 +678,8 @@ draw_text(view_xview[0],view_yview[0],message)
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>0,0</point>
+    <point>8,8</point>
+  </PhysicsShapePoints>
 </object>
