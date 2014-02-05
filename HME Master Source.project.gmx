@@ -1717,9 +1717,6 @@
       <object>objects\obj_gameover</object>
       <object>objects\obj_camera</object>
       <object>objects\obj_mariostart</object>
-      <object>objects\obj_roulette1</object>
-      <object>objects\obj_roulette2</object>
-      <object>objects\obj_roulette3</object>
       <object>objects\obj_roulettemanager</object>
       <object>objects\obj_card</object>
       <object>objects\obj_cardmanager</object>

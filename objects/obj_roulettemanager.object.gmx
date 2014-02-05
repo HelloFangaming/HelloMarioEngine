@@ -25,7 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 0
+            <string>///A thrilling game of roulette!
+
+//How many frames have stopped
+ready = 0
+
+//The frames of animation
+roulette[0] = 0
+roulette[1] = 1
+roulette[2] = 2
+
+//Animate each frame
+alarm[0] = 10
+
+//Play music
 alarm[2] = 2
 </string>
           </argument>
@@ -49,7 +62,8 @@ alarm[2] = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_bonusmusic,99,1)
+            <string>///Play music
+audio_play_sound(snd_bonusmusic,99,1)
 </string>
           </argument>
         </arguments>
@@ -72,8 +86,15 @@ alarm[2] = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.clear = 1
+            <string>///Leave the minigame
+
+//This level was beaten successfully
+global.clear = 1
+
+//Stop the music
 audio_stop_sound(snd_bonusmusic)
+
+//Return to the world map
 scr_return()
 </string>
           </argument>
@@ -97,16 +118,56 @@ scr_return()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if obj_roulette1.image_index = obj_roulette2.image_index
-and obj_roulette1.image_index = obj_roulette3.image_index
+            <string>///Animate the game
+
+//Slot #1
+if ready &lt; 1
+    roulette[0] = roulette[1]
+
+//Slot #2
+if ready &lt; 2
+    roulette[1] = roulette[2]
+
+//Slot #3
+if ready &lt; 3
 {
-    audio_play_sound(snd_1up,0,0)
-    audio_play_sound(snd_lucky,0,0)
-    lives += 1
+
+    //Increment the third slot
+    roulette[2] = (roulette[2]+1)%4
+
+    //Play the move sound
+    audio_play_sound(snd_move,0,0)
+
+    //Continue animation
+    alarm[0] = 10
+
 }
-else
-    audio_play_sound(snd_wrong,0,0)
-alarm[1] = 60
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw the game
+draw_sprite(spr_roulette1,roulette[0],112,48)
+draw_sprite(spr_roulette2,roulette[1],112,96)
+draw_sprite(spr_roulette3,roulette[2],112,160)
 </string>
           </argument>
         </arguments>
@@ -129,21 +190,43 @@ alarm[1] = 60
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 0
-    obj_roulette1.ready = 1
-if ready = 1
-    obj_roulette2.ready = 1
-if ready = 2
-    obj_roulette3.ready = 1
-if ready != 3
+            <string>///The game's logic
+
+//If the game is still active
+if ready &lt; 4
 {
+
+    //Play the correct sound
     audio_play_sound(snd_correct,0,0)
-    ready += 1
-}
-if ready = 3
-{
-    alarm[0] = 1
-    ready += 1
+
+    //Advance the game
+    ready++
+
+    //If you are at the last frame
+    if ready = 3
+    {
+
+        //If all the frames are equal
+        if roulette[0] = roulette[1]
+        and roulette[0] = roulette[2]
+        {
+
+            //Get an extra life
+            audio_play_sound(snd_1up,0,0)
+            audio_play_sound(snd_lucky,0,0)
+            lives++
+
+        }
+
+        //Otherwise, play the wrong sound
+        else
+            audio_play_sound(snd_wrong,0,0)
+
+        //Leave the game after a second
+        alarm[1] = 60
+
+    }
+
 }
 </string>
           </argument>

@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 30
+            <string>///Mario Start! animation
+
+//Wait for the game to fade out
+alarm[0] = 30
 </string>
           </argument>
         </arguments>
@@ -48,8 +51,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_activate_all()
+            <string>///End the Mario Start! screen
+
+//Re-activate everything
+instance_activate_all()
+
+//Hack the fade script to make it fade out now
 obj_persistent.done = 0
+
+//Destroy
 instance_destroy()
 </string>
           </argument>
@@ -73,7 +83,10 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>visible = 1
+            <string>///Start displaying Mario Start!
+visible = 1
+
+//Display for one second
 alarm[1] = 60
 </string>
           </argument>
@@ -97,7 +110,12 @@ alarm[1] = 60
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(spr_viewcover,0,view_xview[0],view_yview[0])
+            <string>///Draw the Mario Start! screen
+
+//Draw black in the back
+draw_sprite(spr_viewcover,0,view_xview[0],view_yview[0])
+
+//Draw the text
 draw_sprite(spr_mariostart,0,view_xview[0]+160,view_yview[0]+120)
 </string>
           </argument>
