@@ -25,9 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>part_system_automatic_update(1,0)
+            <string>///Bask in your accomplishments before finishing the level
+
+//Pause particles
+part_system_automatic_update(1,0)
+
+//Take a screenshot
 back = background_create_from_surface(view_surface_id[0],0,0,640,480,0,0)
+
+//Deactivate everything
 instance_deactivate_all(1)
+
+//Activate the persistent object
 instance_activate_object(obj_persistent)
 </string>
           </argument>
@@ -51,9 +60,16 @@ instance_activate_object(obj_persistent)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if background_exists(back)
+            <string>///Return to the world map
+
+//Delete the screenshot
+if background_exists(back)
     background_delete(back)
+
+//Stop all sounds
 audio_stop_all()
+
+//Return to the world map
 scr_return()
 </string>
           </argument>
@@ -77,7 +93,8 @@ scr_return()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if background_exists(back)
+            <string>///Draw the screenshot if it exists
+if background_exists(back)
 {
     draw_enable_alphablend(0)
     draw_background(back,view_xview[0],view_yview[0])

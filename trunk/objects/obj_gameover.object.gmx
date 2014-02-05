@@ -25,7 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 300
+            <string>///All adventures must come to an end
+
+//Last for 5 seconds
+alarm[0] = 300
+
+//Play music
 alarm[1] = 2
 </string>
           </argument>
@@ -49,7 +54,8 @@ alarm[1] = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_gameover,1,0)
+            <string>///Game over music
+audio_play_sound(snd_gameover,1,0)
 </string>
           </argument>
         </arguments>
@@ -72,8 +78,12 @@ alarm[1] = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_stop_all()
+            <string>///End the game
+
+//Re-initialise all variables
 scr_init_globals()
+
+//Go to the title screen
 room_goto(rm_title)
 </string>
           </argument>

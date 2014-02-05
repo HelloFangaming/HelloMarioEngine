@@ -51,9 +51,6 @@
   </views>
   <instances>
     <instance objName="obj_roulettemanager" x="0" y="0" name="inst_CEB43BB4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_roulette1" x="112" y="48" name="inst_EEF1C2AD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_roulette2" x="112" y="96" name="inst_C70C28B0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_roulette3" x="112" y="160" name="inst_92E7749F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
