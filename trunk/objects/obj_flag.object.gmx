@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15</string>
+            <string>///A flag for the flagpole
+
+//Animate
+image_speed = 0.15
+</string>
           </argument>
         </arguments>
       </action>
@@ -47,9 +51,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 0
+            <string>///When the flag reaches the bottom of the flagpole
+
+//Stop moving
+vspeed = 0
+
+//Snap to above the solidtop
 y = other.y-16
-obj_goalmario.alarm[0] = 45</string>
+
+//Notify goal Mario
+obj_goalmario.alarm[0] = 45
+</string>
           </argument>
         </arguments>
       </action>

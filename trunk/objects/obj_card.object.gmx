@@ -25,7 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
+            <string>///Is this the card you seek?
+
+/*
+**  This item uses creation code!
+**
+**  mycard = image_index of the card in spr_cardgame_cards
+**
+*/
+
+//Default Value:
+mycard = 0
+
+//Do not animate
+image_speed = 0
 </string>
           </argument>
         </arguments>
@@ -48,17 +61,33 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_cardgame_cards
+            <string>///Flip the card back
+
+//If the sprite is not the flip sprite
+if sprite_index = spr_cardgame_cards
 {
+
+    //Switch to the flip sprite
     sprite_index = spr_cardgame_flip
+
+    //Flip to the last frame in the animation
     image_index = 5
+
+    //Continue the animation
     alarm[1] = 7
-    exit
+
 }
-if image_index &gt; 0
+
+//If the card is not done being flipped
+else if image_index &gt; 0
 {
-    image_index -= 1
+
+    //Decrement the frame
+    image_index--
+
+    //Continue the animation
     alarm[1] = 7
+
 }
 </string>
           </argument>
@@ -82,26 +111,56 @@ if image_index &gt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if obj_cardmanager.oncard = mycard
+            <string>///Checks if a pair is a match
+
+//If the pair is a match
+if obj_cardmanager.oncard = mycard
 {
+
+    //If this card is a 1up card
     if mycard = 5
     {
+
+        //Play the sound of lives
         audio_play_sound(snd_1up,0,0)
         audio_play_sound(snd_lucky,0,0)
-        lives += 1
+
+        //Get an extra life
+        lives++
+
     }
+
+    //Otherwise, just play the correct sound
     else
         audio_play_sound(snd_correct,0,0)
+
+    //Let the game progress
     obj_cardmanager.alarm[0] = 10
+
+    //Increment the total number of cards flipped
     obj_cardmanager.count += 2
+
 }
+
+//If the pair is not a match
 else
 {
+
+    //Play the wrong sound
     audio_play_sound(snd_wrong,0,0)
-    obj_cardmanager.wrong += 1
+
+    //Increment the number of wrong choices
+    obj_cardmanager.wrong++
+
+    //Flip this card
     alarm[1] = 7
+
+    //Flip the other card in the pair
     with obj_cardmanager.lastcard alarm[1] = 7
+
+    //Let the game progress
     obj_cardmanager.alarm[0] = 50
+
 }
 </string>
           </argument>
@@ -125,20 +184,43 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index = spr_cardgame_cards
+            <string>///Finish flipping the card
+
+//Switch to the card sprite
+sprite_index = spr_cardgame_cards
+
+//Do not animate
 image_speed = 0
+
+//Pick the appropriate card
 image_index = mycard
+
+//If this is the first card picked for a pair
 if obj_cardmanager.cardcount = 0
 {
+
+    //Let the card manager remember that
     obj_cardmanager.cardcount = 1
+
+    //Make the card manager remember this card's info
     obj_cardmanager.oncard = mycard
     obj_cardmanager.lastcard = id
+
+    //Let the game progress
     obj_cardmanager.alarm[0] = 10
+
 }
+
+//If this is the second card in a pair
 else
 {
+
+    //Reset the count
     obj_cardmanager.cardcount = 0
+
+    //Check the pair
     alarm[0] = 20
+
 }
 </string>
           </argument>

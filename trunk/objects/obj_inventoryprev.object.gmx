@@ -25,11 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_inventory,0,0)
+            <string>///A preview of the world map inventory
+
+//Play the inventory sound
+audio_play_sound(snd_inventory,0,0)
+
+//A hack... Because this inherits from obj_mapmario, and we want it to show the inventory
 ready = 1
 inventory = 1
+
+//Select the last item
 boxselection = global.inventory[0]
-x = -16
 </string>
           </argument>
         </arguments>
@@ -52,7 +58,7 @@ x = -16
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Do nothing
+            <string>///Disable world map Mario's logic
 </string>
           </argument>
         </arguments>

@@ -25,7 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 0
+            <string>///The owner of the mushroom house
+
+//No chest was opened yet
+ready = 0
+
+//Greet Mario
 alarm[0] = 35
 </string>
           </argument>
@@ -49,7 +54,8 @@ alarm[0] = 35
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_return()
+            <string>///Kick that greedy plumber out of your house
+scr_return()
 </string>
           </argument>
         </arguments>
@@ -72,7 +78,8 @@ alarm[0] = 35
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with instance_create(0,0,obj_messagebox) varmsg = "Pick a box. Its contents will help you on your way."
+            <string>///Greet Mario with a message
+with instance_create(0,0,obj_messagebox) varmsg = "Pick a box. Its contents will help you on your way."
 </string>
           </argument>
         </arguments>

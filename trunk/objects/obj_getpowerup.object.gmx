@@ -93,7 +93,7 @@ if sprite_index = spr_3upmoon
 if global.inventory[0] &lt; 15
     global.inventory[0] += 1
 global.inventory[global.inventory[0]] = scr_sprite_get_constant(sprite_index)
-instance_create(0,0,obj_inventoryprev)
+instance_create(-16,0,obj_inventoryprev)
 instance_destroy()
 </string>
           </argument>

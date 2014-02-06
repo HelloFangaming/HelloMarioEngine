@@ -25,24 +25,36 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 0
+            <string>///The pause menu
+
+//Pause particles
 part_system_automatic_update(1,0)
+
+//Take a screenshot
 back = background_create_from_surface(view_surface_id[0],0,0,640,480,0,0)
+
+//Deactivate everything
 instance_deactivate_all(1)
+
+//Activate the persistent object
 instance_activate_object(obj_persistent)
+
+//Play the pause sound
 audio_play_sound(snd_pause,0,0)
-alarm[0] = 2
+
+//The selected menu item
 menu_choice = 0
-keyboard_clear(vk_enter)
+
+//Menu text
 menu[0] = "Continue"
-menu[1] = "Return to Mapscreen"
+menu[1] = "Return to World Map"
 menu[2] = "Quit Game"
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="1">
+    <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -59,34 +71,24 @@ menu[2] = "Quit Game"
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if background_exists(back)
+            <string>///Unpause the game
+
+//Activate everything
+instance_activate_all()
+
+//Resume particles
+part_system_automatic_update(1,1)
+
+//Delete the screenshot
+if background_exists(back)
     background_delete(back)
-audio_stop_all()
-audio_play_sound(snd_correct,0,0)
-scr_return()
+
+//Play the pause sound
+audio_play_sound(snd_pause,0,0)
+
+//Destroy
+instance_destroy()
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>ready = 1</string>
           </argument>
         </arguments>
       </action>
@@ -108,28 +110,52 @@ scr_return()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if background_exists(back)
+            <string>///Draw the pause menu
+
+//Draw the screenshot if it exists
+if background_exists(back)
 {
     draw_enable_alphablend(0)
     draw_background(back,view_xview[0],view_yview[0])
     draw_enable_alphablend(1)
 }
+
+//Darken the screen
 draw_sprite_ext(spr_viewcover,0,view_xview[0],view_yview[0],1,1,0,c_white,0.4)
+
+//Draw the box
 draw_sprite_ext(spr_pause,1,view_xview[0]+160,view_yview[0]+120,1,1,0,c_white,0.7)
+
+//Center the text
 draw_set_halign(fa_center)
-draw_set_valign(fa_center)
+
+//Set the aplha
 draw_set_alpha(0.7)
+
+//Set the font
 draw_set_font(global.font)
-for(i=1;i&lt;4;i+=1)
+
+//Iterate over the menu items
+for(var i = 0; i &lt; 3; i++)
 {
-    if (menu_choice = i-1)
-        text = string_lower(string(menu[i-1]))
+
+    //Make the text gold if it is the selected one
+    if menu_choice = i
+        menu[i] = string_lower(menu[i])
+
+    //Otherwise, make the text white
     else
-        text = string_upper(string(menu[i-1]))
-    draw_text(view_xview[0]+160,view_yview[0]+104+((i-1)*16),text)
+        menu[i] = string_upper(menu[i])
+
+    //Draw the text
+    draw_text(view_xview[0]+160,view_yview[0]+100+i*16,menu[i])
+
 }
+
+//Reset text alignment
 draw_set_halign(fa_left)
-draw_set_valign(fa_top)
+
+//Reset alpha
 draw_set_alpha(1)
 </string>
           </argument>
@@ -153,9 +179,10 @@ draw_set_alpha(1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if menu_choice &lt; 2
+            <string>///Select a lower menu item
+if menu_choice &lt; 2
 {
-    menu_choice += 1
+    menu_choice++
     audio_play_sound(snd_move,0,0)
 }
 </string>
@@ -180,9 +207,10 @@ draw_set_alpha(1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if menu_choice &gt; 0
+            <string>///Select a higher menu item
+if menu_choice &gt; 0
 {
-    menu_choice -= 1
+    menu_choice--
     audio_play_sound(snd_move,0,0)
 }
 </string>
@@ -207,26 +235,55 @@ draw_set_alpha(1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if menu_choice = 0
+            <string>///Menu selection
+
+//Unpause the game if the first choice is selected
+if menu_choice = 0
 {
-    instance_activate_all()
-    part_system_automatic_update(1,1)
+
+    //Unpause
+    event_user(0)
+
+    //Clear the shift key press
+    keyboard_clear(vk_shift)
+
+}
+
+//For the second menu item
+else if menu_choice = 1
+{
+
+    //Activate the level manager...
+    instance_activate_object(obj_levelmanager)
+
+    //...and tell it to stop the music
+    with obj_levelmanager event_perform(ev_alarm,1)
+
+    //Delete the screenshot
     if background_exists(back)
         background_delete(back)
-    audio_play_sound(snd_pause,0,0)
-    keyboard_clear(vk_shift)
-    instance_destroy()
-}
-if menu_choice = 1
-{
-    instance_activate_object(obj_levelmanager)
-    obj_levelmanager.alarm[1] = 1
-    alarm[1] = 2
-}
-if menu_choice=2
-{
+
+    //Stop all sounds
+    audio_stop_all()
+
+    //Play the correct sound
     audio_play_sound(snd_correct,0,0)
+
+    //Return to the world map
+    scr_return()
+
+}
+
+//For the last menu item
+else
+{
+
+    //Play the correct sound
+    audio_play_sound(snd_correct,0,0)
+
+    //End the game
     game_end()
+
 }
 </string>
           </argument>
@@ -250,16 +307,16 @@ if menu_choice=2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not keyboard_check(vk_alt)
-and ready = 1
+            <string>///Unpause the game
+if not keyboard_check(vk_alt)
 {
-    instance_activate_all()
-    part_system_automatic_update(1,1)
-    if background_exists(back)
-        background_delete(back)
-    audio_play_sound(snd_pause,0,0)
+
+    //Unpause
+    event_user(0)
+
+    //Clear the enter key press
     keyboard_clear(vk_enter)
-    instance_destroy()
+
 }
 </string>
           </argument>

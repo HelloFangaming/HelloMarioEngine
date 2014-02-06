@@ -25,10 +25,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_mapmario.ready = 1
+            <string>///The save menu
+
+//Change Mario to the event state
+obj_mapmario.ready = 1
+
+//Play message sound
 audio_play_sound(snd_message,0,0)
+
+//Play Mario's voice
 audio_play_sound(snd_hoohoo,0,0)
+
+//The selected menu item
 menu_choice = 0
+
+//Menu text
 menu[0] = "Save and Continue"
 menu[1] = "Save and Quit"
 menu[2] = "Continue without Saving"
@@ -54,22 +65,44 @@ menu[2] = "Continue without Saving"
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(spr_viewcover,0,view_xview[0],view_yview[0],1,1,0,c_white,0.4)
+            <string>///Draw the save menu
+
+//Darken the screen
+draw_sprite_ext(spr_viewcover,0,view_xview[0],view_yview[0],1,1,0,c_white,0.4)
+
+//Draw the box
 draw_sprite_ext(spr_pause,2,view_xview[0]+160,view_yview[0]+120,1,1,0,c_white,0.7)
+
+//Center the text
 draw_set_halign(fa_center)
-draw_set_valign(fa_center)
+
+//Set the alpha
 draw_set_alpha(0.7)
+
+//Set the font
 draw_set_font(global.font)
-for(i=1;i&lt;4;i+=1)
+
+//Iterate over the menu items
+for(var i = 0; i &lt; 3; i++)
 {
-    if (menu_choice = i-1)
-        text = string_lower(string(menu[i-1]))
+
+    //Make the text gold if it is the selected one
+    if menu_choice = i
+        menu[i] = string_lower(menu[i])
+
+    //Otherwise, make the text white
     else
-        text = string_upper(string(menu[i-1]))
-    draw_text(view_xview[0]+160,view_yview[0]+104+((i-1)*16),text)
+        menu[i] = string_upper(menu[i])
+
+    //Draw the text
+    draw_text(view_xview[0]+160,view_yview[0]+100+i*16,menu[i])
+
 }
+
+//Reset text alignment
 draw_set_halign(fa_left)
-draw_set_valign(fa_top)
+
+//Reset alpha
 draw_set_alpha(1)
 </string>
           </argument>
@@ -93,9 +126,10 @@ draw_set_alpha(1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if menu_choice &lt; 2
+            <string>///Select a lower menu item
+if menu_choice &lt; 2
 {
-    menu_choice += 1
+    menu_choice++
     audio_play_sound(snd_move,0,0)
 }
 </string>
@@ -120,9 +154,10 @@ draw_set_alpha(1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if menu_choice &gt; 0
+            <string>///Select a higher menu item
+if menu_choice &gt; 0
 {
-    menu_choice -= 1
+    menu_choice--
     audio_play_sound(snd_move,0,0)
 }
 </string>
@@ -147,17 +182,35 @@ draw_set_alpha(1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if menu_choice = 2
+            <string>///Menu selection
+
+//Just play the correct sound for the third menu choice
+if menu_choice = 2
     audio_play_sound(snd_correct,0,0)
+
+//Otherwise
 else
 {
+
+    //Play the whistle sound
     audio_play_sound(snd_whistle,0,0)
+
+    //Save the game
     scr_save(global.file)
+
+    //End the game if the second menu item is selected
     if menu_choice = 1
         game_end()
+
 }
-with obj_mapmario ready = 0
+
+//Reset Mario's state
+obj_mapmario.ready = 0
+
+//Clear the shift key press
 keyboard_clear(vk_shift)
+
+//Destroy
 instance_destroy()
 </string>
           </argument>

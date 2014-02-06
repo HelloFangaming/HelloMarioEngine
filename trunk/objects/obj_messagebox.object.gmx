@@ -34,7 +34,7 @@
 **
 */
 
-//Default Values:
+//Default Value:
 varmsg = "No message set!"
 
 //Can the text be seen?
