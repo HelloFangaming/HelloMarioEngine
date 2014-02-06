@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0</string>
+            <string>///Its contents will help you on your way
+
+//Do not animate
+image_speed = 0
+</string>
           </argument>
         </arguments>
       </action>
@@ -47,15 +51,29 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if obj_mushtoad.ready = 0
-and collision_rectangle(x,y,x+31,y+31,obj_mario,0,0)
+            <string>///Chest selection
+
+//If no chest is open and Mario is above this one
+if obj_mushtoad.ready = 0
+and place_meeting(x,y,obj_mario)
 {
+
+    //Open the chest visually
     image_index = 1
+
+    //Let Toad know that a chest was opened
     obj_mushtoad.ready = 1
+
+    //Tell Toad to kick Mario out
     obj_mushtoad.alarm[1] = 200
+
+    //Stop the music before getting kicked out
     obj_levelmanager.alarm[1] = 199
-    varid = instance_create(x+8,y,obj_getpowerup)
-    varid.sprite_index = scr_constant_get_sprite(global.prize[type])
+
+    //Get the powerup
+    powerup = instance_create(x+8,y,obj_getpowerup)
+    powerup.sprite_index = scr_constant_get_sprite(global.prize[type])
+
 }
 </string>
           </argument>

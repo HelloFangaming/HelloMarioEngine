@@ -25,20 +25,27 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>count = ds_map_find_value(global.cardgame,"COUNT")
-with obj_card
-{
-    if ds_map_exists(global.cardgame,string(id))
-    {
-        sprite_index = spr_cardgame_cards
-        image_index = mycard
-    }
-}
+            <string>///A game of card matching
+
+//Remember the previous card count
+count = ds_map_find_value(global.cardgame,"COUNT")
+
+//The game is waiting for input
 ready = 0
+
+//Number of cards flipped in the current pair
 cardcount = 0
+
+//Number of wrong matches
 wrong = 0
+
+//The image on the last card flipped
 oncard = -1
+
+//The id of the last card flipped
 lastcard = 0
+
+//Play music
 alarm[1] = 2
 </string>
           </argument>
@@ -62,7 +69,8 @@ alarm[1] = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_bonusmusic,99,1)
+            <string>///Play music
+audio_play_sound(snd_bonusmusic,99,1)
 </string>
           </argument>
         </arguments>
@@ -85,9 +93,14 @@ alarm[1] = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if wrong = 2
+            <string>///Progress the game
+
+//Return to the world map if there were 2 wrong matches or 18 cards flipped
+if wrong = 2
 or count = 18
     scr_return()
+
+//Otherwise, wait for user input
 else
     ready = 0
 </string>
@@ -112,32 +125,64 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 0
+            <string>///Move the cursor
+
+//If the game is waiting for input
+if ready = 0
 {
+
+    //If up is pressed not on the top row
     if keyboard_check_pressed(vk_up)
     and y != 56
     {
+
+        //Move to the card above
         y -= 64
+
+        //Play the move sound
         audio_play_sound(snd_move,0,0)
+
     }
+
+    //If down is pressed not on the bottom row
     if keyboard_check_pressed(vk_down)
     and y != 184
     {
+
+        //Move to the card below
         y += 64
+
+        //Play the move sound
         audio_play_sound(snd_move,0,0)
+
     }
+
+    //If left is pressed not on the left row
     if keyboard_check_pressed(vk_left)
     and x != 40
     {
+
+        //Move to the card to the left
         x -= 48
+
+        //Play the move sound
         audio_play_sound(snd_move,0,0)
+
     }
+
+    //If right is pressed not on the right row
     if keyboard_check_pressed(vk_right)
     and x != 280
     {
+
+        //Move to the card to the right
         x += 48
+
+        //Play the move sound
         audio_play_sound(snd_move,0,0)
+
     }
+
 }
 </string>
           </argument>
@@ -161,14 +206,23 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if keyboard_check_pressed(vk_shift)
+            <string>///Flip cards
+
+//If shift is pressed when the game is accepting input and the card is not flipped
+if other.sprite_index = spr_cardgame_flip
 and ready = 0
-and other.sprite_index = spr_cardgame_flip
+and keyboard_check_pressed(vk_shift)
 {
+
+    //Disable input
     ready = 1
+
+    //Play the correct sound
     audio_play_sound(snd_correct,0,0)
+
+    //Make the card start flipping
     other.image_speed = 0.3
-    other.image_index = 0
+
 }
 </string>
           </argument>
@@ -192,17 +246,73 @@ and other.sprite_index = spr_cardgame_flip
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_stop_sound(snd_bonusmusic)
+            <string>///Remember the state of the game
+
+//Stop the music
+audio_stop_sound(snd_bonusmusic)
+
+//Clear the state of the game if all cards were flipped
 if count = 18
     ds_map_clear(global.cardgame)
+
+//Otherwise
 else
 {
+
+    //Remember the number of cards flipped
     ds_map_replace(global.cardgame,"COUNT",count)
+
+    //For all cards
     with obj_card
     {
+
+        //Remember cards that are flipped
         if sprite_index = spr_cardgame_cards
             ds_map_replace(global.cardgame,string(id),1)
+
     }
+
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Flip the cards that were flipped in the previous game
+
+//For all cards
+with obj_card
+{
+
+    //If the card was flipped in a previous game
+    if ds_map_exists(global.cardgame,string(id))
+    {
+
+        //Flip the card
+        sprite_index = spr_cardgame_cards
+
+        //Choose the correct card image
+        image_index = mycard
+
+    }
+
 }
 </string>
           </argument>

@@ -25,12 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>menu_choice = 0
+            <string>///The title screen
+
+//The selected menu item
+menu_choice = 0
+
+//The transparency for the powered by text
 fade = 1
+
+//Start fading out the powered by text after 2 seconds
 alarm[0] = 120
+
+//Play music
 alarm[1] = 1
+
+//Clear all data structures
 ds_map_clear(global.worldmap)
 ds_map_clear(global.cardgame)
+
+//Menu text
 menu[0] = "File A"
 menu[1] = "File B"
 menu[2] = "File C"
@@ -56,7 +69,8 @@ menu[2] = "File C"
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_titlemusic,99,1)
+            <string>///Play music
+audio_play_sound(snd_titlemusic,99,1)
 </string>
           </argument>
         </arguments>
@@ -79,7 +93,8 @@ menu[2] = "File C"
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if fade != 0
+            <string>///Fade out the powered by text
+if fade != 0
 {
     fade -= 0.01
     alarm[0] = 1
@@ -106,27 +121,54 @@ menu[2] = "File C"
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(spr_pause,0,x,y,1,1,0,c_white,0.7)
+            <string>///Draw the title screen
+
+//Draw the box
+draw_sprite_ext(spr_pause,0,x,y,1,1,0,c_white,0.7)
+
+//Set the font
 draw_set_font(global.font)
+
+//If the powered by text is not faded out
 if fade != 0
 {
+
+    //Set the alpha
     draw_set_alpha(fade)
-    //You are allowed to remove the line below if you mention the Hello Mario Engine at least somewhere else.
+
+    //Powered by text
+    //You are allowed to remove the line below if you mention the Hello Mario Engine at least somewhere else
     draw_text(2,2,"POWERED BY HELLO MARIO ENGINE")
+
 }
+
+//Center the text
 draw_set_halign(fa_center)
-draw_set_valign(fa_center)
+
+//Set the aplha
 draw_set_alpha(0.7)
-for(i=1;i&lt;4;i+=1)
+
+//Iterate over the menu items
+for(var i = 0; i &lt; 3; i++)
 {
-    if (menu_choice = i-1)
-        text = string_lower(string(menu[i-1]))
+
+    //Make the text gold if it is the selected one
+    if menu_choice = i
+        menu[i] = string_lower(menu[i])
+
+    //Otherwise, make the text white
     else
-        text = string_upper(string(menu[i-1]))
-    draw_text(x,y-16+((i-1)*16),text)
+        menu[i] = string_upper(menu[i])
+
+    //Draw the text
+    draw_text(x,y-20+i*16,menu[i])
+
 }
+
+//Reset text alignment
 draw_set_halign(fa_left)
-draw_set_valign(fa_top)
+
+//Reset alpha
 draw_set_alpha(1)
 </string>
           </argument>
@@ -150,9 +192,10 @@ draw_set_alpha(1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if menu_choice &lt; 2 
+            <string>///Select a lower menu item
+if menu_choice &lt; 2 
 {
-    menu_choice += 1
+    menu_choice++
     audio_play_sound(snd_move,0,0)
 }
 </string>
@@ -177,9 +220,10 @@ draw_set_alpha(1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if menu_choice &gt; 0
+            <string>///Select a higher menu item
+if menu_choice &gt; 0
 {
-    menu_choice -= 1
+    menu_choice--
     audio_play_sound(snd_move,0,0)
 }
 </string>
@@ -204,17 +248,30 @@ draw_set_alpha(1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_enterstage,0,0)
+            <string>///Load the selected file
+
+//Play the enter level sound
+audio_play_sound(snd_enterstage,0,0)
+
+//Play Mario's voice
 audio_play_sound(snd_letsgo,0,0)
+
+//Stop the music
 audio_stop_sound(snd_titlemusic)
+
+//Figure out what save file is selected
 if menu_choice = 0
     global.file = "SaveA.sav"
 else if menu_choice = 1
     global.file = "SaveB.sav"
 else
     global.file = "SaveC.sav"
+
+//Load the selected save file
 if file_exists(global.file)
     scr_load(global.file)
+
+//Go to the world map
 scr_return()
 </string>
           </argument>

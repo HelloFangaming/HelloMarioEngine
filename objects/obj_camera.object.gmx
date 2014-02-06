@@ -735,6 +735,7 @@ and canpause = 0
     canpause = 1
     alarm[10] = 4
     instance_create(view_xview[0],view_yview[0],obj_pauseshade)
+    keyboard_clear(vk_enter)
 }
 </string>
           </argument>
