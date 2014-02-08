@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.pipetype = 0
+            <string>///Deals with the pipe areas between world map pipes
+
+//Create warp Mario inside the correct pipe 
+if global.pipetype = 0
     instance_create(48,32,obj_warpmario)
 else if global.pipetype = 1
     instance_create(272,96,obj_warpmario)
@@ -51,7 +54,9 @@ else if global.pipetype = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_stop_sound(snd_music_under)</string>
+            <string>///Stop the music
+audio_stop_sound(snd_music_under)
+</string>
           </argument>
         </arguments>
       </action>

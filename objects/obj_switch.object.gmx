@@ -25,8 +25,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
-ready = 0</string>
+            <string>///Activate special blocks everywhere!
+
+/*
+**  This item uses creation code!
+**
+**  sprite_index = Sprite of the switch to use
+**
+*/
+
+//Do not animate
+image_speed = 0
+
+//Make the switch kinda solid
+mysolid = instance_create(x,y+8,obj_solid)
+mysolid.image_xscale = 2
+mysolid.image_yscale = 2
+</string>
           </argument>
         </arguments>
       </action>
@@ -48,18 +63,28 @@ ready = 0</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_stop_sound(snd_palacemusic)
+            <string>///End the switch press
+
+//Prevent the P-Switch song from playing
 audio_stop_sound(snd_switchsong)
+
+//Play the victory music
 audio_play_sound(snd_flagsong,1,0)
+
+//Choose the appropriate global variable to activate
 if sprite_index = spr_switch_red
     global.palacered = 1
-if sprite_index = spr_switch_blue
+else if sprite_index = spr_switch_blue
     global.palaceblue = 1
-if sprite_index = spr_switch_yellow
+else if sprite_index = spr_switch_yellow
     global.palaceyellow = 1
-if sprite_index = spr_switch_green
+else if sprite_index = spr_switch_green
     global.palacegreen = 1
+
+//Clear the level
 global.clear = 1
+
+//Let Mario bask in his victory
 with instance_create(0,0,obj_sleeper) alarm[0] = 390
 </string>
           </argument>
@@ -83,12 +108,28 @@ with instance_create(0,0,obj_sleeper) alarm[0] = 390
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.vspeed &gt; 0
+            <string>///Press the switch
+
+//If Mario jumps on the unpressed switch
+if other.vspeed &gt;= 0
 and image_speed = 0
 {
+
+    //Play a thwomp sound
     audio_play_sound(snd_thwomp,0,0)
+
+    //Animate the switch press
     image_speed = 1
+
+    //Destroy the solid
+    with mysolid instance_destroy()
+
+    //Stop the music
+    obj_levelmanager.alarm[1] = 2
+
+    //End the switch press
     alarm[0] = 3
+
 }
 </string>
           </argument>

@@ -25,8 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 0
-image_speed = 0</string>
+            <string>///Receive a prize
+
+//Whether the prize appeared
+ready = 0
+
+//Do not animate
+image_speed = 0
+</string>
           </argument>
         </arguments>
       </action>
@@ -48,8 +54,14 @@ image_speed = 0</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x,y,obj_smoke)
-visible = 0</string>
+            <string>///Dissapear in a burst of smoke
+
+//Create smoke
+instance_create(x,y,obj_smoke)
+
+//Turn invisible
+visible = 0
+</string>
           </argument>
         </arguments>
       </action>
@@ -71,7 +83,8 @@ visible = 0</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_return()
+            <string>///Return to the world map
+scr_return()
 </string>
           </argument>
         </arguments>
@@ -94,13 +107,22 @@ visible = 0</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 0
-and visible = 0
+            <string>///Should the prize appear?
+
+//If it hasn't appeared yet, and no enemies exist
+if ready = 0
 and instance_number(obj_parenemy2) = 0
 {
+
+    //Create smoke
     instance_create(x,y,obj_smoke)
+
+    //Become visible
     visible = 1
+
+    //Chest appeared
     ready = 1
+
 }
 </string>
           </argument>
@@ -124,15 +146,30 @@ and instance_number(obj_parenemy2) = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 1
-and visible = 1
+            <string>///Open the prize chest
+
+//If the prize appeared
+if ready = 1
 {
+
+    //Return to the world map later
     alarm[0] = 200
+
+    //Make the chest dissapear in a bit
     alarm[1] = 50
+
+    //Stop the music before returning to the world map
     obj_levelmanager.alarm[1] = 199
+
+    //Chest is empty
     ready = 2
+
+    //Open chest
     image_index = 1
+
+    //Receive prize
     with instance_create(x,y,obj_getpowerup) sprite_index = scr_constant_get_sprite(global.prize[0])
+
 }
 </string>
           </argument>
