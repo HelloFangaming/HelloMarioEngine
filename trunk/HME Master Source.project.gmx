@@ -454,10 +454,6 @@
       <sprite>sprites\spr_noteblock</sprite>
       <sprite>sprites\spr_noteblock_yellow</sprite>
       <sprite>sprites\spr_noteblock_warp</sprite>
-      <sprite>sprites\spr_donut</sprite>
-      <sprite>sprites\spr_donut_shake</sprite>
-      <sprite>sprites\spr_donut_red</sprite>
-      <sprite>sprites\spr_donut_shake_red</sprite>
       <sprite>sprites\spr_onoffblock</sprite>
       <sprite>sprites\spr_onoffplatform</sprite>
       <sprite>sprites\spr_flowerblock</sprite>
@@ -844,6 +840,10 @@
       </sprites>
       <sprites name="Platforms">
         <sprite>sprites\spr_platform</sprite>
+        <sprite>sprites\spr_donut</sprite>
+        <sprite>sprites\spr_donut_shake</sprite>
+        <sprite>sprites\spr_donut_red</sprite>
+        <sprite>sprites\spr_donut_shake_red</sprite>
         <sprite>sprites\spr_platformspin</sprite>
         <sprite>sprites\spr_platformtimed</sprite>
         <sprite>sprites\spr_arrowplatform</sprite>
@@ -1170,8 +1170,6 @@
       <object>objects\obj_noteblock</object>
       <object>objects\obj_noteblock_yellow</object>
       <object>objects\obj_noteblock_warp</object>
-      <object>objects\obj_donut</object>
-      <object>objects\obj_donut_red</object>
       <object>objects\obj_onoffblock</object>
       <object>objects\obj_onoffplatform</object>
       <object>objects\obj_flowerblock</object>
@@ -1396,6 +1394,8 @@
         <object>objects\obj_platform_moving</object>
         <object>objects\obj_platform_touch</object>
         <object>objects\obj_platform_falling</object>
+        <object>objects\obj_donut</object>
+        <object>objects\obj_donut_red</object>
         <object>objects\obj_platformspin</object>
         <object>objects\obj_platformtimed</object>
         <object>objects\obj_arrowplatform</object>
@@ -1718,8 +1718,8 @@
       <object>objects\obj_camera</object>
       <object>objects\obj_mariostart</object>
       <object>objects\obj_roulettemanager</object>
-      <object>objects\obj_card</object>
       <object>objects\obj_cardmanager</object>
+      <object>objects\obj_card</object>
       <object>objects\obj_switch</object>
       <object>objects\obj_hammerprize</object>
       <object>objects\obj_mappipemanager</object>
