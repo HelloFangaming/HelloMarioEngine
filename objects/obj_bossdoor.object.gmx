@@ -138,7 +138,7 @@ and obj_mario.x &gt; x+26
     if global.time &gt; 0
         obj_levelmanager.alarm[2] = 0
     with instance_create(x,y,obj_solid) image_yscale = 4
-    varid = instance_create(obj_camera.x,obj_camera.y,obj_autoscroll)
+    varid = instance_create(obj_levelmanager.x,obj_levelmanager.y,obj_autoscroll)
     varid.speed = 3
     audio_play_sound(snd_castlebreak,0,0)
     instance_create(x,y,obj_smoke)

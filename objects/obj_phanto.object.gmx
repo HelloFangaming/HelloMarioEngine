@@ -59,7 +59,7 @@ oldy = obj_key.y
     {
         if obj_yoshi.fullmouth = 1
         and obj_yoshi.inmouth = obj_key
-        move_towards_point(obj_camera.x,obj_camera.y,1)
+        move_towards_point(obj_levelmanager.x,obj_levelmanager.y,1)
     }
 }
 if position_meeting(x+8,y+8,obj_key)

@@ -26,17 +26,17 @@
           <argument>
             <kind>1</kind>
             <string>///Prevents the camera from moving backwards
-if instance_exists(obj_camera)
+if instance_exists(obj_levelmanager)
 {
 
-    //If the camera is to the left, move it back to where it was previously
-    if obj_camera.docamera = 0
-    and obj_camera.x &lt; x
-        obj_camera.x = x
+    //If the level manager is to the left, move it back to where it was previously
+    if obj_levelmanager.barrier = 0
+    and obj_levelmanager.x &lt; x
+        obj_levelmanager.x = x
 
-    //Otherwise, move to the camera's location
+    //Otherwise, move to its location
     else
-        x = obj_camera.x
+        x = obj_levelmanager.x
 
 }
 </string>

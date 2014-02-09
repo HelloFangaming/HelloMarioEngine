@@ -55,8 +55,8 @@ and y&gt;view_yview[0]-32
 {
     if instance_exists(obj_mario)
         move_towards_point(obj_mario.x,obj_mario.y,0.5)
-    if instance_exists(obj_camera)
-        move_towards_point(obj_camera.x,obj_camera.y,0.5)
+    else if instance_exists(obj_levelmanager)
+        move_towards_point(obj_levelmanager.x,obj_levelmanager.y,0.5)
 }
 </string>
           </argument>
@@ -89,8 +89,8 @@ else
 {
     if instance_exists(obj_mario)
         move_towards_point(obj_mario.x,obj_mario.y,0)
-    if instance_exists(obj_camera)
-        move_towards_point(obj_camera.x,obj_camera.y,0)
+    else if instance_exists(obj_levelmanager)
+        move_towards_point(obj_levelmanager.x,obj_levelmanager.y,0)
 }
 </string>
           </argument>
