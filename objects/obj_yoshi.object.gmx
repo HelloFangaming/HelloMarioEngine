@@ -3,7 +3,7 @@
   <spriteName>spr_yoshi_walk</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-4</depth>
+  <depth>-5</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>spr_smallmask</maskName>
@@ -414,13 +414,14 @@ instance_destroy()
             flyanim = 1
         }
     }
+    depth = -5
 }
-if instance_exists(obj_deadmario)
+else if instance_exists(obj_deadmario)
 {
     global.yoshi = 0
     instance_destroy()
 }
-if instance_exists(obj_goalmario)
+else if instance_exists(obj_goalmario)
 {
     x = obj_goalmario.x
     y = obj_goalmario.y
@@ -438,7 +439,22 @@ if instance_exists(obj_goalmario)
         image_speed = 0.15
     obj_goalmario.visible = 0
 }
-if instance_exists(obj_warpnoteblock)
+else if instance_exists(obj_warpmario)
+{
+    x = obj_warpmario.x
+    y = obj_warpmario.y
+    if obj_warpmario.hspeed = 0
+        image_speed = 0
+    else
+        image_speed = 0.15
+    obj_warpmario.visible = 0
+    if obj_warpmario.speed = 3
+        visible = 0
+    else
+        visible = 1
+    depth = 11
+}
+else if instance_exists(obj_warpnoteblock)
 {
     x = obj_warpnoteblock.x
     y = obj_warpnoteblock.y
@@ -453,7 +469,7 @@ if instance_exists(obj_warpnoteblock)
     image_index = 0
     obj_warpnoteblock.visible = 0
 }
-if instance_exists(obj_jumpspawn)
+else if instance_exists(obj_jumpspawn)
 {
     x = obj_jumpspawn.x
     y = obj_jumpspawn.y
@@ -557,17 +573,22 @@ or inmouth = obj_getshoe
     if obj_mario.isflashing = 1
         shader_reset()
 }
-if instance_exists(obj_goalmario)
+else if instance_exists(obj_goalmario)
 {
     draw_sprite_ext(sprite_index,image_index,round(x),y,obj_goalmario.image_xscale,1,0,c_white,obj_goalmario.image_alpha)
     draw_sprite_ext(mymario,0,round(x)-5*obj_goalmario.image_xscale,y-9,obj_goalmario.image_xscale,1,0,c_white,obj_goalmario.image_alpha)
 }
-if instance_exists(obj_warpnoteblock)
+else if instance_exists(obj_warpmario)
+{
+    draw_sprite_ext(sprite_index,image_index,round(x),y,obj_warpmario.direct,1,0,c_white,obj_warpmario.alpha)
+    draw_sprite_ext(mymario,0,round(x)-5*obj_warpmario.direct,y-9,obj_warpmario.direct,1,0,c_white,obj_warpmario.alpha)
+}
+else if instance_exists(obj_warpnoteblock)
 {
     draw_sprite_ext(sprite_index,image_index,round(x),y,obj_warpnoteblock.direct,1,0,c_white,1)
     draw_sprite_ext(mymario,0,round(x)-5*obj_warpnoteblock.direct,y-9,obj_warpnoteblock.direct,1,0,c_white,1)
 }
-if instance_exists(obj_jumpspawn)
+else if instance_exists(obj_jumpspawn)
 {
     draw_sprite_ext(sprite_index,image_index,round(x),y,1,1,0,c_white,1)
     draw_sprite_ext(mymario,0,round(x)-5,y-9,1,1,0,c_white,1)
