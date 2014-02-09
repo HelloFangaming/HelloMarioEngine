@@ -85,7 +85,7 @@ varid.xmax = xmax
           <argument>
             <kind>1</kind>
             <string>visible = 1
-if obj_camera.x &gt; (xmax-xmin)/2+xmin
+if obj_levelmanager.x &gt; (xmax-xmin)/2+xmin
     x = view_xview[0]-64
 else
     x = view_xview[0]+384
@@ -181,15 +181,15 @@ if instance_number(obj_mario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_camera)
+            <string>if instance_exists(obj_levelmanager)
 and not instance_exists(obj_autoscroll)
 {
-    if obj_camera.x &gt; xmin
-    and obj_camera.x &lt; xmax
+    if obj_levelmanager.x &gt; xmin
+    and obj_levelmanager.x &lt; xmax
     {
-        if obj_camera.x &gt; x
+        if obj_levelmanager.x &gt; x
             hspeed += 0.05
-        if obj_camera.x &lt; x
+        if obj_levelmanager.x &lt; x
             hspeed += -0.05
         if x &lt; view_xview[0]-15
             x = view_xview[0]-15
@@ -198,9 +198,9 @@ and not instance_exists(obj_autoscroll)
     }
     else
     {
-        if obj_camera.x &gt; (xmax-xmin)/2+xmin
+        if obj_levelmanager.x &gt; (xmax-xmin)/2+xmin
             hspeed += -0.05
-        if obj_camera.x &lt; (xmax-xmin)/2+xmin
+        if obj_levelmanager.x &lt; (xmax-xmin)/2+xmin
             hspeed += 0.05
     }
     if hspeed &gt; 1.5

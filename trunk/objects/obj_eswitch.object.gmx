@@ -168,8 +168,11 @@ and image_index = 0
 {
     image_index = 1
     audio_play_sound(snd_thwomp,0,0)
-    with obj_camera event_user(1)
-    obj_camera.alarm[1] = 800
+    with obj_levelmanager
+    {
+        event_user(1)
+        alarm[10] = 800
+    }
     alarm[0] = 800
 }
 </string>

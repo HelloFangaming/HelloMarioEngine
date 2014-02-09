@@ -197,8 +197,11 @@ and sprite_index = spr_pswitch
             <kind>1</kind>
             <string>if sprite_index = spr_pswitch_press
 {
-    with obj_camera event_user(1)
-    obj_camera.alarm[1] = 800
+    with obj_levelmanager
+    {
+        event_user(1)
+        alarm[10] = 800
+    }
     instance_create(x,y,obj_smoke)
     instance_destroy()
 }

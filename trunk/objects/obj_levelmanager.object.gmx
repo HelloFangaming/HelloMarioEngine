@@ -3,10 +3,10 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-7</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
-  <maskName>&lt;undefined&gt;</maskName>
+  <maskName>spr_enemymask</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Handles music, the timer, Mario Start!, checkpoints, and position changing
+            <string>///Manages the level, and required for all levels
 
 /*
 **  This item uses creation code!
@@ -44,11 +44,334 @@ if global.pswitch = 0
 and global.star = 0
     alarm[0] = 2
 
-//Create the camera object
-instance_create(0,0,obj_camera)
+//Make the view follow along
+view_object[0] = obj_levelmanager
 
-//Make the view follow the camera
-view_object[0] = obj_camera
+//Animation variable
+anim = 0
+
+//Increment animation variable
+alarm[5] = 7
+
+//Barrier not enforced
+barrier = 1
+
+//Enforce barrier
+alarm[6] = 3
+
+//P-Switch is off
+switchon = 0
+
+//P-Meter state
+pmeter = 0
+
+//P-Meter slowdown
+slowdown = 0
+
+//Enable P-Meter
+alarm[7] = 15
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Turns off the P-Switch
+
+//If the P-Switch is on
+if switchon = 1
+{
+
+    //Turn off the P-Switch
+    switchon = 0
+
+    //Change bricks into coins
+    with obj_brick
+    {
+        instance_create(x,y,obj_coin)
+        instance_destroy()
+    }
+
+    //Change fake coins into bricks
+    with obj_coinchange
+    {
+        instance_create(x,y,obj_brick)
+        instance_destroy()
+    }
+
+    //Make P-Coins invisible
+    with obj_pcoin visible = 0
+
+    //Get rid of hidden springs
+    with obj_spring_blue
+    {
+        instance_create(x,y,obj_smoke)
+        instance_destroy()
+    }
+
+    //Make hidden doors invisible
+    with obj_door_hidden visible = 0
+    with obj_door_hidden_locked visible = 0
+
+    //Turn off P-Platforms
+    with obj_pplatform event_user(1)
+
+    //Turn on conveyor belts
+    with obj_conveyor_left image_speed = 0.75
+    with obj_conveyor_right image_speed = 0.75
+
+    //Stop the switch song
+    audio_stop_sound(snd_switchsong)
+
+    //Restart the music
+    alarm[0] = 1
+
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="9">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Make the P-Meter flash
+
+//If Mario is no longer fast enough, and on the ground
+if instance_exists(obj_mario)
+and abs(obj_mario.hspeed) &lt;= 2.8
+and obj_mario.state &lt; 2
+{
+
+    //Stop the annoying sound
+    audio_stop_sound(snd_pmeter)
+
+    //Make the P-Meter not maxed out
+    pmeter = 5
+
+    //Continue the P-Meter loop
+    alarm[7] = 15
+
+}
+
+//Otherwise, if the P-Meter is still maxed out
+else if pmeter &gt; 5
+{
+
+    //Flash between frames 6 and 7
+    if pmeter = 6
+        pmeter = 7
+    else
+        pmeter = 6
+
+    //Continue flashing
+    alarm[9] = 7
+
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="8">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///End the P-Meter flight time
+if pmeter &gt; 5
+{
+
+    //If Mario is still running, keep the meter on
+    if instance_exists(obj_mario)
+    and abs(obj_mario.hspeed) &gt; 2.8
+    and obj_mario.state &lt; 2
+        alarm[8] = 100
+
+    //Otherwise
+    else
+    {
+
+        //Stop the annoying sound
+        audio_stop_sound(snd_pmeter)
+
+        //Make the P-Meter not maxed out
+        pmeter = 5
+
+        //Continue the P-Meter loop
+        alarm[7] = 15
+
+    }
+
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///P-Meter loop
+
+//If Mario exists
+if instance_exists(obj_mario)
+{
+
+    //If Mario is running fast enough
+    if abs(obj_mario.hspeed) &gt; 2.8
+    and obj_mario.state = 1
+    {
+
+        //Increment the P-Meter if it is not maxed out
+        if pmeter &lt; 6
+            pmeter++
+
+    }
+
+    //If Mario is too slow, or not running, and the P-Meter is not too low, decrement slowly
+    else if pmeter &gt; 0
+    and slowdown = 2
+        pmeter--
+
+    //Slow down decrements
+    slowdown++
+
+    //Restart decrement timer
+    if slowdown = 3
+        slowdown = 0
+
+}
+
+//Otherwise, decrement the P-Meter
+else if pmeter &gt; 0
+    pmeter--
+
+//If the P-Meter is maxed out
+if pmeter = 6
+{
+
+    //Play that annoying sound
+    audio_play_sound(snd_pmeter,1,1)
+
+    //Limit the P-Meter flight time
+    alarm[8] = 300
+
+    //Make the P-Meter flash
+    alarm[9] = 7
+
+}
+
+//Otherwise, continue the loop
+else
+    alarm[7] = 15
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="6">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Enforce barrier
+barrier = 0
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Increment animation variable
+anim++
+
+//Continue incrementing
+alarm[5] = 7
 </string>
           </argument>
         </arguments>
@@ -226,6 +549,183 @@ and not instance_exists(obj_goalmario)
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if instance_exists(obj_mario)
+and global.reserveitem &gt; cs_small
+and barrier = 0
+{
+    if keyboard_check_pressed(vk_space)
+    or (not instance_exists(obj_invincibility)
+    and not instance_exists(obj_slider)
+    and global.powerup = cs_small
+    and obj_mario.invincible = 1)
+    {
+        with instance_create(view_xview+152,view_yview+8,obj_reserveitem) sprite_index = scr_constant_get_sprite(global.reserveitem)
+        global.reserveitem = cs_small
+    }
+}
+if global.coins &gt; 99
+{
+    global.coins -= 100
+    if instance_exists(obj_autoscroll)
+    and instance_exists(obj_mario)
+        instance_create(obj_mario.x-8,obj_mario.y,obj_1uppts)
+    else
+        instance_create(x-8,y,obj_1uppts)
+}
+if instance_exists(obj_autoscroll)
+{
+    x = obj_autoscroll.x
+    y = obj_autoscroll.y
+}
+else if instance_exists(obj_mario)
+{
+    x = obj_mario.x
+    y = obj_mario.y
+}
+else if instance_exists(obj_goalmario)
+{
+    x = obj_goalmario.x
+    y = obj_goalmario.y
+}
+else if instance_exists(obj_warpmario)
+{
+    x = obj_warpmario.x
+    y = obj_warpmario.y
+}
+else if instance_exists(obj_jumpspawn)
+{
+    x = obj_jumpspawn.x
+    y = obj_jumpspawn.y
+}
+else if instance_exists(obj_vinespawn)
+{
+    x = obj_vinespawn.x
+    y = obj_vinespawn.y
+}
+if instance_exists(obj_classicscroll)
+{
+    if x &lt; obj_classicscroll.x
+        x = obj_classicscroll.x
+}
+background_x[0] = view_xview[0]/2
+instance_deactivate_object(obj_parenemy)
+instance_deactivate_object(obj_parenemy2)
+instance_deactivate_object(obj_deactivation)
+instance_activate_region(view_xview[0]-32,view_yview[0]-32,view_wview[0]+64,view_hview[0]+64,1)
+if barrier = 0
+and instance_exists(obj_mario)
+{
+    if obj_mario.x &lt; view_xview[0]+5
+    {
+        obj_mario.x = view_xview[0]+5
+        if obj_mario.hspeed &lt; 0
+            obj_mario.hspeed = 0
+        if instance_exists(obj_slider)
+            obj_slider.x = view_xview[0]+5
+    }
+    if obj_mario.x &gt; view_xview[0]+315
+    {
+        obj_mario.x = view_xview[0]+315
+        if obj_mario.hspeed &gt; 0
+            obj_mario.hspeed = 0
+        if instance_exists(obj_slider)
+            obj_slider.x = view_xview[0]+315
+    }
+}
+if audio_is_playing(snd_thwomp)
+    view_yview[0] += 8-anim%9
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Turns on the P-Switch
+
+//If the P-Switch is off
+if switchon = 0
+{
+
+    //Turn on the P-Switch
+    switchon = 1
+
+    //Turn bricks into fake coins
+    with obj_brick
+    {
+        instance_create(x,y,obj_coinchange)
+        instance_destroy()
+    }
+
+    //Turn coins into bricks
+    with obj_coin
+    {
+        instance_create(x,y,obj_brick)
+        instance_destroy()
+    }
+
+    //Make P-Coins visible
+    with obj_pcoin visible = 1
+
+    //Create hidden springs
+    with obj_spring_hidden instance_create(x,y,obj_spring_blue)
+
+    //Make hidden doors visible
+    with obj_door_hidden visible = 1
+    with obj_door_hidden_locked visible = 1
+
+    //Turn on P-Platforms
+    with obj_pplatform event_user(0)
+
+    //Turn off conveyor belts
+    with obj_conveyor_left image_speed = 0
+    with obj_conveyor_right image_speed = 0
+
+    //Start the switch song if it is not playing, and stop the regular music
+    if not audio_is_playing(snd_switchsong)
+    {
+        audio_play_sound(snd_switchsong,99,1)
+        alarm[1] = 1
+    }
+
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
@@ -253,6 +753,32 @@ with obj_vinespawn instance_destroy()
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if switchon = 1
+    global.pswitch = alarm[10]
+if audio_is_playing(snd_pmeter)
+    audio_stop_sound(snd_pmeter)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="4">
       <action>
         <libid>1</libid>
@@ -270,7 +796,7 @@ with obj_vinespawn instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Handles Mario Start!, checkpoints, and position changing
+            <string>///Handles Mario Start, checkpoints, and other stuff
 
 //If the music is not the same as the music used in the last room
 if global.levelmusic != levelmusic
@@ -344,6 +870,140 @@ if global.yoshi = 1
     instance_create(0,0,obj_yoshi)
 else if global.yoshi = 2
     instance_create(0,0,obj_kuriboshoe)
+
+else if global.carrieditem &gt; 0
+{
+    varid = instance_create(x-8,y+15,global.carrieditem)
+    if object_get_parent(global.carrieditem) = obj_parcarry
+        global.shallihold = 1
+    else
+    {
+        global.shallihold = 2
+        varid.held = 1
+        if global.carrieditem = obj_shell
+            varid.bam = 1
+    }
+    if instance_exists(obj_mario)
+    {
+        obj_mario.holding = global.shallihold
+        global.shallihold = 0
+    }
+    global.carrieditem = 0
+    global.carriedsprite = 0
+}
+if global.pswitch &gt; 0
+{
+    if global.pswitch &lt; 30
+        global.pswitch = 30
+    event_user(1)
+    alarm[10] = global.pswitch
+    global.pswitch = 0
+}
+if global.star &gt; 0
+{
+    if global.star &lt; 30
+        global.star = 30
+    with instance_create(x,y,obj_invincibility)
+    {
+        alarm[0] = global.star
+        alarm[1] = 0
+    }
+    global.star = 0
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw the HUD
+
+//Set the font
+draw_set_font(global.wdigits)
+
+//Set the draw alpha
+draw_set_alpha(0.7)
+
+//Draw the HUD bar
+draw_sprite_ext(spr_hudbar,0,view_xview[0]+4,view_yview[0]+1,1,1,0,c_white,0.7)
+
+//Draw the lives
+draw_sprite_ext(spr_mariohud,0,view_xview[0]+58,view_yview[0]+10,1,1,0,c_white,0.7)
+draw_text(view_xview[0]+82,view_yview[0]+10,string_format(lives,2,0))
+
+//Draw the score
+draw_text(view_xview[0]+view_wview-66,view_yview[0]+10,string_add_zeros(score,7))
+
+//Draw the coin count
+draw_sprite_ext(spr_coinhud,0,view_xview[0]+194,view_yview[0]+10,1,1,0,c_white,0.7)
+draw_text(view_xview[0]+201,view_yview[0]+10,string_add_zeros(global.coins,2))
+
+//Draw the world number
+draw_sprite_ext(spr_worldhud,0,view_xview[0]+10,view_yview[0]+10,1,1,0,c_white,0.7)
+draw_sprite_ext(spr_numbersgold,global.world,view_xview[0]+42,view_yview[0]+10,1,1,0,c_white,0.7)
+
+//Change the font
+draw_set_font(global.gdigits)
+
+//Draw the time
+draw_sprite_ext(spr_timehud,0,view_xview[0]+104,view_yview[0]+10,1,1,0,c_white,0.7)
+draw_text(view_xview[0]+114,view_yview[0]+10,string_add_zeros(global.time,3))
+
+//Draw the P-Meter
+draw_sprite_ext(spr_pmeter,pmeter,view_xview[0]+16,view_yview[0]+228,1,1,0,c_white,0.7)
+
+//Draw the reserve items
+if global.reserveitem = cs_fire
+or global.reserveitem = cs_ice
+    draw_sprite_ext(scr_constant_get_sprite(global.reserveitem),anim,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
+else if global.reserveitem != cs_small
+    draw_sprite_ext(scr_constant_get_sprite(global.reserveitem),0,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
+
+//Reset the draw alpha
+draw_set_alpha(1)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="13">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if not keyboard_check(vk_alt)
+{
+    instance_create(0,0,obj_pauseshade)
+    keyboard_clear(vk_enter)
+}
 </string>
           </argument>
         </arguments>

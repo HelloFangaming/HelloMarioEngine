@@ -399,13 +399,13 @@ instance_destroy()
                 alarm[6] = 1
                 if not collision_rectangle(obj_mario.bbox_left,obj_mario.bbox_top-3,obj_mario.bbox_right,obj_mario.bbox_top,obj_solid,1,0)
                     obj_mario.vspeed = -2
-                flyanim = obj_camera.weird
+                flyanim = obj_levelmanager.anim
             }
             else if flying = 1
             and not collision_rectangle(obj_mario.bbox_left,obj_mario.bbox_top-3,obj_mario.bbox_right,obj_mario.bbox_top,obj_solid,1,0)
             {
                 obj_mario.vspeed = -2
-                flyanim = obj_camera.weird
+                flyanim = obj_levelmanager.anim
             }
         }
         else

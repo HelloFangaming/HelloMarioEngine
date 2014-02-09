@@ -661,6 +661,9 @@ if background_exists(back)
 //Display messages
 draw_set_font(global.font)
 draw_text(view_xview[0],view_yview[0],message)
+
+//Uncomment the line below if you want to see the fps on the bottom right corner of the screen.
+//draw_text(view_xview[0]+302,view_yview[0]+231,fps_real)
 </string>
           </argument>
         </arguments>

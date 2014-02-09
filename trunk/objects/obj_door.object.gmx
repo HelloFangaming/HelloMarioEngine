@@ -100,11 +100,11 @@ else
     else
         instance_create(x+8,y-16,obj_mario)
 
-    //Notify the camera
-    with obj_camera
+    //Notify the level manager
+    with obj_levelmanager
     {
-        docamera = 1
-        alarm[4] = 2
+        barrier = 1
+        alarm[6] = 2
     }
 
     //Fade the screen

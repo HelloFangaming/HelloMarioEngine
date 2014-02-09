@@ -116,7 +116,7 @@ else if not position_meeting(x+8,y+8,obj_coin)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if obj_camera.switchon = 1
+            <string>if obj_levelmanager.switchon = 1
     sprite_index = spr_brick
 else
     sprite_index = spr_coin

@@ -26,8 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 0.3
-if instance_exists(obj_camera)
-    move_towards_point(obj_camera.x,obj_camera.y,1)
+if instance_exists(obj_levelmanager)
+    move_towards_point(obj_levelmanager.x,obj_levelmanager.y,1)
 else
     vspeed = -1
 </string>
