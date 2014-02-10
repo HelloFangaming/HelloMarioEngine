@@ -336,7 +336,7 @@ else if instance_exists(obj_jumpspawn)
 }
 else if instance_exists(obj_warpmario)
 {
-    draw_sprite_ext(mymario,0,round(x)-obj_warpmario.direct,y-19-yoffset,obj_warpmario.direct,1,0,c_white,obj_warpmario.alpha)
+    draw_sprite_ext(mymario,0,round(x)-obj_warpmario.direct,y-19-yoffset,obj_warpmario.direct,1,0,c_white,1)
     draw_sprite_ext(sprite_index,0,round(x)-8*obj_warpmario.direct,y,obj_warpmario.direct,1,0,c_white,1)
 }
 else if instance_exists(obj_warpnoteblock)

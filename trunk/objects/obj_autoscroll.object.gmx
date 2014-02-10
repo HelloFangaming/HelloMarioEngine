@@ -25,35 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place these in the object creation code.
-//follow_y = 1 If you want the camera to move up/down freely.
-//speed = Autoscrolling Speed
+            <string>///The level scrolls on its own!
+
+/*
+**  This item uses creation code!
+**
+**  follow_y = If you want the camera to move up/down freely (Optional)
+**  speed = Autoscrolling speed (Optional)
+**
+*/
+
+//Default Values:
 follow_y = 0
-candie = 0
-alarm[0] = 2
+speed = 0.5
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>candie = 1</string>
           </argument>
         </arguments>
       </action>
@@ -75,41 +60,54 @@ alarm[0] = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_deadmario)
-    speed = 0
+            <string>///Force Mario to adhere to the scrolling... or else!
+
+//If Mario exists
 if instance_exists(obj_mario)
 {
+
+    //Follow Mario vertically if that feature is enabled
     if follow_y = 1
         y = obj_mario.y
-    if obj_mario.x &lt; view_xview[0]+5
-    and not collision_line(obj_mario.x+5,obj_mario.bbox_top+2,obj_mario.x+5,obj_mario.y+30,obj_solid,1,0)
-        obj_mario.x = view_xview[0]+5
-    else if obj_mario.x &gt; view_xview[0]+315
-    and not collision_line(obj_mario.x-5,obj_mario.bbox_top+2,obj_mario.x-5,obj_mario.y+30,obj_solid,1,0)
-        obj_mario.x = view_xview[0]+315
-    if obj_mario.y &lt; view_yview[0]-48
+
+    //Prevent Mario from going too high off screen
+    else if obj_mario.y &lt; view_yview[0]-48
         obj_mario.y = view_yview[0]-48
-    if candie = 1
+
+    //If the barrier is being enforced
+    if obj_levelmanager.barrier = 0
     {
+
+        //If Mario gets squished on the left side of the screen, kill him
         if obj_mario.x &lt; view_xview[0]+6
         and collision_line(obj_mario.x+5,obj_mario.bbox_top+2,obj_mario.x+5,obj_mario.y+30,obj_solid,1,0)
         {
             instance_create(view_xview[0]+8,obj_mario.y,obj_deadmario)
             with obj_mario instance_destroy()
         }
+
+        //If Mario gets squished on the right side of the screen, kill him
         else if obj_mario.x &gt; view_xview[0]+314
         and collision_line(obj_mario.x-5,obj_mario.bbox_top+2,obj_mario.x-5,obj_mario.y+30,obj_solid,1,0)
         {
             instance_create(view_xview[0]+312,obj_mario.y,obj_deadmario)
             with obj_mario instance_destroy()
         }
+
+        //If Mario falls off the screen, kill him
         else if obj_mario.bbox_top &gt; view_yview[0]+240
         {
             instance_create(obj_mario.x,view_yview[0]+208,obj_deadmario)
             with obj_mario instance_destroy()
         }
+
     }
+
 }
+
+//Stop scrolling if Mario dies
+else if instance_exists(obj_deadmario)
+    speed = 0
 </string>
           </argument>
         </arguments>
@@ -132,7 +130,8 @@ if instance_exists(obj_mario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if follow_y = 0
+            <string>///Go down and right
+if follow_y = 0
     direction = 315
 </string>
           </argument>
@@ -156,7 +155,8 @@ if instance_exists(obj_mario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if follow_y = 0
+            <string>///Go down and left
+if follow_y = 0
     direction = 225
 </string>
           </argument>
@@ -180,7 +180,8 @@ if instance_exists(obj_mario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if follow_y = 0
+            <string>///Go up and right
+if follow_y = 0
     direction = 135
 </string>
           </argument>
@@ -204,7 +205,8 @@ if instance_exists(obj_mario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if follow_y = 0
+            <string>///Go up and left
+if follow_y = 0
     direction = 45
 </string>
           </argument>
@@ -228,7 +230,8 @@ if instance_exists(obj_mario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>speed = other.setspeed
+            <string>///Change the speed
+speed = other.setspeed
 </string>
           </argument>
         </arguments>
@@ -251,7 +254,8 @@ if instance_exists(obj_mario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>speed = 0
+            <string>///Stop
+speed = 0
 </string>
           </argument>
         </arguments>
@@ -274,7 +278,8 @@ if instance_exists(obj_mario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>direction = 0
+            <string>///Go right
+direction = 0
 </string>
           </argument>
         </arguments>
@@ -297,7 +302,8 @@ if instance_exists(obj_mario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>direction = 180
+            <string>///Go left
+direction = 180
 </string>
           </argument>
         </arguments>
@@ -320,7 +326,8 @@ if instance_exists(obj_mario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if follow_y = 0
+            <string>///Go down
+if follow_y = 0
     direction = 270
 </string>
           </argument>
@@ -344,32 +351,9 @@ if instance_exists(obj_mario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if follow_y = 0
+            <string>///Go up
+if follow_y = 0
     direction = 90
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if speed = 0
-    speed = 0.5
 </string>
           </argument>
         </arguments>
