@@ -42,17 +42,15 @@ if global.ycolor = 3
     flying = 0
     flyanim = 1
 }
-if global.carrieditem &gt; 0
+if global.carrieditem != noone
 {
     fullmouth = 1
     inmouth = global.carrieditem
-    global.carrieditem = 0
-    if inmouth = obj_shell
-    or inmouth = obj_bobomb_hold
-    or inmouth = obj_getshoe
+    global.carrieditem = noone
+    if global.carriedsprite != noone
     {
         shellsprite = global.carriedsprite
-        global.carriedsprite = 0
+        global.carriedsprite = noone
     }
 }
 </string>

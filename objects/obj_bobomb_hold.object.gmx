@@ -33,11 +33,6 @@ gravity = 0.25
 hitpoint = 0
 alarm[0] = 200
 alarm[1] = 100
-if global.carriedsprite &gt; 0
-{
-    sprite_index = global.carriedsprite
-    global.carriedsprite = 0
-}
 </string>
           </argument>
         </arguments>
