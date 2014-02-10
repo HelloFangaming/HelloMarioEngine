@@ -44,10 +44,10 @@ message = ""
 scr_init_globals()
 
 //Item that is being carried between rooms
-global.carrieditem = 0
+global.carrieditem = noone
 
 //The sprite used by an item carried between rooms
-global.carriedsprite = 0
+global.carriedsprite = noone
 
 //Whether Mario should hold/carry an object
 global.shallihold = 0

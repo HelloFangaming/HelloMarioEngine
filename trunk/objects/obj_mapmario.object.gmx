@@ -108,8 +108,8 @@ else
 //Reset all of these global variables
 global.time = 0
 global.mariostart = 0
-global.carrieditem = 0
-global.carriedsprite = 0
+global.carrieditem = noone
+global.carriedsprite = noone
 global.pswitch = 0
 global.star = 0
 global.onoffblock = 0

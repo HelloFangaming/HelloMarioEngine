@@ -566,91 +566,149 @@ and not instance_exists(obj_goalmario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_mario)
-and global.reserveitem &gt; cs_small
-and barrier = 0
-{
-    if keyboard_check_pressed(vk_space)
-    or (not instance_exists(obj_invincibility)
-    and not instance_exists(obj_slider)
-    and global.powerup = cs_small
-    and obj_mario.invincible = 1)
-    {
-        with instance_create(view_xview+152,view_yview+8,obj_reserveitem) sprite_index = scr_constant_get_sprite(global.reserveitem)
-        global.reserveitem = cs_small
-    }
-}
-if global.coins &gt; 99
-{
-    global.coins -= 100
-    if instance_exists(obj_autoscroll)
-    and instance_exists(obj_mario)
-        instance_create(obj_mario.x-8,obj_mario.y,obj_1uppts)
-    else
-        instance_create(x-8,y,obj_1uppts)
-}
+            <string>///Deals with various game logic stuff
+
+//Follow the autoscroll if it exists
 if instance_exists(obj_autoscroll)
 {
     x = obj_autoscroll.x
     y = obj_autoscroll.y
 }
+
+//Follow Mario if he exists
 else if instance_exists(obj_mario)
 {
     x = obj_mario.x
     y = obj_mario.y
 }
+
+//Follow goal Mario if he exists
 else if instance_exists(obj_goalmario)
 {
     x = obj_goalmario.x
     y = obj_goalmario.y
 }
+
+//Follow warp Mario if he exists
 else if instance_exists(obj_warpmario)
 {
     x = obj_warpmario.x
     y = obj_warpmario.y
 }
+
+//Follow jump spawn Mario if he exists
 else if instance_exists(obj_jumpspawn)
 {
     x = obj_jumpspawn.x
     y = obj_jumpspawn.y
 }
+
+//Follow vine spawn Mario if he exists
 else if instance_exists(obj_vinespawn)
 {
     x = obj_vinespawn.x
     y = obj_vinespawn.y
 }
+
+//Do nor let the screen fall behind the classic scroll
 if instance_exists(obj_classicscroll)
-{
-    if x &lt; obj_classicscroll.x
-        x = obj_classicscroll.x
-}
+and x &lt; obj_classicscroll.x
+    x = obj_classicscroll.x
+
+//Parallax scrolling for layer 0 backgrounds
 background_x[0] = view_xview[0]/2
+
+//Deactivate things that have the following parents
 instance_deactivate_object(obj_parenemy)
 instance_deactivate_object(obj_parenemy2)
 instance_deactivate_object(obj_deactivation)
+
+//Activate things that are on screen
 instance_activate_region(view_xview[0]-32,view_yview[0]-32,view_wview[0]+64,view_hview[0]+64,1)
+
+//If the barrier is enforced, and Mario exists
 if barrier = 0
 and instance_exists(obj_mario)
 {
+
+    //If a reserve item exists
+    if global.reserveitem &gt; cs_small
+    {
+
+        //If space is pressed, or Mario becomes small after getting hurt
+        if keyboard_check_pressed(vk_space)
+        or (not instance_exists(obj_invincibility)
+        and not instance_exists(obj_slider)
+        and global.powerup = cs_small
+        and obj_mario.invincible = 1)
+        {
+
+            //Create the reserve item
+            with instance_create(view_xview+152,view_yview+8,obj_reserveitem) sprite_index = scr_constant_get_sprite(global.reserveitem)
+
+            //Remove the reserve item
+            global.reserveitem = cs_small
+
+        }
+
+    }
+
+    //If Mario moves off the left side of the screen
     if obj_mario.x &lt; view_xview[0]+5
     {
+
+        //Snap Mario to the side of the screen
         obj_mario.x = view_xview[0]+5
+
+        //Stop Mario if he keeps trying to move off
         if obj_mario.hspeed &lt; 0
             obj_mario.hspeed = 0
+
+        //Stop sliding Mario if he keeps trying to move off (Sneaky!)
         if instance_exists(obj_slider)
             obj_slider.x = view_xview[0]+5
+
     }
-    if obj_mario.x &gt; view_xview[0]+315
+
+    //If Mario moves off the right side of the screen
+    else if obj_mario.x &gt; view_xview[0]+315
     {
+
+        //Snap Mario to the side of the screen
         obj_mario.x = view_xview[0]+315
+
+        //Stop Mario if he keeps trying to move off
         if obj_mario.hspeed &gt; 0
             obj_mario.hspeed = 0
+
+        //Stop sliding Mario if he keeps trying to move off (Sneaky!)
         if instance_exists(obj_slider)
             obj_slider.x = view_xview[0]+315
+
     }
+
 }
+
+//If there are over 99 coins collected
+if global.coins &gt; 99
+{
+
+    //Subtract 100 coins
+    global.coins -= 100
+
+    //Create the extra life on Mario if he exists
+    if instance_exists(obj_mario)
+        instance_create(obj_mario.x-8,obj_mario.y,obj_1uppts)
+
+    //Otherwise, create the extra life on the level manager
+    else
+        instance_create(x-8,y,obj_1uppts)
+
+}
+
+//Make the screen shake if thwomp sound plays
 if audio_is_playing(snd_thwomp)
-    view_yview[0] += 8-anim%9
+    view_yview[0] += ((anim%3)-1)*4
 </string>
           </argument>
         </arguments>
@@ -770,8 +828,13 @@ with obj_vinespawn instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if switchon = 1
+            <string>///Remember that the P-Switch is on for the next room
+
+//If the switch is on, remember the time limit
+if switchon = 1
     global.pswitch = alarm[10]
+
+//Stop the P-Meter sound if it is looping
 if audio_is_playing(snd_pmeter)
     audio_stop_sound(snd_pmeter)
 </string>
@@ -871,44 +934,85 @@ if global.yoshi = 1
 else if global.yoshi = 2
     instance_create(0,0,obj_kuriboshoe)
 
-else if global.carrieditem &gt; 0
+//If Mario is not riding anything, and carried something from a previous room
+else if global.carrieditem != noone
 {
-    varid = instance_create(x-8,y+15,global.carrieditem)
-    if object_get_parent(global.carrieditem) = obj_parcarry
-        global.shallihold = 1
-    else
+
+    //With the newly created item
+    with instance_create(x-8,y+15,global.carrieditem)
     {
-        global.shallihold = 2
-        varid.held = 1
-        if global.carrieditem = obj_shell
-            varid.bam = 1
+
+        //If the item's parent is the subcon carry parent, remember that
+        if object_get_parent(object_index) = obj_parcarry
+            global.shallihold = 1
+
+        //If the parent is the normal hold parent
+        else
+        {
+
+            //Remember that
+            global.shallihold = 2
+
+            //This item is being held
+            held = 1
+
+        }
+
+        //If the item needs a different sprite
+        if global.carriedsprite != noone
+        {
+
+            //Change its sprite
+            sprite_index = global.carriedsprite
+
+            //Reset the variable
+            global.carriedsprite = noone
+
+        }
     }
+
+    //If Mario exists
     if instance_exists(obj_mario)
     {
+
+        //Make Mario hold the item appropriately
         obj_mario.holding = global.shallihold
+
+        //Reset the variable
         global.shallihold = 0
+
     }
-    global.carrieditem = 0
-    global.carriedsprite = 0
+
+    //Reset the variable
+    global.carrieditem = noone
+
 }
+
+//If the P-Switch needs to carry over from the previous room
 if global.pswitch &gt; 0
 {
-    if global.pswitch &lt; 30
-        global.pswitch = 30
+
+    //Turn on the P-Switch
     event_user(1)
-    alarm[10] = global.pswitch
+
+    //Set the timer, and make sure it is not too short
+    alarm[10] = max(global.pswitch,30)
+
+    //Reset the variable
     global.pswitch = 0
+
 }
+
+//If a star needs to carry over from the previous room
 if global.star &gt; 0
 {
-    if global.star &lt; 30
-        global.star = 30
-    with instance_create(x,y,obj_invincibility)
-    {
-        alarm[0] = global.star
-        alarm[1] = 0
-    }
+
+    //With the newly created invincibility object, set its time limit, and make sure it is not too short
+    with instance_create(x,y,obj_invincibility) alarm[0] = max(global.star,30)
+
+    //Reset the variable
     global.star = 0
+
 }
 </string>
           </argument>
@@ -999,10 +1103,16 @@ draw_set_alpha(1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not keyboard_check(vk_alt)
+            <string>///Pause the game
+if not keyboard_check(vk_alt)
 {
+
+    //Create the pause menu
     instance_create(0,0,obj_pauseshade)
+
+    //Clear the enter key
     keyboard_clear(vk_enter)
+
 }
 </string>
           </argument>
