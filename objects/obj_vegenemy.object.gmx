@@ -53,15 +53,6 @@ hitpoint = 0
             <kind>1</kind>
             <string>if held = 0
 {
-    if not instance_exists(obj_mario)
-    and not instance_exists(obj_warpmario)
-    and not instance_exists(obj_doormario)
-    and not instance_exists(obj_warpnoteblock)
-    and not instance_exists(obj_jumpspawn)
-    {
-        instance_destroy()
-        exit
-    }
     if instance_exists(obj_mario)
     {
         x = obj_mario.x
@@ -72,7 +63,7 @@ hitpoint = 0
         if obj_mario.holding = 0
             obj_mario.holding = 1
     }
-    if instance_exists(obj_warpmario)
+    else if instance_exists(obj_warpmario)
     {
         x = obj_warpmario.x
         y = obj_warpmario.y
@@ -80,7 +71,7 @@ hitpoint = 0
         obj_warpmario.myitem = sprite_index
         obj_warpmario.bugfix = 8
     }
-    if instance_exists(obj_doormario)
+    else if instance_exists(obj_doormario)
     {
         x = obj_doormario.x
         y = obj_doormario.y+32
@@ -88,24 +79,24 @@ hitpoint = 0
         obj_doormario.myitem = sprite_index
         obj_doormario.bugfix = 8
     }
-    if instance_exists(obj_warpnoteblock)
+    else if instance_exists(obj_warpnoteblock)
     {
         x = obj_warpnoteblock.x
         if global.powerup = cs_small
             y = obj_warpnoteblock.y+21
         else
             y = obj_warpnoteblock.y+11
-        obj_warpnoteblock.holding = 2
     }
-    if instance_exists(obj_jumpspawn)
+    else if instance_exists(obj_jumpspawn)
     {
         x = obj_jumpspawn.x
         if global.powerup = cs_small
             y = obj_jumpspawn.y+21
         else
             y = obj_jumpspawn.y+11
-        obj_jumpspawn.holding = 2
     }
+    else
+        instance_destroy()
 }
 if vspeed &gt; 4
     vspeed = 4

@@ -31,7 +31,7 @@ or instance_exists(obj_goalmario)
     held = 0
     exit
 }
-if instance_exists(obj_mario)
+else if instance_exists(obj_mario)
 {
     if obj_mario.direct = 1
         x = obj_mario.x+2
@@ -39,34 +39,32 @@ if instance_exists(obj_mario)
         x = obj_mario.x-18
     y = obj_mario.y+15
 }
-if instance_exists(obj_warpmario)
+else if instance_exists(obj_warpmario)
 {
     visible = 0
     obj_warpmario.myitem = sprite_index
     x = obj_warpmario.x
     y = obj_warpmario.y
 }
-if instance_exists(obj_doormario)
+else if instance_exists(obj_doormario)
 {
     visible = 0
     obj_doormario.myitem = sprite_index
     x = obj_doormario.x-8
     y = obj_doormario.y+16
 }
-if instance_exists(obj_warpnoteblock)
+else if instance_exists(obj_warpnoteblock)
 {
     if obj_warpnoteblock.direct = 1
         x = obj_warpnoteblock.x+2
     if obj_warpnoteblock.direct = -1
         x = obj_warpnoteblock.x-18
     y = obj_warpnoteblock.y+15
-    obj_warpnoteblock.holding = 1
 }
-if instance_exists(obj_jumpspawn)
+else if instance_exists(obj_jumpspawn)
 {
     x = obj_jumpspawn.x+2
     y = obj_jumpspawn.y+15
-    obj_jumpspawn.holding = 1
 }
 </string>
           </argument>

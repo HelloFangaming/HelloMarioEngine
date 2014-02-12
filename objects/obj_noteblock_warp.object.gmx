@@ -140,6 +140,7 @@ and ready = 0
         audio_play_sound(snd_spring,0,0)
         instance_create(obj_mario.x,obj_mario.y,obj_warpnoteblock)
         obj_warpnoteblock.direct = obj_mario.direct
+        obj_warpnoteblock.holding = obj_mario.holding
         with obj_mario instance_destroy()
         obj_warpnoteblock.myroom = myroom
     }
