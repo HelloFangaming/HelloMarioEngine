@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>sprite_index = scr_mariojump()
+image_speed = 0
 alarm[0] = 1
 vspeed = -6
 holding = 0
@@ -53,14 +54,12 @@ holding = 0
             <kind>1</kind>
             <string>if holding = 1
 {
-    sprite_index = scr_mariohold()
-    image_speed = 0
+    sprite_index = scr_mariocarry()
     image_index = 2
 }
-if holding = 2
+else if holding = 2
 {
-    sprite_index = scr_mariocarry()
-    image_speed = 0
+    sprite_index = scr_mariohold()
     image_index = 2
 }
 </string>

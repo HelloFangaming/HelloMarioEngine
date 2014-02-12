@@ -110,6 +110,7 @@ global.time = 0
 global.mariostart = 0
 global.carrieditem = noone
 global.carriedsprite = noone
+global.shallihold = 0
 global.pswitch = 0
 global.star = 0
 global.onoffblock = 0

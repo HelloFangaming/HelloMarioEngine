@@ -243,7 +243,7 @@ if cannon = 0
         image_speed = 0.15
 
         //Choose the appropriate sprite
-        if myitem = 0
+        if myitem = noone
             sprite_index = scr_mariowalk()
         else
         {
@@ -301,7 +301,7 @@ if cannon = 0
 
     //If he is ready to stop warping, and there are no solids, turn into Mario
     if ready = 1
-    and not place_meeting(x,y,obj_mario)
+    and not place_meeting(x,y,obj_solid)
         event_user(0)
 
 }
@@ -489,7 +489,7 @@ if cannon = 0
     speed = 0
 
     //Choose the appropriate sprite
-    if myitem = 0
+    if myitem = noone
         sprite_index = scr_mariorunjump()
     else
         sprite_index = scr_mariohold()

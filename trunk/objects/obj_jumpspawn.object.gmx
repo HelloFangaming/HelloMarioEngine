@@ -97,17 +97,17 @@ if y &lt; ystart
             <kind>1</kind>
             <string>///Check if Mario is holding or carrying something
 
-//If Mario is holding something, use the hold sprite
-if holding = 1
+//If Mario is carrying something, use the carry sprite
+if global.shallihold = 1
 {
-    sprite_index = scr_mariohold()
+    sprite_index = scr_mariocarry()
     image_index = 2
 }
 
-//If Mario is carrying something, use the carry sprite
-else if holding = 2
+//If Mario is holding something, use the hold sprite
+else if global.shallihold = 2
 {
-    sprite_index = scr_mariocarry()
+    sprite_index = scr_mariohold()
     image_index = 2
 }
 </string>

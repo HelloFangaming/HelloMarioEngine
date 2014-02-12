@@ -53,15 +53,6 @@ image_yscale = -1
             <kind>1</kind>
             <string>if held = 0
 {
-    if not instance_exists(obj_mario)
-    and not instance_exists(obj_warpmario)
-    and not instance_exists(obj_doormario)
-    and not instance_exists(obj_warpnoteblock)
-    and not instance_exists(obj_jumpspawn)
-    {
-        instance_destroy()
-        exit
-    }
     if instance_exists(obj_mario)
     {
         if sprite_index = spr_frozenenemy_wide or sprite_index = spr_frozenenemy_big
@@ -75,14 +66,14 @@ image_yscale = -1
         if obj_mario.holding = 0
             obj_mario.holding = 1
     }
-    if instance_exists(obj_warpmario)
+    else if instance_exists(obj_warpmario)
     {
         x = obj_warpmario.x
         y = obj_warpmario.y
         visible = 0
         obj_warpmario.myitem = sprite_index
     }
-    if instance_exists(obj_doormario)
+    else if instance_exists(obj_doormario)
     {
         if sprite_index = spr_frozenenemy_wide or sprite_index = spr_frozenenemy_big
             x = obj_doormario.x-16
@@ -92,7 +83,7 @@ image_yscale = -1
             visible = 0
             obj_doormario.myitem = sprite_index
     }
-    if instance_exists(obj_warpnoteblock)
+    else if instance_exists(obj_warpnoteblock)
     {
         if sprite_index = spr_frozenenemy_wide or sprite_index = spr_frozenenemy_big
             x = obj_warpnoteblock.x-16
@@ -102,9 +93,8 @@ image_yscale = -1
             y = obj_warpnoteblock.y+21
         else
             y = obj_warpnoteblock.y+11
-        obj_warpnoteblock.holding = 2
     }
-    if instance_exists(obj_jumpspawn)
+    else if instance_exists(obj_jumpspawn)
     {
         if sprite_index = spr_frozenenemy_wide or sprite_index = spr_frozenenemy_big
             x = obj_jumpspawn.x-16
@@ -114,8 +104,9 @@ image_yscale = -1
             y = obj_jumpspawn.y+21
         else
             y = obj_jumpspawn.y+11
-        obj_jumpspawn.holding = 2
     }
+    else
+        instance_destroy()
 }
 if vspeed &gt; 4
     vspeed = 4
