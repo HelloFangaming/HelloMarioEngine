@@ -25,12 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>varid = instance_create(x-16,y,obj_smoke)
-varid.hspeed = -1
-varid = instance_create(x,y,obj_smoke)
-varid.hspeed = 1
+            <string>///A deadly stomp on the ground
+
+
+//Create a left moving smoke
+with instance_create(x-16,y,obj_smoke) hspeed = -1
+
+//Create a right moving smoke
+with instance_create(x,y,obj_smoke) hspeed = 1
+
+//Play a special stomp sound
 audio_play_sound(snd_stomp2,0,0)
+
+//Animate
 image_speed = 0.5
+
+//Number of kills
 hitpoint = 0
 </string>
           </argument>

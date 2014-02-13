@@ -58,9 +58,6 @@ vspeed = 0
 
 //Snap to above the solidtop
 y = other.y-16
-
-//Notify goal Mario
-obj_goalmario.alarm[0] = 45
 </string>
           </argument>
         </arguments>

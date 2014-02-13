@@ -25,17 +25,35 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_levelmanager.alarm[1] = 1
-obj_levelmanager.alarm[2] = 0
-lives -= 1
+            <string>///A heroic death
+
+//Stop the music and time
+with obj_levelmanager
+{
+    alarm[1] = 1
+    alarm[2] = 0
+}
+
+//Decrement lives
+lives--
+
+//Remember the death
 global.died = 1
+
+//Lose powerup
 global.powerup = cs_small
-image_speed = 0
+
+//Begin the death animation
 alarm[0] = 60
-alarm[1] = 200
+
+//Stop some sounds that may be playing
 audio_stop_sound(snd_starman)
 audio_stop_sound(snd_switchsong)
+
+//Play the death song
 audio_play_sound(snd_dead,1,0)
+
+//Oh, mama mia!
 audio_play_sound(snd_mamamia,0,0)
 </string>
           </argument>
@@ -59,7 +77,8 @@ audio_play_sound(snd_mamamia,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_return()
+            <string>///Return to the world map
+scr_return()
 </string>
           </argument>
         </arguments>
@@ -82,8 +101,17 @@ audio_play_sound(snd_mamamia,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.2
-vspeed = -6</string>
+            <string>///Start dying
+
+//Gravity
+gravity = 0.2
+
+//Move upwards
+vspeed = -6
+
+//Return to the world map
+alarm[1] = 140
+</string>
           </argument>
         </arguments>
       </action>
@@ -105,7 +133,8 @@ vspeed = -6</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if vspeed &gt; 4
+            <string>///Prevent the dead body from falling too fast
+if vspeed &gt; 4
 {
     vspeed = 4
     gravity = 0

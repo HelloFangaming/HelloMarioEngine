@@ -75,6 +75,34 @@ alarm[7] = 15
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Make the screen shake if thwomp sound plays
+if audio_is_playing(snd_thwomp)
+{
+    view_yview[0] += ((anim%3)-1)*4
+    alarm[11] = 7
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="10">
       <action>
         <libid>1</libid>
@@ -644,7 +672,7 @@ and instance_exists(obj_mario)
         {
 
             //Create the reserve item
-            with instance_create(view_xview+152,view_yview+8,obj_reserveitem) sprite_index = scr_constant_get_sprite(global.reserveitem)
+            with instance_create(view_xview[0]+152,view_yview[0]+8,obj_reserveitem) sprite_index = scr_constant_get_sprite(global.reserveitem)
 
             //Remove the reserve item
             global.reserveitem = cs_small
@@ -671,11 +699,11 @@ and instance_exists(obj_mario)
     }
 
     //If Mario moves off the right side of the screen
-    else if obj_mario.x &gt; view_xview[0]+315
+    else if obj_mario.x &gt; view_xview[0]+view_wview[0]-5
     {
 
         //Snap Mario to the side of the screen
-        obj_mario.x = view_xview[0]+315
+        obj_mario.x = view_xview[0]+view_wview[0]-5
 
         //Stop Mario if he keeps trying to move off
         if obj_mario.hspeed &gt; 0
@@ -683,7 +711,7 @@ and instance_exists(obj_mario)
 
         //Stop sliding Mario if he keeps trying to move off (Sneaky!)
         if instance_exists(obj_slider)
-            obj_slider.x = view_xview[0]+315
+            obj_slider.x = view_xview[0]+view_wview[0]-5
 
     }
 
@@ -707,8 +735,8 @@ if global.coins &gt; 99
 }
 
 //Make the screen shake if thwomp sound plays
-if audio_is_playing(snd_thwomp)
-    view_yview[0] += ((anim%3)-1)*4
+if not audio_is_playing(snd_thwomp)
+    alarm[11] = 2
 </string>
           </argument>
         </arguments>
