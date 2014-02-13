@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 2</string>
+            <string>///Bump all nearby blocks
+alarm[0] = 2
+</string>
           </argument>
         </arguments>
       </action>
@@ -47,7 +49,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy()</string>
+            <string>///Destroy
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
@@ -69,7 +73,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.ready = 0
+            <string>///Activate blocks
+if other.ready = 0
 {
     audio_play_sound(snd_bump,0,0)
     if other.sprite_index = spr_qblock_large

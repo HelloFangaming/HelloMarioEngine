@@ -28,7 +28,7 @@
             <string>///A flagpole! Lets Mario complete a level
 
 //Make a flag
-instance_create(x+10,y+17,obj_flag)
+flag = instance_create(x+10,y+17,obj_flag)
 
 //Do not animate
 image_speed = 0
@@ -55,7 +55,7 @@ image_speed = 0
           <argument>
             <kind>1</kind>
             <string>///Stop Mario from jumping over the flagpole.
-if instance_exists(obj_mario)
+if collision_rectangle(bbox_left,0,bbox_right,y,obj_mario,0,0)
 {
 
     //Stop Mario if he goes too far
@@ -92,12 +92,34 @@ if instance_exists(obj_mario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Turn Mario into Goal Mario
-with other
-{
-    instance_create(x,y,obj_goalmario)
-    instance_destroy()
-}
+            <string>///Turn Mario into goal Mario
+
+//Make the flag move down
+flag.vspeed = 1.5
+
+//Create the appropriate point object based on Mario's height
+if other.y &lt; y+16
+    instance_create(x,other.y,obj_1uppts)
+else if other.y &lt; y+32
+    instance_create(x,other.y,obj_4000pts)
+else if other.y &lt; y+48
+    instance_create(x,other.y,obj_2000pts)
+else if other.y &lt; y+64
+    instance_create(x,other.y,obj_1000pts)
+else if other.y &lt; y+80
+    instance_create(x,other.y,obj_800pts)
+else if other.y &lt; y+96
+    instance_create(x,other.y,obj_400pts)
+else if other.y &lt; y+112
+    instance_create(x,other.y,obj_200pts)
+else
+    instance_create(x,other.y,obj_100pts)
+
+//Create goal Mario
+instance_create(x+9,other.y,obj_goalmario)
+
+//Destroy Mario
+with other instance_destroy()
 </string>
           </argument>
         </arguments>

@@ -1081,9 +1081,10 @@
       <script>scripts\scr_mariomap.gml</script>
     </scripts>
     <scripts name="Utility">
-      <script>scripts\turn_towards_direction.gml</script>
-      <script>scripts\string_make_width.gml</script>
+      <script>scripts\outside_view.gml</script>
       <script>scripts\string_add_zeros.gml</script>
+      <script>scripts\string_make_width.gml</script>
+      <script>scripts\turn_towards_direction.gml</script>
     </scripts>
     <script>scripts\scr_init_globals.gml</script>
     <script>scripts\scr_save.gml</script>

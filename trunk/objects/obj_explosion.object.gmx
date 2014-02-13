@@ -25,13 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if x&gt;view_xview[0]-40
-and x&lt;view_xview[0]+344
-and y&lt;view_yview[0]+264
-and y&gt;view_yview[0]-40
+            <string>///A violent explosion!
+
+//Play an explode sound if inside the view
+if not outside_view()
     audio_play_sound(snd_explode,0,0)
+
+//Last for half a second
 alarm[0] = 30
+
+//Animate
 image_speed = 0.3
+
+//Number of kills
 hitpoint = 0
 </string>
           </argument>
@@ -55,7 +61,9 @@ hitpoint = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy()</string>
+            <string>///Destroy
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
@@ -77,7 +85,8 @@ hitpoint = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.ready = 0
+            <string>///Activate blocks
+if other.ready = 0
 {
     other.ready = 1
     other.vspeed = -2
@@ -106,8 +115,8 @@ hitpoint = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.invincible = 0
-    with other event_user(0)
+            <string>///Hurt Mario
+with other event_user(0)
 </string>
           </argument>
         </arguments>

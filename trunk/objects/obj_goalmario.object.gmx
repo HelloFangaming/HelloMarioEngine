@@ -25,39 +25,45 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_levelmanager.alarm[2] = 0
-global.clear = 1
+            <string>///Mario on the flagpole
+
+//Stop the music and time
+with obj_levelmanager
+{
+    alarm[1] = 1
+    alarm[2] = 0
+}
+
+//Remember whether a level or secret level was cleared
 if instance_exists(obj_flagpole_secret)
     global.clear = 2
+else
+    global.clear = 1
+
+//Forget checkpoints
 global.checkpoint = noone
+
+//Goal Mario's state
 ready = 0
-ready2 = 0
-ready3 = 0
+
+//Do not animate
 image_speed = 0
-obj_levelmanager.alarm[1] = 1
+
+//Use the goal sprite
 sprite_index = scr_mariogoal()
-x = obj_flagpole.x+9
+
+//Move down
 vspeed = 1.5
-obj_flag.vspeed = 1.5
+
+//Start walking after reaching the bottom
+alarm[0] = 100
+
+//Stop some sounds that may be playing
 audio_stop_sound(snd_starman)
 audio_stop_sound(snd_switchsong)
+
+//Play the flagpole sound
 audio_play_sound(snd_flagpole,0,0)
-if y &lt; obj_flagpole.y+16
-    instance_create(x-8,y,obj_1uppts)
-else if y &lt; obj_flagpole.y+32
-    instance_create(x-8,y,obj_4000pts)
-else if y &lt; obj_flagpole.y+48
-    instance_create(x-8,y,obj_2000pts)
-else if y &lt; obj_flagpole.y+64
-    instance_create(x-8,y,obj_1000pts)
-else if y &lt; obj_flagpole.y+80
-    instance_create(x-8,y,obj_800pts)
-else if y &lt; obj_flagpole.y+96
-    instance_create(x-8,y,obj_400pts)
-else if y &lt; obj_flagpole.y+112
-    instance_create(x-8,y,obj_200pts)
-else
-    instance_create(x-8,y,obj_100pts)
 </string>
           </argument>
         </arguments>
@@ -80,11 +86,11 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if image_alpha != 0
-{
-    image_alpha -= 0.05
+            <string>///Return to the world map after the music is done playing
+if audio_is_playing(snd_flagsong)
     alarm[3] = 1
-}
+else
+    scr_return()
 </string>
           </argument>
         </arguments>
@@ -107,22 +113,55 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.time &gt; 4
+            <string>///Take points off the time, and add to the score
+
+//If there is more than 4 seconds left
+if global.time &gt; 4
 {
+
+    //Add 500 to the score
     score += 500
+
+    //Subtract 5 seconds from the time
     global.time -= 5
-    alarm[2] = 4
+
 }
-if global.time &lt; 5 and global.time &gt; 0
-{
-    score += 100
-    global.time -= 1
-    alarm[2] = 4
-}
-if global.time = 0
-    audio_play_sound(snd_countend,0,0)
+
+//Otherwise
 else
+{
+
+    //Add 100 to the score
+    score += 100
+
+    //Decrement the time
+    global.time--
+
+}
+
+//If there is no time left
+if global.time = 0
+{
+
+    //Play the count end sound
+    audio_play_sound(snd_countend,0,0)
+
+    //Return to the world map
+    alarm[3] = 1
+
+}
+
+//Otherwise
+else
+{
+
+    //Play the count sound
     audio_play_sound(snd_count,0,0)
+
+    //Continue counting down
+    alarm[2] = 4
+
+}
 </string>
           </argument>
         </arguments>
@@ -145,7 +184,13 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 2</string>
+            <string>///Fade into the castle
+if image_alpha &gt; 0
+{
+    image_alpha -= 0.05
+    alarm[1] = 1
+}
+</string>
           </argument>
         </arguments>
       </action>
@@ -167,18 +212,29 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready3 = 0
-{
-    ready3 = 1
-    audio_play_sound(snd_flagsong,1,0)
-    audio_play_sound(snd_yahoo,0,0)
-    image_xscale = 1
-    sprite_index = scr_mariojump()
-    vspeed = -3
-    gravity = 0.225
-    hspeed = 1
-    alarm[1] = 1
-}
+            <string>///Start walking to the goal castle
+
+//Set state
+ready = 2
+
+//Play the flagpole music
+audio_play_sound(snd_flagsong,1,0)
+
+//Mario shouts in excitement
+audio_play_sound(snd_yahoo,0,0)
+
+//Face right
+image_xscale = 1
+
+//Use the jump sprite
+sprite_index = scr_mariojump()
+
+//Jump rightwards
+hspeed = 1
+vspeed = -3
+
+//Enable gravity
+gravity = 0.225
 </string>
           </argument>
         </arguments>
@@ -201,7 +257,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with obj_parenemy
+            <string>///Destroy all enemies
+with obj_parenemy
 {
     instance_create(x,y,obj_smoke)
     instance_destroy()
@@ -243,24 +300,45 @@ with obj_shell
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 0
+            <string>///Land on the ground
+
+//Disable gravity
+gravity = 0
+
+//Stop moving down
+vspeed = 0
+
+//Snap to the collision object
+y = other.y-32
+
+//If Mario finished sliding down the flagpole
+if ready = 0
 {
-    ready = 1
-    x = obj_flagpole.x+7
-    vspeed = 0
+
+    //Increment state
+    ready++
+
+    //Move left 3 pixels
+    x -= 3
+
+    //Face left
     image_xscale = -1
+
 }
-else
+
+//If Mario landed on the ground after jumping off the flagpole
+else if ready = 2
 {
-    gravity = 0
-    vspeed = 0
-    y = other.y-32
-}
-if ready3 = 1
-{
-    ready3 = 2
+
+    //Increment state
+    ready++
+
+    //Use walking sprite
     sprite_index = scr_mariowalk()
+
+    //Animate
     image_speed = 0.15
+
 }
 </string>
           </argument>
@@ -284,21 +362,41 @@ if ready3 = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if x &gt; other.x
-and ready2 = 0
+            <string>///Enter the goal castle
+
+//If goal Mario walked far enough
+if x &gt; other.x
+and ready = 3
 {
+
+    //Snap to the castle's door
     x = other.x
-    ready2 = 1
+
+    //Increment the state variable
+    ready++
+
+    //Stop moving
     hspeed = 0
-    alarm[2] = 1
-    alarm[3] = 10
+
+    //Fade into the castle
+    alarm[1] = 10
+
+    //Start the countdown if there is a time limit
+    if global.time &gt; 0
+        alarm[2] = 1
+    else
+        alarm[3] = 1
+
+    //Do not animate
     image_speed = 0
+
+    //Use the correct image index
     image_index = 0
+
+    //Use the warp sprite
     sprite_index = scr_mariowarp()
+
 }
-if not audio_is_playing(snd_flagsong)
-and global.time = 0
-    scr_return()
 </string>
           </argument>
         </arguments>
