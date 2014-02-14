@@ -25,11 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_spin,0,0)
+            <string>///A tail spin
+
+//Play the spin sound
+alarm[0] = 1
+
+//Animate
 image_speed = 0.3
+
+//Use the tanooki spin sprite if Mario is in a tanooki suit
 if global.powerup = cs_tanooki
     sprite_index = spr_mario_tanooki_spin
+
+//Make Mario invisible
 obj_mario.visible = 0
+
+//Number of kills
 hitpoint = 0
 </string>
           </argument>
@@ -53,8 +64,32 @@ hitpoint = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_mario)
-    obj_mario.visible = 1
+            <string>///Make Mario visible
+with obj_mario visible = 1
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Play the spin sound
+audio_play_sound(snd_spin,0,0)
 </string>
           </argument>
         </arguments>
@@ -77,12 +112,15 @@ hitpoint = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_mario)
+            <string>///Snap to Mario if he exists and is in the right suit
+if instance_exists(obj_mario)
 and (global.powerup = cs_leaf or global.powerup = cs_tanooki)
 {
     x = obj_mario.x
     y = obj_mario.y
 }
+
+//Otherwise, destroy
 else
     instance_destroy()
 </string>
@@ -107,7 +145,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.ready = 0
+            <string>///Activate blocks
+if other.ready = 0
 {
     audio_play_sound(snd_bump,0,0)
     if other.sprite_index = spr_qblock_large
@@ -139,7 +178,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy()</string>
+            <string>///Destroy
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
@@ -164,6 +205,7 @@ else
             <string>///Draws Mario
 if instance_exists(obj_mario)
 {
+
     //Make Mario flash
     if obj_mario.isflashing = 1
         shader_set(sha_invert)
@@ -174,6 +216,7 @@ if instance_exists(obj_mario)
     //Reset flashing
     if obj_mario.isflashing = 1
         shader_reset()
+
 }
 </string>
           </argument>

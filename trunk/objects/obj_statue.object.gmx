@@ -25,14 +25,30 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_magic,0,0)
-obj_mario.invincible = 1
-obj_mario.visible = 0
-obj_mario.disablecontrols = 1
-obj_mario.speed = 0
+            <string>///Tanooki statue
+
+//Play a magical sound
+audio_play_sound(snd_magic,0,0)
+
+//Make Mario invincible, invisible, disable his controls, and stop his speed
+with obj_mario
+{
+    invincible = 1
+    visible = 0
+    disablecontrols = 1
+    speed = 0
+}
+
+//Start blinking when time starts to run out
 alarm[0] = 90
+
+//Time runs out
 alarm[2] = 120
+
+//Become visible
 alarm[3] = 8
+
+//Create statue smoke
 instance_create(x,y+8,obj_statuesmoke)
 </string>
           </argument>
@@ -56,13 +72,27 @@ instance_create(x,y+8,obj_statuesmoke)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_magic,0,0)
-instance_create(x,y+8,obj_statuesmoke)
-if instance_exists(obj_mario)
+            <string>///End the statue morph
+
+//With Mario
+with obj_mario
 {
-    obj_mario.invincible = 0
-    obj_mario.visible = 1
-    obj_mario.disablecontrols = 0
+
+    //Play a magical sound
+    audio_play_sound(snd_magic,0,0)
+
+    //Create statue smoke
+    instance_create(x,y+8,obj_statuesmoke)
+
+    //Stop the invincibility
+    invincible = 0
+
+    //Become visible
+    visible = 1
+
+    //Enable controls
+    disablecontrols = 0
+
 }
 </string>
           </argument>
@@ -86,7 +116,9 @@ if instance_exists(obj_mario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>visible = 1</string>
+            <string>///Become visible
+visible = 1
+</string>
           </argument>
         </arguments>
       </action>
@@ -108,7 +140,9 @@ if instance_exists(obj_mario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy()</string>
+            <string>///Destroy
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
@@ -130,8 +164,10 @@ if instance_exists(obj_mario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_alpha = 1
-alarm[0] = 2</string>
+            <string>///Blink
+image_alpha = 1
+alarm[0] = 2
+</string>
           </argument>
         </arguments>
       </action>
@@ -153,8 +189,10 @@ alarm[0] = 2</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_alpha = 0.4
-alarm[1] = 2</string>
+            <string>///Blink
+image_alpha = 0.4
+alarm[1] = 2
+</string>
           </argument>
         </arguments>
       </action>
@@ -176,16 +214,18 @@ alarm[1] = 2</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_mario)
+            <string>///Snap to Mario if the keys are still being held
+if instance_exists(obj_mario)
+and keyboard_check(vk_control)
+and keyboard_check(vk_down)
 {
     x = obj_mario.x
     y = obj_mario.y
     obj_mario.invincible = 1
 }
+
+//Otherwise, destroy
 else
-    instance_destroy()
-if not keyboard_check(vk_control)
-or not keyboard_check(vk_down)
     instance_destroy()
 </string>
           </argument>
