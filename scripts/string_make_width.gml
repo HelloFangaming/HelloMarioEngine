@@ -11,22 +11,17 @@
 **  Returns:
 **      The string fit into the specified width.
 */
-var str, a, length, word, ret, ret2
+var str, length, word, ret, ret2
 str = string(argument0 + " ")
-a = 1
 length = string_count(" ",str)
-while a <= length
-{
-    word[a] = string_copy(str,1,string_pos(" ",str) - 1)
-    str = string_copy(str,string_pos(" ",str) + 1,string_length(str))
-    a++
-}
 ret = ""
-for(var i = 1; i < a; i++)
+for(var i = 0; i < length; i++)
 {
-    ret2 = ret + word[i]
+    word = string_copy(str,1,string_pos(" ",str) - 1)
+    str = string_copy(str,string_pos(" ",str) + 1,string_length(str))
+    ret2 = ret + word
     if string_width(ret2) > argument1
-        ret2 = ret + "#" + word[i]
+        ret2 = ret + "#" + word
     ret = ret2 + " "
 }
 return ret

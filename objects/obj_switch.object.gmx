@@ -111,7 +111,7 @@ with instance_create(0,0,obj_sleeper) alarm[0] = 390
             <string>///Press the switch
 
 //If Mario jumps on the unpressed switch
-if other.vspeed &gt;= 0
+if other.y &lt; y-24
 and image_speed = 0
 {
 

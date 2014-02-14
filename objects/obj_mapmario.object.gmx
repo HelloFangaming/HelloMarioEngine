@@ -145,7 +145,8 @@ ds_map_clear(global.acecoins)
           <argument>
             <kind>1</kind>
             <string>///Mario's sound as he skids towards his previous location
-audio_play_sound(snd_spin,1,1)
+if ready = 2
+    audio_play_sound(snd_spin,1,1)
 </string>
           </argument>
         </arguments>

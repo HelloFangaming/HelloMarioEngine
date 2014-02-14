@@ -25,10 +25,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_mario.hspeed = 0
-obj_mario.disablecontrols = 1
+            <string>///Pull something subcon style!
+
+//Destroy the spinner if it exists
 if instance_exists(obj_spinner)
     with obj_spinner instance_destroy()
+
+//Stop Mario's horizontal movement, make him invisible, and disable his controls
+with obj_mario
+{
+    hspeed = 0
+    visible = 0
+    disablecontrols = 1
+}
+
+//Fail safe to prevent Mario from being stuck pulling nothing
 alarm[0] = 95
 </string>
           </argument>
@@ -52,10 +63,11 @@ alarm[0] = 95
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_mario)
+            <string>///If Mario exists, make him visible and enable controls
+with obj_mario
 {
-    obj_mario.visible = 1
-    obj_mario.disablecontrols = 0
+    visible = 1
+    disablecontrols = 0
 }
 </string>
           </argument>
@@ -79,7 +91,8 @@ alarm[0] = 95
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_mario.holding = 0
+            <string>///Fail safe to prevent Mario from getting stuck
+with obj_mario holding = 0
 instance_destroy()
 </string>
           </argument>
@@ -103,11 +116,14 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_mario)
+            <string>///Snap to Mario if he exists
+if instance_exists(obj_mario)
 {
     x = obj_mario.x
     y = obj_mario.y
 }
+
+//Otherwise, destroy
 else
     instance_destroy()
 </string>
@@ -135,6 +151,7 @@ else
             <string>///Draws Mario
 if instance_exists(obj_mario)
 {
+
     //Make Mario flash
     if obj_mario.isflashing = 1
         shader_set(sha_invert)
@@ -145,6 +162,7 @@ if instance_exists(obj_mario)
     //Reset flashing
     if obj_mario.isflashing = 1
         shader_reset()
+
 }
 </string>
           </argument>
