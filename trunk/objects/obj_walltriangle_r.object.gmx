@@ -47,16 +47,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if obj_mario.direct = 1
-and obj_mario.hspeed &gt; 2.9
-and obj_mario.state = 1
-and global.yoshi = 0
+            <string>if obj_mario.state = 1
 and obj_mario.holding = 0
 and obj_mario.isduck = 0
 and obj_mario.isswim = 0
-and not instance_exists(obj_spinner)
 and not instance_exists(obj_wallrunner)
-    instance_create(x,y-32,obj_wallrunner)
+{
+    if obj_mario.hspeed &gt; 2.9
+    and position_meeting(x+24,y-8,obj_solid)
+        instance_create(x,y-32,obj_wallrunner)
+    else if obj_mario.hspeed &lt; -2.9
+    and position_meeting(x+8,y+24,obj_solid)
+    and not position_meeting(x-8,y+24,obj_solidtop)
+        with instance_create(x-16,y+16,obj_wallrunner)
+        {
+            ready = 1
+            mydir = 2
+            vspeed = 3
+        }
+}
 </string>
           </argument>
         </arguments>

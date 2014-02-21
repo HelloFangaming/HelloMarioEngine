@@ -28,8 +28,7 @@
             <string>///Pull something subcon style!
 
 //Destroy the spinner if it exists
-if instance_exists(obj_spinner)
-    with obj_spinner instance_destroy()
+with obj_spinner instance_destroy()
 
 //Stop Mario's horizontal movement, make him invisible, and disable his controls
 with obj_mario
