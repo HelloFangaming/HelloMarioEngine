@@ -55,15 +55,11 @@ and not instance_exists(obj_wallrunner)
 {
     if obj_mario.hspeed &lt; -2.9
     and position_meeting(x-8,y-8,obj_solid)
-        with instance_create(x+15,y-32,obj_wallrunner) ready = 1
+        with instance_create(x+16,y-32,obj_wallrunner) direct = -1
     else if obj_mario.hspeed &gt; 2.9
     and position_meeting(x+8,y+24,obj_solid)
     and not position_meeting(x+24,y+24,obj_solidtop)
-        with instance_create(x+32,y+16,obj_wallrunner)
-        {
-            mydir = 2
-            vspeed = 3
-        }
+        with instance_create(x+32,y+16,obj_wallrunner) direction = 270
 }
 </string>
           </argument>

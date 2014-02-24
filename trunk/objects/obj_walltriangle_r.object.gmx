@@ -61,9 +61,8 @@ and not instance_exists(obj_wallrunner)
     and not position_meeting(x-8,y+24,obj_solidtop)
         with instance_create(x-16,y+16,obj_wallrunner)
         {
-            ready = 1
-            mydir = 2
-            vspeed = 3
+            direct = -1
+            direction = 270
         }
 }
 </string>
