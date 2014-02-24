@@ -92,10 +92,13 @@ alarm[7] = 15
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Make the screen shake if thwomp sound plays
+            <string>///Make the screen shake when thwomp sound plays
 if audio_is_playing(snd_thwomp)
 {
-    view_yview[0] += ((anim%3)-1)*4
+    if anim%2
+        view_yview[0] += 4
+    else
+        view_yview[0] -= 4
     alarm[11] = 7
 }
 </string>
