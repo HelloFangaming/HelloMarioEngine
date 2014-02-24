@@ -79,7 +79,7 @@ if collision_rectangle(bbox_left+1,bbox_top-1,bbox_right-1,bbox_top-1,obj_solid,
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x,y,obj_100pts)
+            <string>with instance_create(x,y,obj_score) event_user(0)
 if global.powerup = cs_big
 and global.reserveitem = cs_small
     global.reserveitem = cs_big

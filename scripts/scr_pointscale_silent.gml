@@ -9,28 +9,13 @@
 */
 switch other.hitpoint
 {
-    case 0:
-        instance_create(round(x)-8,round(y),obj_100pts)
-        break
-    case 1:
-        instance_create(round(x)-8,round(y),obj_200pts)
-        break
-    case 2:
-        instance_create(round(x)-8,round(y),obj_400pts)
-        break
-    case 3:
-        instance_create(round(x)-8,round(y),obj_800pts)
-        break
-    case 4:
-        instance_create(round(x)-8,round(y),obj_1000pts)
-        break
-    case 5:
-        instance_create(round(x)-8,round(y),obj_2000pts)
-        break
-    case 6:
-        instance_create(round(x)-8,round(y),obj_4000pts)
-        break
-    default:
-        instance_create(round(x)-8,round(y),obj_1uppts)
+    case 0: with instance_create(round(x)-8,round(y),obj_score) event_user(0) break
+    case 1: with instance_create(round(x)-8,round(y),obj_score) event_user(1) break
+    case 2: with instance_create(round(x)-8,round(y),obj_score) event_user(2) break
+    case 3: with instance_create(round(x)-8,round(y),obj_score) event_user(3) break
+    case 4: with instance_create(round(x)-8,round(y),obj_score) event_user(4) break
+    case 5: with instance_create(round(x)-8,round(y),obj_score) event_user(5) break
+    case 6: with instance_create(round(x)-8,round(y),obj_score) event_user(6) break
+    default: with instance_create(round(x)-8,round(y),obj_score) event_user(7)
 }
 other.hitpoint++

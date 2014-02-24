@@ -25,8 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x,y,obj_3uppts)
-instance_destroy()</string>
+            <string>with instance_create(x,y,obj_score) event_user(8)
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>

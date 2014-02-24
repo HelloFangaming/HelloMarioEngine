@@ -78,12 +78,12 @@ instance_destroy()</string>
     audio_play_sound(snd_acecoin,0,0)
     if ds_map_size(global.acecoins) = 4
     {
-        instance_create(x,y,obj_1uppts)
+        with instance_create(x,y,obj_score) event_user(7)
         score += 100
     }
     else
     {
-        instance_create(x,y,obj_100pts)
+        with instance_create(x,y,obj_score) event_user(0)
         audio_play_sound(snd_hoohoo,0,0)
     }
     ds_map_add(global.acecoins,id,1)

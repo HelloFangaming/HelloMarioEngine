@@ -53,7 +53,7 @@ audio_play_sound(snd_coin,0,0)</string>
             <kind>1</kind>
             <string>if y &gt; ystart-16 and vspeed &gt; 0
 {
-    instance_create(x,ystart-16,obj_100pts)
+    with instance_create(x,ystart-16,obj_score) event_user(0)
     instance_create(x+8,ystart-24,obj_sparkletrail)
     instance_destroy()
 }

@@ -111,7 +111,7 @@ bash = x
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x,y,obj_100pts)
+            <string>with instance_create(x,y,obj_score) event_user(0)
 if global.powerup = cs_big
 and global.reserveitem = cs_small
     global.reserveitem = cs_big
