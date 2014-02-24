@@ -223,7 +223,7 @@ instance_destroy()</string>
             <string>event_user(0)
 audio_play_sound(snd_kick,0,0)
 audio_play_sound(snd_bump,0,0)
-instance_create(x,y,obj_100pts)
+with instance_create(x,y,obj_score) event_user(0)
 with (other) instance_destroy()
 instance_destroy()</string>
           </argument>

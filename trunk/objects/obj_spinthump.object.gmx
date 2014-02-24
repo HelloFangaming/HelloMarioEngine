@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.3</string>
+            <string>///Mario thumping around on enemies
+
+//Animate
+image_speed = 0.3
+</string>
           </argument>
         </arguments>
       </action>
@@ -47,7 +51,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy()</string>
+            <string>///Destroy when animation is complete
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>

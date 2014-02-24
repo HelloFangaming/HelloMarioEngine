@@ -198,7 +198,7 @@ and collision_rectangle(bbox_left-1+hspeed,bbox_top,bbox_left,bbox_bottom,obj_so
     exit
 audio_play_sound(snd_coin,0,0)
 global.coins+=1
-instance_create(x,y,obj_100pts)
+with instance_create(x,y,obj_score) event_user(0)
 instance_create(x+8,y-8,obj_sparkletrail)
 instance_destroy()
 </string>

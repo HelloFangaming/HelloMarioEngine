@@ -975,7 +975,7 @@
       <sprite>sprites\spr_frozenenemy_wide</sprite>
     </sprites>
     <sprites name="Special">
-      <sprites name="Eyecandy">
+      <sprites name="Effects">
         <sprites name="Score">
           <sprite>sprites\spr_100pts</sprite>
           <sprite>sprites\spr_200pts</sprite>
@@ -1503,9 +1503,9 @@
           <object>objects\obj_doormario</object>
           <object>objects\obj_puller</object>
           <object>objects\obj_spinner</object>
-          <object>objects\obj_slider</object>
           <object>objects\obj_statue</object>
           <object>objects\obj_wallrunner</object>
+          <object>objects\obj_slider</object>
           <object>objects\obj_inshell</object>
         </objects>
         <objects name="Powerup">
@@ -1680,18 +1680,8 @@
           <object>objects\obj_spring_blue</object>
           <object>objects\obj_blownbubble</object>
         </objects>
-        <objects name="Eyecandy">
-          <objects name="Score">
-            <object>objects\obj_100pts</object>
-            <object>objects\obj_200pts</object>
-            <object>objects\obj_400pts</object>
-            <object>objects\obj_800pts</object>
-            <object>objects\obj_1000pts</object>
-            <object>objects\obj_2000pts</object>
-            <object>objects\obj_4000pts</object>
-            <object>objects\obj_1uppts</object>
-            <object>objects\obj_3uppts</object>
-          </objects>
+        <objects name="Effects">
+          <object>objects\obj_score</object>
           <object>objects\obj_smoke</object>
           <object>objects\obj_statuesmoke</object>
           <object>objects\obj_spinsmoke</object>

@@ -238,7 +238,7 @@ instance_destroy()</string>
             <string>if other.vspeed &lt; 0
 {
     audio_play_sound(snd_kick,0,0)
-    instance_create(x,y,obj_100pts)
+    with instance_create(x,y,obj_score) event_user(0)
     event_user(0)
     instance_destroy()
 }

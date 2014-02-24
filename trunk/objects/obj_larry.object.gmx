@@ -480,7 +480,7 @@ if ready = 1
 }
 audio_play_sound(snd_bump,0,0)
 event_user(0)
-instance_create(x-8,y,obj_100pts)
+with instance_create(x-8,y,obj_score) event_user(0)
 with (other) instance_destroy()
 </string>
           </argument>

@@ -138,8 +138,9 @@ and collision_rectangle(x,y-1,x+15,y-1,obj_solid,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x,y,obj_1uppts)
-instance_destroy()</string>
+            <string>with instance_create(x,y,obj_score) event_user(7)
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>

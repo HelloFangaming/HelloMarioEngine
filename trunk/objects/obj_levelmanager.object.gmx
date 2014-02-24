@@ -132,19 +132,8 @@ if switchon = 1
     //Turn off the P-Switch
     switchon = 0
 
-    //Change bricks into coins
-    with obj_brick
-    {
-        instance_create(x,y,obj_coin)
-        instance_destroy()
-    }
-
-    //Change fake coins into bricks
-    with obj_coinchange
-    {
-        instance_create(x,y,obj_brick)
-        instance_destroy()
-    }
+    //Swap coins with bricks and bricks with coins
+    event_user(2)
 
     //Make P-Coins invisible
     with obj_pcoin visible = 0
@@ -729,17 +718,61 @@ if global.coins &gt; 99
 
     //Create the extra life on Mario if he exists
     if instance_exists(obj_mario)
-        instance_create(obj_mario.x-8,obj_mario.y,obj_1uppts)
+        with instance_create(obj_mario.x-8,obj_mario.y,obj_score) event_user(7)
 
     //Otherwise, create the extra life on the level manager
     else
-        instance_create(x-8,y,obj_1uppts)
+        with instance_create(x-8,y,obj_score) event_user(7)
 
 }
 
 //Make the screen shake if thwomp sound plays
 if not audio_is_playing(snd_thwomp)
     alarm[11] = 2
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Swap coins with bricks and bricks with coins
+
+//Turn bricks into fake coins
+with obj_brick
+{
+    instance_create(x,y,obj_coinchange)
+    instance_destroy()
+}
+
+//Turn coins into bricks
+with obj_coin
+{
+    instance_create(x,y,obj_brick)
+    instance_destroy()
+}
+
+//Turn fake coins into coins
+with obj_coinchange
+{
+    instance_create(x,y,obj_coin)
+    instance_destroy()
+}
 </string>
           </argument>
         </arguments>
@@ -771,19 +804,8 @@ if switchon = 0
     //Turn on the P-Switch
     switchon = 1
 
-    //Turn bricks into fake coins
-    with obj_brick
-    {
-        instance_create(x,y,obj_coinchange)
-        instance_destroy()
-    }
-
-    //Turn coins into bricks
-    with obj_coin
-    {
-        instance_create(x,y,obj_brick)
-        instance_destroy()
-    }
+    //Swap coins with bricks and bricks with coins
+    event_user(2)
 
     //Make P-Coins visible
     with obj_pcoin visible = 1
