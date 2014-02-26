@@ -439,6 +439,7 @@
     <sprites name="Blocks">
       <sprite>sprites\spr_qblock</sprite>
       <sprite>sprites\spr_qblock_empty</sprite>
+      <sprite>sprites\spr_qblock_triple</sprite>
       <sprite>sprites\spr_qblock_large</sprite>
       <sprite>sprites\spr_qblock_spiked</sprite>
       <sprite>sprites\spr_qblock_winged</sprite>
