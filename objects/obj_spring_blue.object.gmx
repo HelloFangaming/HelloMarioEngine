@@ -169,11 +169,11 @@ and other.vspeed &gt; 0
 {
     image_speed = 1
     audio_play_sound(snd_spring,0,0)
-    if keyboard_check(vk_shift)
-        other.vspeed = -9
-    else
-        other.vspeed = -5
-    other.jumpnow = 2
+    with other
+    {
+        event_user(1)
+        vspeed = -5.2
+    }
 }
 </string>
           </argument>
