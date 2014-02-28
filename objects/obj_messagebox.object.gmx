@@ -122,12 +122,12 @@ if showing = 1
 draw_set_font(global.messagefont)
 
 //Format the text to the correct width
-text = string_make_width(string(varmsg),210)
+text = string_make_width(varmsg,210)
 
 //The text that should display next if it is too long
 new_text = ""
 
-//Prepare to display the text
+//Split up the message if it is too long
 event_user(0)
 
 //The text should start displaying now
@@ -154,7 +154,7 @@ showing = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Get ready to display the message
+            <string>///Split up the message if it is too long
 
 //The number of newlines in the message
 var newlines = 0
@@ -269,7 +269,7 @@ if showing = 1
 if showing = 1
 {
 
-    //If the full message is not displayed yer, display it all
+    //If the full message is not displayed yet, display it all
     if a &lt;= string_length(text)
         a = string_length(text)+1
 
@@ -285,7 +285,7 @@ if showing = 1
             text = new_text
             new_text = ""
 
-            //Prepare to display the text
+            //Split up the message if it is too long
             event_user(0)
 
         }

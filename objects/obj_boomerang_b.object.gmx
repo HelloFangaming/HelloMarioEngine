@@ -29,7 +29,7 @@
 audio_play_sound(snd_fireball,0,0)
 hspeed = 1.5*obj_mario.direct
 vspeed = -1
-alarm[0] = 24
+alarm[0] = 32
 ready = 0
 </string>
           </argument>
@@ -77,8 +77,9 @@ y = ystart</string>
           <argument>
             <kind>1</kind>
             <string>hspeed = -hspeed
-alarm[3] = 12
-ready = 1</string>
+alarm[3] = 16
+ready = 1
+</string>
           </argument>
         </arguments>
       </action>
@@ -101,7 +102,8 @@ ready = 1</string>
           <argument>
             <kind>1</kind>
             <string>vspeed = 1
-alarm[2] = 12</string>
+alarm[2] = 16
+</string>
           </argument>
         </arguments>
       </action>
@@ -124,7 +126,8 @@ alarm[2] = 12</string>
           <argument>
             <kind>1</kind>
             <string>vspeed = 0
-alarm[1] = 60</string>
+alarm[1] = 40
+</string>
           </argument>
         </arguments>
       </action>
