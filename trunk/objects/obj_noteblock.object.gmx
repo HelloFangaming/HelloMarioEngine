@@ -248,14 +248,13 @@ and ready = 0
     ready = 1
     vspeed = 2
     alarm[2] = 4
-    if keyboard_check(vk_shift)
+    with obj_mario
     {
-        audio_play_sound(snd_spring,0,0)
-        obj_mario.vspeed = -9
+        event_user(1)
+        vspeed = -5.2
+        if jumpnow = 1
+            audio_play_sound(snd_spring,0,0)
     }
-    else
-        obj_mario.vspeed = -5
-    obj_mario.jumpnow = 2
 }
 </string>
           </argument>

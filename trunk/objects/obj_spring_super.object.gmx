@@ -144,18 +144,21 @@ and other.y &lt; y-27
 and other.vspeed &gt; 0
 {
     image_speed = 1
-    if keyboard_check(vk_shift)
+    with other
     {
-        other.vspeed = -11.5
-        audio_play_sound(snd_superspring,0,0)
-        audio_play_sound(snd_yahoo,0,0)
+        event_user(1)
+        if jumpnow = 1
+        {
+            audio_play_sound(snd_superspring,0,0)
+            audio_play_sound(snd_yahoo,0,0)
+            vspeed = -6.7
+        }
+        else
+        {
+            audio_play_sound(snd_spring,0,0)
+            vspeed = -5.2
+        }
     }
-    else
-    {
-        other.vspeed = -5
-        audio_play_sound(snd_spring,0,0)
-    }
-    other.jumpnow = 2
 }
 </string>
           </argument>

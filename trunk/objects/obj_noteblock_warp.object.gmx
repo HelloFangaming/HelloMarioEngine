@@ -145,7 +145,7 @@ and ready = 0
         obj_warpnoteblock.myroom = myroom
     }
     else
-        obj_mario.vspeed = -5
+        obj_mario.vspeed = -5.2
     obj_mario.jumpnow = 2
 }
 </string>
