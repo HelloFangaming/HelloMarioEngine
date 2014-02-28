@@ -1115,7 +1115,7 @@ if state &lt; 3
 
                 //Boomerang
                 else if global.powerup = cs_boomerang
-                and not instance_exists(obj_boomerang_b)
+                and instance_number(obj_boomerang_b) &lt; 2
                 {
                     firing = 9
                     instance_create(x-8,y+16,obj_boomerang_b)
@@ -1797,8 +1797,8 @@ else
     isslip = 0
 
 //Prevent Mario from falling down too fast
-if vspeed &gt; 3
-    vspeed = 3
+if vspeed &gt; 4
+    vspeed = 4
 
 //Figure out what Mario's max speed should be
 
@@ -2088,7 +2088,7 @@ if state = 2
 
             //Allow Mario to charge downwards
             if keyboard_check(vk_down)
-                vspeed = 3
+                vspeed = 4
             else if vspeed &gt; 1
                 vspeed = 1
 
