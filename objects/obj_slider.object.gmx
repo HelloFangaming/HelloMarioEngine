@@ -240,8 +240,17 @@ else
         //Play the jump sound
         audio_play_sound(snd_jump,0,0)
 
-        //Move upwards
-        obj_mario.vspeed = -3
+        //With Mario
+        with obj_mario
+        {
+
+            //Move upwards
+            vspeed = -3
+
+            //Switch to the jump state
+            state = 2
+
+        }
 
     }
 
