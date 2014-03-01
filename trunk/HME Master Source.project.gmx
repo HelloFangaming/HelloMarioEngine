@@ -458,8 +458,9 @@
       <sprite>sprites\spr_onoffblock</sprite>
       <sprite>sprites\spr_onoffplatform</sprite>
       <sprite>sprites\spr_flowerblock</sprite>
-      <sprite>sprites\spr_leafblock</sprite>
       <sprite>sprites\spr_hammerblock</sprite>
+      <sprite>sprites\spr_boomerangblock</sprite>
+      <sprite>sprites\spr_leafblock</sprite>
       <sprite>sprites\spr_starblock</sprite>
       <sprite>sprites\spr_bombblock</sprite>
       <sprite>sprites\spr_shellblock</sprite>
@@ -1175,8 +1176,8 @@
       <object>objects\obj_onoffblock</object>
       <object>objects\obj_onoffplatform</object>
       <object>objects\obj_flowerblock</object>
-      <object>objects\obj_leafblock</object>
       <object>objects\obj_hammerblock</object>
+      <object>objects\obj_leafblock</object>
       <object>objects\obj_starblock</object>
       <object>objects\obj_bombblock</object>
       <object>objects\obj_shellblock</object>
@@ -1507,7 +1508,6 @@
           <object>objects\obj_statue</object>
           <object>objects\obj_wallrunner</object>
           <object>objects\obj_slider</object>
-          <object>objects\obj_inshell</object>
         </objects>
         <objects name="Powerup">
           <objects name="Pickup">

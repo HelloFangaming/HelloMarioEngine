@@ -2134,12 +2134,12 @@ and disablecontrols = 0
 and holding = 0
 {
 
-    //If shell/penguin Mario is walking
+    //If shell/penguin Mario is walking, do the special sliding
     if (global.powerup = cs_shell or global.powerup = cs_penguin)
     and state = 1
-        instance_create(x,y,obj_inshell)
+        with instance_create(x,y,obj_slider) event_user(0)
 
-    //If Mario is on a slope, and the above didn't happen
+    //If Mario is on a slope, and the above didn't happen, slide normally
     else if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+3,obj_slopeparent,1,0)
     and not collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+3,obj_solidtop,0,0)
         instance_create(x,y,obj_slider)
