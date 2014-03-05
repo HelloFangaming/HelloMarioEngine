@@ -5,8 +5,8 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_solid</parentName>
-  <maskName>spr_square</maskName>
+  <parentName>obj_grayblockparent</parentName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="4" ename="obj_explosion">
       <action>
@@ -25,23 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.object_index = obj_explosion
+            <string>///Shatter when hit with an explosion
+if other.object_index = obj_explosion
 {
-    audio_play_sound(snd_break,0,0)
     audio_play_sound(snd_bump,0,0)
-    varid = instance_create(x+8,y,obj_shard)
-    with (varid) motion_set(45,3)
-    with (varid) sprite_index = spr_shard_g
-    varid = instance_create(x+8,y,obj_shard)
-    with (varid) motion_set(60,3)
-    with (varid) sprite_index = spr_shard_g
-    varid = instance_create(x,y,obj_shard)
-    with (varid) motion_set(120,3)
-    with (varid) sprite_index = spr_shard_g
-    varid = instance_create(x,y,obj_shard)
-    with (varid) motion_set(135,3)
-    with (varid) sprite_index = spr_shard_g
-    instance_destroy()
+    event_user(0)
 }
 </string>
           </argument>

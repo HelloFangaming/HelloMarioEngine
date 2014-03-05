@@ -104,7 +104,7 @@
     <instance objName="obj_incastle" x="2896" y="384" name="inst_A8967A73" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_veggie_small" x="64" y="384" name="inst_D6D8AC24" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_veggie_large" x="256" y="384" name="inst_122BD1D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_veggie_large" x="1328" y="80" name="inst_538C0B9B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_veggie_large" x="1600" y="256" name="inst_538C0B9B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_veggie_small" x="208" y="384" name="inst_ADC95B2C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_veggie_small" x="416" y="32" name="inst_C7E61C97" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_veggie_small" x="432" y="320" name="inst_441C2A9E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -117,7 +117,7 @@
     <instance objName="obj_veggie_small" x="992" y="368" name="inst_1309A815" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_veggie_coin" x="1376" y="288" name="inst_181EE66E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_veggie_coin" x="1440" y="128" name="inst_DC2E9B7F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_veggie_small" x="1600" y="256" name="inst_7E7F7089" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_boomerangblock" x="1600" y="176" name="inst_BB76B4FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_veggie_bomb" x="160" y="224" name="inst_8E79E5E4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_veggie_small" x="336" y="224" name="inst_F377CB92" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_veggie_small" x="1824" y="352" name="inst_2EB88F5C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -464,6 +464,7 @@
     <instance objName="obj_block_sprout" x="1728" y="176" name="inst_2178C82C" locked="0" code="sprout = cs_boomerang" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_sprout" x="1760" y="176" name="inst_6AF36F3A" locked="0" code="sprout = cs_propeller" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_noteblock" x="1744" y="80" name="inst_8B2FC45F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_checkpoint" x="1344" y="48" name="inst_75D13A38" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset" x="16" y="144" w="32" h="32" xo="576" yo="368" id="10000398" name="tile_7C59E81B" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
