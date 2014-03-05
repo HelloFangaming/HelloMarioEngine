@@ -5,8 +5,8 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_solid</parentName>
-  <maskName>spr_square</maskName>
+  <parentName>obj_grayblockparent</parentName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="3" enumb="0">
       <action>
@@ -25,26 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-    exit
-if collision_rectangle(x,y-3,x+15,y,obj_kuriboshoe,0,0)
+            <string>///Shatter when stomped on with a shoe
+if global.yoshi = 2
+and place_meeting(x,y-3,obj_mario)
 and obj_mario.vspeed &gt; 0
 {
     with obj_mario event_user(1)
-    audio_play_sound(snd_break,0,0)
-    varid = instance_create(x+8,y,obj_shard)
-    with (varid) motion_set(45,3)
-    with (varid) sprite_index = spr_shard_g
-    varid = instance_create(x+8,y,obj_shard)
-    with (varid) motion_set(60,3)
-    with (varid) sprite_index = spr_shard_g
-    varid = instance_create(x,y,obj_shard)
-    with (varid) motion_set(120,3)
-    with (varid) sprite_index = spr_shard_g
-    varid = instance_create(x,y,obj_shard)
-    with (varid) motion_set(135,3)
-    with (varid) sprite_index = spr_shard_g
-    instance_destroy()
+    audio_play_sound(snd_bump,0,0)
+    event_user(0)
 }
 </string>
           </argument>

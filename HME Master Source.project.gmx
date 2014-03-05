@@ -1177,6 +1177,7 @@
       <object>objects\obj_onoffplatform</object>
       <object>objects\obj_flowerblock</object>
       <object>objects\obj_hammerblock</object>
+      <object>objects\obj_boomerangblock</object>
       <object>objects\obj_leafblock</object>
       <object>objects\obj_starblock</object>
       <object>objects\obj_bombblock</object>
@@ -1492,6 +1493,7 @@
         <object>objects\obj_slopeparent</object>
         <object>objects\obj_holdparent</object>
         <object>objects\obj_parblock</object>
+        <object>objects\obj_grayblockparent</object>
         <object>objects\obj_parprojectile</object>
         <object>objects\obj_deactivation</object>
         <object>objects\obj_worldparent</object>

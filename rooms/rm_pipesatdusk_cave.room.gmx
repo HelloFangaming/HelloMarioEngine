@@ -87,9 +87,9 @@
     <instance objName="obj_lava_sl" x="432" y="384" name="inst_DFBFE7A8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_keyhole" x="224" y="192" name="inst_F780023C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="32" y="32" name="inst_B870E87E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="32" y="48" name="inst_1851265B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_postchange" x="64" y="128" name="inst_F28E5D6E" locked="0" code="postx = 16&#xA;posty = 352" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="32" y="64" name="inst_B86D38B0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="32" y="80" name="inst_B10AD3C1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mario" x="120" y="112" name="inst_6DA4A1D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="32" y="96" name="inst_AAC20636" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_multicoin_shroom" x="288" y="144" name="inst_BE8F2854" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="560" y="96" name="inst_3DBD4F76" locked="0" code="varmsg = &quot;Be careful! Red leafed piranha plants will come out even if you are standing on the pipe!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -141,8 +141,6 @@
     <instance objName="obj_piranhaplant_down_red" x="400" y="48" name="inst_64C190E8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_firepiranha_down_red" x="368" y="48" name="inst_239BB2ED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warproom" x="560" y="144" name="inst_3675CB52" locked="0" code="postchange = 0&#xA;postx = 992&#xA;posty = 80&#xA;myroom = rm_pipesatdusk" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_postchange" x="64" y="128" name="inst_F28E5D6E" locked="0" code="postx = 16&#xA;posty = 352" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mario" x="120" y="112" name="inst_6DA4A1D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset" x="32" y="0" w="16" h="32" xo="16" yo="208" id="10004189" name="tile_73027D3C" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
