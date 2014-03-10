@@ -45,5 +45,6 @@ switch argument0
     case spr_spring_super: return cs_superspring
     case spr_pswitch: return cs_pswitch
     case spr_eswitch: return cs_eswitch
+    case spr_beanstalk: return cs_beanstalk
     default: return -1
 }

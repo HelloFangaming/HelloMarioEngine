@@ -64,11 +64,12 @@
 **      cs_superspring
 **      cs_pswitch
 **      cs_eswitch
+**      cs_beanstalk
 **
 */
 
 //Default Value:
-sprout = -1
+sprout = cs_coin
 
 image_speed = 0.15
 type = 0
@@ -167,7 +168,7 @@ and hspeed &lt; 0
             <string>if collision_rectangle(x,y+15,x+15,y+19,obj_mario,0,0)
     if obj_mario.vspeed &lt; 0
     {
-        if sprout = -1
+        if sprout = cs_coin
         {
             varid = instance_create(x,y,obj_block_coin)
             with varid
