@@ -198,24 +198,24 @@
     <instance objName="obj_bulletbill" x="1312" y="336" name="inst_9B059B83" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bulletbill_side" x="1376" y="288" name="inst_53E02520" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bulletbill_homing" x="1104" y="256" name="inst_B973473A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_diacannon" x="1472" y="208" name="inst_7067AB3A" locked="0" code="direct = 1&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_diacannon" x="1728" y="144" name="inst_40E75585" locked="0" code="direct = 1&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_diacannon" x="1472" y="208" name="inst_7067AB3A" locked="0" code="direct = 1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_diacannon" x="1728" y="144" name="inst_40E75585" locked="0" code="direct = 1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_diacannon" x="1776" y="208" name="inst_54945E5C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_diacannon" x="1712" y="16" name="inst_05407606" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_diacannon" x="2032" y="128" name="inst_C5716D71" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_sidecannon" x="1696" y="176" name="inst_C6264531" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sidecannon" x="1840" y="64" name="inst_DF543718" locked="0" code="direct = 1&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sidecannon" x="1840" y="64" name="inst_DF543718" locked="0" code="direct = 1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_quadcannon" x="1760" y="32" name="inst_7F57C3CF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_largecannon" x="1392" y="256" name="inst_EDA85DA3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bombcannon" x="1504" y="272" name="inst_C4AB232F" locked="0" code="direct = 1&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bombcannon" x="1504" y="272" name="inst_C4AB232F" locked="0" code="direct = 1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_engine" x="1504" y="384" name="inst_9ABC10FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_vengine" x="1392" y="384" name="inst_C16CCB84" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_vengine2" x="1568" y="208" name="inst_22EC0808" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ballnchain" x="1168" y="80" name="inst_A0B286B6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_podoboo_bounce" x="1728" y="96" name="inst_E119F887" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_magikoopa" x="32" y="0" name="inst_68F00CBF" locked="0" code="xmin = 576&#xA;xmax = 2080&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_magikoopa" x="32" y="0" name="inst_68F00CBF" locked="0" code="xmin = 576&#xA;xmax = 2080" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_engine2" x="912" y="80" name="inst_C4C61D46" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sproutblock_hidden" x="656" y="304" name="inst_83BD8B8E" locked="0" code="sprout = cs_star" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_hidden" x="656" y="304" name="inst_5B988780" locked="0" code="sprout = cs_star" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_spiked" x="960" y="32" name="inst_E26BA5E2" locked="0" code="sprout = cs_penguin" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_boocircle" x="192" y="288" name="inst_D44E6864" locked="0" code="ready = -1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_boosnake" x="848" y="256" name="inst_612D2592" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -225,7 +225,7 @@
     <instance objName="obj_rotodisc" x="656" y="208" name="inst_1A46FCC2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_rotodisc" x="2272" y="320" name="inst_16655DEB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warptop" x="864" y="48" name="inst_E6FC7BB5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_postchange" x="864" y="96" name="inst_91BBB776" locked="0" code="postx = 1120&#xA;posty = 208&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_postchange" x="864" y="96" name="inst_91BBB776" locked="0" code="postx = 1120&#xA;posty = 208" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpbottom" x="1584" y="256" name="inst_79D82836" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warptop" x="1584" y="96" name="inst_2096E416" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpcannon" x="1072" y="320" name="inst_E9BCF2DF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

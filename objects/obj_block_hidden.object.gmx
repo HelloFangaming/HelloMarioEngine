@@ -8,6 +8,73 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>spr_square</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Hidden Question Mark Block
+
+/*
+**  This item uses creation code!
+**
+**  sprout = Pick from below:
+**      cs_big
+**      cs_fire
+**      cs_hammer
+**      cs_leaf
+**      cs_tanooki
+**      cs_frog
+**      cs_bomb
+**      cs_ice
+**      cs_super
+**      cs_carrot
+**      cs_ninja
+**      cs_bee
+**      cs_shell
+**      cs_penguin
+**      cs_propeller
+**      cs_boomerang
+**      cs_greenyoshi
+**      cs_redyoshi
+**      cs_yellowyoshi
+**      cs_blueyoshi
+**      cs_kuriboshoe
+**      cs_baburushoe
+**      cs_dossunshoe
+**      cs_jugemushoe
+**      cs_1up
+**      cs_3up
+**      cs_poison
+**      cs_star
+**      cs_key
+**      cs_spring
+**      cs_superspring
+**      cs_pswitch
+**      cs_eswitch
+**      cs_beanstalk
+**
+*/
+
+//Default Value:
+sprout = cs_coin
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_mario">
       <action>
         <libid>1</libid>
@@ -28,13 +95,27 @@
             <string>if other.vspeed &lt; 0
 and other.bbox_top &gt; y+15+other.vspeed
 {
-    varid = instance_create(x,y,obj_block_coin)
-    with varid
+    if sprout = cs_coin
     {
-        instance_create(x,y,obj_blockcoin)
-        ready = 1
-        vspeed = -2
-        alarm[0] = 4
+        varid = instance_create(x,y,obj_block_coin)
+        with varid
+        {
+            instance_create(x,y,obj_blockcoin)
+            ready = 1
+            vspeed = -2
+            alarm[0] = 4
+        }
+    }
+    else
+    {
+        varid = instance_create(x,y,obj_block_sprout)
+        varid.sprout = sprout
+        with varid
+        {
+            ready = 1
+            vspeed = -2
+            alarm[0] = 4
+        }
     }
     instance_destroy()
 }

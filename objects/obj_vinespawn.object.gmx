@@ -36,8 +36,8 @@ sprite_index = scr_marioclimb()
 //Start at the bottom of the level
 y = room_height
 
-//Create a vine making plant
-instance_create(x-8,y,obj_viner)
+//Create a beanstalk
+instance_create(x-8,y,obj_beanstalk)
 
 //Start climbing later
 alarm[0] = 128

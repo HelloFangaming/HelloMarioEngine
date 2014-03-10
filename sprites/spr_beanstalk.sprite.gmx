@@ -19,7 +19,7 @@
   <width>16</width>
   <height>16</height>
   <frames>
-    <frame index="0">images\spr_viner_0.png</frame>
-    <frame index="1">images\spr_viner_1.png</frame>
+    <frame index="0">images\spr_beanstalk_0.png</frame>
+    <frame index="1">images\spr_beanstalk_1.png</frame>
   </frames>
 </sprite>

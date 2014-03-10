@@ -96,7 +96,7 @@
     <instance objName="obj_solidtop" x="128" y="208" name="inst_94B9B394" locked="0" code="" scaleX="19" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_levelmanager" x="0" y="0" name="inst_EAD637E3" locked="0" code="levelmusic = snd_music_castle" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_endboss" x="936" y="80" name="inst_E55C0580" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_classicbowser" x="704" y="112" name="inst_4CA2EF57" locked="0" code="xmin = 128&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_classicbowser" x="704" y="112" name="inst_4CA2EF57" locked="0" code="xmin = 128" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mario" x="40" y="128" name="inst_5DA80AF7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_classicscroll" x="16" y="0" name="inst_5734FDAB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>

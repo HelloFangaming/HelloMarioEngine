@@ -45,5 +45,7 @@
     <frame index="23">images\spr_viewblock_23.png</frame>
     <frame index="24">images\spr_viewblock_24.png</frame>
     <frame index="25">images\spr_viewblock_25.png</frame>
+    <frame index="26">images\spr_viewblock_26.png</frame>
+    <frame index="27">images\spr_viewblock_27.png</frame>
   </frames>
 </sprite>

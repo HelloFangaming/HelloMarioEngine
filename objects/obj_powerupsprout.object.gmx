@@ -84,11 +84,14 @@ vspeed = -0.5
             <string>if sprite_index &gt; -1
 {
     if sprite_index = spr_leaf
-        instance_create(x,y,obj_leaf)
+        instance_create(x,ystart,obj_leaf)
     else
     {
         audio_play_sound(snd_sprout,0,0)
-        exit
+        if sprite_index = spr_beanstalk
+            instance_create(x,ystart,obj_beanstalk)
+        else
+            exit
     }
 }
 instance_destroy()
