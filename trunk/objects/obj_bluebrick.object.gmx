@@ -6,7 +6,7 @@
   <depth>1</depth>
   <persistent>0</persistent>
   <parentName>obj_solid</parentName>
-  <maskName>spr_square</maskName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -25,8 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
-ready = 0</string>
+            <string>///Blue throwable bricks
+
+//Animate
+image_speed = 0.15
+
+//Only one at a time
+ready = 0
+</string>
           </argument>
         </arguments>
       </action>
@@ -48,7 +54,9 @@ ready = 0</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 0</string>
+            <string>///Can be picked up
+ready = 0
+</string>
           </argument>
         </arguments>
       </action>
@@ -70,21 +78,32 @@ ready = 0</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-    exit
-if collision_rectangle(bbox_left-2,bbox_top-1,bbox_right+2,bbox_bottom-2,obj_mario,0,0)
-and obj_mario.holding = 0
+            <string>///Check if Mario can pick up this brick
+if ready = 0
 and keyboard_check(vk_control)
+and collision_rectangle(bbox_left-2,bbox_top-1,bbox_right+2,bbox_bottom-2,obj_mario,0,0)
+and obj_mario.holding = 0
 and obj_mario.isduck = 0
 and obj_mario.state &lt; 3
-and not instance_exists(obj_statue)
-and not instance_exists(obj_slider)
-and ready = 0
+and obj_mario.disablecontrols = 0
 {
-    instance_create(obj_mario.x,obj_mario.y+16,obj_thrownbrick)
-    with (obj_bluebrick) ready = 1
-    with (obj_bluebrick) alarm[0] = 1
+
+    //Create the appropriate brick
+    if sprite_index = spr_redbrick
+        with obj_mario instance_create(x,y+16,obj_redbrick_th)
+    else
+        with obj_mario instance_create(x,y+16,obj_thrownbrick)
+
+    //Make sure other bricks are not picked up at the same time
+    with obj_bluebrick
+    {
+        ready = 1
+        alarm[0] = 1
+    }
+
+    //Destroy
     instance_destroy()
+
 }
 </string>
           </argument>

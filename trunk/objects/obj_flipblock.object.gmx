@@ -6,7 +6,7 @@
   <depth>1</depth>
   <persistent>0</persistent>
   <parentName>obj_parblock</parentName>
-  <maskName>spr_square</maskName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -97,35 +97,41 @@ vspeed = 2</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-    exit
-if collision_rectangle(x,y+15,x+15,y+16,obj_mario,0,0)
-and ready = 0
+            <string>if ready = 0
+and collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_mario,0,0)
 {
     ready = 1
     vspeed = -2
     alarm[0] = 4
 }
-if collision_rectangle(x,y-4,x+15,y,obj_mario,0,0)
+if global.powerup != cs_small
+and global.yoshi = 0
+and collision_rectangle(bbox_left,bbox_top-4,bbox_right,bbox_top,obj_mario,0,0)
 and obj_mario.stompstyle = 1
 and obj_mario.vspeed &gt; 0
-and global.powerup &gt; cs_small
-and global.yoshi = 0
 {
     with obj_mario event_user(1)
     audio_play_sound(snd_break,0,0)
-    varid = instance_create(x+8,y,obj_shard)
-    with (varid) motion_set(45,3)
-    with (varid) sprite_index = spr_shard_y
-    varid = instance_create(x+8,y,obj_shard)
-    with (varid) motion_set(60,3)
-    with (varid) sprite_index = spr_shard_y
-    varid = instance_create(x,y,obj_shard)
-    with (varid) motion_set(120,3)
-    with (varid) sprite_index = spr_shard_y
-    varid = instance_create(x,y,obj_shard)
-    with (varid) motion_set(135,3)
-    with (varid) sprite_index = spr_shard_y
+    with instance_create(x+8,y,obj_shard)
+    {
+        sprite_index = spr_shard_y
+        direction = 45
+    }
+    with instance_create(x+8,y,obj_shard)
+    {
+        sprite_index = spr_shard_y
+        direction = 60
+    }
+    with instance_create(x,y,obj_shard)
+    {
+        sprite_index = spr_shard_y
+        direction = 120
+    }
+    with instance_create(x,y,obj_shard)
+    {
+        sprite_index = spr_shard_y
+        direction = 135
+    }
     instance_destroy()
 }
 </string>

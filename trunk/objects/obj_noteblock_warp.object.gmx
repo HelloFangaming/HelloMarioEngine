@@ -6,7 +6,7 @@
   <depth>1</depth>
   <persistent>0</persistent>
   <parentName>obj_parblock</parentName>
-  <maskName>spr_square</maskName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -121,32 +121,33 @@ vspeed = 2</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if collision_rectangle(x,y+15,x+15,y+16,obj_mario,0,0)
-and ready = 0
+            <string>if ready = 0
 {
-    ready = 1
-    vspeed = -2
-    alarm[0] = 4
-}
-if collision_rectangle(x,y-1,x+15,y-1,obj_mario,0,0)
-and ready = 0
-{
-    audio_play_sound(snd_bump,0,0)
-    ready = 1
-    vspeed = 2
-    alarm[2] = 4
-    if keyboard_check(vk_shift)
+    if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_mario,0,0)
     {
-        audio_play_sound(snd_spring,0,0)
-        instance_create(obj_mario.x,obj_mario.y,obj_warpnoteblock)
-        obj_warpnoteblock.direct = obj_mario.direct
-        obj_warpnoteblock.holding = obj_mario.holding
-        with obj_mario instance_destroy()
-        obj_warpnoteblock.myroom = myroom
+        ready = 1
+        vspeed = -2
+        alarm[0] = 4
     }
-    else
-        obj_mario.vspeed = -5.2
-    obj_mario.jumpnow = 2
+    else if collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_mario,0,0)
+    {
+        audio_play_sound(snd_bump,0,0)
+        ready = 1
+        vspeed = 2
+        alarm[2] = 4
+        if keyboard_check(vk_shift)
+        {
+            audio_play_sound(snd_spring,0,0)
+            instance_create(obj_mario.x,obj_mario.y,obj_warpnoteblock)
+            obj_warpnoteblock.direct = obj_mario.direct
+            obj_warpnoteblock.holding = obj_mario.holding
+            with obj_mario instance_destroy()
+            obj_warpnoteblock.myroom = myroom
+        }
+        else
+            obj_mario.vspeed = -5.2
+        obj_mario.jumpnow = 2
+    }
 }
 </string>
           </argument>

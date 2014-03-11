@@ -1153,6 +1153,7 @@
         <object>objects\obj_block_multicoin_shroom</object>
         <object>objects\obj_block_coinchain</object>
         <object>objects\obj_block_hidden</object>
+        <object>objects\obj_block_triple</object>
         <object>objects\obj_block_spiked</object>
         <object>objects\obj_block_winged</object>
         <object>objects\obj_largeblock_hammer</object>
