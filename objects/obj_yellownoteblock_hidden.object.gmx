@@ -6,7 +6,7 @@
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
-  <maskName>spr_square</maskName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="4" ename="obj_mario">
       <action>
@@ -28,8 +28,7 @@
             <string>if other.vspeed &lt; 0
 and other.bbox_top &gt; y+15+other.vspeed
 {
-    varid = instance_create(x,y,obj_noteblock_yellow)
-    with varid
+    with instance_create(x,y,obj_noteblock_yellow)
     {
         ready = 1
         vspeed = -2

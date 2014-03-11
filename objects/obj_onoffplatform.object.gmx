@@ -25,9 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
+            <string>///On/off platforms
+
+//Animate
+image_speed = 0.15
+
+//Be solid if the switch is on
 if global.onoffblock = 0
-    varid = instance_create(x,y,obj_solid)
+    mysolid = instance_create(x,y,obj_solid)
+
+//Otherwise, be an outline
 else
     sprite_index = spr_poutline
 </string>
@@ -52,15 +59,30 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.onoffblock = 0
+            <string>///Switch was pressed
+
+//If the switch was turned on
+if global.onoffblock = 0
 {
-    varid = instance_create(x,y,obj_solid)
+
+    //Create a solid
+    mysolid = instance_create(x,y,obj_solid)
+
+    //Use the on sprite
     sprite_index = spr_onoffplatform
+
 }
+
+//If the switch was turned off
 else
 {
-    with varid instance_destroy()
+
+    //Destroy the solid
+    with mysolid instance_destroy()
+
+    //Use the outline sprite
     sprite_index = spr_poutline
+
 }
 </string>
           </argument>

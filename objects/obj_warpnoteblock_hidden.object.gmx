@@ -6,7 +6,7 @@
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
-  <maskName>spr_square</maskName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -26,7 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>//Place these in the object creation code.
-//myroom = Destination Room</string>
+//myroom = Destination Room
+</string>
           </argument>
         </arguments>
       </action>
@@ -51,13 +52,12 @@
             <string>if other.vspeed &lt; 0
 and other.bbox_top &gt; y+15+other.vspeed
 {
-    varid = instance_create(x,y,obj_noteblock_warp)
-    varid.myroom = myroom
-    with varid
+    with instance_create(x,y,obj_noteblock_warp)
     {
         ready = 1
         vspeed = -2
         alarm[0] = 4
+        myroom = other.myroom
     }
     instance_destroy()
 }
