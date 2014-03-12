@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>1</depth>
   <persistent>0</persistent>
-  <parentName>obj_parblock</parentName>
+  <parentName>obj_blockparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -53,15 +53,14 @@ mysolid.image_yscale = 2</string>
             <kind>1</kind>
             <string>vspeed = 0
 y = ystart
-varid = instance_create(x+8,y,obj_powerupsprout)
-with varid sprite_index = spr_frogsuit
+with instance_create(x+8,y,obj_powerupsprout) sprite_index = spr_frogsuit
 image_index = 1
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -78,14 +77,7 @@ image_index = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 0
-and collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_mario,0,0)
-{
-    ready = 1
-    vspeed = -2
-    alarm[0] = 4
-    audio_play_sound(snd_thwomp,0,0)
-}
+            <string>audio_play_sound(snd_thwomp,0,0)
 </string>
           </argument>
         </arguments>

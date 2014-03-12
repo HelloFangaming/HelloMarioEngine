@@ -3,9 +3,9 @@
   <spriteName>spr_qblock</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1</depth>
+  <depth>1</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_blockparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,31 +25,56 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 0
+            <string>///Standard Question Mark Block
+
+/*
+**  This item uses creation code!
+**
+**  sprout = Pick from below:
+**      cs_big
+**      cs_fire
+**      cs_hammer
+**      cs_leaf
+**      cs_tanooki
+**      cs_frog
+**      cs_bomb
+**      cs_ice
+**      cs_super
+**      cs_carrot
+**      cs_ninja
+**      cs_bee
+**      cs_shell
+**      cs_penguin
+**      cs_propeller
+**      cs_boomerang
+**      cs_greenyoshi
+**      cs_redyoshi
+**      cs_yellowyoshi
+**      cs_blueyoshi
+**      cs_kuriboshoe
+**      cs_baburushoe
+**      cs_dossunshoe
+**      cs_jugemushoe
+**      cs_1up
+**      cs_3up
+**      cs_poison
+**      cs_star
+**      cs_key
+**      cs_spring
+**      cs_superspring
+**      cs_pswitch
+**      cs_eswitch
+**      cs_beanstalk
+**
+*/
+
+//Default Value:
+sprout = cs_coin
+
+image_speed = 0.15
+ready = 0
 mysolid = instance_create(x,y,obj_solid)
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="1" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>with mysolid instance_destroy()</string>
           </argument>
         </arguments>
       </action>
@@ -73,12 +98,18 @@ mysolid = instance_create(x,y,obj_solid)
             <kind>1</kind>
             <string>vspeed = 0
 y = ystart
+if sprout &gt; cs_big
+and global.powerup = cs_small
+    sprout = cs_big
+if sprout != cs_coin
+    with instance_create(x,y,obj_powerupsprout) sprite_index = scr_constant_get_sprite(other.sprout)
+sprite_index = spr_qblock_empty
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="0">
+    <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -95,61 +126,8 @@ y = ystart
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[1] = 4
-vspeed = 2
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if ready = 0
-and collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_mario,0,0)
-{
-    ready = 1
-    vspeed = -2
-    alarm[0] = 4
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_mario">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if vspeed &lt; 0
-    other.vspeed = -2
+            <string>if sprout = cs_coin
+    instance_create(x,y,obj_blockcoin)
 </string>
           </argument>
         </arguments>

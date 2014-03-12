@@ -165,34 +165,20 @@ and hspeed &lt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if collision_rectangle(x,y+15,x+15,y+19,obj_mario,0,0)
-    if obj_mario.vspeed &lt; 0
+            <string>if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+4,obj_mario,0,0)
+and obj_mario.vspeed &lt; 0
+{
+    with instance_create(x,y,obj_block)
     {
-        if sprout = cs_coin
-        {
-            varid = instance_create(x,y,obj_block_coin)
-            with varid
-            {
-                instance_create(x,y,obj_blockcoin)
-                ready = 1
-                vspeed = -2
-                alarm[0] = 4
-            }
-        }
-        else
-        {
-            varid = instance_create(x,y,obj_block_sprout)
-            varid.sprout = sprout
-            with varid
-            {
-                ready = 1
-                vspeed = -2
-                alarm[0] = 4
-            }
-        }
-        varid.sprite_index = spr_qblock_winged
-        instance_destroy()
+        ready = 1
+        vspeed = -2
+        alarm[0] = 4
+        sprout = other.sprout
+        event_user(0)
+        sprite_index = spr_qblock_winged
     }
+    instance_destroy()
+}
 </string>
           </argument>
         </arguments>

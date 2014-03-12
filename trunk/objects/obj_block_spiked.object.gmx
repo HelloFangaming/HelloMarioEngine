@@ -163,52 +163,25 @@ and obj_mario.state &lt; 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-    exit
-if collision_rectangle(x,y+15,x+15,y+19,obj_mario,0,0)
+            <string>if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_mario,0,0)
 and obj_mario.vspeed &lt; 0
 and image_index = 0
 {
-    if sprout = cs_coin
+    with instance_create(x,y,obj_block)
     {
-        varid = instance_create(x,y,obj_block_coin)
-        with varid
-        {
-            instance_create(x,y,obj_blockcoin)
-            ready = 1
-            vspeed = -2
-            alarm[0] = 4
-        }
-    }
-    else
-    {
-        varid = instance_create(x,y,obj_block_sprout)
-        varid.sprout = sprout
-        with varid
-        {
-            ready = 1
-            vspeed = -2
-            alarm[0] = 4
-        }
+        ready = 1
+        vspeed = -2
+        alarm[0] = 4
+        sprout = other.sprout
+        event_user(0)
     }
     instance_destroy()
 }
-if obj_mario.invincible = 0
-{
-    if collision_rectangle(x+1,y-1,x+14,y-1,obj_mario,0,0)
-    and image_index = 0
-    and global.yoshi &lt; 2
-        with obj_mario event_user(0)
-    else if collision_rectangle(x+16,y+1,x+16,y+14,obj_mario,0,0)
-    and image_index = 1
-        with obj_mario event_user(0)
-    else if collision_rectangle(x+1,y+16,x+14,y+16,obj_mario,0,0)
-    and image_index = 2
-        with obj_mario event_user(0)
-    else if collision_rectangle(x-1,y+1,x-1,y+14,obj_mario,0,0)
-    and image_index = 3
-        with obj_mario event_user(0)
-}
+if (image_index = 0 and collision_rectangle(bbox_left+1,bbox_top-1,bbox_right-1,bbox_top-1,obj_mario,0,0) and global.yoshi != 2)
+or (image_index = 1 and collision_rectangle(bbox_right+1,bbox_top+1,bbox_right+1,bbox_bottom-1,obj_mario,0,0))
+or (image_index = 2 and collision_rectangle(bbox_left+1,bbox_bottom+1,bbox_right-1,bbox_bottom+1,obj_mario,0,0))
+or (image_index = 3 and collision_rectangle(bbox_left-1,bbox_top+1,bbox_left-1,bbox_bottom-1,obj_mario,0,0))
+    with obj_mario event_user(0)
 </string>
           </argument>
         </arguments>
