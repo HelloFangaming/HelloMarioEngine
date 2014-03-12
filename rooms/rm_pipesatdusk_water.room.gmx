@@ -69,7 +69,7 @@
     <instance objName="obj_solidtop" x="16" y="288" name="inst_117E0EE6" locked="0" code="" scaleX="7" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="592" y="128" name="inst_B366CECC" locked="0" code="" scaleX="4" scaleY="13" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="64" y="128" name="inst_287565DA" locked="0" code="varmsg = &quot;Hold the up key to swim higher, and hold the down key to not swim as high.&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="16" y="224" name="inst_B77648F6" locked="0" code="sprout = cs_frog" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="16" y="224" name="inst_B77648F6" locked="0" code="sprout = cs_frog" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_multicoin" x="16" y="128" name="inst_35999AE8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="32" y="96" name="inst_A2498DA8" locked="0" code="" scaleX="2" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="0" y="144" name="inst_D9FDACD1" locked="0" code="" scaleX="1" scaleY="9" colour="4294967295" rotation="0"/>

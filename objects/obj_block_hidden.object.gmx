@@ -93,29 +93,15 @@ sprout = cs_coin
           <argument>
             <kind>1</kind>
             <string>if other.vspeed &lt; 0
-and other.bbox_top &gt; y+15+other.vspeed
+and other.bbox_top &gt; bbox_bottom+other.vspeed
 {
-    if sprout = cs_coin
+    with instance_create(x,y,obj_block)
     {
-        varid = instance_create(x,y,obj_block_coin)
-        with varid
-        {
-            instance_create(x,y,obj_blockcoin)
-            ready = 1
-            vspeed = -2
-            alarm[0] = 4
-        }
-    }
-    else
-    {
-        varid = instance_create(x,y,obj_block_sprout)
-        varid.sprout = sprout
-        with varid
-        {
-            ready = 1
-            vspeed = -2
-            alarm[0] = 4
-        }
+        ready = 1
+        vspeed = -2
+        alarm[0] = 4
+        sprout = other.sprout
+        event_user(0)
     }
     instance_destroy()
 }

@@ -82,8 +82,8 @@
     <instance objName="obj_redbrick" x="576" y="208" name="inst_6D54A0C5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_redbrick" x="576" y="224" name="inst_E40A98D6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_redbrick" x="592" y="224" name="inst_C7822AFD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="1760" y="64" name="inst_8DC07455" locked="0" code="sprout = cs_jugemushoe" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="1808" y="64" name="inst_6BB94668" locked="0" code="sprout = cs_bee" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="1760" y="64" name="inst_8DC07455" locked="0" code="sprout = cs_jugemushoe" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="1808" y="64" name="inst_6BB94668" locked="0" code="sprout = cs_bee" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_noteblock" x="368" y="304" name="inst_2CDACA7F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="688" y="176" name="inst_FC470BD4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="672" y="176" name="inst_E2A0A015" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

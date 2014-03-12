@@ -64,7 +64,7 @@
     <instance objName="obj_coin" x="416" y="304" name="inst_ED982D37" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="400" y="304" name="inst_704285D9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_acecoin" x="432" y="224" name="inst_046C20C3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="992" y="320" name="inst_29DA0C66" locked="0" code="sprout = cs_propeller" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="992" y="320" name="inst_29DA0C66" locked="0" code="sprout = cs_propeller" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solidtop" x="0" y="352" name="inst_85CCC516" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solidtop" x="64" y="352" name="inst_E6F2C384" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solidtop" x="832" y="384" name="inst_E573B833" locked="0" code="" scaleX="12" scaleY="1" colour="4294967295" rotation="0"/>

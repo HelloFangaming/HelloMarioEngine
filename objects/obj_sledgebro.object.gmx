@@ -113,11 +113,11 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if collision_line(x-16,y-24,x+15,y-24,obj_parblock,0,0)
+            <string>if collision_line(x-16,y-24,x+15,y-24,obj_blockparent,0,0)
     vspeed = -7
 else
     vspeed = -3
-if collision_line(x-16,y+34,x+15,y+34,obj_parblock,0,0)
+if collision_line(x-16,y+34,x+15,y+34,obj_blockparent,0,0)
     throughsolid = 1
 y-=1
 ready = 1
@@ -200,7 +200,7 @@ if throughsolid = 1
 and collision_rectangle(bbox_left,bbox_top+2,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
     throughsolid = 2
 if collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_solid,0,0)
-and not collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_parblock,0,0)
+and not collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_blockparent,0,0)
 and throughsolid = 0
 {
     while collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_solid,0,0)
@@ -236,7 +236,7 @@ instance_destroy()</string>
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_parblock">
+    <event eventtype="4" ename="obj_blockparent">
       <action>
         <libid>1</libid>
         <id>603</id>

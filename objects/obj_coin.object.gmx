@@ -30,7 +30,7 @@
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_parblock">
+    <event eventtype="4" ename="obj_blockparent">
       <action>
         <libid>1</libid>
         <id>603</id>

@@ -1147,13 +1147,13 @@
     </objects>
     <objects name="Blocks">
       <objects name="Item Blocks">
-        <object>objects\obj_block_sprout</object>
-        <object>objects\obj_block_coin</object>
+        <object>objects\obj_block</object>
         <object>objects\obj_block_multicoin</object>
         <object>objects\obj_block_multicoin_shroom</object>
         <object>objects\obj_block_coinchain</object>
         <object>objects\obj_block_hidden</object>
         <object>objects\obj_block_triple</object>
+        <object>objects\obj_block_triple_hidden</object>
         <object>objects\obj_block_spiked</object>
         <object>objects\obj_block_winged</object>
         <object>objects\obj_largeblock_hammer</object>
@@ -1494,7 +1494,7 @@
         <object>objects\obj_parpull</object>
         <object>objects\obj_slopeparent</object>
         <object>objects\obj_holdparent</object>
-        <object>objects\obj_parblock</object>
+        <object>objects\obj_blockparent</object>
         <object>objects\obj_grayblockparent</object>
         <object>objects\obj_parprojectile</object>
         <object>objects\obj_deactivation</object>

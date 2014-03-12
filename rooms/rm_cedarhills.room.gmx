@@ -231,7 +231,7 @@
     <instance objName="obj_onoffplatform" x="1232" y="128" name="inst_5BBE03CF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_onoffplatform" x="1248" y="128" name="inst_1CA9CCEA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_redbrick" x="416" y="256" name="inst_EFED5C3E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_coin" x="336" y="176" name="inst_7131970E" locked="0" code="sprite_index = spr_brick" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="336" y="176" name="inst_7131970E" locked="0" code="sprite_index = spr_brick" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="16" y="336" name="inst_FB29E5AE" locked="0" code="varmsg = &quot;Try picking up that spring. P-switches, shells, and blue bricks can also be picked up!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="2016" y="304" name="inst_4FCE08CD" locked="0" code="varmsg = &quot;Did you notice the grassy things on the ground? If you press control on top of them, you can pick them up!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="96" y="384" name="inst_1EEA5A5B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -265,22 +265,22 @@
     <instance objName="obj_messageblock" x="2400" y="16" name="inst_15D90B25" locked="0" code="varmsg = &quot;Bringing a key to this keyhole will open up a secret exit on the world map!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_noteblock" x="1744" y="176" name="inst_730EFA53" locked="0" code="mypowerup = cs_frog" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="1184" y="32" name="inst_8AF138BC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="192" y="336" name="inst_4259E788" locked="0" code="sprout = cs_shell" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="192" y="32" name="inst_2A41F1C9" locked="0" code="sprout = cs_pswitch" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="592" y="64" name="inst_8BADD26C" locked="0" code="sprout = cs_spring" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="608" y="320" name="inst_8268E43B" locked="0" code="sprout = cs_leaf" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="576" y="320" name="inst_3B231A75" locked="0" code="sprout = cs_greenyoshi" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="320" y="176" name="inst_750A71CB" locked="0" code="sprout = cs_kuriboshoe" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="992" y="48" name="inst_AFD0A60E" locked="0" code="sprout = cs_1up" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="1168" y="32" name="inst_69AC70DD" locked="0" code="sprout = cs_bee" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="1168" y="240" name="inst_5F1C7029" locked="0" code="sprout = cs_ninja" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="1184" y="240" name="inst_507A4674" locked="0" code="sprout = cs_star" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="1200" y="240" name="inst_7FAF92B8" locked="0" code="sprout = cs_penguin" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="1344" y="32" name="inst_9A9EA12F" locked="0" code="sprout = cs_poison" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="1760" y="80" name="inst_B6748133" locked="0" code="sprout = cs_tanooki" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="1728" y="80" name="inst_2414C0F9" locked="0" code="sprout = cs_hammer" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="2384" y="16" name="inst_4CB703E7" locked="0" code="sprout = cs_ice" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="2416" y="16" name="inst_2405E426" locked="0" code="sprout = cs_carrot" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="192" y="336" name="inst_4259E788" locked="0" code="sprout = cs_shell" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="192" y="32" name="inst_2A41F1C9" locked="0" code="sprout = cs_pswitch" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="592" y="64" name="inst_8BADD26C" locked="0" code="sprout = cs_spring" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_noteblock" x="1744" y="80" name="inst_8B2FC45F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_triple" x="576" y="320" name="inst_48D724E7" locked="0" code="sprout[0] = cs_greenyoshi&#xA;sprout[1] = cs_beanstalk&#xA;sprout[2] = cs_leaf" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="320" y="176" name="inst_750A71CB" locked="0" code="sprout = cs_kuriboshoe" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="992" y="48" name="inst_AFD0A60E" locked="0" code="sprout = cs_1up" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="1168" y="32" name="inst_69AC70DD" locked="0" code="sprout = cs_bee" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="1168" y="240" name="inst_5F1C7029" locked="0" code="sprout = cs_ninja" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="1184" y="240" name="inst_507A4674" locked="0" code="sprout = cs_star" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="1200" y="240" name="inst_7FAF92B8" locked="0" code="sprout = cs_penguin" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="1344" y="32" name="inst_9A9EA12F" locked="0" code="sprout = cs_poison" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="1760" y="80" name="inst_B6748133" locked="0" code="sprout = cs_tanooki" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="1728" y="80" name="inst_2414C0F9" locked="0" code="sprout = cs_hammer" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="2384" y="16" name="inst_4CB703E7" locked="0" code="sprout = cs_ice" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="2416" y="16" name="inst_2405E426" locked="0" code="sprout = cs_carrot" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_donut_red" x="144" y="64" name="inst_DE9EF693" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_donut_red" x="128" y="64" name="inst_8297EC44" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_donut_red" x="112" y="64" name="inst_849D2133" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -371,8 +371,8 @@
     <instance objName="obj_slope_r" x="1056" y="336" name="inst_F364A163" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slope_sr" x="1040" y="352" name="inst_3CF460D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_goomba" x="176" y="384" name="inst_9F17FEDE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_hidden" x="1440" y="16" name="inst_E34810C9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_hidden" x="1472" y="16" name="inst_28BA9DB8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="1760" y="176" name="inst_6AF36F3A" locked="0" code="sprout = cs_propeller" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mario" x="40" y="368" name="inst_8D7AA937" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_hidden" x="448" y="112" name="inst_11A810DF" locked="0" code="sprout = cs_beanstalk" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_3upmoon" x="1504" y="400" name="inst_CEBD7A3D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_hidden" x="1488" y="352" name="inst_E3B0C684" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -419,7 +419,7 @@
     <instance objName="obj_bulletgenerator" x="16" y="0" name="inst_6549F1EB" locked="0" code="xmin = 2064&#xA;xmax = 2352" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_winged" x="2624" y="336" name="inst_4DD0F7B5" locked="0" code="sprout = cs_superspring" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_movingsaw" x="2624" y="208" name="inst_EFF78069" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="592" y="320" name="inst_7A0ABD2C" locked="0" code="sprout = cs_beanstalk" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="1728" y="176" name="inst_2178C82C" locked="0" code="sprout = cs_boomerang" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wiggler" x="1752" y="304" name="inst_FA26D033" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_right" x="656" y="384" name="inst_631BAE86" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_left" x="896" y="384" name="inst_60B3FB3D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -460,11 +460,7 @@
     <instance objName="obj_key" x="384" y="160" name="inst_9066ED1C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pswitch" x="1408" y="288" name="inst_1F92ADD6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warproom" x="448" y="112" name="inst_355F33EE" locked="0" code="myroom = rm_cedarhills_sky" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mario" x="40" y="368" name="inst_8D7AA937" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="1728" y="176" name="inst_2178C82C" locked="0" code="sprout = cs_boomerang" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_sprout" x="1760" y="176" name="inst_6AF36F3A" locked="0" code="sprout = cs_propeller" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_noteblock" x="1744" y="80" name="inst_8B2FC45F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_hidden" x="1456" y="16" name="inst_559C7708" locked="0" code="sprout = cs_1up" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_triple_hidden" x="1440" y="16" name="inst_138B0E00" locked="0" code="sprout[1] = cs_1up" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset" x="16" y="144" w="32" h="32" xo="576" yo="368" id="10000398" name="tile_7C59E81B" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

@@ -96,7 +96,7 @@ else if instance_exists(obj_jumpspawn)
         gravity = 0.25
     while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
         y-=1
-    if collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_bottom-2,obj_parblock,0,0)
+    if collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_bottom-2,obj_blockparent,0,0)
     and not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top+4,obj_solid,0,0)
         vspeed = -4
     if vspeed &lt; 0
