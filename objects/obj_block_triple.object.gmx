@@ -75,8 +75,13 @@ sprout[0] = cs_coin
 sprout[1] = cs_coin
 sprout[2] = cs_coin
 
+//Do not animate
 image_speed = 0
+
+//Whether this block can be hit
 ready = 0
+
+//Create a solid, and make it long
 mysolid = instance_create(x,y,obj_solid)
 mysolid.image_xscale = 3
 </string>
@@ -101,16 +106,25 @@ mysolid.image_xscale = 3
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 0
+            <string>///Finish block bump
+vspeed = 0
 y = ystart
+
+//For all three items
 for(var i = 0; i &lt; 3; i++)
 {
+
+    //Change the contents to mushroom if a powerup is inside, and Mario is small
     if sprout[i] &gt; cs_big
     and global.powerup = cs_small
         sprout[i] = cs_big
+
+    //Make an item come out, if there is one
     if sprout[i] != cs_coin
         with instance_create(x+i*16,y,obj_powerupsprout) sprite_index = scr_constant_get_sprite(other.sprout[i])
 }
+
+//Make the block look empty
 image_index = 1
 </string>
           </argument>
@@ -134,7 +148,8 @@ image_index = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(var i = 0; i &lt; 3; i++)
+            <string>///Make coins come out if there are coins in this block
+for(var i = 0; i &lt; 3; i++)
 {
     if sprout[i] = cs_coin
         instance_create(x+i*16,y,obj_blockcoin)

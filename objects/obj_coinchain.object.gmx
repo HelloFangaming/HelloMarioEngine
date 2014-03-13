@@ -29,6 +29,7 @@
 vspeed = -1
 image_speed = 0.15
 nextdir = 90
+audio_play_sound(snd_sprout,0,0)
 alarm[0] = 16
 alarm[1] = 513
 </string>

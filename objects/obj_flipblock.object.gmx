@@ -25,9 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
+            <string>///Flip block
+
+//Animate
+image_speed = 0
+
+//Whether this block can be hit
 ready = 0
-mysolid = instance_create(x,y,obj_solid)</string>
+
+//Create a solid
+mysolid = instance_create(x,y,obj_solid)
+</string>
           </argument>
         </arguments>
       </action>
@@ -49,33 +57,16 @@ mysolid = instance_create(x,y,obj_solid)</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 0
+            <string>///Finish block bump
+vspeed = 0
 y = ystart
+
+//Make a flipping flip block
 instance_create(x,y,obj_flipblock_flip)
-instance_destroy()</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>alarm[1] = 4
-vspeed = 2</string>
+
+//Destroy
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
@@ -97,7 +88,10 @@ vspeed = 2</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited()
+            <string>///Check for Mario bonking his head on this block
+event_inherited()
+
+//Smash the block if Mario spin jumps on it
 if global.powerup != cs_small
 and global.yoshi = 0
 and collision_rectangle(bbox_left,bbox_top-4,bbox_right,bbox_top,obj_mario,0,0)

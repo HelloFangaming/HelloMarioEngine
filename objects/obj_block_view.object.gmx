@@ -25,8 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.0625
+            <string>///What item will Mario get?
+
+//Animate
+image_speed = 0.0625
+
+//Whether this block can be hit
 ready = 0
+
+//Create a solid
 mysolid = instance_create(x,y,obj_solid)
 </string>
           </argument>
@@ -50,8 +57,11 @@ mysolid = instance_create(x,y,obj_solid)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 0
+            <string>///Finish block bump
+vspeed = 0
 y = ystart
+
+//Make the item displayed by the block
 switch floor(image_index)
 {
     case 0:
@@ -139,6 +149,8 @@ switch floor(image_index)
         with instance_create(x,y,obj_powerupsprout) sprite_index = spr_3upmoon
         break
 }
+
+//Use the empty view block sprite
 sprite_index = spr_viewblock_em
 </string>
           </argument>
@@ -162,7 +174,8 @@ sprite_index = spr_viewblock_em
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
+            <string>///Stop animating
+image_speed = 0
 </string>
           </argument>
         </arguments>

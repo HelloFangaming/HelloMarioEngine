@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>1</depth>
   <persistent>0</persistent>
-  <parentName>obj_blockparent</parentName>
+  <parentName>obj_noteblock</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,16 +25,26 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place these in the object creation code.
-//myroom = Destination Room
-image_speed = 0.15
-ready = 0
-mysolid = instance_create(x,y,obj_solid)</string>
+            <string>///Hidden Warp Note Block
+
+/*
+**  This item uses creation code!
+**
+**  myroom = Destination Room
+**
+*/
+
+//Default Value:
+myroom = room_next(room)
+
+//Inherit
+event_inherited()
+</string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="2">
+    <event eventtype="7" enumb="11">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -51,103 +61,36 @@ mysolid = instance_create(x,y,obj_solid)</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[1] = 4
-vspeed = -2</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>vspeed = 0
-y = ystart
-ready = 0</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>alarm[1] = 4
-vspeed = 2</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if ready = 0
+            <string>///Make Mario bounce
+with obj_mario
 {
-    if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_mario,0,0)
+
+    //Make Mario bounce
+    event_user(1)
+    vspeed = -5.2
+
+    //If Mario bounces high
+    if jumpnow = 1
     {
-        ready = 1
-        vspeed = -2
-        alarm[0] = 4
-    }
-    else if collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_mario,0,0)
-    {
-        audio_play_sound(snd_bump,0,0)
-        ready = 1
-        vspeed = 2
-        alarm[2] = 4
-        if keyboard_check(vk_shift)
+
+        //Play the spring sound
+        audio_play_sound(snd_spring,0,0)
+
+        //Create a note block warp Mario, and inherit direction and holding variables
+        with instance_create(obj_mario.x,obj_mario.y,obj_warpnoteblock)
         {
-            audio_play_sound(snd_spring,0,0)
-            instance_create(obj_mario.x,obj_mario.y,obj_warpnoteblock)
-            obj_warpnoteblock.direct = obj_mario.direct
-            obj_warpnoteblock.holding = obj_mario.holding
-            with obj_mario instance_destroy()
-            obj_warpnoteblock.myroom = myroom
+            direct = other.direct
+            holding = other.holding
         }
-        else
-            obj_mario.vspeed = -5.2
-        obj_mario.jumpnow = 2
+
+        //Set the warp value
+        obj_warpnoteblock.myroom = other.myroom
+
+        //Destroy
+        instance_destroy()
+
     }
+
 }
 </string>
           </argument>

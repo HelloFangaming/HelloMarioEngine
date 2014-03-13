@@ -62,8 +62,13 @@
 //Default Value:
 mypowerup = -1
 
+//Animate
 image_speed = 0.15
+
+//Whether this block can be hit
 ready = 0
+
+//Create a solid
 mysolid = instance_create(x,y,obj_solid)
 </string>
           </argument>
@@ -87,61 +92,22 @@ mysolid = instance_create(x,y,obj_solid)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[1] = 4
+            <string>///Move back up
+alarm[1] = 4
 vspeed = -2
+
+//If this note block has a powerup
 if mypowerup != -1
 {
+
+    //Make the powerup
     with instance_create(x,y,obj_notepowerup) sprite_index = scr_constant_get_sprite(other.mypowerup)
+
+    //Empty the note block
     mypowerup = -1
+
 }
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>vspeed = 0
-y = ystart
-ready = 0</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>alarm[1] = 4
-vspeed = 2</string>
           </argument>
         </arguments>
       </action>
@@ -163,28 +129,79 @@ vspeed = 2</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 0
+            <string>///Note block bumping
+
+//If the block can be bumped
+if ready = 0
 {
+
+    //If Mario bumps from below
     if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_mario,0,0)
     {
+
+        //This block is hit
         ready = 1
+
+        //Move up
         vspeed = -2
         alarm[0] = 4
+
     }
+
+    //If Mario bumps from above
     else if collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_mario,0,0)
     {
-        audio_play_sound(snd_bump,0,0)
+
+        //This block is hit
         ready = 1
+
+        //Move down
         vspeed = 2
         alarm[2] = 4
-        with obj_mario
-        {
-            event_user(1)
-            vspeed = -5.2
-            if jumpnow = 1
-                audio_play_sound(snd_spring,0,0)
-        }
+
+        //Play a bump sound
+        audio_play_sound(snd_bump,0,0)
+
+        //Make Mario bounce
+        event_user(1)
+
     }
+
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Make Mario bounce
+with obj_mario
+{
+
+    //Make Mario bounce
+    event_user(1)
+    vspeed = -5.2
+
+    //Play the spring sound if Mario bounces high
+    if jumpnow = 1
+        audio_play_sound(snd_spring,0,0)
+
 }
 </string>
           </argument>

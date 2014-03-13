@@ -25,10 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
+            <string>///Multi-Coin Block
+
+//Animate
+image_speed = 0.15
+
+//Whether this block can be hit
 ready = 0
+
+//Coin timer
 cointime = 0
-mysolid = instance_create(x,y,obj_solid)</string>
+
+//Create a solid
+mysolid = instance_create(x,y,obj_solid)
+</string>
           </argument>
         </arguments>
       </action>
@@ -50,7 +60,9 @@ mysolid = instance_create(x,y,obj_solid)</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>cointime = 2</string>
+            <string>///Coin timer time is up
+cointime = 2
+</string>
           </argument>
         </arguments>
       </action>
@@ -72,10 +84,15 @@ mysolid = instance_create(x,y,obj_solid)</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 0
+            <string>///Finish block bump
+vspeed = 0
 y = ystart
+
+//Use the empty sprite if time is up
 if cointime = 2
     sprite_index = spr_qblock_empty
+
+//Otherwise, the block can be hit again
 else
     ready = 0
 </string>
@@ -100,12 +117,15 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if cointime = 0
+            <string>///Make a coin come out
+instance_create(x,y,obj_blockcoin)
+
+//Start the timer
+if cointime = 0
 {
     cointime = 1
     alarm[2] = 200
 }
-instance_create(x,y,obj_blockcoin)
 </string>
           </argument>
         </arguments>
