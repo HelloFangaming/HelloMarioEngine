@@ -42,6 +42,35 @@ else
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Turn off
+
+//Destroy the solid
+with mysolid instance_destroy()
+
+//Use the outline sprite
+sprite_index = spr_poutline
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
@@ -59,31 +88,13 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Switch was pressed
+            <string>///Turn on
 
-//If the switch was turned on
-if global.onoffblock = 0
-{
+//Create a solid
+mysolid = instance_create(x,y,obj_solid)
 
-    //Create a solid
-    mysolid = instance_create(x,y,obj_solid)
-
-    //Use the on sprite
-    sprite_index = spr_onoffplatform
-
-}
-
-//If the switch was turned off
-else
-{
-
-    //Destroy the solid
-    with mysolid instance_destroy()
-
-    //Use the outline sprite
-    sprite_index = spr_poutline
-
-}
+//Use the on sprite
+sprite_index = spr_onoffplatform
 </string>
           </argument>
         </arguments>

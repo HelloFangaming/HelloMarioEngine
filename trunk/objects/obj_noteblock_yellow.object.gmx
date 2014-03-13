@@ -5,10 +5,10 @@
   <visible>-1</visible>
   <depth>1</depth>
   <persistent>0</persistent>
-  <parentName>obj_blockparent</parentName>
+  <parentName>obj_noteblock</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
+    <event eventtype="7" enumb="11">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,130 +25,32 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
-ready = 0
-mysolid = instance_create(x,y,obj_solid)</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>alarm[1] = 4
-vspeed = -2</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>vspeed = 0
-y = ystart
-ready = 0</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>alarm[1] = 4
-vspeed = 2</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if ready = 0
+            <string>///Make Mario bounce
+with obj_mario
 {
-    if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_mario,0,0)
+
+    //Make Mario bounce
+    event_user(1)
+
+    //If Mario jumps high
+    if jumpnow = 1
     {
-        ready = 1
-        vspeed = -2
-        alarm[0] = 4
+
+        //Play a super spring sound
+        audio_play_sound(snd_superspring,0,0)
+
+        //Make a joyful shout
+        audio_play_sound(snd_yahoo,0,0)
+
+        //Jump extra high
+        vspeed = -6.7
+
     }
-    else if collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_mario,0,0)
-    {
-        audio_play_sound(snd_bump,0,0)
-        ready = 1
-        vspeed = 2
-        alarm[2] = 4
-        with obj_mario
-        {
-            event_user(1)
-            if jumpnow = 1
-            {
-                audio_play_sound(snd_superspring,0,0)
-                audio_play_sound(snd_yahoo,0,0)
-                vspeed = -6.7
-            }
-            else
-            {
-                audio_play_sound(snd_spring,0,0)
-                vspeed = -5.2
-            }
-        }
-    }
+
+    //Otherwise, jump normally
+    else
+        vspeed = -5.2
+
 }
 </string>
           </argument>

@@ -25,11 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
+            <string>///Multi-Coin Mushroom Block
+
+//Animate
+image_speed = 0.15
+
+//Whether this block can be hit
 ready = 0
+
+//Coin timer
 cointime = 0
-mush = 0
-mysolid = instance_create(x,y,obj_solid)</string>
+
+//Create a solid
+mysolid = instance_create(x,y,obj_solid)
+</string>
           </argument>
         </arguments>
       </action>
@@ -51,7 +60,9 @@ mysolid = instance_create(x,y,obj_solid)</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>cointime = 2</string>
+            <string>///Coin timer time is up
+cointime = 2
+</string>
           </argument>
         </arguments>
       </action>
@@ -73,13 +84,18 @@ mysolid = instance_create(x,y,obj_solid)</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 0
+            <string>///Finish block bump
+vspeed = 0
 y = ystart
-if mush = 1
+
+//If the time is up, use the empty sprite and sprout a mushroom
+if cointime = 3
 {
     sprite_index = spr_qblock_empty
     with instance_create(x,y,obj_powerupsprout) sprite_index = spr_mushroom
 }
+
+//Otherwise, the block can be hit again
 else
     ready = 0
 </string>
@@ -104,13 +120,20 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if cointime = 0
+            <string>///When the block is hit
+
+//Start the timer
+if cointime = 0
 {
     cointime = 1
     alarm[2] = 200
 }
-if cointime = 2
-    mush = 1
+
+//If time runs out, create a mushroom later
+else if cointime = 2
+    cointime = 3
+
+//Otherwise, make a coin
 else
     instance_create(x,y,obj_blockcoin)
 </string>

@@ -25,9 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
+            <string>///On/off block
+
+//Do not animate
+image_speed = 0
+
+//Use the appropriate state
 image_index = global.onoffblock
+
+//Whether this block can be hit
 ready = 0
+
+//Create a solid
 mysolid = instance_create(x,y,obj_solid)
 </string>
           </argument>
@@ -51,15 +60,26 @@ mysolid = instance_create(x,y,obj_solid)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 0
+            <string>///Finish block bump
+vspeed = 0
 y = ystart
+
+//Play a magical sound
 audio_play_sound(snd_magic,0,0)
+
+//Flip the state of the on/off blocks
 if global.onoffblock = 0
     global.onoffblock = 1
 else
     global.onoffblock = 0
+
+//Make all on/off blocks show the correct state
 with obj_onoffblock image_index = global.onoffblock
-with obj_onoffplatform event_user(0)
+
+//Make all on/off platforms be the correct state
+with obj_onoffplatform event_user(global.onoffblock)
+
+//The block can be bumped again
 ready = 0
 </string>
           </argument>

@@ -25,12 +25,24 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place this in the object creation code.
-//varmsg = Message (In quotes)
-image_speed = 0.15
-ready = 0
-mysolid = instance_create(x,y,obj_solid)
+            <string>///Message Box
+
+/*
+**  This item uses creation code!
+**
+**  varmsg = Message to display in the message box
+**
+*/
+
+//Default Value:
 varmsg = "No message has been set."
+
+//Whether this block can be hit
+ready = 0
+
+//Create a solid
+mysolid = instance_create(x,y,obj_solid)
+
 </string>
           </argument>
         </arguments>
@@ -53,7 +65,9 @@ varmsg = "No message has been set."
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 0</string>
+            <string>///Delay making the block bumpable
+ready = 0
+</string>
           </argument>
         </arguments>
       </action>
@@ -75,12 +89,20 @@ varmsg = "No message has been set."
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 0
+            <string>///Finish block bump
+vspeed = 0
 y = ystart
+
+//Play a message sound
 audio_play_sound(snd_message,0,0)
+
+//Make Mario say "Hoo hoo!"
 audio_play_sound(snd_hoohoo,0,0)
-varid = instance_create(0,0,obj_messagebox)
-varid.varmsg = varmsg
+
+//Make a message box with the message
+with instance_create(0,0,obj_messagebox) varmsg = other.varmsg
+
+//Delay making the block bumpable to prevent message box spam
 alarm[2] = 24
 </string>
           </argument>

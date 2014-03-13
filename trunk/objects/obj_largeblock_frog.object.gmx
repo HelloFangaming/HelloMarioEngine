@@ -25,11 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
+            <string>///Large frog block
+
+//Do not animate
+image_speed = 0
+
+//Whether this block can be hit
 ready = 0
+
+//Create a large solid
 mysolid = instance_create(x,y,obj_solid)
 mysolid.image_xscale = 2
-mysolid.image_yscale = 2</string>
+mysolid.image_yscale = 2
+</string>
           </argument>
         </arguments>
       </action>
@@ -51,9 +59,18 @@ mysolid.image_yscale = 2</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 0
+            <string>///Finish block bump
+vspeed = 0
 y = ystart
-with instance_create(x+8,y,obj_powerupsprout) sprite_index = spr_frogsuit
+
+//Make a bounxy frog suit
+with instance_create(x+8,y,obj_powerupsprout)
+{
+    sprite_index = spr_frogsuit
+    bounce = 1
+}
+
+//Make the block look empty
 image_index = 1
 </string>
           </argument>
@@ -77,7 +94,8 @@ image_index = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_thwomp,0,0)
+            <string>///Play the thwomp sound
+audio_play_sound(snd_thwomp,0,0)
 </string>
           </argument>
         </arguments>

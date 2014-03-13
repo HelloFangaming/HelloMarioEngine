@@ -25,8 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place these in the object creation code.
-//myroom = Destination Room
+            <string>///Hidden Warp Note Block
+
+/*
+**  This item uses creation code!
+**
+**  myroom = Destination Room
+**
+*/
+
+//Default Value:
+myroom = room_next(room)
 </string>
           </argument>
         </arguments>
@@ -49,9 +58,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.vspeed &lt; 0
+            <string>///If Mario jumps from below
+if other.vspeed &lt; 0
 and other.bbox_top &gt; bbox_bottom+other.vspeed
 {
+
+    //Create a new note block, give it the same destination, and bump it
     with instance_create(x,y,obj_noteblock_warp)
     {
         ready = 1
@@ -59,7 +71,10 @@ and other.bbox_top &gt; bbox_bottom+other.vspeed
         alarm[0] = 4
         myroom = other.myroom
     }
+
+    //Destroy
     instance_destroy()
+
 }
 </string>
           </argument>

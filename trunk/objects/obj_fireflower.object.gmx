@@ -27,10 +27,6 @@
             <kind>1</kind>
             <string>image_speed = 0.15
 gravity = 0.25
-if position_meeting(x+8,y+24,obj_largeblock_hammer)
-or position_meeting(x+8,y+24,obj_largeblock_tanooki)
-or position_meeting(x+8,y+24,obj_largeblock_frog)
-    vspeed = -3
 </string>
           </argument>
         </arguments>

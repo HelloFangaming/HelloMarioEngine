@@ -3,7 +3,7 @@
   <spriteName>spr_qblock_winged</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>1</depth>
   <persistent>0</persistent>
   <parentName>obj_solid</parentName>
   <maskName>spr_square</maskName>
@@ -71,7 +71,9 @@
 //Default Value:
 sprout = cs_coin
 
+//Animate
 image_speed = 0.15
+
 type = 0
 if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_clockwise,0,0)
 {
@@ -165,9 +167,12 @@ and hspeed &lt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+4,obj_mario,0,0)
+            <string>///Check for Mario bonking his head on this block
+if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+4,obj_mario,0,0)
 and obj_mario.vspeed &lt; 0
 {
+
+    //Create a new block, give it the same item, and bump it
     with instance_create(x,y,obj_block)
     {
         ready = 1
@@ -177,7 +182,10 @@ and obj_mario.vspeed &lt; 0
         event_user(0)
         sprite_index = spr_qblock_winged
     }
+
+    //Destroy
     instance_destroy()
+
 }
 </string>
           </argument>

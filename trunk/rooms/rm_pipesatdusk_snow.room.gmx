@@ -63,7 +63,6 @@
     <instance objName="obj_coin" x="288" y="128" name="inst_3BE850E8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="0" y="256" name="inst_60B1AB05" locked="0" code="varmsg = &quot;Be careful! The ground here is extra slippery!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="960" y="256" name="inst_508E408C" locked="0" code="varmsg = &quot;Red E-Switches can not be moved, but they can be reused!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="&lt;undefined&gt;" x="1024" y="256" name="inst_F61D4DE6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="1088" y="96" name="inst_919981D5" locked="0" code="varmsg = &quot;Use the arrow keys to control the coin chain block!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="528" y="320" name="inst_AF0180DC" locked="0" code="" scaleX="1" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="obj_solidtop" x="0" y="320" name="inst_E99A00FC" locked="0" code="" scaleX="7" scaleY="1" colour="4294967295" rotation="0"/>
@@ -119,6 +118,7 @@
     <instance objName="obj_eswitch_red" x="928" y="240" name="inst_6B466D26" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jumpspawn" x="56" y="272" name="inst_F6205D64" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_speedmarker" x="1696" y="128" name="inst_B2657F84" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_coinchain" x="1024" y="256" name="inst_42555D6D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset" x="0" y="320" w="16" h="16" xo="192" yo="176" id="10004495" name="tile_D16AA869" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

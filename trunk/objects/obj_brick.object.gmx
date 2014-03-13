@@ -25,9 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
+            <string>///Smashable golden brick
+
+//Animate
+image_speed = 0.15
+
+//Whether this block can be hit
 ready = 0
-mysolid = instance_create(x,y,obj_solid)</string>
+
+//Create a solid
+mysolid = instance_create(x,y,obj_solid)
+</string>
           </argument>
         </arguments>
       </action>
@@ -49,33 +57,10 @@ mysolid = instance_create(x,y,obj_solid)</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[1] = 4
+            <string>///Move back down
+alarm[1] = 4
 vspeed = 2
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>vspeed = 0
-y = ystart
-ready = 0</string>
           </argument>
         </arguments>
       </action>
@@ -97,7 +82,8 @@ ready = 0</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_break,0,0)
+            <string>///Smash the brick
+audio_play_sound(snd_break,0,0)
 with instance_create(x+8,y,obj_shard) direction = 45
 with instance_create(x+8,y,obj_shard) direction = 60
 with instance_create(x,y,obj_shard) direction = 120
@@ -125,16 +111,28 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 0
+            <string>///Check for Mario bonking his head on this block
+if ready = 0
 and collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_mario,0,0)
 {
+
+    //The block is hit
     ready = 1
+
+    //Move up
     vspeed = -2
+
+    //Bump normally if Mario is small
     if global.powerup = cs_small
         alarm[2] = 4
+
+    //Otherwise, smash it
     else
         alarm[0] = 4
+
 }
+
+//Smash the block if Mario spin jumps on it
 if global.powerup != cs_small
 and global.yoshi = 0
 and collision_rectangle(bbox_left,bbox_top-4,bbox_right,bbox_top,obj_mario,0,0)
