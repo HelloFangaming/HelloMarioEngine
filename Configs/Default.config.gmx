@@ -61,6 +61,9 @@
     <option_android_pocketchange_enable>0</option_android_pocketchange_enable>
     <option_android_pocketchange_id></option_android_pocketchange_id>
     <option_android_pocketchange_test_enable>0</option_android_pocketchange_test_enable>
+    <option_android_push_enable>false</option_android_push_enable>
+    <option_android_push_id></option_android_push_id>
+    <option_android_scale>-1</option_android_scale>
     <option_android_set_device_id></option_android_set_device_id>
     <option_android_splash_png>Configs\Default\android\splash.png</option_android_splash_png>
     <option_android_texture_page>1024</option_android_texture_page>
@@ -129,6 +132,7 @@
     <option_ios_flurry_enable>0</option_ios_flurry_enable>
     <option_ios_flurry_id></option_ios_flurry_id>
     <option_ios_google_analytics_enable>0</option_ios_google_analytics_enable>
+    <option_ios_google_play_id></option_ios_google_play_id>
     <option_ios_google_tracking_id></option_ios_google_tracking_id>
     <option_ios_icon_114>Configs\Default\ios\icons\icon114.png</option_ios_icon_114>
     <option_ios_icon_120>Configs\Default\ios\icons\icon120.png</option_ios_icon_120>
@@ -153,6 +157,8 @@
     <option_ios_orient_portrait>0</option_ios_orient_portrait>
     <option_ios_orient_portrait_upside_down>0</option_ios_orient_portrait_upside_down>
     <option_ios_provisioning>&lt; Press refresh to fetch provisioning list from Mac&gt;</option_ios_provisioning>
+    <option_ios_push_enable>false</option_ios_push_enable>
+    <option_ios_scale>-1</option_ios_scale>
     <option_ios_set_device_id></option_ios_set_device_id>
     <option_ios_splash_png>Configs\Default\ios\splash.png</option_ios_splash_png>
     <option_ios_texture_page>1024</option_ios_texture_page>
@@ -229,11 +235,14 @@
     <option_tizen_flurry_id></option_tizen_flurry_id>
     <option_tizen_google_analytics_enable>0</option_tizen_google_analytics_enable>
     <option_tizen_google_tracking_id></option_tizen_google_tracking_id>
+    <option_tizen_iap_groupID></option_tizen_iap_groupID>
     <option_tizen_icon>Configs\Default\tizen\icon117.png</option_tizen_icon>
+    <option_tizen_interpolate>true</option_tizen_interpolate>
     <option_tizen_major_version>6</option_tizen_major_version>
     <option_tizen_minor_version>0</option_tizen_minor_version>
     <option_tizen_network_urls></option_tizen_network_urls>
     <option_tizen_orientation>1</option_tizen_orientation>
+    <option_tizen_push_enable>false</option_tizen_push_enable>
     <option_tizen_scaling>1</option_tizen_scaling>
     <option_tizen_splash_png>Configs\Default\tizen\splash.png</option_tizen_splash_png>
     <option_tizen_texture_page>1024</option_tizen_texture_page>
@@ -346,6 +355,7 @@
     <option_winphone_iconic_wide_content_2></option_winphone_iconic_wide_content_2>
     <option_winphone_iconic_wide_content_3></option_winphone_iconic_wide_content_3>
     <option_winphone_iconic_wide_image>Configs\Default\WinPhone\IconicWide.png</option_winphone_iconic_wide_image>
+    <option_winphone_interpolate>true</option_winphone_interpolate>
     <option_winphone_landscape_allowed>-1</option_winphone_landscape_allowed>
     <option_winphone_landscape_flipped_allowed>0</option_winphone_landscape_flipped_allowed>
     <option_winphone_major_version>6</option_winphone_major_version>
@@ -354,6 +364,7 @@
     <option_winphone_publisher>Hello Fangaming</option_winphone_publisher>
     <option_winphone_publisher_id>f47823f0-220d-459a-bf68-b6ea984b24a8</option_winphone_publisher_id>
     <option_winphone_revision_version>0</option_winphone_revision_version>
+    <option_winphone_scale>-1</option_winphone_scale>
     <option_winphone_supports_720p>-1</option_winphone_supports_720p>
     <option_winphone_supports_wvga>-1</option_winphone_supports_wvga>
     <option_winphone_supports_wxga>-1</option_winphone_supports_wxga>

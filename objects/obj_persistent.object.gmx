@@ -81,6 +81,9 @@ keyboard_set_map(ord('X'),vk_shift)
 
 //Make the z key do everything the control key does
 keyboard_set_map(ord('Z'),vk_control)
+
+//Disable application surface automatic drawing
+application_surface_draw_enable(0)
 </string>
           </argument>
         </arguments>
@@ -265,9 +268,25 @@ else if keyboard_check_pressed(ord('R'))
 else if keyboard_check_pressed(vk_enter)
 {
     if window_get_fullscreen()
+    {
         message = "FULLSCREEN ON"
+        if filter = 0
+            display_set_gui_size(view_wview[0],view_hview[0])
+        else if filter = 1
+            display_set_gui_size(view_wview[0]*2,view_hview[0]*2)
+        else
+            display_set_gui_size(view_wview[0]*4,view_hview[0]*4)
+    }
     else
+    {
         message = "FULLSCREEN OFF"
+        if filter = 0
+            window_set_size(view_wview[0],view_hview[0])
+        else if filter = 1
+            window_set_size(view_wview[0]*2,view_hview[0]*2)
+        else
+            window_set_size(view_wview[0]*4,view_hview[0]*4)
+    }
     alarm[2] = 1
     alarm[3] = 60
 }
@@ -295,6 +314,7 @@ else if keyboard_check_pressed(ord('1'))
     filter = 0
     message = "NO FILTERING"
     window_set_size(view_wview[0],view_hview[0])
+    display_set_gui_size(view_wview[0],view_hview[0])
     alarm[2] = 1
     alarm[3] = 60
 }
@@ -305,6 +325,7 @@ else if keyboard_check_pressed(ord('2'))
     filter = 1
     message = "HQ2X FILTERING"
     window_set_size(view_wview[0]*2,view_hview[0]*2)
+    display_set_gui_size(view_wview[0]*2,view_hview[0]*2)
     alarm[2] = 1
     alarm[3] = 60
 }
@@ -315,6 +336,7 @@ else if keyboard_check_pressed(ord('3'))
     filter = 2
     message = "HQ4X FILTERING"
     window_set_size(view_wview[0]*4,view_hview[0]*4)
+    display_set_gui_size(view_wview[0]*4,view_hview[0]*4)
     alarm[2] = 1
     alarm[3] = 60
 }
@@ -347,7 +369,7 @@ if mode = 0
 {
 
     //Take a screenshot
-    back = background_create_from_surface(view_surface_id[0],0,0,view_wview[0],view_hview[0],0,0)
+    back = background_create_from_surface(application_surface,0,0,view_wview[0],view_hview[0],0,0)
 
     //Pause particles
     part_system_automatic_update(1,0)
@@ -393,11 +415,7 @@ alarm[0] = 30
 mode = 1
 
 //Take a screenshot
-back = background_create_from_surface(view_surface_id[0],0,0,view_wview[0],view_hview[0],0,0)
-
-//Free the game surface
-if surface_exists(view_surface_id[0])
-    surface_free(view_surface_id[0])
+back = background_create_from_surface(application_surface,0,0,view_wview[0],view_hview[0],0,0)
 
 //Set alarm to execute when the next room starts
 alarm[1] = 1
@@ -423,10 +441,7 @@ alarm[1] = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Create the game surface
-view_surface_id[0] = surface_create(view_wview[0],view_hview[0])
-
-//Fade the screen to black, unless you just opened up the game
+            <string>///Fade the screen to black, unless you just opened up the game
 if mode = 1
     event_user(0)
 </string>
@@ -532,11 +547,17 @@ else
 
 //HQ2x
 if filter = 1
+{
     window_set_size(view_wview[0]*2,view_hview[0]*2)
+    display_set_gui_size(view_wview[0]*2,view_hview[0]*2)
+}
 
 //HQ4X
 else if filter = 2
+{
     window_set_size(view_wview[0]*4,view_hview[0]*4)
+    display_set_gui_size(view_wview[0]*4,view_hview[0]*4)
+}
 
 //VSync
 display_reset(0,vsync)
@@ -571,40 +592,30 @@ alarm[4] = 200
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Deals with the game surface, filtering, and fading
+            <string>///Deals with the application surface, filtering, and fading
+draw_enable_alphablend(0)
 
-//Draws the game surface if it exists
-if surface_exists(view_surface_id[0])
+//No Filter
+if filter = 0
+    draw_surface(application_surface,0,0)
+
+//HQ2X Filtering
+else if filter = 1
 {
-    draw_enable_alphablend(0)
-
-    //No Filter
-    if filter = 0
-        draw_surface(view_surface_id[0],0,0)
-
-    //HQ2X Filtering
-    else if filter = 1
-    {
-        shader_set(sha_hq2x)
-        draw_surface_stretched(view_surface_id[0],0,0,view_wview[0]*2,view_hview[0]*2)
-        shader_reset()
-    }
-
-    //HQ4X Filtering
-    else if filter = 2
-    {
-        shader_set(sha_hq4x)
-        draw_surface_stretched(view_surface_id[0],0,0,view_wview[0]*4,view_hview[0]*4)
-        shader_reset()
-    }
-
-    draw_enable_alphablend(1)
-
+    shader_set(sha_hq2x)
+    draw_surface_stretched(application_surface,0,0,view_wview[0]*2,view_hview[0]*2)
+    shader_reset()
 }
 
-//Repair the game surface
-else
-    view_surface_id[0] = surface_create(view_wview[0],view_hview[0])
+//HQ4X Filtering
+else if filter = 2
+{
+    shader_set(sha_hq4x)
+    draw_surface_stretched(application_surface,0,0,view_wview[0]*4,view_hview[0]*4)
+    shader_reset()
+}
+
+draw_enable_alphablend(1)
 
 //Fades the screen to and from black
 if done &lt; 1

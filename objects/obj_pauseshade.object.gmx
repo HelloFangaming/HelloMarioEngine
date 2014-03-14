@@ -31,7 +31,7 @@
 part_system_automatic_update(1,0)
 
 //Take a screenshot
-back = background_create_from_surface(view_surface_id[0],0,0,640,480,0,0)
+back = background_create_from_surface(application_surface,0,0,640,480,0,0)
 
 //Deactivate everything
 instance_deactivate_all(1)
