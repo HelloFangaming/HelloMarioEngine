@@ -621,6 +621,8 @@
         <sprite>sprites\spr_bowserstatue</sprite>
         <sprite>sprites\spr_bowserstatue_fire</sprite>
         <sprite>sprites\spr_bowserstatue_gold</sprite>
+        <sprite>sprites\spr_mechakoopa</sprite>
+        <sprite>sprites\spr_mechakoopa_hold</sprite>
       </sprites>
       <sprites name="Airship">
         <sprite>sprites\spr_bobomb</sprite>

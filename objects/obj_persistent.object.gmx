@@ -267,27 +267,13 @@ else if keyboard_check_pressed(ord('R'))
 //Fullscreen (Handled by GM: Studio
 else if keyboard_check_pressed(vk_enter)
 {
-    if window_get_fullscreen()
-    {
+    fullscreen = !fullscreen
+    if fullscreen = 1
         message = "FULLSCREEN ON"
-        if filter = 0
-            display_set_gui_size(view_wview[0],view_hview[0])
-        else if filter = 1
-            display_set_gui_size(view_wview[0]*2,view_hview[0]*2)
-        else
-            display_set_gui_size(view_wview[0]*4,view_hview[0]*4)
-    }
     else
-    {
         message = "FULLSCREEN OFF"
-        if filter = 0
-            window_set_size(view_wview[0],view_hview[0])
-        else if filter = 1
-            window_set_size(view_wview[0]*2,view_hview[0]*2)
-        else
-            window_set_size(view_wview[0]*4,view_hview[0]*4)
-    }
-    alarm[2] = 1
+    display_reset(0,vsync)
+    event_user(1)
     alarm[3] = 60
 }
 
@@ -313,9 +299,7 @@ else if keyboard_check_pressed(ord('1'))
 {
     filter = 0
     message = "NO FILTERING"
-    window_set_size(view_wview[0],view_hview[0])
-    display_set_gui_size(view_wview[0],view_hview[0])
-    alarm[2] = 1
+    event_user(1)
     alarm[3] = 60
 }
 
@@ -324,9 +308,7 @@ else if keyboard_check_pressed(ord('2'))
 {
     filter = 1
     message = "HQ2X FILTERING"
-    window_set_size(view_wview[0]*2,view_hview[0]*2)
-    display_set_gui_size(view_wview[0]*2,view_hview[0]*2)
-    alarm[2] = 1
+    event_user(1)
     alarm[3] = 60
 }
 
@@ -335,10 +317,87 @@ else if keyboard_check_pressed(ord('3'))
 {
     filter = 2
     message = "HQ4X FILTERING"
-    window_set_size(view_wview[0]*4,view_hview[0]*4)
-    display_set_gui_size(view_wview[0]*4,view_hview[0]*4)
-    alarm[2] = 1
+    event_user(1)
     alarm[3] = 60
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Set up the screen to be displayed
+
+//Temporary variables
+var w
+var h
+
+//Normal
+if filter = 0
+{
+    w = view_wview[0]
+    h = view_hview[0]
+}
+
+//HQ2X
+else if filter = 1
+{
+    w = view_wview[0]*2
+    h = view_hview[0]*2
+}
+
+//HQ4X
+else if filter = 2
+{
+    w = view_wview[0]*4
+    h = view_hview[0]*4
+}
+
+//Set up the window
+window_set_size(w,h)
+
+//Aspect ratio hack for widescreen monitors in fullscreen
+if fullscreen = 1
+{
+
+    //Calculate the width the GUI should be
+    var newwidth = max(h*display_get_width()/display_get_height(),w)
+
+    //Offset the game to the center of the screen
+    offset = (newwidth-w)/2
+
+    //Set up the display
+    display_set_gui_size(newwidth,h)
+
+}
+else
+{
+
+    //No offset
+    offset = 0
+
+    //Center the window
+    alarm[2] = 1
+
+    //Set up the display
+    display_set_gui_size(w,h)
+
 }
 </string>
           </argument>
@@ -472,7 +531,7 @@ if mode = 1
 var file = file_text_open_write("Settings.dat")
 
 //Save fullscreen settings
-file_text_write_string(file,string(window_get_fullscreen()))
+file_text_write_string(file,string(fullscreen))
 file_text_writeln(file)
 
 //Save filtering settings
@@ -484,9 +543,6 @@ file_text_write_string(file,string(vsync))
 
 //Close the file
 file_text_close(file)
-
-//Sticky control key bug fix
-keyboard_key_release(vk_control)
 </string>
           </argument>
         </arguments>
@@ -517,7 +573,7 @@ if file_exists("Settings.dat")
     var file = file_text_open_read("Settings.dat")
 
     //Set fullscreen mode based on the read value
-    window_set_fullscreen(real(file_text_read_string(file)))
+    fullscreen = real(file_text_read_string(file))
     file_text_readln(file)
 
     //Set filtering mode based on the read value
@@ -534,6 +590,8 @@ if file_exists("Settings.dat")
 else
 {
 
+    fullscreen = 0
+
     //Set the default to HQ4X only if the screen is big enough to fit it
     if display_get_height() &gt;= 960
         filter = 2
@@ -545,19 +603,11 @@ else
 
 }
 
-//HQ2x
-if filter = 1
-{
-    window_set_size(view_wview[0]*2,view_hview[0]*2)
-    display_set_gui_size(view_wview[0]*2,view_hview[0]*2)
-}
+//Fullscreen
+window_set_fullscreen(fullscreen)
 
-//HQ4X
-else if filter = 2
-{
-    window_set_size(view_wview[0]*4,view_hview[0]*4)
-    display_set_gui_size(view_wview[0]*4,view_hview[0]*4)
-}
+//Filtering
+event_user(1)
 
 //VSync
 display_reset(0,vsync)
@@ -597,13 +647,13 @@ draw_enable_alphablend(0)
 
 //No Filter
 if filter = 0
-    draw_surface(application_surface,0,0)
+    draw_surface(application_surface,offset,0)
 
 //HQ2X Filtering
 else if filter = 1
 {
     shader_set(sha_hq2x)
-    draw_surface_stretched(application_surface,0,0,view_wview[0]*2,view_hview[0]*2)
+    draw_surface_stretched(application_surface,offset,0,view_wview[0]*2,view_hview[0]*2)
     shader_reset()
 }
 
@@ -611,7 +661,7 @@ else if filter = 1
 else if filter = 2
 {
     shader_set(sha_hq4x)
-    draw_surface_stretched(application_surface,0,0,view_wview[0]*4,view_hview[0]*4)
+    draw_surface_stretched(application_surface,offset,0,view_wview[0]*4,view_hview[0]*4)
     shader_reset()
 }
 
@@ -634,7 +684,7 @@ if done &lt; 1
 
     //Draw the fade
     draw_set_color(c_black)
-    draw_rectangle(0,0,2000,2000,0)
+    draw_rectangle(0,0,5000,5000,0)
     draw_set_alpha(1)
     draw_set_color(c_white)
 
