@@ -149,46 +149,6 @@ if floatnow = 1
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Handle Mario's invincibility flashing
-
-//Keep flashing until the invincibility is done
-if instance_exists(obj_invincibility)
-{
-    if obj_invincibility.newstar = 0
-    {
-        if isflashing = 0
-            isflashing = 1
-        else
-            isflashing = 0
-        alarm[10] = 4
-    }
-    else
-        isflashing = 0
-}
-else
-    isflashing = 0
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="2" enumb="9">
       <action>
         <libid>1</libid>
@@ -233,47 +193,31 @@ alarm[9] = 24 + random(96)
           <argument>
             <kind>1</kind>
             <string>///Create Mario's second spin jump projectile
-var varid
 
 //Fire Ball
 if global.powerup = cs_fire
 and instance_number(obj_fireball) &lt; 2
-{
-    varid = instance_create(x,y+16,obj_fireball)
-    varid.hspeed = -3*direct
-}
+    with instance_create(x,y+16,obj_fireball) hspeed = -3*other.direct
 
 //Hammer
 else if global.powerup = cs_hammer
 and instance_number(obj_hammer) &lt; 2
-{
-    varid = instance_create(x,y+16,obj_hammer)
-    varid.hspeed = -2*direct
-}
+    with instance_create(x,y+16,obj_hammer) hspeed = -2*other.direct
 
 //Ice Ball
 else if (global.powerup = cs_ice or global.powerup = cs_penguin)
 and instance_number(obj_iceball) &lt; 1
-{
-    varid = instance_create(x,y+16,obj_iceball)
-    varid.hspeed = -3*direct
-}
+    with instance_create(x,y+16,obj_iceball) hspeed = -3*other.direct
 
 //Super Ball
 else if global.powerup = cs_super
 and instance_number(obj_superball) &lt; 2
-{
-    varid = instance_create(x,y+16,obj_superball)
-    varid.hspeed = -2*direct
-}
+    with instance_create(x,y+16,obj_superball) hspeed = -2*other.direct
 
 //Shuriken
 else if global.powerup = cs_ninja
 and instance_number(obj_shuriken) &lt; 2
-{
-    varid = instance_create(x,y+16,obj_shuriken)
-    varid.hspeed = -5*direct
-}
+    with instance_create(x,y+20,obj_shuriken) hspeed = -5*other.direct
 </string>
           </argument>
         </arguments>
@@ -297,47 +241,31 @@ and instance_number(obj_shuriken) &lt; 2
           <argument>
             <kind>1</kind>
             <string>///Create Mario's first spin jump projectile
-var varid
 
 //Fire Ball
 if global.powerup = cs_fire
 and instance_number(obj_fireball) &lt; 2
-{
-    varid = instance_create(x,y+16,obj_fireball)
-    varid.hspeed = 3*direct
-}
+    with instance_create(x,y+16,obj_fireball) hspeed = 3*other.direct
 
 //Hammer
 else if global.powerup = cs_hammer
 and instance_number(obj_hammer) &lt; 2
-{
-    varid = instance_create(x,y+16,obj_hammer)
-    varid.hspeed = 2*direct
-}
+    with instance_create(x,y+16,obj_hammer) hspeed = 2*other.direct
 
 //Ice Ball
 else if (global.powerup = cs_ice or global.powerup = cs_penguin)
 and instance_number(obj_iceball) &lt; 1
-{
-    varid = instance_create(x,y+16,obj_iceball)
-    varid.hspeed = 3*direct
-}
+    with instance_create(x,y+16,obj_iceball) hspeed = 3*other.direct
 
 //Super Ball
 else if global.powerup = cs_super
 and instance_number(obj_superball) &lt; 2
-{
-    varid = instance_create(x,y+16,obj_superball)
-    varid.hspeed = 2*direct
-}
+    with instance_create(x,y+16,obj_superball) hspeed = 2*other.direct
 
 //Shuriken
 else if global.powerup = cs_ninja
 and instance_number(obj_shuriken) &lt; 2
-{
-    varid = instance_create(x,y+20,obj_shuriken)
-    varid.hspeed = 5*direct
-}
+    with instance_create(x,y+20,obj_shuriken) hspeed = 5*other.direct
 
 //Second Projectile
 alarm[8] = 10
@@ -923,7 +851,7 @@ and not collision_rectangle(bbox_left,bbox_bottom-8,bbox_right,bbox_bottom-8,obj
     }
 
     //Prevent Mario from getting embed inside a slope
-    if vspeed &gt; -0.5
+    if vspeed &gt; -0.8
         while collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom,obj_slopeparent,1,0)
             y--
 
