@@ -25,19 +25,67 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_mario.invincible = 1
-if not audio_is_playing(snd_starman)
+            <string>if not audio_is_playing(snd_starman)
 {
     audio_play_sound(snd_starman,99,1)
     audio_play_sound(snd_letsgo,0,0)
 }
+obj_mario.invincible = 1
 obj_levelmanager.alarm[1] = 1
-obj_mario.alarm[10] = 1
 alarm[0] = 1000
 alarm[1] = 1
+alarm[3] = 4
 hitpoint = 0
 ready = 0
 newstar = 0
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Handle Mario's invincibility flashing
+
+//Keep flashing until the invincibility is done
+if newstar = 0
+{
+    with obj_mario
+    {
+        if isflashing = 0
+            isflashing = 1
+        else
+            isflashing = 0
+    }
+    with obj_warpmario
+    {
+        if isflashing = 0
+            isflashing = 1
+        else
+            isflashing = 0
+    }
+    alarm[3] = 4
+}
+else
+{
+    with obj_mario isflashing = 0
+    with obj_warpmario isflashing = 0
+}
 </string>
           </argument>
         </arguments>
@@ -85,12 +133,9 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[1] = 8
-if visible = 1
-{
-    varid = instance_create(x-8+random(16),y-8+random(16),obj_sparkletrail)
-    varid.depth = depth
-}
+            <string>if visible = 1
+    with instance_create(x-8+random(16),y-8+random(16),obj_sparkletrail) depth = other.depth
+alarm[1] = 8
 </string>
           </argument>
         </arguments>
@@ -146,7 +191,7 @@ or instance_exists(obj_warpmario)
             <kind>1</kind>
             <string>if instance_exists(obj_deadmario)
     alarm[0] = 1
-if instance_exists(obj_mario)
+else if instance_exists(obj_mario)
 {
     x = obj_mario.x
     y = obj_mario.y
@@ -158,7 +203,7 @@ if instance_exists(obj_mario)
         obj_mario.alarm[10] = 1
     }
 }
-if instance_exists(obj_warpmario)
+else if instance_exists(obj_warpmario)
 {
     x = obj_warpmario.x
     y = obj_warpmario.y

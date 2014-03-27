@@ -46,6 +46,35 @@ mysolid.image_yscale = 2
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Return to the world map
+
+//Stop all sounds
+audio_stop_all()
+
+//Return to the world map
+scr_return()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
@@ -84,8 +113,11 @@ else if sprite_index = spr_switch_green
 //Clear the level
 global.clear = 1
 
+//Disable Mario's controls
+with obj_mario disablecontrols = 1
+
 //Let Mario bask in his victory
-with instance_create(0,0,obj_sleeper) alarm[0] = 390
+alarm[1] = 390
 </string>
           </argument>
         </arguments>
@@ -131,6 +163,31 @@ and image_speed = 0
     alarm[0] = 3
 
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Stop the switch press animation
+image_speed = 0
+image_index--
 </string>
           </argument>
         </arguments>

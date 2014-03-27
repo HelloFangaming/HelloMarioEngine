@@ -51,10 +51,6 @@ myitem = noone
 //Offset held item
 bugfix = 0
 
-//Invincibility flashing
-if instance_exists(obj_invincibility)
-    alarm[2] = 4
-
 //Is Mario flashing?
 isflashing = 0
 
@@ -65,7 +61,7 @@ direct = 1
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="4">
+    <event eventtype="2" enumb="3">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -89,7 +85,7 @@ gravity = 0.25
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="3">
+    <event eventtype="2" enumb="2">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -113,47 +109,7 @@ vspeed = -4
 visible = 1
 
 //Enable gravity
-alarm[4] = 30
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Handle Mario's invincibility flashing
-
-//Keep flashing until the invincibility is done
-if instance_exists(obj_invincibility)
-{
-    if obj_invincibility.newstar = 0
-    {
-        if isflashing = 0
-            isflashing = 1
-        else
-            isflashing = 0
-        alarm[2] = 4
-    }
-    else
-        isflashing = 0
-}
-else
-    isflashing = 0
+alarm[3] = 30
 </string>
           </argument>
         </arguments>
@@ -504,7 +460,7 @@ if cannon = 0
     direct = 1
 
     //Begin launch
-    alarm[3] = 30
+    alarm[2] = 30
 
 }
 </string>
