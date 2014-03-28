@@ -187,7 +187,7 @@ and image_speed = 0
             <kind>1</kind>
             <string>///Stop the switch press animation
 image_speed = 0
-image_index--
+image_index = 2
 </string>
           </argument>
         </arguments>

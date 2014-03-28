@@ -912,6 +912,7 @@
       </sprites>
       <sprite>sprites\spr_key</sprite>
       <sprite>sprites\spr_keyhole</sprite>
+      <sprite>sprites\spr_keyhole_animation</sprite>
       <sprite>sprites\spr_door</sprite>
       <sprite>sprites\spr_door_hidden</sprite>
       <sprite>sprites\spr_door_inside</sprite>
