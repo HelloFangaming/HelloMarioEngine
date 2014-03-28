@@ -8,6 +8,97 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>ready = 0
+scale = 0
+fade = 1
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Return to the world map
+
+//Stop all sounds
+audio_stop_all()
+
+//Return to the world map
+scr_return()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if ready = 1
+{
+    scale += 0.02
+    if scale &gt;= 1
+        ready = 2
+}
+else if ready = 2
+{
+    fade -= 0.1
+    if fade &lt;= 0
+        ready = 3
+}
+else if ready = 3
+and scale &gt; 0
+    scale -= 0.02
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_key">
       <action>
         <libid>1</libid>
@@ -25,12 +116,68 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.held = 1
+            <string>if ready = 0
+and other.held = 1
+and instance_exists(obj_mario)
 {
-    audio_stop_all()
+
+    ready = 1
+
+    //Stop the music
+    obj_levelmanager.alarm[1] = 2
+
     audio_play_sound(snd_key,1,0)
     global.clear = 2
-    with instance_create(0,0,obj_sleeper) alarm[0] = 120
+
+    kx = round(other.x)
+    ky = round(other.y)
+    ki = other.image_index
+
+    with other instance_destroy()
+
+    with obj_mario
+    {
+        other.mx = round(x)
+        other.my = round(y)
+        other.ms = sprite_index
+        other.mi = image_index
+        other.md = direct
+        instance_destroy()
+    }
+
+    alarm[0] = 120
+
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if ready &lt; 2
+    draw_sprite(spr_keyhole,0,x,y)
+draw_sprite_ext(spr_keyhole_animation,0,x+8,y+16,scale,scale,0,c_white,1)
+if ready = 1
+or ready = 2
+{
+    draw_sprite_ext(spr_key,ki,kx,ky,1,1,0,c_white,fade)
+    draw_sprite_ext(ms,mi,mx,my,md,1,0,c_white,fade)
 }
 </string>
           </argument>
