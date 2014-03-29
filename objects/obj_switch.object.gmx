@@ -94,15 +94,19 @@ scr_return()
             <kind>1</kind>
             <string>///End the switch press
 
-//Stop the music
-with obj_levelmanager event_user(3)
+//Stop the music and time
+with obj_levelmanager
+{
+    event_user(3)
+    alarm[2] = 0
+}
 
 //Play the victory music
 audio_play_sound(snd_flagsong,1,0)
 
 //Stop the switch press animation
 image_speed = 0
-//image_index = 2
+image_index = 2
 
 //Choose the appropriate global variable to activate
 if sprite_index = spr_switch_red

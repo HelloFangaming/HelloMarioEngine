@@ -25,8 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 0
+            <string>///Unlocks the secret exit
+
+//Animation state
+ready = 0
+
+//Scale of the keyhole animation
 scale = 0
+
+//Fade out Mario during the animation
 fade = 1
 </string>
           </argument>
@@ -79,18 +86,25 @@ scr_return()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 1
+            <string>///Key animation logic
+
+//Keyhole growing
+if ready = 1
 {
     scale += 0.02
     if scale &gt;= 1
         ready = 2
 }
+
+//Mario fading away
 else if ready = 2
 {
     fade -= 0.1
     if fade &lt;= 0
         ready = 3
 }
+
+//Keyhole shrinking
 else if ready = 3
 and scale &gt; 0
     scale -= 0.02
@@ -116,25 +130,39 @@ and scale &gt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 0
+            <string>///Open the secret exit
+
+//If the animation has not started, and Mario brings a key
+if ready = 0
 and other.held = 1
 and instance_exists(obj_mario)
 {
 
+    //Start the animatiob
     ready = 1
 
-    //Stop the music
-    with obj_levelmanager event_user(3)
+    //Stop the music and time
+    with obj_levelmanager
+    {
+        event_user(3)
+        alarm[2] = 0
+    }
 
+    //Play the key sound
     audio_play_sound(snd_key,1,0)
+
+    //Open up the secret exit
     global.clear = 2
 
+    //Save the state of the key
     kx = round(other.x)
     ky = round(other.y)
     ki = other.image_index
 
+    //Delete the key
     with other instance_destroy()
 
+    //Save the state of Mario, and delete him
     with obj_mario
     {
         other.mx = round(x)
@@ -145,6 +173,7 @@ and instance_exists(obj_mario)
         instance_destroy()
     }
 
+    //Return to the world map after the animation
     alarm[0] = 120
 
 }
@@ -170,14 +199,27 @@ and instance_exists(obj_mario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready &lt; 2
+            <string>///Draw the keyhole and animation
+
+//Draw the keyhole
+if ready &lt; 2
     draw_sprite(spr_keyhole,0,x,y)
-draw_sprite_ext(spr_keyhole_animation,0,x+8,y+16,scale,scale,0,c_white,1)
-if ready = 1
-or ready = 2
+
+//If the animation has started
+if ready != 0
 {
-    draw_sprite_ext(spr_key,ki,kx,ky,1,1,0,c_white,fade)
-    draw_sprite_ext(ms,mi,mx,my,md,1,0,c_white,fade)
+
+    //Draw the animation
+    draw_sprite_ext(spr_keyhole_animation,0,x+8,y+16,scale,scale,0,c_white,1)
+
+    //Draw Mario and the key during the animation
+    if ready = 1
+    or ready = 2
+    {
+        draw_sprite_ext(spr_key,ki,kx,ky,1,1,0,c_white,fade)
+        draw_sprite_ext(ms,mi,mx,my,md,1,0,c_white,fade)
+    }
+
 }
 </string>
           </argument>
