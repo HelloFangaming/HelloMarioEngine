@@ -47,6 +47,9 @@ and global.star = 0
 //Make the view follow along
 view_object[0] = obj_levelmanager
 
+//Music not disabled
+musicdisabled = 0
+
 //Animation variable
 anim = 0
 
@@ -561,8 +564,7 @@ audio_stop_sound(levelmusic)
             <kind>1</kind>
             <string>///Loop the music
 if not audio_is_playing(levelmusic)
-and not instance_exists(obj_deadmario)
-and not instance_exists(obj_goalmario)
+and musicdisabled = 0
     audio_play_sound(levelmusic,99,1)
 </string>
           </argument>
@@ -751,8 +753,13 @@ if not audio_is_playing(snd_thwomp)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Stop all possible music
+            <string>///Disable music
+musicdisabled = 1
+
+//Stop music
 audio_stop_sound(levelmusic)
+
+//Stop all possible fanfares
 audio_stop_sound(snd_starman)
 audio_stop_sound(snd_switchsong)
 </string>
