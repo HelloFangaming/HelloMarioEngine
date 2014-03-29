@@ -361,7 +361,34 @@ alarm[3] = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Stop Mario from moving
+            <string>///Open up panel directions and stop Mario from moving
+
+//Get the id of the panel he is on
+panel = collision_point(x+8,y+8,obj_panelparent,0,0)
+
+//If he is on a panel
+if panel
+{
+
+    //Open the panel's up direction if he is moving up
+    if direction = 90
+        panel.open[0] = 1
+
+    //Open the panel's down direction if he is moving down
+    else if direction = 270
+        panel.open[1] = 1
+
+    //Open the panel's left direction if he is moving left
+    else if direction = 180
+        panel.open[2] = 1
+
+    //Open the panel's right direction if he is moving right
+    else if direction = 0
+        panel.open[3] = 1
+
+}
+
+//Stop moving
 speed = 0
 </string>
           </argument>
@@ -415,12 +442,12 @@ and round(y) = returny
 else if ready = 0
 {
 
-    //Get the id of the panel he is on
-    panel = collision_point(x+8,y+8,obj_panelparent,0,0)
-
     //If he is not moving
     if speed = 0
     {
+
+        //Get the id of the panel he is on
+        panel = collision_point(x+8,y+8,obj_panelparent,0,0)
 
         //If the up key is pressed
         if keyboard_check_pressed(vk_up)
@@ -599,36 +626,9 @@ else if ready = 0
 
     }
 
-    //If he is moving
+    //If he is moving, reset the text
     else 
-    {
-
-        //If he is on a panel
-        if panel
-        {
-
-            //Open the panel's up direction if he is moving up
-            if direction = 90
-                panel.open[0] = 1
-
-            //Open the panel's down direction if he is moving down
-            else if direction = 270
-                panel.open[1] = 1
-
-            //Open the panel's left direction if he is moving left
-            else if direction = 180
-                panel.open[2] = 1
-
-            //Open the panel's right direction if he is moving right
-            else if direction = 0
-                panel.open[3] = 1
-
-        }
-
-        //Reset the text
         mytext = ""
-
-    }
 
 }
 
