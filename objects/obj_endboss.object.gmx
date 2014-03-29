@@ -30,24 +30,24 @@
     instance_destroy()
     exit
 }
-if global.time &gt; 4
+if global.timer &gt; 4
 {
     score += 500
-    global.time -= 5
+    global.timer -= 5
     alarm[1] = 4
 }
-if global.time &lt; 5
-and global.time &gt; 0
+if global.timer &lt; 5
+and global.timer &gt; 0
 {
     score += 100
-    global.time -= 1
+    global.timer -= 1
     alarm[1] = 4
 }
-if global.time = 0
+if global.timer = 0
     audio_play_sound(snd_countend,0,0)
 else
     audio_play_sound(snd_count,0,0)
-if global.time &gt; 0
+if global.timer &gt; 0
     exit
 scr_return()
 </string>

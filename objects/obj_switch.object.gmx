@@ -94,11 +94,15 @@ scr_return()
             <kind>1</kind>
             <string>///End the switch press
 
-//Prevent the P-Switch song from playing
-audio_stop_sound(snd_switchsong)
+//Stop the music
+with obj_levelmanager event_user(3)
 
 //Play the victory music
 audio_play_sound(snd_flagsong,1,0)
+
+//Stop the switch press animation
+image_speed = 0
+//image_index = 2
 
 //Choose the appropriate global variable to activate
 if sprite_index = spr_switch_red
@@ -156,38 +160,10 @@ and image_speed = 0
     //Destroy the solid
     with mysolid instance_destroy()
 
-    //Stop the music
-    obj_levelmanager.alarm[1] = 2
-
     //End the switch press
     alarm[0] = 3
 
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="7">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Stop the switch press animation
-image_speed = 0
-image_index = 2
 </string>
           </argument>
         </arguments>

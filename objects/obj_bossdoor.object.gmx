@@ -135,7 +135,7 @@ if ready = 0
 and obj_mario.x &gt; x+26
 {
     ready = 1
-    if global.time &gt; 0
+    if global.timer &gt; 0
         obj_levelmanager.alarm[2] = 0
     with instance_create(x,y,obj_solid) image_yscale = 4
     varid = instance_create(obj_levelmanager.x,obj_levelmanager.y,obj_autoscroll)
