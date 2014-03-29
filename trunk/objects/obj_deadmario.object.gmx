@@ -30,7 +30,7 @@
 //Stop the music and time
 with obj_levelmanager
 {
-    alarm[1] = 1
+    event_user(3)
     alarm[2] = 0
 }
 
@@ -45,10 +45,6 @@ global.powerup = cs_small
 
 //Begin the death animation
 alarm[0] = 60
-
-//Stop some sounds that may be playing
-audio_stop_sound(snd_starman)
-audio_stop_sound(snd_switchsong)
 
 //Play the death song
 audio_play_sound(snd_dead,1,0)

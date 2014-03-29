@@ -495,21 +495,21 @@ else
             <string>///Decrement the time variable
 
 //If there is time left
-if global.time &gt; 0
+if global.timer &gt; 0
 {
 
     //Decrement
-    global.time--
+    global.timer--
 
     //Decrement the time again after a second
     alarm[2] = 60
 
     //Play the hurry up sound at 100 seconds left
-    if global.time = 101
+    if global.timer = 101
         alarm[3] = 60
 
     //Kill Mario at 0 seconds
-    else if global.time = 1
+    else if global.timer = 1
         alarm[4] = 61
 
 }
@@ -734,6 +734,32 @@ if not audio_is_playing(snd_thwomp)
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="13">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Stop all possible music
+audio_stop_sound(levelmusic)
+audio_stop_sound(snd_starman)
+audio_stop_sound(snd_switchsong)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="12">
       <action>
         <libid>1</libid>
@@ -928,11 +954,11 @@ if global.levelmusic != levelmusic
 
 //If the time is set to something, and was not set in a previous room, set it
 if leveltime &gt; 0
-and global.time = 0
-    global.time = leveltime
+and global.timer = 0
+    global.timer = leveltime
 
 //If the timer was set, begin ticking
-if global.time &gt; 0
+if global.timer &gt; 0
     alarm[2] = 60
 
 //If Mario just started the level
@@ -1120,7 +1146,7 @@ draw_set_font(global.gdigits)
 
 //Draw the time
 draw_sprite_ext(spr_timehud,0,view_xview[0]+104,view_yview[0]+10,1,1,0,c_white,0.7)
-draw_text(view_xview[0]+114,view_yview[0]+10,string_add_zeros(global.time,3))
+draw_text(view_xview[0]+114,view_yview[0]+10,string_add_zeros(global.timer,3))
 
 //Draw the P-Meter
 draw_sprite_ext(spr_pmeter,pmeter,view_xview[0]+16,view_yview[0]+228,1,1,0,c_white,0.7)

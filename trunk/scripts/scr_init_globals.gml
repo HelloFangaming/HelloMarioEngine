@@ -9,7 +9,7 @@
 */
 
 //Time Limit
-global.time = 0
+global.timer = 0
 
 //World Number
 global.world = 1

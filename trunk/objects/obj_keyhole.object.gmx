@@ -124,7 +124,7 @@ and instance_exists(obj_mario)
     ready = 1
 
     //Stop the music
-    obj_levelmanager.alarm[1] = 2
+    with obj_levelmanager event_user(3)
 
     audio_play_sound(snd_key,1,0)
     global.clear = 2

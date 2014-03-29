@@ -30,7 +30,7 @@
 //Stop the music and time
 with obj_levelmanager
 {
-    alarm[1] = 1
+    event_user(3)
     alarm[2] = 0
 }
 
@@ -57,10 +57,6 @@ vspeed = 1.5
 
 //Start walking after reaching the bottom
 alarm[0] = 130
-
-//Stop some sounds that may be playing
-audio_stop_sound(snd_starman)
-audio_stop_sound(snd_switchsong)
 
 //Play the flagpole sound
 audio_play_sound(snd_flagpole,0,0)
@@ -116,14 +112,14 @@ else
             <string>///Take points off the time, and add to the score
 
 //If there is more than 4 seconds left
-if global.time &gt; 4
+if global.timer &gt; 4
 {
 
     //Add 500 to the score
     score += 500
 
     //Subtract 5 seconds from the time
-    global.time -= 5
+    global.timer -= 5
 
 }
 
@@ -135,12 +131,12 @@ else
     score += 100
 
     //Decrement the time
-    global.time--
+    global.timer--
 
 }
 
 //If there is no time left
-if global.time = 0
+if global.timer = 0
 {
 
     //Play the count end sound
@@ -382,7 +378,7 @@ and ready = 3
     alarm[1] = 10
 
     //Start the countdown if there is a time limit
-    if global.time &gt; 0
+    if global.timer &gt; 0
         alarm[2] = 1
     else
         alarm[3] = 1
