@@ -5,7 +5,7 @@
   <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_deactivation</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,12 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 5
+            <string>///Blow bubbles leftwards
+
+//Bubble generators
+alarm[0] = 5
 alarm[1] = 5
-wii = 0
-pii = 5
-ready = 0
-ready2 = 0
+
+//Bubble offsets
+offset = 0
+offset2 = 5
+
+//Bubble offset delta
+delta = 1
+delta2 = 1
 </string>
           </argument>
         </arguments>
@@ -53,28 +60,22 @@ ready2 = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[1] = choose(5,6,7,8,9,10)
-if x&gt;view_xview[0]-96
-and x&lt;view_xview[0]+336
-and y&lt;view_yview[0]+256
-and y&gt;view_yview[0]-16
-{
-    bubble = instance_create(x,y+28-pii,obj_blownbubble)
-    with bubble hspeed = -6
-    if ready2 = 0
-    {
-        pii+=1
-        if pii &gt; 10
-            ready2 = 1
-        exit
-    }
-    if ready2 = 1
-    {
-        pii-=1
-        if pii &lt; 0
-            ready2 = 0
-    }
-}
+            <string>///Bubble generator 2
+
+//Make a leftwards moving bubble
+with instance_create(x,y+2+offset2,obj_blownbubble) hspeed = -6
+
+//Change the offset
+offset2 += delta2
+
+//Make the offset go up and down
+if offset2 &gt; 10
+    delta2 = -1
+else if offset2 &lt; 0
+    delta2 = 1
+
+//Randomize the next bubble
+alarm[0] = irandom(5)+5
 </string>
           </argument>
         </arguments>
@@ -97,28 +98,22 @@ and y&gt;view_yview[0]-16
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = choose(5,6,7,8,9,10)
-if x&gt;view_xview[0]-96
-and x&lt;view_xview[0]+336
-and y&lt;view_yview[0]+256
-and y&gt;view_yview[0]-16
-{
-    bubble = instance_create(x,y+2+wii,obj_blownbubble)
-    with bubble hspeed = -6
-    if ready = 0
-    {
-        wii+=1
-        if wii &gt; 10
-            ready = 1
-        exit
-    }
-    if ready = 1
-    {
-        wii-=1
-        if wii &lt; 0
-            ready = 0
-    }
-}
+            <string>///Bubble generator 1
+
+//Make a leftwards moving bubble
+with instance_create(x,y+2+offset,obj_blownbubble) hspeed = -6
+
+//Change the offset
+offset += delta
+
+//Make the offset go up and down
+if offset &gt; 10
+    delta = -1
+else if offset &lt; 0
+    delta = 1
+
+//Randomize the next bubble
+alarm[0] = irandom(5)+5
 </string>
           </argument>
         </arguments>
@@ -141,12 +136,11 @@ and y&gt;view_yview[0]-16
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-    exit
-if (global.powerup = cs_frog or global.powerup = cs_penguin)
-and obj_mario.holding = 0
-    exit
-if collision_rectangle(x-80,y,x,y+32,obj_mario,0,0)
+            <string>///Blow Mario
+
+//If Mario is not frog/penguin swimming, in the way, and not moving too fast, blow him
+if ((global.powerup != cs_frog and global.powerup != cs_penguin) or obj_mario.holding &gt; 0)
+and collision_rectangle(x-80,y,x,y+32,obj_mario,0,0)
 and not collision_rectangle(obj_mario.x-9,obj_mario.bbox_top,obj_mario.x-9,obj_mario.y+31,obj_solid,0,0)
 and obj_mario.hspeed &gt; -4
     obj_mario.hspeed -= 0.25

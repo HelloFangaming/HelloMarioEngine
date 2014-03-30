@@ -6,7 +6,7 @@
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>obj_deactivation</parentName>
-  <maskName>spr_square</maskName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x,y,obj_islope_sr)
+            <string>///Inverted right wall triangle
+
+//Create an inverted right slope
+instance_create(x,y,obj_islope_sr)
 </string>
           </argument>
         </arguments>

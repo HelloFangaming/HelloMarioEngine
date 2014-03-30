@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15</string>
+            <string>///Golden coins for Mario to collect
+
+//Animate
+image_speed = 0.15
+</string>
           </argument>
         </arguments>
       </action>
@@ -47,9 +51,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.vspeed &lt; 0
+            <string>///Get collected by a block bump
+if other.vspeed &lt; 0
 {
-    instance_create(x,ystart,obj_veggiecoin)
+    instance_create(x,y,obj_veggiecoin)
     instance_destroy()
 }
 </string>
@@ -74,10 +79,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_coin,0,0)
-global.coins+=1
-with instance_create(x,ystart,obj_score) event_user(0)
+            <string>///Collect the coin
+
+//Play the coin sound
+audio_play_sound(snd_coin,0,0)
+
+//Increment coins
+global.coins++
+
+//Get 100 points
+with instance_create(x,y,obj_score) event_user(0)
+
+//Create sparkles
 instance_create(x+8,y-8,obj_sparkletrail)
+
+//Destroy
 instance_destroy()
 </string>
           </argument>

@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15</string>
+            <string>///Hidden coins
+
+//Animate
+image_speed = 0.15
+</string>
           </argument>
         </arguments>
       </action>
@@ -47,11 +51,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.vspeed &lt; 0
-and visible = 1
+            <string>///Get collected by a block bump when visible
+if visible = 1
+and other.vspeed &lt; 0
 {
-    varid = instance_create(x,ystart,obj_veggiecoin)
-    varid.sprite_index = spr_pcoin
+    with instance_create(x,y,obj_veggiecoin) sprite_index = spr_pcoin
     instance_destroy()
 }
 </string>
@@ -76,13 +80,25 @@ and visible = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if visible = 1
+            <string>///Collect the coin when visible
+if visible = 1
 {
+
+    //Play the coin sound
     audio_play_sound(snd_coin,0,0)
-    global.coins+=1
-    with instance_create(x,ystart,obj_score) event_user(0)
+    
+    //Increment coins
+    global.coins++
+    
+    //Get 100 points
+    with instance_create(x,y,obj_score) event_user(0)
+    
+    //Create sparkles
     instance_create(x+8,y-8,obj_sparkletrail)
+    
+    //Destroy
     instance_destroy()
+
 }
 </string>
           </argument>

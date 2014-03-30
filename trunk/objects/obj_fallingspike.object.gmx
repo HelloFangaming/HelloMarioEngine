@@ -6,7 +6,7 @@
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>obj_deactivation</parentName>
-  <maskName>spr_square</maskName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -25,9 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
+            <string>///Falling spike
+
+//Do not animate
+image_speed = 0
+
+//Create a solid
 mysolid = instance_create(x,y,obj_solid)
-ready = 0</string>
+
+//Whether the spike is falling
+ready = 0
+</string>
           </argument>
         </arguments>
       </action>
@@ -49,10 +57,18 @@ ready = 0</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with mysolid instance_destroy()
+            <string>///Start falling
+
+//Destroy the solid
+with mysolid instance_destroy()
+
+//Enable gravity
 gravity = 0.25
+
+//Do not animate
 image_speed = 0
-image_index = 0</string>
+image_index = 0
+</string>
           </argument>
         </arguments>
       </action>
@@ -74,25 +90,43 @@ image_index = 0</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 0
-and instance_exists(obj_mario)
-    if obj_mario.x &gt; x-72
+            <string>///Falling spike logic
+
+//If the spike is not falling or shaking
+if ready = 0
+{
+
+    //If Mario is under the spike
+    if instance_exists(obj_mario)
+    and obj_mario.x &gt; x-72
     and obj_mario.x &lt; x+88
     and obj_mario.y &gt; y
     {
+
+        //Change state
         ready = 1
+
+        //Animate
         image_speed = 1
+
+        //Begin falling
         alarm[0] = 80
+
     }
-if vspeed &gt; 4
-    vspeed = 4
-if ready = 1
+
+}
+//If the spike is falling or shaking
+else
 {
-    if x &lt; view_xview[0]-16
-    or x &gt; view_xview[0]+336
-    or y &gt; view_yview[0]+256 
-    or y &lt; view_yview[0]-16
-    instance_destroy()
+
+    //Stop the spike from falling too fast
+    if vspeed &gt; 4
+        vspeed = 4
+
+    //Destroy if outside view
+    if outside_view()
+        instance_destroy()
+
 }
 </string>
           </argument>
@@ -116,31 +150,9 @@ if ready = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.invincible = 0
-    with other event_user(0)
+            <string>///Hurt Mario
+with other event_user(0)
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>instance_destroy()</string>
           </argument>
         </arguments>
       </action>

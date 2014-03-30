@@ -25,8 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
-if ds_map_find_value(global.acecoins,id) = 1
+            <string>///Collect 5 and receive a 1up
+
+//Animate
+image_speed = 0.15
+
+//Destroy if this coin was already collected
+if ds_map_exists(global.acecoins,id)
     instance_destroy()
 </string>
           </argument>
@@ -50,8 +55,10 @@ if ds_map_find_value(global.acecoins,id) = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x+8,y,obj_sparkletrail)
-instance_destroy()</string>
+            <string>///Create sparkles and destroy
+instance_create(x+8,y,obj_sparkletrail)
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
@@ -73,22 +80,48 @@ instance_destroy()</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if image_speed = 0.15
+            <string>///Collect the coin
+
+//If the coin was not touched yet
+if image_speed = 0.15
 {
+
+    //Play the ace coin sound
     audio_play_sound(snd_acecoin,0,0)
-    if ds_map_size(global.acecoins) = 4
+
+    //Remember that this coin was collected
+    ds_map_add(global.acecoins,id,1)
+
+    //If 5 coins were collected
+    if ds_map_size(global.acecoins) = 5
     {
+
+        //Extra life
         with instance_create(x,y,obj_score) event_user(7)
+
+        //100 points
         score += 100
+
     }
+
+    //Otherwise
     else
     {
+
+        //100 points
         with instance_create(x,y,obj_score) event_user(0)
+
+        //Make Mario say "Hoo hoo"!
         audio_play_sound(snd_hoohoo,0,0)
+
     }
-    ds_map_add(global.acecoins,id,1)
+
+    //Animate faster
     image_speed = 1
+
+    //Destroy when done
     alarm[0] = 30
+
 }
 </string>
           </argument>
