@@ -25,8 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
-sprite_index = spr_poutline</string>
+            <string>///A P-Switch platform
+
+//Animate
+image_speed = 0.15
+
+//Use the off sprite
+sprite_index = spr_poutline
+</string>
           </argument>
         </arguments>
       </action>
@@ -48,8 +54,14 @@ sprite_index = spr_poutline</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index = spr_poutline
-with varid instance_destroy()</string>
+            <string>///Turn off
+
+//Use the off sprite
+sprite_index = spr_poutline
+
+//Destroy the solid
+with mysolid instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
@@ -71,10 +83,18 @@ with varid instance_destroy()</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_poutline
+            <string>///Turn on
+
+//If off
+if sprite_index = spr_poutline
 {
+
+    //Use the on sprite
     sprite_index = spr_pplatform
-    varid = instance_create(x,y,obj_solid)
+
+    //Make a solid
+    mysolid = instance_create(x,y,obj_solid)
+
 }
 </string>
           </argument>

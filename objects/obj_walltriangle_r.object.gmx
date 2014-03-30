@@ -6,7 +6,7 @@
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>obj_deactivation</parentName>
-  <maskName>spr_square</maskName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x,y,obj_slope_sr)</string>
+            <string>///Right wall triangle
+
+//Create a right slope
+instance_create(x,y,obj_slope_sr)
+</string>
           </argument>
         </arguments>
       </action>
@@ -47,16 +51,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if obj_mario.state = 1
-and obj_mario.holding = 0
-and obj_mario.isduck = 0
-and obj_mario.isswim = 0
-and not instance_exists(obj_wallrunner)
+            <string>///Allow Mario to wall run
+
+//If Mario meets the conditions for wall running
+if other.state = 1
+and other.holding = 0
+and other.isduck = 0
+and other.isswim = 0
+and other.disablecontrols = 0
 {
-    if obj_mario.hspeed &gt; 2.9
+
+    //If Mario is running right and there is a solid wall there, wall run up
+    if other.hspeed &gt; 2.9
     and position_meeting(x+24,y-8,obj_solid)
         instance_create(x,y-32,obj_wallrunner)
-    else if obj_mario.hspeed &lt; -2.9
+
+    //Otherwise, if Mario is runnung left and there is a downward wall there and no floor, run down
+    else if other.hspeed &lt; -2.9
     and position_meeting(x+8,y+24,obj_solid)
     and not position_meeting(x-8,y+24,obj_solidtop)
         with instance_create(x-16,y+16,obj_wallrunner)
@@ -64,6 +75,7 @@ and not instance_exists(obj_wallrunner)
             direct = -1
             direction = 270
         }
+
 }
 </string>
           </argument>

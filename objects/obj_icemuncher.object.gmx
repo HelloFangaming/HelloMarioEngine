@@ -3,10 +3,10 @@
   <spriteName>spr_icemuncher</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>1</depth>
   <persistent>0</persistent>
   <parentName>obj_icecoin</parentName>
-  <maskName>spr_square</maskName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="7" enumb="10">
       <action>
@@ -25,9 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>mymuncher = instance_create(x,y,obj_muncher)
-mymuncher.sprite_index = spr_muncher_b
+            <string>///Melt
+
+//Create a blue muncher
+with instance_create(x,y,obj_muncher) sprite_index = spr_muncher_b
+
+//Create smoke
 instance_create(x,y,obj_smoke)
+
+//Destroy
 instance_destroy()
 </string>
           </argument>

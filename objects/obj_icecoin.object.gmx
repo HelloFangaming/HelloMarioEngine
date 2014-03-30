@@ -3,10 +3,10 @@
   <spriteName>spr_icecoin</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>1</depth>
   <persistent>0</persistent>
   <parentName>obj_solid</parentName>
-  <maskName>spr_square</maskName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>varid = instance_create(x,y,obj_slippery)
+            <string>///A coin frozen solid
+
+//Make it slippery
+myslip = instance_create(x,y,obj_slippery)
 </string>
           </argument>
         </arguments>
@@ -48,7 +51,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with varid instance_destroy()
+            <string>///Destroy the slippery object
+with myslip instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -71,9 +75,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x,y,obj_coin)
+            <string>///Melt
+
+//Create a coin
+instance_create(x,y,obj_coin)
+
+//Create smoke
 instance_create(x,y,obj_smoke)
-instance_destroy()</string>
+
+//Destroy
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
