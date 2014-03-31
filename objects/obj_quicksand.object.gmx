@@ -25,8 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if position_meeting(x+8,y-8,obj_quicksand)
+            <string>///Deadly quicksand
+
+//Use a different sprite if there is quicksand above
+if position_meeting(x+8,y-8,obj_quicksand)
     sprite_index = spr_quicksand2
+
+//Animate
 image_speed = 0.15
 </string>
           </argument>
@@ -50,21 +55,32 @@ image_speed = 0.15
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if obj_mario.vspeed &gt; 0
+            <string>///Mario jumping out
+
+//Move him down slowly
+other.y+=0.5
+
+//If the jump key is pressed
+if keyboard_check_pressed(vk_shift)
 {
-    if keyboard_check_pressed(vk_shift)
-    {
-        audio_play_sound(snd_jump,0,0)
-        obj_mario.y-=3
-        obj_mario.jumpnow = 1
-        obj_mario.vspeed = -3.85
-    }
-    else
-    {
-        obj_mario.y+=0.5
-        obj_mario.vspeed = 0
-    }
+
+    //Play the jump sound
+    audio_play_sound(snd_jump,0,0)
+
+    //Make Mario move upwards
+    other.vspeed = -2.85
+
+    //Enable variable jumping
+    other.jumpnow = 1
+
+    //Clear the shift key
+    keyboard_clear(vk_shift)
+
 }
+
+//Stop vertical speed
+if other.vspeed &gt; 0
+    other.vspeed = 0
 </string>
           </argument>
         </arguments>

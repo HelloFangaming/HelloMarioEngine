@@ -2100,7 +2100,6 @@ and global.yoshi = 0
     if (global.powerup = cs_leaf or global.powerup = cs_tanooki)
     and keyboard_check_pressed(vk_shift)
     and jumpnow != 1
-    and not place_meeting(x,y,obj_quicksand)
     {
 
         //Fly if the P-meter is flashing and float otherwise
