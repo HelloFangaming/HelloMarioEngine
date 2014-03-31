@@ -3,7 +3,7 @@
   <spriteName>spr_flippers_top</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>1</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,11 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
+            <string>///One way flippers
+
+//Do not animate
+image_speed = 0
+
+//State
 ready = 0
+
+//Whether the object is solid
 issolid = 1
-varid = instance_create(x,y,obj_solid)
-varid.image_xscale = 4
+
+//Solid object
+mysolid = instance_create(x,y,obj_solid)
+mysolid.image_xscale = 4
 </string>
           </argument>
         </arguments>
@@ -52,8 +61,13 @@ varid.image_xscale = 4
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 0
+            <string>///Finish closing animation
+image_index = 0
+
+//Reset state
 ready = 0
+
+//Be solid
 issolid = 1
 </string>
           </argument>
@@ -77,7 +91,9 @@ issolid = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 2</string>
+            <string>///Finish opening animation
+image_index = 2
+</string>
           </argument>
         </arguments>
       </action>
@@ -99,7 +115,9 @@ issolid = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 1</string>
+            <string>///First part of opening/closing animation
+image_index = 1
+</string>
           </argument>
         </arguments>
       </action>
@@ -121,48 +139,83 @@ issolid = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if collision_rectangle(x,y+15,x+63,y+17,obj_mario,0,0)
+            <string>///Flipper logic
+
+//If Mario comes from below, and the flippers are shut
+if collision_rectangle(x,y+15,x+63,y+17,obj_mario,0,0)
 and ready &lt; 2
 {
+
+    //Use the shut tight image
     image_index = 3
+
+    //If the flippers are not shut tight, shut them
     if ready = 0
     {
         ready = 1
         issolid = 1
     }
+
 }
+
+//If Mario comes from above
 else if collision_rectangle(x,y-6,x+63,y+3,obj_mario,0,0)
 {
+
+    //If the flippers are not open
     if ready != 2
     {
+
+        //Not solid
         issolid = 0
+
+        //Open
         ready = 2
+
+        //Animate the opening
         alarm[0] = 2
         alarm[1] = 4
+
+        //Play the kick sound
         audio_play_sound(snd_kick,0,0)
+
     }
+
 }
+
+//If Mario leaves while the flippers are open
 else if not collision_rectangle(x,y+16,x+63,y-4,obj_mario,0,0)
 and ready = 2
 {
+
+    //Close them
     ready = 3
+
+    //Animate the closing
     alarm[0] = 2
     alarm[2] = 4
+
 }
+
+//If the flippers are shut tight, and the above did not happen, make them less tight
 else if image_index = 3
 {
-    issolid = 1
     image_index = 0
+    ready = 0
 }
+
+//Make sure the flippers are solid when they should be
 if issolid = 1
-and not instance_exists(varid)
+and not instance_exists(mysolid)
 {
-    varid = instance_create(x,y,obj_solid)
-    varid.image_xscale = 4
+    mysolid = instance_create(x,y,obj_solid)
+    mysolid.image_xscale = 4
 }
+
+//Make sure the flippers are not solid when they shouldn't be
 else if issolid = 0
-and instance_exists(varid)
-    with varid instance_destroy()
+and instance_exists(mysolid)
+    with mysolid instance_destroy()
 </string>
           </argument>
         </arguments>
