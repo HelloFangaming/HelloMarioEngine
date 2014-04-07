@@ -33,7 +33,6 @@ image_speed = 0.15
 direct = 0
 throughsolid = 0
 hspeed = -0.5
-heehee = 0
 ready = 0
 </string>
           </argument>

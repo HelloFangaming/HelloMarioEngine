@@ -5,98 +5,9 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_bubble_coin</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>image_speed = 0.15
-alarm[10] = 2</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if x&gt;view_xview[0]-32
-and x&lt;view_xview[0]+336
-and y&lt;view_yview[0]+256
-and y&gt;view_yview[0]-32
-{
-    if instance_exists(obj_mario)
-        move_towards_point(obj_mario.x,obj_mario.y,0.5)
-    if instance_exists(obj_warpmario)
-        move_towards_point(obj_warpmario.x,obj_warpmario.y,0.5)
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if x&gt;view_xview[0]-32
-and x&lt;view_xview[0]+336
-and y&lt;view_yview[0]+256
-and y&gt;view_yview[0]-32
-    speed = 0.5
-else
-{
-    if instance_exists(obj_mario)
-        move_towards_point(obj_mario.x,obj_mario.y,0)
-    if instance_exists(obj_warpmario)
-        move_towards_point(obj_warpmario.x,obj_warpmario.y,0)
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="4" ename="obj_explosion">
       <action>
         <libid>1</libid>
@@ -114,7 +25,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_user(0)</string>
+            <string>///Pop
+event_user(0)
+</string>
           </argument>
         </arguments>
       </action>
@@ -136,7 +49,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_user(0)</string>
+            <string>///Pop
+event_user(0)
+</string>
           </argument>
         </arguments>
       </action>
@@ -158,7 +73,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_user(0)</string>
+            <string>///Pop
+event_user(0)
+</string>
           </argument>
         </arguments>
       </action>
@@ -180,7 +97,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_user(0)</string>
+            <string>///Pop
+event_user(0)
+</string>
           </argument>
         </arguments>
       </action>
@@ -202,7 +121,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_user(0)</string>
+            <string>///Pop
+event_user(0)
+</string>
           </argument>
         </arguments>
       </action>
@@ -224,29 +145,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_user(0)</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_slopeparent">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>event_user(0)</string>
+            <string>///Pop
+event_user(0)
+</string>
           </argument>
         </arguments>
       </action>
@@ -268,77 +169,10 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.held = 1
+            <string>///Pop
+if other.held = 1
     event_user(0)
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_solidtop">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if y &lt; other.y-27 and vspeed &gt; 0
-    event_user(0)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_solid">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>event_user(0)</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_mario">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>event_user(0)</string>
           </argument>
         </arguments>
       </action>
@@ -360,12 +194,21 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_pop,0,0)
-varid = instance_create(x+8,y+8,obj_goomba)
-if hspeed &lt; 0
-    varid.hspeed = -0.5
-else
-    varid.hspeed = 0.5
+            <string>///Pop
+
+//Play pop sound
+audio_play_sound(snd_pop,0,0)
+
+//Make a goomba moving in the same horizontal direction
+with instance_create(x+8,y+8,obj_goomba)
+{
+    if other.hspeed &lt; 0
+        hspeed = -0.5
+    else
+        hspeed = 0.5
+}
+
+//Destroy
 instance_destroy()
 </string>
           </argument>
