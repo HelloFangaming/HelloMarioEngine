@@ -25,39 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
-alarm[10] = 2</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if x&gt;view_xview[0]-32
-and x&lt;view_xview[0]+336
-and y&lt;view_yview[0]+256
-and y&gt;view_yview[0]-32
-{
-    if instance_exists(obj_mario)
-        move_towards_point(obj_mario.x,obj_mario.y,0.5)
-    else if instance_exists(obj_levelmanager)
-        move_towards_point(obj_levelmanager.x,obj_levelmanager.y,0.5)
-}
+            <string>///Bubble coins
+
+//Animate
+image_speed = 0.15
 </string>
           </argument>
         </arguments>
@@ -80,17 +51,24 @@ and y&gt;view_yview[0]-32
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if x&gt;view_xview[0]-32
-and x&lt;view_xview[0]+336
-and y&lt;view_yview[0]+256
-and y&gt;view_yview[0]-32
-    speed = 0.5
-else
+            <string>///Bubble logic
+
+//If the bubble is outside the view, stop movement
+if outside_view()
+    speed = 0
+
+//Otherwise, if the bubble has not moved yet
+else if speed = 0
 {
+
+    //Move towards Mario if he exists
     if instance_exists(obj_mario)
-        move_towards_point(obj_mario.x,obj_mario.y,0)
+        move_towards_point(obj_mario.x,obj_mario.y,0.5)
+
+    //Move towards the camera otherwise
     else if instance_exists(obj_levelmanager)
-        move_towards_point(obj_levelmanager.x,obj_levelmanager.y,0)
+        move_towards_point(obj_levelmanager.x,obj_levelmanager.y,0.5)
+
 }
 </string>
           </argument>
@@ -114,7 +92,10 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_user(0)</string>
+            <string>///Pop
+if vspeed &gt; -0.8
+    event_user(0)
+</string>
           </argument>
         </arguments>
       </action>
@@ -136,7 +117,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-27 and vspeed &gt; 0
+            <string>///Pop
+if y &lt; other.y-27 and vspeed &gt; 0
     event_user(0)
 </string>
           </argument>
@@ -160,7 +142,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_user(0)</string>
+            <string>///Pop
+event_user(0)
+</string>
           </argument>
         </arguments>
       </action>
@@ -182,7 +166,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_user(0)</string>
+            <string>///Pop
+event_user(0)
+</string>
           </argument>
         </arguments>
       </action>
@@ -204,8 +190,15 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_pop,0,0)
+            <string>///Pop
+
+//Play pop sound
+audio_play_sound(snd_pop,0,0)
+
+//Make a coin
 instance_create(x+8,y+8,obj_coin)
+
+//Destroy
 instance_destroy()
 </string>
           </argument>

@@ -3,10 +3,10 @@
   <spriteName>spr_eswitch_red</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-2</depth>
+  <depth>1</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
-  <maskName>spr_square</maskName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
+            <string>///Red E-Switch
+
+//Do not animate
+image_speed = 0
 </string>
           </argument>
         </arguments>
@@ -48,7 +51,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 0
+            <string>///Unpress this switch
+image_index = 0
 </string>
           </argument>
         </arguments>
@@ -71,18 +75,30 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.y &lt; y-27
+            <string>///Mario stomping on the switch
+
+//If Mario stomps on the switch while it is unpressed
+if image_index = 0
+and other.y &lt; y-27
 and other.vspeed &gt; 0
-and image_index = 0
 {
+
+    //Press the switch
     image_index = 1
+
+    //Play a thwomp sound
     audio_play_sound(snd_thwomp,0,0)
+
+    //Make P-Switch related stuff happen for 800 steps
     with obj_levelmanager
     {
         event_user(1)
         alarm[10] = 800
     }
+
+    //Unpress the switch when it is all over
     alarm[0] = 800
+
 }
 </string>
           </argument>

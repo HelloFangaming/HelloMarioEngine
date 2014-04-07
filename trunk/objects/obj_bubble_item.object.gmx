@@ -46,7 +46,8 @@
 //Default Value:
 item = -1
 
-event_inherited()
+//Animate
+image_speed = 0.15
 </string>
           </argument>
         </arguments>
@@ -69,8 +70,15 @@ event_inherited()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_pop,0,0)
+            <string>///Pop
+
+//Play pop sound
+audio_play_sound(snd_pop,0,0)
+
+//Make the correct item
 scr_sprite_make_object(x+8,y+8,sprite)
+
+//Destroy
 instance_destroy()
 </string>
           </argument>
@@ -94,7 +102,8 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite = scr_constant_get_sprite(item)
+            <string>///Set the sprite to the creation code item
+sprite = scr_constant_get_sprite(item)
 </string>
           </argument>
         </arguments>
@@ -117,13 +126,20 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite = spr_key
+            <string>///Draw the bubble
+
+//Do not draw these items animated
+if sprite = spr_key
 or sprite = spr_spring
 or sprite = spr_spring_super
 or sprite = spr_eswitch
     draw_sprite(sprite,0,x+8,y+8)
+
+//Otherwise, draw the item animated
 else
     draw_sprite(sprite,image_index,x+8,y+8)
+
+//Draw the bubble
 draw_sprite(sprite_index,image_index,x,y)
 </string>
           </argument>
