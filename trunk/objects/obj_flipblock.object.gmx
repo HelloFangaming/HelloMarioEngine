@@ -35,6 +35,9 @@ ready = 0
 
 //Create a solid
 mysolid = instance_create(x,y,obj_solid)
+
+//Number of flips
+flips = 0
 </string>
           </argument>
         </arguments>
@@ -61,11 +64,14 @@ mysolid = instance_create(x,y,obj_solid)
 vspeed = 0
 y = ystart
 
-//Make a flipping flip block
-instance_create(x,y,obj_flipblock_flip)
+//Animate
+image_speed = 0.15
 
-//Destroy
-instance_destroy()
+//Flip 8 times
+flips = 8
+
+//Destroy solid
+with mysolid instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -92,7 +98,8 @@ instance_destroy()
 event_inherited()
 
 //Smash the block if Mario spin jumps on it
-if global.powerup != cs_small
+if ready = 0
+and global.powerup != cs_small
 and global.yoshi = 0
 and collision_rectangle(bbox_left,bbox_top-4,bbox_right,bbox_top,obj_mario,0,0)
 and obj_mario.stompstyle = 1
@@ -121,6 +128,49 @@ and obj_mario.vspeed &gt; 0
         direction = 135
     }
     instance_destroy()
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Stop flipping after some number of flips
+
+//If there is more flips, decrement
+if flips &gt; 0
+    flips--
+
+//Otherwise, if Mario is not in the way
+else if not place_meeting(x,y,obj_mario)
+{
+
+    //Stop animating
+    image_speed = 0
+    image_index = 0
+
+    //This block can be hit again
+    ready = 0
+
+    //Create a solid
+    mysolid = instance_create(x,y,obj_solid)
+
 }
 </string>
           </argument>

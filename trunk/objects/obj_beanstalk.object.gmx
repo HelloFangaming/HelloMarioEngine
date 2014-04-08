@@ -25,15 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
-ready = 1
-alarm[0] = 4
+            <string>///Magical beanstalk
+
+//Animate
+image_speed = 0.15
+
+//Move up
 vspeed = -1
-warp = 1
+
+//Create a vine 16 pixels up
+alarm[0] = 16
+
+//Check if this is a warp beanstalk
 if collision_point(x+8,y+8,obj_warproom,0,0)
     myroom = collision_point(x+8,y+8,obj_warproom,0,0).myroom
 else
-    warp = 0
+    myroom = noone
 </string>
           </argument>
         </arguments>
@@ -56,7 +63,17 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 0</string>
+            <string>///Make vines
+
+//Snap to the grid
+move_snap(1,16)
+
+//Make a vine
+instance_create(x,y,obj_vine)
+
+//Make another one 16 pixels up
+alarm[0] = 16
+</string>
           </argument>
         </arguments>
       </action>
@@ -78,12 +95,19 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 0
-and place_snapped(1,16)
+            <string>///Make the vine warp
+
+//If the beanstalk is above the level
+if y &lt; 0
 {
-    ready = 1
-    instance_create(x,y,obj_vine)
-    alarm[0] = 4
+
+    //Make a vine warp if there is a warp defined
+    if myroom != noone
+        with instance_create(x,-16,obj_vinewarp) myroom = other.myroom
+
+    //Destroy
+    instance_destroy()
+
 }
 </string>
           </argument>
@@ -107,39 +131,9 @@ and place_snapped(1,16)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.y != ystart
+            <string>///Destroy if this solid is not the block this is coming from
+if other.y != ystart
     instance_destroy()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if y &lt; 0
-{
-    if warp = 1
-    {
-        varid = instance_create(x,-16,obj_vinewarp)
-        varid.myroom = myroom
-    }
-    instance_destroy()
-}
 </string>
           </argument>
         </arguments>

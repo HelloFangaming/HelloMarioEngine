@@ -3,7 +3,7 @@
   <spriteName>spr_shard</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,8 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.3
+            <string>///Shards of a shattered block
+
+//Gravity
+gravity = 0.3
+
+//Move fast
 speed = 3
+
+//Animate
 image_speed = 0.5
 </string>
           </argument>
@@ -50,7 +57,9 @@ image_speed = 0.5
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy()</string>
+            <string>///Destroy
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>

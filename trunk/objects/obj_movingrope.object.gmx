@@ -77,15 +77,16 @@ if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_cclockwiseb
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 15
-if x&gt;view_xview[0]-16
-and x&lt;view_xview[0]+336
-and y&lt;view_yview[0]+256
-and y&gt;view_yview[0]-16-ropelength*16
+            <string>if outside_view()
+    with varid
+        if outside_view()
+            other.alarm[0] = 101
+if alarm[0] != 101
 {
     audio_stop_sound(snd_engine)
     audio_play_sound(snd_engine,0,0)
 }
+alarm[0] = 15
 </string>
           </argument>
         </arguments>

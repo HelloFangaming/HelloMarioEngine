@@ -194,8 +194,8 @@
     <instance objName="obj_panser_green" x="1088" y="272" name="inst_F8F11C74" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_panser_blue" x="1104" y="368" name="inst_2E9A8E8A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_panser_purple" x="1024" y="368" name="inst_EB49E54E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ninji_chase" x="800" y="368" name="inst_16E2148D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ninji_red_chase" x="400" y="304" name="inst_F4171596" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_quicksand" x="624" y="416" name="inst_756DD5E5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="1680" y="368" name="inst_E0E47671" locked="0" code="sprout = cs_beanstalk" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pokey" x="928" y="368" name="inst_AE653D0C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pokey" x="928" y="352" name="inst_1EB34A60" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pokey" x="928" y="336" name="inst_C9B94BA8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -243,8 +243,6 @@
     <instance objName="obj_quicksand" x="624" y="400" name="inst_60C14624" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_quicksand" x="640" y="400" name="inst_6C9AAB56" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_quicksand" x="640" y="416" name="inst_03909204" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_quicksand" x="624" y="416" name="inst_756DD5E5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block" x="1680" y="368" name="inst_E0E47671" locked="0" code="sprout = cs_beanstalk" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset" x="2032" y="80" w="16" h="16" xo="176" yo="496" id="10004854" name="tile_2FA97030" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
