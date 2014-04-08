@@ -1213,7 +1213,6 @@
         <object>objects\obj_spike</object>
         <object>objects\obj_hoopster</object>
         <object>objects\obj_ninji_red</object>
-        <object>objects\obj_ninji_red_chase</object>
         <object>objects\obj_wiggler</object>
       </objects>
       <objects name="Cave">
@@ -1326,7 +1325,6 @@
         <object>objects\obj_shyguybig_b</object>
         <object>objects\obj_bombguy</object>
         <object>objects\obj_ninji</object>
-        <object>objects\obj_ninji_chase</object>
         <object>objects\obj_snifit_g</object>
         <object>objects\obj_redhoopster</object>
         <object>objects\obj_flurry</object>
@@ -1658,7 +1656,6 @@
             <object>objects\obj_beanstalk</object>
             <object>objects\obj_vinewarp</object>
             <object>objects\obj_coinchain</object>
-            <object>objects\obj_flipblock_flip</object>
             <object>objects\obj_thrownbrick</object>
             <object>objects\obj_redbrick_th</object>
             <object>objects\obj_shard</object>

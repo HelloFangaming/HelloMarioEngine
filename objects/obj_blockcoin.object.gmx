@@ -25,11 +25,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.coins += 1
+            <string>///Coins coming out of blocks
+
+//Increment coins
+global.coins++
+
+//Animate
 image_speed = 0.15
+
+//Go up
 vspeed = -4
+
+//Gravity
 gravity = 0.125
-audio_play_sound(snd_coin,0,0)</string>
+
+//Play a coin sound
+audio_play_sound(snd_coin,0,0)
+</string>
           </argument>
         </arguments>
       </action>
@@ -51,7 +63,8 @@ audio_play_sound(snd_coin,0,0)</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &gt; ystart-16 and vspeed &gt; 0
+            <string>///When the coin falls back down, get points, sparkles, and destroy
+if y &gt; ystart-16 and vspeed &gt; 0
 {
     with instance_create(x,ystart-16,obj_score) event_user(0)
     instance_create(x+8,ystart-24,obj_sparkletrail)

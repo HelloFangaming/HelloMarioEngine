@@ -25,8 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if obj_mario.state = 3
-and obj_mario.bbox_bottom &lt; 1
+            <string>///Send Mario to the new room if he climbs up above the screen
+if other.state = 3
+and other.bbox_bottom &lt; 1
     room_goto(myroom)
 </string>
           </argument>

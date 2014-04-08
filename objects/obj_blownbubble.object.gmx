@@ -25,7 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_alpha = 0.8
+            <string>///Blown bubble
+
+//Alpha transparency
+image_alpha = 0.8
+
+//Friction
 friction = 0.2
 </string>
           </argument>
@@ -49,7 +54,8 @@ friction = 0.2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if speed &lt; 0.1
+            <string>///Destroy after it slows down
+if speed &lt; 0.1
     instance_destroy()
 </string>
           </argument>
