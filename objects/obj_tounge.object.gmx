@@ -264,8 +264,6 @@ and other.sprite_height &lt; 34
     food = instance_create(x,y,obj_item_eaten)
     food.sprite_index = other.sprite_index
     food.image_index = other.image_index
-    //if variable_local_exists("other.direct")
-        //food.image_xscale = other.direct
     obj_yoshi.fullmouth = 1
     obj_yoshi.inmouth = other.object_index
     obj_yoshi.shellsprite = other.sprite_index
@@ -310,80 +308,8 @@ and other.sprite_height &lt; 34
     food = instance_create(x,y,obj_enemy_eaten)
     food.sprite_index = other.sprite_index
     food.image_index = other.image_index
-    //if variable_local_exists("other.direct")
-        //food.image_xscale = other.direct
-    with other instance_destroy()
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_parenemy2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if hunger = 0
-and ready = 0
-and other.sprite_height &lt; 34
-{
-    hunger = 1
-    ready = 1
-    food = instance_create(x,y,obj_enemy_eaten)
-    food.sprite_index = other.sprite_index
-    food.image_index = other.image_index
-    //if variable_local_exists("other.direct")
-        //food.image_xscale = other.direct
     if food.sprite_index = spr_kuribohead
         food.sprite_index = spr_kuriboshoe
-    with other instance_destroy()
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_parenemy">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if hunger = 0
-and ready = 0
-and other.sprite_height &lt; 34
-{
-    hunger = 1
-    ready = 1
-    food = instance_create(x,y,obj_enemy_eaten)
-    food.sprite_index = other.sprite_index
-    food.image_index = other.image_index
-    //if variable_local_exists("other.direct")
-        //food.image_xscale = other.direct
     with other instance_destroy()
 }
 </string>
