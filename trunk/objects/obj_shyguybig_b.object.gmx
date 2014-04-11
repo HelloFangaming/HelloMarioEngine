@@ -29,6 +29,8 @@
 alarm[10] = 2
 image_speed = 0.15
 direct = 0
+mytop = instance_create(x-16,y,obj_solidtop)
+mytop.image_xscale = 2
 </string>
           </argument>
         </arguments>
@@ -93,29 +95,6 @@ else
     imdead.image_xscale = image_xscale
     instance_destroy()
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>event_user(2)
 </string>
           </argument>
         </arguments>

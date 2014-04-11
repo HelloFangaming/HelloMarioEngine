@@ -641,7 +641,6 @@ and x &lt; obj_classicscroll.x
 background_x[0] = view_xview[0]/2
 
 //Deactivate things that have the following parents
-instance_deactivate_object(obj_parenemy)
 instance_deactivate_object(obj_parenemy2)
 instance_deactivate_object(obj_deactivation)
 

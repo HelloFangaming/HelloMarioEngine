@@ -213,56 +213,10 @@ if collision_rectangle(x-4,y+15,x+3,y+15,obj_parenemy,0,0)
           <argument>
             <kind>1</kind>
             <string>if other.object_index = obj_magikoopa2
+or other.object_index = obj_thwomp
     exit
 event_user(1)
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_parenemy2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if other.object_index = obj_thwomp
-    exit
-event_user(1)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_parenemy">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>event_user(1)</string>
           </argument>
         </arguments>
       </action>
@@ -322,8 +276,6 @@ with other
     and sprite_width &lt; 34
     {
         varid = instance_create(x,y,obj_enemy_frozen)
-        //if variable_local_exists("direct")
-            //varid.direct = direct
         varid.sprite_index = sprite_index
         audio_play_sound(snd_magic,0,0)
         instance_destroy()
