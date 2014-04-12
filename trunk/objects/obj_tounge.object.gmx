@@ -280,7 +280,7 @@ and other.sprite_height &lt; 34
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_parenemyactive">
+    <event eventtype="4" ename="obj_enemyparent">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -297,10 +297,9 @@ and other.sprite_height &lt; 34
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.object_index = obj_magikoopa2
-    exit
-if hunger = 0
+            <string>if hunger = 0
 and ready = 0
+and other.hardness &lt; 2
 and other.sprite_height &lt; 34
 {
     hunger = 1

@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_parenemy2</parentName>
+  <parentName>obj_deactenemyparent</parentName>
   <maskName>spr_square</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -35,6 +35,8 @@ alarm[10] = 2
 sprite_index = spr_kuribohead
 direct = 0
 secanim = 0
+hardness = 0
+stomp = 0
 </string>
           </argument>
         </arguments>
@@ -180,12 +182,12 @@ ready = 1</string>
           <argument>
             <kind>1</kind>
             <string>if hspeed &gt; 0
-    if collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_parenemy,0,1)
-    or collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_parenemy2,0,1)
+    if collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_subconenemyparent,0,1)
+    or collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_deactenemyparent,0,1)
         hspeed = -hspeed
 if hspeed &lt; 0
-    if collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_parenemy,0,1)
-    or collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_parenemy2,0,1)
+    if collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_subconenemyparent,0,1)
+    or collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_deactenemyparent,0,1)
         hspeed = -hspeed
 if hspeed &gt; 0
 and collision_rectangle(bbox_right+hspeed,bbox_top,bbox_right+hspeed,bbox_bottom,obj_solid,0,0)
@@ -212,61 +214,6 @@ while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopepar
 if vspeed &lt; 0
 and collision_rectangle(x,y,x+15,y,obj_solid,1,1)
     vspeed = 1
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_spinner">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>event_user(0)
-scr_pointscale()
-instance_destroy()</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_blockparent">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if other.vspeed &lt; 0
-{
-    audio_play_sound(snd_kick,0,0)
-    with instance_create(x,y,obj_score) event_user(0)
-    imdead = instance_create(x,y-6,obj_getshoe)
-    imdead.vspeed = -5
-    imdead.direct = direct
-    instance_destroy()
-}
 </string>
           </argument>
         </arguments>
@@ -373,6 +320,31 @@ if other.y &lt; y-27-vspeed
 }
 else if other.invincible = 0
     with other event_user(0)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="15">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>imdead = instance_create(x,y-6,obj_getshoe)
+imdead.vspeed = -5
+imdead.direct = direct
 </string>
           </argument>
         </arguments>

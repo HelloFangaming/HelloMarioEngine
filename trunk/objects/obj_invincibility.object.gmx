@@ -30,13 +30,12 @@
     audio_play_sound(snd_starman,99,1)
     audio_play_sound(snd_letsgo,0,0)
 }
-obj_mario.invincible = 1
+obj_mario.invincible = -1
 obj_levelmanager.alarm[1] = 1
 alarm[0] = 1000
 alarm[1] = 1
 alarm[3] = 4
 hitpoint = 0
-ready = 0
 newstar = 0
 </string>
           </argument>
@@ -108,8 +107,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 1
-obj_mario.invincible = 0
+            <string>obj_mario.invincible = 0
 instance_destroy()
 </string>
           </argument>
@@ -196,12 +194,7 @@ else if instance_exists(obj_mario)
     x = obj_mario.x
     y = obj_mario.y
     depth = -6
-    if obj_mario.invincible = 0
-    and ready = 0
-    {
-        obj_mario.invincible = 1
-        obj_mario.alarm[10] = 1
-    }
+    obj_mario.invincible = -1
 }
 else if instance_exists(obj_warpmario)
 {

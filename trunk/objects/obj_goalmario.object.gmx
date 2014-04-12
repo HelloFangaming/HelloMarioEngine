@@ -254,17 +254,7 @@ gravity = 0.225
           <argument>
             <kind>1</kind>
             <string>///Destroy all enemies
-with obj_parenemy
-{
-    instance_create(x,y,obj_smoke)
-    instance_destroy()
-}
-with obj_parenemy2
-{
-    instance_create(x,y,obj_smoke)
-    instance_destroy()
-}
-with obj_parenemyactive
+with obj_enemyparent
 {
     instance_create(x,y,obj_smoke)
     instance_destroy()

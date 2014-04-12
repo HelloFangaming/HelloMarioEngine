@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>turnnow = 0</string>
+            <string>turnnow = 0
+</string>
           </argument>
         </arguments>
       </action>

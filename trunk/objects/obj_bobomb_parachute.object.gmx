@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_parenemy2</parentName>
+  <parentName>obj_deactenemyparent</parentName>
   <maskName>spr_enemymask</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -27,7 +27,10 @@
             <kind>1</kind>
             <string>image_speed = 0.1
 alarm[10] = 2
-ready = 0</string>
+ready = 0
+hardness = 1
+stomp = 0
+</string>
           </argument>
         </arguments>
       </action>
@@ -74,28 +77,6 @@ ready = 0</string>
             <string>varid = instance_create(x,y,obj_cannonbomb)
 varid.hspeed = image_xscale
 instance_destroy()</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_parprojectile">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>with (other) event_user(0)</string>
           </argument>
         </arguments>
       </action>

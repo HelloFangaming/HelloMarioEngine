@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_parenemyactive</parentName>
+  <parentName>obj_enemyparent</parentName>
   <maskName>spr_enemymask</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -45,6 +45,8 @@ else
     direction = 80
     direct = 1
 }
+hardness = 0
+stomp = 0
 </string>
           </argument>
         </arguments>
