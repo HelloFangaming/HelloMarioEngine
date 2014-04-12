@@ -47,6 +47,8 @@ else
     instance_create(x+24,y,obj_smoke)
     instance_create(x+24,y+16,obj_smoke)
 }
+hardness = 1
+stomp = 0
 </string>
           </argument>
         </arguments>

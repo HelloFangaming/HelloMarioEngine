@@ -50,7 +50,7 @@ else if other.invincible = 0
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="11">
+    <event eventtype="7" enumb="15">
       <action>
         <libid>1</libid>
         <id>603</id>

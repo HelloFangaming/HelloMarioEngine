@@ -111,7 +111,7 @@ scr_return()
 
 //If it hasn't appeared yet, and no enemies exist
 if ready = 0
-and instance_number(obj_parenemy2) = 0
+and instance_number(obj_deactenemyparent) = 0
 {
 
     //Create smoke

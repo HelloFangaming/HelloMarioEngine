@@ -37,6 +37,8 @@ else
 vspeed = -direct*1.5
 image_speed = 0
 alarm[0] = 12
+hardness = 1
+stomp = 0
 </string>
           </argument>
         </arguments>

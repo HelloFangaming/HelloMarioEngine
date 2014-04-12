@@ -1100,6 +1100,7 @@
     <script>scripts\scr_load.gml</script>
     <script>scripts\scr_pointscale.gml</script>
     <script>scripts\scr_pointscale_silent.gml</script>
+    <script>scripts\scr_musicalscale.gml</script>
     <script>scripts\scr_canpull.gml</script>
     <script>scripts\scr_return.gml</script>
     <script>scripts\scr_constant_get_sprite.gml</script>
@@ -1487,10 +1488,10 @@
     </objects>
     <objects name="Special">
       <objects name="Parents">
-        <object>objects\obj_parenemy</object>
-        <object>objects\obj_parenemy2</object>
-        <object>objects\obj_parenemyactive</object>
-        <object>objects\obj_parboss</object>
+        <object>objects\obj_enemyparent</object>
+        <object>objects\obj_deactenemyparent</object>
+        <object>objects\obj_subconenemyparent</object>
+        <object>objects\obj_bossparent</object>
         <object>objects\obj_parcarry</object>
         <object>objects\obj_parpull</object>
         <object>objects\obj_slopeparent</object>

@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>1</depth>
   <persistent>0</persistent>
-  <parentName>obj_parenemyactive</parentName>
+  <parentName>obj_enemyparent</parentName>
   <maskName>spr_enemymask</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -29,6 +29,8 @@
 image_xscale = obj_birdo.direct
 hspeed = image_xscale*2
 mytop = instance_create(x-8,y,obj_solidtop)
+hardness = 1
+stomp = 1
 </string>
           </argument>
         </arguments>

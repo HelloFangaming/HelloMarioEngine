@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_parenemy2</parentName>
+  <parentName>obj_deactenemyparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -28,7 +28,10 @@
             <string>image_speed = 0.15
 myball = instance_create(x-8,y-7,obj_plantball)
 alarm[0] = 150
-hspeed = 0.5</string>
+hspeed = 0.5
+hardness = 0
+stomp = 1
+</string>
           </argument>
         </arguments>
       </action>
@@ -97,59 +100,6 @@ alarm[0] = 150</string>
             <kind>1</kind>
             <string>instance_activate_object(myball)
 myball.x = x</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_spinner">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>event_user(0)
-scr_pointscale()
-instance_destroy()</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_blockparent">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if other.vspeed &lt; 0
-{
-    audio_play_sound(snd_kick,0,0)
-    with instance_create(x,y,obj_score) event_user(0)
-    event_user(0)
-    instance_destroy()
-}
-</string>
           </argument>
         </arguments>
       </action>

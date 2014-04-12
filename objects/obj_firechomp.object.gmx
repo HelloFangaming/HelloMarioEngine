@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_parenemy2</parentName>
+  <parentName>obj_deactenemyparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -28,6 +28,8 @@
             <string>mytails = 4
 image_speed = 0
 direct = 1
+hardness = 1
+stomp = 0
 turnnow = 0
 alarm[0] = 2
 mytail[0] = instance_create(x+8,y,obj_firechomp_tail)
@@ -37,7 +39,8 @@ mytail[3] = instance_create(x+8,y,obj_firechomp_tail)
 mytail[0].parent = id
 mytail[1].parent = id
 mytail[2].parent = id
-mytail[3].parent = id</string>
+mytail[3].parent = id
+</string>
           </argument>
         </arguments>
       </action>

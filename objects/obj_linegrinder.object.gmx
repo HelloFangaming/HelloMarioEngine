@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_parenemyactive</parentName>
+  <parentName>obj_enemyparent</parentName>
   <maskName>spr_square</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -26,7 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 0.15
-alarm[0] = 15</string>
+alarm[0] = 15
+hardness = 1
+stomp = 1
+</string>
           </argument>
         </arguments>
       </action>
@@ -57,6 +60,29 @@ and y&gt;view_yview[0]-16
     audio_stop_sound(snd_engine)
     audio_play_sound(snd_engine,0,0)
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Do NOT inherit default step event
 </string>
           </argument>
         </arguments>
@@ -146,52 +172,6 @@ and y&gt;view_yview[0]-16
           <argument>
             <kind>1</kind>
             <string>vspeed+=-0.0324</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_spinner">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>event_user(0)
-scr_pointscale()
-instance_destroy()</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_parprojectile">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>with (other) event_user(0)</string>
           </argument>
         </arguments>
       </action>

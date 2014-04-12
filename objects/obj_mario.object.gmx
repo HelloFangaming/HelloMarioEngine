@@ -53,6 +53,7 @@ isswim = 0
 isduck = 0
 
 //Is Mario invincible?
+//0: Normal, 1: Invincible, -1: Phase through
 invincible = 0
 
 //Is Mario hitting a net?
@@ -974,7 +975,7 @@ if state &lt; 3
         if obj_levelmanager.barrier = 0
         and not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_parpull,1,0)
         and not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom+1,obj_powblock,1,0)
-        and not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom+1,obj_parenemy,1,0)
+        and not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom+1,obj_subconenemyparent,1,0)
         and not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_holdparent,1,0)
         {
 

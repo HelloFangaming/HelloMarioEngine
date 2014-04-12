@@ -144,7 +144,7 @@ if x&lt;view_xview[0]-16
 or x&gt;view_xview[0]+336
 or y&gt;view_yview[0]+256
     instance_destroy()
-if collision_rectangle(x-4,y+15,x+3,y+15,obj_parenemy,0,0)
+if collision_rectangle(x-4,y+15,x+3,y+15,obj_subconenemyparent,0,0)
     y += 5
 </string>
           </argument>
@@ -195,7 +195,7 @@ if collision_rectangle(x-4,y+15,x+3,y+15,obj_parenemy,0,0)
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_parenemyactive">
+    <event eventtype="4" ename="obj_enemyparent">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -212,10 +212,10 @@ if collision_rectangle(x-4,y+15,x+3,y+15,obj_parenemy,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.object_index = obj_magikoopa2
-or other.object_index = obj_thwomp
-    exit
-event_user(1)
+            <string>if other.hardness &lt; 2
+    event_user(1)
+else if hardness &lt; 99
+    event_user(0)
 </string>
           </argument>
         </arguments>
@@ -239,7 +239,7 @@ event_user(1)
           <argument>
             <kind>1</kind>
             <string>if y &lt; other.y-7 and vspeed &gt; 0
-and other.object_index != obj_parenemy
+and other.object_index != obj_subconenemyparent
 and other.object_index != obj_icecoin
 and other.object_index != obj_icemuncher
 {
