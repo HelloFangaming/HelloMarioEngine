@@ -603,8 +603,8 @@ if bbox_top &gt; room_height
           <argument>
             <kind>1</kind>
             <string>///Default wall collisions
-if (hspeed &gt; 0 and collision_rectangle(bbox_right+hspeed,bbox_top,bbox_right+hspeed,bbox_bottom-1,obj_solid,0,0))
-or (hspeed &lt; 0 and collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left+hspeed,bbox_bottom-1,obj_solid,0,0))
+if (hspeed &gt; 0 and collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom-1,obj_solid,0,0))
+or (hspeed &lt; 0 and collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom-1,obj_solid,0,0))
     hspeed = -hspeed
 </string>
           </argument>

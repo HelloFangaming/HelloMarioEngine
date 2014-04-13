@@ -33,9 +33,6 @@ hardness = 0
 //How vulnerable is this enemy to Mario?
 stomp = 0
 
-//Gravity
-gravity = 0.25
-
 //Start falling
 vspeed = 0.5
 
