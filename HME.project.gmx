@@ -668,7 +668,6 @@
         <sprite>sprites\spr_panser_red</sprite>
         <sprite>sprites\spr_panser_green</sprite>
         <sprite>sprites\spr_panser_blue</sprite>
-        <sprite>sprites\spr_panser_purple</sprite>
         <sprite>sprites\spr_panserfire</sprite>
         <sprite>sprites\spr_porcupo</sprite>
         <sprite>sprites\spr_tweeter</sprite>
@@ -1333,7 +1332,6 @@
         <object>objects\obj_panser_red</object>
         <object>objects\obj_panser_green</object>
         <object>objects\obj_panser_blue</object>
-        <object>objects\obj_panser_purple</object>
         <object>objects\obj_porcupo</object>
         <object>objects\obj_tweeter</object>
       </objects>

@@ -70,7 +70,7 @@ if sprite_index = spr_flag_bowser
 
     //Give Mario a mushroom if he is small, otherwise, make him talk
     if global.powerup = cs_small
-        instance_create(other.x,other.y,obj_mushroom)
+        instance_create(other.x,other.y+16,obj_mushroom)
     else
         audio_play_sound(snd_gotcha,0,0)
 

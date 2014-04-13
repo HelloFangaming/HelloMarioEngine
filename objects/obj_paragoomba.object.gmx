@@ -90,7 +90,7 @@ jumptype = 1
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_slopeparent">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -107,8 +107,40 @@ jumptype = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Hop
-event_user(15)
+            <string>///Paragoomba hopping
+
+//Inherit usual step event
+event_inherited()
+
+//If the paragoomba is on the ground
+if gravity = 0
+{
+
+    //Finish hopping
+    if jumptype = 3
+    {
+        jumptype = 0
+        sprite_index = spr_paragoomba
+    }
+
+    //Third hop
+    else if jumptype = 2
+    {
+        vspeed = -3
+        y--
+        jumptype = 3
+        alarm[0] = 100
+    }
+
+    //Second hop
+    else if jumptype = 1
+    {
+        vspeed = -5
+        y--
+        jumptype = 2
+    }
+
+}
 </string>
           </argument>
         </arguments>
@@ -137,54 +169,6 @@ if y &lt; other.y-11 and vspeed &gt; 0
     y = other.y-16
     vspeed = 0
     gravity = 0
-    event_user(15)
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="25">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Paragoomba hopping
-
-//Finish hopping
-if jumptype = 3
-{
-    jumptype = 0
-    sprite_index = spr_paragoomba
-}
-
-//Third hop
-else if jumptype = 2
-{
-    vspeed = -3
-    y--
-    jumptype = 3
-    alarm[0] = 100
-}
-
-//Second hop
-else if jumptype = 1
-{
-    vspeed = -5
-    y--
-    jumptype = 2
 }
 </string>
           </argument>

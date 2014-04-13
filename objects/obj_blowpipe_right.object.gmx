@@ -63,7 +63,7 @@ delta2 = 1
             <string>///Bubble generator 2
 
 //Make a rightwards moving bubble
-with instance_create(x+16,y+2+offset2,obj_blownbubble) hspeed = 6
+with instance_create(x+16,y+28-offset2,obj_blownbubble) hspeed = 6
 
 //Change the offset
 offset2 += delta2
@@ -75,7 +75,7 @@ else if offset2 &lt; 0
     delta2 = 1
 
 //Randomize the next bubble
-alarm[0] = irandom(5)+5
+alarm[1] = irandom(5)+5
 </string>
           </argument>
         </arguments>
