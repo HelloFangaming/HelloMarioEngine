@@ -34,7 +34,7 @@ canjump = 0
 direct = 1
 bugfix = 0
 hardness = 0
-stomp = 0
+stomp = 5
 alarm[1] = 7
 alarm[2] = 7
 </string>
@@ -150,11 +150,43 @@ alarm[1] = 7</string>
     exit
 }
 ready = 0
+hardness = 0
 canjump = 0
 alarm[10] = 60
 image_speed = 0.1
 hspeed = 0
 sprite_index = spr_chargingchuck_paused
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Hack
+if place_meeting(x,y,obj_explosion)
+or place_meeting(x,y,obj_powkiller)
+or place_meeting(x,y,obj_invincibility)
+{
+    hitpoints = 0
+    hardness = 0
+    ready = 1
+}
 </string>
           </argument>
         </arguments>
@@ -228,318 +260,6 @@ and collision_rectangle(x-12,y-1,x+11,y-1,obj_solid,1,1)
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_explosion">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>hitpoints = 0
-event_user(0)
-scr_pointscale()
-instance_destroy()</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_powkiller">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>hitpoints = 0
-event_user(0)
-scr_pointscale()
-instance_destroy()</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_redbrick_th">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if ready = 1
-    exit
-event_user(0)
-if other.held = 1
-    obj_mario.holding = 0
-with other event_user(0)
-with other instance_destroy()
-scr_pointscale()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_thrownbrick">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if ready = 1
-    exit
-event_user(0)
-if other.held = 1
-    obj_mario.holding = 0
-with other event_user(0)
-with other instance_destroy()
-scr_pointscale()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_shell">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if ready = 1
-    exit
-if other.harmmario = 0
-and other.held = 0
-    exit
-event_user(0)
-scr_pointscale()
-if other.held = 1
-    obj_mario.holding = 0
-with other event_user(0)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_roundgoomba_hold">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if ready = 0
-    exit
-if other.thrown = 1
-{
-    event_user(0)
-    scr_pointscale()
-    with other event_user(0)
-    with other instance_destroy()
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_invincibility">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>hitpoints = 0
-event_user(0)
-scr_pointscale()
-instance_destroy()</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_spinner">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if ready = 1
-    exit
-event_user(0)
-scr_pointscale()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_parprojectile">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if ready = 1
-    exit
-audio_play_sound(snd_bump,0,0)
-event_user(0)
-with instance_create(x-8,y,obj_score) event_user(0)
-with (other) instance_destroy()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_blockparent">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if other.vspeed &lt; 0
-{
-    audio_play_sound(snd_kick,0,0)
-    with instance_create(x-8,y,obj_score) event_user(0)
-    hitpoints = 0
-    event_user(0)
-    instance_destroy()
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_parcarry">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if ready = 1
-    exit
-if other.held = 1
-{
-    other.vspeed = -3
-    event_user(0)
-    scr_pointscale()
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="4" ename="obj_solidtop">
       <action>
         <libid>1</libid>
@@ -568,7 +288,7 @@ if other.held = 1
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_mario">
+    <event eventtype="7" enumb="11">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -585,33 +305,13 @@ if other.held = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_invincibility)
-    exit
-if other.y &lt; y-27-vspeed
-and ready = 1
-{
-    with other event_user(1)
+            <string>if ready = 1
     audio_play_sound(snd_stomp,0,0)
-    instance_create(obj_mario.x,obj_mario.y+32,obj_spinthump)
-    exit
-}
-if other.y &lt; y-27-vspeed
-and obj_mario.stompstyle = 1
+else
 {
-    with other event_user(1)
+    scr_musicalscale(obj_mario.id,0)
     event_user(0)
-    instance_create(obj_mario.x,obj_mario.y+32,obj_spinthump)
-    exit
 }
-if other.y &lt; y-27-vspeed
-{
-    hspeed = 0
-    event_user(0)
-    scr_pointscale()
-    with other event_user(1)
-}
-else if other.invincible = 0
-    with other event_user(0)
 </string>
           </argument>
         </arguments>
@@ -639,6 +339,7 @@ else if other.invincible = 0
     audio_play_sound(snd_hurt,0,0)
     hitpoints -=1
     ready = 1
+    hardness = 99
     alarm[0] = 60
     hspeed = 0
     sprite_index = spr_chargingchuck_hurt

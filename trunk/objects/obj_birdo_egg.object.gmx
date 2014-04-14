@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>1</depth>
   <persistent>0</persistent>
-  <parentName>obj_enemyparent</parentName>
+  <parentName>obj_subconenemyparent</parentName>
   <maskName>spr_enemymask</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -30,30 +30,7 @@ image_xscale = obj_birdo.direct
 hspeed = image_xscale*2
 mytop = instance_create(x-8,y,obj_solidtop)
 hardness = 1
-stomp = 1
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="1" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>with mytop instance_destroy()
+stomp = 4
 </string>
           </argument>
         </arguments>
@@ -91,42 +68,6 @@ stomp = 1
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>mytop.x = x-8
-mytop.y = y
-if not instance_exists(obj_mario)
-    exit
-if collision_rectangle(x-8,y-5,x+15,y+4,obj_mario,0,0)
-and obj_mario.y &lt; y-27
-and obj_mario.state &lt; 2
-{
-    if not collision_rectangle(obj_mario.x+9,obj_mario.bbox_top,obj_mario.x+9,obj_mario.y+31,obj_solid,0,0) and hspeed &gt; 0
-        obj_mario.x += hspeed
-    if not collision_rectangle(obj_mario.x-9,obj_mario.bbox_top,obj_mario.x-9,obj_mario.y+31,obj_solid,0,0) and hspeed &lt; 0
-        obj_mario.x += hspeed
-    obj_mario.y = y-32
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -144,49 +85,8 @@ and obj_mario.state &lt; 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if collision_rectangle(x-7,y-4,x+6,y,obj_mario,0,0)
-and scr_canpull()
-{
-    if obj_mario.image_index = 2 and obj_mario.image_speed = 0
-        exit
-    obj_mario.visible = 0
-    instance_create(obj_mario.x,obj_mario.y,obj_puller)
-    obj_mario.holding = 1
-    audio_play_sound(snd_ya,0,0)
-    alarm[0] = 20
-}
-if x&lt;view_xview[0]-16
-or x&gt;view_xview[0]+336
-or y&gt;view_yview[0]+256
-or y&lt;view_yview[0]-16
+            <string>if outside_view()
     instance_destroy()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_mario">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if instance_exists(obj_invincibility)
-    exit
-if other.y &gt; y-27
-and other.invincible = 0
-    with other event_user(0)
 </string>
           </argument>
         </arguments>

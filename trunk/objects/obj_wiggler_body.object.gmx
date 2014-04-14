@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_deactivation</parentName>
+  <parentName>obj_deactenemyparent</parentName>
   <maskName>spr_enemymask</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -28,7 +28,10 @@
             <string>gravity = 0.25
 image_speed = 0.15
 direct = -1
-ready = 0</string>
+ready = 0
+hardness = 99
+stomp = 5
+</string>
           </argument>
         </arguments>
       </action>

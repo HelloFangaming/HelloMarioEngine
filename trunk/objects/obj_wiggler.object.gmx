@@ -31,7 +31,7 @@ image_speed = 0.15
 ready = 0
 direct = 0
 hardness = 1
-stomp = 0
+stomp = 5
 mybody[0] = instance_create(x,y,obj_wiggler_body)
 mybody[1] = instance_create(x,y,obj_wiggler_body)
 mybody[2] = instance_create(x,y,obj_wiggler_body)
@@ -452,6 +452,9 @@ else
     imdead.killsprite = spr_wiggler_body
 imdead.killxscale = image_xscale
 imdead.count = 4
+
+//Destroy
+instance_destroy()
 </string>
           </argument>
         </arguments>

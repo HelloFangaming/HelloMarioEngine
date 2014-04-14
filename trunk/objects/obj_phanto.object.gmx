@@ -5,7 +5,7 @@
   <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_enemyparent</parentName>
   <maskName>spr_square</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -27,8 +27,15 @@
             <kind>1</kind>
             <string>//If you use Phantos in your level, make sure that you only have ONE key in the room.
 //Or else you may end up with unexpected results...
-oldx = obj_key.x
-oldy = obj_key.y
+if instance_exists(obj_key)
+{
+    oldx = obj_key.x
+    oldy = obj_key.y
+}
+else
+    instance_destroy()
+hardness = 99
+stomp = 2
 </string>
           </argument>
         </arguments>
@@ -54,12 +61,15 @@ oldy = obj_key.y
             <string>if visible = 1
 {
     if instance_exists(obj_key)
-        move_towards_point(obj_key.x,obj_key.y,1)
-    if instance_exists(obj_yoshi)
+        turn_towards_direction(point_direction(x,y,obj_mario.x,obj_mario.y),8)
+    else if instance_exists(obj_yoshi)
+    and obj_yoshi.fullmouth = 1
+    and obj_yoshi.inmouth = obj_key
+        turn_towards_direction(point_direction(x,y,obj_yoshi.x,obj_yoshi.y),8)
+    else
     {
-        if obj_yoshi.fullmouth = 1
-        and obj_yoshi.inmouth = obj_key
-        move_towards_point(obj_levelmanager.x,obj_levelmanager.y,1)
+        visible = 0
+        speed = 0
     }
 }
 if position_meeting(x+8,y+8,obj_key)
@@ -77,8 +87,6 @@ if position_meeting(x+8,y+8,obj_key)
         obj_mario.holding = 0
     }
 }
-x = round(x)
-y = round(y)
 </string>
           </argument>
         </arguments>
@@ -128,7 +136,7 @@ y = round(y)
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_mario">
+    <event eventtype="7" enumb="25">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -145,18 +153,9 @@ y = round(y)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if visible = 0
-    exit
-if other.y &lt; y-27
-and obj_mario.stompstyle = 1
-{
-    with other event_user(1)
-    audio_play_sound(snd_stomp,0,0)
-    instance_create(obj_mario.x,obj_mario.y+32,obj_spinthump)
-    exit
-}
-if other.invincible = 0
-    with other event_user(0)
+            <string>visible = 1
+speed = 1
+instance_create(x,y,obj_smoke)
 </string>
           </argument>
         </arguments>

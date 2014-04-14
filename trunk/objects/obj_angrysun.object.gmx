@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_enemyparent</parentName>
   <maskName>spr_square</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -30,6 +30,8 @@
 //xmax = Maximum x value where enemy is generated.
 xmin = 0
 xmax = room_width
+hardness = 99
+stomp = 2
 </string>
           </argument>
         </arguments>
@@ -54,40 +56,6 @@ xmax = room_width
             <kind>1</kind>
             <string>x = view_xview[0]+obj_angrysun_movement.x
 y = view_yview[0]+obj_angrysun_movement.y</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_mario">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if instance_exists(obj_invincibility)
-    exit
-if other.y &lt; y-27-vspeed
-and obj_mario.stompstyle = 1
-{
-    with other event_user(1)
-    audio_play_sound(snd_stomp,0,0)
-    instance_create(obj_mario.x,obj_mario.y+32,obj_spinthump)
-    exit
-}
-if other.invincible = 0
-    with other event_user(0)
-</string>
           </argument>
         </arguments>
       </action>

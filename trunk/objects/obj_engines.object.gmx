@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_enemyparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -27,7 +27,10 @@
             <kind>1</kind>
             <string>ready = 0
 alarm[0] = 100
-image_speed = 0.5</string>
+image_speed = 0.5
+hardness = 99
+stomp = 2
+</string>
           </argument>
         </arguments>
       </action>
@@ -50,6 +53,29 @@ image_speed = 0.5</string>
           <argument>
             <kind>1</kind>
             <string>sprite_index = spr_engine_start</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Do NOT inherit default step event
+</string>
           </argument>
         </arguments>
       </action>
@@ -94,38 +120,6 @@ image_speed = 0.5</string>
           <argument>
             <kind>1</kind>
             <string>with (other) event_user(0)</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_mario">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if other.y &lt; y-27
-and obj_mario.stompstyle = 1
-{
-    with other event_user(1)
-    audio_play_sound(snd_stomp,0,0)
-    instance_create(obj_mario.x,obj_mario.y+32,obj_spinthump)
-    exit
-}
-if other.invincible = 0
-    with other event_user(0)
-</string>
           </argument>
         </arguments>
       </action>

@@ -61,10 +61,7 @@ stomp = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if x &lt; view_xview[0]-16
-or x &gt; view_xview[0]+336
-or y &gt; view_yview[0]+256 
-or y &lt; view_yview[0]-16
+            <string>if outside_view()
     instance_destroy()
 if not instance_exists(obj_mario)
     exit

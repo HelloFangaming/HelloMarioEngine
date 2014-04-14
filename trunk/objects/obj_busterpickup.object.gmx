@@ -83,7 +83,7 @@ if obj_mario.y &gt; y-48
         parent.direct = -1
     }
     myblock.harmmario = 1
-    with parent event_user(2)
+    with parent event_user(15)
     instance_destroy()
 }
 else

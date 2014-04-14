@@ -1098,7 +1098,6 @@
     <script>scripts\scr_save.gml</script>
     <script>scripts\scr_load.gml</script>
     <script>scripts\scr_pointscale.gml</script>
-    <script>scripts\scr_pointscale_silent.gml</script>
     <script>scripts\scr_musicalscale.gml</script>
     <script>scripts\scr_canpull.gml</script>
     <script>scripts\scr_return.gml</script>
@@ -1562,7 +1561,6 @@
         <objects name="Enemy">
           <objects name="Land">
             <object>objects\obj_roundgoomba_hold</object>
-            <object>objects\obj_rex2</object>
             <object>objects\obj_spikeball</object>
             <object>objects\obj_wiggler_body</object>
           </objects>

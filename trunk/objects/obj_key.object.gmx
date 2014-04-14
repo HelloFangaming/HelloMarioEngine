@@ -171,11 +171,7 @@ and not instance_exists(obj_slider)
     held = 1
     gravity = 0
     speed = 0
-    if instance_exists(obj_phanto)
-    {
-        obj_phanto.visible = 1
-        with (obj_phanto) instance_create(x,y,obj_smoke)
-    }
+    with obj_phanto event_user(15)
 }
 </string>
           </argument>

@@ -31,7 +31,7 @@ alarm[10] = 2
 image_speed = 0.15
 direct = 0
 hardness = 1
-stomp = 0
+stomp = 3
 </string>
           </argument>
         </arguments>
@@ -213,7 +213,7 @@ if not collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+5,obj_sl
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_mario">
+    <event eventtype="7" enumb="11">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -230,20 +230,12 @@ if not collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+5,obj_sl
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_invincibility)
-    exit
-if other.y &lt; y-27
-{
-    hspeed = 0
-    imdead = instance_create(x,y,obj_crumblebones)
-    imdead.image_xscale = direct
-    imdead.sprite_index = spr_bonybeetle_crumble
-    scr_pointscale_silent()
-    with other event_user(1)
-    instance_destroy()
-}
-else if other.invincible = 0
-    with other event_user(0)
+            <string>imdead = instance_create(x,y,obj_crumblebones)
+imdead.image_xscale = direct
+imdead.sprite_index = spr_bonybeetle_crumble
+
+//Destroy
+instance_destroy()
 </string>
           </argument>
         </arguments>

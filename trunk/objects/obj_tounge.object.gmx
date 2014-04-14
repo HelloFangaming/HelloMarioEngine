@@ -268,11 +268,7 @@ and other.sprite_height &lt; 34
     obj_yoshi.inmouth = other.object_index
     obj_yoshi.shellsprite = other.sprite_index
     if other.object_index = obj_key
-    and instance_exists(obj_phanto)
-    {
-        obj_phanto.visible = 1
-        with (obj_phanto) instance_create(x,y,obj_smoke)
-    }
+        with obj_phanto event_user(15)
     with other instance_destroy()
 }
 </string>

@@ -637,6 +637,8 @@ if hitpoints = 0
     imdead = instance_create(x,y+16,obj_enemy_dead)
     imdead.sprite_index = sprite_index
     imdead.image_xscale = image_xscale
+    imdead.image_yscale = 1
+    imdead.image_speed = 0.15
     instance_destroy()
 }
 </string>
