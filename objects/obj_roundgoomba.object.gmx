@@ -101,6 +101,9 @@ with instance_create(x-8,y-2,obj_roundgoomba_hold)
     direct = other.direct
     vspeed = -3
 }
+
+//Destroy
+instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -125,6 +128,9 @@ with instance_create(x-8,y-2,obj_roundgoomba_hold)
             <kind>1</kind>
             <string>///Turn into holdable goomba when stomped
 with instance_create(x-8,y,obj_roundgoomba_hold) direct = other.direct
+
+//Destroy
+instance_destroy()
 </string>
           </argument>
         </arguments>

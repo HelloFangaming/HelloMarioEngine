@@ -32,7 +32,7 @@ direct = 0
 mytop = instance_create(x-8,y,obj_solidtop)
 mytop.image_yscale = 0.5
 hardness = 0
-stomp = 1
+stomp = 4
 </string>
           </argument>
         </arguments>
@@ -185,41 +185,6 @@ if not collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+5,obj_sl
     vspeed = 0
     gravity = 0
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_mario">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if instance_exists(obj_invincibility)
-    exit
-if other.y &lt; y-26
-and obj_mario.stompstyle = 1
-{
-    obj_mario.vspeed = 0
-    instance_create(x-8,y,obj_spinsmoke)
-    instance_destroy()
-    exit
-}
-if other.y &gt; y-27
-and other.invincible = 0
-    with other event_user(0)
 </string>
           </argument>
         </arguments>

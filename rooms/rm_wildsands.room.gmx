@@ -75,7 +75,7 @@
     <instance objName="obj_vine" x="464" y="240" name="inst_1B343683" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_incastle" x="2944" y="384" name="inst_E4D67531" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_veggie_large" x="2384" y="320" name="inst_32137880" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_veggie_sprout" x="1744" y="368" name="inst_F183194E" locked="0" code="sprout = cs_small" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_veggie_sprout" x="1744" y="368" name="inst_F183194E" locked="0" code="sprout = cs_big" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_veggie_multicoin" x="1056" y="368" name="inst_ABF6F76D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mblock" x="416" y="64" name="inst_42C5C179" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mblock" x="432" y="64" name="inst_D160D09E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

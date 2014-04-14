@@ -73,9 +73,7 @@ image_index = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.invincible = 0
-and global.yoshi &lt; 2
-    with other event_user(0)
+            <string>with other event_user(0)
 </string>
           </argument>
         </arguments>

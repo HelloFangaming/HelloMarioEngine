@@ -98,7 +98,7 @@ else
 {
     ready = 1
     hardness = 1
-    stomp = 1
+    stomp = 2
 }
 </string>
           </argument>
@@ -188,40 +188,6 @@ instance_destroy()
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_mario">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if instance_exists(obj_invincibility)
-    exit
-if other.y &lt; y-27
-and obj_mario.stompstyle = 1
-{
-    with other event_user(1)
-    audio_play_sound(snd_stomp,0,0)
-    instance_create(obj_mario.x,obj_mario.y+32,obj_spinthump)
-    exit
-}
-if other.invincible = 0
-    with other event_user(0)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
@@ -242,7 +208,11 @@ if other.invincible = 0
             <string>imdead = instance_create(x,y+16,obj_enemy_dead)
 imdead.sprite_index = spr_magikoopa
 imdead.image_index = image_index
-imdead.image_xscale = image_xscale</string>
+imdead.image_xscale = image_xscale
+
+//Destroy
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
@@ -304,5 +274,8 @@ imdead.image_xscale = image_xscale</string>
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>8,0</point>
+    <point>16,16</point>
+  </PhysicsShapePoints>
 </object>

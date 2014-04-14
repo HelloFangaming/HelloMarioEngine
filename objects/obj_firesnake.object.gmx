@@ -30,7 +30,7 @@ image_speed = 0.15
 alarm[0] = 100
 direct = 0
 hardness = 1
-stomp = 1
+stomp = 2
 amjump = 0
 mypart[0] = instance_create(x,y,obj_firesnake_part)
 mypart[1] = instance_create(x,y,obj_firesnake_part)
@@ -223,40 +223,6 @@ and not instance_exists(mypart[3])
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_mario">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if instance_exists(obj_invincibility)
-    exit
-if other.y &lt; y-27-vspeed
-and obj_mario.stompstyle = 1
-{
-    with other event_user(1)
-    audio_play_sound(snd_stomp,0,0)
-    instance_create(obj_mario.x,obj_mario.y+32,obj_spinthump)
-    exit
-}
-if other.invincible = 0
-    with other event_user(0)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
@@ -281,7 +247,11 @@ imdead.image_xscale = image_xscale
 imdead = instance_create(x,y+16,obj_enemy_multidead)
 imdead.killsprite = spr_firesnake_part
 imdead.killxscale = image_xscale
-imdead.count = 4</string>
+imdead.count = 4
+
+//Destroy
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
