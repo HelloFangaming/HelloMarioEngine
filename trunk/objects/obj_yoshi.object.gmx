@@ -571,15 +571,18 @@ or inmouth = obj_getshoe
     if obj_mario.isflashing = 1
         shader_reset()
 }
-else if instance_exists(obj_goalmario)
-{
-    draw_sprite_ext(sprite_index,image_index,round(x),y,obj_goalmario.image_xscale,1,0,c_white,obj_goalmario.image_alpha)
-    draw_sprite_ext(mymario,0,round(x)-5*obj_goalmario.image_xscale,y-9,obj_goalmario.image_xscale,1,0,c_white,obj_goalmario.image_alpha)
-}
 else if instance_exists(obj_warpmario)
 {
+    //Make Mario flash
+    if obj_warpmario.isflashing = 1
+        shader_set(sha_invert)
+
     draw_sprite_ext(sprite_index,image_index,round(x),y,obj_warpmario.direct,1,0,c_white,1)
     draw_sprite_ext(mymario,0,round(x)-5*obj_warpmario.direct,y-9,obj_warpmario.direct,1,0,c_white,1)
+
+    //Reset flashing
+    if obj_warpmario.isflashing = 1
+        shader_reset()
 }
 else if instance_exists(obj_warpnoteblock)
 {
@@ -590,6 +593,11 @@ else if instance_exists(obj_jumpspawn)
 {
     draw_sprite_ext(sprite_index,image_index,round(x),y,1,1,0,c_white,1)
     draw_sprite_ext(mymario,0,round(x)-5,y-9,1,1,0,c_white,1)
+}
+else if instance_exists(obj_goalmario)
+{
+    draw_sprite_ext(sprite_index,image_index,round(x),y,obj_goalmario.image_xscale,1,0,c_white,obj_goalmario.image_alpha)
+    draw_sprite_ext(mymario,0,round(x)-5*obj_goalmario.image_xscale,y-9,obj_goalmario.image_xscale,1,0,c_white,obj_goalmario.image_alpha)
 }
 </string>
           </argument>
