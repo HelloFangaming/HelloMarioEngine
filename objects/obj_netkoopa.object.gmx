@@ -91,7 +91,7 @@ stomp = 0
 {
     depth = 10
     sprite_index = spr_netkoopa2
-    hardness = 99
+    hardness = 100
     stomp = -1
 }
 else

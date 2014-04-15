@@ -28,7 +28,11 @@
             <string>///Parent of all enemies
 
 //How vulnerable is this enemy to various items?
-//0:Normal, 1:Immune To Fire Ball, 2:Immune To Yoshi/Ice Ball, 99: Invincible
+//0:Normal
+//1:Immune To Fire Ball
+//2:Immune To Yoshi/Ice Ball
+//99: Invincible
+//100: Invincible + Ignore Projectiles
 hardness = 0
 
 //How vulnerable is this enemy to Mario?
@@ -381,7 +385,7 @@ and other.thrown = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hardness &lt; 99
+            <string>if hardness &lt; 100
     with other event_user(0)
 if hardness = 0
 {
@@ -478,11 +482,12 @@ and other.invincible != -1
 {
 
     //If Mario is above the enemy
-    if other.y &lt; y-27-vspeed
+    if other.bbox_bottom &lt; bbox_top-vspeed+5
     {
 
         //If Mario is spin jumping
         if stomp != 3
+        and stomp != 5
         and other.stompstyle = 1
         {
 

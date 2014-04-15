@@ -90,7 +90,7 @@ stomp = 2
             <string>if depth = 0
 {
     depth = 10
-    hardness = 99
+    hardness = 100
     stomp = -1
 }
 else

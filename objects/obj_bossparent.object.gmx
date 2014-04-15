@@ -5,10 +5,10 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_enemyparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="1" enumb="0">
+    <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,7 +25,37 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_endboss.alarm[0] = 60
+            <string>///The parent of all bosses
+
+//Uses the same variables as regular enemies
+event_inherited()
+
+//How many hits before this boss dies
+hitpoints = 0
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="16">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///End the boss battle
+with obj_endboss alarm[0] = 60
 audio_stop_sound(snd_music_boss)
 if object_index != obj_bowser
     audio_play_sound(snd_magic,0,0)
@@ -34,7 +64,7 @@ if object_index != obj_bowser
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_iceball">
+    <event eventtype="7" enumb="11">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -51,7 +81,68 @@ if object_index != obj_bowser
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with (other) event_user(0)</string>
+            <string>///Default boss stomp script
+if ready = 1
+    audio_play_sound(snd_stomp,0,0)
+else
+{
+    scr_musicalscale(obj_mario.id,0)
+    event_user(0)
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Default boss hurt script
+
+//Decrement hits
+hitpoints--
+
+//If there are hits left
+if hitpoints &gt; 0
+{
+
+    //Play hurt sound
+    audio_play_sound(snd_hurt,0,0)
+
+    //Execute boss hurt script
+    event_user(7)
+
+}
+
+//If there is no health left
+else
+{
+
+    //Execute boss death script
+    event_user(8)
+
+    //End boss battle
+    event_user(6)
+
+    //Destroy
+    instance_destroy()
+
+}
+</string>
           </argument>
         </arguments>
       </action>

@@ -33,7 +33,7 @@ move_snap(16,16)
 x += 8
 ready = 0
 direct = 1
-hardness = 99
+hardness = 100
 stomp = -1
 </string>
           </argument>
@@ -62,7 +62,7 @@ stomp = -1
     image_alpha -= 0.2
     alarm[11] = 5
     ready = 0
-    hardness = 99
+    hardness = 100
     stomp = -1
 }
 else
