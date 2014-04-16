@@ -5,8 +5,8 @@
   <visible>-1</visible>
   <depth>-5</depth>
   <persistent>0</persistent>
-  <parentName>obj_blockbumper</parentName>
-  <maskName>spr_enemymaskbig</maskName>
+  <parentName>self</parentName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -40,8 +40,9 @@ if global.powerup = cs_tanooki
 //Make Mario invisible
 obj_mario.visible = 0
 
-//Number of kills
-hitpoint = 0
+//Bump blocks that are lower
+bumper =  instance_create(x-8,y+16,obj_blockbumper)
+bumper.alarm[0] = 0
 </string>
           </argument>
         </arguments>
@@ -66,6 +67,7 @@ hitpoint = 0
             <kind>1</kind>
             <string>///Make Mario visible
 with obj_mario visible = 1
+with bumper instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -95,7 +97,7 @@ audio_play_sound(snd_spin,0,0)
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="3" enumb="2">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -118,6 +120,8 @@ and (global.powerup = cs_leaf or global.powerup = cs_tanooki)
 {
     x = obj_mario.x
     y = obj_mario.y
+    bumper.x = x-8
+    bumper.y = y+16
 }
 
 //Otherwise, destroy
