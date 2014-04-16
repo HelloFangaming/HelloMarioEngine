@@ -127,7 +127,6 @@ if gravity = 0
     else if jumptype = 2
     {
         vspeed = -3
-        y--
         jumptype = 3
         alarm[0] = 100
     }
@@ -136,7 +135,6 @@ if gravity = 0
     else if jumptype = 1
     {
         vspeed = -5
-        y--
         jumptype = 2
     }
 

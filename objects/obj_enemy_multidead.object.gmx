@@ -28,7 +28,9 @@
             <string>alarm[0] = 8
 alarm[1] = 1
 image_yscale = -1
-round(y)</string>
+x = round(x)
+y = round(y)
+</string>
           </argument>
         </arguments>
       </action>

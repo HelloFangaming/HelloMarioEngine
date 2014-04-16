@@ -688,7 +688,7 @@ or (hspeed &lt; 0 and collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,
           <argument>
             <kind>1</kind>
             <string>///Default enemy stomp script
-with instance_create(x,y+16,obj_enemy_stomped)
+with instance_create(x,y+sprite_height,obj_enemy_stomped)
 {
     sprite_index = other.sprite_index
     image_xscale = other.image_xscale
@@ -719,7 +719,7 @@ instance_destroy()
           <argument>
             <kind>1</kind>
             <string>///Default enemy death script
-with instance_create(x,y+16,obj_enemy_dead)
+with instance_create(x,y+sprite_height,obj_enemy_dead)
 {
     sprite_index = other.sprite_index
     image_index = other.image_index

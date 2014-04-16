@@ -36,7 +36,6 @@ bugfix = 0
 hardness = 0
 stomp = 5
 alarm[1] = 7
-alarm[2] = 7
 </string>
           </argument>
         </arguments>
@@ -70,35 +69,9 @@ if obj_mario.x &lt; x
     hspeed = -1
 else
     hspeed = 1
-alarm[0] = 100
 canjump = 1
 sprite_index = spr_chargingchuck
 alarm[0] = 200
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if sprite_index = spr_chargingchuck
-    audio_play_sound(snd_bump,0,0)
-alarm[2] = 7
 </string>
           </argument>
         </arguments>
@@ -121,8 +94,11 @@ alarm[2] = 7
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>bugfix += 1
-alarm[1] = 7</string>
+            <string>bugfix++
+if sprite_index = spr_chargingchuck
+    audio_play_sound(snd_bump,0,0)
+alarm[1] = 7
+</string>
           </argument>
         </arguments>
       </action>
@@ -156,37 +132,6 @@ alarm[10] = 60
 image_speed = 0.1
 hspeed = 0
 sprite_index = spr_chargingchuck_paused
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Hack
-if place_meeting(x,y,obj_explosion)
-or place_meeting(x,y,obj_powkiller)
-or place_meeting(x,y,obj_invincibility)
-{
-    hitpoints = 0
-    hardness = 0
-    ready = 1
-}
 </string>
           </argument>
         </arguments>
@@ -255,6 +200,11 @@ while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopepar
 if vspeed &lt; 0
 and collision_rectangle(x-12,y-1,x+11,y-1,obj_solid,1,1)
     vspeed = 1
+///Hack
+if place_meeting(x,y,obj_explosion)
+or place_meeting(x,y,obj_powkiller)
+or place_meeting(x,y,obj_invincibility)
+    hardness = 0
 </string>
           </argument>
         </arguments>
@@ -309,7 +259,7 @@ and collision_rectangle(x-12,y-1,x+11,y-1,obj_solid,1,1)
     audio_play_sound(snd_stomp,0,0)
 else
 {
-    scr_musicalscale(obj_mario.id,0)
+    scr_musicalscale(obj_mario.id,1)
     event_user(0)
 }
 </string>
@@ -334,24 +284,25 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hitpoints &gt; 0
+            <string>//Hack
+if place_meeting(x,y,obj_explosion)
+or place_meeting(x,y,obj_powkiller)
+or place_meeting(x,y,obj_invincibility)
+    hitpoints = 0
+    hardness = 0
+audio_play_sound(snd_hurt,0,0)
+hitpoints--
+sprite_index = spr_chargingchuck_hurt
+if hitpoints &gt; 0
 {
-    audio_play_sound(snd_hurt,0,0)
-    hitpoints -=1
     ready = 1
     hardness = 99
     alarm[0] = 60
     hspeed = 0
-    sprite_index = spr_chargingchuck_hurt
     image_speed = 0.15
 }
-if hitpoints = 0
-{
-    imdead = instance_create(x,y+16,obj_enemy_stomped)
-    imdead.sprite_index = sprite_index
-    imdead.image_xscale = image_xscale
-    instance_destroy()
-}
+else
+    event_inherited()
 </string>
           </argument>
         </arguments>

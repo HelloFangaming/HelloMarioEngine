@@ -203,8 +203,9 @@ and instance_number(obj_spinner) = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_pointscale()
-event_user(0)</string>
+            <string>scr_musicalscale(other.id,1)
+event_user(0)
+</string>
           </argument>
         </arguments>
       </action>
@@ -226,8 +227,9 @@ event_user(0)</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_pointscale()
-event_user(0)</string>
+            <string>scr_musicalscale(other.id,1)
+event_user(0)
+</string>
           </argument>
         </arguments>
       </action>
@@ -249,7 +251,7 @@ event_user(0)</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_pointscale()
+            <string>scr_musicalscale(other.id,1)
 with other event_user(0)
 with other instance_destroy()
 if other.held = 1
@@ -277,7 +279,7 @@ event_user(0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_pointscale()
+            <string>scr_musicalscale(other.id,1)
 if other.held = 1
 {
     with other event_user(0)
@@ -309,7 +311,7 @@ event_user(0)
             <kind>1</kind>
             <string>if other.harmmario = 0
     exit
-scr_pointscale()
+scr_musicalscale(other.id,1)
 if other.held = 1
 {
     with other event_user(0)
@@ -340,7 +342,7 @@ event_user(0)
             <kind>1</kind>
             <string>if other.thrown = 1
 {
-    scr_pointscale()
+    scr_musicalscale(other.id,1)
     with other event_user(0)
     with other instance_destroy()
     event_user(0)
@@ -369,7 +371,7 @@ event_user(0)
             <kind>1</kind>
             <string>if held = 0
 {
-    scr_pointscale()
+    scr_musicalscale(other.id,1)
     event_user(0)
 }
 </string>
@@ -396,7 +398,7 @@ event_user(0)
             <kind>1</kind>
             <string>if spinny = 1
     exit
-scr_pointscale()
+scr_musicalscale(other.id,1)
 event_user(2)
 </string>
           </argument>
@@ -456,7 +458,7 @@ event_user(0)
             <string>if other.held = 1
 {
     other.vspeed = -3
-    scr_pointscale()
+    scr_musicalscale(other.id,1)
     event_user(0)
 }
 </string>
@@ -559,7 +561,7 @@ if harmmario = 1
         hspeed = 0
         varid = instance_create(x,y,obj_shell)
         varid.sprite_index = sprite_index
-        scr_pointscale()
+        scr_musicalscale(other.id,1)
         with other event_user(1)
         instance_destroy()
     }
