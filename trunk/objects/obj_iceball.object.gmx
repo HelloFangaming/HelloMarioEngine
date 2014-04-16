@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_parprojectile</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -151,50 +151,6 @@ if collision_rectangle(x-4,y+15,x+3,y+15,obj_subconenemyparent,0,0)
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_shell">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>event_user(1)</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_spikeball">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>event_user(1)</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="4" ename="obj_enemyparent">
       <action>
         <libid>1</libid>
@@ -213,7 +169,19 @@ if collision_rectangle(x-4,y+15,x+3,y+15,obj_subconenemyparent,0,0)
           <argument>
             <kind>1</kind>
             <string>if other.hardness &lt; 2
-    event_user(1)
+{
+    with other
+    {
+        if sprite_height &lt; 34
+        and sprite_width &lt; 34
+        {
+            varid = instance_create(x,y,obj_enemy_frozen)
+            varid.sprite_index = sprite_index
+            audio_play_sound(snd_magic,0,0)
+            instance_destroy()
+        }
+    }
+}
 if other.hardness &lt; 100
     event_user(0)
 </string>
@@ -248,63 +216,6 @@ and other.object_index != obj_icemuncher
     gravity = 0
 }
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="11">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>with other
-{
-    if sprite_height &lt; 34
-    and sprite_width &lt; 34
-    {
-        varid = instance_create(x,y,obj_enemy_frozen)
-        varid.sprite_index = sprite_index
-        audio_play_sound(snd_magic,0,0)
-        instance_destroy()
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>audio_play_sound(snd_bump,0,0)
-instance_create(x-8,y,obj_smoke)
-instance_destroy()</string>
           </argument>
         </arguments>
       </action>

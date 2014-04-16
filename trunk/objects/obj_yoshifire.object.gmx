@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-2</depth>
   <persistent>0</persistent>
-  <parentName>obj_powkiller</parentName>
+  <parentName>self</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -83,7 +83,7 @@ or y&gt;view_yview[0]+256
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="7">
+    <event eventtype="4" ename="obj_enemyparent">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -100,7 +100,12 @@ or y&gt;view_yview[0]+256
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Do not remove!
+            <string>///Hurt enemies
+if other.hardness &lt; 99
+{
+    scr_musicalscale(id,1)
+    with other event_user(0)
+}
 </string>
           </argument>
         </arguments>

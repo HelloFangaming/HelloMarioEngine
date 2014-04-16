@@ -154,6 +154,7 @@ if held = 0
         and y&gt;view_yview[0]-16
             audio_play_sound(snd_bump,0,0)
         instance_create(x,y,obj_blockbumper)
+        spinny = 1
         hspeed = -hspeed
     }
     if hspeed &lt; 0
@@ -165,6 +166,7 @@ if held = 0
         and y&gt;view_yview[0]-16
             audio_play_sound(snd_bump,0,0)
         instance_create(x,y,obj_blockbumper)
+        spinny = 1
         hspeed = -hspeed
     }
 }
@@ -179,8 +181,34 @@ and harmmario = 0
 and not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_mario,0,0)
     harmmario = 1
 if spinny = 1
-and instance_number(obj_spinner) = 0
+and not place_meeting(x,y,obj_blockbumper)
     spinny = 0
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_blockbumper">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if spinny = 1
+    exit
+scr_musicalscale(other.id,1)
+event_user(2)
 </string>
           </argument>
         </arguments>
@@ -379,32 +407,6 @@ event_user(0)
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_spinner">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if spinny = 1
-    exit
-scr_musicalscale(other.id,1)
-event_user(2)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="4" ename="obj_parprojectile">
       <action>
         <libid>1</libid>
@@ -460,6 +462,39 @@ event_user(0)
     other.vspeed = -3
     scr_musicalscale(other.id,1)
     event_user(0)
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_enemyparent">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (harmmario != 0 or held != 0)
+and other.hardness &lt; 99
+{
+    scr_musicalscale(id,1)
+    with other event_user(0)
+    if held = 1
+    {
+        obj_mario.holding = 0
+        event_user(0)
+    }
 }
 </string>
           </argument>
