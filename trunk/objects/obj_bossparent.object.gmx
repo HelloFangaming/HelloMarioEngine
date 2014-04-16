@@ -86,7 +86,7 @@ if ready = 1
     audio_play_sound(snd_stomp,0,0)
 else
 {
-    scr_musicalscale(obj_mario.id,0)
+    scr_musicalscale(obj_mario.id,1)
     event_user(0)
 }
 </string>
@@ -116,12 +116,12 @@ else
 //Decrement hits
 hitpoints--
 
+//Play hurt sound
+audio_play_sound(snd_hurt,0,0)
+
 //If there are hits left
 if hitpoints &gt; 0
 {
-
-    //Play hurt sound
-    audio_play_sound(snd_hurt,0,0)
 
     //Execute boss hurt script
     event_user(7)

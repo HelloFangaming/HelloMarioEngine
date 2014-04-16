@@ -31,38 +31,7 @@ hspeed = image_xscale*2
 mytop = instance_create(x-8,y,obj_solidtop)
 hardness = 1
 stomp = 4
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if instance_exists(obj_mario)
-{
-    audio_play_sound(snd_pickup,0,0)
-    obj_mario.visible = 1
-    with (obj_puller) instance_destroy()
-    imdead = instance_create(obj_mario.x,obj_mario.y+11,obj_vegenemy)
-    imdead.sprite_index = sprite_index
-    imdead.image_xscale = image_xscale
-    instance_destroy()
-}
+isheavy = 0
 </string>
           </argument>
         </arguments>

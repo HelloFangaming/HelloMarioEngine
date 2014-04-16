@@ -29,7 +29,7 @@
 image_speed = 0.15
 direct = -1
 ready = 0
-hardness = 99
+hardness = 2
 stomp = 5
 </string>
           </argument>
@@ -170,7 +170,7 @@ while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopepar
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_mario">
+    <event eventtype="7" enumb="11">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -187,33 +187,30 @@ while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopepar
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_invincibility)
-    exit
-if other.y &lt; y-27-vspeed
-and ready = 1
-{
-    with other event_user(1)
-    audio_play_sound(snd_stomp,0,0)
-    instance_create(obj_mario.x,obj_mario.y+32,obj_spinthump)
-    exit
-}
-if other.y &lt; y-27-vspeed
-and obj_mario.stompstyle = 1
-{
-    with parent event_user(2)
-    scr_pointscale()
-    with other event_user(1)
-    instance_create(obj_mario.x,obj_mario.y+32,obj_spinthump)
-    exit
-}
-if other.y &lt; y-27-vspeed
-{
-    with parent event_user(2)
-    scr_pointscale()
-    with other event_user(1)
-}
-else if other.invincible = 0
-    with other event_user(0)
+            <string>with parent event_user(1)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with parent event_user(0)
 </string>
           </argument>
         </arguments>
@@ -236,7 +233,8 @@ else if other.invincible = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)</string>
+            <string>draw_sprite_ext(sprite_index,image_index,round(x),round(y),direct,1,0,c_white,1)
+</string>
           </argument>
         </arguments>
       </action>

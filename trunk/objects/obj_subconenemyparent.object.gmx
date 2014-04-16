@@ -8,6 +8,38 @@
   <parentName>obj_deactenemyparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Enemies that can be carried around
+
+//Uses the same variables as regular enemies
+event_inherited()
+
+//A collision object for Mario to ride
+mytop = instance_create(x-8,y,obj_solidtop)
+
+//Is this enemy heavy?
+isheavy = 0
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="1" enumb="0">
       <action>
         <libid>1</libid>
@@ -27,6 +59,38 @@
             <kind>1</kind>
             <string>///Destroy solidtop
 with mytop instance_destroy()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if instance_exists(obj_mario)
+{
+    audio_play_sound(snd_pickup,0,0)
+    if isheavy = 1
+        audio_play_sound(snd_yah,0,0)
+    obj_mario.visible = 1
+    with obj_puller instance_destroy()
+    event_user(7)
+    instance_destroy()
+}
 </string>
           </argument>
         </arguments>
@@ -69,7 +133,7 @@ and obj_mario.state &lt; 2
         obj_mario.visible = 0
         instance_create(obj_mario.x,obj_mario.y,obj_puller)
         obj_mario.holding = 1
-        if sprite_width &gt; 24
+        if isheavy = 1
         {
             audio_play_sound(snd_eeegh,0,0)
             alarm[0] = 90
@@ -80,6 +144,34 @@ and obj_mario.state &lt; 2
             alarm[0] = 20
         }
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="17">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Default enemy lift script
+with instance_create(obj_mario.x,obj_mario.y+11,obj_vegenemy)
+{
+    sprite_index = other.sprite_index
+    image_xscale = other.image_xscale
 }
 </string>
           </argument>

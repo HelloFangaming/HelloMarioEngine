@@ -63,6 +63,7 @@ canjump = 1
 sprite_index = spr_wendy
 ready = 0
 hardness = 2
+stomp = 5
 alarm[1] = 7
 alarm[2] = 15
 alarm[3] = 5
@@ -338,6 +339,7 @@ imdead.image_speed = 0.15
             <kind>1</kind>
             <string>ready = 1
 hardness = 99
+stomp = 2
 alarm[0] = 60
 hspeed = 0
 sprite_index = spr_wendy_shell

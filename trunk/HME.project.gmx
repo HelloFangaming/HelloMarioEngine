@@ -660,8 +660,9 @@
         <sprite>sprites\spr_shyguybig</sprite>
         <sprite>sprites\spr_shyguybig_b</sprite>
         <sprite>sprites\spr_bombguy</sprite>
-        <sprite>sprites\spr_snifit_g</sprite>
         <sprite>sprites\spr_ninji</sprite>
+        <sprite>sprites\spr_tweeter</sprite>
+        <sprite>sprites\spr_snifit_g</sprite>
         <sprite>sprites\spr_redhoopster</sprite>
         <sprite>sprites\spr_flurry</sprite>
         <sprite>sprites\spr_pokey_green</sprite>
@@ -670,7 +671,6 @@
         <sprite>sprites\spr_panser_blue</sprite>
         <sprite>sprites\spr_panserfire</sprite>
         <sprite>sprites\spr_porcupo</sprite>
-        <sprite>sprites\spr_tweeter</sprite>
       </sprites>
       <sprites name="Boss">
         <sprite>sprites\spr_bossdoor</sprite>
@@ -1097,7 +1097,6 @@
     <script>scripts\scr_init_globals.gml</script>
     <script>scripts\scr_save.gml</script>
     <script>scripts\scr_load.gml</script>
-    <script>scripts\scr_pointscale.gml</script>
     <script>scripts\scr_musicalscale.gml</script>
     <script>scripts\scr_canpull.gml</script>
     <script>scripts\scr_return.gml</script>
@@ -1324,6 +1323,7 @@
         <object>objects\obj_shyguybig_b</object>
         <object>objects\obj_bombguy</object>
         <object>objects\obj_ninji</object>
+        <object>objects\obj_tweeter</object>
         <object>objects\obj_snifit_g</object>
         <object>objects\obj_redhoopster</object>
         <object>objects\obj_flurry</object>
@@ -1332,7 +1332,6 @@
         <object>objects\obj_panser_green</object>
         <object>objects\obj_panser_blue</object>
         <object>objects\obj_porcupo</object>
-        <object>objects\obj_tweeter</object>
       </objects>
       <objects name="Boss">
         <object>objects\obj_bossdoor</object>

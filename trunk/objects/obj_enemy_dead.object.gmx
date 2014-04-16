@@ -29,6 +29,8 @@
 vspeed = -6
 image_speed = 0
 image_yscale = -1
+x = round(x)
+y = round(y)
 </string>
           </argument>
         </arguments>
@@ -56,7 +58,7 @@ image_yscale = -1
     vspeed = 4
     gravity = 0
 }
-if y &gt; room_height
+if bbox_top &gt; room_height
     instance_destroy()
 </string>
           </argument>
