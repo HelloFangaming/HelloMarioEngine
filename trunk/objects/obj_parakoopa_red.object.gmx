@@ -25,9 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>imdead = instance_create(x-8,y-2,obj_shell)
-imdead.vspeed = -3
-imdead.sprite_index = spr_shell_red_down
+            <string>///Flip into a shell
+with instance_create(x-8,y-2,obj_shell)
+{
+    vspeed = -3
+    sprite_index = spr_shell_red_down
+}
 
 //Destroy
 instance_destroy()
@@ -53,7 +56,8 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x,y,obj_koopa_red)
+            <string>///Become a regular red koopa
+instance_create(x,y,obj_koopa_red)
 
 //Destroy
 instance_destroy()
@@ -79,8 +83,8 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>imdead = instance_create(x-8,y+16,obj_enemy_dead)
-imdead.sprite_index = spr_shell_red
+            <string>///Koopa killing
+with instance_create(x-8,y+16,obj_enemy_dead) sprite_index = spr_shell_red
 
 //Destroy
 instance_destroy()

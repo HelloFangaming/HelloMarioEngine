@@ -25,18 +25,35 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.3
-image_speed = 0
-alarm[0] = 50
-alarm[3] = 7
-amjump = 0
-ready = 0
-alarm[10] = 2
-sprite_index = spr_kuribohead
-direct = 0
-secanim = 0
+            <string>///A goomba in a shoe
+
+//How vulnerable is this enemy to various items?
 hardness = 0
+
+//How vulnerable is this enemy to Mario?
 stomp = 0
+
+//Facing direction
+direct = -1
+
+//Face Mario
+alarm[10] = 2
+
+//Do not animate
+image_speed = 0
+
+//Goomba head sprite
+sprite_index = spr_kuribohead
+
+//State variable
+ready = 0
+
+//Peek out of the shoe
+alarm[0] = 50
+
+//Animate the shoe
+secanim = 0
+alarm[2] = 7
 </string>
           </argument>
         </arguments>
@@ -59,36 +76,15 @@ stomp = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-    exit
-if obj_mario.x &gt; x
-    direct = 1
-if obj_mario.x &lt; x
-    direct = -1
+            <string>///Face Mario
+if instance_exists(obj_mario)
+{
+    if obj_mario.x &gt; x
+        direct = 1
+    else
+        direct = -1
+}
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="3">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>secanim += 1
-alarm[3] = 7</string>
           </argument>
         </arguments>
       </action>
@@ -110,9 +106,10 @@ alarm[3] = 7</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = -7.5
-hspeed = -1.375
-amjump = 1</string>
+            <string>///Animate the shoe
+secanim++
+alarm[2] = 7
+</string>
           </argument>
         </arguments>
       </action>
@@ -134,9 +131,21 @@ amjump = 1</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = -7.5
-hspeed = 1.375
-amjump = 1</string>
+            <string>///Jump towards Mario
+
+//Jump
+vspeed = -7.5
+
+//Towards Mario
+if not instance_exists(obj_mario)
+or obj_mario.x &lt; x
+    hspeed = -1.375
+else
+    hspeed = 1.375
+
+//Jump state
+ready = 3
+</string>
           </argument>
         </arguments>
       </action>
@@ -158,8 +167,10 @@ amjump = 1</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.3
-ready = 1</string>
+            <string>///Peek out of the shoe
+image_speed = 0.3
+ready = 1
+</string>
           </argument>
         </arguments>
       </action>
@@ -181,66 +192,25 @@ ready = 1</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hspeed &gt; 0
-    if collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_subconenemyparent,0,1)
-    or collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_deactenemyparent,0,1)
-        hspeed = -hspeed
-if hspeed &lt; 0
-    if collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_subconenemyparent,0,1)
-    or collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_deactenemyparent,0,1)
-        hspeed = -hspeed
-if hspeed &gt; 0
-and collision_rectangle(bbox_right+hspeed,bbox_top,bbox_right+hspeed,bbox_bottom,obj_solid,0,0)
-    hspeed = -hspeed
-if hspeed &lt; 0
-and collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left+hspeed,bbox_bottom,obj_solid,0,0)
-    hspeed = -hspeed
-if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0) and amjump = 0
-or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0) and amjump = 0
+            <string>///Shoe goomba landing
+
+//Inherit usual step event
+event_inherited()
+
+//If the shoe goomba lands on the ground
+if gravity = 0
+and ready = 3
 {
-    gravity = 0
-    vspeed = 0
-}
-else
-    gravity = 0.3
-if vspeed &gt; 4
-    vspeed = 4
-if hspeed &gt; 0
-    direct = 1
-if hspeed &lt; 0
-    direct = -1
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
-if vspeed &lt; 0
-and collision_rectangle(x,y,x+15,y,obj_solid,1,1)
-    vspeed = 1
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_slopeparent">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if amjump = 1
-{
-    amjump = 0
+
+    //Reset state
+    ready = 0
+
+    //Stop horizontal speed
     hspeed = 0
+
+    //Hop again
     alarm[0] = 50
+
 }
 </string>
           </argument>
@@ -264,17 +234,12 @@ and collision_rectangle(x,y,x+15,y,obj_solid,1,1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-11 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-11 and vspeed &gt; 0
 {
     y = other.y-16
     vspeed = 0
     gravity = 0
-    if amjump = 1
-    {
-        amjump = 0
-        hspeed = 0
-        alarm[0] = 50
-    }
 }
 </string>
           </argument>
@@ -298,18 +263,27 @@ and collision_rectangle(x,y,x+15,y,obj_solid,1,1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if place_meeting(x,y,obj_spinner)
-    event_user(0)
-else
+            <string>///Shoe goomba flip
+
+//Only make a shoe if flipped by a block
+if place_meeting(x,y,obj_blockparent)
 {
-    imdead = instance_create(x,y-6,obj_getshoe)
-    imdead.vspeed = -5
-    imdead.direct = direct
+
+    //Make a Kuribo Shoe
+    with instance_create(x,y-6,obj_getshoe)
+    {
+        vspeed = -5
+        direct = other.direct
+    }
     
     //Destroy
     instance_destroy()
 
 }
+
+//Normal death otherwise
+else
+    event_user(0)
 </string>
           </argument>
         </arguments>
@@ -332,7 +306,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index = spr_kuriboshoe
+            <string>///Shoe goomba stomping
+sprite_index = spr_kuriboshoe
 event_inherited()
 </string>
           </argument>
@@ -356,10 +331,13 @@ event_inherited()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>imdead = instance_create(x,y+16,obj_enemy_dead)
-imdead.sprite_index = spr_kuriboshoe
-imdead.image_index = image_index
-imdead.image_xscale = direct
+            <string>///Shoe goomba death
+with instance_create(x,y+16,obj_enemy_dead)
+{
+    sprite_index = spr_kuriboshoe
+    image_index = other.image_index
+    image_xscale = other.direct
+}
 
 //Destroy
 instance_destroy()
@@ -385,18 +363,17 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 0
+            <string>///Finish peeking out of the shoe
+
+//New state
+ready = 2
+
+//Stop animation
 image_speed = 0
 image_index = 0
-if not instance_exists(obj_mario)
-{
-    alarm[2] = 10
-    exit
-}
-if obj_mario.x &gt; x
-    alarm[1] = 10
-else
-    alarm[2] = 10
+
+//Prepare to jump towards Mario
+alarm[1] = 10
 </string>
           </argument>
         </arguments>
@@ -419,10 +396,10 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if direct = 1
-    draw_sprite_ext(spr_kuriboshoe,secanim,round(x),y,1,1,0,c_white,1)
-if direct = -1
-    draw_sprite_ext(spr_kuriboshoe,secanim,round(x)+16,y,-1,1,0,c_white,1)
+            <string>///Draw the shoe goomba
+draw_sprite_ext(spr_kuriboshoe,secanim,round(x)+8-8*direct,y,direct,1,0,c_white,1)
+
+//Draw the goomba head
 if ready = 1
     draw_sprite_ext(spr_kuribohead,image_index,round(x)+8,y-8,direct,1,0,c_white,1)
 </string>

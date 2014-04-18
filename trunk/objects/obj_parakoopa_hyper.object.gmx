@@ -25,11 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[10] = 2
-chargenow = 0
-direct = 0
+            <string>///This koopa must have drank a cappuccino!
+
+//How vulnerable is this enemy to various items?
 hardness = 0
+
+//How vulnerable is this enemy to Mario?
 stomp = 0
+
+//Facing direction
+direct = -1
+
+//Start charging towards Mario
+alarm[10] = 2
+
+//Charge
+chargenow = 0
 </string>
           </argument>
         </arguments>
@@ -52,7 +63,9 @@ stomp = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>chargenow = 1</string>
+            <string>///Chaaaaaaaaaarge!
+chargenow = 1
+</string>
           </argument>
         </arguments>
       </action>
@@ -74,59 +87,51 @@ stomp = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hspeed &gt; 0
-    if collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_subconenemyparent,0,1)
-    or collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_deactenemyparent,0,1)
-        hspeed = -hspeed
-if hspeed &lt; 0
-    if collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_subconenemyparent,0,1)
-    or collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_deactenemyparent,0,1)
-        hspeed = -hspeed
-if hspeed &gt; 0
-and collision_rectangle(bbox_right+hspeed,bbox_top,bbox_right+hspeed,bbox_bottom-1,obj_solid,0,0)
-    hspeed = -hspeed
-if hspeed &lt; 0
-and collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left+hspeed,bbox_bottom-1,obj_solid,0,0)
-    hspeed = -hspeed
-if hspeed &gt; 0
-    direct = 1
-if hspeed &lt; 0
-    direct = -1
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
-if vspeed &lt; 0
-and collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_solid,0,0)
-{
-    while collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_solid,0,0)
-        y+=1
-    vspeed = 1
-}
+            <string>///Charge at Mario
+
+//Default event
+event_inherited()
+
+//Bounce off ground
+if gravity = 0
+    vspeed = -1
+else
+    gravity = 0
+
+//If the koopa can charge at Mario
 if chargenow = 1
 and instance_exists(obj_mario)
 {
+
+    //Charge at Mario
     if obj_mario.x &gt; x
     {
         hspeed += 0.05
         direct = 1
     }
-    if obj_mario.x &lt; x
+    else
     {
         hspeed += -0.05
         direct = -1
     }
+    if obj_mario.y &gt; y
+        vspeed += 0.05
+    else
+        vspeed += -0.05
+
+    //Cap speed
     if hspeed &gt; 1.5
         hspeed = 1.5
     if hspeed &lt; -1.5
         hspeed = -1.5
-    if obj_mario.y &gt; y
-        vspeed += 0.05
-    if obj_mario.y &lt; y
-        vspeed += -0.05
     if vspeed &gt; 1.5
         vspeed = 1.5
     if vspeed &lt; -1.5
         vspeed = -1.5
+
 }
+
+//Animate based on speed
 image_speed = speed/4
 </string>
           </argument>
@@ -150,9 +155,12 @@ image_speed = speed/4
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>imdead = instance_create(x-8,y-2,obj_shell)
-imdead.vspeed = -3
-imdead.sprite_index = spr_shell_hyper_down
+            <string>///Flip into a shell
+with instance_create(x-8,y-2,obj_shell)
+{
+    vspeed = -3
+    sprite_index = spr_shell_hyper_down
+}
 
 //Destroy
 instance_destroy()
@@ -178,7 +186,8 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x,y,obj_koopa_hyper)
+            <string>///Become a regular hyper koopa
+instance_create(x,y,obj_koopa_hyper)
 
 //Destroy
 instance_destroy()
@@ -204,8 +213,8 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>imdead = instance_create(x-8,y+16,obj_enemy_dead)
-imdead.sprite_index = spr_shell_hyper
+            <string>///Koopa killing
+with instance_create(x-8,y+16,obj_enemy_dead) sprite_index = spr_shell_hyper
 
 //Destroy
 instance_destroy()
@@ -231,7 +240,9 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy()</string>
+            <string>///Destroy
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
@@ -253,7 +264,9 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)</string>
+            <string>///Draw Hyper Parakoopa
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
+</string>
           </argument>
         </arguments>
       </action>
