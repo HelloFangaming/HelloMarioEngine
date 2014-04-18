@@ -216,7 +216,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>imdead = instance_create(x,y+16,obj_enemy_stomped)
+            <string>imdead = instance_create(x-8,y+16,obj_enemy_stomped)
 imdead.sprite_index = spr_shell
 imdead.image_xscale = image_xscale
 

@@ -25,47 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.25
-alarm[10] = 2
-image_speed = 0.15
-direct = 0
+            <string>///Please don't steal my shell!
+
+//How vulnerable is this enemy to various items?
 hardness = 0
+
+//How vulnerable is this enemy to Mario?
 stomp = 0
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-and hspeed = 0
-{
-    hspeed = -0.5
-    exit
-}
-if hspeed = 0
-{
-    if obj_mario.x &lt; x
-        hspeed = -0.5
-    else
-        hspeed = 0.5
-}
+
+//Facing direction
+direct = -1
+
+//Start walking towards Mario
+alarm[10] = 2
+
+//Animate
+image_speed = 0.15
 </string>
           </argument>
         </arguments>
@@ -88,7 +63,8 @@ if hspeed = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-11 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-11 and vspeed &gt; 0
 {
     y = other.y-16
     vspeed = 0
@@ -116,9 +92,12 @@ if hspeed = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>imdead = instance_create(x-8,y-2,obj_shell)
-imdead.vspeed = -3
-imdead.sprite_index = spr_shell_down
+            <string>///Flip into a shell
+with instance_create(x-8,y-2,obj_shell)
+{
+    vspeed = -3
+    sprite_index = spr_shell_down
+}
 
 //Destroy
 instance_destroy()
@@ -144,7 +123,8 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x-8,y,obj_shell)
+            <string>///Turn into a shell
+instance_create(x-8,y,obj_shell)
 
 //Destroy
 instance_destroy()
@@ -170,8 +150,8 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>imdead = instance_create(x-8,y+16,obj_enemy_dead)
-imdead.sprite_index = spr_shell
+            <string>///Koopa killing
+with instance_create(x-8,y+16,obj_enemy_dead) sprite_index = spr_shell
 
 //Destroy
 instance_destroy()
@@ -197,7 +177,9 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)</string>
+            <string>///Draw Koopa
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
+</string>
           </argument>
         </arguments>
       </action>

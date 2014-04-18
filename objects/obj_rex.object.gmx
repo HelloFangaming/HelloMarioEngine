@@ -25,12 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.25
-alarm[10] = 2
-image_speed = 0.15
-direct = 0
+            <string>///A purple dinosaur
+
+//How vulnerable is this enemy to various items?
 hardness = 0
+
+//How vulnerable is this enemy to Mario?
 stomp = 0
+
+//Facing direction
+direct = -1
+
+//Start walking towards Mario
+alarm[10] = 2
+
+//Animate
+image_speed = 0.15
 </string>
           </argument>
         </arguments>
@@ -53,7 +63,8 @@ stomp = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-sprite_height+5 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-sprite_height+5 and vspeed &gt; 0
 {
     y = other.y-sprite_height
     vspeed = 0
@@ -81,7 +92,10 @@ stomp = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_rex
+            <string>///Rex flattening
+
+//If rex is tall, flatten somewhat
+if sprite_index = spr_rex
 {
     y+= 16
     sprite_index = spr_rex2
@@ -89,15 +103,20 @@ stomp = 0
     hspeed = hspeed*2
 }
 
-//Otherwise, destroy
+//Otherwise, flatten to death
 else
 {
-    varid = instance_create(round(x),y,obj_stomped)
-    varid.sprite_index = spr_rex_sq
-    varid.image_xscale = direct
+
+    //Flatten to death
+    with instance_create(round(x),y,obj_stomped)
+    {
+        sprite_index = spr_rex_sq
+        image_xscale = other.direct
+    }
 
     //Destroy
     instance_destroy()
+
 }
 </string>
           </argument>
@@ -121,7 +140,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)</string>
+            <string>///Draw Rex
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
+</string>
           </argument>
         </arguments>
       </action>

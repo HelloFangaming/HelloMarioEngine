@@ -25,34 +25,44 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hardness = 0
+            <string>///This koopa can fly based on markers
+
+//How vulnerable is this enemy to various items?
+hardness = 0
+
+//How vulnerable is this enemy to Mario?
 stomp = 0
-direct = 0
-type = 0
+
+//Facing direction
+direct = -1
+
+//Check if this is a circle moving parakoopa
 if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_clockwise,0,0)
 {
     speed = 1
     direction = 0
     type = 1
 }
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_cclockwise,0,0)
+else if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_cclockwise,0,0)
 {
     speed = 1
     direction = 180
     type = 2
 }
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_clockwiseb,0,0)
+else if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_clockwiseb,0,0)
 {
     speed = 1
     direction = 180
     type = 1
 }
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_cclockwiseb,0,0)
+else if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_cclockwiseb,0,0)
 {
     speed = 1
     direction = 0
     type = 2
 }
+else
+    type = 0
 </string>
           </argument>
         </arguments>
@@ -75,19 +85,32 @@ if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_cclockwiseb
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hspeed = 0
-and instance_exists(obj_mario)
+            <string>///Parakoopa logic
+
+//If this is a vertical koopa
+if hspeed = 0
 {
-    if obj_mario.x &gt; x
-        direct = 1
-    if obj_mario.x &lt; x
-        direct = -1
+
+    //If Mario exists, face him
+    if instance_exists(obj_mario)
+    {
+        if obj_mario.x &gt; x
+            direct = 1
+        else
+            direct = -1
+    }
 }
-if hspeed &gt; 0
+
+//Otherwise, look where you are going
+else if hspeed &gt; 0
     direct = 1
-if hspeed &lt; 0
+else
     direct = -1
+
+//Animate based on speed
 image_speed = speed/6
+
+//Handle circular movement
 if type = 1
     direction += -0.89625
 if type = 2
@@ -114,7 +137,8 @@ if type = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type = 0
+            <string>///Go right
+if type = 0
     hspeed+=0.0324
 </string>
           </argument>
@@ -138,7 +162,8 @@ if type = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type = 0
+            <string>///Go left
+if type = 0
     hspeed+=-0.0324
 </string>
           </argument>
@@ -162,7 +187,8 @@ if type = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type = 0
+            <string>///Go down
+if type = 0
     vspeed+=0.0324
 </string>
           </argument>
@@ -186,7 +212,8 @@ if type = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type = 0
+            <string>///Go up
+if type = 0
     vspeed+=-0.0324
 </string>
           </argument>
@@ -210,9 +237,12 @@ if type = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>imdead = instance_create(x-8,y-2,obj_shell)
-imdead.vspeed = -3
-imdead.sprite_index = spr_shell_down
+            <string>///Flip into a shell
+with instance_create(x-8,y-2,obj_shell)
+{
+    vspeed = -3
+    sprite_index = spr_shell_down
+}
 
 //Destroy
 instance_destroy()
@@ -238,7 +268,8 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x,y,obj_koopa)
+            <string>///Become a regular koopa
+instance_create(x,y,obj_koopa)
 
 //Destroy
 instance_destroy()
@@ -264,8 +295,8 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>imdead = instance_create(x-8,y+16,obj_enemy_dead)
-imdead.sprite_index = spr_shell
+            <string>///Koopa killing
+with instance_create(x-8,y+16,obj_enemy_dead) sprite_index = spr_shell
 
 //Destroy
 instance_destroy()
@@ -291,7 +322,9 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy()</string>
+            <string>///Destroy
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
@@ -313,7 +346,9 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)</string>
+            <string>///Draw parakoopa
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
+</string>
           </argument>
         </arguments>
       </action>
