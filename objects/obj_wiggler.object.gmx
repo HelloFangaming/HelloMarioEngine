@@ -25,25 +25,48 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.25
-alarm[10] = 2
-image_speed = 0.15
-ready = 0
-direct = 0
+            <string>///Everyone's favorite caterpillar
+
+//How vulnerable is this enemy to various items?
 hardness = 2
+
+//How vulnerable is this enemy to Mario?
 stomp = 5
+
+//Facing direction
+direct = -1
+
+//Start walking towards Mario
+alarm[10] = 2
+
+//Animate
+image_speed = 0.15
+
+//Not angry
+ready = 0
+
+//Previous horizontal speed
+prevhspeed = 0
+
+//Body parts
 mybody[0] = instance_create(x,y,obj_wiggler_body)
 mybody[1] = instance_create(x,y,obj_wiggler_body)
 mybody[2] = instance_create(x,y,obj_wiggler_body)
 mybody[3] = instance_create(x,y,obj_wiggler_body)
+
+//Let the body know who's their owner
 mybody[0].parent = id
 mybody[1].parent = id
 mybody[2].parent = id
 mybody[3].parent = id
+
+//Offset values
 mybody[0].offset = 10
 mybody[1].offset = 18
 mybody[2].offset = 26
 mybody[3].offset = 34
+
+//Animation stuff
 mybody[1].image_index = 1
 mybody[2].image_index = 2
 mybody[3].image_index = 1
@@ -69,10 +92,12 @@ mybody[3].image_index = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with mybody[0] instance_destroy()
+            <string>///Destroy body parts
+with mybody[0] instance_destroy()
 with mybody[1] instance_destroy()
 with mybody[2] instance_destroy()
-with mybody[3] instance_destroy()</string>
+with mybody[3] instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
@@ -94,16 +119,12 @@ with mybody[3] instance_destroy()</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-{
-    hspeed = -0.5
-    event_user(15)
-    exit
-}
-if obj_mario.x &lt; x
-    hspeed = -0.5
-else
-    hspeed = 0.5
+            <string>///Detect Mario, and walk towards him
+
+//Default event
+event_inherited()
+
+//Turn around script
 event_user(15)
 </string>
           </argument>
@@ -127,25 +148,26 @@ event_user(15)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
+            <string>///Go after Mario
+if instance_exists(obj_mario)
 {
-    alarm[0] = 1
-    exit
-}
-if obj_mario.x &lt; x
-and hspeed &gt; 0
-{
-    hspeed = -1
-    event_user(15)
-}
-else if obj_mario.x &gt; x
-and hspeed &lt; 0
-{
-    hspeed = 1
-    event_user(15)
+    if obj_mario.x &lt; x
+    and hspeed &gt; 0
+    {
+        hspeed = -1
+        event_user(15)
+    }
+    else if obj_mario.x &gt; x
+    and hspeed &lt; 0
+    {
+        hspeed = 1
+        event_user(15)
+    }
+    else
+        alarm[0] = 50
 }
 else
-    alarm[0] = 50
+    alarm[0] = 1
 </string>
           </argument>
         </arguments>
@@ -168,7 +190,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(mybody[0])
+            <string>///Make sure body parts do not get lost
+if not instance_exists(mybody[0])
     instance_activate_object(mybody[0])
 if not instance_exists(mybody[1])
     instance_activate_object(mybody[1])
@@ -198,63 +221,20 @@ if not instance_exists(mybody[3])
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hspeed &gt; 0
-    if collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_enemyparent,0,1)
-    and not collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_wiggler_body,0,1)
-    {
-        hspeed = -hspeed
-        event_user(15)
-    }
-if hspeed &lt; 0
-    if collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_enemyparent,0,1)
-    and not collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_wiggler_body,0,1)
-    {
-        hspeed = -hspeed
-        event_user(15)
-    }
-if hspeed &gt; 0
-and collision_rectangle(bbox_right+hspeed,bbox_top,bbox_right+hspeed,bbox_bottom-1,obj_solid,0,0)
-{
-    hspeed = -hspeed
+            <string>///Wiggler hates to walk off ledges
+
+//Remember horizontal speed
+prevhspeed = hspeed
+
+//Default event
+event_inherited()
+
+//Turn at ledges
+event_user(6)
+
+//If wiggler's speed changed, turn around
+if prevhspeed != hspeed
     event_user(15)
-}
-if hspeed &lt; 0
-and collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left+hspeed,bbox_bottom-1,obj_solid,0,0)
-{
-    hspeed = -hspeed
-    event_user(15)
-}
-if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
-or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0)
-{
-    gravity = 0
-    vspeed = 0
-}
-else
-    gravity = 0.25
-if vspeed &gt; 4
-    vspeed = 4
-if hspeed &gt; 0
-    direct = 1
-if hspeed &lt; 0
-    direct = -1
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
-if not collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+5,obj_slopeparent,1,0)
-{
-    if hspeed &gt; 0
-    and not collision_line(bbox_left+8,bbox_bottom-1,bbox_left+8,bbox_bottom+15,obj_solidtop,0,0)
-    {
-        hspeed = -hspeed
-        event_user(15)
-    }
-    if hspeed &lt; 0
-    and not collision_line(bbox_right-8,bbox_bottom-1,bbox_right-8,bbox_bottom+15,obj_solidtop,0,0)
-    {
-        hspeed = -hspeed
-        event_user(15)
-    }
-}
 </string>
           </argument>
         </arguments>
@@ -277,7 +257,8 @@ if not collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+5,obj_sl
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-11 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-11 and vspeed &gt; 0
 {
     y = other.y-16
     vspeed = 0
@@ -305,26 +286,38 @@ if not collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+5,obj_sl
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hspeed &gt; 0
+            <string>///Turn around
+
+//Change facing direction
+if hspeed &gt; 0
     direct = 1
-if hspeed &lt; 0
+else
     direct = -1
-mybody[0].alarm[0] = 20
-mybody[1].alarm[0] = 36
-mybody[2].alarm[0] = 52
-mybody[3].alarm[0] = 68
-mybody[0].nextdirect = direct
-mybody[1].nextdirect = direct
-mybody[2].nextdirect = direct
-mybody[3].nextdirect = direct
-if ready = 1
+
+//Make body parts turn around in order
+if ready = 0
 {
-    alarm[0] = 50
+    mybody[0].alarm[0] = 20
+    mybody[1].alarm[0] = 36
+    mybody[2].alarm[0] = 52
+    mybody[3].alarm[0] = 68
+}
+
+//Faster if angry, and continue chasing Mario
+else
+{
     mybody[0].alarm[0] = 10
     mybody[1].alarm[0] = 18
     mybody[2].alarm[0] = 26
     mybody[3].alarm[0] = 34
+    alarm[0] = 50
 }
+
+//Set their next direction
+mybody[0].nextdirect = direct
+mybody[1].nextdirect = direct
+mybody[2].nextdirect = direct
+mybody[3].nextdirect = direct
 </string>
           </argument>
         </arguments>
@@ -347,16 +340,29 @@ if ready = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 1
+            <string>///Wiggler stomp
+
+//Play stomp sound if wiggler is angry
+if ready = 1
     audio_play_sound(snd_stomp,0,0)
+
+//Otherwise
 else
 {
+
+    //Musical scale
     scr_musicalscale(obj_mario.id,1)
+
+    //Kill flower
     with instance_create(x-4*direct,y+16,obj_enemy_dead) sprite_index = spr_wiggler_flower
+
+    //Make angry
     ready = 1
     sprite_index = spr_wiggler_mad
     image_speed = 0.3
     hspeed = hspeed*2
+
+    //Make body parts angry
     for(var i = 0; i &lt; 4; i++)
     {
         with mybody[i]
@@ -367,7 +373,10 @@ else
             hspeed = hspeed*2
         }
     }
+
+    //Go after Mario
     alarm[0] = 50
+
 }
 </string>
           </argument>
@@ -391,17 +400,24 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>imdead = instance_create(x,y+16,obj_enemy_dead)
-imdead.sprite_index = sprite_index
-imdead.image_index = image_index
-imdead.image_xscale = image_xscale
-imdead = instance_create(x,y+16,obj_enemy_multidead)
-if sprite_index = spr_wiggler_mad
-    imdead.killsprite = spr_wiggler_madbody
-else
-    imdead.killsprite = spr_wiggler_body
-imdead.killxscale = image_xscale
-imdead.count = 4
+            <string>///Wiggler death
+with instance_create(x,y+16,obj_enemy_dead)
+{
+    sprite_index = other.sprite_index
+    image_index = other.image_index
+    image_xscale = other.image_xscale
+}
+
+//Make the other body parts too
+with instance_create(x,y+16,obj_enemy_multidead)
+{
+    if other.sprite_index = spr_wiggler_mad
+        killsprite = spr_wiggler_madbody
+    else
+        killsprite = spr_wiggler_body
+    killxscale = other.image_xscale
+    count = 4
+}
 
 //Destroy
 instance_destroy()
@@ -427,7 +443,9 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)</string>
+            <string>///Draw Wiggler
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
+</string>
           </argument>
         </arguments>
       </action>

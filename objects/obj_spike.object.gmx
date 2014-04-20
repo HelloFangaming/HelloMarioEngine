@@ -25,43 +25,24 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.25
-alarm[10] = 2
-image_speed = 0.15
-direct = 0
+            <string>///Spike can spit out spikes
+
+//How vulnerable is this enemy to various items?
 hardness = 0
+
+//How vulnerable is this enemy to Mario?
 stomp = 0
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-{
-    hspeed = -0.5
-    exit
-}
-if obj_mario.x &lt; x
-    hspeed = -0.5
-else
-    hspeed = 0.5
+
+//Facing direction
+direct = -1
+
+//Start walking towards Mario
+alarm[10] = 2
+
+//Animate
+image_speed = 0.15
+
+//Spit out spike balls
 alarm[0] = 100
 </string>
           </argument>
@@ -85,10 +66,18 @@ alarm[0] = 100
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed = direct/2
+            <string>///Continue walking
+
+//Walk
+hspeed = direct/2
+
+//Shoot spike ball again later
 alarm[0] = 200
+
+//Change back to the old sprite
 sprite_index = spr_spike
-image_speed = 0.15</string>
+image_speed = 0.15
+</string>
           </argument>
         </arguments>
       </action>
@@ -110,27 +99,33 @@ image_speed = 0.15</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
+            <string>///Spit out spike balls
+
+//If spike is on the ground, and Mario is not too close
+if gravity = 0
+and instance_exists(obj_mario)
+and (obj_mario.x &lt; x-32 or obj_mario.x &gt; x+32)
 {
-    alarm[0] = 1
-    exit
-}
-if obj_mario.x &gt; x-32 and obj_mario.x &lt; x+32
-{
-    alarm[0] = 1
-    exit
-}
-if collision_rectangle(x-8,y+16,x+7,y+16,obj_solidtop,0,0)
-or collision_rectangle(x-8,y+16,x+7,y+16,obj_slopeparent,1,0)
-{
+
+    //Change sprite
     sprite_index = spr_spike_throw
+
+    //Begin animation
     image_index = 0
     image_speed = 0.05
+
+    //Stop moving
     hspeed = 0
-    myball = instance_create(x-8,y,obj_spikeball)
-    myball.dir = direct
+
+    //Create spike ball
+    with instance_create(x-8,y,obj_spikeball) dir = other.direct
+
+    //Continue walking later
     alarm[1] = 48
+
 }
+
+//Otherwise, delay the spike ball
 else
     alarm[0] = 1
 </string>
@@ -155,7 +150,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-11 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-11 and vspeed &gt; 0
 {
     y = other.y-16
     vspeed = 0
@@ -183,7 +179,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_spike_throw
+            <string>///Finish spike throw animation
+if sprite_index = spr_spike_throw
 {
     image_speed = 0
     image_index = 2
@@ -210,7 +207,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)</string>
+            <string>///Draw Spike
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
+</string>
           </argument>
         </arguments>
       </action>

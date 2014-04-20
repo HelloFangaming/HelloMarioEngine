@@ -25,13 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.25
-alarm[0] = 50
-image_speed = 0
-hopcount = 0
-direct = 0
+            <string>///A good hopper
+
+//How vulnerable is this enemy to various items?
 hardness = 0
+
+//How vulnerable is this enemy to Mario?
 stomp = 0
+
+//Facing direction
+direct = -1
+
+//Do not animate
+image_speed = 0
+
+//Hop
+alarm[0] = 50
+
+//Count hops
+hopcount = 0
 </string>
           </argument>
         </arguments>
@@ -54,18 +66,29 @@ stomp = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>y-=1
+            <string>///Hop
+
+//Move up
+y--
+
+//Hop higher if he hopped more than twice
 if hopcount &gt; 2
 {
     vspeed = -5
     hopcount = 0
 }
+
+//Otherwise, hop low
 else
 {
     vspeed = -3
-    hopcount += 1
+    hopcount++
 }
+
+//Jump animation
 image_index = 1
+
+//Hop again
 alarm[0] = 100
 </string>
           </argument>
@@ -89,28 +112,23 @@ alarm[0] = 100
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_mario)
+            <string>///Ninji logic
+
+//Default event
+event_inherited()
+
+//Finish hop animation
+if gravity = 0
+    image_index = 0
+
+//Look at Mario
+if instance_exists(obj_mario)
 {
     if obj_mario.x &gt; x
         direct = 1
-    if obj_mario.x &lt; x
+    else
         direct = -1
 }
-if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
-or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0)
-{
-    gravity = 0
-    vspeed = 0
-}
-else
-    gravity = 0.25
-if vspeed &gt; 4
-    vspeed = 4
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
-if vspeed &lt; 0
-and collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_solid,0,0)
-    vspeed = 1
 </string>
           </argument>
         </arguments>
@@ -133,12 +151,12 @@ and collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_solid,0,0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-11 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-11 and vspeed &gt; 0
 {
     y = other.y-16
     vspeed = 0
     gravity = 0
-    image_index = 0
 }
 </string>
           </argument>
@@ -162,7 +180,9 @@ and collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_solid,0,0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)</string>
+            <string>///Draw Red Ninji
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
+</string>
           </argument>
         </arguments>
       </action>
