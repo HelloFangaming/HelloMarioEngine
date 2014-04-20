@@ -25,12 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.25
-image_speed = 0.15
-direct = -1
-ready = 0
+            <string>///Everyone's favorite caterpillar's body parts
+
+//How vulnerable is this enemy to various items?
 hardness = 2
+
+//How vulnerable is this enemy to Mario?
 stomp = 5
+
+//Facing direction
+direct = -1
+
+//Animate
+image_speed = 0.15
+
+//Not angry
+ready = 0
 </string>
           </argument>
         </arguments>
@@ -53,18 +63,10 @@ stomp = 5
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if nextdirect = 1
-{
-    hspeed = 0.5
-    x = parent.x-offset
-}
-else
-{
-    hspeed = -0.5
-    x = parent.x+offset
-}
-if ready = 1
-    hspeed = hspeed*2
+            <string>///Turn around
+hspeed = abs(hspeed)*nextdirect
+x = parent.x-offset*nextdirect
+direct = nextdirect
 </string>
           </argument>
         </arguments>
@@ -87,18 +89,13 @@ if ready = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(parent)
+            <string>///Activate parent
+if not instance_exists(parent)
     instance_activate_object(parent)
-if hspeed &gt; 0
-{
-    if alarm[0] &lt;= 0
-        x = parent.x-offset
-}
-else if hspeed &lt; 0
-{
-    if alarm[0] &lt;= 0
-        x = parent.x+offset
-}
+
+//If wiggler is not turning, snap into place
+if direct = nextdirect
+    x = parent.x-offset*direct
 </string>
           </argument>
         </arguments>
@@ -121,22 +118,8 @@ else if hspeed &lt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
-or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0)
-{
-    gravity = 0
-    vspeed = 0
-}
-else
-    gravity = 0.25
-if vspeed &gt; 4
-    vspeed = 4
-if hspeed &gt; 0
-    direct = 1
-if hspeed &lt; 0
-    direct = -1
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
+            <string>///Floor collisions
+event_user(4)
 </string>
           </argument>
         </arguments>
@@ -159,7 +142,8 @@ while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopepar
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-11 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-11 and vspeed &gt; 0
 {
     y = other.y-16
     vspeed = 0
@@ -187,7 +171,8 @@ while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopepar
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with parent event_user(1)
+            <string>///Stomp parent wiggler
+with parent event_user(1)
 </string>
           </argument>
         </arguments>
@@ -210,7 +195,8 @@ while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopepar
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with parent event_user(0)
+            <string>///Hurt parent wiggler
+with parent event_user(0)
 </string>
           </argument>
         </arguments>
@@ -233,7 +219,8 @@ while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopepar
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),round(y),direct,1,0,c_white,1)
+            <string>///Draw Wiggler Parts
+draw_sprite_ext(sprite_index,image_index,round(x),round(y),direct,1,0,c_white,1)
 </string>
           </argument>
         </arguments>
