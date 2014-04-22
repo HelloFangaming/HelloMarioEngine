@@ -89,10 +89,13 @@ and obj_mario.disablecontrols = 0
 {
 
     //Create the appropriate brick
-    if sprite_index = spr_redbrick
-        with obj_mario instance_create(x,y+16,obj_redbrick_th)
-    else
-        with obj_mario instance_create(x,y+16,obj_thrownbrick)
+    with obj_mario
+    {
+        if other.sprite_index = spr_redbrick
+            with instance_create(x,y+16,obj_thrownbrick) sprite_index = spr_redbrick_th
+        else
+            instance_create(x,y+16,obj_thrownbrick)
+    }
 
     //Make sure other bricks are not picked up at the same time
     with obj_bluebrick

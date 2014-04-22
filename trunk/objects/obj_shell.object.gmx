@@ -262,34 +262,6 @@ event_user(0)
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_redbrick_th">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>scr_musicalscale(other.id,1)
-with other event_user(0)
-with other instance_destroy()
-if other.held = 1
-    obj_mario.holding = 0
-event_user(0)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="4" ename="obj_thrownbrick">
       <action>
         <libid>1</libid>
@@ -313,6 +285,11 @@ if other.held = 1
     with other event_user(0)
     with other instance_destroy()
     obj_mario.holding = 0
+}
+else if other.sprite_index = spr_redbrick_th
+{
+    with other event_user(0)
+    with other instance_destroy()
 }
 event_user(0)
 </string>

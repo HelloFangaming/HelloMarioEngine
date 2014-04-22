@@ -1653,7 +1653,6 @@
             <object>objects\obj_vinewarp</object>
             <object>objects\obj_coinchain</object>
             <object>objects\obj_thrownbrick</object>
-            <object>objects\obj_redbrick_th</object>
             <object>objects\obj_shard</object>
           </objects>
           <objects name="Platforms">

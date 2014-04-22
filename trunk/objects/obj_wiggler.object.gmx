@@ -3,7 +3,7 @@
   <spriteName>spr_wiggler</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>obj_deactenemyparent</parentName>
   <maskName>spr_enemymask</maskName>
@@ -70,6 +70,12 @@ mybody[3].offset = 34
 mybody[1].image_index = 1
 mybody[2].image_index = 2
 mybody[3].image_index = 1
+
+//Depth
+mybody[0].depth = 1
+mybody[1].depth = 2
+mybody[2].depth = 3
+mybody[3].depth = 4
 </string>
           </argument>
         </arguments>
@@ -318,6 +324,36 @@ mybody[0].nextdirect = direct
 mybody[1].nextdirect = direct
 mybody[2].nextdirect = direct
 mybody[3].nextdirect = direct
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Special turn at enemies script
+if (hspeed &gt; 0
+and collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_enemyparent,0,1)
+and not collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_wiggler_body,0,1))
+or (hspeed &lt; 0
+and collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_enemyparent,0,1)
+and not collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_wiggler_body,0,1))
+    hspeed = -hspeed
 </string>
           </argument>
         </arguments>
