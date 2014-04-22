@@ -258,6 +258,11 @@ and instance_exists(obj_mario)
         event_user(0)
         instance_destroy()
     }
+    else if sprite_index = spr_redbrick_th
+    {
+        event_user(0)
+        instance_destroy()
+    }
 }
 </string>
           </argument>

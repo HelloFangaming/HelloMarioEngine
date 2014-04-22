@@ -362,16 +362,11 @@ and other.sprite_height &lt; 34
     food.sprite_index = spr_throwblock_th
     food.image_index = 0
     obj_yoshi.fullmouth = 1
+    obj_yoshi.inmouth = obj_thrownbrick
     if other.object_index = obj_redbrick
-    {
-        obj_yoshi.inmouth = obj_redbrick_th
         obj_yoshi.shellsprite = spr_redbrick_th
-    }
     else
-    {
-        obj_yoshi.inmouth = obj_thrownbrick
         obj_yoshi.shellsprite = spr_throwblock_th
-    }
     with other instance_destroy()
 }
 </string>

@@ -82,42 +82,7 @@ if instance_exists(obj_tounge)
 if instance_exists(obj_mario)
 and global.yoshi = 0
 and fullmouth = 1
-{
-    audio_play_sound(snd_spit,0,0)
-    fullmouth = instance_create(x-8,y,inmouth)
-    if fullmouth.object_index = obj_shell
-    or fullmouth.object_index = obj_bobomb_hold
-    or fullmouth.object_index = obj_getshoe
-    {
-        fullmouth.bam = 1
-        fullmouth.sprite_index = shellsprite
-    }
-    else
-    {
-        if fullmouth.object_index = obj_thrownbrick
-        or fullmouth.object_index = obj_redbrick_th
-        or fullmouth.object_index = obj_shell
-        {
-            if obj_mario.direct = 1
-                with fullmouth hspeed = obj_mario.hspeed+2.5
-            if obj_mario.direct = -1
-                with fullmouth hspeed = obj_mario.hspeed-2.5
-        }
-        else
-        {
-            if obj_mario.direct = 1
-                with fullmouth hspeed = obj_mario.hspeed+1.5
-            if obj_mario.direct = -1
-                with fullmouth hspeed = obj_mario.hspeed-1.5
-        }
-    }
-    fullmouth.x+=obj_mario.direct*2
-    fullmouth.vspeed = -1
-    fullmouth = 0
-    licking = 1
-    alarm[5] = 5
-    ttttt = 0
-}
+    event_user(0)
 </string>
           </argument>
         </arguments>
@@ -487,6 +452,71 @@ else if instance_exists(obj_jumpspawn)
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if inmouth = obj_yoshifire
+{
+    audio_play_sound(snd_flames,0,0)
+    with instance_create(x,y,obj_yoshifire)
+    {
+        hspeed = obj_mario.direct*3
+        vspeed = -1
+    }
+    with instance_create(x,y,obj_yoshifire)
+    {
+        hspeed = obj_mario.direct*3
+        vspeed = 1
+    }
+    with instance_create(x,y,obj_yoshifire) hspeed = obj_mario.direct*3
+}
+else
+{
+    audio_play_sound(snd_spit,0,0)
+    fullmouth = instance_create(x-8,y,inmouth)
+    if inmouth = obj_shell
+    or inmouth = obj_bobomb_hold
+    or inmouth = obj_getshoe
+    {
+        fullmouth.bam = 1
+        fullmouth.sprite_index = shellsprite
+    }
+    if inmouth = obj_thrownbrick
+    or inmouth = obj_shell
+    {
+        fullmouth.hspeed = obj_mario.hspeed+3*obj_mario.direct
+        fullmouth.sprite_index = shellsprite
+    }
+    else
+    {
+        fullmouth.hspeed = obj_mario.hspeed+1.5*obj_mario.direct
+    }
+    fullmouth.x += obj_mario.direct*2
+    fullmouth.vspeed = -1
+}
+fullmouth = 0
+licking = 1
+alarm[5] = 5
+ttttt = 0
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="5">
       <action>
         <libid>1</libid>
@@ -623,67 +653,18 @@ else if instance_exists(obj_goalmario)
             <kind>1</kind>
             <string>if instance_exists(obj_mario)
 and global.yoshi = 1
-and licking = 0
-and fullmouth = 0
 {
-    audio_play_sound(snd_lick,0,0)
-    licking = 1
-    alarm[2] = 5
-    ttttt = 0
-}
-if instance_exists(obj_mario)
-and not instance_exists(obj_tounge)
-and global.yoshi = 1
-and fullmouth = 1
-{
-    if inmouth = obj_yoshifire
+    if licking = 0
+    and fullmouth = 0
     {
-        audio_play_sound(snd_flames,0,0)
-        fullmouth = instance_create(x,y,obj_yoshifire)
-        fullmouth.hspeed = obj_mario.direct*3
-        fullmouth.vspeed = -1
-        fullmouth = instance_create(x,y,obj_yoshifire)
-        fullmouth.hspeed = obj_mario.direct*3
-        fullmouth.vspeed = 1
-        fullmouth = instance_create(x,y,obj_yoshifire)
-        fullmouth.hspeed = obj_mario.direct*3
-        fullmouth = 0
+        audio_play_sound(snd_lick,0,0)
         licking = 1
-        alarm[5] = 5
+        alarm[2] = 5
         ttttt = 0
-        exit
     }
-    audio_play_sound(snd_spit,0,0)
-    fullmouth = instance_create(x-8,y,inmouth)
-    if fullmouth.object_index = obj_shell
-    or fullmouth.object_index = obj_bobomb_hold
-    or fullmouth.object_index = obj_getshoe
-    {
-        fullmouth.bam = 1
-        fullmouth.sprite_index = shellsprite
-    }
-    if fullmouth.object_index = obj_thrownbrick
-    or fullmouth.object_index = obj_redbrick_th
-    or fullmouth.object_index = obj_shell
-    {
-        if obj_mario.direct = 1
-            with fullmouth hspeed = obj_mario.hspeed+3
-        if obj_mario.direct = -1
-            with fullmouth hspeed = obj_mario.hspeed-3
-    }
-    else
-    {
-        if obj_mario.direct = 1
-            with fullmouth hspeed = obj_mario.hspeed+1.5
-        if obj_mario.direct = -1
-            with fullmouth hspeed = obj_mario.hspeed-1.5
-    }
-    fullmouth.x+=obj_mario.direct*2
-    fullmouth.vspeed = -1
-    fullmouth = 0
-    licking = 1
-    alarm[5] = 5
-    ttttt = 0
+    else if not instance_exists(obj_tounge)
+    and fullmouth = 1
+        event_user(0)
 }
 </string>
           </argument>

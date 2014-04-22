@@ -36,6 +36,9 @@ stomp = 5
 //Facing direction
 direct = -1
 
+//Next facing direction
+nextdirect = 0
+
 //Animate
 image_speed = 0.15
 
@@ -64,9 +67,12 @@ ready = 0
           <argument>
             <kind>1</kind>
             <string>///Turn around
-hspeed = abs(hspeed)*nextdirect
-x = parent.x-offset*nextdirect
 direct = nextdirect
+if ready = 0
+    hspeed = 0.5*direct
+else
+    hspeed = direct
+x = parent.x-offset*direct
 </string>
           </argument>
         </arguments>
