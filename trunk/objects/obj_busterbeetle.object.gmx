@@ -25,44 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.25
-alarm[10] = 2
-image_speed = 0.15
-direct = 0
-noturns = 0
+            <string>///This buster loves busting bricks
+
+//How vulnerable is this enemy to various items?
 hardness = 1
+
+//How vulnerable is this enemy to Mario?
 stomp = 0
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-{
-    hspeed = -0.5
-    exit
-}
-if obj_mario.x &lt; x
-    hspeed = -0.5
-else
-    hspeed = 0.5
+
+//Facing direction
+direct = -1
+
+//Start walking towards Mario
+alarm[10] = 2
+
+//Animate
+image_speed = 0.15
 </string>
           </argument>
         </arguments>
@@ -85,43 +63,30 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if direct = 1 and collision_rectangle(bbox_right+hspeed,bbox_top,bbox_right+hspeed,bbox_bottom-1,obj_bluebrick,0,0) and noturns = 0
-    event_user(14)
-if direct = -1 and collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left+hspeed,bbox_bottom-1,obj_bluebrick,0,0) and noturns = 0
-    event_user(14)
-if noturns = 0
+            <string>///Hurl bricks at Mario
+
+//If a brick is in the way
+if (hspeed &gt; 0 and collision_rectangle(bbox_right+hspeed*2,bbox_top,bbox_right+hspeed*2,bbox_bottom-1,obj_bluebrick,0,0))
+or (hspeed &lt; 0 and collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left+hspeed*2,bbox_bottom-1,obj_bluebrick,0,0))
 {
-    if hspeed &gt; 0
-        if collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_subconenemyparent,0,1)
-        or collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_deactenemyparent,0,1)
-            hspeed = -0.5
-    if hspeed &lt; 0
-        if collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_subconenemyparent,0,1)
-        or collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_deactenemyparent,0,1)
-            hspeed = 0.5
-    if hspeed &gt; 0
-    and collision_rectangle(bbox_right+hspeed,bbox_top,bbox_right+hspeed,bbox_bottom-1,obj_solid,0,0)
-        hspeed = -0.5
-    if hspeed &lt; 0
-    and collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left+hspeed,bbox_bottom-1,obj_solid,0,0)
-        hspeed = 0.5
+
+    //Stop walking
+    hspeed = 0
+
+    //Lift brick
+    with instance_create(x+16*direct-8,y,obj_busterpickup)
+    {
+        hspeed = -other.direct
+        parent = other.id
+    }
+
+    //Throw sprite
+    sprite_index = spr_busterbeetle_throw
+
 }
-if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
-or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0)
-{
-    gravity = 0
-    vspeed = 0
-}
-else
-    gravity = 0.25
-if vspeed &gt; 4
-    vspeed = 4
-if hspeed &gt; 0
-    direct = 1
-if hspeed &lt; 0
-    direct = -1
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
+
+//Default event
+event_inherited()
 </string>
           </argument>
         </arguments>
@@ -144,7 +109,8 @@ while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopepar
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-11 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-11 and vspeed &gt; 0
 {
     y = other.y-16
     vspeed = 0
@@ -172,62 +138,10 @@ while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopepar
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index = spr_busterbeetle
+            <string>///Continue walking
+sprite_index = spr_busterbeetle
 hspeed = direct/2
-noturns = 0</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="24">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>noturns = 1
-hspeed = 0
-mybrick = instance_create(x+16*direct-8,y,obj_busterpickup)
-if direct = 1
-    mybrick.hspeed = -1
-if direct = -1
-    mybrick.hspeed = 1
-mybrick.parent = id
-sprite_index = spr_busterbeetle_throw
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>instance_destroy()</string>
           </argument>
         </arguments>
       </action>
@@ -249,7 +163,9 @@ sprite_index = spr_busterbeetle_throw
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)</string>
+            <string>///Draw Buster Beetle
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
+</string>
           </argument>
         </arguments>
       </action>

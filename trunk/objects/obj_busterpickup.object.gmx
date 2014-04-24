@@ -25,10 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.5
+            <string>///Brick lifted by buster beetle
+
+//Animate
+image_speed = 0.5
+
+//Move up
 vspeed = -1
-killbricks = 0
-alarm[0] = 16</string>
+
+//Lift a brick
+with instance_place(x,y,obj_bluebrick)
+{
+    if object_index = obj_redbrick
+        other.sprite_index = spr_redbrick_th
+    instance_destroy()
+}
+
+//Finish lifting
+alarm[0] = 16
+</string>
           </argument>
         </arguments>
       </action>
@@ -50,22 +65,30 @@ alarm[0] = 16</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(parent)
+            <string>///Throw brick
+
+//Activate parent
+instance_activate_object(parent)
+
+//If the parent died, destroy
+if not instance_exists(parent)
 {
-    instance_activate_object(parent)
-    if not instance_exists(parent)
-    {
-        instance_create(x,y,obj_smoke)
-        instance_destroy()
-        exit
-    }
+    instance_create(x,y,obj_smoke)
+    instance_destroy()
 }
-if instance_exists(obj_mario)
+
+//Otherwise, if Mario is low enough to be hit
+else if instance_exists(obj_mario)
 and obj_mario.y &gt; y-48
 {
+
+    //Make brick
     myblock = instance_create(x,y,obj_thrownbrick)
     myblock.sprite_index = sprite_index
     myblock.vspeed = -3
+    myblock.harmmario = 1
+
+    //Choose speed and change parent's direction based on where Mario is
     if obj_mario.x &gt; x
     {
         myblock.hspeed = 3
@@ -76,10 +99,16 @@ and obj_mario.y &gt; y-48
         myblock.hspeed = -3
         parent.direct = -1
     }
-    myblock.harmmario = 1
+
+    //Make parent continue walking
     with parent event_user(15)
+
+    //Destroy
     instance_destroy()
+
 }
+
+//Otherwise, wait to throw
 else
     alarm[1] = 1
 </string>
@@ -104,36 +133,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>speed = 0
-alarm[1] = 5</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_bluebrick">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if killbricks = 0
-{
-    killbricks = 1
-    if other.object_index = obj_redbrick
-        sprite_index = spr_redbrick_th
-    with (other) instance_destroy()
-}
+            <string>///Finish lifting
+speed = 0
+alarm[1] = 5
 </string>
           </argument>
         </arguments>

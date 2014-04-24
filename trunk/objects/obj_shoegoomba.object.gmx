@@ -136,6 +136,9 @@ alarm[2] = 7
 //Jump
 vspeed = -7.5
 
+//Boost jump
+y--
+
 //Towards Mario
 if not instance_exists(obj_mario)
 or obj_mario.x &lt; x

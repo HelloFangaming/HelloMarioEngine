@@ -25,11 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
+            <string>///A plant in a pipe
+
+//How vulnerable is this enemy to various items?
+hardness = 99
+
+//How vulnerable is this enemy to Mario?
+stomp = -1
+
+//Animate
+image_speed = 0.15
+
+//Come out of the pipe
 alarm[1] = 100
+
+//Draw behind tiles
 depth = 10
-hardness = 0
-stomp = 1
 </string>
           </argument>
         </arguments>
@@ -52,8 +63,10 @@ stomp = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = -0.75
-alarm[0] = 46</string>
+            <string>///Go back inside pipe
+vspeed = -0.75
+alarm[0] = 43
+</string>
           </argument>
         </arguments>
       </action>
@@ -75,8 +88,10 @@ alarm[0] = 46</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 0
-alarm[3] = 100</string>
+            <string>///Finish moving out of pipe
+vspeed = 0
+alarm[3] = 100
+</string>
           </argument>
         </arguments>
       </action>
@@ -98,17 +113,25 @@ alarm[3] = 100</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-{
+            <string>///Come out of pipe
+
+//Wait if Mario does not exist, or is below the pipe
+if not instance_exists(obj_mario)
+or collision_rectangle(x-32,y,x+32,y+96,obj_mario,0,0)
     alarm[1] = 1
-    exit
-}
-if obj_mario.x &gt; x-32 and obj_mario.x &lt; x+32
-    alarm[1] = 1
+
+//Otherwise
 else
 {
+
+    //Come out of pipe
     vspeed = 0.75
-    alarm[2] = 46
+    alarm[2] = 43
+
+    //Become vulnerable
+    hardness = 0
+    stomp = 1
+
 }
 </string>
           </argument>
@@ -132,9 +155,15 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 0
+            <string>///Finish entering pipe
+vspeed = 0
 y = ystart
-alarm[1] = 100</string>
+alarm[1] = 100
+
+//Become invincible
+hardness = 99
+stomp = -1
+</string>
           </argument>
         </arguments>
       </action>
@@ -162,6 +191,33 @@ alarm[1] = 100</string>
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Make smoke
+instance_create(x-8,y+16,obj_smoke)
+
+//Destroy
+instance_destroy()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -179,7 +235,9 @@ alarm[1] = 100</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,x,round(y)+32,1,-1,0,c_white,1)</string>
+            <string>///Draw Upside Down Piranha Plant
+draw_sprite_ext(sprite_index,image_index,x,round(y)+32,1,-1,0,c_white,1)
+</string>
           </argument>
         </arguments>
       </action>

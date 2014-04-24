@@ -25,11 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
+            <string>///A fire spitting plant
+
+//How vulnerable is this enemy to various items?
+hardness = 99
+
+//How vulnerable is this enemy to Mario?
+stomp = -1
+
+//Facing direction (Angle)
+direct = 135
+
+//Do not animate
+image_speed = 0
+
+//Come out of the pipe
 alarm[1] = 140
+
+//Draw behind tiles
 depth = 10
-hardness = 0
-stomp = 1
 </string>
           </argument>
         </arguments>
@@ -52,21 +66,8 @@ stomp = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>varid = instance_create(x,y+15,obj_plantfire)
-if image_index = 0
-or image_index = 1
-or image_index = 2
-or image_index = 3
-    varid.hspeed = -0.5
-else
-    varid.hspeed = 0.5
-if image_index = 0
-or image_index = 1
-or image_index = 6
-or image_index = 7
-    varid.vspeed = 0.5
-else
-    varid.vspeed = -0.5
+            <string>///Spit more fire
+with instance_create(x,y+17,obj_plantfire) direction = other.direct
 </string>
           </argument>
         </arguments>
@@ -89,21 +90,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>varid = instance_create(x,y+15,obj_plantfire)
-if image_index = 0
-or image_index = 1
-or image_index = 2
-or image_index = 3
-    varid.hspeed = -0.5
-else
-    varid.hspeed = 0.5
-if image_index = 0
-or image_index = 1
-or image_index = 6
-or image_index = 7
-    varid.vspeed = 0.5
-else
-    varid.vspeed = -0.5
+            <string>///Spit fire
+with instance_create(x,y+17,obj_plantfire) direction = other.direct
 alarm[5] = 60
 </string>
           </argument>
@@ -127,8 +115,9 @@ alarm[5] = 60
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = -0.75
-alarm[0] = 46
+            <string>///Go back inside pipe
+vspeed = -0.75
+alarm[0] = 43
 </string>
           </argument>
         </arguments>
@@ -151,9 +140,11 @@ alarm[0] = 46
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 0
+            <string>///Finish moving out of pipe
+vspeed = 0
 alarm[3] = 130
-alarm[4] = 60</string>
+alarm[4] = 60
+</string>
           </argument>
         </arguments>
       </action>
@@ -175,17 +166,25 @@ alarm[4] = 60</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-{
+            <string>///Come out of pipe
+
+//Wait if Mario does not exist, or is below the pipe
+if not instance_exists(obj_mario)
+or collision_rectangle(x-32,y,x+32,y+96,obj_mario,0,0)
     alarm[1] = 1
-    exit
-}
-if obj_mario.x &gt; x-32 and obj_mario.x &lt; x+32
-    alarm[1] = 1
+
+//Otherwise
 else
 {
+
+    //Come out of pipe
     vspeed = 0.75
-    alarm[2] = 46
+    alarm[2] = 43
+
+    //Become vulnerable
+    hardness = 0
+    stomp = 1
+
 }
 </string>
           </argument>
@@ -209,9 +208,15 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 0
+            <string>///Finish entering pipe
+vspeed = 0
 y = ystart
-alarm[1] = 140</string>
+alarm[1] = 140
+
+//Become invincible
+hardness = 99
+stomp = -1
+</string>
           </argument>
         </arguments>
       </action>
@@ -233,45 +238,65 @@ alarm[1] = 140</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-{
-    image_index = 1
-    exit
-}
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_plantfire,0,0)
+            <string>///Look at Mario
+if instance_exists(obj_mario)
 {
     if obj_mario.x &gt; x
     {
         if obj_mario.y &gt; y
-            image_index = 7
-        if obj_mario.y &lt; y
-            image_index = 5
+            direct = 315
+        else
+            direct = 45
     }
-    if obj_mario.x &lt; x
+    else
     {
         if obj_mario.y &gt; y
-            image_index = 0
-        if obj_mario.y &lt; y
-            image_index = 2
+            direct = 225
+        else
+            direct = 135
     }
 }
-else
-{
-    if obj_mario.x &gt; x
-    {
-        if obj_mario.y &gt; y
-            image_index = 6
-        if obj_mario.y &lt; y
-            image_index = 4
-    }
-    if obj_mario.x &lt; x
-    {
-        if obj_mario.y &gt; y
-            image_index = 1
-        if obj_mario.y &lt; y
-            image_index = 3
-    }
-}
+
+//Select appropriate image index
+if direct = 45
+    image_index = 6
+else if direct = 135
+    image_index = 4
+else if direct = 225
+    image_index = 2
+else if direct = 315
+    image_index = 0
+
+//Open mouth if there is fire in it
+if place_meeting(x,y,obj_plantfire)
+    image_index++
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Make smoke
+instance_create(x-8,y+16,obj_smoke)
+
+//Destroy
+instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -294,7 +319,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,x,round(y)+32,1,-1,0,c_white,1)</string>
+            <string>///Draw Upside Down Fire Piranha Plant
+draw_sprite_ext(sprite_index,image_index,x,round(y)+32,1,-1,0,c_white,1)
+</string>
           </argument>
         </arguments>
       </action>
