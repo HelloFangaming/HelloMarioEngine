@@ -5,159 +5,9 @@
   <visible>-1</visible>
   <depth>-1</depth>
   <persistent>0</persistent>
-  <parentName>obj_deactenemyparent</parentName>
+  <parentName>obj_firepiranha_down</parentName>
   <maskName>spr_enemymasktall</maskName>
   <events>
-    <event eventtype="0" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>image_speed = 0
-alarm[1] = 140
-depth = 10
-hardness = 0
-stomp = 1
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="5">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>varid = instance_create(x,y+15,obj_plantfire)
-if image_index = 0
-or image_index = 1
-or image_index = 2
-or image_index = 3
-    varid.hspeed = -0.5
-else
-    varid.hspeed = 0.5
-if image_index = 0
-or image_index = 1
-or image_index = 6
-or image_index = 7
-    varid.vspeed = 0.5
-else
-    varid.vspeed = -0.5
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>varid = instance_create(x,y+15,obj_plantfire)
-if image_index = 0
-or image_index = 1
-or image_index = 2
-or image_index = 3
-    varid.hspeed = -0.5
-else
-    varid.hspeed = 0.5
-if image_index = 0
-or image_index = 1
-or image_index = 6
-or image_index = 7
-    varid.vspeed = 0.5
-else
-    varid.vspeed = -0.5
-alarm[5] = 60
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="3">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>vspeed = -0.75
-alarm[0] = 46
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>vspeed = 0
-alarm[3] = 130
-alarm[4] = 60</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
@@ -175,116 +25,26 @@ alarm[4] = 60</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 0.75
-alarm[2] = 46
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>vspeed = 0
-y = ystart
-alarm[1] = 140</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-{
-    image_index = 1
-    exit
-}
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_plantfire,0,0)
-{
-    if obj_mario.x &gt; x
-    {
-        if obj_mario.y &gt; y
-            image_index = 7
-        if obj_mario.y &lt; y
-            image_index = 5
-    }
-    if obj_mario.x &lt; x
-    {
-        if obj_mario.y &gt; y
-            image_index = 0
-        if obj_mario.y &lt; y
-            image_index = 2
-    }
-}
+            <string>///Come out of pipe
+
+//Wait if Mario does not exist
+if not instance_exists(obj_mario)
+    alarm[1] = 1
+
+//Otherwise
 else
 {
-    if obj_mario.x &gt; x
-    {
-        if obj_mario.y &gt; y
-            image_index = 6
-        if obj_mario.y &lt; y
-            image_index = 4
-    }
-    if obj_mario.x &lt; x
-    {
-        if obj_mario.y &gt; y
-            image_index = 1
-        if obj_mario.y &lt; y
-            image_index = 3
-    }
+
+    //Come out of pipe
+    vspeed = 0.75
+    alarm[2] = 43
+
+    //Become vulnerable
+    hardness = 0
+    stomp = 1
+
 }
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,x,round(y)+32,1,-1,0,c_white,1)</string>
           </argument>
         </arguments>
       </action>

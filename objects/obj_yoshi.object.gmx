@@ -53,6 +53,14 @@ if global.carrieditem != noone
         global.carriedsprite = noone
     }
 }
+if global.ycolor = 0
+    sprite_index = spr_yoshi_walk
+else if global.ycolor = 1
+    sprite_index = spr_yoshi_walk_r
+else if global.ycolor = 2
+    sprite_index = spr_yoshi_walk_y
+else if global.ycolor = 3
+    sprite_index = spr_yoshi_walk_b
 </string>
           </argument>
         </arguments>

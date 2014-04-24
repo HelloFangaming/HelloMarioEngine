@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>self</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,7 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
+            <string>///Fire spit from a piranha plant
+
+//Animate
+image_speed = 0.15
+
+//Move
+speed = 1
 </string>
           </argument>
         </arguments>
@@ -48,10 +54,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if x &lt; view_xview[0]-16
-or x &gt; view_xview[0]+336
-or y &gt; view_yview[0]+256 
-or y &lt; view_yview[0]-16
+            <string>///Destroy outside view
+if outside_view()
     instance_destroy()
 </string>
           </argument>
@@ -75,8 +79,8 @@ or y &lt; view_yview[0]-16
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.invincible = 0
-    with other event_user(0)
+            <string>///Hurt Mario
+with other event_user(0)
 instance_destroy()
 </string>
           </argument>

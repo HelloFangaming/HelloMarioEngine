@@ -25,11 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
+            <string>///A plant in a pipe
+
+//How vulnerable is this enemy to various items?
+hardness = 99
+
+//How vulnerable is this enemy to Mario?
+stomp = -1
+
+//Animate
+image_speed = 0.15
+
+//Come out of the pipe
 alarm[1] = 100
+
+//Draw behind tiles
 depth = 10
-hardness = 0
-stomp = 1
 </string>
           </argument>
         </arguments>
@@ -52,8 +63,10 @@ stomp = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed = -0.75
-alarm[0] = 46</string>
+            <string>///Go back inside pipe
+hspeed = -0.75
+alarm[0] = 43
+</string>
           </argument>
         </arguments>
       </action>
@@ -75,8 +88,10 @@ alarm[0] = 46</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed = 0
-alarm[3] = 100</string>
+            <string>///Finish moving out of pipe
+hspeed = 0
+alarm[3] = 100
+</string>
           </argument>
         </arguments>
       </action>
@@ -98,17 +113,25 @@ alarm[3] = 100</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-{
+            <string>///Come out of pipe
+
+//Wait if Mario does not exist, or is to the right of the pipe
+if not instance_exists(obj_mario)
+or collision_rectangle(x,y-32,x+96,y+32,obj_mario,0,0)
     alarm[1] = 1
-    exit
-}
-if obj_mario.x &gt; x-16 and obj_mario.x &lt; x+80
-    alarm[1] = 1
+
+//Otherwise
 else
 {
+
+    //Come out of pipe
     hspeed = 0.75
-    alarm[2] = 46
+    alarm[2] = 43
+
+    //Become vulnerable
+    hardness = 0
+    stomp = 1
+
 }
 </string>
           </argument>
@@ -132,9 +155,15 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed = 0
+            <string>///Finish entering pipe
+hspeed = 0
 x = xstart
-alarm[1] = 100</string>
+alarm[1] = 100
+
+//Become invincible
+hardness = 99
+stomp = -1
+</string>
           </argument>
         </arguments>
       </action>
@@ -157,6 +186,33 @@ alarm[1] = 100</string>
           <argument>
             <kind>1</kind>
             <string>///Do NOT inherit default step event
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Make smoke
+instance_create(x+16,y-8,obj_smoke)
+
+//Destroy
+instance_destroy()
 </string>
           </argument>
         </arguments>

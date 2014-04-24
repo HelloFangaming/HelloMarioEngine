@@ -25,11 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
-y -= 1
-myball = instance_create(x-8,y-16,obj_plantball)
+            <string>///A plant that likes balls
+
+//How vulnerable is this enemy to various items?
 hardness = 0
+
+//How vulnerable is this enemy to Mario?
 stomp = 1
+
+//Do not animate
+image_speed = 0
+
+//Make plant ball
+myball = instance_create(x-8,y-16,obj_plantball)
+
+//Let the ball know who owns is
+myball.parent = id
 </string>
           </argument>
         </arguments>
@@ -52,7 +63,13 @@ stomp = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with myball instance_destroy()</string>
+            <string>///Destroy ball
+with myball
+{
+    instance_create(x,y,obj_smoke)
+    instance_destroy()
+}
+</string>
           </argument>
         </arguments>
       </action>
@@ -74,7 +91,63 @@ stomp = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_activate_object(myball)</string>
+            <string>///Activate ball
+instance_activate_object(myball)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="25">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Blow and suck
+if image_index = 0
+    image_index = 1
+else
+    image_index = 0
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Make smoke
+instance_create(x-8,y,obj_smoke)
+
+//Destroy
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
