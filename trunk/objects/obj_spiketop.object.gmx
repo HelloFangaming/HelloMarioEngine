@@ -25,13 +25,28 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
-alarm[10] = 2
-ready = 0
-direct = 0
-dir = 0
+            <string>///Walks around solid surfaces
+
+//How vulnerable is this enemy to various items?
 hardness = 1
+
+//How vulnerable is this enemy to Mario?
 stomp = 1
+
+//Facing direction
+direct = -1
+
+//Start walking towards Mario
+alarm[10] = 2
+
+//Animate
+image_speed = 0.15
+
+//Changing surface state
+ready = 0
+
+//Surface being walked on
+dir = 0
 </string>
           </argument>
         </arguments>
@@ -54,31 +69,30 @@ stomp = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_mario)
-{
-    if obj_mario.x &lt; x
-        direct = -1
-    else
-        direct = 1
-}
-else
+            <string>///Detect Mario, and walk towards him
+if not instance_exists(obj_mario)
+or obj_mario.x &lt; x
     direct = -1
-if collision_point(x,y+20,obj_solidtop,0,0)
+else
+    direct = 1
+
+//Select a surface to walk on
+if position_meeting(x,y+20,obj_solidtop)
 {
     hspeed = 0.5*direct
     dir = 0
 }
-if collision_point(x,y-1,obj_solid,0,0)
+else if position_meeting(x,y-1,obj_solid)
 {
     hspeed = -0.5*direct
     dir = 2
 }
-if collision_point(x-9,y+8,obj_solid,0,0)
+else if position_meeting(x-9,y+8,obj_solid)
 {
     vspeed = 0.5*direct
     dir = 3
 }
-if collision_point(x+8,y+8,obj_solid,0,0)
+else if position_meeting(x+8,y+8,obj_solid)
 {
     vspeed = -0.5*direct
     dir = 1
@@ -105,7 +119,9 @@ if collision_point(x+8,y+8,obj_solid,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 0</string>
+            <string>///Reset state
+ready = 0
+</string>
           </argument>
         </arguments>
       </action>
@@ -127,63 +143,35 @@ if collision_point(x+8,y+8,obj_solid,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index = spr_spiketop
+            <string>///Change direction
+
+//Change sprite back to normal
+sprite_index = spr_spiketop
+
+//Figure out the appropriate direction to walk in
+if direction = 90
+{
+    hspeed = 0.5*direct
+    dir = 0
+}
+else if direction = 0
+{
+    vspeed = 0.5*direct
+    dir = 3
+}
+else if direction = 270
+{
+    hspeed = -0.5*direct
+    dir = 2
+}
+else if direction = 180
+{
+    vspeed = -0.5*direct
+    dir = 1
+}
+
+//Reset state
 alarm[1] = 7
-speed = 0.5
-if direct = 1
-{
-    if direction = 90
-    {
-        hspeed = 0.5
-        vspeed = 0
-        dir = 0
-    }
-    else if direction = 0
-    {
-        hspeed = 0
-        vspeed = 0.5
-        dir = 3
-    }
-    else if direction = 270
-    {
-        hspeed = -0.5
-        vspeed = 0
-        dir = 2
-    }
-    else if direction = 180
-    {
-        hspeed = 0
-        vspeed = -0.5
-        dir = 1
-    }
-}
-else
-{
-    if direction = 90
-    {
-        hspeed = -0.5
-        vspeed = 0
-        dir = 0
-    }
-    else if direction = 0
-    {
-        hspeed = 0
-        vspeed = -0.5
-        dir = 3
-    }
-    else if direction = 270
-    {
-        hspeed = 0.5
-        vspeed = 0
-        dir = 2
-    }
-    else if direction = 180
-    {
-        hspeed = 0
-        vspeed = 0.5
-        dir = 1
-    }
-}
 </string>
           </argument>
         </arguments>
@@ -206,67 +194,55 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hspeed &gt; 0
-    if collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_subconenemyparent,0,1)
-    or collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_deactenemyparent,0,1)
-    {
-        hspeed = -0.5
-        direct = -direct
-    }
-if hspeed &lt; 0
-    if collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_subconenemyparent,0,1)
-    or collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_deactenemyparent,0,1)
-    {
-        hspeed = 0.5
-        direct = -direct
-    }
-if vspeed &gt; 0
-    if collision_rectangle(bbox_left,bbox_bottom+vspeed,bbox_right,bbox_bottom+vspeed,obj_subconenemyparent,0,1)
-    or collision_rectangle(bbox_left,bbox_bottom+vspeed,bbox_right,bbox_bottom+vspeed,obj_deactenemyparent,0,1)
-    {
-        vspeed = -0.5
-        direct = -direct
-    }
-if vspeed &lt; 0
-    if collision_rectangle(bbox_left,bbox_top+vspeed,bbox_right,bbox_top+vspeed,obj_subconenemyparent,0,1)
-    or collision_rectangle(bbox_left,bbox_top+vspeed,bbox_right,bbox_top+vspeed,obj_deactenemyparent,0,1)
-    {
-        vspeed = 0.5
-        direct = -direct
-    }
-if hspeed &gt; 0
-and collision_rectangle(bbox_right+hspeed,bbox_top,bbox_right+hspeed,bbox_bottom,obj_solid,0,0)
+            <string>///Spiketop logic
+
+//Turn at enemies
+if (hspeed &gt; 0 and collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_enemyparent,0,1))
+or (hspeed &lt; 0 and collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_enemyparent,0,1))
 {
-    hspeed = -0.5
+    hspeed = -hspeed
     direct = -direct
 }
-if hspeed &lt; 0
-and collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left+hspeed,bbox_bottom,obj_solid,0,0)
+if (vspeed &gt; 0 and collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+vspeed*2,obj_enemyparent,0,1))
+or (vspeed &lt; 0 and collision_rectangle(bbox_left,bbox_top+vspeed*2,bbox_right,bbox_top,obj_enemyparent,0,1))
 {
-    hspeed = 0.5
+    vspeed = -vspeed
     direct = -direct
 }
-if vspeed &gt; 0
-and collision_rectangle(bbox_left,bbox_bottom+vspeed,bbox_right,bbox_bottom+vspeed,obj_solid,0,0)
+
+//Turn at walls
+if (hspeed &gt; 0 and collision_rectangle(bbox_right+hspeed,bbox_top,bbox_right+hspeed,bbox_bottom,obj_solid,0,0))
+or (hspeed &lt; 0 and collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left+hspeed,bbox_bottom,obj_solid,0,0))
+{
+    hspeed = -hspeed
+    direct = -direct
+}
+if (vspeed &gt; 0 and collision_rectangle(bbox_left,bbox_bottom+vspeed,bbox_right,bbox_bottom+vspeed,obj_solidtop,0,0))
+or (vspeed &lt; 0 and collision_rectangle(bbox_left,bbox_top+vspeed,bbox_right,bbox_top+vspeed,obj_solid,0,0))
 {
     vspeed = -0.5
     direct = -direct
 }
-if vspeed &lt; 0
-and collision_rectangle(bbox_left,bbox_top+vspeed,bbox_right,bbox_top+vspeed,obj_solid,0,0)
-{
-    vspeed = 0.5
-    direct = -direct
-}
+
+//If the enemy is not turning, and is not on a surface
 if ready = 0
-    if not collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
-    and not collision_rectangle(bbox_left-1,bbox_top,bbox_right+1,bbox_bottom,obj_solid,0,0)
-    {
-        ready = 1
-        speed = 0
-        sprite_index = spr_spiketop_turn
-        alarm[0] = 7
-    }
+and not collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
+and not collision_rectangle(bbox_left-1,bbox_top,bbox_right+1,bbox_bottom,obj_solid,0,0)
+{
+
+    //Turn state
+    ready = 1
+
+    //Stop moving
+    speed = 0
+
+    //Change sprite
+    sprite_index = spr_spiketop_turn
+
+    //Change direction later
+    alarm[0] = 7
+
+}
 </string>
           </argument>
         </arguments>
@@ -289,7 +265,9 @@ if ready = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy()</string>
+            <string>///Destroy
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
@@ -311,13 +289,14 @@ if ready = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if dir = 0
+            <string>///Draw Spiketop
+if dir = 0
     draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
-if dir = 1
+else if dir = 1
     draw_sprite_ext(sprite_index,image_index,round(x)-8,round(y)+8,direct,1,90,c_white,1)
-if dir = 2
+else if dir = 2
     draw_sprite_ext(sprite_index,image_index,round(x),round(y)+15,direct,1,180,c_white,1)
-if dir = 3
+else if dir = 3
     draw_sprite_ext(sprite_index,image_index,round(x)+7,round(y)+8,direct,1,270,c_white,1)
 </string>
           </argument>

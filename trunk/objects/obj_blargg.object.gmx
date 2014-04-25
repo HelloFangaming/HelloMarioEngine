@@ -25,9 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>y += 20
+            <string>///A lava monster! Blargg!
+
+//Move into lava
+y += 20
+
+//Do not animate
 image_speed = 0
-alarm[0] = 60</string>
+
+//Peek
+alarm[0] = 60
+</string>
           </argument>
         </arguments>
       </action>
@@ -49,7 +57,8 @@ alarm[0] = 60</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x+8,y,obj_blargg_jump)
+            <string>///Jump out at full force
+instance_create(x+8,y,obj_blargg_jump)
 audio_play_sound(snd_blargg,0,0)
 alarm[0] = 200
 </string>
@@ -74,9 +83,11 @@ alarm[0] = 200
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>y = ystart+20
+            <string>///Finish going back into lava
+y = ystart+20
 vspeed = 0
-alarm[4] = 30</string>
+alarm[4] = 30
+</string>
           </argument>
         </arguments>
       </action>
@@ -98,9 +109,11 @@ alarm[4] = 30</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 1
+            <string>///Move back into lava
+vspeed = 1
 alarm[3] = 16
-image_speed = 0</string>
+image_speed = 0
+</string>
           </argument>
         </arguments>
       </action>
@@ -122,10 +135,12 @@ image_speed = 0</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 0
+            <string>///Finish peeking
+vspeed = 0
 y = ystart+4
 image_speed = 0.05
-alarm[2] = 30</string>
+alarm[2] = 30
+</string>
           </argument>
         </arguments>
       </action>
@@ -147,8 +162,10 @@ alarm[2] = 30</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = -1
-alarm[1] = 16</string>
+            <string>///Peek out
+vspeed = -1
+alarm[1] = 16
+</string>
           </argument>
         </arguments>
       </action>
