@@ -25,7 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited()
+            <string>///Spikey fish
+
+//Everything is the same as a regular cheep cheep
+event_inherited()
+
+//Excpet that this one is spikey
 stomp = 1
 </string>
           </argument>
