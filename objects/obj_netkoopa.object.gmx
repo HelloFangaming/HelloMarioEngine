@@ -186,7 +186,7 @@ and not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_climb,
             <kind>1</kind>
             <string>if depth = 10
 {
-    if other.kk = 1
+    if other.netsmack = 1
     {
         scr_musicalscale(other.id,1)
         event_user(0)

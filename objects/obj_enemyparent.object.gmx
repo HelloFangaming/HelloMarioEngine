@@ -112,10 +112,8 @@ event_user(3)
 event_user(4)
 
 //Update facing direction
-if hspeed &gt; 0
-    direct = 1
-else if hspeed &lt; 0
-    direct = -1
+if hspeed != 0
+    direct = sign(hspeed)
 </string>
           </argument>
         </arguments>

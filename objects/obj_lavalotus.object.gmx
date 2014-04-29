@@ -25,10 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
-ready = 14
+            <string>///Lotus that spits out fire
+
+//How vulnerable is this enemy to various items?
 hardness = 1
+
+//How vulnerable is this enemy to Mario?
 stomp = 2
+
+//Animate
+image_speed = 0.15
+
+//Animation cycles before spitting out fire
+ready = 14
 </string>
           </argument>
         </arguments>
@@ -51,9 +60,11 @@ stomp = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index = spr_lavalotus
+            <string>///Reset state
+sprite_index = spr_lavalotus
 ready = 14
-image_speed = 0.15</string>
+image_speed = 0.15
+</string>
           </argument>
         </arguments>
       </action>
@@ -98,21 +109,29 @@ image_speed = 0.15</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready &gt; 0
-    ready -= 1
+            <string>///Count animation cycles
+
+//Decrement if above zero
+if ready &gt; 0
+    ready--
+
+//Otherwise
 else
 {
+
+    //Spit animation
     sprite_index = spr_lavalotus_spit
     image_speed = 0
-    varid = instance_create(x+12,y,obj_lavalotusball)
-    with varid motion_set(135,1.5)
-    varid = instance_create(x+12,y,obj_lavalotusball)
-    with varid motion_set(45,1.5)
-    varid = instance_create(x+12,y,obj_lavalotusball)
-    with varid motion_set(120,1.5)
-    varid = instance_create(x+12,y,obj_lavalotusball)
-    with varid motion_set(60,1.5)
+
+    //Spit lotus balls
+    with instance_create(x+12,y,obj_lavalotusball) direction =  135
+    with instance_create(x+12,y,obj_lavalotusball) direction =  45
+    with instance_create(x+12,y,obj_lavalotusball) direction =  120
+    with instance_create(x+12,y,obj_lavalotusball) direction =  60
+
+    //Reset state later
     alarm[0] = 30
+
 }
 </string>
           </argument>

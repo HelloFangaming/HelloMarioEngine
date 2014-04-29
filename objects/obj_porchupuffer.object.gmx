@@ -25,13 +25,26 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.3
-alarm[0] = 10
-direct = 0
+            <string>///A puffy prickly fish
+
+//How vulnerable is this enemy to various items?
+hardness = 1
+
+//How vulnerable is this enemy to Mario?
+stomp = 2
+
+//Facing direction
+direct = -1
+
+//Animate
+image_speed = 0.3
+
+//Offset values
 offset = 0
 offsetnext = 0
-hardness = 1
-stomp = 2
+
+//Manage offset values
+alarm[0] = 10
 </string>
           </argument>
         </arguments>
@@ -54,25 +67,27 @@ stomp = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if offsetnext = 0
-    offset = 1
-if offsetnext = 1
-    offset = 0
-if offsetnext = 2
-    offset = -1
-if offsetnext = 3
-    offset = -2
-if offsetnext = 4
-    offset = -1
-if offsetnext = 5
-    offset = 0
-if offsetnext = 6
-    offset = 1
-if offsetnext = 7
-    offset = 2
-offsetnext += 1
+            <string>///Manage offset values
+switch offsetnext
+{
+    case 0: offset = 1 break
+    case 1: offset = 0 break
+    case 2: offset = -1 break
+    case 3: offset = -2 break
+    case 4: offset = -1 break
+    case 5: offset = 0 break
+    case 6: offset = 1 break
+    case 7: offset = 2 break
+}
+
+//Increment next offset
+offsetnext++
+
+//Cap offset value
 if offsetnext = 8
     offsetnext = 0
+
+//Keep changing offset values
 alarm[0] = 10
 </string>
           </argument>
@@ -96,22 +111,22 @@ alarm[0] = 10
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hspeed &gt; 0
-    if collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_subconenemyparent,0,1)
-    or collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_deactenemyparent,0,1)
-        hspeed = -1.5
-if hspeed &lt; 0
-    if collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_subconenemyparent,0,1)
-    or collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_deactenemyparent,0,1)
-        hspeed = 1.5
-if hspeed &gt; 0
-and collision_rectangle(bbox_right+hspeed,bbox_top,bbox_right+hspeed,bbox_bottom-1,obj_solid,0,0)
-    hspeed = -1.5
-if hspeed &lt; 0
-and collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left+hspeed,bbox_bottom-1,obj_solid,0,0)
-    hspeed = 1.5
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
+            <string>///Porchu puffer chasing
+
+//Previous hspeed
+prevhspeed = hspeed
+
+//Turn at enemies
+event_user(2)
+
+//Wall collisions
+event_user(3)
+
+//If the direction changed, speed up
+if hspeed != prevhspeed
+    hspeed = sign(hspeed)*1.5
+
+//Chase Mario
 if instance_exists(obj_mario)
 {
     if obj_mario.x &gt; x
@@ -125,6 +140,10 @@ if instance_exists(obj_mario)
         direct = -1
     }
 }
+else if hspeed != 0
+    direct = sign(hspeed)
+
+//Cap horizontal speed
 if hspeed &gt; 1.5
     hspeed = 1.5
 if hspeed &lt; -1.5
@@ -151,7 +170,9 @@ if hspeed &lt; -1.5
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy()</string>
+            <string>///Destroy
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
@@ -173,7 +194,9 @@ if hspeed &lt; -1.5
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),y+offset,direct,1,0,c_white,1)</string>
+            <string>///Draw Porchu Puffer
+draw_sprite_ext(sprite_index,image_index,round(x),y+offset,direct,1,0,c_white,1)
+</string>
           </argument>
         </arguments>
       </action>

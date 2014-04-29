@@ -56,8 +56,8 @@ isduck = 0
 //0: Normal, 1: Invincible, -1: Phase through
 invincible = 0
 
-//Is Mario hitting a net?
-kk = 0
+//Is Mario smacking a net?
+netsmack = 0
 
 //Is Mario kicking something?
 iamkicking = 0
@@ -359,8 +359,8 @@ alarm[5] = 8
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///End Mario's net kick
-kk = 0
+            <string>///End Mario's net smack
+netsmack = 0
 </string>
           </argument>
         </arguments>
@@ -1353,11 +1353,10 @@ if not place_meeting(x,y,obj_climb)
 //Smack the net to kill Net Koopas
 if keyboard_check_pressed(vk_control)
 and place_meeting(x,y,obj_climb_net)
-and kk = 0
 {
 
     //The kill variable that Net Koopas check for
-    kk = 1
+    netsmack = 1
 
     //Disable the kill variable after a short time
     alarm[4] = 2
