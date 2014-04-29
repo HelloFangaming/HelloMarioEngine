@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x,y,obj_torpedoglove)</string>
+            <string>///Torpedo launcher
+
+//The glove does everything...
+instance_create(x,y,obj_torpedoglove)
+</string>
           </argument>
         </arguments>
       </action>

@@ -25,9 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
-ready = 0
-alarm[0] = 20</string>
+            <string>///The true torpedo launcher
+
+//Do not animate
+image_speed = 0
+
+//Prepare torpedo
+alarm[0] = 20
+</string>
           </argument>
         </arguments>
       </action>
@@ -49,10 +54,14 @@ alarm[0] = 20</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 0
+            <string>///Reset glove
+vspeed = 0
 y = ystart
 image_index = 0
-alarm[0] = 150</string>
+
+//Prepare for another launch
+alarm[0] = 150
+</string>
           </argument>
         </arguments>
       </action>
@@ -74,8 +83,10 @@ alarm[0] = 150</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = -1
-alarm[4] = 32</string>
+            <string>///Retract glove
+vspeed = -1
+alarm[4] = 32
+</string>
           </argument>
         </arguments>
       </action>
@@ -97,12 +108,22 @@ alarm[4] = 32</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 1
-instance_activate_object(mytorpedo)
-mytorpedo.alarm[0] = 4
-mytorpedo.image_speed = 0.15
-with mytorpedo hspeed = direct
-alarm[3] = 10</string>
+            <string>///Launch torpedo
+
+//Open glove
+image_index = 1
+
+//Make the torpedo launch
+with mytorpedo
+{
+    hspeed = direct
+    image_speed = 0.15
+    alarm[0] = 4
+}
+
+//Retract glove
+alarm[3] = 10
+</string>
           </argument>
         </arguments>
       </action>
@@ -124,12 +145,22 @@ alarm[3] = 10</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 0
-instance_activate_object(mytorpedo)
-mytorpedo.vspeed = 0
-with mytorpedo y = ystart+32
+            <string>///Stop moving down
+vspeed = 0
+
+//Make sure glove is in the correct position
 y = ystart+32
-alarm[2] = 10</string>
+
+//Make sure the torpedo is stopped in the correct position
+with mytorpedo
+{
+    vspeed = 0
+    y = ystart+32
+}
+
+//Prepare for launch
+alarm[2] = 10
+</string>
           </argument>
         </arguments>
       </action>
@@ -151,19 +182,26 @@ alarm[2] = 10</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 1
-alarm[1] = 32
+            <string>///Prepare torpedo
+
+//Make torpedo
 mytorpedo = instance_create(x+16,y+16,obj_torpedoted)
-if instance_exists(obj_mario)
-{
-    if obj_mario.x &gt; x
-        mytorpedo.direct = 1
-    else
-        mytorpedo.direct = -1
-}
-else
+
+//Make it face Mario
+if not instance_exists(obj_mario)
+or obj_mario.x &lt; x
     mytorpedo.direct = -1
+else
+    mytorpedo.direct = 1
+
+//Make it move down
 mytorpedo.vspeed = 1
+
+//Move down
+vspeed = 1
+
+//Stop moving later
+alarm[1] = 32
 </string>
           </argument>
         </arguments>
