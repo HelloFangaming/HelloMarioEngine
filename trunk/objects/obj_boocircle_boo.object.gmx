@@ -25,12 +25,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
-image_index = 1
-trig = 0
-direct = 1
+            <string>///A ghost that wanders in circles
+
+//How vulnerable is this enemy to various items?
 hardness = 1
+
+//How vulnerable is this enemy to Mario?
 stomp = 2
+
+//Facing direction
+direct = -1
+
+//Do not animate
+image_speed = 0
+image_index = 1
+
+//Circle math value
+trig = 0
 </string>
           </argument>
         </arguments>
@@ -53,12 +64,17 @@ stomp = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>trig += 0.02*ready
+            <string>///Circle trigonometry
+
+//Trigonometry
+trig += 0.02*ready
 x = xstart+cos(trig)*72
 y = ystart+sin(trig)*72
+
+//Face Mario
 if instance_exists(obj_mario)
 {
-    if obj_mario.x &gt; x
+    if obj_mario.x &gt; x+8
         direct = 1
     else
         direct = -1
@@ -85,10 +101,8 @@ if instance_exists(obj_mario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if direct = 1
-    draw_sprite_ext(sprite_index,1,round(x),y,1,1,0,c_white,1)
-if direct = -1
-    draw_sprite_ext(sprite_index,1,round(x)+16,y,-1,1,0,c_white,1)
+            <string>///Draw Boo
+draw_sprite_ext(sprite_index,1,round(x)+8-8*direct,y,direct,1,0,c_white,1)
 </string>
           </argument>
         </arguments>

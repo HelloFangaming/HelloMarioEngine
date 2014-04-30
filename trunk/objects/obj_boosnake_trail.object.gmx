@@ -25,9 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 28
+            <string>///Boo trail
+
+//Do not animate
 image_speed = 0
 image_index = 1
+
+//Destroy
+alarm[0] = 28
 </string>
           </argument>
         </arguments>
@@ -50,7 +55,8 @@ image_index = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy()
+            <string>///Destroy
+instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -73,7 +79,8 @@ image_index = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with other event_user(0)
+            <string>///Hurt Mario
+with other event_user(0)
 </string>
           </argument>
         </arguments>
@@ -96,10 +103,8 @@ image_index = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if direct = 1
-    draw_sprite_ext(sprite_index,image_index,round(x),y,1,1,0,c_white,0.6)
-else
-    draw_sprite_ext(sprite_index,image_index,round(x)+16,y,-1,1,0,c_white,0.6)
+            <string>///Draw Boo Trail
+draw_sprite_ext(sprite_index,image_index,round(x)+8-8*direct,y,direct,1,0,c_white,0.6)
 </string>
           </argument>
         </arguments>

@@ -25,44 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.25
-alarm[10] = 2
-image_speed = 0.15
-direct = 0
+            <string>///Weird stretchy ghosts
+
+//How vulnerable is this enemy to various items?
 hardness = 1
+
+//How vulnerable is this enemy to Mario?
 stomp = 2
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-{
-    hspeed = -0.5
-    exit
-}
-if obj_mario.x &lt; x
-    hspeed = -0.5
-else
-    hspeed = 0.5
-alarm[0] = 100
+
+//Facing direction
+direct = -1
+
+//Start walking towards Mario
+alarm[10] = 2
+
+//Animate
+image_speed = 0.15
 </string>
           </argument>
         </arguments>
@@ -85,40 +63,15 @@ alarm[0] = 100
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hspeed &gt; 0
-    if collision_rectangle(bbox_right+hspeed,y-11,bbox_right+hspeed,y-1,obj_subconenemyparent,0,1)
-    or collision_rectangle(bbox_right+hspeed,y-11,bbox_right+hspeed,y-1,obj_deactenemyparent,0,1)
-        hspeed = -0.5
-if hspeed &lt; 0
-    if collision_rectangle(bbox_left+hspeed,y-11,bbox_left+hspeed,y-1,obj_subconenemyparent,0,1)
-    or collision_rectangle(bbox_left+hspeed,y-11,bbox_left+hspeed,y-1,obj_deactenemyparent,0,1)
-        hspeed = 0.5
-if hspeed &gt; 0
-and collision_rectangle(bbox_right+hspeed,y-11,bbox_right+hspeed,y-1,obj_solid,0,0)
-    hspeed = -0.5
-if hspeed &lt; 0
-and collision_rectangle(bbox_left+hspeed,y-11,bbox_left+hspeed,y-1,obj_solid,0,0)
-    hspeed = 0.5
-if collision_rectangle(bbox_left,y+1,bbox_right,y+1,obj_solidtop,0,0)
-or collision_rectangle(bbox_left,y+1,bbox_right,y+1,obj_slopeparent,1,0)
-{
-    gravity = 0
-    vspeed = 0
-}
-else
-    gravity = 0.25
-if vspeed &gt; 4
-    vspeed = 4
-if hspeed &gt; 0
-    direct = 1
-if hspeed &lt; 0
-    direct = -1
-if hspeed &gt; 0
-and not collision_line(bbox_right+6,bbox_bottom-1,bbox_right+6,bbox_bottom+15,obj_solidtop,0,0)
-    hspeed = -0.5
-if hspeed &lt; 0
-and not collision_line(bbox_left-6,bbox_bottom-1,bbox_left-6,bbox_bottom+15,obj_solidtop,0,0)
-    hspeed = 0.5
+            <string>///Stay on ledges
+
+//Default event
+event_inherited()
+
+//Custom turn at ledges script
+if (hspeed &gt; 0 and not collision_line(bbox_right+6,bbox_bottom-1,bbox_right+6,bbox_bottom+15,obj_solidtop,0,0))
+or (hspeed &lt; 0 and not collision_line(bbox_left-6,bbox_bottom-1,bbox_left-6,bbox_bottom+15,obj_solidtop,0,0))
+    hspeed = -hspeed
 </string>
           </argument>
         </arguments>
@@ -141,35 +94,14 @@ and not collision_line(bbox_left-6,bbox_bottom-1,bbox_left-6,bbox_bottom+15,obj_
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y+5 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-11 and vspeed &gt; 0
 {
-    y = other.y
+    y = other.y-16
     vspeed = 0
     gravity = 0
 }
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>instance_destroy()</string>
           </argument>
         </arguments>
       </action>
@@ -191,7 +123,9 @@ and not collision_line(bbox_left-6,bbox_bottom-1,bbox_left-6,bbox_bottom+15,obj_
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)</string>
+            <string>///Draw Stretch Boo
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
+</string>
           </argument>
         </arguments>
       </action>
