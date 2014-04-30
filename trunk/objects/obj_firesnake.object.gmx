@@ -25,21 +25,28 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.15
-image_speed = 0.15
-alarm[0] = 100
-direct = 0
+            <string>///A snake made of fire
+
+//How vulnerable is this enemy to various items?
 hardness = 1
+
+//How vulnerable is this enemy to Mario?
 stomp = 2
-amjump = 0
+
+//Facing direction
+direct = -1
+
+//Animate
+image_speed = 0.15
+
+//Jump
+alarm[0] = 100
+
+//Make tail parts
 mypart[0] = instance_create(x,y,obj_firesnake_part)
 mypart[1] = instance_create(x,y,obj_firesnake_part)
 mypart[2] = instance_create(x,y,obj_firesnake_part)
 mypart[3] = instance_create(x,y,obj_firesnake_part)
-with mypart[0] alarm[0] = 105
-with mypart[1] alarm[0] = 110
-with mypart[2] alarm[0] = 115
-with mypart[3] alarm[0] = 120
 </string>
           </argument>
         </arguments>
@@ -62,10 +69,12 @@ with mypart[3] alarm[0] = 120
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with mypart[0] instance_destroy()
+            <string>///Destroy tail parts
+with mypart[0] instance_destroy()
 with mypart[1] instance_destroy()
 with mypart[2] instance_destroy()
-with mypart[3] instance_destroy()</string>
+with mypart[3] instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
@@ -87,17 +96,60 @@ with mypart[3] instance_destroy()</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>amjump = 1
+            <string>///Jump
+
+//Move up
 vspeed = -3.85
+
+//Boost jump
+y--
+
+//Move in the direction it is facing
 hspeed = direct
+
+//Make tail parts all face the same direction
 mypart[0].direct = direct
 mypart[1].direct = direct
 mypart[2].direct = direct
 mypart[3].direct = direct
-with mypart[0] alarm[0] = 5
-with mypart[1] alarm[0] = 10
-with mypart[2] alarm[0] = 15
-with mypart[3] alarm[0] = 20</string>
+
+//Make tail parts jump
+mypart[0].alarm[0] = 5
+mypart[1].alarm[0] = 10
+mypart[2].alarm[0] = 15
+mypart[3].alarm[0] = 20
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Make sure tail parts do not get lost
+if not instance_exists(mypart[0])
+    instance_activate_object(mypart[0])
+if not instance_exists(mypart[1])
+    instance_activate_object(mypart[1])
+if not instance_exists(mypart[2])
+    instance_activate_object(mypart[2])
+if not instance_exists(mypart[3])
+    instance_activate_object(mypart[3])
+</string>
           </argument>
         </arguments>
       </action>
@@ -119,71 +171,39 @@ with mypart[3] alarm[0] = 20</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hspeed &gt; 0
-and collision_rectangle(bbox_right+hspeed,bbox_top,bbox_right+hspeed,bbox_bottom-1,obj_solid,0,0)
-    hspeed = -hspeed
-if hspeed &lt; 0
-and collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left+hspeed,bbox_bottom-1,obj_solid,0,0)
-    hspeed = -hspeed
-if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0) and amjump = 0
-or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0) and amjump = 0
+            <string>///Fire snake logic
+
+//Wall collisions
+event_user(3)
+
+//Floor collisions
+event_user(4)
+
+//If on the ground
+if gravity = 0
 {
-    gravity = 0
-    vspeed = 0
+
+    //Land if it is still moving
+    if hspeed != 0
+    {
+        hspeed = 0
+        alarm[0] = 100
+    }
+
+    //Otherwise, face Mario
+    else if instance_exists(obj_mario)
+    {
+        if x &gt; obj_mario.x
+            direct = -1
+        else
+            direct = 1
+    }
+
 }
+
+//Use less gravity
 else
     gravity = 0.15
-if instance_exists(obj_mario)
-and hspeed = 0
-{
-    if x &gt; obj_mario.x
-        direct = -1
-    if x &lt; obj_mario.x
-        direct = 1
-}
-if vspeed &gt; 4
-    vspeed = 4
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
-if vspeed &lt; 0
-and collision_rectangle(x,y,x+15,y,obj_solid,0,0)
-    vspeed = 1
-if amjump = 1
-and not instance_exists(mypart[3])
-{
-    instance_activate_object(mypart[0])
-    instance_activate_object(mypart[1])
-    instance_activate_object(mypart[2])
-    instance_activate_object(mypart[3])
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_slopeparent">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if amjump = 1
-{
-    amjump = 0
-    hspeed = 0
-    alarm[0] = 100
-}
 </string>
           </argument>
         </arguments>
@@ -206,17 +226,12 @@ and not instance_exists(mypart[3])
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-11 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-11 and vspeed &gt; 0
 {
     y = other.y-16
     vspeed = 0
     gravity = 0
-    if amjump = 1
-    {
-        amjump = 0
-        hspeed = 0
-        alarm[0] = 100
-    }
 }
 </string>
           </argument>
@@ -240,14 +255,20 @@ and not instance_exists(mypart[3])
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>imdead = instance_create(x,y+16,obj_enemy_dead)
-imdead.sprite_index = sprite_index
-imdead.image_index = image_index
-imdead.image_xscale = image_xscale
-imdead = instance_create(x,y+16,obj_enemy_multidead)
-imdead.killsprite = spr_firesnake_part
-imdead.killxscale = image_xscale
-imdead.count = 4
+            <string>///Fire snake desth
+with instance_create(x,y+16,obj_enemy_dead)
+{
+    sprite_index = other.sprite_index
+    image_index = other.image_index
+    image_xscale = other.image_xscale
+}
+
+//Fire snake tail death
+with instance_create(x,y+16,obj_enemy_multidead)
+{
+    killsprite = spr_firesnake_part
+    count = 4
+}
 
 //Destroy
 instance_destroy()
@@ -273,10 +294,8 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if direct = 1
-    draw_sprite_ext(sprite_index,image_index,round(x),y,1,1,0,c_white,1)
-else
-    draw_sprite_ext(sprite_index,image_index,round(x)+16,y,-1,1,0,c_white,1)
+            <string>///Draw Fire Snake
+draw_sprite_ext(sprite_index,image_index,round(x)+8-8*direct,y,direct,1,0,c_white,1)
 </string>
           </argument>
         </arguments>

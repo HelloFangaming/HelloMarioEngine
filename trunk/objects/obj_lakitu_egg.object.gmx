@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_enemyparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,9 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = -4
-gravity = 0.2
-image_speed = 0.5</string>
+            <string>///Lakitu's ball
+
+//How vulnerable is this enemy to various items?
+hardness = 0
+
+//How vulnerable is this enemy to Mario?
+stomp = 1
+
+//Animate
+image_speed = 0.5
+
+//Move up
+vspeed = -4
+</string>
           </argument>
         </arguments>
       </action>
@@ -49,53 +60,34 @@ image_speed = 0.5</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hspeed &gt; 0
-and collision_rectangle(x+hspeed+15,y,x+hspeed+15,y+15,obj_solid,0,0)
-    hspeed = -hspeed
-if hspeed &lt; 0
-and collision_rectangle(x+hspeed-1,y,x+hspeed-1,y+15,obj_solid,0,0)
-    hspeed = hspeed
-if vspeed &gt; 5
-    vspeed = 5
-if vspeed &lt; 0
-and collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_solid,0,0)
+            <string>///What happens after landing
+
+//Default event
+event_inherited()
+
+//Hop
+if gravity = 0
 {
-    while collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_solid,0,0)
-        y+=1
-    vspeed = 1
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_slopeparent">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if vspeed &gt; 0
-{
+
+    //Bounce if a green ball
     if sprite_index = spr_lakitu_ball
-        vspeed = -vspeed/2
+    {
+        vspeed = -4
+        y--
+    }
+
+    //Otherwise, become a spiney
     else
     {
         instance_create(x+8,y,obj_spiney)
         instance_destroy()
     }
+
 }
+
+//Use more gravity
+else
+    gravity = 0.2
 </string>
           </argument>
         </arguments>
@@ -118,73 +110,13 @@ and collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_solid,0,0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-11 and vspeed &gt; 0
 {
     y = other.y-16
-    if sprite_index = spr_lakitu_ball
-        vspeed = -vspeed/2
-    else
-    {
-        instance_create(x+8,y,obj_spiney)
-        instance_destroy()
-    }
+    vspeed = 0
+    gravity = 0
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_mario">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if other.y &lt; y-27
-and obj_mario.stompstyle = 1
-{
-    with other event_user(1)
-    audio_play_sound(snd_stomp,0,0)
-    instance_create(obj_mario.x,obj_mario.y+32,obj_spinthump)
-    exit
-}
-if other.invincible = 0
-    with other event_user(0)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if y &gt; room_height
-    instance_destroy()
 </string>
           </argument>
         </arguments>

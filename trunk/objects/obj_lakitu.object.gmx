@@ -25,19 +25,41 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place this in the object creation code.
-//xmin = Minimum x value where enemy is generated.
-//xmax = Maximum x value where enemy is generated.
-image_speed = 0.15
-alarm[0] = 150
-alarm[1] = 10
-alarm[2] = 1
-offset = 0
-offsetnext = 0
+            <string>///Likes to throw spineys at Mario
+
+/*
+**  This item uses creation code!
+**
+**  xmin = Minimum x value where enemy throws balls
+**  xmax = Maximum x value where enemy throws balls
+**
+*/
+
+//Default Values:
 xmin = 0
 xmax = room_width
+
+//How vulnerable is this enemy to various items?
 hardness = 0
+
+//How vulnerable is this enemy to Mario?
 stomp = 0
+
+//Prepeare to enter into view
+alarm[10] = 2
+
+//Animate
+image_speed = 0.15
+
+//Throw
+alarm[0] = 150
+
+//Offset values
+offset = 0
+offsetnext = 0
+
+//Manage offset values
+alarm[1] = 10
 </string>
           </argument>
         </arguments>
@@ -60,16 +82,19 @@ stomp = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>varid = instance_create(x,y,obj_lakituticker)
-varid.type = 0
-varid.xmin = xmin
-varid.xmax = xmax
+            <string>///Make a lakitu ticker on death
+with instance_create(x,y,obj_lakituticker)
+{
+    mylakitu = other.object_index
+    xmin = other.xmin
+    xmax = other.xmax
+}
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="2">
+    <event eventtype="2" enumb="10">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -86,11 +111,16 @@ varid.xmax = xmax
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>visible = 1
+            <string>///Prepeare to enter into view
+
+//Snap to the side of the screen that it is closest to
 if obj_levelmanager.x &gt; (xmax-xmin)/2+xmin
     x = view_xview[0]-64
 else
     x = view_xview[0]+384
+
+//Make visible
+visible = 1
 </string>
           </argument>
         </arguments>
@@ -113,25 +143,27 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if offsetnext = 0
-    offset = 1
-if offsetnext = 1
-    offset = 0
-if offsetnext = 2
-    offset = -1
-if offsetnext = 3
-    offset = -2
-if offsetnext = 4
-    offset = -1
-if offsetnext = 5
-    offset = 0
-if offsetnext = 6
-    offset = 1
-if offsetnext = 7
-    offset = 2
-offsetnext += 1
+            <string>///Manage offset values
+switch offsetnext
+{
+    case 0: offset = 1 break
+    case 1: offset = 0 break
+    case 2: offset = -1 break
+    case 3: offset = -2 break
+    case 4: offset = -1 break
+    case 5: offset = 0 break
+    case 6: offset = 1 break
+    case 7: offset = 2 break
+}
+
+//Increment next offset
+offsetnext++
+
+//Cap offset value
 if offsetnext = 8
     offsetnext = 0
+
+//Keep changing offset values
 alarm[1] = 10
 </string>
           </argument>
@@ -155,12 +187,17 @@ alarm[1] = 10
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 150
+            <string>///Throw balls
+
+//Throw when Mario is in its territory
 if instance_number(obj_mario)
-    if obj_mario.x &gt; xmin
-    and obj_mario.x &lt; xmax
-    and instance_number(obj_spiney) &lt; 6
-        sprite_index = spr_lakitu_throw
+and obj_mario.x &gt; xmin
+and obj_mario.x &lt; xmax
+and instance_number(obj_spiney) &lt; 6
+    sprite_index = spr_lakitu_throw
+
+//Throw more
+alarm[0] = 150
 </string>
           </argument>
         </arguments>
@@ -183,65 +220,62 @@ if instance_number(obj_mario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_levelmanager)
+            <string>///Lakitu logic
+
+//Select an object to follow
+if instance_exists(obj_levelmanager)
 and not instance_exists(obj_autoscroll)
-{
-    if obj_levelmanager.x &gt; xmin
-    and obj_levelmanager.x &lt; xmax
-    {
-        if obj_levelmanager.x &gt; x
-            hspeed += 0.05
-        if obj_levelmanager.x &lt; x
-            hspeed += -0.05
-        if x &lt; view_xview[0]-15
-            x = view_xview[0]-15
-        if x &gt; view_xview[0]+319
-            x = view_xview[0]+319
-    }
-    else
-    {
-        if obj_levelmanager.x &gt; (xmax-xmin)/2+xmin
-            hspeed += -0.05
-        if obj_levelmanager.x &lt; (xmax-xmin)/2+xmin
-            hspeed += 0.05
-    }
-    if hspeed &gt; 1.5
-        hspeed = 1.5
-    if hspeed &lt; -1.5
-        hspeed = -1.5
-}
+    follow = obj_levelmanager
 else if instance_exists(obj_mario)
+    follow = obj_mario
+else
 {
-    if obj_mario.x &gt; xmin
-    and obj_mario.x &lt; xmax
+    follow = noone
+    hspeed = 0
+}
+
+//If there is an object to follow
+if follow != noone
+{
+
+    //If said object is in its territory, follow it
+    if follow.x &gt; xmin
+    and follow.x &lt; xmax
     {
-        if obj_mario.x &gt; x
+        if follow.x &gt; x
             hspeed += 0.05
-        if obj_mario.x &lt; x
+        if follow.x &lt; x
             hspeed += -0.05
         if x &lt; view_xview[0]-15
             x = view_xview[0]-15
         if x &gt; view_xview[0]+319
             x = view_xview[0]+319
     }
+
+    //Otherwise, get out
     else
     {
-        if obj_mario.x &gt; (xmax-xmin)/2+xmin
+        if follow.x &gt; (xmax-xmin)/2+xmin
             hspeed += -0.05
-        if obj_mario.x &lt; (xmax-xmin)/2+xmin
+        if follow.x &lt; (xmax-xmin)/2+xmin
             hspeed += 0.05
     }
+
+    //Cap horizontal speed
     if hspeed &gt; 1.5
         hspeed = 1.5
-    if hspeed &lt; -1.5
+    else if hspeed &lt; -1.5
         hspeed = -1.5
+
 }
-else
-    hspeed = 0
+
+//Snap outside the level when outside the view
 if x &lt; view_xview[0]-32
     x = -32
 if x &gt; view_xview[0]+336
     x = room_width+16
+
+//Snap to the correct y value
 y = view_yview[0]+16+offset
 </string>
           </argument>
@@ -265,11 +299,11 @@ y = view_yview[0]+16+offset
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_lakitu_throw
+            <string>///Finish throw animation
+if sprite_index = spr_lakitu_throw
 {
     sprite_index = spr_lakitu
-    varid = instance_create(x,y,obj_lakitu_egg)
-    varid.hspeed = hspeed
+    with instance_create(x,y,obj_lakitu_egg) hspeed = other.hspeed
     audio_play_sound(snd_hammer,0,0)
 }
 </string>

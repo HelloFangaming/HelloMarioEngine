@@ -28,7 +28,7 @@
             <string>///A fire spitting plant
 
 //How vulnerable is this enemy to various items?
-hardness = 99
+hardness = 100
 
 //How vulnerable is this enemy to Mario?
 stomp = -1
@@ -214,7 +214,7 @@ y = ystart
 alarm[1] = 140
 
 //Become invincible
-hardness = 99
+hardness = 100
 stomp = -1
 </string>
           </argument>

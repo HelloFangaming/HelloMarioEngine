@@ -25,8 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 0
-alarm[0] = 10</string>
+            <string>///Figures out how angry sun should move
+
+//Circular motion type
+ready = 0
+
+//Start animation
+alarm[0] = 10
+</string>
           </argument>
         </arguments>
       </action>
@@ -48,10 +54,12 @@ alarm[0] = 10</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>direction = 270
-speed = 4
+            <string>///Swoop to the right
 ready = 4
-alarm[0] = 90</string>
+speed = 4
+alarm[0] = 90
+direction = 270
+</string>
           </argument>
         </arguments>
       </action>
@@ -73,11 +81,13 @@ alarm[0] = 90</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = 48
-y = 64
+            <string>///Pause before swooping
+ready = 0
 speed = 0
 alarm[5] = 15
-ready = 0</string>
+x = 48
+y = 64
+</string>
           </argument>
         </arguments>
       </action>
@@ -99,25 +109,29 @@ ready = 0</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 0
-speed = 0
-if not instance_exists(obj_mario)
-{
-    alarm[3] = 1
-    exit
-}
-if obj_mario.x &gt; xmin
+            <string>///Small circular motions
+
+//If Mario is in its territory, get angry
+if instance_exists(obj_mario)
+and obj_mario.x &gt; xmin
 and obj_mario.x &lt; xmax
 {
+    ready = 2
+    speed = 4
+    alarm[4] = 120
+    direction = 270
     x = 48
     y = 64
-    speed = 4
-    direction = 270
-    alarm[4] = 120
-    ready = 2
+
 }
+
+//Otherwise, wait
 else
+{
+    ready = 0
+    speed = 0
     alarm[3] = 1
+}
 </string>
           </argument>
         </arguments>
@@ -140,10 +154,12 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>direction = 270
-speed = 4
+            <string>///Swoop to the left
 ready = 3
-alarm[3] = 90</string>
+speed = 4
+alarm[3] = 90
+direction = 270
+</string>
           </argument>
         </arguments>
       </action>
@@ -165,11 +181,13 @@ alarm[3] = 90</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = 256
-y = 64
+            <string>///Pause before swooping
+ready = 0
 speed = 0
 alarm[2] = 15
-ready = 0</string>
+x = 256
+y = 64
+</string>
           </argument>
         </arguments>
       </action>
@@ -191,25 +209,28 @@ ready = 0</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 0
-speed = 0
-if not instance_exists(obj_mario)
-{
-    alarm[0] = 1
-    exit
-}
-if obj_mario.x &gt; xmin
+            <string>///Small circular motions
+
+//If Mario is in its territory, get angry
+if instance_exists(obj_mario)
+and obj_mario.x &gt; xmin
 and obj_mario.x &lt; xmax
 {
-    x = 256
-    y = 64
-    direction = 270
+    ready = 1
     speed = 4
     alarm[1] = 120
-    ready = 1
+    direction = 270
+    x = 256
+    y = 64
 }
+
+//Otherwise, wait
 else
+{
+    ready = 0
+    speed = 0
     alarm[0] = 1
+}
 </string>
           </argument>
         </arguments>
@@ -232,13 +253,14 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 1
+            <string>///Handle circular motions
+if ready = 1
     direction += 15
-if ready = 2
+else if ready = 2
     direction -= 15
-if ready = 3
+else if ready = 3
     direction -= 2
-if ready = 4
+else if ready = 4
     direction += 2
 </string>
           </argument>

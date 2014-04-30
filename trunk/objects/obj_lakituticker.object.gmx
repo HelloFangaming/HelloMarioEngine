@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 1000</string>
+            <string>///Make a new lakitu after 1000 steps
+alarm[0] = 1000
+</string>
           </argument>
         </arguments>
       </action>
@@ -47,15 +49,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_goalmario)
+            <string>///Make a new lakitu
+
+//If music is not disabled
+if obj_levelmanager.musicdisabled = 0
 {
-    if type = 0
-        varid = instance_create(x,y,obj_lakitu)
-    if type = 1
-        varid = instance_create(x,y,obj_lakitu_ball)
-    varid.xmin = xmin
-    varid.xmax = xmax
+
+    //Make the correct lakitu
+    with instance_create(x,y,mylakitu)
+    {
+        xmin = other.xmin
+        xmax = other.xmax
+    }
+
+    //Destroy
     instance_destroy()
+
 }
 </string>
           </argument>

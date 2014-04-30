@@ -25,37 +25,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.3
-image_speed = 0
-alarm[0] = 100
-amjump = 0
+            <string>///A microgoomba inside a brick
+
+//How vulnerable is this enemy to various items?
 hardness = 0
+
+//How vulnerable is this enemy to Mario?
 stomp = 0
+
+//Facing direction
+direct = -1
+
+//Do not animate
+image_speed = 0
+
+//Peek
+alarm[0] = 100
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>vspeed = -7.5
-hspeed = -1.375
-amjump = 1</string>
           </argument>
         </arguments>
       </action>
@@ -77,9 +63,17 @@ amjump = 1</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = -7.5
-hspeed = 1.375
-amjump = 1</string>
+            <string>///Jump
+
+//Move up
+vspeed = -7.5
+
+//Boost jump
+y--
+
+//Go where it is facing
+hspeed = 1.375*direct
+</string>
           </argument>
         </arguments>
       </action>
@@ -101,7 +95,12 @@ amjump = 1</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.3</string>
+            <string>///Peek
+if instance_exists(obj_mario)
+    image_speed = 0.3
+else
+    alarm[0] = 100
+</string>
           </argument>
         </arguments>
       </action>
@@ -123,63 +122,24 @@ amjump = 1</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hspeed &gt; 0
-    if collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_subconenemyparent,0,1)
-    or collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_deactenemyparent,0,1)
-        hspeed = -hspeed
-if hspeed &lt; 0
-    if collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_subconenemyparent,0,1)
-    or collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_deactenemyparent,0,1)
-        hspeed = -hspeed
-if hspeed &gt; 0
-and collision_rectangle(bbox_right+hspeed,bbox_top,bbox_right+hspeed,bbox_bottom-1,obj_solid,0,0)
-    hspeed = -hspeed
-if hspeed &lt; 0
-and collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left+hspeed,bbox_bottom-1,obj_solid,0,0)
-    hspeed = -hspeed
-if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0) and amjump = 0
-or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0) and amjump = 0
+            <string>///Jumping koopa hopping
+
+//Default event
+event_inherited()
+
+//Finish jump after landing
+if gravity = 0
 {
-    gravity = 0
-    vspeed = 0
+    if hspeed != 0
+    {
+        hspeed = 0
+        alarm[0] = 100
+    }
 }
+
+//More gravity
 else
     gravity = 0.3
-if vspeed &gt; 4
-    vspeed = 4
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
-if vspeed &lt; 0
-and collision_rectangle(x,y,x+15,y,obj_solid,0,0)
-    vspeed = 1
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_slopeparent">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if amjump = 1
-{
-    amjump = 0
-    hspeed = 0
-    alarm[0] = 100
-}
 </string>
           </argument>
         </arguments>
@@ -202,17 +162,12 @@ and collision_rectangle(x,y,x+15,y,obj_solid,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-11 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-11 and vspeed &gt; 0
 {
     y = other.y-16
     vspeed = 0
     gravity = 0
-    if amjump = 1
-    {
-        amjump = 0
-        hspeed = 0
-        alarm[0] = 100
-    }
 }
 </string>
           </argument>
@@ -236,7 +191,8 @@ and collision_rectangle(x,y,x+15,y,obj_solid,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_user(0)
+            <string>///Execute normal death
+event_user(0)
 </string>
           </argument>
         </arguments>
@@ -259,17 +215,17 @@ and collision_rectangle(x,y,x+15,y,obj_solid,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>imdead = instance_create(x+4,y+8,obj_enemy_stomped)
-imdead.sprite_index = spr_microgoomba
+            <string>///Brick goomba death
+with instance_create(x+4,y+8,obj_enemy_stomped) sprite_index = spr_microgoomba
+
+//Breaking sound
 audio_play_sound(snd_break,0,0)
-varid = instance_create(x+8,y,obj_shard)
-with (varid) motion_set(45,3)
-varid = instance_create(x+8,y,obj_shard)
-with (varid) motion_set(60,3)
-varid = instance_create(x,y,obj_shard)
-with (varid) motion_set(120,3)
-varid = instance_create(x,y,obj_shard)
-with (varid) motion_set(135,3)
+
+//Make shards
+with instance_create(x+8,y,obj_shard) direction = 45
+with instance_create(x+8,y,obj_shard) direction = 60
+with instance_create(x,y,obj_shard) direction = 120
+with instance_create(x,y,obj_shard) direction = 135
 
 //Destroy
 instance_destroy()
@@ -295,14 +251,23 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 0
-if not instance_exists(obj_mario)
-    exit
+            <string>///Finish peeking
+
+//Do not animate
 image_speed = 0
-if obj_mario.x &gt; x
-    alarm[1] = 10
-else
-    alarm[2] = 10
+image_index = 0
+
+//Face Mario
+if instance_exists(obj_mario)
+{
+    if obj_mario.x &gt; x
+        direct = 1
+    else
+        direct = -1
+}
+
+//Jump
+alarm[1] = 10
 </string>
           </argument>
         </arguments>

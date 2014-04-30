@@ -25,14 +25,28 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.25
-alarm[10] = 2
-image_speed = 0.15
-direct = 0
-alarm[0] = 200
-flamesexist = 0
+            <string>///Fire spewing dinosaur
+
+//How vulnerable is this enemy to various items?
 hardness = 0
+
+//How vulnerable is this enemy to Mario?
 stomp = 0
+
+//Facing direction
+direct = -1
+
+//Start walking towards Mario
+alarm[10] = 2
+
+//Animate
+image_speed = 0.15
+
+//Flames
+myflames = noone
+
+//Make flames
+alarm[0] = 200
 </string>
           </argument>
         </arguments>
@@ -55,39 +69,8 @@ stomp = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if flamesexist = 1
-    with myflames instance_destroy()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-{
-    hspeed = -0.5
-    exit
-}
-if obj_mario.x &lt; x
-    hspeed = -0.5
-else
-    hspeed = 0.5
+            <string>///Destroy flames
+with myflames instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -110,12 +93,23 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with myflames instance_destroy()
+            <string>///Finish blowing fire
+
+//Destroy fire
+with myflames instance_destroy()
+
+//Continue walking
 hspeed = direct/2
-flamesexist = 0
+
+//Normal sprite
 sprite_index = spr_dinotorch
+
+//Animate
 image_speed = 0.15
-alarm[0] = 200</string>
+
+//Spew fire again later
+alarm[0] = 200
+</string>
           </argument>
         </arguments>
       </action>
@@ -137,111 +131,74 @@ alarm[0] = 200</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
+            <string>///Spew flames
+
+//If the dino is on the ground, Mario exists, and is not too close
+if gravity = 0
+and instance_exists(obj_mario)
+and (obj_mario.x &lt; x-32 or obj_mario.x &gt; x+32)
 {
-    alarm[0] = 1
-    exit
-}
-if obj_mario.x &gt; x-32 and obj_mario.x &lt; x+32
-{
-    alarm[0] = 1
-    exit
-}
-if collision_rectangle(x-8,y+16,x+7,y+16,obj_solidtop,0,0)
-or collision_rectangle(x-8,y+16,x+7,y+16,obj_slopeparent,1,0)
-{
+
+    //Change sprite
     sprite_index = spr_dinotorch_blow
+
+    //Do not animate
     image_speed = 0
+
+    //Stop walking
     hspeed = 0
+
+    //If facing right
     if direct = 1
     {
+
+        //Shoot ahead if Mario is on front
         if obj_mario.x &gt; x
         {
             myflames = instance_create(x+6,y,obj_dinoflames)
             myflames.sprite_index = spr_dinoflame_stleft
-            flamesexist = 1
             image_index = 1
         }
+
+        //Otherwise, shoot up
         else
         {
             myflames = instance_create(x-8,y-45,obj_dinoflames)
-            flamesexist = 1
             image_index = 0
         }
+
     }
-    if direct = -1
+
+    //If facing right
+    else
     {
+
+        //Shoot ahead if Mario is on front
         if obj_mario.x &lt; x
         {
             myflames = instance_create(x-54,y,obj_dinoflames)
             myflames.sprite_index = spr_dinoflame_stleft
-            flamesexist = 1
             myflames.otherway = 1
             image_index = 1
         }
+
+        //Otherwise, shoot up
         else
         {
             myflames = instance_create(x-8,y-45,obj_dinoflames)
-            flamesexist = 1
             image_index = 0
         }
+
     }
+
+    //Stop spewing flames
     alarm[1] = 100
+
 }
+
+//Otherwise, wait
 else
     alarm[0] = 1
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if hspeed &gt; 0
-    if collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_subconenemyparent,0,1)
-    or collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_deactenemyparent,0,1)
-        hspeed = -0.5
-if hspeed &lt; 0
-    if collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_subconenemyparent,0,1)
-    or collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_deactenemyparent,0,1)
-        hspeed = 0.5
-if hspeed &gt; 0
-and collision_rectangle(bbox_right+hspeed,bbox_top,bbox_right+hspeed,bbox_bottom-1,obj_solid,0,0)
-    hspeed = -0.5
-if hspeed &lt; 0
-and collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left+hspeed,bbox_bottom-1,obj_solid,0,0)
-    hspeed = 0.5
-if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
-or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0)
-{
-    gravity = 0
-    vspeed = 0
-}
-else
-    gravity = 0.25
-if vspeed &gt; 4
-    vspeed = 4
-if hspeed &gt; 0
-    direct = 1
-if hspeed &lt; 0
-    direct = -1
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
 </string>
           </argument>
         </arguments>
@@ -264,7 +221,8 @@ while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopepar
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-11 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-11 and vspeed &gt; 0
 {
     y = other.y-16
     vspeed = 0
@@ -292,9 +250,12 @@ while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopepar
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>imdead = instance_create(x,y,obj_stomped)
-imdead.sprite_index = spr_dinotorch_sq
-imdead.image_xscale = direct
+            <string>///Dino torch squishing
+with instance_create(x,y,obj_stomped)
+{
+    sprite_index = spr_dinotorch_sq
+    image_xscale = other.direct
+}
 
 //Destroy
 instance_destroy()
@@ -320,7 +281,9 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)</string>
+            <string>///Draw Dino Torch
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
+</string>
           </argument>
         </arguments>
       </action>

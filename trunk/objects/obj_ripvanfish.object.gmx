@@ -65,8 +65,8 @@ chase = 0
             <kind>1</kind>
             <string>///Charge at Mario
 
-//Remember direction
-prevdirect = direct
+//Previous hspeed
+prevhspeed = hspeed
 
 //Default event
 event_inherited()
@@ -89,8 +89,8 @@ else
 {
 
     //If the direction changed, speed up
-    if prevdirect != direct
-        hspeed = direct*3
+    if hspeed != prevhspeed
+        hspeed = sign(hspeed)*1.5
 
     //Bounce off ground
     if gravity = 0

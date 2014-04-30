@@ -25,8 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.5
+            <string>///Dino torch flames
+
+//Animate
+image_speed = 0.5
+
+//Whether the sprite should be flipped
 otherway = 0
+
+//Play flame sound
 audio_play_sound(snd_flames,0,0)
 </string>
           </argument>
@@ -50,8 +57,8 @@ audio_play_sound(snd_flames,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.invincible = 0
-    with other event_user(0)
+            <string>///Hurt Mario
+with other event_user(0)
 </string>
           </argument>
         </arguments>
@@ -74,9 +81,10 @@ audio_play_sound(snd_flames,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_dinoflame_start
+            <string>///Flame animation
+if sprite_index = spr_dinoflame_start
     sprite_index = spr_dinoflame
-if sprite_index = spr_dinoflame_stleft
+else if sprite_index = spr_dinoflame_stleft
     sprite_index = spr_dinoflame_left
 </string>
           </argument>
@@ -100,7 +108,8 @@ if sprite_index = spr_dinoflame_stleft
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if otherway = 1
+            <string>///Draw flames
+if otherway = 1
     draw_sprite_ext(sprite_index,image_index,round(x)+48,y,-1,1,0,c_white,1)
 else
     draw_sprite_ext(sprite_index,image_index,x,y,1,1,0,c_white,1)
