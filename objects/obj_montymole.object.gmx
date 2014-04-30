@@ -25,7 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
+            <string>///They bust out of the ground like moles
+
+//Animate
+image_speed = 0.15
+
+//If there is a floor below, use the floor dirt sprite
 if position_meeting(x+8,y+20,obj_solidtop)
     sprite_index = spr_montymole_dirt2
 </string>
@@ -50,30 +55,48 @@ if position_meeting(x+8,y+20,obj_solidtop)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_break,0,0)
-varid = instance_create(x+8,y,obj_shard)
-with (varid) motion_set(45,3)
-varid.sprite_index = spr_shard_m
-varid = instance_create(x,y,obj_shard)
-with (varid) motion_set(135,3)
-varid.sprite_index = spr_shard_m
-varid = instance_create(x,y,obj_shard)
-with (varid) motion_set(225,1)
-varid.sprite_index = spr_shard_m
-varid = instance_create(x+8,y,obj_shard)
-with (varid) motion_set(315,1)
-varid.sprite_index = spr_shard_m
-if sprite_index = spr_montymole_dirt
+            <string>///Break out of the ground
+
+//Break sound
+audio_play_sound(snd_break,0,0)
+
+//Make shards
+with instance_create(x+8,y,obj_shard)
+{
+    direction = 45
+    sprite_index = spr_shard_m
+}
+with instance_create(x,y,obj_shard)
+{
+    direction = 135
+    sprite_index = spr_shard_m
+}
+with instance_create(x,y,obj_shard)
+{
+    direction = 225
+    sprite_index = spr_shard_m
+}
+with instance_create(x+8,y,obj_shard)
+{
+    direction = 315
+    sprite_index = spr_shard_m
+}
+
+//If the floor dirt sprite is used, make monty mole lower, and destroy
+if sprite_index = spr_montymole_dirt2
+{
+    instance_create(x,y+16,obj_montyjump)
+    instance_destroy()
+
+}
+
+//Otherwise, make a monty mole and leave a hole
+else
 {
     instance_create(x,y,obj_montyjump)
     sprite_index = spr_montymole_jump
     image_speed = 0
     image_index = 1
-}
-else
-{
-    instance_create(x,y+16,obj_montyjump)
-    instance_destroy()
 }
 </string>
           </argument>
@@ -97,9 +120,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-    exit
+            <string>///Get ready to break out if Mario is nearby
 if visible = 0
+and instance_exists(obj_mario)
 and obj_mario.x &gt; x-80
 and obj_mario.x &lt; x+80
 {

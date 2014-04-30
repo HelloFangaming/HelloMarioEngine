@@ -28,7 +28,7 @@
             <string>///A plant in a pipe
 
 //How vulnerable is this enemy to various items?
-hardness = 99
+hardness = 100
 
 //How vulnerable is this enemy to Mario?
 stomp = -1
@@ -161,7 +161,7 @@ x = xstart
 alarm[1] = 100
 
 //Become invincible
-hardness = 99
+hardness = 100
 stomp = -1
 </string>
           </argument>

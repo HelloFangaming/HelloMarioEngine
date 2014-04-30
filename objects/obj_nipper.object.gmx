@@ -25,12 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.35
-image_speed = 0.15
-injump = 0
-direct = 0
+            <string>///Nippers will nip you if you aren't careful
+
+//How vulnerable is this enemy to various items?
 hardness = 0
+
+//How vulnerable is this enemy to Mario?
 stomp = 1
+
+//Facing direction
+direct = -1
+
+//Animate
+image_speed = 0.15
 </string>
           </argument>
         </arguments>
@@ -53,32 +60,40 @@ stomp = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
-or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0)
-{
-    gravity = 0
-    vspeed = 0
-}
+            <string>///Nipper logic
+
+//Default event
+event_inherited()
+
+//Reset sprite after landing
+if gravity = 0
+    sprite_index = spr_nipper
+
+//Extra gravity
 else
     gravity = 0.35
-if vspeed &gt; 4
-    vspeed = 4
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
-if not instance_exists(obj_mario)
-    exit
-if obj_mario.x &gt; x
-    direct = 1
-if obj_mario.x &lt; x
-    direct = -1
-if injump = 0
-and obj_mario.x &gt; x-20
-and obj_mario.x &lt; x+20
-and obj_mario.y &lt; y
+
+//If Mario exists
+if instance_exists(obj_mario)
 {
-    vspeed = -6
-    injump = 1
-    sprite_index = spr_nipper_jump
+
+    //Face Mario
+    if obj_mario.x &gt; x
+        direct = 1
+    else
+        direct = -1
+
+    //Jump if Mario is above
+    if gravity = 0
+    and obj_mario.x &gt; x-20
+    and obj_mario.x &lt; x+20
+    and obj_mario.y &lt; y
+    {
+        sprite_index = spr_nipper_jump
+        vspeed = -6
+        y--
+    }
+
 }
 </string>
           </argument>
@@ -102,16 +117,12 @@ and obj_mario.y &lt; y
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-11 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-11 and vspeed &gt; 0
 {
     y = other.y-16
     vspeed = 0
     gravity = 0
-    if injump = 1
-    {
-        injump = 0
-        sprite_index = spr_nipper
-    }
 }
 </string>
           </argument>
@@ -135,7 +146,9 @@ and obj_mario.y &lt; y
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)</string>
+            <string>///Draw Nipper
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
+</string>
           </argument>
         </arguments>
       </action>

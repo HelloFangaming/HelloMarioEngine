@@ -28,7 +28,7 @@
             <string>///A plant that jumps out of pipes
 
 //How vulnerable is this enemy to various items?
-hardness = 99
+hardness = 100
 
 //How vulnerable is this enemy to Mario?
 stomp = -1
@@ -111,7 +111,7 @@ vspeed = 0
 alarm[2] = 80
 
 //Become invincible
-hardness = 99
+hardness = 100
 stomp = -1
 
 //Stop animation

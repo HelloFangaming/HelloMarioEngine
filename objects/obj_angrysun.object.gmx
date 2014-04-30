@@ -25,12 +25,24 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place this in the object creation code.
-//xmin = Minimum x value where enemy is generated.
-//xmax = Maximum x value where enemy is generated.
+            <string>///Even the sun hates Mario?!
+
+/*
+**  This item uses creation code!
+**
+**  xmin = Minimum x value where enemy attacks
+**  xmax = Maximum x value where enemy attacks
+**
+*/
+
+//Default Values:
 xmin = 0
 xmax = room_width
+
+//How vulnerable is this enemy to various items?
 hardness = 99
+
+//How vulnerable is this enemy to Mario?
 stomp = 2
 </string>
           </argument>
@@ -54,8 +66,10 @@ stomp = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = view_xview[0]+obj_angrysun_movement.x
-y = view_yview[0]+obj_angrysun_movement.y</string>
+            <string>///Snap to its movement
+x = view_xview[0]+obj_angrysun_movement.x
+y = view_yview[0]+obj_angrysun_movement.y
+</string>
           </argument>
         </arguments>
       </action>
@@ -77,9 +91,12 @@ y = view_yview[0]+obj_angrysun_movement.y</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>varid = instance_create(256,64,obj_angrysun_movement)
-varid.xmin = xmin
-varid.xmax = xmax
+            <string>///Create movement object
+with instance_create(256,64,obj_angrysun_movement)
+{
+    xmin = other.xmin
+    xmax = other.xmax
+}
 </string>
           </argument>
         </arguments>

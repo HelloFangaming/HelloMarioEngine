@@ -25,9 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
+            <string>///This plant is kinda like a volcano
+
+//How vulnerable is this enemy to various items?
 hardness = 1
+
+//How vulnerable is this enemy to Mario?
 stomp = 2
+
+//Animate
+image_speed = 0.15
 </string>
           </argument>
         </arguments>
@@ -73,14 +80,12 @@ stomp = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>varid = instance_create(x+12,y,obj_lotusball)
-with varid motion_set(135,3)
-varid = instance_create(x+12,y,obj_lotusball)
-with varid motion_set(45,3)
-varid = instance_create(x+12,y,obj_lotusball)
-with varid motion_set(120,3)
-varid = instance_create(x+12,y,obj_lotusball)
-with varid motion_set(60,3)</string>
+            <string>///Make projectiles every animation cycle
+with instance_create(x+12,y,obj_lotusball) direction = 135
+with instance_create(x+12,y,obj_lotusball) direction = 45
+with instance_create(x+12,y,obj_lotusball) direction = 120
+with instance_create(x+12,y,obj_lotusball) direction = 60
+</string>
           </argument>
         </arguments>
       </action>
