@@ -187,9 +187,7 @@ or instance_exists(obj_warpmario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_deadmario)
-    alarm[0] = 1
-else if instance_exists(obj_mario)
+            <string>if instance_exists(obj_mario)
 {
     x = obj_mario.x
     y = obj_mario.y
@@ -233,7 +231,8 @@ and instance_number(obj_invincibility) &gt; 1
           <argument>
             <kind>1</kind>
             <string>///Hurt enemies
-if other.hardness &lt; 99
+if visible = 1
+and other.hardness &lt; 99
 {
     scr_musicalscale(id,1)
     with other event_user(0)

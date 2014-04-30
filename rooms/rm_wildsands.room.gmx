@@ -207,8 +207,8 @@
     <instance objName="obj_pokey_green" x="1584" y="336" name="inst_E8879F18" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pokey_green" x="1584" y="320" name="inst_908B6121" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pokey" x="1424" y="320" name="inst_A981F676" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_stretchboo" x="608" y="128" name="inst_BBBB8202" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_stretchboo" x="656" y="128" name="inst_67A6E964" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_stretchboo" x="608" y="112" name="inst_BBBB8202" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_stretchboo" x="656" y="112" name="inst_67A6E964" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_sumobro" x="1232" y="224" name="inst_13EB47BA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pokey" x="928" y="288" name="inst_34E54BBA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pokey" x="928" y="272" name="inst_CE49646D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

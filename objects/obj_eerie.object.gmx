@@ -25,12 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
-alarm[10] = 2
-vspeed = 1
-direct = 0
+            <string>///A wandering ghost
+
+//How vulnerable is this enemy to various items?
 hardness = 1
+
+//How vulnerable is this enemy to Mario?
 stomp = 2
+
+//Facing direction
+direct = -1
+
+//Start moving towards Mario
+alarm[10] = 2
+
+//Do not animate
+image_speed = 0
+
+//Move up
+vspeed = 1
 </string>
           </argument>
         </arguments>
@@ -53,17 +66,14 @@ stomp = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-{
-    hspeed = -0.5
-    direct = -1
-    exit
-}
+            <string>///Detect Mario, and move towards him
+event_inherited()
+
+//Face Mario
 if obj_mario.x &lt; x
     direct = -1
 else
     direct = 1
-hspeed = 0.5*direct
 </string>
           </argument>
         </arguments>
@@ -86,9 +96,10 @@ hspeed = 0.5*direct
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &gt; ystart+16
+            <string>///Move up and down
+if y &gt; ystart+16
     vspeed -= 0.1
-if y &lt; ystart
+else if y &lt; ystart
     vspeed += 0.1
 </string>
           </argument>
@@ -112,7 +123,9 @@ if y &lt; ystart
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy()</string>
+            <string>///Destroy
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
@@ -134,7 +147,9 @@ if y &lt; ystart
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)</string>
+            <string>///Draw Eerie
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
+</string>
           </argument>
         </arguments>
       </action>

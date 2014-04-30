@@ -25,14 +25,31 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
-movenow = 0
-mysolid = instance_create(x,y,obj_solid)
-direct = -1
-ready = 0
-alarm[10] = 2
+            <string>///A ghost so shy that it hardens
+
+//How vulnerable is this enemy to various items?
 hardness = 1
+
+//How vulnerable is this enemy to Mario?
 stomp = 2
+
+//Facing direction
+direct = -1
+
+//Do not animate
+image_speed = 0
+
+//Can the boo move
+ready = 0
+
+//Let the boo move
+alarm[0] = 8
+
+//Whether the boo can move
+movenow = 0
+
+//Solid
+mysolid = instance_create(x,y,obj_solid)
 </string>
           </argument>
         </arguments>
@@ -55,31 +72,9 @@ stomp = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(mysolid)
-    with mysolid instance_destroy()
+            <string>///Destroy solid
+with mysolid instance_destroy()
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>ready = 1</string>
           </argument>
         </arguments>
       </action>
@@ -101,8 +96,12 @@ stomp = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 2
-ready = 1</string>
+            <string>///Become a block
+image_index = 0
+
+//Create solid
+mysolid = instance_create(x,y,obj_solid)
+</string>
           </argument>
         </arguments>
       </action>
@@ -124,7 +123,16 @@ ready = 1</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 1</string>
+            <string>///Become a non-block
+image_index = 2
+
+//Destroy solid
+with mysolid instance_destroy()
+
+//Move towards Mario
+speed = 1
+direction = point_direction(x,y,obj_mario.x,obj_mario.y)
+</string>
           </argument>
         </arguments>
       </action>
@@ -146,9 +154,9 @@ ready = 1</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 0
-mysolid = instance_create(x,y,obj_solid)
-ready = 1</string>
+            <string>///Let the boo move
+ready = 1
+</string>
           </argument>
         </arguments>
       </action>
@@ -170,71 +178,78 @@ ready = 1</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 0
-    exit
-if image_index = 0
-and collision_rectangle(x-16,0,x+31,y+31,obj_mario,1,1)
-    exit
-movenowprev = movenow
+            <string>///Block boo logic
+
+//If Mario exists, the boo is in the room, and the boo can move
 if instance_exists(obj_mario)
+and not outside_view()
+and ready = 1
 {
+
+    //Don't move if Mario is too close
+    if image_index = 0
+    and collision_rectangle(bbox_left-16,bbox_top-16,bbox_right+16,bbox_bottom,obj_mario,1,1)
+        exit
+
+    //Remember last image index
+    movenowprev = movenow
+
+    //If Mario is looking away, give chase
+    if (obj_mario.x &gt; x+8 and obj_mario.direct = 1)
+    or (obj_mario.x &lt; x+8 and obj_mario.direct = -1)
+        movenow = 1
+
+    //Otherwise, hide
+    else
+        movenow = 0
+
+    //If the boo started going after Mario, become a non-block
+    if movenowprev = 0
+    and movenow = 1
+    {
+        ready = 0
+        alarm[0] = 8
+        alarm[1] = 4
+        image_index = 1
+    }
+
+    //If the boo just stopped moving, become a block
+    else if movenowprev = 1
+    and movenow = 0
+    {
+        ready = 0
+        alarm[0] = 8
+        alarm[2] = 4
+        image_index = 1
+        speed = 0
+    }
+
+    //If the boo is giving chase
     if movenow = 1
     {
+
+        //Turn towards Mario
+        turn_towards_direction(point_direction(x,y,obj_mario.x,obj_mario.y),8)
+
+        //Look at Mario
         if obj_mario.x &gt; x+8
-        {
-            hspeed += 0.02
             direct = 1
-        }
-        if obj_mario.x &lt; x+8
-        {
-            hspeed += -0.02
+        else
             direct = -1
-        }
-        if hspeed &gt; 0.5
-            hspeed = 0.5
-        if hspeed &lt; -0.5
-            hspeed = -0.5
-        if obj_mario.y+16 &gt; y+8
-            vspeed += 0.02
-        if obj_mario.y+16 &lt; y+8
-            vspeed += -0.02
-        if vspeed &gt; 0.5
-            vspeed = 0.5
-        if vspeed &lt; -0.5
-            vspeed = -0.5
+
     }
-    else
-        speed = 0
-    if obj_mario.x &gt; x
-    {
-        if obj_mario.direct = 1
-            movenow = 1
-        else
-            movenow = 0
-    }
-    if obj_mario.x &lt; x
-    {
-        if obj_mario.direct = -1
-            movenow = 1
-        else
-            movenow = 0
-    }
+
 }
-else
-    speed = 0
-if movenowprev != movenow
+
+//Otherwise, stop
+else if image_index = 2
+and ready = 1
 {
     ready = 0
+    alarm[0] = 8
+    alarm[2] = 4
+    image_index = 1
     speed = 0
-    alarm[1] = 3
-    if movenow = 0
-        alarm[0] = 6
-    else
-    {
-        alarm[2] = 6
-        if mysolid &gt; 0
-            with mysolid instance_destroy()
-    }
 }
 </string>
           </argument>
@@ -258,10 +273,8 @@ if movenowprev != movenow
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if direct = 1
-    draw_sprite_ext(sprite_index,image_index,round(x),y,1,1,0,c_white,1)
-if direct = -1
-    draw_sprite_ext(sprite_index,image_index,round(x)+16,y,-1,1,0,c_white,1)
+            <string>///Draw Block Boo
+draw_sprite_ext(sprite_index,image_index,round(x)+8-8*direct,y,direct,1,0,c_white,1)
 </string>
           </argument>
         </arguments>

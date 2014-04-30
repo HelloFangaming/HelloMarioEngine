@@ -25,19 +25,31 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
-movenow = 0
-direct = -1
-ready = 0
-alarm[10] = 2
+            <string>///A very shy ghost
+
+//How vulnerable is this enemy to various items?
 hardness = 1
+
+//How vulnerable is this enemy to Mario?
 stomp = 2
+
+//Facing direction
+direct = -1
+
+//Do not animate
+image_speed = 0
+
+//Can the boo move
+ready = 0
+
+//Let the boo move
+alarm[0] = 8
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="10">
+    <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -54,7 +66,9 @@ stomp = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 1</string>
+            <string>///Let the boo move
+ready = 1
+</string>
           </argument>
         </arguments>
       </action>
@@ -76,61 +90,67 @@ stomp = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 0
-    exit
-movenowprev = movenow
+            <string>///Boo logic
+
+//If Mario exists, the boo is in the room, and the boo can move
 if instance_exists(obj_mario)
+and not outside_view()
+and ready = 1
 {
-    if movenow = 1
-    {
-        if obj_mario.x &gt; x+8
-        {
-            hspeed += 0.02
-            direct = 1
-        }
-        if obj_mario.x &lt; x+8
-        {
-            hspeed += -0.02
-            direct = -1
-        }
-        if hspeed &gt; 0.5
-            hspeed = 0.5
-        if hspeed &lt; -0.5
-            hspeed = -0.5
-        if obj_mario.y+16 &gt; y+8
-            vspeed += 0.02
-        if obj_mario.y+16 &lt; y+8
-            vspeed += -0.02
-        if vspeed &gt; 0.5
-            vspeed = 0.5
-        if vspeed &lt; -0.5
-            vspeed = -0.5
-    }
+
+    //Remember last image index
+    imageindexprev = image_index
+
+    //If Mario is looking away, give chase
+    if (obj_mario.x &gt; x+8 and obj_mario.direct = 1)
+    or (obj_mario.x &lt; x+8 and obj_mario.direct = -1)
+        image_index = 1
+
+    //Otherwise, hide
     else
+        image_index = 0
+
+    //If the boo started going after Mario, play the boo sound and give chase
+    if imageindexprev = 0
+    and image_index = 1
+    {
+        audio_play_sound(snd_boo,0,0)
+        speed = 1
+        direction = point_direction(x,y,obj_mario.x,obj_mario.y)
+    }
+
+    //If the boo just stopped moving, stop it
+    else if imageindexprev = 1
+    and image_index = 0
+    {
+        ready = 0
+        alarm[0] = 8
         speed = 0
-    if obj_mario.x &gt; x
-    {
-        if obj_mario.direct = 1
-            movenow = 1
-        else
-            movenow = 0
     }
-    if obj_mario.x &lt; x
+
+    //If the boo is giving chase
+    if image_index = 1
     {
-        if obj_mario.direct = -1
-            movenow = 1
+
+        //Turn towards Mario
+        turn_towards_direction(point_direction(x,y,obj_mario.x,obj_mario.y),8)
+
+        //Look at Mario
+        if obj_mario.x &gt; x+8
+            direct = 1
         else
-            movenow = 0
+            direct = -1
+
     }
+
 }
+
+//Otherwise, stop
 else
 {
-    movenow = 0
+    image_index = 0
     speed = 0
 }
-if movenowprev = 0 and movenow = 1
-    audio_play_sound(snd_boo,0,0)
-image_index = movenow
 </string>
           </argument>
         </arguments>
@@ -153,10 +173,8 @@ image_index = movenow
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if direct = 1
-    draw_sprite_ext(sprite_index,image_index,round(x),y,1,1,0,c_white,1)
-if direct = -1
-    draw_sprite_ext(sprite_index,image_index,round(x)+16,y,-1,1,0,c_white,1)
+            <string>///Draw Boo
+draw_sprite_ext(sprite_index,image_index,round(x)+8-8*direct,y,direct,1,0,c_white,1)
 </string>
           </argument>
         </arguments>

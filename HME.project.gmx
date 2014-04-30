@@ -590,6 +590,13 @@
         <sprite>sprites\spr_angrysun</sprite>
         <sprite>sprites\spr_pokey</sprite>
       </sprites>
+      <sprites name="Ghost">
+        <sprite>sprites\spr_boo</sprite>
+        <sprite>sprites\spr_bigboo</sprite>
+        <sprite>sprites\spr_stretchboo</sprite>
+        <sprite>sprites\spr_blockboo</sprite>
+        <sprite>sprites\spr_eerie</sprite>
+      </sprites>
       <sprites name="Castle">
         <sprite>sprites\spr_drybones</sprite>
         <sprite>sprites\spr_drybones_crumble</sprite>
@@ -597,11 +604,6 @@
         <sprite>sprites\spr_thwomp</sprite>
         <sprite>sprites\spr_thwimp</sprite>
         <sprite>sprites\spr_rotodisc</sprite>
-        <sprite>sprites\spr_boo</sprite>
-        <sprite>sprites\spr_bigboo</sprite>
-        <sprite>sprites\spr_stretchboo</sprite>
-        <sprite>sprites\spr_blockboo</sprite>
-        <sprite>sprites\spr_eerie</sprite>
         <sprite>sprites\spr_netkoopa</sprite>
         <sprite>sprites\spr_netkoopa2</sprite>
         <sprite>sprites\spr_netkoopaturn</sprite>
@@ -613,9 +615,9 @@
         <sprite>sprites\spr_phanto</sprite>
         <sprite>sprites\spr_grinder</sprite>
         <sprite>sprites\spr_ballnchain</sprite>
-        <sprite>sprites\spr_podoboo_bounce</sprite>
         <sprite>sprites\spr_magikoopa</sprite>
         <sprite>sprites\spr_magic</sprite>
+        <sprite>sprites\spr_podoboo_bounce</sprite>
         <sprite>sprites\spr_giantspike</sprite>
         <sprite>sprites\spr_crusher</sprite>
         <sprite>sprites\spr_bowserstatue</sprite>
@@ -1264,12 +1266,7 @@
         <object>objects\obj_angrysun</object>
         <object>objects\obj_pokey</object>
       </objects>
-      <objects name="Castle">
-        <object>objects\obj_drybones</object>
-        <object>objects\obj_podoboo</object>
-        <object>objects\obj_thwomp</object>
-        <object>objects\obj_thwimp</object>
-        <object>objects\obj_rotodisc</object>
+      <objects name="Ghost">
         <object>objects\obj_boo</object>
         <object>objects\obj_bigboo</object>
         <object>objects\obj_stretchboo</object>
@@ -1277,6 +1274,13 @@
         <object>objects\obj_eerie</object>
         <object>objects\obj_boocircle</object>
         <object>objects\obj_boosnake</object>
+      </objects>
+      <objects name="Castle">
+        <object>objects\obj_drybones</object>
+        <object>objects\obj_podoboo</object>
+        <object>objects\obj_thwomp</object>
+        <object>objects\obj_thwimp</object>
+        <object>objects\obj_rotodisc</object>
         <object>objects\obj_netkoopa</object>
         <object>objects\obj_netspark</object>
         <object>objects\obj_littlespark</object>
@@ -1584,11 +1588,13 @@
             <object>objects\obj_firesnake_part</object>
             <object>objects\obj_angrysun_movement</object>
           </objects>
+          <objects name="Ghost">
+            <object>objects\obj_boocircle_boo</object>
+            <object>objects\obj_boosnake_trail</object>
+          </objects>
           <objects name="Castle">
             <object>objects\obj_crumblebones</object>
             <object>objects\obj_rotodisc_path</object>
-            <object>objects\obj_boocircle_boo</object>
-            <object>objects\obj_boosnake_trail</object>
             <object>objects\obj_bonybeetle_hide</object>
             <object>objects\obj_firebarball</object>
             <object>objects\obj_chains</object>
