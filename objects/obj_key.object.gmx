@@ -171,7 +171,6 @@ and not instance_exists(obj_slider)
     held = 1
     gravity = 0
     speed = 0
-    with obj_phanto event_user(15)
 }
 </string>
           </argument>

@@ -25,15 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place this in the object creation code.
-//ready = Select a starting direction
-//1 = Clockwise
-//-1 = Counterclockwise
-image_speed = 0.5
+            <string>///A small bar of hotness
+
+/*
+**  This item uses creation code!
+**
+**  ready = Select a starting direction
+**      1: Clockwise
+**      -1: Counterclockwise
+**
+*/
+
+//Default Value:
 if place_snapped(32,16)
     ready = 1
 else
     ready = -1
+
+//Animate
+image_speed = 0.5
 </string>
           </argument>
         </arguments>
@@ -56,21 +66,32 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>varid = instance_create(x,y-8,obj_firebarball)
-varid.hspeed = 0.25*ready
-varid.ready = ready
-varid = instance_create(x,y-16,obj_firebarball)
-varid.hspeed = 0.5*ready
-varid.ready = ready
-varid = instance_create(x,y-24,obj_firebarball)
-varid.hspeed = 0.75*ready
-varid.ready = ready
-varid = instance_create(x,y-32,obj_firebarball)
-varid.hspeed = ready
-varid.ready = ready
-varid = instance_create(x,y-40,obj_firebarball)
-varid.hspeed = 1.25*ready
-varid.ready = ready
+            <string>///Build firebar
+with instance_create(x,y-8,obj_firebarball)
+{
+    hspeed = 0.25*other.ready
+    ready = other.ready
+}
+with instance_create(x,y-16,obj_firebarball)
+{
+    hspeed = 0.5*other.ready
+    ready = other.ready
+}
+with instance_create(x,y-24,obj_firebarball)
+{
+    hspeed = 0.75*other.ready
+    ready = other.ready
+}
+with instance_create(x,y-32,obj_firebarball)
+{
+    hspeed = other.ready
+    ready = other.ready
+}
+with instance_create(x,y-40,obj_firebarball)
+{
+    hspeed = 1.25*other.ready
+    ready = other.ready
+}
 </string>
           </argument>
         </arguments>

@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.5</string>
+            <string>///One piece of a firebar
+
+//Animate
+image_speed = 0.5
+</string>
           </argument>
         </arguments>
       </action>
@@ -47,7 +51,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 1
+            <string>///Rotate
+if ready = 1
     direction -= 1.7925
 else
     direction += 1.7925
@@ -73,8 +78,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.invincible = 0
-    with other event_user(0)
+            <string>///Hurt Mario
+with other event_user(0)
 </string>
           </argument>
         </arguments>

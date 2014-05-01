@@ -25,10 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.4
-ready = 0
+            <string>///Fire coming out of lava
+
+//How vulnerable is this enemy to various items?
 hardness = 2
+
+//How vulnerable is this enemy to Mario?
 stomp = 2
+
+//Animate
+image_speed = 0.3
+
+//Gravity
+gravity = 0.4
+
+//State variable
+ready = 0
 </string>
           </argument>
         </arguments>
@@ -51,14 +63,11 @@ stomp = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if x&gt;view_xview[0]-16
-and x&lt;view_xview[0]+336
-and y&lt;view_yview[0]+256
-and y&gt;view_yview[0]-16
+            <string>///Make podoboo effects and sounds
+if not outside_view()
 {
     audio_play_sound(snd_podoboo,0,0)
-    varid = instance_create(x,y-4,obj_smoke)
-    varid.sprite_index = spr_lavasplash
+    with instance_create(x,y-4,obj_smoke) sprite_index = spr_lavasplash
 }
 </string>
           </argument>
@@ -82,9 +91,11 @@ and y&gt;view_yview[0]-16
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>visible = 1
+            <string>///Jump out of the lava
+visible = 1
 vspeed = -2.5
-alarm[2] = 10</string>
+alarm[2] = 10
+</string>
           </argument>
         </arguments>
       </action>
@@ -106,10 +117,12 @@ alarm[2] = 10</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>visible = 0
+            <string>///Become immobile and invisible in the lava
+visible = 0
 gravity = 0
 vspeed = 0
-alarm[1] = 40</string>
+alarm[1] = 40
+</string>
           </argument>
         </arguments>
       </action>
@@ -131,8 +144,13 @@ alarm[1] = 40</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if vspeed &gt; 3
+            <string>///Podoboo logic
+
+//Cap fall speed
+if vspeed &gt; 3
     vspeed = 3
+
+//Make the podoboo fall down at around the same height it started at
 if y &lt; ystart+16
 and ready = 1
 {
@@ -161,12 +179,12 @@ and ready = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 0
+            <string>///Land in the lava
+if ready = 0
 {
     ready = 1
     alarm[0] = 10
-    varid = instance_create(x,y+4,obj_smoke)
-    varid.sprite_index = spr_lavasplash
+    with instance_create(x,y+4,obj_smoke) sprite_index = spr_lavasplash
 }
 </string>
           </argument>
@@ -190,7 +208,8 @@ and ready = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if vspeed &gt; 0
+            <string>///Draw Podoboo
+if vspeed &gt; 0
     draw_sprite_ext(sprite_index,image_index,x,round(y)+16,1,-1,0,c_white,1)
 else
     draw_sprite_ext(sprite_index,image_index,x,y,1,1,0,c_white,1)

@@ -600,6 +600,9 @@
       <sprites name="Castle">
         <sprite>sprites\spr_drybones</sprite>
         <sprite>sprites\spr_drybones_crumble</sprite>
+        <sprite>sprites\spr_bonybeetle</sprite>
+        <sprite>sprites\spr_bonybeetle_hide</sprite>
+        <sprite>sprites\spr_bonybeetle_crumble</sprite>
         <sprite>sprites\spr_podoboo</sprite>
         <sprite>sprites\spr_thwomp</sprite>
         <sprite>sprites\spr_thwimp</sprite>
@@ -609,9 +612,6 @@
         <sprite>sprites\spr_netkoopaturn</sprite>
         <sprite>sprites\spr_spark</sprite>
         <sprite>sprites\spr_giantspark</sprite>
-        <sprite>sprites\spr_bonybeetle</sprite>
-        <sprite>sprites\spr_bonybeetle_hide</sprite>
-        <sprite>sprites\spr_bonybeetle_crumble</sprite>
         <sprite>sprites\spr_phanto</sprite>
         <sprite>sprites\spr_grinder</sprite>
         <sprite>sprites\spr_ballnchain</sprite>
@@ -1277,6 +1277,7 @@
       </objects>
       <objects name="Castle">
         <object>objects\obj_drybones</object>
+        <object>objects\obj_bonybeetle</object>
         <object>objects\obj_podoboo</object>
         <object>objects\obj_thwomp</object>
         <object>objects\obj_thwimp</object>
@@ -1286,7 +1287,6 @@
         <object>objects\obj_littlespark</object>
         <object>objects\obj_fastspark</object>
         <object>objects\obj_giantspark</object>
-        <object>objects\obj_bonybeetle</object>
         <object>objects\obj_phanto</object>
         <object>objects\obj_firebar</object>
         <object>objects\obj_firebar_large</object>
@@ -1595,7 +1595,6 @@
           <objects name="Castle">
             <object>objects\obj_crumblebones</object>
             <object>objects\obj_rotodisc_path</object>
-            <object>objects\obj_bonybeetle_hide</object>
             <object>objects\obj_firebarball</object>
             <object>objects\obj_chains</object>
             <object>objects\obj_magikoopa2</object>

@@ -25,7 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed = -1
+            <string>///Statue fire
+
+//Move left
+hspeed = -1
+
+//Animate
 image_speed = 0.15
 </string>
           </argument>
@@ -49,10 +54,8 @@ image_speed = 0.15
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if x&lt;view_xview[0]-16
-or x&gt;view_xview[0]+336
-or y&gt;view_yview[0]+256
-or y&lt;view_yview[0]-16
+            <string>///Destroy outside view
+if outside_view()
     instance_destroy()
 </string>
           </argument>
@@ -76,8 +79,8 @@ or y&lt;view_yview[0]-16
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.invincible = 0
-    with other event_user(0)
+            <string>///Hurt Mario
+with other event_user(0)
 </string>
           </argument>
         </arguments>

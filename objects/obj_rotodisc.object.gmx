@@ -25,18 +25,65 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place this in the object creation code.
-//ready = Select a starting direction
-//1 = Clockwise
-//-1 = Counterclockwise
-y -= 80
-image_speed = 0.3
+            <string>///Looks kinda like a radioactive waffle
+
+/*
+**  This item uses creation code!
+**
+**  ready = Select a starting direction
+**      1: Clockwise
+**      -1: Counterclockwise
+**
+*/
+
+//Default Value:
 if place_snapped(32,16)
     ready = 1
 else
     ready = -1
+
+//How vulnerable is this enemy to various items?
 hardness = 99
+
+//How vulnerable is this enemy to Mario?
 stomp = 2
+
+//Animate
+image_speed = 0.3
+
+//Move to the uppermost position of its rotation
+y -= 80
+
+//Make a trail
+alarm[0] = 6
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Make a trail
+with instance_create(xstart,ystart-80,obj_rotodisc_path)
+{
+    ready = other.ready
+    hspeed = 2.5*ready
+}
 </string>
           </argument>
         </arguments>
@@ -59,7 +106,8 @@ stomp = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 1
+            <string>///Rotate
+if ready = 1
     direction -= 1.7925
 else
     direction += 1.7925
@@ -85,12 +133,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 1
-    hspeed = 2.5
-else
-    hspeed = -2.5
-varid = instance_create(x,y,obj_rotodisc_path)
-varid.ready = ready
+            <string>///Start rotational movement
+hspeed = 2.5*ready
 </string>
           </argument>
         </arguments>

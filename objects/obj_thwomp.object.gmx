@@ -25,33 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>thwompy = 0
-image_speed = 0
+            <string>///Wants to flatten Mario
+
+//How vulnerable is this enemy to various items?
 hardness = 2
+
+//How vulnerable is this enemy to Mario?
 stomp = 2
+
+//Do not animate
+image_speed = 0
+
+//State variable
+ready = 0
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>thwompy = 3</string>
           </argument>
         </arguments>
       </action>
@@ -73,9 +60,10 @@ stomp = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = -1
+            <string>///Rise
+ready = 3
+vspeed = -1
 image_index = 0
-alarm[1] = 1
 </string>
           </argument>
         </arguments>
@@ -98,19 +86,52 @@ alarm[1] = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if thwompy = 0
+            <string>///Thwomp logic
+
+//Fall down if Mario gets close
+if ready = 0
 and instance_exists(obj_mario)
-    if obj_mario.x &gt; x-40
-    and obj_mario.x &lt; x+72
-    and y &lt; obj_mario.y
-    {
-        thwompy = 1
-        gravity = 0.25
-        image_index = 1
-    }
-if vspeed &gt; 3
-and thwompy = 1
-    vspeed = 3
+and obj_mario.x &gt; x-40
+and obj_mario.x &lt; x+72
+and y &lt; obj_mario.y
+{
+    ready = 1
+    gravity = 0.25
+    image_index = 1
+}
+
+//Land on the ground
+else if ready = 1
+and gravity = 0
+{
+
+    //State variable
+    ready = 2
+
+    //Thwomp sound
+    audio_play_sound(snd_thwomp,0,0)
+
+    //Smoke effects
+    instance_create(x-4,y+16,obj_smoke)
+    instance_create(x+20,y+16,obj_smoke)
+
+    //Rise
+    alarm[0] = 60
+
+}
+
+//Stop after returning
+else if ready = 3
+and y &lt; ystart+1
+{
+    ready = 0
+    vspeed = 0
+    y = ystart
+}
+
+//Cap fall speed
+if vspeed &gt; 4
+    vspeed = 4
 </string>
           </argument>
         </arguments>
@@ -133,55 +154,12 @@ and thwompy = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if thwompy = 1
+            <string>///Floor collision
+if y &lt; other.y-sprite_height+5 and vspeed &gt; 0
 {
-    thwompy = 2
+    y = other.y-sprite_height
+    vspeed = 0
     gravity = 0
-    vspeed = 0
-    y = other.y-32
-    audio_play_sound(snd_thwomp,0,0)
-    instance_create(x-4,y+16,obj_smoke)
-    instance_create(x+20,y+16,obj_smoke)
-    alarm[0] = 60
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_solid">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if thwompy = 1
-{
-    thwompy = 2
-    gravity = 0
-    vspeed = 0
-    y = other.y-32
-    audio_play_sound(snd_thwomp,0,0)
-    instance_create(x-4,y+16,obj_smoke)
-    instance_create(x+20,y+16,obj_smoke)
-    alarm[0] = 60
-}
-if thwompy = 3
-{
-    thwompy = 0
-    vspeed = 0
-    y = other.bbox_bottom+1
 }
 </string>
           </argument>
@@ -205,7 +183,9 @@ if thwompy = 3
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy()</string>
+            <string>///Destroy
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
