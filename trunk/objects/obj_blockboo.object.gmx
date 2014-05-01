@@ -131,7 +131,8 @@ with mysolid instance_destroy()
 
 //Move towards Mario
 speed = 1
-direction = point_direction(x,y,obj_mario.x,obj_mario.y)
+if instance_exists(obj_mario)
+    direction = point_direction(x,y,obj_mario.x,obj_mario.y)
 </string>
           </argument>
         </arguments>

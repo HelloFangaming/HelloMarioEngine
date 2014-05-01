@@ -25,14 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place this in the object creation code.
-//ready = Select a starting direction
-//0 = Down
-//1 = Right
-//2 = Up
-//3 = Left
-bam = 0
-image_speed = 0.15
+            <string>///These koopas can climb
+
+/*
+**  This item uses creation code!
+**
+**  ready = Select a starting direction
+**      0: Down
+**      1: Right
+**      2: Up
+**      3: Left
+**
+*/
+
+//Default Value:
 if place_snapped(32,32)
     ready = 0
 else if place_snapped(32,16)
@@ -41,8 +47,18 @@ else if place_snapped(16,32)
     ready = 2
 else
     ready = 3
+
+//How vulnerable is this enemy to various items?
 hardness = 0
+
+//How vulnerable is this enemy to Mario?
 stomp = 0
+
+//Animate
+image_speed = 0.15
+
+//Whether the koopa is changing net sides
+turnaround = 0
 </string>
           </argument>
         </arguments>
@@ -65,7 +81,9 @@ stomp = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>bam = 0</string>
+            <string>///Can turn again
+turnaround = 0
+</string>
           </argument>
         </arguments>
       </action>
@@ -87,13 +105,18 @@ stomp = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if depth = 0
+            <string>///Finish turning
+
+//Move to the back of the net
+if depth = 0
 {
     depth = 10
     sprite_index = spr_netkoopa2
     hardness = 100
     stomp = -1
 }
+
+//Move to the front of the net
 else
 {
     depth = 0
@@ -101,8 +124,11 @@ else
     hardness = 0
     stomp = 0
 }
-alarm[1] = 10
+
+//Animate
 image_speed = 0.15
+
+//Choose new direction
 if ready = 2
 {
     ready = 0
@@ -123,6 +149,9 @@ else if ready = 1
     ready = 3
     hspeed = -0.75
 }
+
+//Can turn again
+alarm[1] = 10
 </string>
           </argument>
         </arguments>
@@ -145,55 +174,45 @@ else if ready = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if bam = 0
-and not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_climb,0,0)
+            <string>///Net koopa logic
+
+//If the koopa is not turning and climbs off the net
+if turnaround = 0
+and not place_meeting(x,y,obj_climb)
 {
-    speed = 0
-    sprite_index = spr_netkoopaturn
-    if ready = 0
-        image_index = 0
-    if ready = 1
-        image_index = 1
-    if ready = 2
-        image_index = 1
-    if ready = 3
-        image_index = 0
-    alarm[0] = 10
+
+    //Turning
+    turnaround = 1
+
+    //Do not animate
     image_speed = 0
-    bam = 1
+
+    //Stop
+    speed = 0
+
+    //Turn sprite
+    sprite_index = spr_netkoopaturn
+
+    //Turn image index
+    if ready = 0
+    or ready = 3
+        image_index = 0
+    else
+        image_index = 1
+
+    //Finish turning
+    alarm[0] = 10
+
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_mario">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if depth = 10
+
+//Die if Mario smacks the net while on the other side
+if stomp = -1
+and place_meeting(x,y,obj_mario)
+and obj_mario.netsmack = 1
 {
-    if other.netsmack = 1
-    {
-        scr_musicalscale(other.id,1)
-        event_user(0)
-    }
+    scr_musicalscale(obj_mario.id,1)
+    event_user(0)
 }
-else
-    event_inherited()
 </string>
           </argument>
         </arguments>
@@ -216,9 +235,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>imdead = instance_create(x-8,y+16,obj_enemy_stomped)
-imdead.sprite_index = spr_shell
-imdead.image_xscale = image_xscale
+            <string>///Net koopa stomping
+with instance_create(x-8,y+16,obj_enemy_stomped) sprite_index = spr_shell
 
 //Destroy
 instance_destroy()
@@ -244,8 +262,8 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>imdead = instance_create(x-8,y+16,obj_enemy_dead)
-imdead.sprite_index = spr_shell
+            <string>///Koopa killing
+with instance_create(x-8,y+16,obj_enemy_dead) sprite_index = spr_shell
 
 //Destroy
 instance_destroy()
@@ -271,7 +289,8 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 0
+            <string>///Start moving
+if ready = 0
     vspeed = 0.75
 else if ready = 1
     hspeed = 0.75
@@ -301,7 +320,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy()</string>
+            <string>///Destroy
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>

@@ -25,17 +25,28 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//If you use Phantos in your level, make sure that you only have ONE key in the room.
-//Or else you may end up with unexpected results...
+            <string>///This phanto will give chase if the nearest key to it is moved...
+
+//How vulnerable is this enemy to various items?
+hardness = 100
+
+//How vulnerable is this enemy to Mario?
+stomp = -1
+
+//The key this phanto will track
 if instance_exists(obj_key)
 {
-    oldx = obj_key.x
-    oldy = obj_key.y
+    mykey = instance_nearest(x,y,obj_key)
+    oldx = mykey.x
+    oldy = mykey.y
 }
+
+//Destroy if there is no keys
 else
     instance_destroy()
-hardness = 99
-stomp = 2
+
+//Chase mode
+chasemode = 0
 </string>
           </argument>
         </arguments>
@@ -58,34 +69,98 @@ stomp = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if visible = 1
+            <string>///Phanto logic
+
+//If it is invisible
+if visible = 0
 {
-    if instance_exists(obj_key)
-        turn_towards_direction(point_direction(x,y,obj_key.x,obj_key.y),8)
-    else if instance_exists(obj_yoshi)
-    and obj_yoshi.fullmouth = 1
-    and obj_yoshi.inmouth = obj_key
-        turn_towards_direction(point_direction(x,y,obj_yoshi.x,obj_yoshi.y),8)
+
+    //If the key is taken, chase the key
+    if instance_exists(mykey)
+    {
+        if mykey.held = 1
+        {
+            chasemode = 0
+            direction = point_direction(x,y,mykey.x,mykey.y)
+            event_user(15)
+        }
+    }
+
+    //Otherwise
     else
     {
-        visible = 0
-        speed = 0
+
+        //If the key was eaten, chase Yoshi
+        if instance_exists(obj_yoshi)
+        and obj_yoshi.fullmouth = 1
+        and obj_yoshi.inmouth = obj_key
+        {
+            chasemode = 1
+            direction = point_direction(x,y,obj_yoshi.x,obj_yoshi.y)
+            event_user(15)
+        }
+
+        //Otherwise, make a new key
+        else
+            mykey = instance_create(oldx,oldy,obj_key)
+
     }
+
 }
-if position_meeting(x+8,y+8,obj_key)
+
+//If it is visible
+else
 {
-    obj_key.x = oldx
-    obj_key.y = oldy
-    instance_create(x,y,obj_smoke)
-    x = xstart
-    y = ystart
-    speed = 0
-    visible = 0
-    if obj_key.held = 1
+
+    //Normal key chase
+    if chasemode = 0
     {
-        obj_key.held = 0
-        obj_mario.holding = 0
+
+        //If it touches the key, return everything back to the way it was
+        if position_meeting(x+8,y+8,mykey)
+        {
+            mykey.x = oldx
+            mykey.y = oldy
+            event_user(14)
+            if mykey.held = 1
+            {
+                mykey.held = 0
+                obj_mario.holding = 0
+            }
+        }
+
+        //If the key still exists, give chase
+        else if instance_exists(mykey)
+            turn_towards_direction(point_direction(x,y,mykey.x,mykey.y),8)
+
+        //Otherwise, make a new one
+        else
+        {
+            mykey = instance_create(oldx,oldy,obj_key)
+            event_user(14)
+        }
+
     }
+
+    //Yoshi key chase
+    else
+    {
+
+        //If Yoshi still has the key, chase Yoshi
+        if instance_exists(obj_yoshi)
+        and obj_yoshi.fullmouth = 1
+        and obj_yoshi.inmouth = obj_key
+            turn_towards_direction(point_direction(x,y,obj_yoshi.x,obj_yoshi.y),8)
+
+        //If the key was spit out, chase the key
+        else
+        {
+            mykey = instance_nearest(obj_levelmanager.x,obj_levelmanager.y,obj_key)
+            chasemode = 0
+        }
+
+    }
+
 }
 </string>
           </argument>
@@ -109,9 +184,42 @@ if position_meeting(x+8,y+8,obj_key)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>visible = 1
+            <string>///Begin chase
+visible = 1
 speed = 1
+stomp = 2
 instance_create(x,y,obj_smoke)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="24">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///End chase
+visible = 0
+speed = 0
+stomp = -1
+instance_create(x,y,obj_smoke)
+
+//Reset position
+x = xstart
+y = ystart
 </string>
           </argument>
         </arguments>

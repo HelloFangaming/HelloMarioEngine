@@ -25,10 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
-alarm[0] = 15
+            <string>///A saw that moves on a line
+
+//How vulnerable is this enemy to various items?
 hardness = 1
+
+//How vulnerable is this enemy to Mario?
 stomp = 2
+
+//Animate
+image_speed = 0.15
+
+//Make engine noises
+alarm[0] = 15
 </string>
           </argument>
         </arguments>
@@ -51,15 +60,10 @@ stomp = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 15
-if x&gt;view_xview[0]-16
-and x&lt;view_xview[0]+336
-and y&lt;view_yview[0]+256
-and y&gt;view_yview[0]-16
-{
-    audio_stop_sound(snd_engine)
+            <string>///Make engine noises
+if not outside_view()
     audio_play_sound(snd_engine,0,0)
-}
+alarm[0] = 15
 </string>
           </argument>
         </arguments>
@@ -105,7 +109,9 @@ and y&gt;view_yview[0]-16
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed+=0.0324</string>
+            <string>///Move right
+hspeed+=0.0324
+</string>
           </argument>
         </arguments>
       </action>
@@ -127,7 +133,9 @@ and y&gt;view_yview[0]-16
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed+=-0.0324</string>
+            <string>///Move left
+hspeed+=-0.0324
+</string>
           </argument>
         </arguments>
       </action>
@@ -149,7 +157,9 @@ and y&gt;view_yview[0]-16
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed+=0.0324</string>
+            <string>///Move down
+vspeed+=0.0324
+</string>
           </argument>
         </arguments>
       </action>
@@ -171,7 +181,9 @@ and y&gt;view_yview[0]-16
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed+=-0.0324</string>
+            <string>///Move up
+vspeed+=-0.0324
+</string>
           </argument>
         </arguments>
       </action>

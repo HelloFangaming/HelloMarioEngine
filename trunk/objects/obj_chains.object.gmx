@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
+            <string>///A chain
+
+//Do not animate
+image_speed = 0
 image_index = 1
 </string>
           </argument>
@@ -49,7 +52,8 @@ image_index = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 1
+            <string>///Rotate
+if ready = 1
     direction -= 1.7925
 else
     direction += 1.7925

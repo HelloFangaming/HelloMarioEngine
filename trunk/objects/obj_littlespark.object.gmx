@@ -25,21 +25,66 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
-if collision_point(x+8,y-8,obj_solid,0,0)
-or collision_point(x-8,y+8,obj_solid,0,0)
-{
-    x-=2
-    y-=2
-}
-else
-{
-    x+=2
-    y+=2
-}
-alarm[0] = 2
+            <string>///Moves around the sides of surfaces
+
+//How vulnerable is this enemy to various items?
 hardness = 1
+
+//How vulnerable is this enemy to Mario?
 stomp = 2
+
+//Start moving
+alarm[10] = 2
+
+//Animate
+image_speed = 0.15
+
+//State variable
+ready = 0
+
+//Move against surfaces
+if place_meeting(x+8,y,obj_solid)
+    x+=2
+else if place_meeting(x-8,y,obj_solid)
+    x-=2
+if place_meeting(x,y+8,obj_solid)
+    y+=2
+else if place_meeting(x,y-8,obj_solid)
+    y-=2
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Start moving
+speed = 1
+
+//Select direction
+if x &gt; xstart
+    direction = 90
+else if x &lt; xstart
+    direction = 270
+if y &gt; ystart
+    direction = 0
+else if y &lt; ystart
+    direction = 180
 </string>
           </argument>
         </arguments>
@@ -62,14 +107,8 @@ stomp = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if collision_point(x+8,y+20,obj_solid,0,0)
-    hspeed = 1
-if collision_point(x+8,y-1,obj_solid,0,0)
-    hspeed = -1
-if collision_point(x-1,y+8,obj_solid,0,0)
-    vspeed = 1
-if collision_point(x+20,y+8,obj_solid,0,0)
-    vspeed = -1
+            <string>///Reset state
+ready = 0
 </string>
           </argument>
         </arguments>
@@ -92,65 +131,50 @@ if collision_point(x+20,y+8,obj_solid,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if direction = 90
-and collision_point(x+8,y-1,obj_solid,0,0)
-and collision_point(x+16,y+8,obj_solid,0,0)
+            <string>///Spark logic
+
+//If the spark can turn
+if ready = 0
 {
-    hspeed = -1
-    vspeed = 0
-    exit
-}
-if direction = 0
-and collision_point(x+16,y+8,obj_solid,0,0)
-and collision_point(x+8,y+16,obj_solid,0,0)
-{
-    hspeed = 0
-    vspeed = -1
-    exit
-}
-if direction = 270
-and collision_point(x+8,y+16,obj_solid,0,0)
-and collision_point(x-1,y+8,obj_solid,0,0)
-{
-    hspeed = 1
-    vspeed = 0
-    exit
-}
-if direction = 180
-and collision_point(x-1,y+8,obj_solid,0,0)
-and collision_point(x+8,y-1,obj_solid,0,0)
-{
-    hspeed = 0
-    vspeed = 1
-    exit
-}
-if not collision_rectangle(bbox_left+3,bbox_top-1,bbox_right-3,bbox_bottom+1,obj_solidtop,0,0)
-and not collision_rectangle(bbox_left-1,bbox_top+3,bbox_right+1,bbox_bottom-3,obj_solid,0,0)
-{
-    if direction = 90 and collision_point(x+16,y+16,obj_solid,0,0)
+
+    //Remember previous direction
+    prevdir = direction
+
+    //If it runs into a wall, turn
+    if direction = 90
+    and place_meeting(x-3,y-speed,obj_solid)
+        direction = 180
+    else if direction = 0
+    and place_meeting(x+speed,y-3,obj_solid)
+        direction = 90
+    else if direction = 270
+    and place_meeting(x+3,y+speed,obj_solid)
+        direction = 0
+    else if direction = 180
+    and place_meeting(x-speed,y+3,obj_solid)
+        direction = 270
+
+    //If it runs off a wall, turn
+    else if not collision_rectangle(bbox_left+3,bbox_top-1,bbox_right-3,bbox_bottom+1,obj_solidtop,0,0)
+    and not collision_rectangle(bbox_left-1,bbox_top+3,bbox_right+1,bbox_bottom-3,obj_solid,0,0)
     {
-        hspeed = 1
-        vspeed = 0
-        exit
+        if direction = 90
+            direction = 0
+        else if direction = 0
+            direction = 270
+        else if direction = 270
+            direction = 180
+        else if direction = 180
+            direction = 90
     }
-    if direction = 0 and collision_point(x-1,y+16,obj_solid,0,0)
+
+    //If the direction changed, don't allow direction changes for a bit
+    if prevdir != direction
     {
-        hspeed = 0
-        vspeed = 1
-        exit
+        ready = 1
+        alarm[0] = 5
     }
-    if direction = 270 and collision_point(x-1,y-1,obj_solid,0,0)
-    {
-        hspeed = -1
-        vspeed = 0
-        exit
-    }
-    if direction = 180 and collision_point(x+16,y-1,obj_solid,0,0)
-    {
-        hspeed = 0
-        vspeed = -1
-        exit
-    }
+
 }
 </string>
           </argument>
@@ -174,7 +198,9 @@ and not collision_rectangle(bbox_left-1,bbox_top+3,bbox_right+1,bbox_bottom-3,ob
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy()</string>
+            <string>///Destroy
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>

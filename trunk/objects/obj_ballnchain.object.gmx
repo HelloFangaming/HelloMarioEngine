@@ -25,18 +25,31 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place this in the object creation code.
-//ready = Select a starting direction
-//1 = Clockwise
-//-1 = Counterclockwise
-image_speed = 0
-image_index = 0
+            <string>///A ball and chain that swings around
+
+/*
+**  This item uses creation code!
+**
+**  ready = Select a starting direction
+**      1: Clockwise
+**      -1: Counterclockwise
+**
+*/
+
+//Default Value:
 if place_snapped(32,16)
     ready = 1
 else
     ready = -1
+
+//How vulnerable is this enemy to various items?
 hardness = 99
+
+//How vulnerable is this enemy to Mario?
 stomp = 2
+
+//Do not animate
+image_speed = 0
 </string>
           </argument>
         </arguments>
@@ -59,7 +72,8 @@ stomp = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 1
+            <string>///Rotate
+if ready = 1
     direction -= 1.7925
 else
     direction += 1.7925
@@ -85,16 +99,24 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 1
-    hspeed = 1.75
-else
-    hspeed = -1.75
-varid = instance_create(x,y-16,obj_chains)
-varid.ready = ready
-varid.hspeed = 0.5*ready
-varid = instance_create(x,y-32,obj_chains)
-varid.ready = ready
-varid.hspeed = 1*ready
+            <string>///Prepare to move
+
+//Make chains
+with instance_create(x,y-16,obj_chains)
+{
+    ready = other.ready
+    hspeed = 0.5*other.ready
+}
+with instance_create(x,y-32,obj_chains)
+{
+    ready = other.ready
+    hspeed = other.ready
+}
+
+//Start moving
+hspeed = 1.75*ready
+
+//Move to position
 y-=56
 </string>
           </argument>

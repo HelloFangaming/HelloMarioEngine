@@ -25,14 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place this in the object creation code.
-//ready = Select a starting direction
-//0 = Down
-//1 = Right
-//2 = Up
-//3 = Left
-bam = 0
-image_speed = 0.15
+            <string>///These sparks can climb
+
+/*
+**  This item uses creation code!
+**
+**  ready = Select a starting direction
+**      0: Down
+**      1: Right
+**      2: Up
+**      3: Left
+**
+*/
+
+//Default Value:
 if place_snapped(32,32)
     ready = 0
 else if place_snapped(32,16)
@@ -41,8 +47,18 @@ else if place_snapped(16,32)
     ready = 2
 else
     ready = 3
+
+//How vulnerable is this enemy to various items?
 hardness = 1
+
+//How vulnerable is this enemy to Mario?
 stomp = 2
+
+//Animate
+image_speed = 0.15
+
+//Whether the koopa is changing net sides
+turnaround = 0
 </string>
           </argument>
         </arguments>
@@ -65,7 +81,9 @@ stomp = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>bam = 0</string>
+            <string>///Can turn again
+turnaround = 0
+</string>
           </argument>
         </arguments>
       </action>
@@ -87,19 +105,25 @@ stomp = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if depth = 0
+            <string>///Finish turning
+
+//Move to the back of the net
+if depth = 0
 {
     depth = 10
     hardness = 100
     stomp = -1
 }
+
+//Move to the front of the net
 else
 {
     depth = 0
     hardness = 1
     stomp = 1
 }
-alarm[1] = 10
+
+//Choose new direction
 if ready = 2
 {
     ready = 0
@@ -120,6 +144,9 @@ else if ready = 1
     ready = 3
     hspeed = -0.75
 }
+
+//Can turn again
+alarm[1] = 10
 </string>
           </argument>
         </arguments>
@@ -142,12 +169,22 @@ else if ready = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if bam = 0
-and not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_climb,0,0)
+            <string>///Net spark logic
+
+//If the spark is not turning and climbs off the net
+if turnaround = 0
+and not place_meeting(x,y,obj_climb)
 {
+
+    //Turning
+    turnaround = 1
+
+    //Stop
     speed = 0
+
+    //Finish turning
     alarm[0] = 10
-    bam = 1
+
 }
 </string>
           </argument>
@@ -171,7 +208,8 @@ and not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_climb,
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 0
+            <string>///Start moving
+if ready = 0
     vspeed = 0.75
 else if ready = 1
     hspeed = 0.75
@@ -201,7 +239,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy()</string>
+            <string>///Destroy
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>

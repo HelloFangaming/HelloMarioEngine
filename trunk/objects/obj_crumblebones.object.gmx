@@ -25,36 +25,26 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_crumble,0,0)
-alarm[0] = 8
-image_speed = 0
-ready = 0
+            <string>///Crumbled bones
+
+//How vulnerable is this enemy to various items?
 hardness = 1
+
+//How vulnerable is this enemy to Mario?
 stomp = -1
+
+//Do not animate
+image_speed = 0
+
+//Crumble sound
+audio_play_sound(snd_crumble,0,0)
+
+//Shake variable
+shake = 0
+
+//Crumble animation
+alarm[0] = 8
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>alarm[2] = 2
-x -= 1</string>
           </argument>
         </arguments>
       </action>
@@ -76,10 +66,13 @@ x -= 1</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_drybones_crumble
-    instance_create(x,y,obj_drybones)
+            <string>///Turn into the appropriate enemy
 if sprite_index = spr_bonybeetle_crumble
     instance_create(x,y,obj_bonybeetle)
+else
+    instance_create(x,y,obj_drybones)
+
+//Destroy
 instance_destroy()
 </string>
           </argument>
@@ -103,17 +96,46 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 16
+            <string>///Shake
+x--
+alarm[1] = 2
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Shake
+
+//If it needs to shake more
+if shake &lt; 16
+{
+    x++
+    shake++
+    alarm[2] = 2
+}
+
+//Finish shaking
+else
 {
     alarm[3] = 8
     image_index = 0
-    exit
-}
-else
-{
-    x += 1
-    ready += 1
-    alarm[4] = 2
 }
 </string>
           </argument>
@@ -137,14 +159,15 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 1
-alarm[2] = 200
+            <string>///Finish crumbling
+image_index = 1
+alarm[1] = 200
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="4" ename="obj_solidtop">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -161,7 +184,13 @@ alarm[2] = 200
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Do NOT inherit default step event
+            <string>///Floor collision
+if y &lt; other.y-11 and vspeed &gt; 0
+{
+    y = other.y-16
+    vspeed = 0
+    gravity = 0
+}
 </string>
           </argument>
         </arguments>

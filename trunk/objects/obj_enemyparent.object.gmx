@@ -248,7 +248,7 @@ and other.invincible != -1
           <argument>
             <kind>1</kind>
             <string>///Turn at ledge script
-if not collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+5,obj_slopeparent,1,0)
+if gravity = 0
 {
     if (hspeed &gt; 0 and not collision_line(bbox_left+8,bbox_bottom-1,bbox_left+8,bbox_bottom+15,obj_solidtop,0,0))
     or (hspeed &lt; 0 and not collision_line(bbox_right-8,bbox_bottom-1,bbox_right-8,bbox_bottom+15,obj_solidtop,0,0))
