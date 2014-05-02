@@ -142,16 +142,16 @@ if ready = 0
 
     //If it runs into a wall, turn
     if direction = 90
-    and place_meeting(x-3,y-speed,obj_solid)
+    and place_meeting(x-3,y-1,obj_solid)
         direction = 180
     else if direction = 0
-    and place_meeting(x+speed,y-3,obj_solid)
+    and place_meeting(x+1,y-3,obj_solid)
         direction = 90
     else if direction = 270
-    and place_meeting(x+3,y+speed,obj_solid)
+    and place_meeting(x+3,y+1,obj_solid)
         direction = 0
     else if direction = 180
-    and place_meeting(x-speed,y+3,obj_solid)
+    and place_meeting(x-1,y+3,obj_solid)
         direction = 270
 
     //If it runs off a wall, turn
