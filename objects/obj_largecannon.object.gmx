@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 100</string>
+            <string>///Large cannonball launcher
+alarm[0] = 100
+</string>
           </argument>
         </arguments>
       </action>
@@ -47,19 +49,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
+            <string>///Launch large cannonball
+if instance_exists(obj_mario)
+and (obj_mario.x &lt; x-32 or obj_mario.x &gt; x+64)
 {
-    alarm[0] = 10
-    exit
+    audio_play_sound(snd_thwomp,0,0)
+    instance_create(x,y,obj_largeball)
 }
-if obj_mario.x &gt; x-32 and obj_mario.x &lt; x+64
-{
-    alarm[0] = 10
-    exit
-}
+
+//Launch more later
 alarm[0] = 200
-audio_play_sound(snd_thwomp,0,0)
-instance_create(x,y,obj_largeball)
 </string>
           </argument>
         </arguments>

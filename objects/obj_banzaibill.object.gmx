@@ -25,8 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 0
+            <string>///A massive bullet bill
+
+//How vulnerable is this enemy to various items?
 hardness = 2
+
+//How vulnerable is this enemy to Mario?
 stomp = 0
 </string>
           </argument>
@@ -50,17 +54,17 @@ stomp = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 0
+            <string>///Banzai bill logic
+if hspeed = 0 xor outside_view()
 {
-    if not outside_view()
+    if hspeed = 0
     {
         hspeed = -1.5
         audio_play_sound(snd_thwomp,0,0)
-        ready = 1
     }
+    else
+        instance_destroy()
 }
-else if outside_view()
-    instance_destroy()
 </string>
           </argument>
         </arguments>

@@ -25,11 +25,30 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place these in the object creation code.
-//direct = 0 or 1 (0 for left, 1 for right.)
+            <string>///Launch cannonballs and display to the world your power
+
+/*
+**  This item uses creation code!
+**
+**  image_index = Select a starting direction
+**      0: Left (Floor)
+**      1: Right (Floor)
+**      2: Left (Ceiling)
+**      3: Right (Ceiling)
+**
+*/
+
+//Default Value:
+if position_meeting(x+8,y-8,obj_solid)
+    image_index = 2
+else
+    image_index = 0
+
+//Do not animate
 image_speed = 0
+
+//Launch
 alarm[0] = 80
-direct = 0
 </string>
           </argument>
         </arguments>
@@ -52,67 +71,26 @@ direct = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
+            <string>///Launch cannonballs
+if not outside_view()
 {
-    alarm[0] = 10
-    exit
-}
-if x &lt; view_xview[0]-16
-or x &gt; view_xview[0]+336
-or y &gt; view_yview[0]+256 
-or y &lt; view_yview[0]-16
-{
-    alarm[0] = 10
-    exit
-}
-alarm[0] = 180
-audio_play_sound(snd_thwomp,0,0)
-varid = instance_create(x,y,obj_cannonball)
-if image_index = 0
-    with varid motion_set(135,1.5)
-if image_index = 1
-    with varid motion_set(45,1.5)
-if image_index = 2
-    with varid motion_set(225,1.5)
-if image_index = 3
-    with varid motion_set(315,1.5)
-instance_create(x,y,obj_smoke)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if direct = 1
-{
-    if collision_point(x+8,y-8,obj_solid,0,0)
-        image_index = 3
-    else
-        image_index = 1
+    audio_play_sound(snd_thwomp,0,0)
+    instance_create(x,y,obj_smoke)
+    with instance_create(x,y,obj_cannonball)
+    {
+        if other.image_index = 0
+            direction = 135
+        else if other.image_index = 1
+            direction = 45
+        else if other.image_index = 2
+            direction = 225
+        else if other.image_index = 3
+            direction = 315
+    }
+    alarm[0] = 180
 }
 else
-{
-    if collision_point(x+8,y-8,obj_solid,0,0)
-        image_index = 2
-    else
-        image_index = 0
-}
+    alarm[0] = 10
 </string>
           </argument>
         </arguments>

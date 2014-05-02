@@ -25,58 +25,34 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-{
-    hspeed = 1.5
-    direct = 1
-    instance_create(x+24,y,obj_smoke)
-    instance_create(x+24,y+16,obj_smoke)
-    exit
-}
-if obj_mario.x &lt; x
+            <string>///Extra large ammunition
+
+//How vulnerable is this enemy to various items?
+hardness = 1
+
+//How vulnerable is this enemy to Mario?
+stomp = 0
+
+//Facing direction
+direct = 1
+
+//Go after Mario, and make smoke
+if not instance_exists(obj_mario)
+or obj_mario.x &lt; x
 {
     hspeed = -1.5
-    direct = -1
     instance_create(x-8,y,obj_smoke)
     instance_create(x-8,y+16,obj_smoke)
 }
 else
 {
     hspeed = 1.5
-    direct = 1
     instance_create(x+24,y,obj_smoke)
     instance_create(x+24,y+16,obj_smoke)
 }
-hardness = 1
-stomp = 0
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="11">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>imdead = instance_create(x,y+32,obj_enemy_stomped)
-imdead.sprite_index = sprite_index
-imdead.image_xscale = image_xscale
 
-//Destroy
-instance_destroy()
+//Change depth after exiting cannon
+alarm[0] = 24
 </string>
           </argument>
         </arguments>

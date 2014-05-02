@@ -8,7 +8,7 @@
   <parentName>obj_engines</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="2" enumb="0">
+    <event eventtype="7" enumb="25">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,39 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index = spr_vengine2_start</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="7">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if sprite_index = spr_vengine2_start
-{
-    if ready = 0
-    {
-        ready = 1
-        sprite_index = spr_vengine2
-        audio_play_sound(snd_flames,0,0)
-    }
-    else if ready = 1
-        instance_destroy()
-}
+            <string>///Swap engine sprites
+if sprite_index = spr_vengine2
+    sprite_index = spr_vengine2_start
+else
+    sprite_index = spr_vengine2
 </string>
           </argument>
         </arguments>

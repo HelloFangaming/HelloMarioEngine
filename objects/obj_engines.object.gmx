@@ -25,11 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 0
-alarm[0] = 100
-image_speed = 0.5
+            <string>///Fiery engines spew forth
+
+//How vulnerable is this enemy to various items?
 hardness = 99
+
+//How vulnerable is this enemy to Mario?
 stomp = 2
+
+//Animate
+image_speed = 0.5
+
+//State variable
+ready = 0
+
+//Stop firing
+alarm[0] = 100
 </string>
           </argument>
         </arguments>
@@ -52,7 +63,9 @@ stomp = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index = spr_engine_start</string>
+            <string>///Stop firing
+ready = 2
+</string>
           </argument>
         </arguments>
       </action>
@@ -80,6 +93,33 @@ stomp = 2
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="25">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Swap engine sprites
+if sprite_index = spr_engine
+    sprite_index = spr_engine_start
+else
+    sprite_index = spr_engine
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="7">
       <action>
         <libid>1</libid>
@@ -97,17 +137,20 @@ stomp = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_engine_start
+            <string>///Change sprites and state, or destroy
+if ready = 0
 {
-    if ready = 0
-    {
-        ready = 1
-        sprite_index = spr_engine
-        audio_play_sound(snd_flames,0,0)
-    }
-    else if ready = 1
-        instance_destroy()
+    ready = 1
+    event_user(15)
+    audio_play_sound(snd_flames,0,0)
 }
+else if ready = 2
+{
+    ready = 3
+    event_user(15)
+}
+else if ready = 3
+    instance_destroy()
 </string>
           </argument>
         </arguments>

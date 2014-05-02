@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 100</string>
+            <string>///Homing bullet bill launcher
+alarm[0] = 100
+</string>
           </argument>
         </arguments>
       </action>
@@ -47,21 +49,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-or instance_number(obj_bullet_homing) &gt; 2
+            <string>///Launch homing bullet bills
+if instance_exists(obj_mario)
+and (obj_mario.x &lt; x-32 or obj_mario.x &gt; x+48)
+and instance_number(obj_bullet_homing) &lt; 3
 {
-    alarm[0] = 10
-    exit
+    audio_play_sound(snd_thwomp,0,0)
+    instance_create(x,y,obj_smoke)
+    instance_create(x,y,obj_bullet_homing)
 }
-if obj_mario.x &gt; x-32 and obj_mario.x &lt; x+48
-{
-    alarm[0] = 10
-    exit
-}
+
+//Launch more later
 alarm[0] = 200
-audio_play_sound(snd_thwomp,0,0)
-instance_create(x,y,obj_smoke)
-instance_create(x,y,obj_bullet_homing)
 </string>
           </argument>
         </arguments>

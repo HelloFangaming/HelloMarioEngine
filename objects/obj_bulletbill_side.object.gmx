@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 100</string>
+            <string>///Sideways bullet bill launcher
+alarm[0] = 100
+</string>
           </argument>
         </arguments>
       </action>
@@ -47,20 +49,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
+            <string>///Launch sideways bullet bills
+if instance_exists(obj_mario)
+and (obj_mario.y &lt; y-32 or obj_mario.y &gt; y+48)
 {
-    alarm[0] = 10
-    exit
+    audio_play_sound(snd_thwomp,0,0)
+    instance_create(x,y,obj_smoke)
+    instance_create(x,y,obj_bullet_side)
 }
-if obj_mario.y &gt; y-32 and obj_mario.y &lt; y+48
-{
-    alarm[0] = 10
-    exit
-}
+
+//Launch more later
 alarm[0] = 200
-audio_play_sound(snd_thwomp,0,0)
-instance_create(x,y,obj_smoke)
-instance_create(x,y,obj_bullet_side)
 </string>
           </argument>
         </arguments>
