@@ -101,7 +101,7 @@ if visible = 0
         }
 
         //Otherwise, make a new key
-        else
+        else if not instance_exists(obj_tounge)
             mykey = instance_create(oldx,oldy,obj_key)
 
     }
@@ -133,8 +133,14 @@ else
         else if instance_exists(mykey)
             turn_towards_direction(point_direction(x,y,mykey.x,mykey.y),8)
 
+        //Chase Yoshi if it gets eaten
+        else if instance_exists(obj_yoshi)
+        and obj_yoshi.fullmouth = 1
+        and obj_yoshi.inmouth = obj_key
+            chasemode = 1
+
         //Otherwise, make a new one
-        else
+        else if not instance_exists(obj_tounge)
         {
             mykey = instance_create(oldx,oldy,obj_key)
             event_user(14)

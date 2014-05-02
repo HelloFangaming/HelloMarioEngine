@@ -1299,6 +1299,7 @@
         <object>objects\obj_crusher</object>
         <object>objects\obj_bowserstatue</object>
         <object>objects\obj_bowserstatue_gold</object>
+        <object>objects\obj_mechakoopa</object>
       </objects>
       <objects name="Airship">
         <object>objects\obj_bobomb</object>

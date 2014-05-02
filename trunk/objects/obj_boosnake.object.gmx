@@ -115,7 +115,7 @@ if place_meeting(x+hspeed,y+vspeed,obj_slopeparent)
     vspeed = -vspeed
 }
 
-//Face forwards
+//Update facing direction
 if hspeed &gt; 0
     direct = 1
 else

@@ -25,13 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.3
-image_speed = 0
-alarm[0] = 100
-amjump = 0
-direct = -1
+            <string>///A statue that can hop around
+
+//How vulnerable is this enemy to various items?
 hardness = 1
+
+//How vulnerable is this enemy to Mario?
 stomp = 2
+
+//Facing direction
+direct = -1
+
+//Do not animate
+image_speed = 0
+
+//Hop
+alarm[0] = 100
 </string>
           </argument>
         </arguments>
@@ -54,18 +63,28 @@ stomp = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
+            <string>///Hop
+if instance_exists(obj_mario)
 {
-    alarm[0] = 100
-    exit
+
+    //Jump animation
+    image_index = 1
+
+    //Move up
+    vspeed = -6
+
+    //Boost jump
+    y--
+
+    //Go after Mario
+    if obj_mario.x &gt; x
+        hspeed = 1
+    else
+        hspeed = -1
+
 }
-image_index = 1
-vspeed = -6
-if obj_mario.x &gt; x
-    hspeed = 1
 else
-    hspeed = -1
-amjump = 1
+    alarm[0] = 100
 </string>
           </argument>
         </arguments>
@@ -88,70 +107,32 @@ amjump = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hspeed &gt; 0
-    if collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_subconenemyparent,0,1)
-    or collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_deactenemyparent,0,1)
-        hspeed = -hspeed
-if hspeed &lt; 0
-    if collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_subconenemyparent,0,1)
-    or collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_deactenemyparent,0,1)
-        hspeed = -hspeed
-if hspeed &gt; 0
-and collision_rectangle(bbox_right+hspeed,bbox_top,bbox_right+hspeed,bbox_bottom-1,obj_solid,0,0)
-    hspeed = -hspeed
-if hspeed &lt; 0
-and collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left+hspeed,bbox_bottom-1,obj_solid,0,0)
-    hspeed = -hspeed
-if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0) and amjump = 0
-or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0) and amjump = 0
+            <string>///Gold bowser statue logic
+
+//Default event
+event_inherited()
+
+//Statue sprite is backwards
+if hspeed != 0
+    direct = -direct
+
+//Stop moving after landing, and hop again
+if gravity = 0
 {
-    gravity = 0
-    vspeed = 0
+    if hspeed != 0
+    {
+        hspeed = 0
+        alarm[0] = 100
+    }
 }
+
+//Extra gravity
 else
     gravity = 0.3
-if vspeed &gt; 4
-    vspeed = 4
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
-if vspeed &lt; 0
-and collision_rectangle(x-8,y,x+7,y,obj_solid,0,0)
-    vspeed = 1
-if hspeed &gt; 0
-    direct = -1
-if hspeed &lt; 0
-    direct = 1
-if image_index = 1
-and vspeed &gt; 0
+
+///Change image index when falling back down
+if vspeed &gt; 0
     image_index = 0
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_slopeparent">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if amjump = 1
-{
-    amjump = 0
-    hspeed = 0
-    alarm[0] = 100
-}
 </string>
           </argument>
         </arguments>
@@ -174,17 +155,12 @@ and vspeed &gt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-11 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-11 and vspeed &gt; 0
 {
     y = other.y-16
     vspeed = 0
     gravity = 0
-    if amjump = 1
-    {
-        amjump = 0
-        hspeed = 0
-        alarm[0] = 100
-    }
 }
 </string>
           </argument>
@@ -208,7 +184,9 @@ and vspeed &gt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)</string>
+            <string>///Draw Gold Bowser Statue
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
+</string>
           </argument>
         </arguments>
       </action>

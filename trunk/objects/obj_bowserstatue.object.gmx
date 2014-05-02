@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 100</string>
+            <string>///A fire spitting statue
+alarm[0] = 100
+</string>
           </argument>
         </arguments>
       </action>
@@ -47,22 +49,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_number(obj_mario) = 0
+            <string>///Spit fire when in view and Mario is around
+if instance_exists(obj_mario)
+and not outside_view()
 {
-    alarm[0] = 10
-    exit
+    audio_play_sound(snd_flames,0,0)
+    instance_create(x,y+1,obj_bowserstatue_fire)
 }
-if x &lt; view_xview[0]-16
-or x &gt; view_xview[0]+336
-or y &gt; view_yview[0]+256 
-or y &lt; view_yview[0]-16
-{
-    alarm[0] = 10
-    exit
-}
+
+//Spit more later
 alarm[0] = 200
-audio_play_sound(snd_flames,0,0)
-instance_create(x,y+1,obj_bowserstatue_fire)
 </string>
           </argument>
         </arguments>

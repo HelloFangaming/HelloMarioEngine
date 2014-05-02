@@ -25,7 +25,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if place_snapped(1,32)
+            <string>///Wall bouncing fire
+
+//How vulnerable is this enemy to various items?
+hardness = 1
+
+//How vulnerable is this enemy to Mario?
+stomp = 2
+
+//Facing direction
+direct = -1
+vdirect = -1
+
+//Animate
+image_speed = 0.3
+
+//Choose starting direction
+if place_snapped(1,32)
     vspeed = 1
 else
     vspeed = -1
@@ -33,9 +49,6 @@ if place_snapped(32,1)
     hspeed = 1
 else
     hspeed = -1
-image_speed = 0.3
-hardness = 1
-stomp = 2
 </string>
           </argument>
         </arguments>
@@ -58,18 +71,28 @@ stomp = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hspeed &gt; 0
-and collision_rectangle(x+hspeed+7,y,x+hspeed+7,y+15,obj_solid,0,0)
-    hspeed = -1
-if hspeed &lt; 0
-and collision_rectangle(x+hspeed-8,y,x+hspeed-8,y+15,obj_solid,0,0)
-    hspeed = 1
-if vspeed &gt; 0
-and collision_rectangle(x-8,y+vspeed+15,x+7,y+vspeed+15,obj_solidtop,0,0)
-    vspeed = -1
+            <string>///Bounce off surfaces
+if (hspeed &gt; 0 and collision_rectangle(bbox_right+hspeed,bbox_top,bbox_right+hspeed,bbox_bottom,obj_solid,0,0))
+or (hspeed &lt; 0 and collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left+hspeed,bbox_bottom,obj_solid,0,0))
+    hspeed = -hspeed
+if (vspeed &gt; 0 and collision_rectangle(bbox_left,bbox_bottom+vspeed,bbox_right,bbox_bottom+vspeed,obj_solidtop,0,0))
+or (vspeed &lt; 0 and collision_rectangle(bbox_left,bbox_top+vspeed,bbox_right,bbox_top+vspeed,obj_solid,0,0))
+    vspeed = -vspeed
+if place_meeting(x+hspeed,y+vspeed,obj_slopeparent)
+{
+    hspeed = -hspeed
+    vspeed = -vspeed
+}
+
+//Update facing direction
+if hspeed &gt; 0
+    direct = 1
+else
+    direct = -1
 if vspeed &lt; 0
-and collision_rectangle(x-8,y+vspeed,x+7,y+vspeed,obj_solid,0,0)
-    vspeed = 1
+    vdirect = 1
+else
+    vdirect = -1  
 </string>
           </argument>
         </arguments>
@@ -92,7 +115,9 @@ and collision_rectangle(x-8,y+vspeed,x+7,y+vspeed,obj_solid,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy()</string>
+            <string>///Destroy
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
@@ -114,14 +139,8 @@ and collision_rectangle(x-8,y+vspeed,x+7,y+vspeed,obj_solid,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hspeed &gt; 0
-    direct = 1
-else
-    direct = -1
-if vspeed &lt; 0
-    draw_sprite_ext(sprite_index,image_index,round(x),round(y),direct,1,0,c_white,1)
-else
-    draw_sprite_ext(sprite_index,image_index,round(x),round(y)+16,direct,-1,0,c_white,1)
+            <string>///Draw Bouncing Podoboo
+draw_sprite_ext(sprite_index,image_index,round(x),round(y)+8-8*vdirect,direct,vdirect,0,c_white,1)
 </string>
           </argument>
         </arguments>

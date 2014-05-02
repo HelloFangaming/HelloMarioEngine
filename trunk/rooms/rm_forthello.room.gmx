@@ -184,7 +184,7 @@
     <instance objName="obj_thwimp" x="1016" y="304" name="inst_1EFAB226" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_boo" x="1088" y="16" name="inst_005D9935" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bigboo" x="1248" y="208" name="inst_FE621BAA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bonybeetle" x="976" y="80" name="inst_22F4E06A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warproom" x="2784" y="320" name="inst_A2285C7C" locked="0" code="myroom = rm_forthello_reznor" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_firebar" x="536" y="304" name="inst_57867B7A" locked="0" code="ready = 1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_firebar_large" x="776" y="352" name="inst_9D0D349C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grinder" x="2352" y="272" name="inst_8905C34E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -215,7 +215,7 @@
     <instance objName="obj_podoboo_bounce" x="1728" y="96" name="inst_E119F887" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_magikoopa" x="32" y="0" name="inst_68F00CBF" locked="0" code="xmin = 576&#xA;xmax = 2080" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_engine2" x="880" y="80" name="inst_C4C61D46" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_hidden" x="656" y="304" name="inst_5B988780" locked="0" code="sprout = cs_star" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_hidden" x="0" y="240" name="inst_5B988780" locked="0" code="sprout = cs_star" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_spiked" x="944" y="32" name="inst_E26BA5E2" locked="0" code="sprout = cs_redyoshi" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_boocircle" x="192" y="288" name="inst_D44E6864" locked="0" code="ready = -1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_boosnake" x="848" y="256" name="inst_612D2592" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -232,7 +232,7 @@
     <instance objName="obj_warproom" x="2592" y="320" name="inst_D378D937" locked="0" code="myroom = rm_forthello_wendy" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warproom" x="2464" y="320" name="inst_C80AC529" locked="0" code="myroom = rm_forthello_boomboom" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warproom" x="2528" y="320" name="inst_449698B0" locked="0" code="myroom = rm_forthello_larry" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warproom" x="2784" y="320" name="inst_A2285C7C" locked="0" code="myroom = rm_forthello_reznor" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mechakoopa" x="976" y="80" name="inst_9F1A9900" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset" x="1584" y="96" w="32" h="48" xo="96" yo="320" id="10006906" name="tile_1A243087" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
