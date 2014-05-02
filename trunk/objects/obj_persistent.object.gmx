@@ -296,9 +296,7 @@ else if keyboard_check_pressed(vk_enter)
         message = "FULLSCREEN ON"
     else
         message = "FULLSCREEN OFF"
-    display_reset(0,vsync)
     event_user(1)
-    alarm[3] = 60
 }
 
 //Toggles VSync
@@ -314,8 +312,7 @@ else if keyboard_check_pressed(ord('V'))
         vsync = 0
         message = "VSYNC OFF"
     }
-    display_reset(0,vsync)
-    alarm[3] = 60
+    event_user(1)
 }
 
 //Turn off filtering if ALT+1 is pressed
@@ -324,7 +321,6 @@ else if keyboard_check_pressed(ord('1'))
     filter = 0
     message = "NO FILTERING"
     event_user(1)
-    alarm[3] = 60
 }
 
 //Turn on HQ2X filtering if ALT+2 is pressed
@@ -333,7 +329,6 @@ else if keyboard_check_pressed(ord('2'))
     filter = 1
     message = "HQ2X FILTERING"
     event_user(1)
-    alarm[3] = 60
 }
 
 //Turn on HQ4X filtering if ALT+3 is pressed
@@ -342,8 +337,13 @@ else if keyboard_check_pressed(ord('3'))
     filter = 2
     message = "HQ4X FILTERING"
     event_user(1)
-    alarm[3] = 60
 }
+
+else
+    exit
+
+//Reset the message
+alarm[3] = 60
 </string>
           </argument>
         </arguments>
@@ -392,6 +392,9 @@ else if filter = 2
     w = view_wview[0]*4
     h = view_hview[0]*4
 }
+
+//Reset display
+display_reset(0,vsync)
 
 //Set up the window
 window_set_size(w,h)

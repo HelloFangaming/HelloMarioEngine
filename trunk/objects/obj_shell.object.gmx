@@ -55,8 +55,7 @@ spinny = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x,y,obj_blockbumper)
-if held = 1
+            <string>if held = 1
     obj_mario.holding = 0
 </string>
           </argument>
@@ -145,25 +144,10 @@ if held = 0
     }
     if vspeed &gt; 4
         vspeed = 4
-    if hspeed &gt; 0
-    and collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed,bbox_bottom-2,obj_solid,0,0)
+    if (hspeed &gt; 0 and collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed,bbox_bottom-2,obj_solid,0,0))
+    or (hspeed &lt; 0 and collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left,bbox_bottom-2,obj_solid,0,0))
     {
-        if x&gt;view_xview[0]-16
-        and x&lt;view_xview[0]+336
-        and y&lt;view_yview[0]+256
-        and y&gt;view_yview[0]-16
-            audio_play_sound(snd_bump,0,0)
-        instance_create(x,y,obj_blockbumper)
-        spinny = 1
-        hspeed = -hspeed
-    }
-    if hspeed &lt; 0
-    and collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left,bbox_bottom-2,obj_solid,0,0)
-    {
-        if x&gt;view_xview[0]-16
-        and x&lt;view_xview[0]+336
-        and y&lt;view_yview[0]+256
-        and y&gt;view_yview[0]-16
+        if not outside_view()
             audio_play_sound(snd_bump,0,0)
         instance_create(x,y,obj_blockbumper)
         spinny = 1

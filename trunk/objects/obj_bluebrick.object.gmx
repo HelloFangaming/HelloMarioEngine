@@ -29,33 +29,6 @@
 
 //Animate
 image_speed = 0.15
-
-//Only one at a time
-ready = 0
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Can be picked up
-ready = 0
 </string>
           </argument>
         </arguments>
@@ -79,8 +52,7 @@ ready = 0
           <argument>
             <kind>1</kind>
             <string>///Check if Mario can pick up this brick
-if ready = 0
-and keyboard_check(vk_control)
+if keyboard_check_pressed(vk_control)
 and collision_rectangle(bbox_left-2,bbox_top-1,bbox_right+2,bbox_bottom-2,obj_mario,0,0)
 and obj_mario.holding = 0
 and obj_mario.isduck = 0
@@ -88,20 +60,19 @@ and obj_mario.state &lt; 3
 and obj_mario.disablecontrols = 0
 {
 
-    //Create the appropriate brick
+    //Create the appropriate brick, and force it to be held
     with obj_mario
     {
         if other.sprite_index = spr_redbrick
-            with instance_create(x,y+16,obj_thrownbrick) sprite_index = spr_redbrick_th
+        {
+            with instance_create(x,y+16,obj_thrownbrick)
+            {
+                sprite_index = spr_redbrick_th
+                event_user(15)
+            }
+        }
         else
-            instance_create(x,y+16,obj_thrownbrick)
-    }
-
-    //Make sure other bricks are not picked up at the same time
-    with obj_bluebrick
-    {
-        ready = 1
-        alarm[0] = 1
+            with instance_create(x,y+16,obj_thrownbrick) event_user(15)
     }
 
     //Destroy
