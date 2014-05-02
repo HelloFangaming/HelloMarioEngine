@@ -25,8 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>y = 0
+            <string>///Will crush all in its path
+
+///Start at the top of the screen
+y -= 192
+
+//State variable
 ready = 0
+
+//Start crusher animation
 alarm[0] = 30
 </string>
           </argument>
@@ -50,7 +57,9 @@ alarm[0] = 30
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = -1</string>
+            <string>///Go back up
+vspeed = -1
+</string>
           </argument>
         </arguments>
       </action>
@@ -72,8 +81,10 @@ alarm[0] = 30
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 4
-ready = 1</string>
+            <string>///Crush for real
+vspeed = 4
+ready = 1
+</string>
           </argument>
         </arguments>
       </action>
@@ -95,8 +106,10 @@ ready = 1</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 0
-alarm[2] = 20</string>
+            <string>///Stop
+vspeed = 0
+alarm[2] = 20
+</string>
           </argument>
         </arguments>
       </action>
@@ -118,9 +131,11 @@ alarm[2] = 20</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = view_xview[0]+248
+            <string>///Move into place, and come down a bit
+x = view_xview[0]+248
 vspeed = 4
-alarm[1] = 16</string>
+alarm[1] = 16
+</string>
           </argument>
         </arguments>
       </action>
@@ -142,7 +157,10 @@ alarm[1] = 16</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 1
+            <string>///Crusher logic
+
+///Slam into the specified y value
+if ready = 1
 and y &gt; ystart-4
 {
     vspeed = 0
@@ -151,13 +169,15 @@ and y &gt; ystart-4
     ready = 2
     alarm[3] = 60
 }
-if ready = 2
-and y &lt; 1
+
+//Stop after returning to the top, and restart sequence
+else if ready = 2
+and y &lt; ystart-191
 {
     ready = 0
     alarm[0] = 100
     vspeed = 0
-    y = 0
+    y = ystart-192
 }
 </string>
           </argument>
@@ -181,8 +201,8 @@ and y &lt; 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.invincible = 0
-    with other event_user(0)
+            <string>///Hurt Mario
+with other event_user(0)
 </string>
           </argument>
         </arguments>

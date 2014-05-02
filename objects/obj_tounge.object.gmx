@@ -267,8 +267,6 @@ and other.sprite_height &lt; 34
     obj_yoshi.fullmouth = 1
     obj_yoshi.inmouth = other.object_index
     obj_yoshi.shellsprite = other.sprite_index
-    if other.object_index = obj_key
-        with obj_phanto event_user(15)
     with other instance_destroy()
 }
 </string>

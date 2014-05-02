@@ -25,8 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 50
-ready = 0</string>
+            <string>///Giant spike
+
+//State variable
+ready = 0
+
+//Start giant spike animation
+alarm[0] = 50
+</string>
           </argument>
         </arguments>
       </action>
@@ -48,7 +54,9 @@ ready = 0</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = -1</string>
+            <string>///The spike returns to its original position
+vspeed = -1
+</string>
           </argument>
         </arguments>
       </action>
@@ -70,8 +78,10 @@ ready = 0</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 4
-ready = 1</string>
+            <string>///The spike falls
+vspeed = 4
+ready = 1
+</string>
           </argument>
         </arguments>
       </action>
@@ -93,8 +103,10 @@ ready = 1</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 0
-alarm[2] = 20</string>
+            <string>///Before falling for real, the spike stops
+vspeed = 0
+alarm[2] = 20
+</string>
           </argument>
         </arguments>
       </action>
@@ -116,8 +128,10 @@ alarm[2] = 20</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 4
-alarm[1] = 8</string>
+            <string>///Giant spike comes down a bit
+vspeed = 4
+alarm[1] = 8
+</string>
           </argument>
         </arguments>
       </action>
@@ -139,17 +153,21 @@ alarm[1] = 8</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 1
-and collision_rectangle(x,y,x+31,y,obj_solid,0,0)
+            <string>///Giant spike logic
+
+///Slam into the ground
+if ready = 1
+and position_meeting(x,y,obj_solidtop)
 {
     vspeed = 0
-    kabam = collision_rectangle(x,y,x+31,y,obj_solid,0,0)
-    y = kabam.y
+    y = collision_point(x,y,obj_solidtop,0,0).y
     audio_play_sound(snd_thwomp,0,0)
     ready = 2
     alarm[3] = 60
 }
-if ready = 2
+
+//Stop moving and restart animation after returning to its original position
+else if ready = 2
 and y &lt; ystart+1
 {
     ready = 0
@@ -179,7 +197,9 @@ and y &lt; ystart+1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with (other) event_user(0)</string>
+            <string>///Destroy projectiles
+with other event_user(0)
+</string>
           </argument>
         </arguments>
       </action>
@@ -201,10 +221,8 @@ and y &lt; ystart+1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_invincibility)
-    exit
-if other.invincible = 0
-    with other event_user(0)
+            <string>///Hurt Mario
+with other event_user(0)
 </string>
           </argument>
         </arguments>
