@@ -25,20 +25,26 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_mario)
-{
-    if obj_mario.y &lt; y
-        direct = 1
-    else
-        direct = -1
-}
-else
-    direct = -1
-vspeed = -direct*1.5
-image_speed = 0
-alarm[0] = 12
+            <string>///Sideways bullet bill
+
+//How vulnerable is this enemy to various items?
 hardness = 1
+
+//How vulnerable is this enemy to Mario?
 stomp = 0
+
+//Facing direction
+if not instance_exists(obj_mario)
+or obj_mario.y &gt; y
+    direct = -1
+else
+    direct = 1
+
+//Move
+vspeed = -direct*1.5
+
+//Change depth after exiting cannon
+alarm[0] = 12
 </string>
           </argument>
         </arguments>
@@ -61,10 +67,8 @@ stomp = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if direct = 1
-    draw_sprite_ext(sprite_index,image_index,x,round(y),1,1,0,c_white,1)
-else
-    draw_sprite_ext(sprite_index,image_index,x,round(y)+16,1,-1,0,c_white,1)
+            <string>///Draw Sideways Bullet Bill
+draw_sprite_ext(sprite_index,image_index,x,round(y)+8-8*direct,1,direct,0,c_white,1)
 </string>
           </argument>
         </arguments>

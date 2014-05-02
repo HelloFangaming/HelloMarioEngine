@@ -25,11 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place these in the object creation code.
-//direct = 0 or 1 (0 for left, 1 for right.)
+            <string>///A bomb launcher
+
+/*
+**  This item uses creation code!
+**
+**  image_index = Select a starting direction
+**      0: Left
+**      1: Right
+**
+*/
+
+//Default Value:
+image_index = 0
+
+//Do not animate
 image_speed = 0
+
+//Launch
 alarm[0] = 80
-direct = 0
 </string>
           </argument>
         </arguments>
@@ -52,50 +66,23 @@ direct = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
+            <string>///Launch bombs
+if not outside_view()
 {
-    alarm[0] = 10
-    exit
+    audio_play_sound(snd_thwomp,0,0)
+    instance_create(x,y,obj_smoke)
+    with instance_create(x+8,y-17,obj_cannonbomb)
+    {
+        vspeed = -4
+        if other.image_index = 0
+            hspeed = -1
+        else
+            hspeed = 1
+    }
+    alarm[0] = 180
 }
-if x &lt; view_xview[0]-16
-or x &gt; view_xview[0]+336
-or y &gt; view_yview[0]+256 
-or y &lt; view_yview[0]-16
-{
+else
     alarm[0] = 10
-    exit
-}
-alarm[0] = 180
-audio_play_sound(snd_thwomp,0,0)
-varid = instance_create(x+8,y-17,obj_cannonbomb)
-if image_index = 0
-    with varid hspeed = -1
-if image_index = 1
-    with varid hspeed = 1
-instance_create(x,y,obj_smoke)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>image_index = direct
 </string>
           </argument>
         </arguments>

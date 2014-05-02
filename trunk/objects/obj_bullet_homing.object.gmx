@@ -25,20 +25,26 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_mario)
-{
-    if obj_mario.x &lt; x
-        direct = -1
-    else
-        direct = 1
-}
-else
-    direct = -1
-hspeed = direct*1.5
-image_speed = 0.15
-alarm[0] = 12
+            <string>///Heat seeking bullets... or maybe they are Mario seeking... Advanced!
+
+//How vulnerable is this enemy to various items?
 hardness = 1
+
+//How vulnerable is this enemy to Mario?
 stomp = 0
+
+//Animate
+image_speed = 0.15
+
+//Go after Mario
+if not instance_exists(obj_mario)
+or obj_mario.x &lt; x
+    hspeed = -1.5
+else
+    hspeed = 1.5
+
+//Change depth after exiting cannon
+alarm[0] = 12
 </string>
           </argument>
         </arguments>
@@ -61,24 +67,30 @@ stomp = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if outside_view()
+            <string>///Highly advanced bullet bill technology
+
+//Destroy outside room
+if outside_view()
     instance_destroy()
-if not instance_exists(obj_mario)
-    exit
-if obj_mario.x &gt; x
+
+//Chase after Mario
+if instance_exists(obj_mario)
 {
-    hspeed += 0.05
-    direct = 1
+    if obj_mario.x &gt; x
+    {
+        hspeed += 0.05
+        direct = 1
+    }
+    if obj_mario.x &lt; x
+    {
+        hspeed += -0.05
+        direct = -1
+    }
+    if hspeed &gt; 1.5
+        hspeed = 1.5
+    if hspeed &lt; -1.5
+        hspeed = -1.5
 }
-if obj_mario.x &lt; x
-{
-    hspeed += -0.05
-    direct = -1
-}
-if hspeed &gt; 1.5
-    hspeed = 1.5
-if hspeed &lt; -1.5
-    hspeed = -1.5
 </string>
           </argument>
         </arguments>

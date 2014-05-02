@@ -25,10 +25,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
+            <string>///Shoots in four different directions at once
+
+//Do not animate
+image_speed = 0
+
+//Launch
 alarm[0] = 100
-varid = instance_create(x,y,obj_solid)
-varid.mask_index = mask_index</string>
+
+//Make solid
+with instance_create(x,y,obj_solid)
+{
+    image_xscale = 2
+    image_yscale = 2
+}
+</string>
           </argument>
         </arguments>
       </action>
@@ -50,10 +61,8 @@ varid.mask_index = mask_index</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if image_index = 0
-    image_index = 1
-else
-    image_index = 0
+            <string>///Increment image index
+image_index++
 </string>
           </argument>
         </arguments>
@@ -76,31 +85,23 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-{
-    alarm[0] = 10
-    exit
-}
-alarm[0] = 100
+            <string>///Launch cannonballs
 audio_play_sound(snd_thwomp,0,0)
-varidA = instance_create(x+8,y+8,obj_cannonball)
-varidB = instance_create(x+8,y+8,obj_cannonball)
-varidC = instance_create(x+8,y+8,obj_cannonball)
-varidD = instance_create(x+8,y+8,obj_cannonball)
 if image_index = 0
 {
-    with varidA motion_set(225,1.5)
-    with varidB motion_set(45,1.5)
-    with varidC motion_set(135,1.5)
-    with varidD motion_set(315,1.5)
+    with instance_create(x+8,y+8,obj_cannonball) direction = 45
+    with instance_create(x+8,y+8,obj_cannonball) direction = 135
+    with instance_create(x+8,y+8,obj_cannonball) direction = 315
+    with instance_create(x+8,y+8,obj_cannonball) direction = 225
 }
-if image_index = 1
+else
 {
-    with varidA motion_set(0,1.5)
-    with varidB motion_set(90,1.5)
-    with varidC motion_set(180,1.5)
-    with varidD motion_set(270,1.5)
+    with instance_create(x+8,y+8,obj_cannonball) direction = 0
+    with instance_create(x+8,y+8,obj_cannonball) direction = 90
+    with instance_create(x+8,y+8,obj_cannonball) direction = 180
+    with instance_create(x+8,y+8,obj_cannonball) direction = 270
 }
+alarm[0] = 100
 alarm[1] = 50
 </string>
           </argument>

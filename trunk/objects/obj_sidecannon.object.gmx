@@ -25,12 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place these in the object creation code.
-//direct = 0 or 1 (0 for /, 1 for \.)
+            <string>///A wall cannon
+
+/*
+**  This item uses creation code!
+**
+**  image_index = Select a starting direction
+**      0: Up-Right + Down-Left
+**      1: Up-Left + Down-Right
+**
+*/
+
+//Default Value:
+image_index = 0
+
+//Do not animate
 image_speed = 0
-alarm[0] = 100
-alarm[1] = 1
-direct = 0
+
+//Launch
+alarm[0] = 80
 </string>
           </argument>
         </arguments>
@@ -53,63 +66,40 @@ direct = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
+            <string>///Launch cannonballs
+audio_play_sound(snd_thwomp,0,0)
+with instance_create(x+8,y+8,obj_cannonball)
 {
-    alarm[0] = 10
-    exit
+    if other.image_index = 0
+    {
+        if not instance_exists(obj_mario)
+        or x &gt; obj_mario.x
+        {
+            direction = 225
+            instance_create(x-8,y+8,obj_smoke)
+        }
+        else
+        {
+            direction = 45
+            instance_create(x+8,y-8,obj_smoke)
+        }
+    }
+    else
+    {
+        if not instance_exists(obj_mario)
+        or x &gt; obj_mario.x
+        {
+            direction = 135
+            instance_create(x-8,y-8,obj_smoke)
+        }
+        else
+        {
+            direction = 315
+            instance_create(x+8,y+8,obj_smoke)
+        }
+    }
 }
 alarm[0] = 200
-audio_play_sound(snd_thwomp,0,0)
-varid = instance_create(x+8,y+8,obj_cannonball)
-if image_index = 0
-{
-    if x &gt; obj_mario.x
-    {
-        with varid motion_set(225,1.5)
-        instance_create(x,y+16,obj_smoke)
-    }
-    else
-    {
-        with varid motion_set(45,1.5)
-        instance_create(x+16,y,obj_smoke)
-    }
-}
-if image_index = 1
-{
-    if x &gt; obj_mario.x
-    {
-        with varid motion_set(135,1.5)
-        instance_create(x,y,obj_smoke)
-    }
-    else
-    {
-        with varid motion_set(315,1.5)
-        instance_create(x+16,y+16,obj_smoke)
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>image_index = direct
 </string>
           </argument>
         </arguments>

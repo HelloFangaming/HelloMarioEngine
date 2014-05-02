@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 100</string>
+            <string>///Leftward engine
+alarm[0] = 100
+</string>
           </argument>
         </arguments>
       </action>
@@ -47,8 +49,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 200
-instance_create(x,y,obj_engines)</string>
+            <string>///Fire engines
+instance_create(x,y,obj_engines)
+alarm[0] = 200
+</string>
           </argument>
         </arguments>
       </action>

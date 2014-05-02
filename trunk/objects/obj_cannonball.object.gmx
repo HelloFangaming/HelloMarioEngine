@@ -25,9 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
+            <string>///Standard issue ammunition
+
+//How vulnerable is this enemy to various items?
 hardness = 1
+
+//How vulnerable is this enemy to Mario?
 stomp = 0
+
+//Move
+speed = 1.5
 </string>
           </argument>
         </arguments>
@@ -50,7 +57,8 @@ stomp = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if outside_view()
+            <string>///Destroy outside view
+if outside_view()
     instance_destroy()
 </string>
           </argument>
