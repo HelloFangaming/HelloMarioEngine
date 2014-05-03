@@ -34,6 +34,12 @@
     <option_android_icon_36>Configs\Default\android\icons\icon36.png</option_android_icon_36>
     <option_android_icon_48>Configs\Default\android\icons\icon48.png</option_android_icon_48>
     <option_android_icon_72>Configs\Default\android\icons\icon72.png</option_android_icon_72>
+    <option_android_icon_hdpi>Configs\Default\android\icons\icon_hdpi.png</option_android_icon_hdpi>
+    <option_android_icon_ldpi>Configs\Default\android\icons\icon_ldpi.png</option_android_icon_ldpi>
+    <option_android_icon_mdpi>Configs\Default\android\icons\icon_mdpi.png</option_android_icon_mdpi>
+    <option_android_icon_xhdpi>Configs\Default\android\icons\icon_xhdpi.png</option_android_icon_xhdpi>
+    <option_android_icon_xxhdpi>Configs\Default\android\icons\icon_xxhdpi.png</option_android_icon_xxhdpi>
+    <option_android_icon_xxxhdpi>Configs\Default\android\icons\icon_xxxhdpi.png</option_android_icon_xxxhdpi>
     <option_android_inmobi_enable>0</option_android_inmobi_enable>
     <option_android_inmobi_id></option_android_inmobi_id>
     <option_android_inmobi_test_enable>0</option_android_inmobi_test_enable>
@@ -208,6 +214,16 @@
     <option_noscreensaver>true</option_noscreensaver>
     <option_ouya_packaging>0</option_ouya_packaging>
     <option_priority>0</option_priority>
+    <option_ps4_interpolate>true</option_ps4_interpolate>
+    <option_ps4_nptitleid></option_ps4_nptitleid>
+    <option_ps4_nptitlesecret></option_ps4_nptitlesecret>
+    <option_ps4_package_id>IV0002-NPXS29129_00-APP0990000000022</option_ps4_package_id>
+    <option_ps4_passcode>GvE6xCpZxd96scOUGuLPbuLp8O800B0s</option_ps4_passcode>
+    <option_ps4_scale>-1</option_ps4_scale>
+    <option_ps4_texture_page>2048</option_ps4_texture_page>
+    <option_psvita_interpolation>true</option_psvita_interpolation>
+    <option_psvita_package_id>EP9000-NPXB01693_00-GMSTUDIORUNNER00</option_psvita_package_id>
+    <option_psvita_passcode>5MHZUpPpbQLKAkttvpJzA6EaWgsiWv1w</option_psvita_passcode>
     <option_quitkey>true</option_quitkey>
     <option_resolution>0</option_resolution>
     <option_savekey>true</option_savekey>
@@ -371,6 +387,20 @@
     <option_winphone_texture_page>1024</option_winphone_texture_page>
     <option_winphone_tile_type>0</option_winphone_tile_type>
     <option_writeerrors>False</option_writeerrors>
+    <option_xbone_background_colour>#464646</option_xbone_background_colour>
+    <option_xbone_build_version>0</option_xbone_build_version>
+    <option_xbone_description>Your Description</option_xbone_description>
+    <option_xbone_display_name>HME</option_xbone_display_name>
+    <option_xbone_foreground_text>light</option_xbone_foreground_text>
+    <option_xbone_interpolation>true</option_xbone_interpolation>
+    <option_xbone_major_version>1</option_xbone_major_version>
+    <option_xbone_minor_version>0</option_xbone_minor_version>
+    <option_xbone_publisher>Company Name</option_xbone_publisher>
+    <option_xbone_publisher_display_name>Company Display Name</option_xbone_publisher_display_name>
+    <option_xbone_revision_version>0</option_xbone_revision_version>
+    <option_xbone_scale>-1</option_xbone_scale>
+    <option_xbone_splash_screen_colour>#464646</option_xbone_splash_screen_colour>
+    <option_xbone_texture_page>1024</option_xbone_texture_page>
   </Options>
   <ConfigConstants/>
 </Config>
