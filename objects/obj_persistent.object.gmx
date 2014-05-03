@@ -368,64 +368,32 @@ alarm[3] = 60
             <kind>1</kind>
             <string>///Set up the screen to be displayed
 
-//Temporary variables
-var w
-var h
+//Temporary variable
+var s
 
 //Normal
 if filter = 0
-{
-    w = view_wview[0]
-    h = view_hview[0]
-}
+    s = 1
 
 //HQ2X
 else if filter = 1
-{
-    w = view_wview[0]*2
-    h = view_hview[0]*2
-}
+    s = 2
 
 //HQ4X
 else if filter = 2
-{
-    w = view_wview[0]*4
-    h = view_hview[0]*4
-}
+    s = 4
 
 //Reset display
 display_reset(0,vsync)
 
 //Set up the window
-window_set_size(w,h)
+window_set_size(view_wview[0]*s,view_hview[0]*s)
 
-//Aspect ratio hack for widescreen monitors in fullscreen
-if fullscreen = 1
-{
+//Set up the display
+display_set_gui_size(view_wview[0]*s,view_hview[0]*s)
 
-    //Calculate the width the GUI should be
-    var newwidth = max(h*display_get_width()/display_get_height(),w)
-
-    //Offset the game to the center of the screen
-    offset = (newwidth-w)/2
-
-    //Set up the display
-    display_set_gui_size(newwidth,h)
-
-}
-else
-{
-
-    //No offset
-    offset = 0
-
-    //Center the window
-    alarm[2] = 1
-
-    //Set up the display
-    display_set_gui_size(w,h)
-
-}
+//Center the window
+alarm[2] = 1
 </string>
           </argument>
         </arguments>
@@ -617,6 +585,7 @@ if file_exists("Settings.dat")
 else
 {
 
+    //No fullscreen
     fullscreen = 0
 
     //Set the default to HQ4X only if the screen is big enough to fit it
@@ -633,14 +602,8 @@ else
 //Fullscreen
 window_set_fullscreen(fullscreen)
 
-//Filtering
+//Apply filtering
 alarm[5] = 1
-
-//VSync
-display_reset(0,vsync)
-
-//Center the view
-alarm[2] = 1
 
 //Play the coin sound at the splash screen
 audio_play_sound(snd_coin,0,0)
@@ -674,13 +637,13 @@ draw_enable_alphablend(0)
 
 //No Filter
 if filter = 0
-    draw_surface(application_surface,offset,0)
+    draw_surface(application_surface,0,0)
 
 //HQ2X Filtering
 else if filter = 1
 {
     shader_set(sha_hq2x)
-    draw_surface_stretched(application_surface,offset,0,view_wview[0]*2,view_hview[0]*2)
+    draw_surface_stretched(application_surface,0,0,view_wview[0]*2,view_hview[0]*2)
     shader_reset()
 }
 
@@ -688,7 +651,7 @@ else if filter = 1
 else if filter = 2
 {
     shader_set(sha_hq4x)
-    draw_surface_stretched(application_surface,offset,0,view_wview[0]*4,view_hview[0]*4)
+    draw_surface_stretched(application_surface,0,0,view_wview[0]*4,view_hview[0]*4)
     shader_reset()
 }
 
@@ -750,7 +713,7 @@ if background_exists(back)
 draw_set_font(global.font)
 draw_text(view_xview[0],view_yview[0],message)
 
-//Uncomment the line below if you want to see the fps on the bottom right corner of the screen.
+//Show FPS (Uncomment to enable)
 //draw_text(view_xview[0]+302,view_yview[0]+231,fps_real)
 </string>
           </argument>
