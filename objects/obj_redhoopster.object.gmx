@@ -25,14 +25,29 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
-vspeed = -0.75
+            <string>///Can function as an elevator for Mario
+
+//How vulnerable is this enemy to various items?
+hardness = 0
+
+//How vulnerable is this enemy to Mario?
+stomp = 4
+
+//Is this enemy heavy?
+isheavy = 0
+
+//Facing direction
 direct = 1
+
+//Animate
+image_speed = 0.15
+
+//A collision object for Mario to ride
 mytop = instance_create(x-8,y,obj_solidtop)
 mytop.image_yscale = 0.5
-hardness = 0
-stomp = 4
-isheavy = 0
+
+//Move up
+vspeed = -0.75
 </string>
           </argument>
         </arguments>
@@ -55,53 +70,33 @@ isheavy = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if vspeed &lt; 0
+            <string>///Climb up and down and up and down
+
+//Climb down if there is no climbable surface above
+if vspeed &lt; 0
 and not collision_line(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_climb,0,0)
 {
     vspeed = 1.5
     direct = -1
 }
-if vspeed &gt; 0
+
+//Climb up if there is no climbable surface below
+else if vspeed &gt; 0
 and not collision_line(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_climb,0,0)
 {
     vspeed = -0.75
     direct = 1
 }
-if not instance_exists(obj_mario)
-    exit
-if vspeed &lt; 0
-and collision_rectangle(x-7,y-4,x+7,y,obj_mario,0,0)
+
+//Climb down if Mario is riding, and has a solid above him
+else if vspeed &lt; 0
+and collision_rectangle(bbox_left,bbox_top-4,bbox_right,bbox_top,obj_mario,0,0)
 and collision_rectangle(obj_mario.bbox_left,obj_mario.bbox_top-1,obj_mario.bbox_right,obj_mario.bbox_top,obj_solid,0,0)
 {
     vspeed = 1.5
     direct = -1
 }
-if collision_rectangle(obj_mario.x-10,obj_mario.y+32,obj_mario.x+11,obj_mario.y+32,id,0,0)
-    if obj_mario.state = 3
-        obj_mario.y = y-32
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>instance_destroy()</string>
           </argument>
         </arguments>
       </action>
@@ -123,10 +118,8 @@ if collision_rectangle(obj_mario.x-10,obj_mario.y+32,obj_mario.x+11,obj_mario.y+
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if direct = 1
-    draw_sprite_ext(sprite_index,image_index,x,round(y),1,1,0,c_white,1)
-if direct = -1
-    draw_sprite_ext(sprite_index,image_index,x,round(y)+16,1,-1,0,c_white,1)
+            <string>///Draw Red Hoopster
+draw_sprite_ext(sprite_index,image_index,x,round(y)+8-8*direct,1,direct,0,c_white,1)
 </string>
           </argument>
         </arguments>

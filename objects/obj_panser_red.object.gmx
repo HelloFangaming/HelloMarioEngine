@@ -25,75 +25,26 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.25
-alarm[0] = 7
-alarm[1] = 32+random(64)
-image_speed = 0
+            <string>///Shoots fire at Mario
+
+//How vulnerable is this enemy to various items?
 hardness = 0
+
+//How vulnerable is this enemy to Mario?
 stomp = 1
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="3">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>alarm[1] = 16+random(48)
-image_index = 0
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if (random(100) &gt;= 75)
-{
-    varid = instance_create(x,y,obj_panserfire)
-    if instance_exists(obj_mario)
-    {
-        if obj_mario.x &gt; x+8
-            varid.hspeed = 1
-        else
-            varid.hspeed = -1
-    }
-    alarm[3] = 16
-}
-else
-{
-    alarm[1] = 16+random(48)
-    image_index = 0
-}
+
+//Do not animate
+image_speed = 0
+
+//Animate
+alarm[0] = 7
+
+//Fire sequence
+fire = 0
+
+//Spit fire
+alarm[1] = 32+random(64)
+
 </string>
           </argument>
         </arguments>
@@ -116,16 +67,30 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>varid = instance_create(x,y,obj_panserfire)
-if instance_exists(obj_mario)
+            <string>///Spit fire at Mario
+if fire = 0
+or (fire = 1 and random(100) &gt; 75)
 {
-    if obj_mario.x &gt; x+8
-        varid.hspeed = 1
-    else
-        varid.hspeed = -1
+    fire++
+    image_index = 2
+    with instance_create(x,y,obj_panserfire)
+    {
+        if instance_exists(obj_mario)
+        {
+            if obj_mario.x &gt; x+8
+                hspeed = 1
+            else
+                hspeed = -1
+        }
+    }
+    alarm[1] = 30
 }
-alarm[2] = 32
-image_index = 2
+else
+{
+    fire = 0
+    image_index = 0
+    alarm[1] = 16+random(48)
+}
 </string>
           </argument>
         </arguments>
@@ -148,7 +113,8 @@ image_index = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if image_index != 2
+            <string>///Animate
+if image_index != 2
 {
     if image_index = 0
         image_index = 1
@@ -156,40 +122,6 @@ image_index = 2
         image_index = 0
 }
 alarm[0] = 7
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
-or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0)
-{
-    gravity = 0
-    vspeed = 0
-}
-else
-    gravity = 0.25
-if vspeed &gt; 4
-    vspeed = 4
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
 </string>
           </argument>
         </arguments>
@@ -212,7 +144,8 @@ while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopepar
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-11 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-11 and vspeed &gt; 0
 {
     y = other.y-16
     vspeed = 0

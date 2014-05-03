@@ -25,15 +25,29 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.25
+            <string>///Still shy, but smarter
+
+//How vulnerable is this enemy to various items?
+hardness = 0
+
+//How vulnerable is this enemy to Mario?
+stomp = 4
+
+//Is this enemy heavy?
+isheavy = 0
+
+//Facing direction
+direct = -1
+
+//Start walking towards Mario
 alarm[10] = 2
+
+//Animate
 image_speed = 0.15
-direct = 0
+
+//A collision object for Mario to ride
 mytop = instance_create(x-8,y,obj_solidtop)
 mytop.image_yscale = 0.5
-hardness = 0
-stomp = 4
-isheavy = 0
 </string>
           </argument>
         </arguments>
@@ -56,16 +70,13 @@ isheavy = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited()
-if not collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+5,obj_slopeparent,1,0)
-{
-    if hspeed &gt; 0
-    and not collision_line(bbox_left+8,bbox_bottom-1,bbox_left+8,bbox_bottom+15,obj_solidtop,0,1)
-        hspeed = -0.5
-    if hspeed &lt; 0
-    and not collision_line(bbox_right-8,bbox_bottom-1,bbox_right-8,bbox_bottom+15,obj_solidtop,0,1)
-        hspeed = 0.5
-}
+            <string>///Don't walk into pits
+
+//Default event
+event_inherited()
+
+//Turn at ledges
+event_user(6)
 </string>
           </argument>
         </arguments>
@@ -88,7 +99,8 @@ if not collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+5,obj_sl
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-11 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-11 and vspeed &gt; 0
 {
     y = other.y-16
     vspeed = 0
@@ -116,7 +128,9 @@ if not collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+5,obj_sl
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)</string>
+            <string>///Draw Blue Shy Guy
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
+</string>
           </argument>
         </arguments>
       </action>
