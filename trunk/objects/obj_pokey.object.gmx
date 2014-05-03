@@ -80,7 +80,6 @@ alarm[0] = 10
           <argument>
             <kind>1</kind>
             <string>///Manage offset values
-
 if instance_exists(mebelow)
     offsetdirect = -mebelow.offsetdirect
 

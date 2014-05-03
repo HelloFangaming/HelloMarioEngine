@@ -25,15 +25,29 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.25
+            <string>///Big size and big social problems
+
+//How vulnerable is this enemy to various items?
+hardness = 0
+
+//How vulnerable is this enemy to Mario?
+stomp = 4
+
+//Is this enemy heavy?
+isheavy = 1
+
+//Facing direction
+direct = -1
+
+//Start walking towards Mario
 alarm[10] = 2
+
+//Animate
 image_speed = 0.15
-direct = 0
+
+//A collision object for Mario to ride
 mytop = instance_create(x-16,y,obj_solidtop)
 mytop.image_xscale = 2
-hardness = 0
-stomp = 4
-isheavy = 1
 </string>
           </argument>
         </arguments>
@@ -56,7 +70,8 @@ isheavy = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-27 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-27 and vspeed &gt; 0
 {
     y = other.y-32
     vspeed = 0
@@ -84,7 +99,9 @@ isheavy = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)</string>
+            <string>///Draw Big Shy Guy
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
+</string>
           </argument>
         </arguments>
       </action>

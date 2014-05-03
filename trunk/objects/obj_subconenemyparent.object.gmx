@@ -89,7 +89,6 @@ with mytop instance_destroy()
     obj_mario.visible = 1
     with obj_puller instance_destroy()
     event_user(7)
-    instance_destroy()
 }
 </string>
           </argument>
@@ -173,6 +172,9 @@ with instance_create(obj_mario.x,obj_mario.y+11,obj_vegenemy)
     sprite_index = other.sprite_index
     image_xscale = other.image_xscale
 }
+
+//Destroy
+instance_destroy()
 </string>
           </argument>
         </arguments>

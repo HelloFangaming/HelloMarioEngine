@@ -263,6 +263,9 @@ event_inherited()
           <argument>
             <kind>1</kind>
             <string>with instance_create(obj_mario.x,obj_mario.y+11,obj_frozenenemy_pickup) sprite_index = other.sprite_index
+
+//Destroy
+instance_destroy()
 </string>
           </argument>
         </arguments>

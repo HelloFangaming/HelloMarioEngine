@@ -6,7 +6,7 @@
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
-  <maskName>spr_square</maskName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -25,10 +25,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_podoboo,0,0)
+            <string>///Panser fire projectiles
+
+//Play a fiery sound
+audio_play_sound(snd_podoboo,0,0)
+
+//Animate
 image_speed = 0.3
+
+//Move up
 vspeed = -4
+
+//Gravity
 gravity = 0.1
+
+//Friction
 friction = 0.005
 </string>
           </argument>
@@ -52,10 +63,8 @@ friction = 0.005
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if x &lt; view_xview[0]-16
-or x &gt; view_xview[0]+336
-or y &gt; view_yview[0]+256 
-or y &lt; view_yview[0]-16
+            <string>///Destroy outside view
+if outside_view()
     instance_destroy()
 </string>
           </argument>
@@ -79,8 +88,8 @@ or y &lt; view_yview[0]-16
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.invincible = 0
-    with other event_user(0)
+            <string>///Hurt Mario
+with other event_user(0)
 </string>
           </argument>
         </arguments>
