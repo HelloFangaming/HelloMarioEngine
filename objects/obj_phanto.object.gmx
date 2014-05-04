@@ -101,7 +101,7 @@ if visible = 0
         }
 
         //Otherwise, make a new key
-        else if not instance_exists(obj_tounge)
+        else if not instance_exists(obj_tongue)
             mykey = instance_create(oldx,oldy,obj_key)
 
     }
@@ -140,7 +140,7 @@ else
             chasemode = 1
 
         //Otherwise, make a new one
-        else if not instance_exists(obj_tounge)
+        else if not instance_exists(obj_tongue)
         {
             mykey = instance_create(oldx,oldy,obj_key)
             event_user(14)
