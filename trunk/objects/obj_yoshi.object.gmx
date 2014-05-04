@@ -85,8 +85,8 @@ else if global.ycolor = 3
             <kind>1</kind>
             <string>if instance_exists(obj_mario)
     obj_mario.holding = 0
-if instance_exists(obj_tounge)
-    with obj_tounge instance_destroy()
+if instance_exists(obj_tongue)
+    with obj_tongue instance_destroy()
 if instance_exists(obj_mario)
 and global.yoshi = 0
 and fullmouth = 1
@@ -208,7 +208,7 @@ alarm[4] = 5</string>
           <argument>
             <kind>1</kind>
             <string>ttttt = 1
-instance_create(x,y,obj_tounge)</string>
+instance_create(x,y,obj_tongue)</string>
           </argument>
         </arguments>
       </action>
@@ -670,7 +670,7 @@ and global.yoshi = 1
         alarm[2] = 5
         ttttt = 0
     }
-    else if not instance_exists(obj_tounge)
+    else if not instance_exists(obj_tongue)
     and fullmouth = 1
         event_user(0)
 }

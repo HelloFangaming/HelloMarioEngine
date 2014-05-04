@@ -19,7 +19,7 @@
   <width>8</width>
   <height>6</height>
   <frames>
-    <frame index="0">images\spr_tounge_0.png</frame>
-    <frame index="1">images\spr_tounge_1.png</frame>
+    <frame index="0">images\spr_tongue_0.png</frame>
+    <frame index="1">images\spr_tongue_1.png</frame>
   </frames>
 </sprite>

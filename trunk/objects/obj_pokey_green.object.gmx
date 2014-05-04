@@ -167,6 +167,7 @@ else
     {
         x = mebelow.x
         y = mebelow.y-16
+        hspeed = mebelow.hspeed
         direct = mebelow.direct
     }
 

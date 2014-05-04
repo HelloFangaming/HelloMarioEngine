@@ -817,7 +817,7 @@
           <sprite>sprites\spr_yoshi_lick_r</sprite>
           <sprite>sprites\spr_yoshi_lick_y</sprite>
           <sprite>sprites\spr_yoshi_lick_b</sprite>
-          <sprite>sprites\spr_tounge</sprite>
+          <sprite>sprites\spr_tongue</sprite>
           <sprite>sprites\spr_yoshifire</sprite>
           <sprite>sprites\spr_wing</sprite>
         </sprites>
@@ -1543,7 +1543,7 @@
             <object>objects\obj_yoshi</object>
             <object>objects\obj_yoshi_runaway</object>
             <object>objects\obj_yoshi_abandon</object>
-            <object>objects\obj_tounge</object>
+            <object>objects\obj_tongue</object>
             <object>objects\obj_yoshifire</object>
             <object>objects\obj_kuriboshoe</object>
             <object>objects\obj_getshoe</object>
