@@ -151,6 +151,7 @@ if held = 0
             audio_play_sound(snd_bump,0,0)
         instance_create(x,y,obj_blockbumper)
         spinny = 1
+        with instance_create(x+8+8*sign(hspeed),y+8,obj_smoke) sprite_index = spr_shellbump
         hspeed = -hspeed
     }
 }

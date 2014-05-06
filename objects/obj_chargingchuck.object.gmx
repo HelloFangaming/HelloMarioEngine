@@ -234,14 +234,6 @@ event_user(4)
 if gravity = 0
 and sprite_index = spr_chargingchuck_jump
     sprite_index = spr_chargingchuck
-
-//Lose all health and die if an insta-kill item is touched
-if place_meeting(x,y,obj_powkiller)
-or place_meeting(x,y,obj_invincibility)
-{
-    hitpoints = 0
-    event_user(0)
-}
 </string>
           </argument>
         </arguments>

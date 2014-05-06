@@ -461,6 +461,8 @@
       <sprite>sprites\spr_throwblock_th</sprite>
       <sprite>sprites\spr_redbrick</sprite>
       <sprite>sprites\spr_redbrick_th</sprite>
+      <sprite>sprites\spr_greenbrick</sprite>
+      <sprite>sprites\spr_greenbrick_th</sprite>
       <sprite>sprites\spr_flipblock</sprite>
       <sprite>sprites\spr_noteblock</sprite>
       <sprite>sprites\spr_noteblock_yellow</sprite>
@@ -1006,6 +1008,7 @@
         <sprite>sprites\spr_bubble</sprite>
         <sprite>sprites\spr_bubble2</sprite>
         <sprite>sprites\spr_spinthump</sprite>
+        <sprite>sprites\spr_shellbump</sprite>
         <sprite>sprites\spr_splash</sprite>
         <sprite>sprites\spr_lavasplash</sprite>
       </sprites>
@@ -1178,6 +1181,7 @@
       <object>objects\obj_brick</object>
       <object>objects\obj_bluebrick</object>
       <object>objects\obj_redbrick</object>
+      <object>objects\obj_greenbrick</object>
       <object>objects\obj_flipblock</object>
       <object>objects\obj_noteblock</object>
       <object>objects\obj_noteblock_hidden</object>

@@ -54,12 +54,6 @@ mytail[1].parent = mytail[0]
 mytail[2].parent = mytail[1]
 mytail[3].parent = mytail[2]
 
-//Start tail parts movement
-mytail[0].alarm[0] = 14
-mytail[1].alarm[0] = 22
-mytail[2].alarm[0] = 30
-mytail[3].alarm[0] = 38
-
 //Go after Mario
 alarm[0] = 2
 </string>
@@ -161,14 +155,6 @@ if mytails &gt; 0
     //Move again later
     alarm[0] = 30
 
-    //Make tail parts move again later
-    if mytails &gt; 0
-        mytail[0].alarm[0] = 30
-    if mytails &gt; 1
-        mytail[1].alarm[0] = 30
-    if mytails &gt; 2
-        mytail[2].alarm[0] = 30
-
 }
 
 //Otherwise, prepare to explode
@@ -202,12 +188,6 @@ else
             <kind>1</kind>
             <string>///Stop movement
 speed = 0
-
-//Stop all tail parts
-with mytail[0] speed = 0
-with mytail[1] speed = 0
-with mytail[2] speed = 0
-with mytail[3] speed = 0
 
 //Show face if there is a tail left
 if mytails &gt; 0

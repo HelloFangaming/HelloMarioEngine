@@ -101,10 +101,7 @@ alarm[2] = 2</string>
           <argument>
             <kind>1</kind>
             <string>instance_create(x,y,obj_smoke)
-if x&gt;view_xview[0]-16
-and x&lt;view_xview[0]+336
-and y&lt;view_yview[0]+256
-and y&gt;view_yview[0]-16
+if not outside_view()
     audio_play_sound(snd_bump,0,0)
 if held = 1
     obj_mario.holding = 0
@@ -168,9 +165,15 @@ if held = 0
         if not outside_view()
             audio_play_sound(snd_bump,0,0)
         instance_create(x,y,obj_blockbumper)
-        event_user(0)
-        instance_destroy()
+        with instance_create(x+8+8*sign(hspeed),y+8,obj_smoke) sprite_index = spr_shellbump
+        if sprite_index = spr_greenbrick_th
+            hspeed = -hspeed
+        else
+            event_user(0)
     }
+    if harmmario = 0
+    and not place_meeting(x,y,obj_mario)
+        harmmario = 1
 }
 if visible = 0
 and instance_exists(obj_mario)
@@ -197,21 +200,23 @@ and instance_exists(obj_mario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.hardness &lt; 99
+            <string>///Hurt enemies
+if other.hardness &lt; 99
 {
     scr_musicalscale(id,1)
     with other event_user(0)
+
+    //Shatter if held
     if held = 1
     {
         obj_mario.holding = 0
         event_user(0)
-        instance_destroy()
     }
+
+    //Red bricks always shatter
     else if sprite_index = spr_redbrick_th
-    {
         event_user(0)
-        instance_destroy()
-    }
+
 }
 </string>
           </argument>
@@ -235,7 +240,8 @@ and instance_exists(obj_mario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-11 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-11 and vspeed &gt; 0
 {
     y = other.y-16
     vspeed = 0
@@ -321,7 +327,12 @@ speed = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_break,0,0)
+            <string>///Shatter
+
+//Play break sound
+audio_play_sound(snd_break,0,0)
+
+//Make shards
 with instance_create(x+8,y,obj_shard)
 {
     sprite_index = spr_shard_th
@@ -342,6 +353,9 @@ with instance_create(x,y,obj_shard)
     sprite_index = spr_shard_th
     direction = 135
 }
+
+//Destroy
+instance_destroy()
 </string>
           </argument>
         </arguments>

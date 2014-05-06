@@ -29,6 +29,9 @@
 
 //Animate
 image_speed = 0.15
+
+//Throw sprite
+throwsprite = spr_throwblock_th
 </string>
           </argument>
         </arguments>
@@ -61,18 +64,10 @@ and obj_mario.disablecontrols = 0
 {
 
     //Create the appropriate brick, and force it to be held
-    with obj_mario
+    with instance_create(obj_mario.x,obj_mario.y+16,obj_thrownbrick)
     {
-        if other.sprite_index = spr_redbrick
-        {
-            with instance_create(x,y+16,obj_thrownbrick)
-            {
-                sprite_index = spr_redbrick_th
-                event_user(15)
-            }
-        }
-        else
-            with instance_create(x,y+16,obj_thrownbrick) event_user(15)
+        sprite_index = other.throwsprite
+        event_user(15)
     }
 
     //Destroy
