@@ -13,6 +13,7 @@
   <code></code>
   <enableViews>-1</enableViews>
   <clearViewBackground>0</clearViewBackground>
+  <clearDisplayBuffer>-1</clearDisplayBuffer>
   <makerSettings>
     <isSet>0</isSet>
     <w>0</w>
@@ -97,8 +98,8 @@
     <instance objName="obj_bubble_coin" x="768" y="128" name="inst_69BC8ADF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bubble_coin" x="64" y="160" name="inst_8EF8DB56" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_fastspark" x="176" y="32" name="inst_23A0D0C0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_pipeenemygenerator" x="864" y="288" name="inst_22EED3D1" locked="0" code="type = 0&#xA;enemy = 2" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_pipeenemygenerator" x="1488" y="208" name="inst_3B124FC8" locked="0" code="type = 0&#xA;enemy = 3" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_pipeenemygenerator" x="864" y="288" name="inst_22EED3D1" locked="0" code="type = -1&#xA;enemy = 2" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_pipeenemygenerator" x="1488" y="208" name="inst_3B124FC8" locked="0" code="type = -1&#xA;enemy = 3" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_koopa_red" x="1240" y="336" name="inst_EB3C11C0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_rex" x="1592" y="176" name="inst_A57F4628" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_clockwiseb" x="272" y="288" name="inst_44ED003B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

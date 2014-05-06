@@ -25,17 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if choose(1,0) = 1
-    sprite_index = spr_greencheep
-gravity = 0.1
-image_speed = 0.15
-speed = 4+random(3)
-if not instance_exists(obj_mario)
-{
-    instance_destroy()
-    exit
-}
-if obj_mario.x &lt; x
+            <string>///Generated jumping cheep cheep
+
+//How vulnerable is this enemy to various items?
+hardness = 0
+
+//How vulnerable is this enemy to Mario?
+stomp = 0
+
+//Facing direction
+if x &gt; view_xview[0]+view_wview[0]/2
 {
     direction = 100
     direct = -1
@@ -45,8 +44,19 @@ else
     direction = 80
     direct = 1
 }
-hardness = 0
-stomp = 0
+
+//Animate
+image_speed = 0.15
+
+//Gravity
+gravity = 0.1
+
+//Random speed
+speed = 4+random(3)
+
+//Randomly become green
+if choose(1,0) = 1
+    sprite_index = spr_greencheep
 </string>
           </argument>
         </arguments>
@@ -69,8 +79,11 @@ stomp = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if vspeed &gt; 4
+            <string>///Cap fall speed
+if vspeed &gt; 4
     vspeed = 4
+
+//Destroy outside room
 if y &gt; room_height
     instance_destroy()
 </string>
@@ -95,7 +108,9 @@ if y &gt; room_height
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)</string>
+            <string>///Draw Cheep Cheep
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
+</string>
           </argument>
         </arguments>
       </action>

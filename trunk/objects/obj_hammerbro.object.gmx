@@ -25,16 +25,34 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.25
-alarm[0] = 70
-alarm[1] = 150
-alarm[2] = 25
-image_speed = 0.15
-direct = 0
-throughsolid = 0
-hspeed = -0.5
+            <string>///Throws an infinite supply of hamers
+
+//How vulnerable is this enemy to various items?
 hardness = 0
+
+//How vulnerable is this enemy to Mario?
 stomp = 0
+
+//Facing direction
+direct = -1
+
+//Animate
+image_speed = 0.15
+
+//Move left
+hspeed = -0.5
+
+//Move back and forth
+alarm[0] = 70
+
+//Jump
+alarm[1] = 150
+
+//Fire projectiles
+alarm[2] = 25
+
+//Whether he can go through solids
+throughsolid = 0
 </string>
           </argument>
         </arguments>
@@ -57,10 +75,16 @@ stomp = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>varid = instance_create(x+8,y,obj_brohammer)
-varid.hspeed = 2*direct
+            <string>///Throw hammers
+with instance_create(x+8,y,obj_brohammer) hspeed = 2*other.direct
+
+//Play throw sound
 audio_play_sound(snd_hammer,0,0)
+
+//Change sprite back
 sprite_index = spr_hammerbro
+
+//Throw more
 alarm[2] = 75
 </string>
           </argument>
@@ -84,11 +108,16 @@ alarm[2] = 75
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if collision_rectangle(x,y+16,x+15,y+16,obj_solidtop,0,0) and throughsolid = 0
+            <string>///Get ready to throw hammers
+
+//If he is on the ground, prepare to throw 
+if gravity = 0
 {
     sprite_index = spr_hammerbro_throw
     alarm[3] = 25
 }
+
+//Otherwise, wait
 else
     alarm[2] = 1
 </string>
@@ -113,13 +142,27 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if collision_line(x,y-40,x+15,y-40,obj_blockparent,0,0)
+            <string>///Jump
+
+//Jump higher if a block is above
+if collision_line(bbox_left,bbox_top-40,bbox_right,bbox_top-40,obj_blockparent,0,0)
     vspeed = -7
 else
     vspeed = -4
-if collision_line(x,y+17,x+15,y+17,obj_blockparent,0,0)
+
+//Boost jump
+y--
+
+//Gravity
+gravity = 0.25
+
+//If a block is above or below, jump through it
+if place_meeting(x,y+2,obj_blockparent)
     throughsolid = 1
-y-=1
+else if vspeed = -7
+    throughsolid = 2
+
+//Jump again
 alarm[1] = 150
 </string>
           </argument>
@@ -143,8 +186,10 @@ alarm[1] = 150
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed = -hspeed
-alarm[0] = 70</string>
+            <string>///Move back and forth
+hspeed = -hspeed
+alarm[0] = 70
+</string>
           </argument>
         </arguments>
       </action>
@@ -166,40 +211,35 @@ alarm[0] = 70</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0) and throughsolid = 0
-or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0) and throughsolid = 0
-{
-    gravity = 0
-    if vspeed &gt; 0
-        vspeed = 0
-}
-else
-    gravity = 0.25
-if vspeed &gt; 4
+            <string>///Bro logic
+
+//Floor collisions if he is not jumping through
+if throughsolid = 0
+    event_user(4)
+
+//Cap fall speed
+else if vspeed &gt; 4
     vspeed = 4
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
+
+//Face Mario
 if instance_exists(obj_mario)
 {
     if x &gt; obj_mario.x
         direct = -1
-    if x &lt; obj_mario.x
+    else
         direct = 1
 }
-if throughsolid = 2
-and not collision_rectangle(bbox_left,bbox_top+2,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
-    throughsolid = 0
+
+//Jump through blocks
 if throughsolid = 1
-and collision_rectangle(bbox_left,bbox_top+2,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
+and vspeed &gt; 0
     throughsolid = 2
-if collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_solid,0,0)
-and not collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_blockparent,0,0)
-and throughsolid = 0
-{
-    while collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_solid,0,0)
-        y+=1
-    vspeed = 1
-}
+if throughsolid = 2
+and place_meeting(x,y,obj_blockparent)
+    throughsolid = 3
+else if throughsolid = 3
+and not place_meeting(x,y,obj_blockparent)
+    throughsolid = 0
 </string>
           </argument>
         </arguments>
@@ -222,7 +262,8 @@ and throughsolid = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-11 and vspeed &gt; 0 and throughsolid = 0
+            <string>///Floor collision
+if y &lt; other.y-11 and vspeed &gt; 0 and throughsolid = 0
 {
     y = other.y-16
     vspeed = 0
@@ -250,10 +291,8 @@ and throughsolid = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if direct = 1
-    draw_sprite_ext(sprite_index,image_index,round(x),y,1,1,0,c_white,1)
-else
-    draw_sprite_ext(sprite_index,image_index,round(x)+16,y,-1,1,0,c_white,1)
+            <string>///Draw Hammer Bro
+draw_sprite_ext(sprite_index,image_index,round(x)+8-8*direct,y,direct,1,0,c_white,1)
 </string>
           </argument>
         </arguments>

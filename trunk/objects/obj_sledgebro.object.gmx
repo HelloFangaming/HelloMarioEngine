@@ -25,17 +25,37 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.25
-alarm[0] = 70
-alarm[1] = 150
-alarm[2] = 25
-image_speed = 0.15
-direct = 0
-throughsolid = 0
-hspeed = -0.5
-ready = 0
+            <string>///Heavy duty hammer throwing dude
+
+//How vulnerable is this enemy to various items?
 hardness = 0
+
+//How vulnerable is this enemy to Mario?
 stomp = 0
+
+//Facing direction
+direct = -1
+
+//Animate
+image_speed = 0.15
+
+//Move left
+hspeed = -0.5
+
+//Move back and forth
+alarm[0] = 70
+
+//Jump
+alarm[1] = 150
+
+//Fire projectiles
+alarm[2] = 25
+
+//Whether he can go through solids
+throughsolid = 0
+
+//Whether the thwomp sound should be played
+ready = 0
 </string>
           </argument>
         </arguments>
@@ -58,10 +78,16 @@ stomp = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>varid = instance_create(x,y,obj_brohammer)
-varid.hspeed = 2*direct
+            <string>///Throw hammers
+with instance_create(x,y,obj_brohammer) hspeed = 2*other.direct
+
+//Play throw sound
 audio_play_sound(snd_hammer,0,0)
+
+//Change sprite back
 sprite_index = spr_sledgebro
+
+//Throw more
 alarm[2] = 75
 </string>
           </argument>
@@ -85,11 +111,16 @@ alarm[2] = 75
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if collision_rectangle(x-16,y+32,x+15,y+32,obj_solidtop,0,0) and throughsolid = 0
+            <string>///Get ready to throw hammers
+
+//If he is on the ground, prepare to throw 
+if gravity = 0
 {
     sprite_index = spr_sledgebro_throw
     alarm[3] = 25
 }
+
+//Otherwise, wait
 else
     alarm[2] = 1
 </string>
@@ -114,14 +145,30 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if collision_line(x-16,y-24,x+15,y-24,obj_blockparent,0,0)
+            <string>///Jump
+
+//Jump higher if a block is above
+if collision_line(bbox_left,bbox_top-24,bbox_right,bbox_top-24,obj_blockparent,0,0)
     vspeed = -7
 else
-    vspeed = -3
-if collision_line(x-16,y+34,x+15,y+34,obj_blockparent,0,0)
+    vspeed = -4
+
+//Boost jump
+y--
+
+//Gravity
+gravity = 0.25
+
+//If a block is above or below, jump through it
+if place_meeting(x,y+2,obj_blockparent)
     throughsolid = 1
-y-=1
+else if vspeed = -7
+    throughsolid = 2
+
+///Play thwomp sound after landing
 ready = 1
+
+//Jump again
 alarm[1] = 150
 </string>
           </argument>
@@ -145,8 +192,10 @@ alarm[1] = 150
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed = -hspeed
-alarm[0] = 70</string>
+            <string>///Move back and forth
+hspeed = -hspeed
+alarm[0] = 70
+</string>
           </argument>
         </arguments>
       </action>
@@ -168,46 +217,43 @@ alarm[0] = 70</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0) and throughsolid = 0
-or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0) and throughsolid = 0
-{
-    if ready = 1
-    and vspeed &gt; 0
-    {
-        audio_play_sound(snd_thwomp,0,0)
-        ready = 0
-    }
-    gravity = 0
-    if vspeed &gt; 0
-        vspeed = 0
-}
-else
-    gravity = 0.25
-if vspeed &gt; 4
+            <string>///Bro logic
+
+//Floor collisions if he is not jumping through
+if throughsolid = 0
+    event_user(4)
+
+//Cap fall speed
+else if vspeed &gt; 4
     vspeed = 4
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
+
+//Play thwomp sound when landing
+if ready = 1
+and gravity = 0
+{
+    audio_play_sound(snd_thwomp,0,0)
+    ready = 0
+}
+
+//Face Mario
 if instance_exists(obj_mario)
 {
     if x &gt; obj_mario.x
         direct = -1
-    if x &lt; obj_mario.x
+    else
         direct = 1
 }
-if throughsolid = 2
-and not collision_rectangle(bbox_left,bbox_top+2,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
-    throughsolid = 0
+
+//Jump through blocks
 if throughsolid = 1
-and collision_rectangle(bbox_left,bbox_top+2,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
+and vspeed &gt; 0
     throughsolid = 2
-if collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_solid,0,0)
-and not collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_blockparent,0,0)
-and throughsolid = 0
-{
-    while collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_solid,0,0)
-        y+=1
-    vspeed = 1
-}
+if throughsolid = 2
+and place_meeting(x,y,obj_blockparent)
+    throughsolid = 3
+else if throughsolid = 3
+and not place_meeting(x,y,obj_blockparent)
+    throughsolid = 0
 </string>
           </argument>
         </arguments>
@@ -230,14 +276,9 @@ and throughsolid = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-27 and vspeed &gt; 0 and throughsolid = 0
+            <string>///Floor collision
+if y &lt; other.y-27 and vspeed &gt; 0 and throughsolid = 0
 {
-    if ready = 1
-    and vspeed &gt; 0
-    {
-        audio_play_sound(snd_thwomp,0,0)
-        ready = 0
-    }
     y = other.y-32
     vspeed = 0
     gravity = 0
@@ -264,7 +305,9 @@ and throughsolid = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)</string>
+            <string>///Draw Sledge Bro
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
+</string>
           </argument>
         </arguments>
       </action>

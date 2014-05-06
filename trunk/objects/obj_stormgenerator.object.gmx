@@ -25,12 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place this in the object creation code.
-//xmin = Minimum x value where enemy is generated.
-//xmax = Maximum x value where enemy is generated.
-alarm[0] = 80
+            <string>///Lightning storm generator
+
+/*
+**  This item uses creation code!
+**
+**  xmin = Minimum x value where enemy is generated
+**  xmax = Maximum x value where enemy is generated
+**
+*/
+
+//Default Values:
 xmin = 0
 xmax = room_width
+
+//Start the generator
+alarm[0] = 80
 </string>
           </argument>
         </arguments>
@@ -53,17 +63,23 @@ xmax = room_width
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-{
-    alarm[0] = 100
-    exit
-}
-if obj_mario.x &gt; xmin
+            <string>///Generate lightning
+
+//If Mario is in its territory
+if instance_exists(obj_mario)
+and obj_mario.x &gt; xmin
 and obj_mario.x &lt; xmax
 {
-    alarm[0] = 200
+
+    //Make lightning
     instance_create(round((view_xview[0]+random(320))/16)*16,view_yview[0]-14,obj_lightning)
+
+    //Generate more later
+    alarm[0] = 200
+
 }
+
+//Otherwise, wait
 else
     alarm[0] = 10
 </string>

@@ -25,16 +25,29 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Set these variables in the creation code
-//type = 0 for left, 1 for right.
-//enemy = Pick from below.
-//1:Goomba
-//2:Koopa
-//3:Spiny
-//4:Random
-alarm[0] = 100
-type = 0
+            <string>///A pipe that generates enemies
+
+/*
+**  This item uses creation code!
+**
+**  type = Select a direction
+**      -1: Left
+**      1: Right
+**
+**  enemy = Select an enemy
+**      1: Goomba
+**      2: Koopa
+**      3: Spiney
+**      4: Random
+**
+*/
+
+//Default Values:
+type = -1
 enemy = 1
+
+//Start the generator
+alarm[0] = 100
 </string>
           </argument>
         </arguments>
@@ -57,7 +70,8 @@ enemy = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>varid.depth = 0
+            <string>///Change enemy depth
+with enemy depth = 0
 </string>
           </argument>
         </arguments>
@@ -80,7 +94,9 @@ enemy = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 200
+            <string>///Generate enemies
+
+//Select an enemy
 if enemy = 1
     myenemy = obj_goomba
 else if enemy = 2
@@ -89,24 +105,31 @@ else if enemy = 3
     myenemy = obj_spiney
 else if enemy = 4
     myenemy = choose(obj_goomba,obj_koopa,obj_spiney)
+
+//If there are less than six enemies
 if instance_number(myenemy) &lt; 6
 {
-    if type = 0
-    {
-        varid = instance_create(x+7,y+16,myenemy)
-        varid.hspeed = -0.5
-    }
-    else
-    {
-        varid = instance_create(x+9,y+16,myenemy)
-        varid.hspeed = 0.5
-    }
+
+    //Make enemy
+    enemy = instance_create(x+8+type,y+16,myenemy)
+
+    //Make enemy move
+    enemy.hspeed = 0.5*type
+
+    //Deal with goomba's weirdness
     if myenemy = obj_goomba
-        varid.x -= 8
-    varid.depth = 10
-    varid.alarm[10] = 0
+        enemy.x -= 8
+
+    //Change depth to behind tiles
+    enemy.depth = 10
+
+    //Change depth back later
     alarm[1] = 30
+
 }
+
+//Generate more
+alarm[0] = 200
 </string>
           </argument>
         </arguments>

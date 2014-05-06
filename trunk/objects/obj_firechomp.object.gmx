@@ -25,21 +25,43 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>mytails = 4
-image_speed = 0
-direct = 1
+            <string>///A flying chomp with a fiery tail
+
+//How vulnerable is this enemy to various items?
 hardness = 1
+
+//How vulnerable is this enemy to Mario?
 stomp = 0
-turnnow = 0
-alarm[0] = 2
+
+//Facing direction
+direct = -1
+
+//Do not animate
+image_speed = 0
+
+//Number of tail parts
+mytails = 4
+
+//Create tail parts
 mytail[0] = instance_create(x+8,y,obj_firechomp_tail)
 mytail[1] = instance_create(x+8,y,obj_firechomp_tail)
 mytail[2] = instance_create(x+8,y,obj_firechomp_tail)
 mytail[3] = instance_create(x+8,y,obj_firechomp_tail)
+
+//Make them remember their parent
 mytail[0].parent = id
-mytail[1].parent = id
-mytail[2].parent = id
-mytail[3].parent = id
+mytail[1].parent = mytail[0]
+mytail[2].parent = mytail[1]
+mytail[3].parent = mytail[2]
+
+//Start tail parts movement
+mytail[0].alarm[0] = 14
+mytail[1].alarm[0] = 22
+mytail[2].alarm[0] = 30
+mytail[3].alarm[0] = 38
+
+//Go after Mario
+alarm[0] = 2
 </string>
           </argument>
         </arguments>
@@ -62,14 +84,11 @@ mytail[3].parent = id
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(mytail[0])
-    with mytail[0] instance_destroy()
-if instance_exists(mytail[1])
-    with mytail[1] instance_destroy()
-if instance_exists(mytail[2])
-    with mytail[2] instance_destroy()
-if instance_exists(mytail[3])
-    with mytail[3] instance_destroy()
+            <string>///Destroy tail parts
+with mytail[0] instance_destroy()
+with mytail[1] instance_destroy()
+with mytail[2] instance_destroy()
+with mytail[3] instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -92,8 +111,10 @@ if instance_exists(mytail[3])
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x,y,obj_explosion)
-instance_destroy()</string>
+            <string>///Explode
+instance_create(x,y,obj_explosion)
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
@@ -115,38 +136,42 @@ instance_destroy()</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if mytails &gt; 0
+            <string>///Shoot fire or prepare to explode
+
+//If there are tail parts left
+if mytails &gt; 0
 {
+
+    //Open wide
     image_index = 2
-    varid = instance_create(x+8,y,obj_reznor_fire)
-    varid.sprite_index = spr_firechomp_fire
-    varid.speed = 1
-    mytails -= 1
-    if mytails = 0
-        with mytail[0] instance_destroy()
-    if mytails = 1
-        with mytail[1] instance_destroy()
-    if mytails = 2
-        with mytail[2] instance_destroy()
-    if mytails = 3
-        with mytail[3] instance_destroy()
+
+    //Shoot fire
+    with instance_create(x+8,y,obj_reznor_fire)
+    {
+        sprite_index = spr_firechomp_fire
+        speed = 1
+    }
+
+    //Decrement tail parts
+    mytails--
+
+    //Destroy farthest tail part
+    with mytail[mytails] instance_destroy()
+
+    //Move again later
     alarm[0] = 30
+
+    //Make tail parts move again later
     if mytails &gt; 0
-    {
-        mytail[0].alarm[0] = 32
-        mytail[0].alarm[1] = 230
-    }
+        mytail[0].alarm[0] = 30
     if mytails &gt; 1
-    {
-        mytail[1].alarm[0] = 34
-        mytail[1].alarm[1] = 230
-    }
+        mytail[1].alarm[0] = 30
     if mytails &gt; 2
-    {
-        mytail[2].alarm[0] = 36
-        mytail[2].alarm[1] = 230
-    }
+        mytail[2].alarm[0] = 30
+
 }
+
+//Otherwise, prepare to explode
 else
 {
     sprite_index = spr_firechomp_flash
@@ -175,10 +200,20 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>speed = 0
-turnnow = 0
+            <string>///Stop movement
+speed = 0
+
+//Stop all tail parts
+with mytail[0] speed = 0
+with mytail[1] speed = 0
+with mytail[2] speed = 0
+with mytail[3] speed = 0
+
+//Show face if there is a tail left
 if mytails &gt; 0
     image_index = 1
+
+//Prepare to shoot fire
 alarm[2] = 10
 </string>
           </argument>
@@ -202,23 +237,20 @@ alarm[2] = 10
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_mario)
-    point_direction(x,y,obj_mario.x,obj_mario.y)
-turnnow = 1
+            <string>///Go after Mario
+
+//Go towards Mario
+if instance_exists(obj_mario)
+    direction = point_direction(x,y,obj_mario.x,obj_mario.y)
+
+//Move
 speed = 1
+
+//Stop moving after a bit
 alarm[1] = 200
-if mytails = 4
-{
-    mytail[0].alarm[0] = 12
-    mytail[1].alarm[0] = 20
-    mytail[2].alarm[0] = 28
-    mytail[3].alarm[0] = 36
-    mytail[0].alarm[1] = 200
-    mytail[1].alarm[1] = 200
-    mytail[2].alarm[1] = 200
-    mytail[3].alarm[1] = 200
-}
-else
+
+//If the tail is gone, hide face
+if mytails = 0
     image_index = 0
 </string>
           </argument>
@@ -242,7 +274,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(mytail[0])
+            <string>///Activate tail parts
+if not instance_exists(mytail[0])
     instance_activate_object(mytail[0])
 if not instance_exists(mytail[1])
     instance_activate_object(mytail[1])
@@ -272,13 +305,22 @@ if not instance_exists(mytail[3])
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if turnnow = 1
-and instance_exists(obj_mario)
+            <string>///Fire chomp logic
+
+//If Mario exists
+if instance_exists(obj_mario)
+{
+
+    //Turn towards Mario
     turn_towards_direction(point_direction(x,y,obj_mario.x,obj_mario.y),8)
-if hspeed &gt; 0
-    direct = 1
-if hspeed &lt; 0
-    direct = -1
+
+    //Face Mario
+    if x+8 &gt; obj_mario.x
+        direct = -1
+    if x+8 &lt; obj_mario.x
+        direct = 1
+
+}
 </string>
           </argument>
         </arguments>
@@ -301,7 +343,8 @@ if hspeed &lt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_user(0)
+            <string>///Use normal death
+event_user(0)
 </string>
           </argument>
         </arguments>
@@ -324,16 +367,22 @@ if hspeed &lt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>imdead = instance_create(x,y+16,obj_enemy_dead)
-imdead.sprite_index = sprite_index
-imdead.image_index = image_index
-imdead.image_xscale = image_xscale
+            <string>///Fire chomp death
+with instance_create(x,y+16,obj_enemy_dead)
+{
+    sprite_index = other.sprite_index
+    image_index = other.image_index
+}
+
+//Kill remaining tail parts
 if mytails &gt; 0
 {
-    imdead = instance_create(x+8,y+16,obj_enemy_multidead)
-    imdead.killsprite = spr_fireball
-    imdead.killxscale = image_xscale
-    imdead.count = mytails
+    with instance_create(x+8,y+16,obj_enemy_multidead)
+    {
+        killsprite = spr_fireball
+        killxscale = other.direct
+        count = other.mytails
+    }
 }
 
 //Destroy
@@ -360,10 +409,8 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if direct = 1
-    draw_sprite_ext(sprite_index,image_index,round(x),y,1,1,0,c_white,1)
-if direct = -1
-    draw_sprite_ext(sprite_index,image_index,round(x)+16,y,-1,1,0,c_white,1)
+            <string>///Draw Fire Chomp
+draw_sprite_ext(sprite_index,image_index,round(x)+8-8*direct,y,direct,1,0,c_white,1)
 </string>
           </argument>
         </arguments>

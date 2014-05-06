@@ -25,12 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place this in the object creation code.
-//xmin = Minimum x value where enemy is generated.
-//xmax = Maximum x value where enemy is generated.
-alarm[0] = 80
+            <string>///Diagonal bullet bill generator
+
+/*
+**  This item uses creation code!
+**
+**  xmin = Minimum x value where enemy is generated
+**  xmax = Maximum x value where enemy is generated
+**
+*/
+
+//Default Values:
 xmin = 0
 xmax = room_width
+
+//Start the generator
+alarm[0] = 80
 </string>
           </argument>
         </arguments>
@@ -53,32 +63,48 @@ xmax = room_width
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-{
-    alarm[0] = 100
-    exit
-}
-if obj_mario.x &gt; xmin
+            <string>///Generate diagonal bullet bills
+
+//If Mario is in its territory
+if instance_exists(obj_mario)
+and obj_mario.x &gt; xmin
 and obj_mario.x &lt; xmax
 {
-    alarm[0] = 200
+
+    //Play thwomp sound
     audio_play_sound(snd_thwomp,0,0)
-    varid = instance_create(view_xview[0]-6,view_yview[0]+230,obj_cannonball)
-    varid.sprite_index = spr_bulletbill_diagonal
-    with varid motion_set(45,1.5)
-    varid = instance_create(view_xview[0]+310,view_yview[0]+230,obj_cannonball)
-    varid.sprite_index = spr_bulletbill_diagonal
-    varid.image_index = 3
-    with varid motion_set(135,1.5)
-    varid = instance_create(view_xview[0]+310,view_yview[0]-6,obj_cannonball)
-    varid.sprite_index = spr_bulletbill_diagonal
-    varid.image_index = 2
-    with varid motion_set(225,1.5)
-    varid = instance_create(view_xview[0]-6,view_yview[0]-6,obj_cannonball)
-    varid.sprite_index = spr_bulletbill_diagonal
-    varid.image_index = 1
-    with varid motion_set(315,1.5)
+
+    //Make diagonal bullets
+    with instance_create(view_xview[0]-6,view_yview[0]+230,obj_cannonball)
+    {
+        sprite_index = spr_bulletbill_diagonal
+        direction = 45
+    }
+    with instance_create(view_xview[0]+310,view_yview[0]+230,obj_cannonball)
+    {
+        sprite_index = spr_bulletbill_diagonal
+        image_index = 3
+        direction = 135
+    }
+    with instance_create(view_xview[0]+310,view_yview[0]-6,obj_cannonball)
+    {
+        sprite_index = spr_bulletbill_diagonal
+        image_index = 2
+        direction = 225
+    }
+    with instance_create(view_xview[0]-6,view_yview[0]-6,obj_cannonball)
+    {
+        sprite_index = spr_bulletbill_diagonal
+        image_index = 1
+        direction = 315
+    }
+
+    //Generate more later
+    alarm[0] = 200
+
 }
+
+//Otherwise, wait
 else
     alarm[0] = 10
 </string>

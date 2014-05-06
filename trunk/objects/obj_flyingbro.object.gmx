@@ -25,10 +25,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x+16,y-32,obj_flyingbro_rider)
+            <string>///An amazing flying hammer bro
+
+//Create a rider
+with instance_create(x+16,y-32,obj_flyingbro_rider) myride = other.id
+
+//Animate
 image_speed = 0.15
-alarm[0] = 128
+
+//Move right
 hspeed = 1
+
+//Reverse direction
+alarm[0] = 128
+
+//Offset values
 offsetnext = 0
 offset = 0
 </string>
@@ -53,26 +64,29 @@ offset = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if offsetnext = 0
-    offset = 2
-if offsetnext = 1
-    offset = 4
-if offsetnext = 2
-    offset = 6
-if offsetnext = 3
-    offset = 8
-if offsetnext = 4
-    offset = 6
-if offsetnext = 5
-    offset = 4
-if offsetnext = 6
-    offset = 2
-offsetnext += 1
+            <string>///Manage offset values
+switch offsetnext
+{
+    case 0: offset = 2 break
+    case 1: offset = 4 break
+    case 2: offset = 6 break
+    case 3: offset = 8 break
+    case 4: offset = 6 break
+    case 5: offset = 4 break
+    case 6: offset = 2 break
+}
+
+//Increment next offset
+offsetnext++
+
+//Finish animation
 if offsetnext = 7
 {
     offset = 0
     offsetnext = 0
 }
+
+//Otherwise, continue
 else
     alarm[1] = 1
 </string>
@@ -97,7 +111,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed = -hspeed
+            <string>///Reverse direction
+hspeed = -hspeed
 alarm[0] = 128
 </string>
           </argument>
@@ -121,8 +136,7 @@ alarm[0] = 128
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>y = ystart+sin((x-xstart)/128*pi)*64
-if not instance_exists(obj_mario)
+            <string>if not instance_exists(obj_mario)
     exit
 if collision_rectangle(x,y-5,x+31,y+4,obj_mario,0,0)
 and obj_mario.y &lt; y-27
@@ -164,12 +178,16 @@ and hspeed &lt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-    exit
-if collision_rectangle(x,y+15,x+31,y+19,obj_mario,0,0)
+            <string>///Flying bro logic
+
+//Let Mario bump the platform
+if offset = 0
+and collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+4,obj_mario,0,0)
 and obj_mario.vspeed &lt; 0
-and offset = 0
     alarm[1] = 1
+
+//Circular Motion
+y = ystart+sin((x-xstart)/128*pi)*64
 </string>
           </argument>
         </arguments>
@@ -192,7 +210,8 @@ and offset = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(spr_flyingbro_platform,-1,x,y-offset)
+            <string>///Draw Flying Bro Platform
+draw_sprite(spr_flyingbro_platform,-1,x,y-offset)
 </string>
           </argument>
         </arguments>

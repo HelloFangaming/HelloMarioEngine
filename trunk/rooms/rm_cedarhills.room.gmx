@@ -13,6 +13,7 @@
   <code></code>
   <enableViews>-1</enableViews>
   <clearViewBackground>0</clearViewBackground>
+  <clearDisplayBuffer>-1</clearDisplayBuffer>
   <makerSettings>
     <isSet>0</isSet>
     <w>0</w>
@@ -383,7 +384,7 @@
     <instance objName="obj_stopblock" x="1152" y="0" name="inst_2C18C134" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_stopblock" x="944" y="0" name="inst_80A282D5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_spring_hidden" x="1472" y="288" name="inst_439F5A61" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_pipeenemygenerator" x="288" y="368" name="inst_32317133" locked="0" code="type = 0&#xA;enemy = 1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_pipeenemygenerator" x="288" y="368" name="inst_32317133" locked="0" code="type = -1&#xA;enemy = 1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_koopa" x="344" y="352" name="inst_DB1AB97E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_koopa_red" x="216" y="320" name="inst_B9810298" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_shyguy_b" x="1112" y="320" name="inst_633C1E32" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

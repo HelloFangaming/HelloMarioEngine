@@ -25,91 +25,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.25
-image_speed = 0
-alarm[0] = 15
-direct = 1
+            <string>///Electrifying footsteps
+
+//How vulnerable is this enemy to various items?
 hardness = 1
+
+//How vulnerable is this enemy to Mario?
 stomp = 2
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="5">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>sprite_index = spr_sumobro
-image_speed = 0.3
-hspeed = 0.5
+
+//Facing direction
 direct = 1
-alarm[0] = 64</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>image_speed = 0
-image_index = 0
-alarm[5] = 70
-audio_play_sound(snd_thwomp,0,0)
-instance_create(x-8,y+48,obj_lightning)
+
+//Do not animate
+image_speed = 0
+
+//Begin sumo sequence
+alarm[0] = 15
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="3">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>sprite_index = spr_sumobro_stomp
-image_speed = 0.09
-hspeed = 0
-alarm[4] = 22</string>
           </argument>
         </arguments>
       </action>
@@ -131,11 +63,13 @@ alarm[4] = 22</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index = spr_sumobro
+            <string>///Move to the side
+sprite_index = spr_sumobro
 image_speed = 0.3
-hspeed = -0.5
-direct = -1
-alarm[3] = 64</string>
+direct = -direct
+hspeed = 0.5*direct
+alarm[0] = 64
+</string>
           </argument>
         </arguments>
       </action>
@@ -157,11 +91,12 @@ alarm[3] = 64</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
+            <string>///Finish stomp and create lightning
+image_speed = 0
 image_index = 0
-alarm[2] = 70
 audio_play_sound(snd_thwomp,0,0)
 instance_create(x-8,y+48,obj_lightning)
+alarm[2] = 70
 </string>
           </argument>
         </arguments>
@@ -184,11 +119,14 @@ instance_create(x-8,y+48,obj_lightning)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index = spr_sumobro_stomp
+            <string>///Stomp animation
+sprite_index = spr_sumobro_stomp
 image_speed = 0.09
 hspeed = 0
-x = xstart
-alarm[1] = 22</string>
+if direct = 1
+    x = xstart
+alarm[1] = 22
+</string>
           </argument>
         </arguments>
       </action>
@@ -210,18 +148,8 @@ alarm[1] = 22</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
-or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0)
-{
-    gravity = 0
-    vspeed = 0
-}
-else
-    gravity = 0.25
-if vspeed &gt; 4
-    vspeed = 4
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
+            <string>///Floor collisions
+event_user(4)
 </string>
           </argument>
         </arguments>
@@ -244,7 +172,8 @@ while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopepar
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-27 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-27 and vspeed &gt; 0
 {
     y = other.y-32
     vspeed = 0
@@ -272,7 +201,9 @@ while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopepar
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)</string>
+            <string>///Draw Sumo Bro
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
+</string>
           </argument>
         </arguments>
       </action>
