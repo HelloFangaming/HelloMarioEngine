@@ -25,11 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>myride = collision_point(x,y+40,obj_flyingbro,0,0)
-direct = 1
-alarm[0] = 28
+            <string>///Rides his platform and throws hammers
+
+//How vulnerable is this enemy to various items?
 hardness = 1
+
+//How vulnerable is this enemy to Mario?
 stomp = 2
+
+//Facing direction
+direct = 1
+
+//Throw hammers
+alarm[0] = 28
 </string>
           </argument>
         </arguments>
@@ -52,27 +60,25 @@ stomp = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if x&gt;view_xview[0]-16
-and x&lt;view_xview[0]+336
-and y&lt;view_yview[0]+256
-and y&gt;view_yview[0]-16
+            <string>///Throw hammers
+
+//If inside view
+if not outside_view()
 {
-    varid = instance_create(x,y,obj_brohammer)
+
+    //Play hammer sound
     audio_play_sound(snd_hammer,0,0)
-    if direct = 1
-    {
-        varid.hspeed = 2
-        direct = -1
-    }
-    else
-    {
-        varid.hspeed = -2
-        direct = 1
-    }
-    alarm[0] = 28
+
+    //Make hammer
+    with instance_create(x,y,obj_brohammer) hspeed = 2*other.direct
+
+    //Reverse direction
+    direct = -direct
+
 }
-else
-    alarm[0] = 2
+
+//Throw more later
+alarm[0] = 28
 </string>
           </argument>
         </arguments>
@@ -95,12 +101,17 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if myride.offset &gt; 0
+            <string>///Amazing flying hammer bro logic
+
+//If the platform gets offset, die
+if myride.offset != 0
 {
     event_user(0)
     audio_play_sound(snd_kick,0,0)
     instance_destroy()
 }
+
+//Otherwise, snap to position
 else
 {
     x = myride.x+16
@@ -151,7 +162,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
+            <string>///Draw Flying Bro
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
 </string>
           </argument>
         </arguments>

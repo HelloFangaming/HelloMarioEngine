@@ -25,16 +25,30 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.25
-alarm[10] = 60
-image_speed = 0.1
-hitpoints = 3
-ready = 0
-canjump = 0
-direct = 1
-bugfix = 0
+            <string>///A football player who hates Mario for never playing football
+
+//How vulnerable is this enemy to various items?
 hardness = 0
+
+//How vulnerable is this enemy to Mario?
 stomp = 5
+
+//Facing direction
+direct = -1
+
+//Start charging towards Mario
+alarm[10] = 60
+
+//Animate
+image_speed = 0.1
+
+//Health
+hitpoints = 3
+
+//State variable
+ready = 0
+
+//Play running sounds
 alarm[1] = 7
 </string>
           </argument>
@@ -58,20 +72,36 @@ alarm[1] = 7
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_chargingchuck_hurt
-    exit
-if not instance_exists(obj_mario)
+            <string>///Charge after Mario
+
+//If Mario exists, and the chuck is not hurting
+if ready = 0
+and instance_exists(obj_mario)
 {
-    alarm[10] = 1
-    exit
+
+    //Face Mario
+    if obj_mario.x &lt; x
+        direct = -1
+    else
+        direct = 1
+
+    //Charge
+    hspeed = direct
+
+    //Run sprite
+    sprite_index = spr_chargingchuck
+
+    //Faster animation speed
+    image_speed = 0.15
+
+    //Pause to take a break
+    alarm[0] = 200
+
 }
-if obj_mario.x &lt; x
-    hspeed = -1
+
+//Otherwise, wait
 else
-    hspeed = 1
-canjump = 1
-sprite_index = spr_chargingchuck
-alarm[0] = 200
+    alarm[10] = 60
 </string>
           </argument>
         </arguments>
@@ -94,7 +124,7 @@ alarm[0] = 200
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>bugfix++
+            <string>///Play running sounds
 if sprite_index = spr_chargingchuck
     audio_play_sound(snd_bump,0,0)
 alarm[1] = 7
@@ -120,18 +150,35 @@ alarm[1] = 7
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_chargingchuck_jump
-{
+            <string>///Take a breather and look around
+
+//If he is jumping, wait
+if sprite_index = spr_chargingchuck_jump
     alarm[0] = 1
-    exit
+
+//Otherwise
+else
+{
+
+    //Reset state
+    ready = 0
+
+    //Reset hardness
+    hardness = 0
+
+    //Start running later
+    alarm[10] = 60
+
+    //Slower animation speed
+    image_speed = 0.1
+
+    //Stop moving
+    hspeed = 0
+
+    //Paused sprite
+    sprite_index = spr_chargingchuck_paused
+
 }
-ready = 0
-hardness = 0
-canjump = 0
-alarm[10] = 60
-image_speed = 0.1
-hspeed = 0
-sprite_index = spr_chargingchuck_paused
 </string>
           </argument>
         </arguments>
@@ -154,57 +201,47 @@ sprite_index = spr_chargingchuck_paused
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if canjump = 1
-and ready = 0
-and sprite_index != spr_chargingchuck_jump
+            <string>///Chuck logic
+
+//If not hurting and is walking
+if ready = 0
+and sprite_index = spr_chargingchuck
 {
-    if hspeed &gt; 0
+
+    //Jump when a wall is reached
+    if (hspeed &gt; 0 and collision_rectangle(bbox_right+hspeed*2,bbox_top,bbox_right+hspeed*2,bbox_bottom-1,obj_solid,0,0))
+    or (hspeed &lt; 0 and collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left+hspeed*2,bbox_bottom-1,obj_solid,0,0))
     {
-        if collision_rectangle(bbox_right+hspeed,bbox_top,bbox_right+hspeed,bbox_bottom-1,obj_solid,0,0)
-            y-=1
-        vspeed = -5
         sprite_index = spr_chargingchuck_jump
-    }
-    if hspeed &lt; 0
-    {
-        if collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left+hspeed,bbox_bottom-1,obj_solid,0,0)
-            y-=1
         vspeed = -5
-        sprite_index = spr_chargingchuck_jump
+        y--
     }
+
 }
+
+//Move away from walls
 if hspeed &gt; 0
 and collision_rectangle(bbox_right+hspeed,bbox_top,bbox_right+hspeed,bbox_bottom,obj_solid,0,0)
-    x-=1.5
+    x--
 if hspeed &lt; 0
 and collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left+hspeed,bbox_bottom,obj_solid,0,0)
-    x+=1.5
-if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
-or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0)
-{
-    gravity = 0
-    vspeed = 0
-    if sprite_index = spr_chargingchuck_jump
-        sprite_index = spr_chargingchuck
-}
-else
-    gravity = 0.25
-if vspeed &gt; 4
-    vspeed = 4
-if hspeed &gt; 0
-    direct = 1
-if hspeed &lt; 0
-    direct = -1
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
-if vspeed &lt; 0
-and collision_rectangle(x-12,y-1,x+11,y-1,obj_solid,1,1)
-    vspeed = 1
-///Hack
-if place_meeting(x,y,obj_explosion)
-or place_meeting(x,y,obj_powkiller)
+    x++
+
+//Default floor collisions
+event_user(4)
+
+//Change sprite when landing from a jump
+if gravity = 0
+and sprite_index = spr_chargingchuck_jump
+    sprite_index = spr_chargingchuck
+
+//Lose all health and die if an insta-kill item is touched
+if place_meeting(x,y,obj_powkiller)
 or place_meeting(x,y,obj_invincibility)
-    hardness = 0
+{
+    hitpoints = 0
+    event_user(0)
+}
 </string>
           </argument>
         </arguments>
@@ -227,7 +264,8 @@ or place_meeting(x,y,obj_invincibility)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-27 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-27 and vspeed &gt; 0
 {
     y = other.y-32
     vspeed = 0
@@ -255,8 +293,13 @@ or place_meeting(x,y,obj_invincibility)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 1
+            <string>///Chuck stomping
+
+//If the chuck is hurting, play sounds only
+if ready = 1
     audio_play_sound(snd_stomp,0,0)
+
+//Otherwise, hurt the chuck
 else
 {
     scr_musicalscale(obj_mario.id,1)
@@ -284,23 +327,39 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Hack
-if place_meeting(x,y,obj_explosion)
-or place_meeting(x,y,obj_powkiller)
-or place_meeting(x,y,obj_invincibility)
-    hitpoints = 0
-    hardness = 0
+            <string>///Chuck hurting
+
+//Play hurt sound
 audio_play_sound(snd_hurt,0,0)
+
+//Decrement health
 hitpoints--
+
+//Use hurt sprite
 sprite_index = spr_chargingchuck_hurt
+
+//If he has health left
 if hitpoints &gt; 0
 {
+
+    //Change state
     ready = 1
+
+    //Become hard
     hardness = 99
+
+    //Pause afterwards
     alarm[0] = 60
+
+    //Stop moving
     hspeed = 0
+
+    //Animate
     image_speed = 0.15
+
 }
+
+//Otherwise, die
 else
     event_inherited()
 </string>
@@ -325,7 +384,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_chargingchuck_hurt
+            <string>///Finish hurt animation
+if sprite_index = spr_chargingchuck_hurt
 {
     image_speed = 0
     image_index = 5
@@ -352,10 +412,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_chargingchuck
-    draw_sprite_ext(sprite_index,bugfix,round(x),y,direct,1,0,c_white,1)
-else
-    draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
+            <string>///Draw Charging Chuck
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
 </string>
           </argument>
         </arguments>

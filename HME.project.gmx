@@ -1645,7 +1645,6 @@
           <object>objects\obj_brohammer</object>
           <object>objects\obj_brofire</object>
           <object>objects\obj_boomerang</object>
-          <object>objects\obj_chain</object>
           <object>objects\obj_lightning</object>
           <object>objects\obj_sumoflame</object>
           <object>objects\obj_firechomp_tail</object>

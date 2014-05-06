@@ -25,31 +25,35 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
-firehit = 0
-mylink[0] = instance_create(x,y,obj_chain)
-mylink[1] = instance_create(x,y,obj_chain)
-mylink[2] = instance_create(x,y,obj_chain)
-mylink[3] = instance_create(x,y,obj_chain)
-alarm[0] = 60
-moveok = 0
-if instance_exists(obj_mario)
-{
-    if obj_mario.x &gt; x
-        direct = 1
-    else
-        direct = -1
-    xtarget = obj_mario.x 
-    ytarget = obj_mario.y
-}
+            <string>///A chomp on a leash
+
+//How vulnerable is this enemy to various items?
 hardness = 1
+
+//How vulnerable is this enemy to Mario?
 stomp = 2
+
+//Facing direction
+direct = -1
+
+//Animate
+image_speed = 0.15
+
+//State variable
+ready = 0
+
+//Target
+xtarget = x
+ytarget = y
+
+//Charge at Mario
+alarm[0] = 60
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="1" enumb="0">
+    <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -66,10 +70,10 @@ stomp = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with mylink[0] instance_destroy()
-with mylink[1] instance_destroy()
-with mylink[2] instance_destroy()
-with mylink[3] instance_destroy()</string>
+            <string>///Move to its starting position
+ready = 0
+alarm[0] = 150
+</string>
           </argument>
         </arguments>
       </action>
@@ -91,21 +95,18 @@ with mylink[3] instance_destroy()</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_mario)
+            <string>///Charge at Mario
+
+//If Mario exists, charge
+if instance_exists(obj_mario)
 {
-    if moveok = 0 
-    {
-        moveok = 1
-        xtarget = obj_mario.x 
-        ytarget = obj_mario.y
-        alarm[0] = 30
-    }
-    else
-    {
-        moveok = 0
-        alarm[0] = 150
-    }
+    ready = 1
+    xtarget = obj_mario.x 
+    ytarget = obj_mario.y
+    alarm[1] = 30
 }
+
+//Otherwise, wait
 else
     alarm[0] = 30
 </string>
@@ -130,12 +131,13 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if moveok = 0
+            <string>///Chain chomp logic
+
+//If the chain chomp is not charging at Mario
+if ready = 0
 {
-    if xtarget &gt; x+sprite_width
-        direct = 1 
-    else if xtarget &lt; x
-        direct = -1
+
+    //Return to the starting position
     if x &gt; xstart
         x -= 0.5
     else if x &lt; xstart
@@ -144,61 +146,50 @@ else
         y -= 0.5
     else if y &lt; ystart
         y += 0.5
+
+    //If it is in its starting position
+    if x = xstart
+    and y = ystart
+    {
+
+        //Face Mario
+        if instance_exists(obj_mario)
+        {
+            if x+8 &gt; obj_mario.x
+                direct = -1
+            if x+8 &lt; obj_mario.x
+                direct = 1
+        }
+
+        //Close mouth
+        image_index = 1
+
+    }
+
 }
+
+//Otherwise, charge at Mario up to 40 pixels
 else
 {
-    image_speed = 0.15
     if direct = -1
     {
         if x &gt; xstart-40
         and xtarget &lt; x
             x-=8
-        if y &gt; ystart-40
-        and ytarget &lt; y
-            y-=8
-        if y &lt; ystart+40
-        and ytarget &gt; y
-            y+=8
     }
-    if direct = 1
+    else
     {
         if x &lt; xstart+40
         and xtarget &gt; x
             x+=8
-        if y &gt; ystart-40
-        and ytarget &lt; y
-            y-=8
-        if y &lt; ystart+40
-        and ytarget &gt; y
-            y+=8
     }
+    if y &gt; ystart-40
+    and ytarget &lt; y
+        y-=8
+    else if y &lt; ystart+40
+    and ytarget &gt; y
+        y+=8
 }
-if instance_exists(mylink[0])
-{
-    mylink[3].x = xstart
-    mylink[1].x = (x+xstart)/2
-    mylink[0].x = (x+mylink[1].x)/2
-    mylink[2].x = (xstart+mylink[1].x)/2
-    mylink[3].y = ystart
-    mylink[1].y = (y+ystart)/2
-    mylink[0].y = (y+mylink[1].y)/2
-    mylink[2].y = (ystart+mylink[1].y)/2
-}
-if x = xstart
-and y = ystart
-{
-    if instance_exists(obj_mario)
-    {
-        if x &gt; obj_mario.x
-            direct = -1
-        if x &lt; obj_mario.x
-            direct = 1
-    }
-    image_speed = 0
-    image_index = 1
-}
-else
-    image_speed = 0.15
 </string>
           </argument>
         </arguments>
@@ -221,14 +212,19 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>imdead = instance_create(x,y+16,obj_enemy_dead)
-imdead.sprite_index = sprite_index
-imdead.image_index = image_index
-imdead.image_xscale = image_xscale
-imdead = instance_create(x,y+16,obj_enemy_multidead)
-imdead.killsprite = spr_chain
-imdead.killxscale = image_xscale
-imdead.count = 4
+            <string>///Chain chomp death
+with instance_create(x,y+16,obj_enemy_dead)
+{
+    sprite_index = other.sprite_index
+    image_index = other.image_index
+}
+
+//Kill chains
+with instance_create(x,y+16,obj_enemy_multidead)
+{
+    killsprite = spr_chain
+    count = 4
+}
 
 //Destroy
 instance_destroy()
@@ -254,10 +250,16 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if direct = 1
-    draw_sprite_ext(sprite_index,image_index,round(x),y,1,1,0,c_white,1)
-else
-    draw_sprite_ext(sprite_index,image_index,round(x)+16,y,-1,1,0,c_white,1)
+            <string>///Draw Chain Chomp
+
+//Draw chains
+draw_sprite(spr_chain,0,xstart,ystart)
+draw_sprite(spr_chain,0,(xstart+(x+xstart)/2)/2,(ystart+(y+ystart)/2)/2)
+draw_sprite(spr_chain,0,(x+xstart)/2,(y+ystart)/2)
+draw_sprite(spr_chain,0,(x+(x+xstart)/2)/2,(y+(y+ystart)/2)/2)
+
+//Draw head
+draw_sprite_ext(sprite_index,image_index,round(x)+8-8*direct,y,direct,1,0,c_white,1)
 </string>
           </argument>
         </arguments>
