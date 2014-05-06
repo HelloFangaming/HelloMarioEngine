@@ -230,12 +230,16 @@ and instance_number(obj_invincibility) &gt; 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Hurt enemies
+            <string>///Insta-kill enemies
 if visible = 1
 and other.hardness &lt; 99
 {
     scr_musicalscale(id,1)
-    with other event_user(0)
+    with other
+    {
+        hitpoints = 0
+        event_user(0)
+    }
 }
 </string>
           </argument>

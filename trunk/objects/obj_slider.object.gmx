@@ -332,6 +332,9 @@ or (hspeed &lt; 0 and collision_rectangle(bbox_left-1+hspeed,bbox_top+4,bbox_lef
         //Bump blocks
         instance_create(x-8,y+16,obj_blockbumper)
 
+        //Shell bounce effects
+        with instance_create(x+8*sign(hspeed),y+24,obj_smoke) sprite_index = spr_shellbump
+
         //Reverse horizontal speed
         hspeed = -hspeed
 

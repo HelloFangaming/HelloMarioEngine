@@ -36,8 +36,7 @@ vspeed = -1
 //Lift a brick
 with instance_place(x,y,obj_bluebrick)
 {
-    if object_index = obj_redbrick
-        other.sprite_index = spr_redbrick_th
+    other.sprite_index = throwsprite
     instance_destroy()
 }
 
@@ -86,7 +85,6 @@ and obj_mario.y &gt; y-48
     myblock = instance_create(x,y,obj_thrownbrick)
     myblock.sprite_index = sprite_index
     myblock.vspeed = -3
-    myblock.harmmario = 1
 
     //Choose speed and change parent's direction based on where Mario is
     if obj_mario.x &gt; x

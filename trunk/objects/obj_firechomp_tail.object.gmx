@@ -27,39 +27,11 @@
             <kind>1</kind>
             <string>///Fire chomp tail
 
+//Facing direction
+direct = -1
+
 //Animate
 image_speed = 0.3
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Point and move towards parent
-if not instance_exists(parent)
-or position_meeting(x,y+8,parent)
-    alarm[0] = 1
-else
-{
-    direction = point_direction(x,y,parent.x+8,parent.y)
-    speed = 1
-}
 </string>
           </argument>
         </arguments>
@@ -84,7 +56,18 @@ else
             <kind>1</kind>
             <string>///Turn towards parent
 if instance_exists(parent)
+and not place_meeting(x,y,parent)
+{
+    if speed = 0
+    {
+        speed = 1
+        direction = point_direction(x,y,parent.x+8,parent.y)
+    }
+    direct = parent.direct
     turn_towards_direction(point_direction(x,y,parent.x+8,parent.y),8)
+}
+else
+    speed = 0
 </string>
           </argument>
         </arguments>
@@ -109,6 +92,30 @@ if instance_exists(parent)
             <kind>1</kind>
             <string>///Hurt Mario
 with other event_user(0)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw Fire Chomp Tail
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
 </string>
           </argument>
         </arguments>

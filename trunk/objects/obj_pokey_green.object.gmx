@@ -43,8 +43,7 @@ direct = -1
 image_speed = 0
 
 //A collision object for Mario to ride
-mytop = instance_create(x-8,y,obj_solidtop)
-mytop.image_yscale = 0.5
+mytop = noone
 
 //Remember the pokey parts below
 if position_meeting(x,y+24,obj_pokey_green)
@@ -131,11 +130,22 @@ alarm[1] = 10
             <kind>1</kind>
             <string>///Pokey logic
 
-//Set image index based on if there is a pokey above
+//Set image index and make collisions based on if there is a pokey above
 if position_meeting(x,y-8,obj_pokey_green)
+{
     image_index = 1
+    if instance_exists(mytop)
+        with mytop instance_destroy()
+}
 else
+{
     image_index = 0
+    if not instance_exists(mytop)
+    {
+        mytop = instance_create(x-8,y,obj_solidtop)
+        mytop.image_yscale = 0.5
+    }
+}
 
 //If there is no memory of a pokey below
 if mebelow = noone

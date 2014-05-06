@@ -112,35 +112,38 @@ with mytop instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>mytop.x = bbox_left
-mytop.y = y
-if collision_rectangle(bbox_left,y-5,bbox_right,y+4,obj_mario,0,0)
-and obj_mario.y &lt; y-26
-and obj_mario.state &lt; 2
+            <string>if instance_exists(mytop)
 {
-    if not collision_rectangle(obj_mario.bbox_right+1,obj_mario.bbox_top,obj_mario.bbox_right+1,obj_mario.y+31,obj_solid,0,0)
-    and hspeed &gt; 0
-        obj_mario.x += hspeed
-    if not collision_rectangle(obj_mario.bbox_left-1,obj_mario.bbox_top,obj_mario.bbox_left-1,obj_mario.y+31,obj_solid,0,0)
-    and hspeed &lt; 0
-        obj_mario.x += hspeed
-    obj_mario.y = ceil(y-32)
-    if scr_canpull()
+    mytop.x = bbox_left
+    mytop.y = y
+    if collision_rectangle(bbox_left,y-5,bbox_right,y+4,obj_mario,0,0)
+    and obj_mario.y &lt; y-26
+    and obj_mario.state &lt; 2
     {
-        if obj_mario.image_index = 2 and obj_mario.image_speed = 0
-            exit
-        obj_mario.visible = 0
-        instance_create(obj_mario.x,obj_mario.y,obj_puller)
-        obj_mario.holding = 1
-        if isheavy = 1
+        if not collision_rectangle(obj_mario.bbox_right+1,obj_mario.bbox_top,obj_mario.bbox_right+1,obj_mario.y+31,obj_solid,0,0)
+        and hspeed &gt; 0
+            obj_mario.x += hspeed
+        if not collision_rectangle(obj_mario.bbox_left-1,obj_mario.bbox_top,obj_mario.bbox_left-1,obj_mario.y+31,obj_solid,0,0)
+        and hspeed &lt; 0
+            obj_mario.x += hspeed
+        obj_mario.y = ceil(y-32)
+        if scr_canpull()
         {
-            audio_play_sound(snd_eeegh,0,0)
-            alarm[0] = 90
-        }
-        else
-        {
-            audio_play_sound(snd_ya,0,0)
-            alarm[0] = 20
+            if obj_mario.image_index = 2 and obj_mario.image_speed = 0
+                exit
+            obj_mario.visible = 0
+            instance_create(obj_mario.x,obj_mario.y,obj_puller)
+            obj_mario.holding = 1
+            if isheavy = 1
+            {
+                audio_play_sound(snd_eeegh,0,0)
+                alarm[0] = 90
+            }
+            else
+            {
+                audio_play_sound(snd_ya,0,0)
+                alarm[0] = 20
+            }
         }
     }
 }

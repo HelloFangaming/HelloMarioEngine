@@ -498,7 +498,6 @@ else
     fullmouth = instance_create(x-8,y,inmouth)
     if inmouth = obj_shell
     or inmouth = obj_bobomb_hold
-    or inmouth = obj_getshoe
     {
         fullmouth.bam = 1
         fullmouth.sprite_index = shellsprite
@@ -506,7 +505,7 @@ else
     if inmouth = obj_thrownbrick
     or inmouth = obj_shell
     {
-        fullmouth.hspeed = obj_mario.hspeed+3*obj_mario.direct
+        fullmouth.hspeed = 3*obj_mario.direct
         fullmouth.sprite_index = shellsprite
     }
     else
