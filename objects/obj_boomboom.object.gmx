@@ -302,10 +302,15 @@ and collision_rectangle(x-16,y-1,x+15,y-1,obj_solid,1,1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index = spr_boomboom_misc
-imdead = instance_create(x,y+16,obj_enemy_dead)
-imdead.sprite_index = sprite_index
-imdead.image_xscale = image_xscale
+            <string>///Boom boom death
+with instance_create(x,y+16,obj_enemy_dead)
+{
+    sprite_index = spr_boomboom_misc
+    image_xscale = other.direct
+}
+
+//Play magic sound
+audio_play_sound(snd_magic,0,0)
 </string>
           </argument>
         </arguments>
@@ -357,7 +362,8 @@ image_speed = 0.15
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_boomboom
+            <string>///Draw Boom Boom
+if sprite_index = spr_boomboom
     draw_sprite_ext(sprite_index,bugfix,round(x),y,direct,1,0,c_white,1)
 else
     draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)

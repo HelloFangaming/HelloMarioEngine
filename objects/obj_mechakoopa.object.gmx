@@ -31,7 +31,7 @@
 hardness = 1
 
 //How vulnerable is this enemy to Mario?
-stomp = 3
+stomp = 0
 
 //Facing direction
 direct = -1
@@ -99,6 +99,33 @@ if y &lt; other.y-11 and vspeed &gt; 0
     vspeed = 0
     gravity = 0
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Turn into holdable mechakoopa when stomped
+with instance_create(x-8,y,obj_roundgoomba_hold) direct = other.direct
+
+//Destroy
+instance_destroy()
 </string>
           </argument>
         </arguments>

@@ -25,44 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 0
+            <string>///Four reznor on four platforms
+
+//Make platforms
 instance_create(x,y-48,obj_reznor_platform)
-varid = instance_create(x-48,y,obj_reznor_platform)
-varid.direction = 90
-varid = instance_create(x+48,y,obj_reznor_platform)
-varid.direction = 270
-varid = instance_create(x,y+48,obj_reznor_platform)
-varid.direction = 180
+with instance_create(x-48,y,obj_reznor_platform) direction = 90
+with instance_create(x+48,y,obj_reznor_platform) direction = 270
+with instance_create(x,y+48,obj_reznor_platform) direction = 180
+
+//Make enemies
 instance_create(x,y-80,obj_reznor_enemy)
-varid = instance_create(x-48,y-32,obj_reznor_enemy)
-varid.direction = 90
-varid = instance_create(x+48,y-32,obj_reznor_enemy)
-varid.direction = 270
-varid = instance_create(x,y+16,obj_reznor_enemy)
-varid.direction = 180
-alarm[0] = 1</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>ready = 1</string>
+with instance_create(x-48,y-32,obj_reznor_enemy) direction = 90
+with instance_create(x+48,y-32,obj_reznor_enemy) direction = 270
+with instance_create(x,y+16,obj_reznor_enemy) direction = 180
+</string>
           </argument>
         </arguments>
       </action>
@@ -84,15 +60,8 @@ alarm[0] = 1</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_angle -= 0.8
-if instance_number(obj_reznor_enemy) = 0
-and ready = 1
-{
-    ready = 0
-    obj_endboss.alarm[0] = 60
-    audio_stop_sound(snd_music_boss)
-    audio_play_sound(snd_magic,0,0)
-}
+            <string>///Rotational animation
+image_angle -= 0.8
 </string>
           </argument>
         </arguments>

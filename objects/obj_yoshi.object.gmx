@@ -497,21 +497,17 @@ else
     audio_play_sound(snd_spit,0,0)
     fullmouth = instance_create(x-8,y,inmouth)
     if inmouth = obj_shell
-    or inmouth = obj_bobomb_hold
-    {
         fullmouth.bam = 1
+    if inmouth = obj_shell
+    or inmouth = obj_thrownbrick
+    or inmouth = obj_bobomb_hold
+    or inmouth = obj_getshoe
         fullmouth.sprite_index = shellsprite
-    }
-    if inmouth = obj_thrownbrick
-    or inmouth = obj_shell
-    {
+    if inmouth = obj_shell
+    or inmouth = obj_thrownbrick
         fullmouth.hspeed = 3*obj_mario.direct
-        fullmouth.sprite_index = shellsprite
-    }
     else
-    {
         fullmouth.hspeed = obj_mario.hspeed+1.5*obj_mario.direct
-    }
     fullmouth.x += obj_mario.direct*2
     fullmouth.vspeed = -1
 }
@@ -544,6 +540,7 @@ ttttt = 0
             <string>if fullmouth = 1
     global.carrieditem = inmouth
 if inmouth = obj_shell
+or inmouth = obj_thrownbrick
 or inmouth = obj_bobomb_hold
 or inmouth = obj_getshoe
     global.carriedsprite = shellsprite

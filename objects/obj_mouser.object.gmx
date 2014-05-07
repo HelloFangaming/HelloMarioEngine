@@ -41,6 +41,30 @@ stomp = 2
         </arguments>
       </action>
     </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Destroy solidtop
+with mytop instance_destroy()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="10">
       <action>
         <libid>1</libid>
@@ -326,8 +350,17 @@ and collision_rectangle(x-8,y-1,x+7,y-1,obj_solid,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with mytop instance_destroy()
-sprite_index = spr_mouser_hurt
+            <string>///Mouser death
+with instance_create(x,y+16,obj_enemy_dead)
+{
+    sprite_index = spr_mouser_hurt
+    image_xscale = other.direct
+}
+
+//Play magic sound
+audio_play_sound(snd_magic,0,0)
+
+//Destroy projectiles
 with obj_mouser_thrownbomb
 {
     instance_create(x,y,obj_smoke)
@@ -338,9 +371,6 @@ with obj_mouser_bomb
     instance_create(x,y,obj_smoke)
     instance_destroy()
 }
-imdead = instance_create(x,y+16,obj_enemy_dead)
-imdead.sprite_index = sprite_index
-imdead.image_xscale = image_xscale
 </string>
           </argument>
         </arguments>
@@ -392,15 +422,13 @@ image_speed = 0.3
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_mouser
+            <string>///Draw Mouser
+if sprite_index = spr_mouser
 and image_index = 0
 and hardness = 2
 {
     draw_sprite_ext(sprite_index,bugfix,round(x),y,direct,1,0,c_white,1)
-    if direct = 1
-        draw_sprite(spr_grassbomb,0,x-16,y)
-    else
-        draw_sprite(spr_grassbomb,0,x,y)
+    draw_sprite(spr_grassbomb,0,x-8-8*direct,y)
 }
 else
     draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
