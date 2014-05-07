@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_physicsparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -280,87 +280,6 @@ and not collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+5,obj_s
             <string>///Default flip script
 //Mainly for Koopa-like enemies, default to regular death otherwise
 event_user(0)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="14">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Default floor/ceiling collisions
-
-//Check for floor objects
-if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
-or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0)
-{
-    gravity = 0
-    if vspeed &gt; 0
-        vspeed = 0
-}
-else
-    gravity = 0.25
-
-//Slopes
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
-
-//Ceiling check
-if vspeed &lt; 0
-and collision_rectangle(bbox_left+1,bbox_top-1,bbox_right-1,bbox_top-1,obj_solid,0,0)
-{
-    while collision_rectangle(bbox_left+1,bbox_top-1,bbox_right-1,bbox_top-1,obj_solid,0,0)
-        y+=1
-    vspeed = 1
-}
-
-//Cap fall speed
-if vspeed &gt; 4
-    vspeed = 4
-
-//Destroy when it falls out of the level
-if bbox_top &gt; room_height
-    instance_destroy()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="13">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Default wall collisions
-if (hspeed &gt; 0 and collision_rectangle(bbox_right,bbox_top+1,bbox_right+hspeed*2,bbox_bottom-1,obj_solid,0,0))
-or (hspeed &lt; 0 and collision_rectangle(bbox_left+hspeed*2,bbox_top+1,bbox_left,bbox_bottom-1,obj_solid,0,0))
-    hspeed = -hspeed
 </string>
           </argument>
         </arguments>

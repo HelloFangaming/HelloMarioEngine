@@ -8,30 +8,6 @@
   <parentName>obj_solidtop</parentName>
   <maskName>spr_square</maskName>
   <events>
-    <event eventtype="0" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if not collision_point(x+16,y+8,obj_bridge,0,0)
-    obj_axe.breakfeast = id
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
@@ -49,10 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_break,0,0)
-if collision_point(x-8,y+8,obj_bridge,0,0)
-    with collision_point(x-8,y+8,obj_bridge,0,0) alarm[0] = 7
+            <string>///Destroy bridge
+
+//Play break sound
+audio_play_sound(snd_break,0,0)
+
+//Destroy the bridge to the left
+with collision_point(x-8,y+8,obj_bridge,0,0) alarm[0] = 7
+
+//Create smoke
 instance_create(x,y,obj_smoke)
+
+//Destroy
 instance_destroy()
 </string>
           </argument>

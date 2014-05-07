@@ -55,10 +55,16 @@ hitpoints = 0
           <argument>
             <kind>1</kind>
             <string>///End the boss battle
+
+//Activate end boss object
 with obj_endboss alarm[0] = 60
-audio_stop_sound(snd_music_boss)
-if object_index != obj_bowser
-    audio_play_sound(snd_magic,0,0)
+
+//Stop the music and time
+with obj_levelmanager
+{
+    event_user(3)
+    alarm[2] = 0
+}
 </string>
           </argument>
         </arguments>

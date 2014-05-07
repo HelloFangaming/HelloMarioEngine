@@ -304,17 +304,24 @@ and collision_rectangle(x-16,y-1,x+15,y-1,obj_solid,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index = spr_wendy_jump
+            <string>///Wendy death
+with instance_create(x,y+16,obj_enemy_dead)
+{
+    sprite_index = spr_wendy_jump
+    image_xscale = other.direct
+    image_yscale = 1
+    image_speed = 0.15
+}
+
+//Play magic sound
+audio_play_sound(snd_magic,0,0)
+
+//Destroy projectiles
 with obj_magicring
 {
     instance_create(x,y,obj_smoke)
     instance_destroy()
 }
-imdead = instance_create(x,y+16,obj_enemy_dead)
-imdead.sprite_index = sprite_index
-imdead.image_xscale = image_xscale
-imdead.image_yscale = 1
-imdead.image_speed = 0.15
 </string>
           </argument>
         </arguments>
@@ -394,7 +401,8 @@ image_speed = 0.15
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_wendy
+            <string>///Draw Wendy
+if sprite_index = spr_wendy
     draw_sprite_ext(sprite_index,bugfix,round(x),y,direct,1,0,c_white,1)
 else
     draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
