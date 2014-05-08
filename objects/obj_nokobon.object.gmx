@@ -151,7 +151,7 @@ instance_destroy()
           <argument>
             <kind>1</kind>
             <string>///Nokobon death
-with instance_create(x-8,y+16,obj_enemy_dead) sprite_index = spr_nokobon_bomb
+with instance_create(round(x-8),round(y+16),obj_enemy_dead) sprite_index = spr_nokobon_bomb
 
 //Destroy
 instance_destroy()

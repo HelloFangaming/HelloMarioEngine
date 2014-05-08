@@ -124,7 +124,7 @@ instance_destroy()
           <argument>
             <kind>1</kind>
             <string>///Spiney killing
-with instance_create(x-8,y,obj_enemy_dead)
+with instance_create(round(x-8),round(y),obj_enemy_dead)
 {
     sprite_index = spr_spiney_dead
     image_yscale = 1

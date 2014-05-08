@@ -437,7 +437,7 @@ else
           <argument>
             <kind>1</kind>
             <string>///Wiggler death
-with instance_create(x,y+16,obj_enemy_dead)
+with instance_create(round(x),round(y+16),obj_enemy_dead)
 {
     sprite_index = other.sprite_index
     image_index = other.image_index
@@ -445,7 +445,7 @@ with instance_create(x,y+16,obj_enemy_dead)
 }
 
 //Make the other body parts too
-with instance_create(x,y+16,obj_enemy_multidead)
+with instance_create(round(x),round(y+16),obj_enemy_multidead)
 {
     if other.sprite_index = spr_wiggler_mad
         killsprite = spr_wiggler_madbody

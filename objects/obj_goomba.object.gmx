@@ -93,7 +93,7 @@ if y &lt; other.y-11 and vspeed &gt; 0
           <argument>
             <kind>1</kind>
             <string>///Goomba flattening
-instance_create(x,y,obj_stomped)
+instance_create(round(x),y,obj_stomped)
 
 //Destroy
 instance_destroy()

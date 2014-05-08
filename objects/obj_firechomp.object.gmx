@@ -348,7 +348,7 @@ event_user(0)
           <argument>
             <kind>1</kind>
             <string>///Fire chomp death
-with instance_create(x,y+16,obj_enemy_dead)
+with instance_create(round(x),round(y+16),obj_enemy_dead)
 {
     sprite_index = other.sprite_index
     image_index = other.image_index
@@ -357,7 +357,7 @@ with instance_create(x,y+16,obj_enemy_dead)
 //Kill remaining tail parts
 if mytails &gt; 0
 {
-    with instance_create(x+8,y+16,obj_enemy_multidead)
+    with instance_create(round(x+8),round(y+16),obj_enemy_multidead)
     {
         killsprite = spr_fireball
         killxscale = other.direct

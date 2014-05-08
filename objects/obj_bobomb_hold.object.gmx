@@ -254,9 +254,11 @@ and not instance_exists(obj_slider)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>imdead = instance_create(x,y+16,obj_enemy_dead)
-imdead.sprite_index = sprite_index
-imdead.image_index = image_index
+            <string>with instance_create(round(x),round(y+16),obj_enemy_dead)
+{
+    sprite_index = other.sprite_index
+    image_index = other.image_index
+}
 if held = 1
     obj_mario.holding = 0
 </string>

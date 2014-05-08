@@ -256,7 +256,7 @@ if y &lt; other.y-11 and vspeed &gt; 0
           <argument>
             <kind>1</kind>
             <string>///Fire snake desth
-with instance_create(x,y+16,obj_enemy_dead)
+with instance_create(round(x),round(y+16),obj_enemy_dead)
 {
     sprite_index = other.sprite_index
     image_index = other.image_index
@@ -264,7 +264,7 @@ with instance_create(x,y+16,obj_enemy_dead)
 }
 
 //Fire snake tail death
-with instance_create(x,y+16,obj_enemy_multidead)
+with instance_create(round(x),round(y+16),obj_enemy_multidead)
 {
     killsprite = spr_firesnake_part
     count = 4

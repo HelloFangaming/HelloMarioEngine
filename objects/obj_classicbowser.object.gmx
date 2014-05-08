@@ -25,20 +25,41 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place this in the object creation code.
-//xmin = Minimum x value before Bowser starts shooting fire.
-gravity = 0.25
-image_speed = 0
-ready = 0
-firing = 0
-bugfix = 0
-hspeed = -0.5
-alarm[0] = 10
-alarm[1] = 15
-alarm[2] = 7
+            <string>///Good old fashioned idiot Bowser
+
+/*
+**  This item uses creation code!
+**
+**  xmin = Minimum x value before Bowser starts shooting fire
+**
+*/
+
+//Default Value:
 xmin = 0
+
+//How vulnerable is this enemy to various items?
 hardness = 99
+
+//How vulnerable is this enemy to Mario?
 stomp = 2
+
+//Do not animate
+image_speed = 0
+
+//State variable
+ready = 0
+
+//Move left
+hspeed = -0.5
+
+//Fire projectiles
+alarm[0] = 10
+
+//Hop
+alarm[1] = 15
+
+//Walk animation
+alarm[2] = 7
 </string>
           </argument>
         </arguments>
@@ -61,7 +82,9 @@ stomp = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>firing = 0
+            <string>///Finish shoot animation
+if image_index = 2
+    image_index = 0
 </string>
           </argument>
         </arguments>
@@ -84,10 +107,12 @@ stomp = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if bugfix = 0
-    bugfix = 1
-else
-    bugfix = 0
+            <string>///Walk animation
+if image_index = 0
+and gravity = 0
+    image_index = 1
+else if image_index = 1
+    image_index = 0
 alarm[2] = 7
 </string>
           </argument>
@@ -111,12 +136,13 @@ alarm[2] = 7
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 0
+            <string>///Hop
+if ready = 0
 {
     if gravity = 0
     {
-        y-=1
         vspeed = -3
+        y--
     }
     alarm[1] = 60
 }
@@ -142,25 +168,39 @@ alarm[2] = 7
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 0
+            <string>///Fire projectiles
+if ready = 0
 {
-    alarm[0] = 128
-    if not instance_exists(obj_mario)
-        exit
-    firing = 2
-    bugfix = 0
-    alarm[2] = 7
+
+    //Use appropriate image index
+    image_index = 2
+
+    //Finish animation
     alarm[3] = 14
-    if obj_mario.x &gt; xmin
+
+    //If Mario is in its territory
+    if instance_exists(obj_mario)
+    and obj_mario.x &gt; xmin
     {
-        if x&lt;view_xview[0]+336
-            varid = instance_create(x,y+8,obj_bowserstatue_fire)
+
+        //Create fire
+        if outside_view()
+            fire = instance_create(view_xview[0]+327,ystart-32+irandom(4)*16,obj_bowserstatue_fire)
         else
-            varid = instance_create(view_xview[0]+327,ystart-32+irandom(4)*16,obj_bowserstatue_fire)
-        varid.sprite_index = spr_bowserfire
-        varid.image_xscale = -1
+            fire = instance_create(x,y+8,obj_bowserstatue_fire)
+
+        //Give the fire the right look
+        fire.sprite_index = spr_bowserfire
+        fire.image_xscale = -1
+
+        //Play fiery sound
         audio_play_sound(snd_podoboo,0,0)
+
     }
+
+    //Fire more
+    alarm[0] = 128
+
 }
 </string>
           </argument>
@@ -184,24 +224,12 @@ alarm[2] = 7
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hspeed &gt; 0
-and collision_rectangle(bbox_right+hspeed,bbox_top,bbox_right+hspeed,bbox_bottom-1,obj_solid,0,0)
-    hspeed = -0.5
-if hspeed &lt; 0
-and collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left+hspeed,bbox_bottom-1,obj_solid,0,0)
-    hspeed = 0.5
-if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
-or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0)
-{
-    gravity = 0
-    vspeed = 0
-}
-else
-    gravity = 0.25
-if vspeed &gt; 4
-    vspeed = 4
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
+            <string>///Idiot logic?
+
+//Default event
+event_inherited()
+
+//Move back and forth
 if ready = 0
 {
     if x &gt; xstart
@@ -209,9 +237,6 @@ if ready = 0
     else if x &lt; xstart-48
         hspeed = 0.5
 }
-if vspeed &lt; 0
-and collision_rectangle(x-8,y-1,x+7,y-1,obj_solid,0,0)
-    vspeed = 1
 </string>
           </argument>
         </arguments>
@@ -234,15 +259,28 @@ and collision_rectangle(x-8,y-1,x+7,y-1,obj_solid,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 0
+            <string>///Drown in lava
+if ready = 0
 {
+
+    //Appear behind lava
     depth = 10
+
+    //Stop moving
     hspeed = 0
+
+    //Sink into lava
     vspeed = 0.5
+
+    //Death state
     ready = 1
-    firing = 0
+
+    //Use appropriate image index
     image_index = 4
+
+    //Play Bowser death sound
     audio_play_sound(snd_bowserfall,0,0)
+
 }
 </string>
           </argument>
@@ -266,36 +304,13 @@ and collision_rectangle(x-8,y-1,x+7,y-1,obj_solid,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-43 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-43 and vspeed &gt; 0
 {
     y = other.y-48
     vspeed = 0
     gravity = 0
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if ready = 1
-    instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -318,11 +333,8 @@ and collision_rectangle(x-8,y-1,x+7,y-1,obj_solid,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if gravity = 0
-or firing = 2
-    draw_sprite(sprite_index,bugfix+firing,round(x),y)
-else
-    draw_sprite(sprite_index,image_index,round(x),y)
+            <string>///Draw Classic Bowser
+draw_sprite(sprite_index,image_index,x,y)
 </string>
           </argument>
         </arguments>

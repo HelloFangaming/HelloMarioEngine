@@ -25,15 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.25
-image_speed = 0
-hitpoints = 3
-ready = 0
-canjump = 0
-bugfix = 0
-direct = -1
+            <string>///The one and only female koopaling
+
+//How vulnerable is this enemy to various items?
 hardness = 99
+
+//How vulnerable is this enemy to Mario?
 stomp = 5
+
+//How many hits before this boss dies
+hitpoints = 3
+
+//Facing direction
+direct = -1
+
+//Do not animate
+image_speed = 0
+
+//State variable
+ready = 0
 </string>
           </argument>
         </arguments>
@@ -56,46 +66,23 @@ stomp = 5
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_wendy_attack
-    exit
-image_speed = 0.3
-canjump = 1
+            <string>///Go after Mario
+
+//Sprite change
 sprite_index = spr_wendy
+    
+//Reset state
 ready = 0
+
+//Become vulnerable
 hardness = 2
 stomp = 5
-alarm[1] = 7
+
+//Fire projectiles
+alarm[1] = 5
+
+//Hop
 alarm[2] = 15
-alarm[3] = 5
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="3">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if sprite_index = spr_wendy
-{
-    sprite_index = spr_wendy_attack
-    image_index = 0
-    image_speed = 0.3
-}
-alarm[3] = 200
 </string>
           </argument>
         </arguments>
@@ -118,18 +105,28 @@ alarm[3] = 200
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_wendy
-and canjump = 1
+            <string>///Hop
+if ready = 0
+and sprite_index = spr_wendy
 {
-    y-=1
+
+    //Jump higher if hurt
     if hitpoints = 1
         vspeed = -7
     else
         vspeed = -3
+
+    //Boost jump
+    y--
+
+    //Use appropriate image index
     image_speed = 0
     image_index = 1
+
+    //Hop again later
+    alarm[2] = 60
+
 }
-alarm[2] = 60
 </string>
           </argument>
         </arguments>
@@ -152,8 +149,22 @@ alarm[2] = 60
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>bugfix += 1
-alarm[1] = 7</string>
+            <string>///Fire projectiles
+if ready = 0
+{
+
+    //Change sprite
+    sprite_index = spr_wendy_attack
+
+    //Start animation
+    image_index = 0
+    image_speed = 0.3
+
+    //Fire more later
+    alarm[1] = 200
+
+}
+</string>
           </argument>
         </arguments>
       </action>
@@ -175,22 +186,29 @@ alarm[1] = 7</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>canjump = 0
-alarm[10] = 100
-image_speed = 0.15
-hspeed = 0
+            <string>///Jump at Mario
+
+//Change sprite
 sprite_index = spr_wendy_jump
-y-=1
+
+//Animate
+image_speed = 0.15
+
+//Reset state
+alarm[10] = 100
+
+//Move up
 vspeed = -6
+
+//Boost jump
+y--
+
+//Jump towards Mario
 if not instance_exists(obj_mario)
-{
-    hspeed = -1
-    exit
-}
-if obj_mario.x &lt; x
-    hspeed = -1
+or obj_mario.x &lt; x
+    hspeed = -1.5
 else
-    hspeed = 1
+    hspeed = 1.5
 </string>
           </argument>
         </arguments>
@@ -213,47 +231,51 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hspeed &gt; 0
-and collision_rectangle(bbox_right+hspeed,bbox_top,bbox_right+hspeed,bbox_bottom-1,obj_solid,0,0)
-    hspeed = -1
-if hspeed &lt; 0
-and collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left+hspeed,bbox_bottom-1,obj_solid,0,0)
-    hspeed = 1
-if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
-or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0)
-{
-    gravity = 0
-    vspeed = 0
-    if sprite_index = spr_wendy_jump
-        sprite_index = spr_wendy_shell
-}
-else
-    gravity = 0.25
-if vspeed &gt; 4
-    vspeed = 4
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
+            <string>///Charge at Mario
+
+//Previous hspeed
+prevhspeed = hspeed
+
+//Default event
+event_inherited()
+
+//If the direction changed, speed up
+if hspeed != prevhspeed
+    hspeed = sign(hspeed)*1.5
+
+//Change sprite after landng
+if gravity = 0
+and sprite_index = spr_wendy_jump
+    sprite_index = spr_wendy_shell
+
+//If the boss can charge at Mario
 if hardness = 2
 and instance_exists(obj_mario)
 {
+
+    //Charge at Mario
     if obj_mario.x &gt; x
     {
         hspeed += 0.05
         direct = 1
     }
-    if obj_mario.x &lt; x
+    else
     {
-        hspeed += -0.05
+        hspeed -= 0.05
         direct = -1
     }
+
+    //Cap speed
     if hspeed &gt; 1.5
         hspeed = 1.5
-    if hspeed &lt; -1.5
+    else if hspeed &lt; -1.5
         hspeed = -1.5
+
 }
-if vspeed &lt; 0
-and collision_rectangle(x-16,y-1,x+15,y-1,obj_solid,0,0)
-    vspeed = 1
+
+//Animate based on speed
+if sprite_index = spr_wendy
+    image_speed = speed/3
 </string>
           </argument>
         </arguments>
@@ -276,7 +298,8 @@ and collision_rectangle(x-16,y-1,x+15,y-1,obj_solid,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-27 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-27 and vspeed &gt; 0
 {
     y = other.y-32
     vspeed = 0
@@ -305,7 +328,7 @@ and collision_rectangle(x-16,y-1,x+15,y-1,obj_solid,0,0)
           <argument>
             <kind>1</kind>
             <string>///Wendy death
-with instance_create(x,y+16,obj_enemy_dead)
+with instance_create(round(x),round(y+16),obj_enemy_dead)
 {
     sprite_index = spr_wendy_jump
     image_xscale = other.direct
@@ -344,12 +367,25 @@ with obj_magicring
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 1
+            <string>///Hurt
+
+//Hurt state
+ready = 1
+
+//Become invulnerable
 hardness = 99
 stomp = 2
+
+//Jump at Mario
 alarm[0] = 60
+
+//Stop moving
 hspeed = 0
+
+//Hurt sprite
 sprite_index = spr_wendy_shell
+
+//Animate
 image_speed = 0.15
 </string>
           </argument>
@@ -373,11 +409,19 @@ image_speed = 0.15
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_wendy_attack
+            <string>///Fire projectiles
+if sprite_index = spr_wendy_attack
 {
+
+    //Reset sprite
     sprite_index = spr_wendy
+
+    //Create projectiles
     with instance_create(x,y,obj_magicring) hspeed = 2*other.direct
+
+    //Play a magical sound
     audio_play_sound(snd_magic,0,0)
+
 }
 </string>
           </argument>
@@ -402,10 +446,7 @@ image_speed = 0.15
           <argument>
             <kind>1</kind>
             <string>///Draw Wendy
-if sprite_index = spr_wendy
-    draw_sprite_ext(sprite_index,bugfix,round(x),y,direct,1,0,c_white,1)
-else
-    draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
 </string>
           </argument>
         </arguments>
