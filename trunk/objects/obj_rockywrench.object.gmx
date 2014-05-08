@@ -203,7 +203,7 @@ alarm[1] = 100
           <argument>
             <kind>1</kind>
             <string>///Rocky wrench stomping
-with instance_create(x,y,obj_enemy_stomped)
+with instance_create(round(x),round(y),obj_enemy_stomped)
 {
     sprite_index = spr_rockywrench_dead
     image_yscale = 1
@@ -235,7 +235,7 @@ instance_destroy()
           <argument>
             <kind>1</kind>
             <string>///Rocky wrench death
-with instance_create(x,y,obj_enemy_dead)
+with instance_create(round(x),round(y),obj_enemy_dead)
 {
     sprite_index = spr_rockywrench_dead
     image_yscale = 1

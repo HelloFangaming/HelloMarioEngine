@@ -251,7 +251,7 @@ if y &lt; other.y-11 and vspeed &gt; 0
           <argument>
             <kind>1</kind>
             <string>///Dino torch squishing
-with instance_create(x,y,obj_stomped)
+with instance_create(round(x),y,obj_stomped)
 {
     sprite_index = spr_dinotorch_sq
     image_xscale = other.direct

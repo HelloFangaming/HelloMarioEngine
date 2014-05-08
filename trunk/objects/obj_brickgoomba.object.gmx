@@ -216,7 +216,7 @@ event_user(0)
           <argument>
             <kind>1</kind>
             <string>///Brick goomba death
-with instance_create(x+4,y+8,obj_enemy_stomped) sprite_index = spr_microgoomba
+with instance_create(round(x+4),round(y+8),obj_enemy_stomped) sprite_index = spr_microgoomba
 
 //Breaking sound
 audio_play_sound(snd_break,0,0)

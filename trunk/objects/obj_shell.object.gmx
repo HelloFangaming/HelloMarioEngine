@@ -622,9 +622,9 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>imdead = instance_create(x,y+16,obj_enemy_dead)
-imdead.sprite_index = sprite_index
-instance_destroy()</string>
+            <string>with instance_create(round(x),round(y+16),obj_enemy_dead) sprite_index = other.sprite_index
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>

@@ -25,15 +25,28 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.25
-image_speed = 0
-hitpoints = 3
-ready = 0
-canjump = 0
-direct = -1
-mytop = instance_create(x-8,y,obj_solidtop)
+            <string>///Is Birdo a male or a female?
+
+//How vulnerable is this enemy to various items?
 hardness = 99
+
+//How vulnerable is this enemy to Mario?
 stomp = 2
+
+//How many hits before this boss dies
+hitpoints = 3
+
+//Facing direction
+direct = -1
+
+//Do not animate
+image_speed = 0
+
+//A collision object for Mario to ride
+mytop = instance_create(x-8,y,obj_solidtop)
+
+//State variable
+ready = 0
 </string>
           </argument>
         </arguments>
@@ -80,15 +93,25 @@ with mytop instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_birdo_shoot
-    exit
+            <string>///Prepare to fight
+
+//Animate
 image_speed = 0.15
-canjump = 1
+
+//Change sprite
 sprite_index = spr_birdo
+
+//Become vulnerable
 ready = 0
 hardness = 2
+
+//Move
 hspeed = -0.5
+
+//Fire projectiles
 alarm[0] = 10
+
+//Hop
 alarm[1] = 15
 </string>
           </argument>
@@ -112,14 +135,23 @@ alarm[1] = 15
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_birdo
-and canjump = 1
+            <string>///Hop
+if ready = 0
 {
-    y-=1
+
+    //Move up
     vspeed = -3
+
+    //Boost jump
+    y--
+
+    //Do not animate
     image_speed = 0
+
+    //Hop again
+    alarm[1] = 60
+
 }
-alarm[1] = 60
 </string>
           </argument>
         </arguments>
@@ -142,15 +174,27 @@ alarm[1] = 60
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_birdo
+            <string>///Fire projectiles
+if ready = 0
 {
+
+    //Change sprite
     sprite_index = spr_birdo_shoot
+
+    //Start animation
     image_index = 0
     image_speed = 0.15
+
+    //Create projectile
     with instance_create(x,y+6,obj_birdo_egg) hspeed = 2*other.direct
+
+    //Play spit sound
     audio_play_sound(snd_spit,0,0)
+
+    //Make more later
+    alarm[0] = 200
+
 }
-alarm[0] = 200
 </string>
           </argument>
         </arguments>
@@ -208,26 +252,16 @@ and obj_mario.state &lt; 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hspeed &gt; 0
-and collision_rectangle(bbox_right+hspeed,bbox_top,bbox_right+hspeed,bbox_bottom-1,obj_solid,0,0)
-    hspeed = -0.5
-if hspeed &lt; 0
-and collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left+hspeed,bbox_bottom-1,obj_solid,0,0)
-    hspeed = 0.5
-if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
-or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0)
-{
-    gravity = 0
-    vspeed = 0
-}
-else
-    gravity = 0.25
-if vspeed &gt; 4
-    vspeed = 4
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
+            <string>///Birdo logic
+
+//Default event
+event_inherited()
+
+//If Birdo is vulnerable
 if hardness = 2
 {
+
+    //Face Mario
     if instance_exists(obj_mario)
     {
         if obj_mario.x &gt; x
@@ -235,14 +269,18 @@ if hardness = 2
         if obj_mario.x &lt; x
             direct = -1
     }
+
+    //Move back and forth
     if x &gt; xstart
         hspeed = -0.5
     else if x &lt; xstart-48
         hspeed = 0.5
+
+    //Animate after landing
+    if gravity = 0
+        image_speed = 0.15
+
 }
-if vspeed &lt; 0
-and collision_rectangle(x-8,y-1,x+7,y-1,obj_solid,0,0)
-    vspeed = 1
 </string>
           </argument>
         </arguments>
@@ -265,12 +303,12 @@ and collision_rectangle(x-8,y-1,x+7,y-1,obj_solid,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-27 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-27 and vspeed &gt; 0
 {
     y = other.y-32
     vspeed = 0
     gravity = 0
-    image_speed = 0.15
 }
 </string>
           </argument>
@@ -295,7 +333,7 @@ and collision_rectangle(x-8,y-1,x+7,y-1,obj_solid,0,0)
           <argument>
             <kind>1</kind>
             <string>///Birdo death
-with instance_create(x,y+16,obj_enemy_dead)
+with instance_create(round(x),round(y+16),obj_enemy_dead)
 {
     sprite_index = spr_birdo_hurt
     image_xscale = other.direct
@@ -332,11 +370,24 @@ with obj_birdo_egg
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 1
+            <string>///Hurt
+
+//Hurt state
+ready = 1
+
+//Become invulnerable
 hardness = 99
+
+//Become normal later
 alarm[10] = 30
+
+//Stop moving
 hspeed = 0
+
+//Change sprite
 sprite_index = spr_birdo_hurt
+
+//Animate
 image_speed = 0.3
 </string>
           </argument>
@@ -360,7 +411,8 @@ image_speed = 0.3
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_birdo_shoot
+            <string>///Finish shooting animation
+if sprite_index = spr_birdo_shoot
     sprite_index = spr_birdo
 </string>
           </argument>

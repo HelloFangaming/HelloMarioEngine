@@ -26,8 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>gravity = 0.25
-x = round(x)
-y = round(y)
 </string>
           </argument>
         </arguments>

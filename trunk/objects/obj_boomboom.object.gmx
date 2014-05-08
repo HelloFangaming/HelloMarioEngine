@@ -25,15 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.25
-image_speed = 0
-hitpoints = 3
-ready = 0
-canjump = 0
-direct = 1
-bugfix = 0
+            <string>///The guardian of many forts
+
+//How vulnerable is this enemy to various items?
 hardness = 99
+
+//How vulnerable is this enemy to Mario?
 stomp = 5
+
+//How many hits before this boss dies
+hitpoints = 3
+
+//Facing direction
+direct = -1
+
+//Do not animate
+image_speed = 0
+
+//State variable
+ready = 0
 </string>
           </argument>
         </arguments>
@@ -56,60 +66,30 @@ stomp = 5
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_boomboom_hurt
-    exit
-image_speed = 0.3
-if hspeed = 0
-{
-    if instance_exists(obj_mario)
-    {
-        if obj_mario.x &lt; x
-            hspeed = -1
-        else
-            hspeed = 1
-    }
-    else
-        hspeed = -1
-}
-canjump = 1
+            <string>///Go after Mario
+
+//Sprite change
 sprite_index = spr_boomboom
+
+//Animate
+image_speed = 0.15
+
+//Go after Mario
+if not instance_exists(obj_mario)
+or obj_mario.x &lt; x
+    hspeed = -1
+else
+    hspeed = 1
+    
+//Reset state
 ready = 0
+
+//Become vulnerable
 hardness = 2
 stomp = 5
-alarm[1] = 7
-alarm[3] = 75
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="3">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if sprite_index = spr_boomboom
-and canjump = 1
-{
-    y-=1
-    vspeed = -6
-    sprite_index = spr_boomboom_misc
-    image_speed = 0
-    image_index = 0
-}
-alarm[3] = 150
+
+//Hop
+alarm[2] = 75
 </string>
           </argument>
         </arguments>
@@ -132,20 +112,27 @@ alarm[3] = 150
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
-image_index = 2
-alarm[10] = 20
-y-=1
-vspeed = -3
-if not instance_exists(obj_mario)
+            <string>///Hop
+if ready = 0
 {
-    hspeed = -1
-    exit
+
+    //Move up
+    vspeed = -6
+
+    //Boost jump
+    y--
+
+    //Change sprite
+    sprite_index = spr_boomboom_misc
+
+    //Use appropriate image index
+    image_speed = 0
+    image_index = 0
+
+    //Hop again later
+    alarm[2] = 150
+
 }
-if obj_mario.x &lt; x
-    hspeed = -1
-else
-    hspeed = 1
 </string>
           </argument>
         </arguments>
@@ -168,8 +155,28 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>bugfix += 1
-alarm[1] = 7</string>
+            <string>///Jump at Mario
+
+//Use appropriate image index
+image_speed = 0
+image_index = 2
+
+//Reset state
+alarm[10] = 20
+
+//Move up
+vspeed = -3
+
+//Boost jump
+y--
+
+//Jump towards Mario
+if not instance_exists(obj_mario)
+or obj_mario.x &lt; x
+    hspeed = -1
+else
+    hspeed = 1
+</string>
           </argument>
         </arguments>
       </action>
@@ -191,17 +198,17 @@ alarm[1] = 7</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_boomboom_misc
-{
-    alarm[0] = 1
-    exit
-}
-canjump = 0
-alarm[2] = 20
+            <string>///Prepare to jump at Mario
+
+//Change sprite
+sprite_index = spr_boomboom_misc
+
+//Use appropriate image index
 image_speed = 0
 image_index = 1
-hspeed = 0
-sprite_index = spr_boomboom_misc
+
+//Jump at Mario
+alarm[1] = 20
 </string>
           </argument>
         </arguments>
@@ -224,34 +231,19 @@ sprite_index = spr_boomboom_misc
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hspeed &gt; 0
-and collision_rectangle(bbox_right+hspeed,bbox_top,bbox_right+hspeed,bbox_bottom-1,obj_solid,0,0)
-    hspeed = -1
-if hspeed &lt; 0
-and collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left+hspeed,bbox_bottom-1,obj_solid,0,0)
-    hspeed = 1
-if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
-or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0)
+            <string>///Boom boom logic
+
+//Default event
+event_inherited()
+
+//Land on ground correctly
+if gravity = 0
+and sprite_index = spr_boomboom_misc
+and image_index = 0
 {
-    gravity = 0
-    vspeed = 0
-    if sprite_index = spr_boomboom_misc
-    and image_index = 0
-        sprite_index = spr_boomboom
+    sprite_index = spr_boomboom
+    image_speed = 0.15
 }
-else
-    gravity = 0.25
-if vspeed &gt; 4
-    vspeed = 4
-if hspeed &gt; 0
-    direct = 1
-if hspeed &lt; 0
-    direct = -1
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
-if vspeed &lt; 0
-and collision_rectangle(x-16,y-1,x+15,y-1,obj_solid,1,1)
-    vspeed = 1
 </string>
           </argument>
         </arguments>
@@ -274,7 +266,8 @@ and collision_rectangle(x-16,y-1,x+15,y-1,obj_solid,1,1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-27 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-27 and vspeed &gt; 0
 {
     y = other.y-32
     vspeed = 0
@@ -303,7 +296,7 @@ and collision_rectangle(x-16,y-1,x+15,y-1,obj_solid,1,1)
           <argument>
             <kind>1</kind>
             <string>///Boom boom death
-with instance_create(x,y+16,obj_enemy_dead)
+with instance_create(round(x),round(y+16),obj_enemy_dead)
 {
     sprite_index = spr_boomboom_misc
     image_xscale = other.direct
@@ -333,12 +326,25 @@ audio_play_sound(snd_magic,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 1
+            <string>///Hurt
+
+//Hurt state
+ready = 1
+
+//Become invulnerable
 hardness = 99
 stomp = 2
+
+//Prepare to jump at Mario
 alarm[0] = 60
+
+//Stop moving
 hspeed = 0
+
+//Hurt sprite
 sprite_index = spr_boomboom_hurt
+
+//Animate
 image_speed = 0.15
 </string>
           </argument>
@@ -363,10 +369,7 @@ image_speed = 0.15
           <argument>
             <kind>1</kind>
             <string>///Draw Boom Boom
-if sprite_index = spr_boomboom
-    draw_sprite_ext(sprite_index,bugfix,round(x),y,direct,1,0,c_white,1)
-else
-    draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
 </string>
           </argument>
         </arguments>

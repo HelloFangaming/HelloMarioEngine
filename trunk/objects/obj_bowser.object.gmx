@@ -25,13 +25,26 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
+            <string>///The king of all koopas
+
+//How vulnerable is this enemy to various items?
+hardness = 99
+
+//How vulnerable is this enemy to Mario?
+stomp = 2
+
+//How many hits before this boss dies
+hitpoints = 99
+
+//Facing direction
+direct = 1
+
+//Do not animate
+image_speed = 0
+
 ready = 0
 jumpnow = 0
 turning = 0
-direct = 1
-hardness = 99
-stomp = 2
 </string>
           </argument>
         </arguments>
@@ -465,6 +478,11 @@ and image_index &gt; 4.9
         }
     }
 }
+
+//Destroy when it falls out of the level
+if ready = -4
+and bbox_top &gt; room_height
+    instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -496,6 +514,7 @@ and image_index &gt; 4.9
     image_index = 4
     audio_play_sound(snd_bowserfall,0,0)
     audio_stop_sound(snd_music_boss)
+    event_user(6)
 }
 </string>
           </argument>
@@ -519,38 +538,12 @@ and image_index &gt; 4.9
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-43 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-43 and vspeed &gt; 0
 {
     y = other.y-48
     vspeed = 0
     gravity = 0
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if ready = -4
-{
-    event_user(6)
-    instance_destroy()
 }
 </string>
           </argument>
@@ -576,7 +569,7 @@ and image_index &gt; 4.9
             <kind>1</kind>
             <string>if turning = 0
     draw_sprite_ext(spr_bowser,image_index,round(x),y,direct,1,0,c_white,1)
-if turning &gt; 0
+else
     draw_sprite_ext(spr_bowser_flip,image_index,round(x),y,direct,1,0,c_white,1)
 </string>
           </argument>
