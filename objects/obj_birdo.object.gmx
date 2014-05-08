@@ -147,7 +147,7 @@ alarm[1] = 60
     sprite_index = spr_birdo_shoot
     image_index = 0
     image_speed = 0.15
-    instance_create(x,y+6,obj_birdo_egg)
+    with instance_create(x,y+6,obj_birdo_egg) hspeed = 2*other.direct
     audio_play_sound(snd_spit,0,0)
 }
 alarm[0] = 200

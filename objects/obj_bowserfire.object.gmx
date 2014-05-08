@@ -25,18 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_mario)
-{
-    if x &gt; obj_mario.x
-        direct = -1
-    else
-        direct = 1
-}
-else
+            <string>///Bowser's fiery breath
+
+//Face Mario
+if not instance_exists(obj_mario)
+or x &gt; obj_mario.x
     direct = -1
+else
+    direct = 1
+
+//Move towards Mario
 hspeed = direct
+
+//Move down
 vspeed = 1
-ready = 0
+
+//Animate
 image_speed = 0.15
 </string>
           </argument>
@@ -60,10 +64,8 @@ image_speed = 0.15
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if x &lt; view_xview[0]-16
-or x &gt; view_xview[0]+336
-or y &gt; view_yview[0]+256 
-or y &lt; view_yview[0]-16
+            <string>///Destroy outside view
+if outside_view()
     instance_destroy()
 </string>
           </argument>
@@ -87,12 +89,12 @@ or y &lt; view_yview[0]-16
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-11 and vspeed &gt; 0 and ready = 0
+            <string>///Floor collision + sprite change
+if y &lt; other.y-11 and vspeed &gt; 0
 {
     y = other.y-16
     vspeed = 0
     gravity = 0
-    ready = 1
     sprite_index = spr_bowserfire
 }
 </string>
@@ -117,8 +119,8 @@ or y &lt; view_yview[0]-16
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.invincible = 0
-    with other event_user(0)
+            <string>///Hurt Mario
+with other event_user(0)
 </string>
           </argument>
         </arguments>
@@ -141,7 +143,9 @@ or y &lt; view_yview[0]-16
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)</string>
+            <string>///Draw Bowser's Fire
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
+</string>
           </argument>
         </arguments>
       </action>

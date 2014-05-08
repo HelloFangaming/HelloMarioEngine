@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Magical rings
+            <string>///Magical projectiles
 
 //Animate
 image_speed = 0.15
@@ -127,13 +127,13 @@ with other event_user(0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///First magic ring
+            <string>///First magic circle
 
 //Point at Mario
 if instance_exists(obj_mario)
     direction = point_direction(x,y,obj_mario.x,obj_mario.y)
 
-///Make more rings
+///Make more circles
 alarm[0] = 4
 </string>
           </argument>

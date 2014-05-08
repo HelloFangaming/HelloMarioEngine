@@ -376,7 +376,7 @@ image_speed = 0.15
             <string>if sprite_index = spr_wendy_attack
 {
     sprite_index = spr_wendy
-    instance_create(x,y,obj_magicring)
+    with instance_create(x,y,obj_magicring) hspeed = 2*other.direct
     audio_play_sound(snd_magic,0,0)
 }
 </string>
