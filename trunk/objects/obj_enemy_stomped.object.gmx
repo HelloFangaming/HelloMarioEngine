@@ -25,11 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.2
+            <string>///Stomped enemy
+
+//Gravity
+gravity = 0.2
+
+//Do not animate
 image_speed = 0
+
+//Flip sprite
 image_yscale = -1
-x = round(x)
-y = round(y)
 </string>
           </argument>
         </arguments>
@@ -52,11 +57,13 @@ y = round(y)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if vspeed &gt; 4
-{
+            <string>///Stomped enemy logic
+
+//Cap fall speed
+if vspeed &gt; 4
     vspeed = 4
-    gravity = 0
-}
+
+//Destroy outside room
 if bbox_top &gt; room_height
     instance_destroy()
 </string>

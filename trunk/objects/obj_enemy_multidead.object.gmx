@@ -25,12 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 8
-alarm[1] = 1
-killxscale = 1
+            <string>///Multiple dead enemy parts
+
+//Flip sprite
 image_yscale = -1
-x = round(x)
-y = round(y)
+
+//Number of dead parts to make
+count = 4
+
+//Facing direction for dead parts
+killxscale = 1
+
+//Sprite of the dead parts
+killsprite = sprite_index
+
+//Create dead parts
+alarm[0] = 8
+
+//Use same sprite as dead parts
+alarm[1] = 1
 </string>
           </argument>
         </arguments>
@@ -53,8 +66,10 @@ y = round(y)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index = killsprite
-image_xscale = killxscale</string>
+            <string>///Use same sprites as dead parts
+sprite_index = killsprite
+image_xscale = killxscale
+</string>
           </argument>
         </arguments>
       </action>
@@ -76,12 +91,21 @@ image_xscale = killxscale</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>imdead = instance_create(x,y,obj_enemy_dead)
-imdead.sprite_index = killsprite
-imdead.image_xscale = killxscale
-count -= 1
+            <string>///Create dead parts
+with instance_create(x,y,obj_enemy_dead)
+{
+    sprite_index = other.killsprite
+    image_xscale = other.killxscale
+}
+
+//Decrement count
+count--
+
+//Make more if the count is not zero
 if count &gt; 0
     alarm[0] = 8
+
+//Otherwise, destroy
 else
     instance_destroy()
 </string>

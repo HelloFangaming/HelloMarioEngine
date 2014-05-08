@@ -25,14 +25,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
+            <string>///Reznor's fiery projectiles
+
+//Animate
+image_speed = 0.15
+
+//Move
+speed = 2
+
+//Select a direction to move in
 if instance_exists(obj_mario)
-    move_towards_point(obj_mario.x,obj_mario.y,2)
+    direction = point_direction(x,y,obj_mario.x,obj_mario.y)
 else
-{
-    speed = 2
     direction = random(360)
-}
+
+//Facing direction
 if hspeed &gt; 0
     image_xscale = -1
 </string>
@@ -57,10 +64,8 @@ if hspeed &gt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if x&lt;view_xview[0]-16
-or x&gt;view_xview[0]+336
-or y&gt;view_yview[0]+256
-or y&lt;view_yview[0]-16
+            <string>///Destroy outside view
+if outside_view()
     instance_destroy()
 </string>
           </argument>
@@ -84,8 +89,8 @@ or y&lt;view_yview[0]-16
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.invincible = 0
-    with other event_user(0)
+            <string>///Hurt Mario
+with other event_user(0)
 </string>
           </argument>
         </arguments>

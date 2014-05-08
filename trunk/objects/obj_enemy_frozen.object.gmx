@@ -2,7 +2,7 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
+  <visible>-1</visible>
   <depth>-4</depth>
   <persistent>0</persistent>
   <parentName>obj_subconenemyparent</parentName>
@@ -25,19 +25,28 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
-gravity = 0.25
-alarm[1] = 1
-alarm[2] = 400
-alarm[4] = 500
-ready = 0
+            <string>///A frozen enemy
+
+//How vulnerable is this enemy to various items?
 hardness = 2
+
+//How vulnerable is this enemy to Mario?
 stomp = -1
+
+//Is this enemy heavy?
 isheavy = 0
+
+//A collision object for Mario to ride
 mytop = instance_create(x,y,obj_slippery)
+
+//Solid object
 mysolid = instance_create(x,y,obj_solid)
-x = round(x)
-y = round(y)
+
+//Shatter and destroy after a while
+alarm[1] = 500
+
+//Alpha blink before shattering
+alarm[2] = 400
 </string>
           </argument>
         </arguments>
@@ -60,36 +69,13 @@ y = round(y)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited()
+            <string>///Destroy collision parts
+
+//Destroy solidtop
+event_inherited()
+
+//Destroy solid
 with mysolid instance_destroy()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if x&gt;view_xview[0]-16
-and x&lt;view_xview[0]+336
-and y&lt;view_yview[0]+256
-and y&gt;view_yview[0]-16
-    event_user(0)
-instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -112,7 +98,8 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_alpha = 1
+            <string>///Alpha blink
+image_alpha = 1
 alarm[2] = 2
 </string>
           </argument>
@@ -136,7 +123,8 @@ alarm[2] = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_alpha = 0.4
+            <string>///Alpha blink
+image_alpha = 0.4
 alarm[3] = 2
 </string>
           </argument>
@@ -160,33 +148,10 @@ alarm[3] = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = bbox_left
-y = bbox_bottom
-if bbox_bottom-bbox_top &gt; 17
-and bbox_right-bbox_left &gt; 17
-    sprite_index = spr_frozenenemy_big
-else if bbox_bottom-bbox_top &gt; 17
-and bbox_right-bbox_left &lt; 17
-    sprite_index = spr_frozenenemy_tall
-else if bbox_bottom-bbox_top &lt; 17
-and bbox_right-bbox_left &gt; 17
-    sprite_index = spr_frozenenemy_wide
-else if bbox_bottom-bbox_top &lt; 17
-and bbox_right-bbox_left &lt; 17
-    sprite_index = spr_frozenenemy
-y -= sprite_height
-visible = 1
-//Glitch Fix
-if sprite_index = spr_firepiranha
-or sprite_index = spr_firepiranha_red
-    sprite_index = spr_frozenenemy_tall
-if sprite_index = spr_frozenenemy_wide
-or sprite_index = spr_frozenenemy_big
-    mytop.image_xscale = 2
-if sprite_index = spr_frozenenemy_big
-    isheavy = 1
-mysolid.mask_index = sprite_index
-ready = 1
+            <string>///Shatter and destroy
+if not outside_view()
+    event_user(0)
+instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -209,8 +174,11 @@ ready = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>mysolid.x = x
+            <string>///Make solid follow along too
+mysolid.x = x
 mysolid.y = y
+
+//Default event
 event_inherited()
 </string>
           </argument>
@@ -234,12 +202,63 @@ event_inherited()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y+5-sprite_height and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y+5-sprite_height and vspeed &gt; 0
 {
     y = other.y-sprite_height
     vspeed = 0
     gravity = 0
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="25">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Prepare sprite
+
+//Move to the appropriate location
+x = bbox_left
+y = bbox_top
+
+//Select an appropriate ice sprite
+if sprite_height &gt; 18
+and sprite_width &gt; 18
+    sprite_index = spr_frozenenemy_big
+else if sprite_height &gt; 18
+    sprite_index = spr_frozenenemy_tall
+else if sprite_width &gt; 18
+    sprite_index = spr_frozenenemy_wide
+else
+    sprite_index = spr_frozenenemy
+
+//Stretch the solid top appropriately
+if sprite_index = spr_frozenenemy_wide
+or sprite_index = spr_frozenenemy_big
+    mytop.image_xscale = 2
+
+//Make big ice heavy
+if sprite_index = spr_frozenenemy_big
+    isheavy = 1
+
+//Make solid the same size as the ice
+mysolid.mask_index = sprite_index
 </string>
           </argument>
         </arguments>
@@ -262,7 +281,8 @@ event_inherited()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with instance_create(obj_mario.x,obj_mario.y+11,obj_frozenenemy_pickup) sprite_index = other.sprite_index
+            <string>///Get picked up as a frozen enemy
+with instance_create(obj_mario.x,obj_mario.y+11,obj_frozenenemy_pickup) sprite_index = other.sprite_index
 
 //Destroy
 instance_destroy()
@@ -288,8 +308,13 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_bump,0,0)
+            <string>///Shatter
+
+//Play sounds
+audio_play_sound(snd_bump,0,0)
 audio_play_sound(snd_shatter,0,0)
+
+//Make shards
 with instance_create(x,y,obj_shard)
 {
     sprite_index = spr_shard_th
@@ -310,6 +335,8 @@ with instance_create(x,y,obj_shard)
     sprite_index = spr_shard_th
     direction = 135
 }
+
+//Destroy
 instance_destroy()
 </string>
           </argument>

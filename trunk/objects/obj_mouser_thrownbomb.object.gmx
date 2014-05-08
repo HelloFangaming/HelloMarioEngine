@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_physicsparent</parentName>
   <maskName>spr_square</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,9 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
+            <string>///Mouser's bombs
+
+//Do not animate
+image_speed = 0
+
+//Move up
 vspeed = -3
-gravity = 0.2
 </string>
           </argument>
         </arguments>
@@ -50,49 +54,16 @@ gravity = 0.2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hspeed &gt; 0
-and collision_rectangle(bbox_right,bbox_top+3,bbox_right+1+hspeed,bbox_bottom-1,obj_solid,0,0)
-    hspeed = 0
-if hspeed &lt; 0
-and collision_rectangle(bbox_left-1+hspeed,bbox_top+3,bbox_left,bbox_bottom-1,obj_solid,0,0)
-    hspeed = 0
-if collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_solid,0,0)
+            <string>///Thrown bomb logic
+
+//Default event
+event_inherited()
+
+//Become a bomb after landing
+if gravity = 0
 {
-    while collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_solid,0,0)
-        y+=1
-    vspeed = 1
-}
-if vspeed &gt; 4
-    vspeed = 4
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_slopeparent">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if vspeed &gt; 0
-{
-    while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,1)
-        y-=1
-    vspeed = 0
-    gravity = 0
-    event_user(0)
+    instance_create(x,y,obj_mouser_bomb)
+    instance_destroy()
 }
 </string>
           </argument>
@@ -116,12 +87,12 @@ if vspeed &gt; 4
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-11 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-11 and vspeed &gt; 0
 {
     y = other.y-16
     vspeed = 0
     gravity = 0
-    event_user(0)
 }
 </string>
           </argument>
@@ -145,31 +116,8 @@ if vspeed &gt; 4
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x,y,obj_explosion)
-instance_destroy()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>instance_create(x,y,obj_mouser_bomb)
+            <string>///Blow up
+instance_create(x,y,obj_explosion)
 instance_destroy()
 </string>
           </argument>

@@ -25,13 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
-image_xscale = obj_birdo.direct
-hspeed = image_xscale*2
-mytop = instance_create(x-8,y,obj_solidtop)
+            <string>///Birdo's egg?
+
+//How vulnerable is this enemy to various items?
 hardness = 1
+
+//How vulnerable is this enemy to Mario?
 stomp = 4
+
+//Is this enemy heavy?
 isheavy = 0
+
+//A collision object for Mario to ride
+mytop = instance_create(x-8,y,obj_solidtop)
 </string>
           </argument>
         </arguments>
@@ -54,7 +60,8 @@ isheavy = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if outside_view()
+            <string>///Destroy outside view
+if outside_view()
     instance_destroy()
 </string>
           </argument>

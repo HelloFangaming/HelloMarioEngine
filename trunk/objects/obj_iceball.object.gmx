@@ -172,14 +172,13 @@ if collision_rectangle(x-4,y+15,x+3,y+15,obj_subconenemyparent,0,0)
 {
     with other
     {
-        if sprite_height &lt; 34
-        and sprite_width &lt; 34
+        with instance_create(x,y,obj_enemy_frozen)
         {
-            varid = instance_create(x,y,obj_enemy_frozen)
-            varid.sprite_index = sprite_index
-            audio_play_sound(snd_magic,0,0)
-            instance_destroy()
+            sprite_index = other.sprite_index
+            event_user(15)
         }
+        audio_play_sound(snd_magic,0,0)
+        instance_destroy()
     }
 }
 if other.hardness &lt; 100
