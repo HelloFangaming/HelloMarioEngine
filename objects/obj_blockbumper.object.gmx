@@ -113,7 +113,7 @@ with other
             <string>///Make enemies flip or hurt them
 if other.hardness &lt; 99
 {
-    scr_musicalscale(id,1)
+    scr_musicalscale(id,other.id,1)
     with other event_user(5)
 }
 </string>

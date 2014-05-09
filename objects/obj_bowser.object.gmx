@@ -42,9 +42,8 @@ direct = 1
 //Do not animate
 image_speed = 0
 
+//State variable
 ready = 0
-jumpnow = 0
-turning = 0
 </string>
           </argument>
         </arguments>
@@ -67,10 +66,17 @@ turning = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 10
+            <string>///Prepare to fight
+
+//Hop
+alarm[0] = 10
+
+//Leap and stomp
 alarm[2] = 200
+
+//Fire projectiles
 alarm[6] = 60
-jumpnow = 1</string>
+</string>
           </argument>
         </arguments>
       </action>
@@ -92,14 +98,21 @@ jumpnow = 1</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready &gt; 0
-    exit
+            <string>///Finish breathing fire
+
+//Play fire sound
 audio_play_sound(snd_podoboo,0,0)
+
+//Breathe fire
 instance_create(x,y+8,obj_bowserfire)
+
+//Change state
 ready = 0
-image_speed = 0
+
+//Change pose
 image_index = 0
-jumpnow = 1
+
+//Breathe more later
 alarm[6] = 50
 </string>
           </argument>
@@ -123,9 +136,7 @@ alarm[6] = 50
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready &gt; 0
-    exit
-image_speed = 0
+            <string>///Continue fire breathing animation
 image_index = 3
 alarm[8] = 7
 </string>
@@ -150,22 +161,26 @@ alarm[8] = 7
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready &gt; 0
-    exit
-if jumpnow = 0
-or turning != 0
+            <string>///Prepare to breathe fire
+
+//If Bowser is ready, can jump, and is not turning
+if ready = 0
 {
-    alarm[6] = 1
-    exit
-}
-else
-{
+
+    //Fire breathing state
     ready = -3
-    jumpnow = 0
-    image_speed = 0
+
+    //Change pose
     image_index = 2
+
+    //Continue fire breathing animation
     alarm[7] = 7
+
 }
+
+//Otherwise, wait
+else
+    alarm[6] = 5
 </string>
           </argument>
         </arguments>
@@ -188,8 +203,15 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 6
-turning = 2
+            <string>///Start turning after stomping
+
+//Turning state
+ready = 6
+
+//Change sprite
+sprite_index = spr_bowser_flip
+
+//Start animation
 image_index = 0
 image_speed = 0.15
 </string>
@@ -214,11 +236,16 @@ image_speed = 0.15
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if collision_rectangle(x-16,y+48,x+15,y+48,obj_solid,0,0)
+            <string>///Check if bricks were smashed
+
+//If there is still a floor below, then finish falling
+if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
 {
     alarm[5] = 20
     ready = 5
 }
+
+//Otherwise, continue falling
 else
 {
     vspeed = 3
@@ -246,9 +273,14 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 4
+            <string>///Stomp downwards
+
+//Move down
+vspeed = 4
+
+//Stomp state
 ready = 2
-direct = 1</string>
+</string>
           </argument>
         </arguments>
       </action>
@@ -270,39 +302,44 @@ direct = 1</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if jumpnow = 0
-or turning != 0
-or ready = -3
+            <string>///Leap and stomp
+if ready = 0
+and instance_exists(obj_mario)
 {
-    alarm[2] = 30
-    exit
-}
-jumpnow = 0
-ready = 1
-y-=1
-vspeed = 0
-if instance_exists(obj_mario)
-{
+
+    //Jump state
+    ready = 1
+
+    //Boost jump
+    y--
+
+    //Face Mario
     if x &gt; obj_mario.x
         direct = 1
     else
         direct = -1
-    movex = round(obj_mario.x/16)*16
+
+    //Find a position to jump a
+    var movex = round(obj_mario.x/16)*16
+
+    //If a solid is there, change where to jump
+    if place_meeting(movex,16,obj_solid)
+    {
+        if x &gt; movex
+            movex += 16
+        else
+            movex -= 16
+    }
+
+    //Leap to that point
+    move_towards_point(movex,16,4)
+
+    //Change pose
+    image_index = 0
+
 }
 else
-    movex = round(x/16)*16
-if position_meeting(movex+8,24,obj_solid)
-or position_meeting(movex-8,24,obj_solid)
-{
-    if obj_endboss.x &gt; movex
-        movex += 16
-    else
-        movex -= 16
-}
-move_towards_point(movex,16,4)
-image_speed = 0
-image_index = 0
-alarm[6] = 0
+    alarm[2] = 2
 </string>
           </argument>
         </arguments>
@@ -325,12 +362,15 @@ alarm[6] = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 0
-{
-    image_speed = 0
-    image_index = 0
-}
-jumpnow = 1
+            <string>///Finish hop
+
+//Change pose
+image_index = 0
+
+//Reset state
+ready = 0
+
+//Hop again
 alarm[0] = 10
 </string>
           </argument>
@@ -354,15 +394,28 @@ alarm[0] = 10
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 0
+            <string>///Hop
+if ready = 0
 {
-    image_speed = 0
+
+    //Use hop pose
     image_index = 1
-    y-=1
+
+    //Move up
     vspeed = -1
-    jumpnow = 0
+
+    //Boost jump
+    y--
+
+    //Hop state
+    ready = -4
+
+    //Finish hop
+    alarm[1] = 40
+
 }
-alarm[1] = 40
+else
+    alarm[0] = 3
 </string>
           </argument>
         </arguments>
@@ -385,7 +438,11 @@ alarm[1] = 40
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
+            <string>///Bowser's true genius
+
+//Deal with floor collisions BOWSER'S WAY
+if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
+or ready &gt; 0
 {
     gravity = 0
     if ready &lt; 1
@@ -393,11 +450,15 @@ alarm[1] = 40
 }
 else
     gravity = 0.05
-if ready &gt; 0
-    gravity = 0
+
+//If Bowser is ready to ROCK AND ROLL
 if ready = 0
 {
-    dprev = direct
+
+    //Remember previous facing direction
+    var dprev = direct
+
+    //Face Mario
     if instance_exists(obj_mario)
     {
         if x &gt; obj_mario.x
@@ -405,82 +466,93 @@ if ready = 0
         else
             direct = -1
     }
+
+    //If he is facing a different direction
     if dprev != direct
     {
-        turning = 1
-        jumpnow = 0
+
+        //Turning state
         ready = -1
+
+        //Turn sprite
+        sprite_index = spr_bowser_flip
+
+        //Start turning animation
         image_index = 0
         image_speed = 0.15
+
     }
-}
-if ready = 1
-and y &lt; 17
-{
-    speed = 0
-    move_snap(16,16)
-    image_speed = 0
-    image_index = 4
-    alarm[3] = 10
-    ready = -2
-}
-if ready = 2
-and collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solid,0,0)
-{
-    audio_play_sound(snd_thunder,0,0)
-    vspeed = 0
-    move_snap(16,16)
-    ready = 3
-    alarm[4] = 2
-    image_speed = 0
-    image_index = 5
-}
-if ready = 4
-and collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solid,0,0)
-{
-    vspeed = 0
-    move_snap(16,16)
-    ready = 5
-    alarm[5] = 20
-}
-if turning &gt; 0
-and image_index &gt; 4.9
-{
-    if ready = -1
-    {
-        turning = 0
-        jumpnow = 1
-        ready = 0
-        image_speed = 0
-        image_index = 0
-    }
-    if ready &gt; 5
-    {
-        if ready = 8
-        {
-            alarm[10] = 1
-            ready = 0
-            turning = 0
-            if instance_exists(obj_mario)
-            {
-                if x &gt; obj_mario.x
-                    direct = 1
-                else
-                    direct = -1
-            }
-            dprev = direct
-        }
-        else
-        {
-            ready += 1
-            direct = -direct
-            image_index = 0
-        }
-    }
+
 }
 
-//Destroy when it falls out of the level
-if ready = -4
+//If Bowser reaches the peak of his jump
+else if ready = 1
+and y &lt; 17
+{
+
+    //Stop moving
+    speed = 0
+
+    //Snap to grid
+    move_snap(16,16)
+
+    //Change pose
+    image_index = 4
+
+    //Get ready to SMASH MARIO'S FACE OFF
+    alarm[3] = 10
+
+    //The SMASH MARIO'S FACE state
+    ready = -2
+
+}
+
+//If Bowser stomps on the ground
+else if ready = 2
+and collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
+{
+
+    //His footsteps are like THUNDER
+    audio_play_sound(snd_thunder,0,0)
+
+    //Stop falling
+    vspeed = 0
+
+    //Snap to grid
+    move_snap(16,16)
+
+    //Some kind of limbo state?
+    ready = 3
+
+    //Check if bricks were smashed
+    alarm[4] = 2
+
+    //Change pose
+    image_index = 5
+
+}
+
+//If Bowser is falling after smashing bricks
+else if ready = 4
+and collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
+{
+
+    //Stop falling
+    vspeed = 0
+
+    //Snap to grid
+    move_snap(16,16)
+
+    //Finish stomp state
+    ready = 5
+
+    //Start turning
+    alarm[5] = 20
+
+}
+
+//Bowser will NEVER LET THIS HAPPEN
+else if ready = -5
 and bbox_top &gt; room_height
     instance_destroy()
 </string>
@@ -505,16 +577,29 @@ and bbox_top &gt; room_height
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready &gt; 0
+            <string>///Drown in lava
+if ready &gt; 0
 {
+
+    //Appear behind lava
     depth = 10
+
+    //Sink into lava
     vspeed = 0.5
-    ready = -4
+
+    //Death state
+    ready = -5
+
+    //Use appropriate image index
     image_speed = 0
     image_index = 4
+
+    //Play Bowser death sound
     audio_play_sound(snd_bowserfall,0,0)
-    audio_stop_sound(snd_music_boss)
+
+    //End boss battle
     event_user(6)
+
 }
 </string>
           </argument>
@@ -550,6 +635,78 @@ if y &lt; other.y-43 and vspeed &gt; 0
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Finish turning
+
+//If Bowser is done turning
+if ready = -1
+or ready = 8
+{
+
+    //If he is done turning after a stomp
+    if ready = 8
+    {
+
+        //Prepare to fight
+        alarm[10] = 2
+
+        //Face Mario
+        if instance_exists(obj_mario)
+        {
+            if x &gt; obj_mario.x
+                direct = 1
+            else
+                direct = -1
+        }
+
+    }
+
+    //Change sprite
+    sprite_index = spr_bowser
+
+    //Reset state
+    ready = 0
+
+    //Do not animate
+    image_speed = 0
+
+    //Use normal pose
+    image_index = 0
+
+}
+
+//If Bowser needs to keep turning after a stomp
+else if ready &gt; 5
+{
+
+    //Increment state
+    ready++
+
+    //Face the other way
+    direct = -direct
+
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -567,10 +724,8 @@ if y &lt; other.y-43 and vspeed &gt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if turning = 0
-    draw_sprite_ext(spr_bowser,image_index,round(x),y,direct,1,0,c_white,1)
-else
-    draw_sprite_ext(spr_bowser_flip,image_index,round(x),y,direct,1,0,c_white,1)
+            <string>///Draw Bowser
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
 </string>
           </argument>
         </arguments>

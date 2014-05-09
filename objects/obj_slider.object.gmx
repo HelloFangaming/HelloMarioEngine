@@ -370,7 +370,7 @@ or (hspeed &lt; 0 and collision_rectangle(bbox_left-1+hspeed,bbox_top+4,bbox_lef
             <string>///Hurt enemies
 if other.hardness &lt; 99
 {
-    scr_musicalscale(id,1)
+    scr_musicalscale(id,other.id,1)
     with other event_user(0)
 }
 </string>
