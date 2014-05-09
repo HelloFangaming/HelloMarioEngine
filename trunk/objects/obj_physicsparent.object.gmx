@@ -81,6 +81,20 @@ if other.vspeed &lt; 0
             <kind>1</kind>
             <string>///Default floor/ceiling collisions
 
+//Embed into the slope to ensure correct slope mechanics
+if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+4,obj_slopeparent,1,0)
+and vspeed = 0
+    y+=4
+
+///Handle slope collisions
+if collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom,obj_slopeparent,1,0)
+and not collision_rectangle(bbox_left,bbox_bottom-8,bbox_right,bbox_bottom-8,obj_slopeparent,1,0)
+{
+    if vspeed &gt; -0.8
+        while collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom,obj_slopeparent,1,0)
+            y--
+}
+
 //Check for floor objects
 if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
 or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0)
@@ -92,15 +106,11 @@ or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slop
 else
     gravity = 0.25
 
-//Slopes
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
-
 //Ceiling check
 if vspeed &lt; 0
-and collision_rectangle(bbox_left+1,bbox_top-1,bbox_right-1,bbox_top-1,obj_solid,0,0)
+and collision_rectangle(bbox_left+1,bbox_top-1,bbox_right-1,bbox_top-1,obj_solid,1,0)
 {
-    while collision_rectangle(bbox_left+1,bbox_top-1,bbox_right-1,bbox_top-1,obj_solid,0,0)
+    while collision_rectangle(bbox_left+1,bbox_top-1,bbox_right-1,bbox_top-1,obj_solid,1,0)
         y+=1
     vspeed = 1
 }

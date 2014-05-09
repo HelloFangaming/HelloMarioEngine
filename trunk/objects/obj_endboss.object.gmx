@@ -71,7 +71,7 @@ else
     audio_play_sound(snd_count,0,0)
 
     //Continue counting down
-    alarm[2] = 4
+    alarm[1] = 4
 
 }
 </string>

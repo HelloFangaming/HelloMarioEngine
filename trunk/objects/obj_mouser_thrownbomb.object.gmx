@@ -55,15 +55,19 @@ vspeed = -3
           <argument>
             <kind>1</kind>
             <string>///Thrown bomb logic
-
-//Default event
-event_inherited()
-
-//Become a bomb after landing
-if gravity = 0
+if not place_meeting(x,y,obj_mouser)
 {
-    instance_create(x,y,obj_mouser_bomb)
-    instance_destroy()
+
+    //Default event
+    event_inherited()
+
+    //Become a bomb after landing
+    if gravity = 0
+    {
+        instance_create(x,y,obj_mouser_bomb)
+        instance_destroy()
+    }
+
 }
 </string>
           </argument>

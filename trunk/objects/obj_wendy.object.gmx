@@ -107,21 +107,26 @@ alarm[2] = 15
             <kind>1</kind>
             <string>///Hop
 if ready = 0
-and sprite_index = spr_wendy
 {
 
-    //Jump higher if hurt
-    if hitpoints = 1
-        vspeed = -7
-    else
-        vspeed = -3
+    //If Wendy can hop
+    if sprite_index = spr_wendy
+    {
 
-    //Boost jump
-    y--
+        //Hop higher if hurt
+        if hitpoints = 1
+            vspeed = -7
+        else
+            vspeed = -3
 
-    //Use appropriate image index
-    image_speed = 0
-    image_index = 1
+        //Boost jump
+        y--
+
+        //Use appropriate image index
+        image_speed = 0
+        image_index = 1
+
+    }
 
     //Hop again later
     alarm[2] = 60
@@ -275,6 +280,7 @@ and instance_exists(obj_mario)
 
 //Animate based on speed
 if sprite_index = spr_wendy
+and gravity = 0
     image_speed = speed/3
 </string>
           </argument>
