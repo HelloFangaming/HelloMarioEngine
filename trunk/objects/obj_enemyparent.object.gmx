@@ -189,7 +189,7 @@ and other.invincible != -1
             or stomp = 4
             {
                 other.vspeed = 0
-                instance_create(x-8,y,obj_spinsmoke)
+                instance_create((bbox_left+bbox_right)/2-8,y,obj_spinsmoke)
                 instance_destroy()
             }
 
@@ -209,9 +209,9 @@ and other.invincible != -1
         {
             with other event_user(1)
             if stomp = 0
-                scr_musicalscale(other.id,1)
+                scr_musicalscale(other.id,id,1)
             else if stomp = 3
-                scr_musicalscale(other.id,0)
+                scr_musicalscale(other.id,id,0)
             else if stomp = 5
             and other.stompstyle = 1
                 instance_create(other.x,other.y+32,obj_spinthump)

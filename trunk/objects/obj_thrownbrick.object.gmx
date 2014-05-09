@@ -203,7 +203,7 @@ and instance_exists(obj_mario)
             <string>///Hurt enemies
 if other.hardness &lt; 99
 {
-    scr_musicalscale(id,1)
+    scr_musicalscale(id,other.id,1)
     with other event_user(0)
 
     //Shatter if held

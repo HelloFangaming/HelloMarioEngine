@@ -142,7 +142,7 @@ and instance_exists(obj_mario)
             <string>if thrown = 1
 and other.hardness &lt; 99
 {
-    scr_musicalscale(id,1)
+    scr_musicalscale(id,other.id,1)
     with other event_user(0)
     event_user(0)
     instance_destroy()

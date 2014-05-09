@@ -101,7 +101,7 @@ and instance_exists(obj_mario)
 and vspeed &gt; 0
 and other.hardness &lt; 99
 {
-    scr_musicalscale(id,1)
+    scr_musicalscale(id,other.id,1)
     vspeed = -3
     with other event_user(0)
 }

@@ -210,7 +210,7 @@ if stomp = -1
 and place_meeting(x,y,obj_mario)
 and obj_mario.netsmack = 1
 {
-    scr_musicalscale(obj_mario.id,1)
+    scr_musicalscale(obj_mario.id,id,1)
     event_user(0)
 }
 </string>
