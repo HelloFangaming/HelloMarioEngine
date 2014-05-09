@@ -944,6 +944,7 @@ and collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,0)
 
 //If Mario is not climbing or wall climbing
 if state &lt; 3
+and disablecontrols = 0
 {
 
     //If Mario is not jumping
@@ -968,7 +969,6 @@ if state &lt; 3
     if keyboard_check_pressed(vk_control)
     and holding = 0
     and stompstyle = 0
-    and disablecontrols = 0
     {
 
         //Make sure Mario is not standing on an object that can be picked up

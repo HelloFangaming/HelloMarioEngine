@@ -107,18 +107,23 @@ alarm[2] = 75
             <kind>1</kind>
             <string>///Hop
 if ready = 0
-and sprite_index = spr_larry
 {
 
-    //Move up
-    vspeed = -3
+    //If Larry can hop
+    if sprite_index = spr_larry
+    {
 
-    //Boost jump
-    y--
+        //Move up
+        vspeed = -3
 
-    //Use appropriate image index
-    image_speed = 0
-    image_index = 1
+        //Boost jump
+        y--
+
+        //Use appropriate image index
+        image_speed = 0
+        image_index = 1
+
+    }
 
     //Hop again later
     alarm[2] = 150
@@ -272,6 +277,7 @@ and instance_exists(obj_mario)
 
 //Animate based on speed
 if sprite_index = spr_larry
+and gravity = 0
     image_speed = speed/3
 </string>
           </argument>
