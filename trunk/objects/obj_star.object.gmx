@@ -3,10 +3,10 @@
   <spriteName>spr_star</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>2</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
-  <maskName>spr_square</maskName>
+  <parentName>obj_powerupparent</parentName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -25,19 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.125
-if instance_exists(obj_mario)
-{
-    if obj_mario.x &lt; x
-        hspeed = -1
-    else
-        hspeed = 1
-}
+            <string>///Use this to kill all in your way
+
+//Go towards Mario
+if not instance_exists(obj_mario)
+or obj_mario.x &lt; x
+    hspeed = -1
 else
     hspeed = 1
+
+//Animate
 image_speed = 0.3
-y-=1
-vspeed = -4
 </string>
           </argument>
         </arguments>
@@ -60,59 +58,26 @@ vspeed = -4
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hspeed &gt; 0
-and collision_rectangle(x+hspeed+15,y+3,x+hspeed+15,y+15,obj_solid,0,0)
-    hspeed = -1
-if hspeed &lt; 0
-and collision_rectangle(x+hspeed-1,y+3,x+hspeed-1,y+15,obj_solid,0,0)
-    hspeed = 1
-if collision_rectangle(x,y+16,x+15,y+16,obj_solidtop,0,0)
+            <string>///Star logic
+
+//Default event
+event_inherited()
+
+//Hop when on the ground
+if gravity = 0
 {
-    gravity = 0
-    vspeed = 0
+
+    //Move up
+    vspeed = -4
+
+    //Boost jump
+    y--
+
 }
+
+//Less gravity
 else
     gravity = 0.125
-if vspeed &gt; 4
-    vspeed = 4
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-{
-    vspeed = -4
-    y-=1
-}
-if vspeed &lt; 0
-and collision_rectangle(x,y-1,x+15,y-1,obj_solid,0,0)
-    vspeed = 1
-if collision_rectangle(x,y+16,x+15,y+16,obj_solidtop,0,0)
-    vspeed = -4
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_solidtop">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if y &lt; other.y-11 and vspeed &gt; 0
-{
-    y = other.y-16
-    vspeed = -4
-    gravity = 0
-}
 </string>
           </argument>
         </arguments>
@@ -135,44 +100,43 @@ if collision_rectangle(x,y+16,x+15,y+16,obj_solidtop,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_invincibility)
+            <string>///Make Mario invincible
+
+//If Mario is already invincible
+if instance_exists(obj_invincibility)
 {
+
+    //Extend the timer on his invincibility
     obj_invincibility.alarm[0] = 1000
+
+    //Gotcha
     audio_play_sound(snd_gotcha,0,0)
+
 }
+
+//Otherwise
 else
 {
+
+    //Create invincibility
     instance_create(x,y,obj_invincibility)
+
+    //Start the star music
     audio_play_sound(snd_starman,99,1)
+
+    //Let's go!
     audio_play_sound(snd_letsgo,0,0)
+
+    //Stop the music
     with obj_levelmanager alarm[1] = 1
+
 }
+
+//Play a powerup sound
 audio_play_sound(snd_powerup,0,0)
+
+//Destroy
 instance_destroy()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if y &gt; room_height
-    instance_destroy()
 </string>
           </argument>
         </arguments>

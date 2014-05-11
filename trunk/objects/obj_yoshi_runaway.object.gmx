@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-4</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_physicsparent</parentName>
   <maskName>spr_smallmask</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,22 +25,47 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.yoshi = 0
-gravity = 0.25
-hspeed = obj_mario.direct*2
+            <string>///A runaway Yoshi
+
+//Animate
 image_speed = 0.3
+
+//Facing direction + move Mario up
+if instance_exists(obj_mario)
+{
+    direct = obj_mario.direct
+    obj_mario.vspeed = -4
+}
+else
+    direct = 1
+
+//Run away
+hspeed = direct*2
+
+//Reset Yoshi
+global.yoshi = 0
+
+//Lose Yoshi sound
 audio_play_sound(snd_loseyoshi,0,0)
+
+//Yoshi is hurt
 audio_play_sound(snd_yoshi_hurt,0,0)
-obj_mario.vspeed = -4
-ready = 0
-direct = 0
+
+//Use appropriate sprite
 if global.ycolor = 1
     sprite_index = spr_yoshi_hold_r
 else if global.ycolor = 2
     sprite_index = spr_yoshi_hold_y
 else if global.ycolor = 3
     sprite_index = spr_yoshi_hold_b
+
+//State variable
+ready = 0
+
+//Make Yoshi ridable again
 alarm[0] = 80
+
+//Alpha blink
 alarm[1] = 1
 </string>
           </argument>
@@ -64,7 +89,8 @@ alarm[1] = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_alpha = 1
+            <string>///Alpha blink
+image_alpha = 1
 if ready = 0
     alarm[1] = 4
 </string>
@@ -89,8 +115,10 @@ if ready = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_alpha = 0.4
-alarm[2] = 4</string>
+            <string>///Alpha blink
+image_alpha = 0.4
+alarm[2] = 4
+</string>
           </argument>
         </arguments>
       </action>
@@ -112,7 +140,9 @@ alarm[2] = 4</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 1</string>
+            <string>///Can be ridden again
+ready = 1
+</string>
           </argument>
         </arguments>
       </action>
@@ -134,28 +164,16 @@ alarm[2] = 4</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hspeed &gt; 0
-and collision_rectangle(bbox_right-2,bbox_top,bbox_right+1,bbox_bottom-2,obj_solid,0,0)
-    hspeed = -2
-if hspeed &lt; 0
-and collision_rectangle(bbox_left-1,bbox_top,bbox_left+2,bbox_bottom-2,obj_solid,0,0)
-    hspeed = 2
-if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
-or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0)
-{
-    gravity = 0
-    vspeed = 0
-}
-else
-    gravity = 0.25
-if vspeed &gt; 4
-    vspeed = 4
+            <string>///Runaway logic
+
+//Default event
+event_inherited()
+
+//Facing direction
 if hspeed &gt; 0
     direct = 1
-if hspeed &lt; 0
+else
     direct = -1
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
 </string>
           </argument>
         </arguments>
@@ -178,7 +196,8 @@ while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopepar
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-27 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-27 and vspeed &gt; 0
 {
     y = other.y-32
     vspeed = 0
@@ -206,13 +225,20 @@ while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopepar
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.vspeed &gt; 0
-and obj_mario.holding = 0
-and obj_mario.visible = 1
-and ready = 1
+            <string>///Ride Yoshi
+
+//If Mario jumps on the Yoshi
+if ready = 1
+and other.vspeed &gt; 0
+and other.holding = 0
+and other.visible = 1
 {
-    obj_mario.x = x
-    obj_mario.y = y
+
+    //Snap position
+    other.x = x
+    other.y = y
+
+    //Remember the correct Yoshi color
     if sprite_index = spr_yoshi_hold
         global.ycolor = 0
     else if sprite_index = spr_yoshi_hold_r
@@ -221,34 +247,21 @@ and ready = 1
         global.ycolor = 2
     else if sprite_index = spr_yoshi_hold_b
         global.ycolor = 3
+
+    //Make a Yoshi
     instance_create(x,y,obj_yoshi)
+
+    //Make Yoshi sounds
     audio_play_sound(snd_yoshi,0,0)
+
+    //Yoshi is happy
     audio_play_sound(snd_yoshi_happy,0,0)
+
+    //Destroy
     instance_destroy()
+
 }
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>instance_destroy()</string>
           </argument>
         </arguments>
       </action>
@@ -270,7 +283,9 @@ and ready = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,image_alpha)</string>
+            <string>///Draw Runaway Yoshi
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,image_alpha)
+</string>
           </argument>
         </arguments>
       </action>

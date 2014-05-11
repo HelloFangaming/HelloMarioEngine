@@ -102,43 +102,6 @@ else if global.ycolor = 3
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>varid = instance_create(x-8,y,obj_getshoe)
-varid.direct = obj_mario.direct
-if global.ycolor = 1
-    varid.sprite_index = spr_baburushoe
-else if global.ycolor = 2
-    varid.sprite_index = spr_dossunshoe
-else if global.ycolor = 3
-    varid.sprite_index = spr_jugemushoe
-global.yoshi = 0
-with obj_mario
-{
-    visible = 1
-    stompstyle = 1
-}
-instance_destroy()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
@@ -299,6 +262,43 @@ else if instance_exists(obj_jumpspawn)
     y = obj_jumpspawn.y+16
     obj_jumpspawn.visible = 0
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>varid = instance_create(x-8,y,obj_getshoe)
+varid.direct = obj_mario.direct
+if global.ycolor = 1
+    varid.sprite_index = spr_baburushoe
+else if global.ycolor = 2
+    varid.sprite_index = spr_dossunshoe
+else if global.ycolor = 3
+    varid.sprite_index = spr_jugemushoe
+global.yoshi = 0
+with obj_mario
+{
+    visible = 1
+    stompstyle = 1
+}
+instance_destroy()
 </string>
           </argument>
         </arguments>

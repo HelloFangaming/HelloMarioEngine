@@ -112,7 +112,7 @@ and collision_rectangle(bbox_left+1,bbox_top-1,bbox_right-1,bbox_top-1,obj_solid
 {
     while collision_rectangle(bbox_left+1,bbox_top-1,bbox_right-1,bbox_top-1,obj_solid,1,0)
         y+=1
-    vspeed = 1
+    vspeed = 0
 }
 
 //Cap fall speed

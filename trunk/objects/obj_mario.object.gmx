@@ -1196,11 +1196,11 @@ if invincible != -1
     //Make Mario invincible
     invincible = 1
 
-    //Start Mario's alpha blink
+    //Make Mario's alpha blink
     alarm[1] = 1
 
-    //End Mario's alpha blink
-    alarm[3] = 60
+    //Make Mario not invincible after a cooldown
+    alarm[3] = 120
 
 }
 </string>
@@ -1853,11 +1853,11 @@ and holding = 0))
 
         //Get off of Yoshi if he is on one
         if global.yoshi = 1
-            obj_yoshi.alarm[1] = 1
+            with obj_yoshi event_user(1)
 
         //Get off of a shoe if he is on one
         else if global.yoshi = 2
-            obj_kuriboshoe.alarm[1] = 1
+            with obj_kuriboshoe event_user(0)
 
     }
 
@@ -2349,15 +2349,9 @@ if not instance_exists(obj_slider)
 //If Mario is not invincible
 if invincible = 0
 {
- 
-    //Make Mario invincible
-    invincible = 1
 
-    //Make Mario not invincible after a cooldown
-    alarm[3] = 120
-
-    //Make Mario's alpha blink
-    alarm[1] = 1
+    //Make Mario temporarily invincible
+    event_user(6)
 
     //If Mario is not riding anything
     if global.yoshi = 0
@@ -2366,28 +2360,29 @@ if invincible = 0
         //If Mario is small
         if global.powerup = cs_small
         {
-        
+
             //Kill Mario
             instance_create(x,y,obj_deadmario)
             instance_destroy()
-        
+
         }
-        
+
         //If Mario is not small
         else
         {
-        
+
             //Make Mario big if he has a powerup, and small otherwise
             if global.powerup = cs_big
                 global.powerup = cs_small
             else
                 global.powerup = cs_big
-        
+
             //Play hurt sounds
             audio_play_sound(snd_warp,0,0)
             audio_play_sound(snd_ow,0,0)
-        
+
         }
+
     }
 
     //If Mario is riding something
@@ -2397,30 +2392,30 @@ if invincible = 0
         //If Mario is on a Yoshi
         if global.yoshi = 1
         {
-        
+
             //Create runaway Yoshi
             instance_create(obj_yoshi.x,obj_yoshi.y,obj_yoshi_runaway)
-        
+
             //Destroy Yoshi
             with obj_yoshi instance_destroy()
-        
+
         }
 
         //If Mario is on a shoe
         else if global.yoshi = 2
         {
-        
+
             //No more shoe kill ability
             stompstyle = 0
-        
+
             //Play hurt sounds
             audio_play_sound(snd_magic,0,0)
             audio_play_sound(snd_ow,0,0)
-        
+
             //Destroy the shoe
             instance_create(x,y+16,obj_statuesmoke)
             with obj_kuriboshoe instance_destroy()
-        
+
         }
 
         //Stop riding

@@ -3,11 +3,41 @@
   <spriteName>spr_mushroom</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>2</depth>
   <persistent>0</persistent>
-  <parentName>obj_1up</parentName>
-  <maskName>spr_square</maskName>
+  <parentName>obj_powerupparent</parentName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Stay healthy! Eat shrooms!
+
+//Go towards Mario
+if not instance_exists(obj_mario)
+or obj_mario.x &lt; x
+    hspeed = -1
+else
+    hspeed = 1
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_mario">
       <action>
         <libid>1</libid>
@@ -25,16 +55,29 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with instance_create(x,y,obj_score) event_user(0)
+            <string>///Get healthy
+
+//Get 100 points
+with instance_create(x,y,obj_score) event_user(0)
+
+//If Mario is small, make him big
 if global.powerup = cs_small
     global.powerup = cs_big
+
+//Otherwise, if he has no reserve item, give him a reserve mushroom
 else if global.reserveitem = cs_small
     global.reserveitem = cs_big
-other.invincible = 1
+
+//Play powerup sound
 audio_play_sound(snd_powerup,0,0)
+
+//Just what Mario needed
 audio_play_sound(snd_jwin,0,0)
-other.alarm[3] = 60
-other.alarm[1] = 1
+
+//Make Mario temporarily invincible
+with other event_user(6)
+
+//Destroy
 instance_destroy()
 </string>
           </argument>

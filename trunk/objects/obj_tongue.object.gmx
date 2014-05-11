@@ -25,51 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hunger = 0
-food = 0
-powerup = 0
+            <string>///Yoshi's tongue
+
+//Did Yoshi eat something?
+hunger = 0
+
+//What the food looks like
+foodsprite = noone
+foodindex = 0
+
+//Eaten powerup
+powerup = noone
+
+//State variable
 ready = 0
+
+//Tongue offset values
 t2 = 0
 t3 = 0
 t4 = 0
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="1" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if hunger = 1
-{
-    if powerup = 1
-        instance_create(obj_yoshi.x,obj_yoshi.y+16,food.powerup)
-    else if obj_yoshi.fullmouth = 0
-    {
-        if global.ycolor = 1
-        {
-            obj_yoshi.fullmouth = 1
-            obj_yoshi.inmouth = obj_yoshifire
-        }
-        else
-            audio_play_sound(snd_eat,0,0)
-    }
-    with food instance_destroy()
-}
 </string>
           </argument>
         </arguments>
@@ -92,50 +66,85 @@ t4 = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_mario)
+            <string>///Tongue logic
+
+//If Mario and Yoshi exist
+if instance_exists(obj_mario)
 and instance_exists(obj_yoshi)
 {
+
+    //Where the tongue should be drawn
     tongue1x = obj_yoshi.x+17*obj_mario.direct
-    y = obj_yoshi.y+20
     tongue2x = t2*obj_mario.direct+tongue1x
     tongue3x = t3*obj_mario.direct+tongue1x
+
+    //Actual tongue location
     x = t4*obj_mario.direct+tongue1x
+    y = obj_yoshi.y+20
+
+    //If Yoshi is moving his tongue out
     if ready = 0
     {
+
+        //Increment tongue offset values
         if t2 != 8
             t2+=2
         if t3 != 16
             t3+=2
         if t4 != 24
             t4+=2
+
+        //If the tongue is all the way out, pull it back in
         else
             ready = 1
     }
+
+    //If Yoshi is pulling back his tongue
     else if ready = 1
     {
+
+        //Decrement tongue offset values
         if t2 != 0
             t2-=2
         if t3 != 0
             t3-=2
         if t4 != 0
             t4-=2
+
+        //If the tongue is all the way in
         else
         {
-            obj_yoshi.alarm[3] = 5
+
+            //Close Yoshi's mouth
+            obj_yoshi.alarm[1] = 5
+
+            //If something was eaten
+            if hunger = 1
+            {
+
+                //If a powerup was eaten, place it on top of Mario
+                if powerup != noone
+                    instance_create(obj_yoshi.x,obj_yoshi.y+16,powerup)
+
+                //If Yoshi's mouth is not full, swallow
+                else if obj_yoshi.inmouth = noone
+                    audio_play_sound(snd_eat,0,0)
+
+            }
+
+            //Destroy
             instance_destroy()
+
         }
+
     }
-    if hunger = 1
-    and instance_exists(food)
-    {
-        food.x = x+(food.sprite_width/2)*obj_mario.direct*image_xscale
-        food.y = y-4
-    }
+
 }
+
+//Otherwise, stop licking and destroy
 else
 {
-    if instance_exists(obj_yoshi)
-        obj_yoshi.licking = 0
+    with obj_yoshi licking = 0
     instance_destroy()
 }
 </string>
@@ -143,7 +152,7 @@ else
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_star">
+    <event eventtype="4" ename="obj_powerupparent">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -160,76 +169,26 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_user(0)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_leaf">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>event_user(0)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_fireflower">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>event_user(0)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_1up">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>event_user(0)
+            <string>///Eat powerups
+if hunger = 0
+{
+
+    //Item eaten
+    hunger = 1
+
+    //Move tongue back
+    ready = 1
+
+    //Food sprite
+    foodsprite = other.sprite_index
+
+    //Remember powerup eaten
+    powerup = other.object_index
+
+    //Destroy food
+    with other instance_destroy()
+
+}
 </string>
           </argument>
         </arguments>
@@ -252,22 +211,30 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.object_index = obj_spring_timed
-or other.object_index = obj_spring_blue
-    exit
+            <string>///Eat held items
 if hunger = 0
-and ready = 0
-and other.sprite_height &lt; 34
+and other.object_index != obj_spring_timed
+and other.object_index != obj_spring_blue
 {
+
+    //Item eaten
     hunger = 1
+
+    //Move tongue back
     ready = 1
-    food = instance_create(x,y,obj_item_eaten)
-    food.sprite_index = other.sprite_index
-    food.image_index = other.image_index
-    obj_yoshi.fullmouth = 1
+
+    //Put it in Yoshi's mouth
     obj_yoshi.inmouth = other.object_index
-    obj_yoshi.shellsprite = other.sprite_index
+
+    //Remember its sprite
+    obj_yoshi.mouthsprite = other.sprite_index
+
+    //Food sprite
+    foodsprite = other.sprite_index
+
+    //Destroy food
     with other instance_destroy()
+
 }
 </string>
           </argument>
@@ -291,43 +258,35 @@ and other.sprite_height &lt; 34
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hunger = 0
-and ready = 0
+            <string>///Eat enemies
+if hunger = 0
 and other.hardness &lt; 2
-and other.sprite_height &lt; 34
 {
+
+    //Item eaten
     hunger = 1
+
+    //Move tongue back
     ready = 1
-    food = instance_create(x,y,obj_enemy_eaten)
-    food.sprite_index = other.sprite_index
-    food.image_index = other.image_index
-    if food.sprite_index = spr_kuribohead
-        food.sprite_index = spr_kuriboshoe
+
+    //Put fire in red Yoshi's mouth
+    if global.ycolor = 1
+        obj_yoshi.inmouth = obj_yoshifire
+
+    //Food sprite
+    foodsprite = other.sprite_index
+
+    //Food image index
+    foodindex = other.image_index
+
+    //Make sure brick goombas look right
+    if foodsprite = spr_kuribohead
+        foodsprite = spr_kuriboshoe
+
+    //Destroy food
     with other instance_destroy()
+
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_3upmoon">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>event_user(0)
 </string>
           </argument>
         </arguments>
@@ -350,53 +309,28 @@ and other.sprite_height &lt; 34
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hunger = 0
-and ready = 0
-and other.sprite_height &lt; 34
+            <string>///Eat bricks
+if hunger = 0
 {
+
+    //Item eaten
     hunger = 1
+
+    //Move tongue back
     ready = 1
-    food = instance_create(x,y,obj_item_eaten)
-    food.sprite_index = spr_throwblock_th
-    food.image_index = 0
-    obj_yoshi.fullmouth = 1
+
+    //Put it in Yoshi's mouth
     obj_yoshi.inmouth = obj_thrownbrick
-    obj_yoshi.shellsprite = other.throwsprite
+
+    //Remember its sprite
+    obj_yoshi.mouthsprite = other.throwsprite
+
+    //Food sprite
+    foodsprite = other.throwsprite
+
+    //Destroy food
     with other instance_destroy()
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if hunger = 0
-and ready = 0
-{
-    hunger = 1
-    ready = 1
-    powerup = 1
-    food = instance_create(x,y,obj_enemy_eaten)
-    food.sprite_index = other.sprite_index
-    food.image_index = other.image_index
-    food.powerup = other.object_index
-    with other instance_destroy()
+
 }
 </string>
           </argument>
@@ -420,10 +354,16 @@ and ready = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(spr_tongue,1,tongue1x,y,obj_mario.direct,1,0,c_white,1)
+            <string>///Draw Tongue
+draw_sprite_ext(spr_tongue,1,tongue1x,y,obj_mario.direct,1,0,c_white,1)
 draw_sprite_ext(spr_tongue,1,tongue2x,y,obj_mario.direct,1,0,c_white,1)
 draw_sprite_ext(spr_tongue,1,tongue3x,y,obj_mario.direct,1,0,c_white,1)
-draw_sprite_ext(spr_tongue,0,x,y,obj_mario.direct,1,0,c_white,1)</string>
+draw_sprite_ext(spr_tongue,0,x,y,obj_mario.direct,1,0,c_white,1)
+
+//Draw eaten item
+if hunger = 1
+    draw_sprite(foodsprite,foodindex,round(x-8+(sprite_get_width(foodsprite)/2)*image_xscale)-sprite_width,y-4)
+</string>
           </argument>
         </arguments>
       </action>
