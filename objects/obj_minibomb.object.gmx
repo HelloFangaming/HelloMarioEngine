@@ -3,9 +3,9 @@
   <spriteName>spr_minibomb</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-2</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_physicsparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,12 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.3
-hspeed = 1.5*obj_mario.direct+obj_mario.hspeed
-vspeed = -2
-gravity = 0.1
+            <string>///Small bombs for Mario to throw
+
+//Play sound
 audio_play_sound(snd_fireball,0,0)
-alarm[0] = 150</string>
+
+//Animate
+image_speed = 0.3
+
+//Move up
+vspeed = -2
+
+//Blow up
+alarm[0] = 150
+</string>
           </argument>
         </arguments>
       </action>
@@ -52,8 +60,10 @@ alarm[0] = 150</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x+4,y+3,obj_explosion)
-instance_destroy()</string>
+            <string>///Explode
+instance_create(x+4,y+3,obj_explosion)
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
@@ -75,52 +85,22 @@ instance_destroy()</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hspeed &gt; 0
-and collision_rectangle(x+hspeed+7,y,x+hspeed+7,y+10,obj_solid,0,0)
-    hspeed = -2
-if hspeed &lt; 0
-and collision_rectangle(x+hspeed-1,y,x+hspeed-1,y+10,obj_solid,0,0)
-    hspeed = 2
-if vspeed &lt; 0
-and collision_rectangle(x,y-1,x+7,y-1,obj_solid,0,0)
-    vspeed = 1
-if collision_rectangle(x,y+12,x+7,y+12,obj_solidtop,0,0)
-or collision_rectangle(x,y+12,x+7,y+12,obj_slopeparent,1,0)
-    gravity = 0.1
-if x&lt;view_xview[0]-16
-or x&gt;view_xview[0]+336
-or y&gt;view_yview[0]+256
-    instance_destroy()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_slopeparent">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if vspeed &gt; 0
-{
-    while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-        y-=1
-    vspeed = 0
-    gravity = 0
+            <string>///Mini-bomb logic
+
+//Default event
+event_inherited()
+
+//Stop moving on ground
+if gravity = 0
     hspeed = 0
-}
+
+//Less gravity
+else
+    gravity = 0.1
+
+//Destroy outside view
+if outside_view()
+    instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -143,12 +123,12 @@ or y&gt;view_yview[0]+256
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-6 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-sprite_height+5 and vspeed &gt; 0
 {
-    y = other.y-11
+    y = other.y-sprite_height
     vspeed = 0
     gravity = 0
-    hspeed = 0
 }
 </string>
           </argument>

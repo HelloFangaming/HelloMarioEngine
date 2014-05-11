@@ -964,7 +964,6 @@
       <sprite>sprites\spr_mask32x16</sprite>
       <sprite>sprites\spr_mask32x32</sprite>
       <sprite>sprites\spr_mask64x64</sprite>
-      <sprite>sprites\spr_starmask</sprite>
       <sprite>sprites\spr_linemask</sprite>
       <sprite>sprites\spr_stopblock</sprite>
       <sprite>sprites\spr_24mask</sprite>
@@ -1498,16 +1497,15 @@
         <object>objects\obj_deactenemyparent</object>
         <object>objects\obj_subconenemyparent</object>
         <object>objects\obj_bossparent</object>
-        <object>objects\obj_parcarry</object>
-        <object>objects\obj_parpull</object>
-        <object>objects\obj_slopeparent</object>
-        <object>objects\obj_holdparent</object>
         <object>objects\obj_blockparent</object>
         <object>objects\obj_grayblockparent</object>
-        <object>objects\obj_parprojectile</object>
-        <object>objects\obj_deactivation</object>
         <object>objects\obj_worldparent</object>
         <object>objects\obj_panelparent</object>
+        <object>objects\obj_parpull</object>
+        <object>objects\obj_parcarry</object>
+        <object>objects\obj_holdparent</object>
+        <object>objects\obj_slopeparent</object>
+        <object>objects\obj_deactivation</object>
       </objects>
       <objects name="Do Not Use">
         <objects name="Mario">
@@ -1556,7 +1554,6 @@
           <object>objects\obj_powerupsprout</object>
           <object>objects\obj_reserveitem</object>
           <object>objects\obj_grasspowerup</object>
-          <object>objects\obj_notepowerup</object>
           <object>objects\obj_getpowerup</object>
           <object>objects\obj_fireball</object>
           <object>objects\obj_hammer</object>
@@ -1666,7 +1663,6 @@
             <object>objects\obj_shard</object>
           </objects>
           <objects name="Platforms">
-            <object>objects\obj_spinmask</object>
             <object>objects\obj_arrowplatform_move</object>
             <object>objects\obj_blocktrain_front</object>
             <object>objects\obj_blocktrain_middle</object>

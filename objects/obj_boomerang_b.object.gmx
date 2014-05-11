@@ -5,8 +5,8 @@
   <visible>-1</visible>
   <depth>-2</depth>
   <persistent>0</persistent>
-  <parentName>obj_parprojectile</parentName>
-  <maskName>spr_square</maskName>
+  <parentName>&lt;undefined&gt;</parentName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -25,12 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.3
+            <string>///Boomerangs
+
+//Number of kills
+hitpoint = 0
+
+//Play sound
 audio_play_sound(snd_fireball,0,0)
-hspeed = 1.5*obj_mario.direct
+
+//Animate
+image_speed = 0.3
+
+//Move up
 vspeed = -1
-alarm[0] = 32
+
+//State variable
 ready = 0
+
+//Boomerang sequence
+alarm[0] = 32
 </string>
           </argument>
         </arguments>
@@ -53,8 +66,11 @@ ready = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 0
-y = ystart</string>
+            <string>///Stop moving down
+vspeed = 0
+y = ystart
+ready = 1
+</string>
           </argument>
         </arguments>
       </action>
@@ -76,9 +92,9 @@ y = ystart</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed = -hspeed
+            <string>///Reverse horizontal direction
+hspeed = -hspeed
 alarm[3] = 16
-ready = 1
 </string>
           </argument>
         </arguments>
@@ -101,7 +117,8 @@ ready = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 1
+            <string>///Start moving down
+vspeed = 1
 alarm[2] = 16
 </string>
           </argument>
@@ -125,7 +142,8 @@ alarm[2] = 16
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 0
+            <string>///Stop moving up
+vspeed = 0
 alarm[1] = 40
 </string>
           </argument>
@@ -149,10 +167,37 @@ alarm[1] = 40
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if x&lt;view_xview[0]-16
-or x&gt;view_xview[0]+336
-or y&gt;view_yview[0]+256
+            <string>///Destroy outside view
+if outside_view()
     instance_destroy()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_enemyparent">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Hurt enemies
+if other.hardness = 0
+{
+    scr_musicalscale(id,other.id,1)
+    with other event_user(0)
+}
 </string>
           </argument>
         </arguments>
@@ -175,7 +220,8 @@ or y&gt;view_yview[0]+256
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 1
+            <string>///Catch the boomerang
+if ready = 1
 {
     instance_create(x,y,obj_smoke)
     instance_destroy()

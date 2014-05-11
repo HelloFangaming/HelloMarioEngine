@@ -101,7 +101,7 @@ if mypowerup != -1
 {
 
     //Make the powerup
-    with instance_create(x,y,obj_notepowerup) sprite_index = scr_constant_get_sprite(other.mypowerup)
+    scr_sprite_make_object(x,y+1,scr_constant_get_sprite(other.mypowerup))
 
     //Empty the note block
     mypowerup = -1

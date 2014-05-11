@@ -3,9 +3,9 @@
   <spriteName>spr_hammer2</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1</depth>
+  <depth>-2</depth>
   <persistent>0</persistent>
-  <parentName>obj_parprojectile</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,16 +25,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
+            <string>///Hammers
+
+//Number of kills
+hitpoint = 0
+
+//Play sound
 audio_play_sound(snd_fireball,0,0)
-if obj_mario.direct = 1
-    hspeed = obj_mario.hspeed+2
-if obj_mario.direct = -1
-{
-    hspeed = obj_mario.hspeed-2
-    image_xscale = -1
-}
+
+//Animate
+image_speed = 0.15
+
+//Gravity
 gravity = 0.4
+
+//Move up
 vspeed = -8
 </string>
           </argument>
@@ -58,10 +63,71 @@ vspeed = -8
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if x&lt;view_xview[0]-16
-or x&gt;view_xview[0]+336
-or y&gt;view_yview[0]+256
+            <string>///Destroy outside view
+if outside_view()
     instance_destroy()
+
+//Correct facing direction
+if hspeed &lt; 0
+    image_xscale = -1
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_enemyparent">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Hurt enemies
+if other.hardness = 0
+{
+    scr_musicalscale(id,other.id,1)
+    with other event_user(0)
+}
+
+//Otherwise, get killed
+else if other.hardness &lt; 100
+    event_user(0)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Destroy hammer
+audio_play_sound(snd_bump,0,0)
+instance_create(x-8,y,obj_smoke)
+instance_destroy()
 </string>
           </argument>
         </arguments>

@@ -71,7 +71,7 @@ alarm[0] = 100
           <argument>
             <kind>1</kind>
             <string>///Change enemy depth
-with enemy depth = 0
+with newenemy depth = 0
 </string>
           </argument>
         </arguments>
@@ -111,17 +111,17 @@ if instance_number(myenemy) &lt; 6
 {
 
     //Make enemy
-    enemy = instance_create(x+8+type,y+16,myenemy)
+    newenemy = instance_create(x+8+type,y+16,myenemy)
 
     //Make enemy move
-    enemy.hspeed = 0.5*type
+    newenemy.hspeed = 0.5*type
 
     //Deal with goomba's weirdness
     if myenemy = obj_goomba
-        enemy.x -= 8
+        newenemy.x -= 8
 
     //Change depth to behind tiles
-    enemy.depth = 10
+    newenemy.depth = 10
 
     //Change depth back later
     alarm[1] = 30

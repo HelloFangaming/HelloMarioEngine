@@ -72,7 +72,7 @@ image_speed = 0.15
     obj_mario.visible = 1
     obj_mario.holding = 0
     with obj_puller instance_destroy()
-    varid = instance_create(x,y,obj_grasspowerup)
+    varid = instance_create(x,y-1,obj_grasspowerup)
     varid.hspeed = obj_mario.direct
     varid.sprite_index = scr_constant_get_sprite(sprout)
     instance_destroy()

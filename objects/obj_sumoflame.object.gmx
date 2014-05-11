@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_physicsparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,32 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.25
-vspeed = 1</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_slopeparent">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
-vspeed = 0
+            <string>///Burning flames
+
+//Animate
+image_speed = 0.25
+
+//Do not create inside solidtops
+while position_meeting(x+8,bbox_bottom,obj_solidtop)
+    y--
 </string>
           </argument>
         </arguments>
@@ -73,8 +55,14 @@ vspeed = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>y = other.y-32
-vspeed = 0</string>
+            <string>///Floor collision
+if y &lt; other.y-sprite_height+5 and vspeed &gt; 0
+{
+    y = other.y-sprite_height
+    vspeed = 0
+    gravity = 0
+}
+</string>
           </argument>
         </arguments>
       </action>
@@ -96,8 +84,8 @@ vspeed = 0</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.invincible = 0
-    with other event_user(0)
+            <string>///Hurt Mario
+with other event_user(0)
 </string>
           </argument>
         </arguments>
@@ -120,7 +108,9 @@ vspeed = 0</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy()</string>
+            <string>///Destroy
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>

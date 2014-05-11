@@ -994,7 +994,7 @@ and disablecontrols = 0
                 and instance_number(obj_fireball) &lt; 2
                 {
                     firing = 9
-                    instance_create(x,y+16,obj_fireball)
+                    with instance_create(x,y+16,obj_fireball) hspeed = 3*other.direct
                 }
 
                 //Hammer
@@ -1002,7 +1002,7 @@ and disablecontrols = 0
                 and instance_number(obj_hammer) &lt; 2
                 {
                     firing = 9
-                    instance_create(x,y+16,obj_hammer)
+                    with instance_create(x,y+16,obj_hammer) hspeed = 2*other.direct+other.hspeed
                 }
 
                 //Tail Spin
@@ -1015,7 +1015,7 @@ and disablecontrols = 0
                 and instance_number(obj_minibomb) &lt; 1
                 {
                     firing = 9
-                    instance_create(x,y+16,obj_minibomb)
+                    with instance_create(x,y+16,obj_minibomb) hspeed = 1.5*other.direct+other.hspeed
                 }
 
                 //Ice Ball
@@ -1023,7 +1023,7 @@ and disablecontrols = 0
                 and not instance_exists(obj_iceball)
                 {
                     firing = 9
-                    instance_create(x,y+16,obj_iceball)
+                    with instance_create(x,y+16,obj_iceball) hspeed = 3*other.direct
                 }
 
                 //Super Ball
@@ -1031,7 +1031,7 @@ and disablecontrols = 0
                 and instance_number(obj_superball) &lt; 2
                 {
                     firing = 9
-                    instance_create(x,y+16,obj_superball)
+                    with instance_create(x,y+16,obj_superball) hspeed = 2*other.direct
                 }
 
                 //Shuriken
@@ -1039,7 +1039,7 @@ and disablecontrols = 0
                 and instance_number(obj_shuriken) &lt; 2
                 {
                     firing = 9
-                    instance_create(x,y+20,obj_shuriken)
+                    with instance_create(x,y+20,obj_shuriken) hspeed = 5*other.direct
                 }
 
                 //Boomerang
@@ -1047,7 +1047,7 @@ and disablecontrols = 0
                 and instance_number(obj_boomerang_b) &lt; 2
                 {
                     firing = 9
-                    instance_create(x-8,y+16,obj_boomerang_b)
+                    with instance_create(x-8,y+16,obj_boomerang_b) hspeed = 1.5*other.direct
                 }
 
             }
@@ -1164,6 +1164,44 @@ if y &lt; other.y-27 and vspeed &gt; 0
 
     //Reset bee flying
     beefly = 0
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="16">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Give Mario temporary invincibility
+
+//If Mario is not star invincible
+if invincible != -1
+{
+
+    //Make Mario invincible
+    invincible = 1
+
+    //Start Mario's alpha blink
+    alarm[1] = 1
+
+    //End Mario's alpha blink
+    alarm[3] = 60
+
 }
 </string>
           </argument>

@@ -369,7 +369,7 @@ event_user(0)
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_parprojectile">
+    <event eventtype="4" ename="obj_fireball">
       <action>
         <libid>1</libid>
         <id>603</id>

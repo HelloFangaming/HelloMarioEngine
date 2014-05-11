@@ -236,7 +236,7 @@ and obj_mario.netsmack = 1
           <argument>
             <kind>1</kind>
             <string>///Net koopa stomping
-with instance_create(round(x-8),round(y+16),obj_enemy_stomped) sprite_index = spr_shell
+with instance_create(round(x),round(y+16),obj_enemy_stomped) sprite_index = spr_shell
 
 //Destroy
 instance_destroy()
@@ -263,7 +263,7 @@ instance_destroy()
           <argument>
             <kind>1</kind>
             <string>///Koopa killing
-with instance_create(round(x-8),round(y+16),obj_enemy_dead) sprite_index = spr_shell
+with instance_create(round(x),round(y+16),obj_enemy_dead) sprite_index = spr_shell
 
 //Destroy
 instance_destroy()

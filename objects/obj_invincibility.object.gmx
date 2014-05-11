@@ -6,7 +6,7 @@
   <depth>-6</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
-  <maskName>spr_starmask</maskName>
+  <maskName>spr_bigmask</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -25,66 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not audio_is_playing(snd_starman)
-{
-    audio_play_sound(snd_starman,99,1)
-    audio_play_sound(snd_letsgo,0,0)
-}
-obj_mario.invincible = -1
-obj_levelmanager.alarm[1] = 1
-alarm[0] = 1000
-alarm[1] = 1
-alarm[3] = 4
-hitpoint = 0
-newstar = 0
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="3">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Handle Mario's invincibility flashing
+            <string>///The power of invincibility
 
-//Keep flashing until the invincibility is done
-if newstar = 0
-{
-    with obj_mario
-    {
-        if isflashing = 0
-            isflashing = 1
-        else
-            isflashing = 0
-    }
-    with obj_warpmario
-    {
-        if isflashing = 0
-            isflashing = 1
-        else
-            isflashing = 0
-    }
-    alarm[3] = 4
-}
-else
-{
-    with obj_mario isflashing = 0
-    with obj_warpmario isflashing = 0
-}
+//Number of kills
+hitpoint = 0
+
+//Prepare to end invincibility
+alarm[0] = 1000
+
+//Make sparkle trail
+alarm[1] = 1
+
+//Handle invincibility flashing
+alarm[2] = 4
 </string>
           </argument>
         </arguments>
@@ -107,8 +60,28 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_mario.invincible = 0
-instance_destroy()
+            <string>///Handle Mario's invincibility flashing
+
+//Make Mario flash
+with obj_mario
+{
+    if isflashing = 0
+        isflashing = 1
+    else
+        isflashing = 0
+}
+
+//Make warp Mario flash
+with obj_warpmario
+{
+    if isflashing = 0
+        isflashing = 1
+    else
+        isflashing = 0
+}
+
+//Keep flashing
+alarm[2] = 4
 </string>
           </argument>
         </arguments>
@@ -131,7 +104,8 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if visible = 1
+            <string>///Create a sparkle trail
+if visible = 1
     with instance_create(x-8+random(16),y-8+random(16),obj_sparkletrail) depth = other.depth
 alarm[1] = 8
 </string>
@@ -156,15 +130,27 @@ alarm[1] = 8
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_mario)
-or instance_exists(obj_warpmario)
+            <string>///End the invincibility
+
+//Stop the star music
+audio_stop_sound(snd_starman)
+
+//Start the regular music
+obj_levelmanager.alarm[0] = 1
+
+//Give Mario temporary invincibility + disable flashing effects
+with obj_mario
 {
-    audio_stop_sound(snd_starman)
-    obj_levelmanager.alarm[0] = 1
-    obj_mario.alarm[1] = 1
-    alarm[2] = 60
-    newstar = 1
+    isflashing = 0
+    invincible = 1
+    event_user(6)
 }
+
+//Disable flashing effects
+with obj_warpmario isflashing = 0
+
+//Destroy
+instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -187,27 +173,46 @@ or instance_exists(obj_warpmario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_mario)
+            <string>///Invincibility logic
+
+//If Mario exists
+if instance_exists(obj_mario)
 {
+
+    //Snap to position
     x = obj_mario.x
     y = obj_mario.y
+
+    //Set depth
     depth = -6
+
+    //Make sure Mario is fully invincible
     obj_mario.invincible = -1
+
 }
+
+//If warp Mario exists
 else if instance_exists(obj_warpmario)
 {
+
+    //Snap to position
     x = obj_warpmario.x
     y = obj_warpmario.y
+
+    //Set depth
     depth = 10
+
 }
-if instance_exists(obj_mario)
-or instance_exists(obj_warpmario)
-    visible = 1
+
+//Be invisible if neither exists
 else
+{
     visible = 0
-if newstar = 1
-and instance_number(obj_invincibility) &gt; 1
-    instance_destroy()
+    exit
+}
+
+//Otherwise, be visible
+visible = 1
 </string>
           </argument>
         </arguments>
@@ -263,9 +268,11 @@ and other.hardness &lt; 99
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if audio_is_playing(snd_starman)
-and alarm[0] &gt; 5
+            <string>///Remember the star for the next room
+if alarm[0] &gt; 5
     global.star = alarm[0]
+
+//Stop the star if there is not enough time left
 else
     audio_stop_sound(snd_starman)
 </string>

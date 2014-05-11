@@ -6,7 +6,7 @@
   <depth>-2</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
-  <maskName>spr_square</maskName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -25,8 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.3
+            <string>///Enemy boomerangs
+
+//Animate
+image_speed = 0.3
+
+//Move up
 vspeed = -1
+
+//Boomerang sequence
 alarm[0] = 32
 </string>
           </argument>
@@ -50,8 +57,10 @@ alarm[0] = 32
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 0
-y = ystart</string>
+            <string>///Stop moving down
+vspeed = 0
+y = ystart
+</string>
           </argument>
         </arguments>
       </action>
@@ -73,7 +82,8 @@ y = ystart</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed = -hspeed
+            <string>///Reverse horizontal direction
+hspeed = -hspeed
 alarm[3] = 16
 </string>
           </argument>
@@ -97,7 +107,8 @@ alarm[3] = 16
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 1
+            <string>///Start moving down
+vspeed = 1
 alarm[2] = 16
 </string>
           </argument>
@@ -121,7 +132,8 @@ alarm[2] = 16
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 0
+            <string>///Stop moving up
+vspeed = 0
 alarm[1] = 40
 </string>
           </argument>
@@ -145,9 +157,8 @@ alarm[1] = 40
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if x&lt;view_xview[0]-16
-or x&gt;view_xview[0]+336
-or y&gt;view_yview[0]+256
+            <string>///Destroy outside view
+if outside_view()
     instance_destroy()
 </string>
           </argument>
@@ -171,8 +182,8 @@ or y&gt;view_yview[0]+256
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.invincible = 0
-    with other event_user(0)
+            <string>///Hurt Mario
+with other event_user(0)
 </string>
           </argument>
         </arguments>

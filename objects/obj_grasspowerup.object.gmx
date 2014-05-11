@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_physicsparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,9 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
+            <string>///A powerup pulled from the ground
+
+//Animate
+image_speed = 0.15
+
+//Move up
 vspeed = -4
-gravity = 0.125</string>
+</string>
           </argument>
         </arguments>
       </action>
@@ -49,22 +54,34 @@ gravity = 0.125</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if vspeed &gt; 0
+            <string>///Grass powerup logic
+
+//If moving down
+if vspeed &gt; 0
 {
-    varid = scr_sprite_make_object(x,y,sprite_index)
-    varid.hspeed = hspeed
-    varid.vspeed = vspeed
+
+    //Make the real powerup with the same speed
+    with scr_sprite_make_object(x,y,sprite_index)
+    {
+        hspeed = other.hspeed
+        vspeed = other.vspeed
+    }
+
+    //Destroy
     instance_destroy()
+
 }
-if hspeed &gt; 0
-and collision_rectangle(x+hspeed+16,y,x+hspeed+16,y+15,obj_solid,0,0)
-    hspeed = -1
-if hspeed &lt; 0
-and collision_rectangle(x+hspeed-1,y,x+hspeed-1,y+15,obj_solid,0,0)
-    hspeed = 1
-if vspeed &lt; 0
-and collision_rectangle(x,y-1,x+15,y-1,obj_solid,0,0)
-    vspeed = 1
+
+//Otherwise
+{
+
+    //Default event
+    event_inherited()
+
+    //Less gravity
+    gravity = 0.125
+
+}
 </string>
           </argument>
         </arguments>

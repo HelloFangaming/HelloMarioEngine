@@ -25,10 +25,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>myspin = instance_create(x,y,obj_spinmask)
+            <string>///Spinning platform
+
+//Create solidtop
+myspin = instance_create(x,y,obj_solidtop)
+myspin.mask_index = spr_spinmask
+
+//Do not animate
 image_speed = 0
+
+//Start animating
 alarm[0] = 100
-spintimes = 9</string>
+
+//Number of times to spin
+spintimes = 9
+</string>
           </argument>
         </arguments>
       </action>
@@ -50,8 +61,14 @@ spintimes = 9</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with myspin instance_destroy()
-image_speed = 0.5</string>
+            <string>///Start spinning
+
+//Destroy solidtop
+with myspin instance_destroy()
+
+//Animate
+image_speed = 0.5
+</string>
           </argument>
         </arguments>
       </action>
@@ -73,12 +90,21 @@ image_speed = 0.5</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if image_speed = 0.5
-with other
+            <string>///Fling Mario off when spinning
+if image_speed = 0.5
 {
-    hspeed = -hspeed
-    vspeed = -vspeed
-    jumpnow = 2
+    with other
+    {
+        if x &gt; other.x+24
+            hspeed = abs(hspeed)
+        else
+            hspeed = -abs(hspeed)
+        if y &gt; other.y
+            vspeed = abs(vspeed)
+        else
+            vspeed = -abs(vspeed)
+        jumpnow = 2
+    }
 }
 </string>
           </argument>
@@ -102,16 +128,31 @@ with other
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if spintimes = 0
+            <string>///Finish spinning
+
+//If it is done spinning
+if spintimes = 0
 {
-    myspin = instance_create(x,y,obj_spinmask)
+
+    //Recreate solidtop
+    myspin = instance_create(x,y,obj_solidtop)
+    myspin.mask_index = spr_spinmask
+
+    //Stop animating
     image_speed = 0
     image_index = 0
-    alarm[0] = 100
+
+    //Reset spin count
     spintimes = 9
+
+    //Spin again later
+    alarm[0] = 100
+
 }
+
+//Otherwise, decrement
 else
-    spintimes -=1
+    spintimes--
 </string>
           </argument>
         </arguments>

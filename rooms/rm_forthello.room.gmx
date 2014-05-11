@@ -233,6 +233,7 @@
     <instance objName="obj_warproom" x="2592" y="320" name="inst_D378D937" locked="0" code="myroom = rm_forthello_wendy" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warproom" x="2464" y="320" name="inst_C80AC529" locked="0" code="myroom = rm_forthello_boomboom" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warproom" x="2528" y="320" name="inst_449698B0" locked="0" code="myroom = rm_forthello_larry" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_pullmush" x="2240" y="320" name="inst_E4F38853" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset" x="1584" y="96" w="32" h="48" xo="96" yo="320" id="10006906" name="tile_1A243087" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

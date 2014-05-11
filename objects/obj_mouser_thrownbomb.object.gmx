@@ -31,7 +31,7 @@
 image_speed = 0
 
 //Move up
-vspeed = -3
+vspeed = -1
 </string>
           </argument>
         </arguments>
@@ -58,8 +58,15 @@ vspeed = -3
 if not place_meeting(x,y,obj_mouser)
 {
 
+    //Previous hspeed
+    prevhspeed = hspeed
+
     //Default event
     event_inherited()
+
+    //If the direction changed, stop horizontal motion
+    if hspeed != prevhspeed
+        hspeed = 0
 
     //Become a bomb after landing
     if gravity = 0
