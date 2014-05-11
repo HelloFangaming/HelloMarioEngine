@@ -25,8 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if collision_point(x-25,y+4,obj_solid,1,1)
+            <string>///Bouncy thingy
+
+//Change orientation of there is a solid to the right
+if position_meeting(x-25,y+4,obj_solid)
     image_xscale = -1
+
+//Do not animate
 image_speed = 0
 </string>
           </argument>
@@ -50,17 +55,25 @@ image_speed = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.y &lt; y-20
+            <string>///Make Mario bounce off
+if other.y &lt; y-20
 and other.y &gt; y-25
 and other.vspeed &gt; 0
 {
+
+    //Animate
     image_speed = 0.5
+
+    //Play spring sound
     audio_play_sound(snd_spring,0,0)
+
+    //Bounce Mario
     with other
     {
         event_user(1)
         vspeed = -5.2
     }
+
 }
 </string>
           </argument>
@@ -84,7 +97,8 @@ and other.vspeed &gt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
+            <string>///Finish animation
+image_speed = 0
 image_index = 0
 </string>
           </argument>

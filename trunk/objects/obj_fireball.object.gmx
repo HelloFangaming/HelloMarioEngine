@@ -3,9 +3,9 @@
   <spriteName>spr_fireball</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-2</depth>
   <persistent>0</persistent>
-  <parentName>obj_parprojectile</parentName>
+  <parentName>obj_physicsparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,15 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_fireball,0,0)
-gravity = 0.25
-if obj_mario.direct = 1
-    hspeed = 3
-if obj_mario.direct = -1
-{
-    hspeed = -3
-    image_xscale = -1
-}
+            <string>///Fireball
+
+//Play sound
+audio_play_sound(snd_fireball,0,0)
+
+//Animate
 image_speed = 0.15
 </string>
           </argument>
@@ -57,40 +54,68 @@ image_speed = 0.15
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hspeed &gt; 0
-and collision_rectangle(x+hspeed,y+4,x+hspeed,y+11,obj_solid,0,0)
+            <string>///Fireball logic
+
+//Previous hspeed
+prevhspeed = hspeed
+
+//Default event
+event_inherited()
+
+//If the direction changed, destroy
+if hspeed != prevhspeed
     event_user(0)
-if hspeed &lt; 0
-and collision_rectangle(x+hspeed,y+4,x+hspeed,y+11,obj_solid,0,0)
+
+//Destroy outside view
+if outside_view()
+    instance_destroy()
+
+//Bounce
+if gravity = 0
+{
+    vspeed = -3
+    y--
+}
+
+//Melt ice
+with collision_rectangle(bbox_left-3,bbox_top-3,bbox_right+3,bbox_bottom+4,obj_icecoin,0,0)
+{
     event_user(0)
-if collision_rectangle(x-4,y+12,x+3,y+12,obj_solidtop,0,0)
-{
-    gravity = 0
-    vspeed = -3
+    with other instance_destroy()
 }
-else
-    gravity = 0.25
-if vspeed &gt; 3
-    vspeed = 3
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,0,0)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_enemyparent">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Kill enemies
+if other.hardness = 0
 {
-    vspeed = -3
-    y-=1
+    audio_play_sound(snd_kick,0,0)
+    with instance_create(other.x,other.y,obj_score) event_user(0)
+    with other event_user(0)
 }
-if vspeed &lt; 0
-and collision_rectangle(x-4,y,x+3,y,obj_solid,0,0)
-    vspeed = 1
-if x&lt;view_xview[0]-16
-or x&gt;view_xview[0]+336
-or y&gt;view_yview[0]+256
-    instance_destroy()
-if collision_rectangle(x-4,y+15,x+3,y+15,obj_subconenemyparent,0,0)
-    y += 5
-if collision_rectangle(x-12,y+2,x+11,y+15,obj_icecoin,0,0)
-{
-    with collision_rectangle(x-12,y+2,x+11,y+15,obj_icecoin,0,0) event_user(0)
-    instance_destroy()
-}
+
+//Get killed
+if other.hardness &lt; 100
+    event_user(0)
 </string>
           </argument>
         </arguments>
@@ -113,14 +138,39 @@ if collision_rectangle(x-12,y+2,x+11,y+15,obj_icecoin,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-7 and vspeed &gt; 0
-and other.object_index != obj_subconenemyparent
-and other.object_index != obj_icecoin
+            <string>///Floor collision
+if y &lt; other.y-7 and vspeed &gt; 0
 {
     y = other.y-12
-    vspeed = -3
+    vspeed = 0
     gravity = 0
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Destroy fireball
+audio_play_sound(snd_bump,0,0)
+instance_create(x-8,y,obj_smoke)
+instance_destroy()
 </string>
           </argument>
         </arguments>

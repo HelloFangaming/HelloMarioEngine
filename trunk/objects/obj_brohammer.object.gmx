@@ -6,7 +6,7 @@
   <depth>-2</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
-  <maskName>spr_enemymask</maskName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -25,8 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
+            <string>///Enemy hammers
+
+//Animate
+image_speed = 0.15
+
+//Gravity
 gravity = 0.4
+
+//Move up
 vspeed = -8
 </string>
           </argument>
@@ -50,10 +57,11 @@ vspeed = -8
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if x&lt;view_xview[0]-16
-or x&gt;view_xview[0]+336
-or y&gt;view_yview[0]+256
+            <string>///Destroy outside view
+if outside_view()
     instance_destroy()
+
+//Correct facing direction
 if hspeed &lt; 0
     image_xscale = -1
 </string>
@@ -78,8 +86,8 @@ if hspeed &lt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.invincible = 0
-    with other event_user(0)
+            <string>///Hurt Mario
+with other event_user(0)
 </string>
           </argument>
         </arguments>

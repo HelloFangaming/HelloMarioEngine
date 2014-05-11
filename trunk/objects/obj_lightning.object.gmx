@@ -6,7 +6,7 @@
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
-  <maskName>spr_square</maskName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -25,8 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
-vspeed = 4</string>
+            <string>///Sumo lightning
+
+//Move down
+vspeed = 4
+</string>
           </argument>
         </arguments>
       </action>
@@ -48,9 +51,11 @@ vspeed = 4</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x+32,y-16,obj_sumoflame)
+            <string>///Create third set of lightning and destroy
+instance_create(x+32,y-16,obj_sumoflame)
 instance_create(x-32,y-16,obj_sumoflame)
-instance_destroy()</string>
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
@@ -72,9 +77,11 @@ instance_destroy()</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x+16,y-16,obj_sumoflame)
+            <string>///Create second set of lightning
+instance_create(x+16,y-16,obj_sumoflame)
 instance_create(x-16,y-16,obj_sumoflame)
-alarm[1] = 15</string>
+alarm[1] = 15
+</string>
           </argument>
         </arguments>
       </action>
@@ -96,12 +103,30 @@ alarm[1] = 15</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>y = other.y-16
-alarm[0] = 15
-vspeed = 0
-sprite_index = spr_smoke
-audio_play_sound(snd_flames,0,0)
-instance_create(x,y-16,obj_sumoflame)</string>
+            <string>///Land on the ground
+if visible = 1
+{
+
+    //Become invisible
+    visible = 0
+
+    //Land
+    y = other.y-16
+
+    //Stop moving
+    vspeed = 0
+
+    //Play flames sound
+    audio_play_sound(snd_flames,0,0)
+
+    //Create first flame
+    instance_create(x,y-16,obj_sumoflame)
+
+    //Make more
+    alarm[0] = 15
+
+}
+</string>
           </argument>
         </arguments>
       </action>
@@ -123,31 +148,9 @@ instance_create(x,y-16,obj_sumoflame)</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.invincible = 0
-    with other event_user(0)
+            <string>///Hurt Mario
+with other event_user(0)
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="7">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>visible = 0</string>
           </argument>
         </arguments>
       </action>

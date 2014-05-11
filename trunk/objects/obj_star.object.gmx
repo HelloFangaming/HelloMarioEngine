@@ -136,15 +136,16 @@ if collision_rectangle(x,y+16,x+15,y+16,obj_solidtop,0,0)
           <argument>
             <kind>1</kind>
             <string>if instance_exists(obj_invincibility)
-and obj_invincibility.newstar = 0
 {
     obj_invincibility.alarm[0] = 1000
     audio_play_sound(snd_gotcha,0,0)
 }
 else
 {
-    with obj_invincibility instance_destroy()
     instance_create(x,y,obj_invincibility)
+    audio_play_sound(snd_starman,99,1)
+    audio_play_sound(snd_letsgo,0,0)
+    with obj_levelmanager alarm[1] = 1
 }
 audio_play_sound(snd_powerup,0,0)
 instance_destroy()
