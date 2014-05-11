@@ -79,7 +79,8 @@ if ready = 1
         with instance_create(x-8,y,obj_shell)
         {
             sprite_index = spr_shell_buzzy_down
-            alarm[0] = 1
+            hspeed = 3*other.direct
+            event_user(15)
         }
         instance_destroy()
     }
