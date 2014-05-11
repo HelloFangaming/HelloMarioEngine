@@ -144,7 +144,7 @@ else
     and global.reserveitem = cs_small
         global.reserveitem = cs_big
 
-    //Otherwise, reserve the old powerup
+    //Otherwise, if Mario has a powerup, put that in reserve
     else if global.powerup &gt; cs_big
         global.reserveitem = global.powerup
 

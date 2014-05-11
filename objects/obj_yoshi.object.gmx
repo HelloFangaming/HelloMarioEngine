@@ -25,42 +25,49 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_mario)
-{
-    obj_mario.visible = 0
-    obj_mario.holding = 3
-}
+            <string>///Yoshi is being ridden
+
+//On Yoshi
 global.yoshi = 1
-mymario = scr_marioride()
+
+//Is Yoshi licking?
 licking = 0
-ttttt = 0
-fullmouth = 0
-inmouth = 0
+
+//What is in Yoshi's mouth?
+inmouth = noone
+
+//Sprite of item in mouth
+mouthsprite = noone
+
+//Animation
+anim = 0
+
+//Mario's previous state
 stateprev = 0
-if global.ycolor = 3
-{
-    flying = 0
-    flyanim = 1
-}
+
+//Is blue Yoshi flying?
+flying = 0
+
+//Flying animation
+flyanim = 1
+
+//If an item was carried over
 if global.carrieditem != noone
 {
-    fullmouth = 1
+
+    //Remember the item
     inmouth = global.carrieditem
+
+    //Reset the item
     global.carrieditem = noone
-    if global.carriedsprite != noone
-    {
-        shellsprite = global.carriedsprite
-        global.carriedsprite = noone
-    }
+
+    //Remember the sprite
+    mouthsprite = global.carriedsprite
+
+    //Reset the sprite
+    global.carriedsprite = noone
+
 }
-if global.ycolor = 0
-    sprite_index = spr_yoshi_walk
-else if global.ycolor = 1
-    sprite_index = spr_yoshi_walk_r
-else if global.ycolor = 2
-    sprite_index = spr_yoshi_walk_y
-else if global.ycolor = 3
-    sprite_index = spr_yoshi_walk_b
 </string>
           </argument>
         </arguments>
@@ -83,86 +90,22 @@ else if global.ycolor = 3
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_mario)
-    obj_mario.holding = 0
-if instance_exists(obj_tongue)
-    with obj_tongue instance_destroy()
+            <string>///Destroy Yoshi
+
+//Not on Yoshi
+global.yoshi = 0
+
+//Reset Mario's holding variable
+with obj_mario holding = 0
+
+//Destroy tongue
+with obj_tongue instance_destroy()
+
+//If something is in its mouth, spit it out
 if instance_exists(obj_mario)
-and global.yoshi = 0
-and fullmouth = 1
+and inmouth != noone
     event_user(0)
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="6">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if flying = 1
-{
-    audio_play_sound(snd_lick,0,0)
-    alarm[6] = 15
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="5">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>licking = 0</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>licking = 0</string>
           </argument>
         </arguments>
       </action>
@@ -184,8 +127,13 @@ and fullmouth = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ttttt = 0
-alarm[4] = 5</string>
+            <string>///Make flying noises for blue Yoshi
+if flying = 1
+{
+    audio_play_sound(snd_lick,0,0)
+    alarm[3] = 15
+}
+</string>
           </argument>
         </arguments>
       </action>
@@ -207,8 +155,9 @@ alarm[4] = 5</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ttttt = 1
-instance_create(x,y,obj_tongue)</string>
+            <string>///Finish licking
+licking = 0
+</string>
           </argument>
         </arguments>
       </action>
@@ -230,19 +179,9 @@ instance_create(x,y,obj_tongue)</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>varid = instance_create(x,y,obj_yoshi_abandon)
-if global.ycolor = 1
-    varid.sprite_index = spr_yoshi_walk_r
-else if global.ycolor = 2
-    varid.sprite_index = spr_yoshi_walk_y
-else if global.ycolor = 3
-    varid.sprite_index = spr_yoshi_walk_b
-with obj_mario
-{
-    visible = 1
-    stompstyle = 1
-}
-instance_destroy()
+            <string>///Begin finishing the licking process
+anim = 0
+alarm[2] = 5
 </string>
           </argument>
         </arguments>
@@ -265,16 +204,9 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_mario)
-    obj_mario.visible = 1
-varid = instance_create(x,y,obj_yoshi_runaway)
-if global.ycolor = 1
-    varid.sprite_index = spr_yoshi_hold_r
-else if global.ycolor = 2
-    varid.sprite_index = spr_yoshi_hold_y
-else if global.ycolor = 3
-    varid.sprite_index = spr_yoshi_hold_b
-instance_destroy()
+            <string>///Start licking
+anim = 1
+instance_create(x,y,obj_tongue)
 </string>
           </argument>
         </arguments>
@@ -297,105 +229,196 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_mario)
+            <string>///Yoshi logic
+
+//If Mario exists
+if instance_exists(obj_mario)
 {
+
+    //Snap to position
     x = obj_mario.x
     y = obj_mario.y
+
+    //Force him to be invisible
     obj_mario.visible = 0
+
+    //Force hin to hold Yoshi
     obj_mario.holding = 3
-    if obj_mario.invincible = 1
-        mymario = scr_marioride()
-    if obj_mario.state = 0
+
+    //Use licking sprites when licking
+    if licking = 1
     {
         if global.ycolor = 0
-            sprite_index = spr_yoshi_walk
+            sprite_index = spr_yoshi_lick
         else if global.ycolor = 1
-            sprite_index = spr_yoshi_walk_r
+            sprite_index = spr_yoshi_lick_r
         else if global.ycolor = 2
-            sprite_index = spr_yoshi_walk_y
+            sprite_index = spr_yoshi_lick_y
         else if global.ycolor = 3
-            sprite_index = spr_yoshi_walk_b
-        image_index = 0
+            sprite_index = spr_yoshi_lick_b
+        image_index = anim
     }
-    if obj_mario.state = 1
+
+    //Otherwise
+    else
     {
-        if global.ycolor = 0
-            sprite_index = spr_yoshi_walk
-        else if global.ycolor = 1
-            sprite_index = spr_yoshi_walk_r
-        else if global.ycolor = 2
-            sprite_index = spr_yoshi_walk_y
-        else if global.ycolor = 3
-            sprite_index = spr_yoshi_walk_b
-        image_speed = 0.15
-    }
-    if obj_mario.state = 2
-    {
-        if global.ycolor = 0
-            sprite_index = spr_yoshi_jump
-        else if global.ycolor = 1
-            sprite_index = spr_yoshi_jump_r
-        else if global.ycolor = 2
-            sprite_index = spr_yoshi_jump_y
-        else if global.ycolor = 3
-            sprite_index = spr_yoshi_jump_b
-        if fullmouth = 0
+
+        //If mouth is full, use hold sprites
+        if inmouth != noone
         {
+            if global.ycolor = 0
+                sprite_index = spr_yoshi_hold
+            else if global.ycolor = 1
+                sprite_index = spr_yoshi_hold_r
+            else if global.ycolor = 2
+                sprite_index = spr_yoshi_hold_y
+            else if global.ycolor = 3
+                sprite_index = spr_yoshi_hold_b
+        }
+
+        //If walking, use walk sprites
+        else if obj_mario.state &lt; 2
+        {
+            if global.ycolor = 0
+                sprite_index = spr_yoshi_walk
+            else if global.ycolor = 1
+                sprite_index = spr_yoshi_walk_r
+            else if global.ycolor = 2
+                sprite_index = spr_yoshi_walk_y
+            else if global.ycolor = 3
+                sprite_index = spr_yoshi_walk_b
+        }
+
+        //Otherwise, use jump sprites
+        else
+        {
+            if global.ycolor = 0
+                sprite_index = spr_yoshi_jump
+            else if global.ycolor = 1
+                sprite_index = spr_yoshi_jump_r
+            else if global.ycolor = 2
+                sprite_index = spr_yoshi_jump_y
+            else if global.ycolor = 3
+                sprite_index = spr_yoshi_jump_b
+        }
+
+        //Use stand pose if standing
+        if obj_mario.state = 0
+            image_index = 0
+
+        //Animate when walking
+        else if obj_mario.state = 1
+            image_speed = 0.15
+
+        //Otherwise, if the mouth is empty
+        else if inmouth = noone
+        {
+
+            //Choose a pose based on vertical speed
             if obj_mario.vspeed &gt; 0
                 image_index = 1
             else
                 image_index = 0
+
         }
+
+        //Otherwise, use this image index
         else
             image_index = 1
+
     }
-    if global.ycolor = 2
-    and fullmouth = 1
+
+    //If Yoshi is not licking and control is pressed
+    if licking = 0
+    and keyboard_check_pressed(vk_control)
     {
+
+        //If mouth is empty, start licking
+        if inmouth = noone
+        {
+            audio_play_sound(snd_lick,0,0)
+            licking = 1
+            alarm[0] = 5
+            anim = 0
+        }
+
+        //Otherwise, spit
+        else
+            event_user(0)
+
+    }
+
+    //If yellow Yoshi has something in its mouth
+    if global.ycolor = 2
+    and inmouth != noone
+    {
+
+        //If Mario lands after a jump, stomp
         if stateprev = 2
         and obj_mario.state != 2
             instance_create(x,y+16,obj_stomp)
+
+        //Remember last state
         stateprev = obj_mario.state
+
     }
+
+    //If Yoshi is blue
     else if global.ycolor = 3
     {
+
+        //If shift is held outside water while mouth is full
         if keyboard_check(vk_shift)
         and obj_mario.isswim = 0
-        and fullmouth = 1
+        and inmouth != noone
         {
+
+            //If not flying and moving down, start flying
             if flying = 0
             and obj_mario.vspeed &gt; 0
             {
                 flying = 1
-                alarm[6] = 1
-                if not collision_rectangle(obj_mario.bbox_left,obj_mario.bbox_top-3,obj_mario.bbox_right,obj_mario.bbox_top,obj_solid,1,0)
-                    obj_mario.vspeed = -2
-                flyanim = obj_levelmanager.anim
+                alarm[3] = 1
             }
-            else if flying = 1
-            and not collision_rectangle(obj_mario.bbox_left,obj_mario.bbox_top-3,obj_mario.bbox_right,obj_mario.bbox_top,obj_solid,1,0)
+
+            //Move up if there is no ceiling above Mario
+            with obj_mario
             {
-                obj_mario.vspeed = -2
-                flyanim = obj_levelmanager.anim
+                if not collision_rectangle(bbox_left,bbox_top-3,bbox_right,bbox_top,obj_solid,1,0)
+                    vspeed = -2
             }
+
+            //Sync animation with level manager
+            flyanim = obj_levelmanager.anim
+
         }
+
+        //Otherwise, stop flying
         else
         {
             flying = 0
             flyanim = 1
         }
+
     }
+
+    //Depth
     depth = -5
+
 }
-else if instance_exists(obj_deadmario)
-{
-    global.yoshi = 0
-    instance_destroy()
-}
+
+//If goal Mario exists
 else if instance_exists(obj_goalmario)
 {
+
+    //Snap to position
     x = obj_goalmario.x
     y = obj_goalmario.y
+
+    //Force him to be invisible
+    obj_goalmario.visible = 0
+
+    //Use walk sprites
     if global.ycolor = 0
         sprite_index = spr_yoshi_walk
     else if global.ycolor = 1
@@ -404,31 +427,72 @@ else if instance_exists(obj_goalmario)
         sprite_index = spr_yoshi_walk_y
     else if global.ycolor = 3
         sprite_index = spr_yoshi_walk_b
+
+    //Use stand pose when still
     if obj_goalmario.hspeed = 0
-        image_speed = 0
+        image_index = 0
+
+    //Animate when walking
     else
         image_speed = 0.15
-    obj_goalmario.visible = 0
+
+    //Depth
+    depth = -5
+
 }
+
+//If warp Mario exists
 else if instance_exists(obj_warpmario)
 {
+
+    //Snap to position
     x = obj_warpmario.x
     y = obj_warpmario.y
+
+    //Force him to be invisible
+    obj_warpmario.visible = 0
+
+    //Use walk sprites
+    if global.ycolor = 0
+        sprite_index = spr_yoshi_walk
+    else if global.ycolor = 1
+        sprite_index = spr_yoshi_walk_r
+    else if global.ycolor = 2
+        sprite_index = spr_yoshi_walk_y
+    else if global.ycolor = 3
+        sprite_index = spr_yoshi_walk_b
+
+    //Use stand pose when still
     if obj_warpmario.hspeed = 0
-        image_speed = 0
+        image_index = 0
+
+    //Animate when walking
     else
         image_speed = 0.15
-    obj_warpmario.visible = 0
+
+    //Stay invisible in pipes
     if obj_warpmario.speed = 3
         visible = 0
     else
         visible = 1
+
+    //Depth
     depth = 11
+
 }
+
+//If warp note block exists
 else if instance_exists(obj_warpnoteblock)
 {
+
+    //Snap to position
     x = obj_warpnoteblock.x
     y = obj_warpnoteblock.y
+
+    //Force him to be invisible
+    obj_warpnoteblock.visible = 0
+
+    //Use jump sprites
     if global.ycolor = 0
         sprite_index = spr_yoshi_jump
     else if global.ycolor = 1
@@ -437,13 +501,27 @@ else if instance_exists(obj_warpnoteblock)
         sprite_index = spr_yoshi_jump_y
     else if global.ycolor = 3
         sprite_index = spr_yoshi_jump_b
+
+    //Use correct pose
     image_index = 0
-    obj_warpnoteblock.visible = 0
+
+    //Depth
+    depth = -5
+
 }
+
+//If jump spawn exists
 else if instance_exists(obj_jumpspawn)
 {
+
+    //Snap to position
     x = obj_jumpspawn.x
     y = obj_jumpspawn.y
+
+    //Force him to be invisible
+    obj_jumpspawn.visible = 0
+
+    //Use jump sprites
     if global.ycolor = 0
         sprite_index = spr_yoshi_jump
     else if global.ycolor = 1
@@ -452,9 +530,60 @@ else if instance_exists(obj_jumpspawn)
         sprite_index = spr_yoshi_jump_y
     else if global.ycolor = 3
         sprite_index = spr_yoshi_jump_b
+
+    //Use correct pose
     image_index = 0
-    obj_jumpspawn.visible = 0
+
+    //Depth
+    depth = -5
+
 }
+
+//If Mario dies, destroy
+else if instance_exists(obj_deadmario)
+    instance_destroy()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Abandon Yoshi
+with instance_create(x,y,obj_yoshi_abandon)
+{
+    if global.ycolor = 1
+        sprite_index = spr_yoshi_walk_r
+    else if global.ycolor = 2
+        sprite_index = spr_yoshi_walk_y
+    else if global.ycolor = 3
+        sprite_index = spr_yoshi_walk_b
+}
+
+//Make Mario visible and spin jumping
+with obj_mario
+{
+    visible = 1
+    stompstyle = 1
+}
+
+//Destroy
+instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -477,9 +606,16 @@ else if instance_exists(obj_jumpspawn)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if inmouth = obj_yoshifire
+            <string>///Spit out an item
+
+//If Yoshi has fire in its mouth
+if inmouth = obj_yoshifire
 {
+
+    //Make a fiery sound
     audio_play_sound(snd_flames,0,0)
+
+    //Make Yoshi fire
     with instance_create(x,y,obj_yoshifire)
     {
         hspeed = obj_mario.direct*3
@@ -491,30 +627,57 @@ else if instance_exists(obj_jumpspawn)
         vspeed = 1
     }
     with instance_create(x,y,obj_yoshifire) hspeed = obj_mario.direct*3
+
 }
+
+//Otherwise
 else
 {
+
+    //Play spit sound
     audio_play_sound(snd_spit,0,0)
-    fullmouth = instance_create(x-8,y,inmouth)
-    if inmouth = obj_shell
-        fullmouth.bam = 1
-    if inmouth = obj_shell
-    or inmouth = obj_thrownbrick
-    or inmouth = obj_bobomb_hold
-    or inmouth = obj_getshoe
-        fullmouth.sprite_index = shellsprite
-    if inmouth = obj_shell
-    or inmouth = obj_thrownbrick
-        fullmouth.hspeed = 3*obj_mario.direct
-    else
-        fullmouth.hspeed = obj_mario.hspeed+1.5*obj_mario.direct
-    fullmouth.x += obj_mario.direct*2
-    fullmouth.vspeed = -1
+
+    //Spit out the item
+    with instance_create(x-8+obj_mario.direct*2,y,inmouth)
+    {
+
+        //Temporary shell code
+        if object_index = obj_shell
+            bam = 1
+
+        //Use the correct sprite
+        sprite_index = other.mouthsprite
+
+        //Spit shells and bricks fast
+        if object_index = obj_shell
+        or object_index = obj_thrownbrick
+            hspeed = 3*obj_mario.direct
+
+        //Spit out any other item normally
+        else
+            hspeed = obj_mario.hspeed+1.5*obj_mario.direct
+
+        //Move up
+        vspeed = -1
+
+    }
+
 }
-fullmouth = 0
+
+//Reset mouth item
+inmouth = noone
+
+//Reset item sprite
+mouthsprite = noone
+
+//Licking
 licking = 1
-alarm[5] = 5
-ttttt = 0
+
+//Stop licking
+alarm[2] = 5
+
+//Lick animation
+anim = 0
 </string>
           </argument>
         </arguments>
@@ -537,13 +700,9 @@ ttttt = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if fullmouth = 1
-    global.carrieditem = inmouth
-if inmouth = obj_shell
-or inmouth = obj_thrownbrick
-or inmouth = obj_bobomb_hold
-or inmouth = obj_getshoe
-    global.carriedsprite = shellsprite
+            <string>///Remember carried items
+global.carrieditem = inmouth
+global.carriedsprite = mouthsprite
 </string>
           </argument>
         </arguments>
@@ -566,109 +725,87 @@ or inmouth = obj_getshoe
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_mario)
+            <string>///Draw Yoshi
+
+//If Mario exists
+if instance_exists(obj_mario)
 {
+
     //Make Mario flash
     if obj_mario.isflashing = 1
         shader_set(sha_invert)
 
-    if licking = 1
-    {
-        if global.ycolor = 0
-            draw_sprite_ext(spr_yoshi_lick,ttttt,round(x),y,obj_mario.direct,1,0,c_white,1)
-        else if global.ycolor = 1
-            draw_sprite_ext(spr_yoshi_lick_r,ttttt,round(x),y,obj_mario.direct,1,0,c_white,1)
-        else if global.ycolor = 2
-            draw_sprite_ext(spr_yoshi_lick_y,ttttt,round(x),y,obj_mario.direct,1,0,c_white,1)
-        else if global.ycolor = 3
-            draw_sprite_ext(spr_yoshi_lick_b,ttttt,round(x),y,obj_mario.direct,1,0,c_white,1)
-    }
-    else if fullmouth = 1
-    {
-        if global.ycolor = 0
-            draw_sprite_ext(spr_yoshi_hold,image_index,round(x),y,obj_mario.direct,1,0,c_white,1)
-        else if global.ycolor = 1
-            draw_sprite_ext(spr_yoshi_hold_r,image_index,round(x),y,obj_mario.direct,1,0,c_white,1)
-        else if global.ycolor = 2
-            draw_sprite_ext(spr_yoshi_hold_y,image_index,round(x),y,obj_mario.direct,1,0,c_white,1)
-        else if global.ycolor = 3
-            draw_sprite_ext(spr_yoshi_hold_b,image_index,round(x),y,obj_mario.direct,1,0,c_white,1)
-    }
-    else
-        draw_sprite_ext(sprite_index,image_index,round(x),y,obj_mario.direct,1,0,c_white,1)
-    draw_sprite_ext(mymario,0,round(x)-5*obj_mario.direct,y-9,obj_mario.direct,1,0,c_white,obj_mario.image_alpha)
+    //Draw Yoshi
+    draw_sprite_ext(sprite_index,image_index,round(x),y,obj_mario.direct,1,0,c_white,1)
+
+    //Draw Mario
+    draw_sprite_ext(scr_marioride(),0,round(x)-5*obj_mario.direct,y-9,obj_mario.direct,1,0,c_white,obj_mario.image_alpha)
+
+    //If blue Yoshi has something in it mouth, draw a wing
     if global.ycolor = 3
-    and fullmouth = 1
+    and inmouth != noone
         draw_sprite_ext(spr_wing,flyanim,round(x)-6*obj_mario.direct,y+6,obj_mario.direct,1,0,c_white,obj_mario.image_alpha)
 
     //Reset flashing
     if obj_mario.isflashing = 1
         shader_reset()
+
 }
+
+//If warp Mario exists
 else if instance_exists(obj_warpmario)
 {
+
     //Make Mario flash
     if obj_warpmario.isflashing = 1
         shader_set(sha_invert)
 
+    //Draw Yoshi
     draw_sprite_ext(sprite_index,image_index,round(x),y,obj_warpmario.direct,1,0,c_white,1)
-    draw_sprite_ext(mymario,0,round(x)-5*obj_warpmario.direct,y-9,obj_warpmario.direct,1,0,c_white,1)
+
+    //Draw Mario
+    draw_sprite_ext(scr_marioride(),0,round(x)-5*obj_warpmario.direct,y-9,obj_warpmario.direct,1,0,c_white,1)
 
     //Reset flashing
     if obj_warpmario.isflashing = 1
         shader_reset()
+
 }
+
+//If note block Mario exists
 else if instance_exists(obj_warpnoteblock)
 {
+
+    //Draw Yoshi
     draw_sprite_ext(sprite_index,image_index,round(x),y,obj_warpnoteblock.direct,1,0,c_white,1)
-    draw_sprite_ext(mymario,0,round(x)-5*obj_warpnoteblock.direct,y-9,obj_warpnoteblock.direct,1,0,c_white,1)
+
+    //Draw Mario
+    draw_sprite_ext(scr_marioride(),0,round(x)-5*obj_warpnoteblock.direct,y-9,obj_warpnoteblock.direct,1,0,c_white,1)
+
 }
+
+//If jump spawn exists
 else if instance_exists(obj_jumpspawn)
 {
+
+    //Draw Yoshi
     draw_sprite_ext(sprite_index,image_index,round(x),y,1,1,0,c_white,1)
-    draw_sprite_ext(mymario,0,round(x)-5,y-9,1,1,0,c_white,1)
+
+    //Draw Mario
+    draw_sprite_ext(scr_marioride(),0,round(x)-5,y-9,1,1,0,c_white,1)
+
 }
+
+//If goal Mario exists
 else if instance_exists(obj_goalmario)
 {
+
+    //Draw Yoshi
     draw_sprite_ext(sprite_index,image_index,round(x),y,obj_goalmario.image_xscale,1,0,c_white,obj_goalmario.image_alpha)
-    draw_sprite_ext(mymario,0,round(x)-5*obj_goalmario.image_xscale,y-9,obj_goalmario.image_xscale,1,0,c_white,obj_goalmario.image_alpha)
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="17">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if instance_exists(obj_mario)
-and global.yoshi = 1
-{
-    if licking = 0
-    and fullmouth = 0
-    {
-        audio_play_sound(snd_lick,0,0)
-        licking = 1
-        alarm[2] = 5
-        ttttt = 0
-    }
-    else if not instance_exists(obj_tongue)
-    and fullmouth = 1
-        event_user(0)
+
+    //Draw Mario
+    draw_sprite_ext(scr_marioride(),0,round(x)-5*obj_goalmario.image_xscale,y-9,obj_goalmario.image_xscale,1,0,c_white,obj_goalmario.image_alpha)
+
 }
 </string>
           </argument>

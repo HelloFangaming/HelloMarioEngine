@@ -3,9 +3,9 @@
   <spriteName>spr_3upmoon</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>1</depth>
+  <depth>2</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_powerupparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="4" ename="obj_mario">

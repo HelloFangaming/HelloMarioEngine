@@ -25,8 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.3
+            <string>///Red Yoshi's spit
+
+//Animate
+image_speed = 0.3
+
+//Number of kills
 hitpoint = 0
+
+//Use correct facing direction
 alarm[0] = 1
 </string>
           </argument>
@@ -50,7 +57,8 @@ alarm[0] = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hspeed &lt; 0
+            <string>///Use correct facing direction
+if hspeed &lt; 0
     image_xscale = -1
 </string>
           </argument>
@@ -74,9 +82,8 @@ alarm[0] = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if x&lt;view_xview[0]-16
-or x&gt;view_xview[0]+336
-or y&gt;view_yview[0]+256
+            <string>///Destroy outside view
+if outside_view()
     instance_destroy()
 </string>
           </argument>

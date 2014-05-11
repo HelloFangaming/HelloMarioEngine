@@ -1493,6 +1493,7 @@
     <objects name="Special">
       <objects name="Parents">
         <object>objects\obj_physicsparent</object>
+        <object>objects\obj_powerupparent</object>
         <object>objects\obj_enemyparent</object>
         <object>objects\obj_deactenemyparent</object>
         <object>objects\obj_subconenemyparent</object>
@@ -1640,8 +1641,6 @@
           <object>objects\obj_enemy_frozen</object>
           <object>objects\obj_frozenenemy_pickup</object>
           <object>objects\obj_vegenemy</object>
-          <object>objects\obj_enemy_eaten</object>
-          <object>objects\obj_item_eaten</object>
           <object>objects\obj_stomped</object>
           <object>objects\obj_shell</object>
           <object>objects\obj_brohammer</object>

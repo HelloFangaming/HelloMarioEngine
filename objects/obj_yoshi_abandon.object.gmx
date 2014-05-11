@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-4</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_physicsparent</parentName>
   <maskName>spr_smallmask</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,43 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
-gravity = 0.25
-global.yoshi = 0
-direct = obj_mario.direct</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
-or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0)
-{
-    gravity = 0
-    vspeed = 0
-}
+            <string>///Abandoned Yoshi
+
+//Do not animate
+image_speed = 0
+
+//Facing direction
+if instance_exists(obj_mario)
+    direct = obj_mario.direct
 else
-    gravity = 0.25
-if vspeed &gt; 4
-    vspeed = 4
-while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-    y-=1
+    direct = 1
 </string>
           </argument>
         </arguments>
@@ -84,7 +57,8 @@ while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopepar
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-27 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-27 and vspeed &gt; 0
 {
     y = other.y-32
     vspeed = 0
@@ -112,12 +86,19 @@ while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopepar
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.vspeed &gt; 0
-and obj_mario.holding = 0
-and obj_mario.visible = 1
+            <string>///Ride Yoshi
+
+//If Mario jumps on the Yoshi
+if other.vspeed &gt; 0
+and other.holding = 0
+and other.visible = 1
 {
-    obj_mario.x = x
-    obj_mario.y = y
+
+    //Snap position
+    other.x = x
+    other.y = y
+
+    //Remember the correct Yoshi color
     if sprite_index = spr_yoshi_walk
         global.ycolor = 0
     else if sprite_index = spr_yoshi_walk_r
@@ -126,10 +107,19 @@ and obj_mario.visible = 1
         global.ycolor = 2
     else if sprite_index = spr_yoshi_walk_b
         global.ycolor = 3
+
+    //Make a Yoshi
     instance_create(x,y,obj_yoshi)
+
+    //Make Yoshi sounds
     audio_play_sound(snd_yoshi,0,0)
+
+    //Yoshi is happy
     audio_play_sound(snd_yoshi_happy,0,0)
+
+    //Destroy
     instance_destroy()
+
 }
 </string>
           </argument>
@@ -153,7 +143,9 @@ and obj_mario.visible = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)</string>
+            <string>///Draw Abandoned Yoshi
+draw_sprite_ext(sprite_index,image_index,round(x),y,direct,1,0,c_white,1)
+</string>
           </argument>
         </arguments>
       </action>

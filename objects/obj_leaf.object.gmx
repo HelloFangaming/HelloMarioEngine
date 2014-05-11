@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>2</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_powerupparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,14 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
+            <string>///A raccoon leaf
+
+//Move up
 vspeed = -3
-alarm[0] = 16
+
+//Do not animate
 image_speed = 0
+
+//Use correct image index
 image_index = 2
+
+//State variable
 ready = 0
-bam = x
-bash = x
+
+//Start following path later
+alarm[0] = 16
 </string>
           </argument>
         </arguments>
@@ -55,10 +63,20 @@ bash = x
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 0
-depth = -1
+            <string>///Follow leaf path
+
+//Stop moving
+vspeed = 0
+
+//Change depth
+depth = 0
+
+//Follow leaf path
 path_start(pth_leafpath,1,2,0)
-ready = 1</string>
+
+//Falling state
+ready = 1
+</string>
           </argument>
         </arguments>
       </action>
@@ -80,73 +98,19 @@ ready = 1</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 1
+            <string>///Leaf logic
+
+//If the leaf is falling, use the appropriate image index
+if ready = 1
 {
-    if x &gt; bam
+    if x &gt; xprevious
         image_index = 2
     else
         image_index = 1
 }
-bam = bash
-bash = x
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_mario">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>with instance_create(x,y,obj_score) event_user(0)
-if global.powerup = cs_big
-and global.reserveitem = cs_small
-    global.reserveitem = cs_big
-else if global.powerup &gt; cs_big
-    global.reserveitem = global.powerup
-global.powerup = cs_leaf
-other.invincible = 1
-audio_play_sound(snd_magic,0,0)
-audio_play_sound(snd_gotcha,0,0)
-other.alarm[3] = 60
-other.alarm[1] = 1
-instance_destroy()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if y &gt; room_height
+
+//Destroy when it falls out of the level
+if bbox_top &gt; room_height
     instance_destroy()
 </string>
           </argument>
