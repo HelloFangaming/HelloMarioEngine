@@ -96,13 +96,13 @@ if image_speed = 0.5
     with other
     {
         if x &gt; other.x+24
-            hspeed = abs(hspeed)
+            hspeed = 3
         else
-            hspeed = -abs(hspeed)
+            hspeed = -3
         if y &gt; other.y
-            vspeed = abs(vspeed)
+            vspeed = 3
         else
-            vspeed = -abs(vspeed)
+            vspeed = -3
         jumpnow = 2
     }
 }

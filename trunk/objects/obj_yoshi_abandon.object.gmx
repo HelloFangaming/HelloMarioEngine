@@ -31,10 +31,7 @@
 image_speed = 0
 
 //Facing direction
-if instance_exists(obj_mario)
-    direct = obj_mario.direct
-else
-    direct = 1
+direct = -1
 </string>
           </argument>
         </arguments>

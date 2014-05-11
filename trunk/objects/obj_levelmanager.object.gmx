@@ -1028,7 +1028,7 @@ else if global.carrieditem != noone
     {
 
         //If the item's parent is the subcon carry parent, remember that
-        if object_get_parent(object_index) = obj_parcarry
+        if object_get_parent(object_index) = obj_carryparent
             global.shallihold = 1
 
         //If the parent is the normal hold parent

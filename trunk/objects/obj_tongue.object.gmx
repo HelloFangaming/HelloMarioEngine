@@ -33,6 +33,7 @@ hunger = 0
 //What the food looks like
 foodsprite = noone
 foodindex = 0
+foodoffset = 0
 
 //Eaten powerup
 powerup = noone
@@ -79,7 +80,7 @@ and instance_exists(obj_yoshi)
     tongue3x = t3*obj_mario.direct+tongue1x
 
     //Actual tongue location
-    x = t4*obj_mario.direct+tongue1x
+    x = round(t4*obj_mario.direct+tongue1x)
     y = obj_yoshi.y+20
 
     //If Yoshi is moving his tongue out
@@ -152,48 +153,6 @@ else
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_powerupparent">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Eat powerups
-if hunger = 0
-{
-
-    //Item eaten
-    hunger = 1
-
-    //Move tongue back
-    ready = 1
-
-    //Food sprite
-    foodsprite = other.sprite_index
-
-    //Remember powerup eaten
-    powerup = other.object_index
-
-    //Destroy food
-    with other instance_destroy()
-
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="4" ename="obj_holdparent">
       <action>
         <libid>1</libid>
@@ -232,6 +191,9 @@ and other.object_index != obj_spring_blue
     //Food sprite
     foodsprite = other.sprite_index
 
+    //Food offset
+    foodoffset = 8
+
     //Destroy food
     with other instance_destroy()
 
@@ -269,8 +231,20 @@ and other.hardness &lt; 2
     //Move tongue back
     ready = 1
 
+    //Put these enemies in Yoshi's mouth
+    if other.object_index = obj_shell
+    {
+
+        //Put it in Yoshi's mouth
+        obj_yoshi.inmouth = other.object_index
+
+        //Remember its sprite
+        obj_yoshi.mouthsprite = other.sprite_index
+
+    }
+
     //Put fire in red Yoshi's mouth
-    if global.ycolor = 1
+    else if global.ycolor = 1
         obj_yoshi.inmouth = obj_yoshifire
 
     //Food sprite
@@ -279,9 +253,57 @@ and other.hardness &lt; 2
     //Food image index
     foodindex = other.image_index
 
+    //Food offset
+    with other other.foodoffset = (bbox_left+bbox_right)/2-x
+
     //Make sure brick goombas look right
     if foodsprite = spr_kuribohead
         foodsprite = spr_kuriboshoe
+
+    //Destroy food
+    with other instance_destroy()
+
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_powerupparent">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Eat powerups
+if hunger = 0
+{
+
+    //Item eaten
+    hunger = 1
+
+    //Move tongue back
+    ready = 1
+
+    //Food sprite
+    foodsprite = other.sprite_index
+
+    //Food offset
+    foodoffset = 8
+
+    //Remember powerup eaten
+    powerup = other.object_index
 
     //Destroy food
     with other instance_destroy()
@@ -328,6 +350,9 @@ if hunger = 0
     //Food sprite
     foodsprite = other.throwsprite
 
+    //Food offset
+    foodoffset = 8
+
     //Destroy food
     with other instance_destroy()
 
@@ -355,14 +380,16 @@ if hunger = 0
           <argument>
             <kind>1</kind>
             <string>///Draw Tongue
-draw_sprite_ext(spr_tongue,1,tongue1x,y,obj_mario.direct,1,0,c_white,1)
-draw_sprite_ext(spr_tongue,1,tongue2x,y,obj_mario.direct,1,0,c_white,1)
-draw_sprite_ext(spr_tongue,1,tongue3x,y,obj_mario.direct,1,0,c_white,1)
-draw_sprite_ext(spr_tongue,0,x,y,obj_mario.direct,1,0,c_white,1)
 
 //Draw eaten item
 if hunger = 1
-    draw_sprite(foodsprite,foodindex,round(x-8+(sprite_get_width(foodsprite)/2)*image_xscale)-sprite_width,y-4)
+    draw_sprite(foodsprite,foodindex,x+3+3*obj_mario.direct-foodoffset,y-4)
+
+//Draw tongue parts
+draw_sprite_ext(spr_tongue,1,tongue1x+3-3*obj_mario.direct,y,obj_mario.direct,1,0,c_white,1)
+draw_sprite_ext(spr_tongue,1,tongue2x+3-3*obj_mario.direct,y,obj_mario.direct,1,0,c_white,1)
+draw_sprite_ext(spr_tongue,1,tongue3x+3-3*obj_mario.direct,y,obj_mario.direct,1,0,c_white,1)
+draw_sprite_ext(spr_tongue,0,x+3-3*obj_mario.direct,y,obj_mario.direct,1,0,c_white,1)
 </string>
           </argument>
         </arguments>

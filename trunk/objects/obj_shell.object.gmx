@@ -3,9 +3,9 @@
   <spriteName>spr_shell</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-2</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_holdparent</parentName>
+  <parentName>obj_enemyparent</parentName>
   <maskName>spr_square</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,20 +25,37 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
-held = 0
-gravity = 0.25
+            <string>///The shell of a koopa
+
+//How vulnerable is this enemy to various items?
+hardness = 100
+
+//How vulnerable is this enemy to Mario?
+stomp = 0
+
+//Do not animate
+image_speed = 0
+
+//Number of kills
 hitpoint = 0
-thrownow = 0
+
+//Whether the shell will harm Mario
 harmmario = 0
-bam = 0
-spinny = 1
+
+//Become vulnerable
+alarm[0] = 1
+
+//Whether the shell was kicked
+kicked = 1
+
+//Become kickable
+alarm[2] = 1
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="1" enumb="0">
+    <event eventtype="2" enumb="2">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -55,8 +72,38 @@ spinny = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if held = 1
-    obj_mario.holding = 0
+            <string>///Allow the shell to be kicked
+if not place_meeting(x,y,obj_mario)
+    kicked = 0
+else
+    alarm[2] = 1
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Hurt Mario after getting kicked
+if not place_meeting(x,y,obj_mario)
+    harmmario = 1
+else
+    alarm[1] = 1
 </string>
           </argument>
         </arguments>
@@ -79,101 +126,23 @@ spinny = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>thrownow = 1
-image_speed = 0.15
-if not instance_exists(obj_mario)
+            <string>///Become vulnerable
+if not place_meeting(x,y,obj_blockbumper)
 {
-    hspeed = -3
-    exit
-}
-if obj_mario.x &gt; x
-    hspeed = 3
-else
-    hspeed = -3
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if held = 1
-{
-    event_user(1)
-    if instance_exists(obj_mario)
-        if obj_mario.holding = 0
-        {
-            if keyboard_check(vk_control)
-                obj_mario.holding = 2
-            else
-            {
-                obj_mario.holding = 0
-                held = 0
-            }
-        }
-}
-if held = 0
-{
-    if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
-        vspeed = 0
+    if sprite_index = spr_shell_buzzy
+    or sprite_index = spr_shell_buzzy_down
+        hardness = 1
     else
-        gravity = 0.25
-    while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-        y-=1
-    if collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_bottom-2,obj_blockparent,0,0)
-    and not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top+4,obj_solid,0,0)
-    {
-        vspeed = -4
-        audio_play_sound(snd_kick,0,0)
-        event_user(2)
-    }
-    if vspeed &gt; 4
-        vspeed = 4
-    if (hspeed &gt; 0 and collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed,bbox_bottom-2,obj_solid,0,0))
-    or (hspeed &lt; 0 and collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left,bbox_bottom-2,obj_solid,0,0))
-    {
-        if not outside_view()
-            audio_play_sound(snd_bump,0,0)
-        instance_create(x,y,obj_blockbumper)
-        spinny = 1
-        with instance_create(x+8+8*sign(hspeed),y+8,obj_smoke) sprite_index = spr_shellbump
-        hspeed = -hspeed
-    }
+        hardness = 0
 }
-if visible = 0
-and instance_exists(obj_mario)
-    visible = 1
-if bam = 0
-and not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_mario,0,0)
-    bam = 1
-if thrownow = 1
-and harmmario = 0
-and not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_mario,0,0)
-    harmmario = 1
-if spinny = 1
-and not place_meeting(x,y,obj_blockbumper)
-    spinny = 0
+else
+    alarm[0] = 1
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_blockbumper">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -190,240 +159,37 @@ and not place_meeting(x,y,obj_blockbumper)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if spinny = 1
-    exit
-scr_musicalscale(other.id,id,1)
-event_user(2)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_explosion">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>scr_musicalscale(other.id,id,1)
-event_user(0)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_powkiller">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>scr_musicalscale(other.id,id,1)
-event_user(0)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_thrownbrick">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>scr_musicalscale(other.id,id,1)
-if other.held = 1
+            <string>///Shell logic
+
+//Previous hspeed
+prevhspeed = hspeed
+
+//Wall collisions
+event_user(3)
+
+//Floor collisions
+event_user(4)
+
+//If the direction changed
+if hspeed != prevhspeed
 {
-    with other event_user(0)
-    with other instance_destroy()
-    obj_mario.holding = 0
-}
-else if other.sprite_index = spr_redbrick_th
-{
-    with other event_user(0)
-    with other instance_destroy()
-}
-event_user(0)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_shell">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if other.harmmario = 0
-    exit
-scr_musicalscale(other.id,id,1)
-if other.held = 1
-{
-    with other event_user(0)
-    obj_mario.holding = 0
-}
-event_user(0)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_roundgoomba_hold">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if other.thrown = 1
-{
-    scr_musicalscale(other.id,id,1)
-    with other event_user(0)
-    with other instance_destroy()
-    event_user(0)
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_invincibility">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if held = 0
-{
-    scr_musicalscale(other.id,id,1)
-    event_user(0)
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_fireball">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if sprite_index = spr_shell_buzzy
-or sprite_index = spr_shell_buzzy_down
-{
-    with (other) event_user(0)
-    exit
-}
-audio_play_sound(snd_kick,0,0)
-audio_play_sound(snd_bump,0,0)
-with instance_create(x,y,obj_score) event_user(0)
-with (other) instance_destroy()
-event_user(0)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_parcarry">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if other.held = 1
-{
-    other.vspeed = -3
-    scr_musicalscale(other.id,id,1)
-    event_user(0)
+
+    //Play bump sound when inside view
+    if not outside_view()
+        audio_play_sound(snd_bump,0,0)
+
+    //Become invulnerable
+    hardness = 100
+
+    //Become vulnerable after bumping
+    alarm[0] = 2
+
+    //Bump blocks
+    instance_create(x+prevhspeed,y,obj_blockbumper)
+
+    //Shell bounce effects 
+    with instance_create(x+prevhspeed+8+8*sign(prevhspeed),y+8,obj_smoke) sprite_index = spr_shellbump
+
 }
 </string>
           </argument>
@@ -447,16 +213,15 @@ event_user(0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (harmmario != 0 or held != 0)
+            <string>///Hurt enemies
+
+//Yes, you do need to check if yourself exists. Blame GM Studio...
+if hspeed != 0
+and instance_exists(id)
 and other.hardness &lt; 99
 {
     scr_musicalscale(id,other.id,1)
     with other event_user(0)
-    if held = 1
-    {
-        obj_mario.holding = 0
-        event_user(0)
-    }
 }
 </string>
           </argument>
@@ -480,7 +245,8 @@ and other.hardness &lt; 99
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-11 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-11 and vspeed &gt; 0
 {
     y = other.y-16
     vspeed = 0
@@ -508,69 +274,69 @@ and other.hardness &lt; 99
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.y &lt; y-27
-and obj_mario.stompstyle = 1
-{
-    obj_mario.vspeed = 0
-    instance_create(x,y,obj_spinsmoke)
-    instance_destroy()
-    exit
-}
+            <string>///Let Mario pick up and kick the shell
+
+//If the shell is in pick up mode, and not being spin jumped on
 if harmmario = 0
-and thrownow = 0
+and (other.stompstyle = 0 or other.bbox_bottom &gt;= bbox_top-vspeed+5)
 {
-    if held = 0
-    and obj_mario.holding = 0
-    and obj_mario.stompstyle = 0
-    and keyboard_check(vk_control)
-    and obj_mario.isduck = 0
-    and obj_mario.state &lt; 3
-    and not instance_exists(obj_statue)
-    and not instance_exists(obj_slider)
-    and other.y &gt; y-27
+
+    //If the shell was not kicked
+    if kicked = 0
     {
-        obj_mario.holding = 2
-        held = 1
-        gravity = 0
-        speed = 0
-        bam = 1
-    }
-    if held = 0
-    and bam = 1
-    {
-        thrownow = 1
-        if obj_mario.x &lt; x+8
-            hspeed = 3
+
+        //If Mario is below the enemy, and control is pressed, pick it up
+        if other.bbox_bottom &gt;= bbox_top-vspeed+5
+        and keyboard_check(vk_control)
+        and other.holding = 0
+        and other.isduck = 0
+        and other.state &lt; 3
+        and other.disablecontrols = 0
+        {
+            with instance_create(x,y,obj_shell_held) sprite_index = other.sprite_index
+            instance_destroy()
+        }
+
+        //Otherwise, kick it
         else
-            hspeed = -3
-        audio_play_sound(snd_kick,0,0)
-        obj_mario.iamkicking = 1
-        obj_mario.alarm[6] = 10
-        image_speed = 0.15
+        {
+
+            //Kick it
+            kicked = 1
+
+            //Go away from Mario
+            if obj_mario.x &lt; x+8
+                hspeed = 3
+            else
+                hspeed = -3
+
+            //Play kick sound
+            audio_play_sound(snd_kick,0,0)
+
+            //Make Mario kick it
+            with obj_mario event_user(7)
+
+            //Animate
+            image_speed = 0.15
+
+            //Start hurting Mario
+            alarm[1] = 1
+
+        }
+
     }
+
 }
-if harmmario = 1
-{
-    if instance_exists(obj_invincibility)
-        exit
-    if other.y &lt; y-27
-    {
-        hspeed = 0
-        varid = instance_create(x,y,obj_shell)
-        varid.sprite_index = sprite_index
-        scr_musicalscale(other.id,id,1)
-        with other event_user(1)
-        instance_destroy()
-    }
-    else if other.invincible = 0
-        with other event_user(0)
-}
+
+//Otherwise, use the default event
+else
+    event_inherited()
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="12">
+    <event eventtype="7" enumb="25">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -587,18 +353,75 @@ if harmmario = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>imdead = instance_create(x,y-2,obj_shell)
-imdead.vspeed = -3
-if sprite_index = spr_shell
-    imdead.sprite_index = spr_shell_down
-else if sprite_index = spr_shell_red
-    imdead.sprite_index = spr_shell_red_down
-else if sprite_index = spr_shell_hyper
-    imdead.sprite_index = spr_shell_hyper_down
-else if sprite_index = spr_shell_buzzy
-    imdead.sprite_index = spr_shell_buzzy_down
-else
-    imdead.sprite_index = sprite_index
+            <string>///Force kick the shell
+alarm[1] = 1
+image_speed = 0.15
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="15">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Flip shell
+with instance_create(x,y-2,obj_shell)
+{
+    vspeed = -3
+    if other.sprite_index = spr_shell
+        sprite_index = spr_shell_down
+    else if other.sprite_index = spr_shell_red
+        sprite_index = spr_shell_red_down
+    else if other.sprite_index = spr_shell_hyper
+        sprite_index = spr_shell_hyper_down
+    else if other.sprite_index = spr_shell_buzzy
+        sprite_index = spr_shell_buzzy_down
+    else
+        sprite_index = other.sprite_index
+}
+
+//Destroy
+instance_destroy()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Shell stomping
+with instance_create(x,y,obj_shell) sprite_index = other.sprite_index
+
+//Destroy
 instance_destroy()
 </string>
           </argument>
@@ -622,66 +445,11 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with instance_create(round(x),round(y+16),obj_enemy_dead) sprite_index = other.sprite_index
+            <string>///Shell death
+with instance_create(round(x),round(y+16),obj_enemy_dead) sprite_index = other.sprite_index
+
+//Destroy
 instance_destroy()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="5">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if held = 1
-{
-    global.carrieditem = object_index
-    global.carriedsprite = sprite_index
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="10" enumb="17">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-    exit
-if held = 1
-and obj_mario.holding = 2
-{
-    obj_mario.holding = 0
-    vspeed = 0
-    held = 0
-}
 </string>
           </argument>
         </arguments>

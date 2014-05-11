@@ -1502,8 +1502,8 @@
         <object>objects\obj_grayblockparent</object>
         <object>objects\obj_worldparent</object>
         <object>objects\obj_panelparent</object>
-        <object>objects\obj_parpull</object>
-        <object>objects\obj_parcarry</object>
+        <object>objects\obj_pullparent</object>
+        <object>objects\obj_carryparent</object>
         <object>objects\obj_holdparent</object>
         <object>objects\obj_slopeparent</object>
         <object>objects\obj_deactivation</object>
@@ -1643,6 +1643,7 @@
           <object>objects\obj_vegenemy</object>
           <object>objects\obj_stomped</object>
           <object>objects\obj_shell</object>
+          <object>objects\obj_shell_held</object>
           <object>objects\obj_brohammer</object>
           <object>objects\obj_brofire</object>
           <object>objects\obj_boomerang</object>

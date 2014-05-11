@@ -6,7 +6,7 @@
   <depth>-5</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
-  <maskName>spr_smallmask</maskName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -242,7 +242,7 @@ if instance_exists(obj_mario)
     //Force him to be invisible
     obj_mario.visible = 0
 
-    //Force hin to hold Yoshi
+    //Force him to hold Yoshi
     obj_mario.holding = 3
 
     //Use licking sprites when licking
@@ -381,11 +381,14 @@ if instance_exists(obj_mario)
                 alarm[3] = 1
             }
 
-            //Move up if there is no ceiling above Mario
-            with obj_mario
+            //When flying, move up if there is no ceiling above Mario
+            if flying = 1
             {
-                if not collision_rectangle(bbox_left,bbox_top-3,bbox_right,bbox_top,obj_solid,1,0)
-                    vspeed = -2
+                with obj_mario
+                {
+                    if not collision_rectangle(bbox_left,bbox_top-3,bbox_right,bbox_top,obj_solid,1,0)
+                        vspeed = -2
+                }
             }
 
             //Sync animation with level manager
@@ -573,6 +576,8 @@ with instance_create(x,y,obj_yoshi_abandon)
         sprite_index = spr_yoshi_walk_y
     else if global.ycolor = 3
         sprite_index = spr_yoshi_walk_b
+    if instance_exists(obj_mario)
+        direct = obj_mario.direct
 }
 
 //Make Mario visible and spin jumping
@@ -641,12 +646,12 @@ else
     with instance_create(x-8+obj_mario.direct*2,y,inmouth)
     {
 
-        //Temporary shell code
-        if object_index = obj_shell
-            bam = 1
-
         //Use the correct sprite
         sprite_index = other.mouthsprite
+
+        //Shells need to be in kick mode
+        if object_index = obj_shell
+            event_user(15)
 
         //Spit shells and bricks fast
         if object_index = obj_shell
