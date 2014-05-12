@@ -25,18 +25,29 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if collision_rectangle(x,y-2,x+127,y+4,obj_mario,0,0)
+            <string>///Make block train parts
+
+//If Mario is above
+if collision_rectangle(bbox_left,bbox_top-2,bbox_right,bbox_top+4,obj_mario,0,0)
 {
-    myback = instance_create(x,y,obj_blocktrain_back)
+
+    //Make front part
+    myfront = instance_create(x+112,y,obj_blocktrain_front)
+
+    //Create middle parts
     instance_create(x+16,y,obj_blocktrain_middle)
     instance_create(x+32,y,obj_blocktrain_middle)
     instance_create(x+48,y,obj_blocktrain_middle)
     instance_create(x+64,y,obj_blocktrain_middle)
     instance_create(x+80,y,obj_blocktrain_middle)
     instance_create(x+96,y,obj_blocktrain_middle)
-    myfront = instance_create(x+112,y,obj_blocktrain_front)
-    myfront.myback = myback
+
+    //Make back part
+    myfront.myback = instance_create(x,y,obj_blocktrain_back)
+
+    //Destroy
     instance_destroy()
+
 }
 </string>
           </argument>

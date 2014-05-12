@@ -25,7 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
+            <string>///The tail of a block train
+
+//Do not animate
+image_speed = 0
+
+//Move
 speed = 1
 </string>
           </argument>
@@ -77,8 +82,10 @@ and obj_mario.state &lt; 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>direction = 0
-move_snap(16,16)</string>
+            <string>///Move right
+direction = 0
+move_snap(16,16)
+</string>
           </argument>
         </arguments>
       </action>
@@ -100,8 +107,10 @@ move_snap(16,16)</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>direction = 180
-move_snap(16,16)</string>
+            <string>///Move left
+direction = 180
+move_snap(16,16)
+</string>
           </argument>
         </arguments>
       </action>
@@ -123,8 +132,10 @@ move_snap(16,16)</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>direction = 270
-move_snap(16,16)</string>
+            <string>///Move down
+direction = 270
+move_snap(16,16)
+</string>
           </argument>
         </arguments>
       </action>
@@ -146,8 +157,10 @@ move_snap(16,16)</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>direction = 90
-move_snap(16,16)</string>
+            <string>///Move up
+direction = 90
+move_snap(16,16)
+</string>
           </argument>
         </arguments>
       </action>

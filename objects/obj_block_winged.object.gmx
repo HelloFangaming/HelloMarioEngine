@@ -209,7 +209,8 @@ and obj_mario.vspeed &lt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type = 0
+            <string>///Move right
+if type = 0
     hspeed+=0.0324
 </string>
           </argument>
@@ -233,7 +234,8 @@ and obj_mario.vspeed &lt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type = 0
+            <string>///Move left
+if type = 0
     hspeed+=-0.0324
 </string>
           </argument>
@@ -257,7 +259,8 @@ and obj_mario.vspeed &lt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type = 0
+            <string>///Move down
+if type = 0
     vspeed+=0.0324
 </string>
           </argument>
@@ -281,7 +284,8 @@ and obj_mario.vspeed &lt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type = 0
+            <string>///Move up
+if type = 0
     vspeed+=-0.0324
 </string>
           </argument>

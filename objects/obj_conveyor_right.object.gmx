@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.75</string>
+            <string>///Rightwards conveyor belt
+
+//Animate
+image_speed = 0.75
+</string>
           </argument>
         </arguments>
       </action>
@@ -47,7 +51,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if collision_rectangle(bbox_left,y-1,bbox_right,y,obj_mario,0,0)
+            <string>///Move Mario if he is standing above while the belt is in motion
+if collision_rectangle(bbox_left,y-1,bbox_right,y,obj_mario,0,0)
 and image_speed = 0.75
     obj_mario.x += 0.5
 </string>

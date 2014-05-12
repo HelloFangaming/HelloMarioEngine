@@ -25,26 +25,31 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>type = 0
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_clockwise,0,0)
+            <string>///Standard issue moving platforms
+
+//No rotations
+type = 0
+
+//Start rotations
+if place_meeting(x,y,obj_clockwise)
 {
     speed = 1
     direction = 0
     type = 1
 }
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_cclockwise,0,0)
+else if place_meeting(x,y,obj_cclockwise)
 {
     speed = 1
     direction = 180
     type = 2
 }
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_clockwiseb,0,0)
+else if place_meeting(x,y,obj_clockwiseb)
 {
     speed = 1
     direction = 180
     type = 1
 }
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_cclockwiseb,0,0)
+else if place_meeting(x,y,obj_cclockwiseb)
 {
     speed = 1
     direction = 0
@@ -72,11 +77,17 @@ if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_cclockwiseb
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type = 1
+            <string>///Moving platform logic
+
+//Handle rotations
+if type = 1
     direction += -0.89625
-if type = 2
+else if type = 2
     direction += 0.89625
+
+//Wrap around the room
 move_wrap(0,1,16)
+
 if not instance_exists(obj_mario)
     exit
 if collision_rectangle(x,y-5,x+47,y+4,obj_mario,0,0)
@@ -113,7 +124,8 @@ and obj_mario.state &lt; 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type = 0
+            <string>///Move right
+if type = 0
     hspeed+=0.0324
 </string>
           </argument>
@@ -137,7 +149,8 @@ and obj_mario.state &lt; 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type = 0
+            <string>///Move left
+if type = 0
     hspeed+=-0.0324
 </string>
           </argument>
@@ -161,7 +174,8 @@ and obj_mario.state &lt; 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type = 0
+            <string>///Move down
+if type = 0
     vspeed+=0.0324
 </string>
           </argument>
@@ -185,7 +199,8 @@ and obj_mario.state &lt; 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type = 0
+            <string>///Move up
+if type = 0
     vspeed+=-0.0324
 </string>
           </argument>

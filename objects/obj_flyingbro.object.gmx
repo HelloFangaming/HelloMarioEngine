@@ -186,7 +186,7 @@ and collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+4,obj_mario
 and obj_mario.vspeed &lt; 0
     alarm[1] = 1
 
-//Circular Motion
+//Circular motion
 y = ystart+sin((x-xstart)/128*pi)*64
 </string>
           </argument>

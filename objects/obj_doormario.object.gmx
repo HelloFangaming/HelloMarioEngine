@@ -64,7 +64,7 @@ offset = 0
           <argument>
             <kind>1</kind>
             <string>///Change the depth to behind the door
-depth = 2
+depth = 3
 </string>
           </argument>
         </arguments>

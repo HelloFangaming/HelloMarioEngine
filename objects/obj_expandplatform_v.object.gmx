@@ -25,12 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
-alarm[0] = 60
+            <string>///Expands vertically
+
+//Do not animate
+image_speed = 0
+
+//Make blocks
 myblock3 = instance_create(x,y,obj_expandplatblock)
 myblock4 = instance_create(x,y,obj_expandplatblock)
 myblock1 = instance_create(x,y,obj_expandplatblock)
 myblock2 = instance_create(x,y,obj_expandplatblock)
+
+//Start sequence
+alarm[0] = 60
 </string>
           </argument>
         </arguments>
@@ -53,7 +60,8 @@ myblock2 = instance_create(x,y,obj_expandplatblock)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>myblock1.vspeed = 0
+            <string>///Stop vertical movement
+myblock1.vspeed = 0
 myblock2.vspeed = 0
 myblock3.vspeed = 0
 myblock4.vspeed = 0
@@ -61,7 +69,8 @@ myblock1.y = y
 myblock2.y = y
 myblock3.y = y
 myblock4.y = y
-alarm[0] = 60</string>
+alarm[0] = 60
+</string>
           </argument>
         </arguments>
       </action>
@@ -83,11 +92,13 @@ alarm[0] = 60</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>myblock1.vspeed = -0.5
+            <string>///Move in vertically
+myblock1.vspeed = -0.5
 myblock2.vspeed = 0.5
 myblock3.vspeed = -1
 myblock4.vspeed = 1
-alarm[3] = 32</string>
+alarm[3] = 32
+</string>
           </argument>
         </arguments>
       </action>
@@ -109,7 +120,8 @@ alarm[3] = 32</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>myblock1.vspeed = 0
+            <string>///Stop vertical movement
+myblock1.vspeed = 0
 myblock2.vspeed = 0
 myblock3.vspeed = 0
 myblock4.vspeed = 0
@@ -117,7 +129,8 @@ myblock1.y = y+16
 myblock2.y = y-16
 myblock3.y = y+32
 myblock4.y = y-32
-alarm[2] = 60</string>
+alarm[2] = 60
+</string>
           </argument>
         </arguments>
       </action>
@@ -139,11 +152,13 @@ alarm[2] = 60</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>myblock1.vspeed = 0.5
+            <string>///Move out vertically
+myblock1.vspeed = 0.5
 myblock2.vspeed = -0.5
 myblock3.vspeed = 1
 myblock4.vspeed = -1
-alarm[1] = 32</string>
+alarm[1] = 32
+</string>
           </argument>
         </arguments>
       </action>

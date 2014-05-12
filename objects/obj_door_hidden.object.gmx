@@ -3,7 +3,7 @@
   <spriteName>spr_door_hidden</spriteName>
   <solid>0</solid>
   <visible>0</visible>
-  <depth>1</depth>
+  <depth>2</depth>
   <persistent>0</persistent>
   <parentName>obj_door</parentName>
   <maskName>&lt;undefined&gt;</maskName>

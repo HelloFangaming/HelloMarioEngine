@@ -25,19 +25,30 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place these in the object creation code.
-//ropelength = How long you want the rope to be.
-varid = instance_create(x,y+16,obj_movingrope_rope)
+            <string>///Climb-start moving rope
+
+/*
+**  This item uses creation code!
+**
+**  ropelength = How long you want the rope to be
+**
+*/
+
+//Default Value:
 ropelength = 1
-type = 0
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_right,0,0)
-    type = 0
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_up,0,0)
+
+//Make rope
+rope = instance_create(x,y+16,obj_movingrope_rope)
+
+//Choose a starting direction
+if place_meeting(x,y,obj_up)
     type = 1
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_down,0,0)
+else if place_meeting(x,y,obj_down)
     type = 2
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_left,0,0)
+else if place_meeting(x,y,obj_left)
     type = 3
+else
+    type = 0
 </string>
           </argument>
         </arguments>
@@ -60,8 +71,9 @@ if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_left,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if outside_view()
-    with varid
+            <string>///Make sounds when in view
+if outside_view()
+    with rope
         if outside_view()
             other.alarm[0] = 101
 if alarm[0] != 101
@@ -93,10 +105,14 @@ if speed != 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>varid.x = x
-varid.y = y+16
-varid.xspeed = hspeed
-varid.yspeed = vspeed
+            <string>//Snap rope to position
+rope.x = x
+rope.y = y+16
+
+//Give rope speed values
+rope.xspeed = hspeed
+rope.yspeed = vspeed
+
 if not instance_exists(obj_mario)
     exit
 if collision_rectangle(x,y-5,x+15,y+4,obj_mario,0,0)
@@ -139,19 +155,20 @@ and hspeed &lt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type &lt; 4
+            <string>///Start moving if Mario is on the rope
+if type &lt; 4
 and speed = 0
-and varid.ison = 1
+and rope.ison = 1
 {
     speed = 1
     alarm[0] = 15
     if type = 0
         direction = 0
-    if type = 1
+    else if type = 1
         direction = 90
-    if type = 2
+    else if type = 2
         direction = 270
-    if type = 3
+    else if type = 3
         direction = 180
 }
 </string>
@@ -176,7 +193,8 @@ and varid.ison = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>speed = other.setspeed
+            <string>///Change the speed
+speed = other.setspeed
 </string>
           </argument>
         </arguments>
@@ -199,7 +217,8 @@ and varid.ison = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type &lt; 4
+            <string>///Stop moving
+if type &lt; 4
 {
     type = 4
     speed = 0
@@ -226,7 +245,8 @@ and varid.ison = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if speed &gt; 0
+            <string>///Move right
+if speed &gt; 0
     direction = 0
 </string>
           </argument>
@@ -250,7 +270,8 @@ and varid.ison = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if speed &gt; 0
+            <string>///Move left
+if speed &gt; 0
     direction = 180
 </string>
           </argument>
@@ -274,7 +295,8 @@ and varid.ison = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if speed &gt; 0
+            <string>///Move down
+if speed &gt; 0
     direction = 270
 </string>
           </argument>
@@ -298,31 +320,9 @@ and varid.ison = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if speed &gt; 0
+            <string>///Move up
+if speed &gt; 0
     direction = 90
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>varid.image_yscale = ropelength
 </string>
           </argument>
         </arguments>

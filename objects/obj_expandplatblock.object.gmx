@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0</string>
+            <string>///Parts used by expanding platforms
+
+//Do not animate
+image_speed = 0
+</string>
           </argument>
         </arguments>
       </action>

@@ -25,32 +25,39 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 15
+            <string>///Moving saw
+
+//No rotations
 type = 0
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_clockwise,0,0)
+
+//Start rotations
+if place_meeting(x,y,obj_clockwise)
 {
     speed = 1
     direction = 0
     type = 1
 }
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_cclockwise,0,0)
+else if place_meeting(x,y,obj_cclockwise)
 {
     speed = 1
     direction = 180
     type = 2
 }
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_clockwiseb,0,0)
+else if place_meeting(x,y,obj_clockwiseb)
 {
     speed = 1
     direction = 180
     type = 1
 }
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_cclockwiseb,0,0)
+else if place_meeting(x,y,obj_cclockwiseb)
 {
     speed = 1
     direction = 0
     type = 2
 }
+
+//Make sounds
+alarm[0] = 15
 </string>
           </argument>
         </arguments>
@@ -73,15 +80,13 @@ if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_cclockwiseb
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 15
-if x&gt;view_xview[0]-16
-and x&lt;view_xview[0]+336
-and y&lt;view_yview[0]+256
-and y&gt;view_yview[0]-16
+            <string>///Make sounds when in view
+if not outside_view()
 {
     audio_stop_sound(snd_engine)
     audio_play_sound(snd_engine,0,0)
 }
+alarm[0] = 15
 </string>
           </argument>
         </arguments>
@@ -104,10 +109,12 @@ and y&gt;view_yview[0]-16
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type = 1
+            <string>//Circular motion
+if type = 1
     direction += -0.89625
 if type = 2
     direction += 0.89625
+
 if not instance_exists(obj_mario)
     exit
 if collision_rectangle(x,y-5,x+15,y+4,obj_mario,0,0)
@@ -128,8 +135,9 @@ and hspeed &gt; 0
 if collision_rectangle(x+hspeed,y+1,x,y+15,obj_mario,0,0)
 and hspeed &lt; 0
     obj_mario.x += hspeed
-if obj_mario.invincible = 0
-if collision_rectangle(x,y-28,x+15,y-1,obj_mario,0,0)
+
+//Hurt Mario
+if collision_rectangle(bbox_left,bbox_top,bbox_right,y-1,obj_mario,0,0)
     with obj_mario event_user(0)
 </string>
           </argument>
@@ -153,7 +161,8 @@ if collision_rectangle(x,y-28,x+15,y-1,obj_mario,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type = 0
+            <string>///Move right
+if type = 0
     hspeed+=0.0324
 </string>
           </argument>
@@ -177,7 +186,8 @@ if collision_rectangle(x,y-28,x+15,y-1,obj_mario,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type = 0
+            <string>///Move left
+if type = 0
     hspeed+=-0.0324
 </string>
           </argument>
@@ -201,7 +211,8 @@ if collision_rectangle(x,y-28,x+15,y-1,obj_mario,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type = 0
+            <string>///Move down
+if type = 0
     vspeed+=0.0324
 </string>
           </argument>
@@ -225,7 +236,8 @@ if collision_rectangle(x,y-28,x+15,y-1,obj_mario,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type = 0
+            <string>///Move up
+if type = 0
     vspeed+=-0.0324
 </string>
           </argument>

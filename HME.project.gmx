@@ -852,9 +852,7 @@
       <sprites name="Platforms">
         <sprite>sprites\spr_platform</sprite>
         <sprite>sprites\spr_donut</sprite>
-        <sprite>sprites\spr_donut_shake</sprite>
         <sprite>sprites\spr_donut_red</sprite>
-        <sprite>sprites\spr_donut_shake_red</sprite>
         <sprite>sprites\spr_platformspin</sprite>
         <sprite>sprites\spr_platformtimed</sprite>
         <sprite>sprites\spr_arrowplatform</sprite>
