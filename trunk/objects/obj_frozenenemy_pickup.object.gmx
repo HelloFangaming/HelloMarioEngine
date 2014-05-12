@@ -25,94 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
+            <string>///Held frozen enemies
+
+//Animate
+image_speed = 0.15
+
+//Whether this object is not held
 held = 0
+
+//Number of kills
 hitpoint = 0
+
+//Flip vertically
 image_yscale = -1
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if held = 0
-{
-    if instance_exists(obj_mario)
-    {
-        if sprite_index = spr_frozenenemy_wide or sprite_index = spr_frozenenemy_big
-            x = obj_mario.x-16
-        else
-            x = obj_mario.x-8
-        if global.powerup = cs_small
-            y = obj_mario.y+21
-        else
-            y = obj_mario.y+11
-        if obj_mario.holding = 0
-            obj_mario.holding = 1
-    }
-    else if instance_exists(obj_warpmario)
-    {
-        x = obj_warpmario.x
-        y = obj_warpmario.y
-        visible = 0
-        obj_warpmario.myitem = sprite_index
-    }
-    else if instance_exists(obj_doormario)
-    {
-        if sprite_index = spr_frozenenemy_wide or sprite_index = spr_frozenenemy_big
-            x = obj_doormario.x-16
-        else
-            x = obj_doormario.x-8
-            y = obj_doormario.y+32
-            visible = 0
-            obj_doormario.myitem = sprite_index
-    }
-    else if instance_exists(obj_warpnoteblock)
-    {
-        if sprite_index = spr_frozenenemy_wide or sprite_index = spr_frozenenemy_big
-            x = obj_warpnoteblock.x-16
-        else
-            x = obj_warpnoteblock.x-8
-        if global.powerup = cs_small
-            y = obj_warpnoteblock.y+21
-        else
-            y = obj_warpnoteblock.y+11
-    }
-    else if instance_exists(obj_jumpspawn)
-    {
-        if sprite_index = spr_frozenenemy_wide or sprite_index = spr_frozenenemy_big
-            x = obj_jumpspawn.x-16
-        else
-            x = obj_jumpspawn.x-8
-        if global.powerup = cs_small
-            y = obj_jumpspawn.y+21
-        else
-            y = obj_jumpspawn.y+11
-    }
-    else
-        instance_destroy()
-}
-if vspeed &gt; 4
-    vspeed = 4
-if visible = 0
-and instance_exists(obj_mario)
-    visible = 1
 </string>
           </argument>
         </arguments>
@@ -135,33 +60,29 @@ and instance_exists(obj_mario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if held = 1
-and outside_view()
-    instance_destroy()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_slopeparent">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if held = 1
-    event_user(0)
+            <string>///Thrown frozen enemy logic
+if held = 1
+{
+
+    //Previous hspeed
+    prevhspeed = hspeed
+
+    //Wall collisions
+    event_user(3)
+
+    //Floor collisions
+    event_user(4)
+
+    //If the direction changed, or it landed, shatter
+    if hspeed != prevhspeed
+    or gravity = 0
+        event_user(0)
+
+    ///Destroy outside view
+    if outside_view()
+        instance_destroy()
+
+}
 </string>
           </argument>
         </arguments>
@@ -184,32 +105,13 @@ and outside_view()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y+4 and vspeed &gt; 0 and held = 1
-    event_user(0)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_solid">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if held = 1
-    event_user(0)
+            <string>///Floor collision
+if y &lt; other.y+4 and vspeed &gt; 0
+{
+    y = other.y
+    vspeed = 0
+    gravity = 0
+}
 </string>
           </argument>
         </arguments>
@@ -232,8 +134,13 @@ and outside_view()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snd_bump,0,0)
+            <string>///Shatter
+
+//Play sounds
+audio_play_sound(snd_bump,0,0)
 audio_play_sound(snd_shatter,0,0)
+
+//Make shards
 with instance_create(x,y-16,obj_shard)
 {
     sprite_index = spr_shard_th
@@ -254,6 +161,8 @@ with instance_create(x,y-16,obj_shard)
     sprite_index = spr_shard_th
     direction = 135
 }
+
+//Destroy
 instance_destroy()
 </string>
           </argument>

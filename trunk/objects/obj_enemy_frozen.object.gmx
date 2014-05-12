@@ -176,7 +176,7 @@ instance_destroy()
             <kind>1</kind>
             <string>///Make solid follow along too
 mysolid.x = x
-mysolid.y = y
+mysolid.y = round(y)
 
 //Default event
 event_inherited()
@@ -238,12 +238,12 @@ x = bbox_left
 y = bbox_top
 
 //Select an appropriate ice sprite
-if sprite_height &gt; 18
-and sprite_width &gt; 18
+if bbox_bottom-bbox_top &gt; 18
+and bbox_right-bbox_left &gt; 18
     sprite_index = spr_frozenenemy_big
-else if sprite_height &gt; 18
+else if bbox_bottom-bbox_top &gt; 18
     sprite_index = spr_frozenenemy_tall
-else if sprite_width &gt; 18
+else if bbox_right-bbox_left &gt; 18
     sprite_index = spr_frozenenemy_wide
 else
     sprite_index = spr_frozenenemy

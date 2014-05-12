@@ -25,89 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
+            <string>///Held bomb guy
+
+//Animate
+image_speed = 0.15
+
+//Whether this object is not held
 held = 0
+
+//Number of kills
 hitpoint = 0
-image_yscale = -1</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if held = 0
-{
-    if instance_exists(obj_mario)
-    {
-        x = obj_mario.x
-        if global.powerup = cs_small
-            y = obj_mario.y+21
-        else
-            y = obj_mario.y+11
-        if obj_mario.holding = 0
-            obj_mario.holding = 1
-    }
-    else if instance_exists(obj_warpmario)
-    {
-        x = obj_warpmario.x
-        y = obj_warpmario.y
-        visible = 0
-        obj_warpmario.myitem = sprite_index
-        obj_warpmario.offset = 8
-    }
-    else if instance_exists(obj_doormario)
-    {
-        x = obj_doormario.x
-        y = obj_doormario.y+32
-        visible = 0
-        obj_doormario.myitem = sprite_index
-        obj_doormario.offset = 8
-    }
-    else if instance_exists(obj_warpnoteblock)
-    {
-        x = obj_warpnoteblock.x
-        if global.powerup = cs_small
-            y = obj_warpnoteblock.y+21
-        else
-            y = obj_warpnoteblock.y+11
-    }
-    else if instance_exists(obj_jumpspawn)
-    {
-        x = obj_jumpspawn.x
-        if global.powerup = cs_small
-            y = obj_jumpspawn.y+21
-        else
-            y = obj_jumpspawn.y+11
-    }
-    else
-        instance_destroy()
-}
-if vspeed &gt; 4
-    vspeed = 4
-if visible = 0
-and instance_exists(obj_mario)
-    visible = 1
+
+//Flip vertically
+image_yscale = -1
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_slopeparent">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -124,10 +60,27 @@ and instance_exists(obj_mario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if held = 1
+            <string>///Thrown bomb logic
+if held = 1
 {
-    instance_create(x,y,obj_explosion)
-    instance_destroy()
+
+    //Previous hspeed
+    prevhspeed = hspeed
+
+    //Wall collisions
+    event_user(3)
+
+    //Floor collisions
+    event_user(4)
+
+    //If the direction changed, or it landed, blow up
+    if hspeed != prevhspeed
+    or gravity = 0
+    {
+        instance_create(x,y,obj_explosion)
+        instance_destroy()
+    }
+
 }
 </string>
           </argument>
@@ -151,37 +104,12 @@ and instance_exists(obj_mario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y+5 and vspeed &gt; 0 and held = 1
+            <string>///Floor collision
+if y &lt; other.y+4 and vspeed &gt; 0
 {
-    instance_create(x,y,obj_explosion)
-    instance_destroy()
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_solid">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if held = 1
-{
-    instance_create(x,y,obj_explosion)
-    instance_destroy()
+    y = other.y
+    vspeed = 0
+    gravity = 0
 }
 </string>
           </argument>

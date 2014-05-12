@@ -6,7 +6,7 @@
   <depth>8</depth>
   <persistent>0</persistent>
   <parentName>obj_pullparent</parentName>
-  <maskName>spr_square</maskName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -43,13 +43,17 @@
 //Default Value:
 sprout = cs_big
 
+//Is this thing heavy?
+isheavy = 0
+
+//Animate
 image_speed = 0.15
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="0">
+    <event eventtype="7" enumb="17">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -66,49 +70,15 @@ image_speed = 0.15
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_mario)
+            <string>///Pull out powerup
+with instance_create(x,y-1,obj_grasspowerup)
 {
-    audio_play_sound(snd_pickup,0,0)
-    obj_mario.visible = 1
-    obj_mario.holding = 0
-    with obj_puller instance_destroy()
-    varid = instance_create(x,y-1,obj_grasspowerup)
-    varid.hspeed = obj_mario.direct
-    varid.sprite_index = scr_constant_get_sprite(sprout)
-    instance_destroy()
+    hspeed = obj_mario.direct
+    sprite_index = scr_constant_get_sprite(other.sprout)
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_mario">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if scr_canpull()
-{
-    if other.image_index = 2 and other.image_speed = 0
-        exit
-    other.visible = 0
-    instance_create(other.x,other.y,obj_puller)
-    other.holding = 1
-    audio_play_sound(snd_ya,0,0)
-    alarm[0] = 20
-}
+
+//Destroy
+instance_destroy()
 </string>
           </argument>
         </arguments>

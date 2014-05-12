@@ -5,10 +5,10 @@
   <visible>-1</visible>
   <depth>8</depth>
   <persistent>0</persistent>
-  <parentName>obj_powblock</parentName>
+  <parentName>obj_pullparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="2" enumb="0">
+    <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,15 +25,43 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_mario)
-{
-    audio_play_sound(snd_pickup,0,0)
-    obj_mario.visible = 1
-    obj_mario.holding = 0
-    with (obj_puller) instance_destroy()
-    instance_create(x,y-16,obj_mushroom)
-    instance_destroy()
-}
+            <string>///Pullable health package
+
+//Is this thing heavy?
+isheavy = 0
+
+//Solid object
+mysolid = instance_create(x,y,obj_solid)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="17">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Get health
+instance_create(x,y-16,obj_mushroom)
+
+//Destroy solid
+with mysolid instance_destroy()
+
+//Destroy
+instance_destroy()
 </string>
           </argument>
         </arguments>

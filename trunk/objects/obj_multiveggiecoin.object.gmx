@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-1</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_physicsparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,11 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
+            <string>///Many coins pulled out of the ground
+
+//Animate
+image_speed = 0.15
+
+//Move up
 vspeed = -4
-gravity = 0.125
+
+//Number of times to blink before dissapearing
+count = 10
+
+//Start to dissapear
 alarm[0] = 100
-voom = 10</string>
+</string>
           </argument>
         </arguments>
       </action>
@@ -51,8 +60,10 @@ voom = 10</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 5
-image_alpha = 1</string>
+            <string>///Alpha blink
+image_alpha = 1
+alarm[0] = 5
+</string>
           </argument>
         </arguments>
       </action>
@@ -74,16 +85,21 @@ image_alpha = 1</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if voom = 0
+            <string>///Alpha blink
+
+//If it blinked enough times, destroy
+if count = 0
 {
     instance_create(x,y,obj_smoke)
     instance_destroy()
 }
+
+//Otherwise, decrement count and blink
 else
 {
-    voom-=1
-    alarm[1] = 5
+    count--
     image_alpha = 0.6
+    alarm[1] = 5
 }
 </string>
           </argument>
@@ -107,42 +123,18 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hspeed &gt; 0
-and collision_rectangle(bbox_right,bbox_top,bbox_right+1+hspeed,bbox_bottom,obj_solid,0,0)
-    hspeed = -hspeed
-if hspeed &lt; 0
-and collision_rectangle(bbox_left-1+hspeed,bbox_top,bbox_left,bbox_bottom,obj_solid,0,0)
-    hspeed = -hspeed
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_slopeparent">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if vspeed &gt; 0
-{
-    gravity = 0
-    vspeed = 0
+            <string>///Stop after landing
+
+//Default event
+event_inherited()
+
+//Stop when landing
+if gravity = 0
     hspeed = 0
-    while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,1)
-        y-=1
-}
+
+//Less gravity
+else
+    gravity = 0.125
 </string>
           </argument>
         </arguments>
@@ -165,12 +157,12 @@ and collision_rectangle(bbox_left-1+hspeed,bbox_top,bbox_left,bbox_bottom,obj_so
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-11 and vspeed &gt; 0
+            <string>///Floor collision
+if y &lt; other.y-11 and vspeed &gt; 0
 {
     y = other.y-16
     vspeed = 0
     gravity = 0
-    hspeed = 0
 }
 </string>
           </argument>
@@ -194,36 +186,27 @@ and collision_rectangle(bbox_left-1+hspeed,bbox_top,bbox_left,bbox_bottom,obj_so
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if vspeed &lt; 0
-    exit
-audio_play_sound(snd_coin,0,0)
-global.coins+=1
-with instance_create(x,y,obj_score) event_user(0)
-instance_create(x+8,y-8,obj_sparkletrail)
-instance_destroy()
+            <string>///Collect coin
+if vspeed &gt;= 0
+{
+
+    //Play coin sound
+    audio_play_sound(snd_coin,0,0)
+
+    //Increment coins
+    global.coins++
+
+    //100 points
+    with instance_create(x,y,obj_score) event_user(0)
+
+    //Fancy effects
+    instance_create(x+8,y-8,obj_sparkletrail)
+
+    //Destroy
+    instance_destroy()
+
+}
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>instance_destroy()</string>
           </argument>
         </arguments>
       </action>
