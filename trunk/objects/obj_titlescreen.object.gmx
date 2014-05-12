@@ -140,6 +140,12 @@ if fade != 0
     //You are allowed to remove the line below if you mention the Hello Mario Engine at least somewhere else
     draw_text(2,2,"POWERED BY HELLO MARIO ENGINE")
 
+    //Align to the right
+    draw_set_halign(fa_right)
+
+    //Draw version information
+    draw_text(view_wview[0]-2,view_hview[0]-10,"V6.0")
+
 }
 
 //Center the text

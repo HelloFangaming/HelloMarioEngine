@@ -45,11 +45,14 @@ cannon = 0
 //Animate
 image_speed = 0.15
 
+//Whether Mario is holding something
+holding = 0
+
 //Held item sprite
 myitem = noone
 
 //Offset held item
-bugfix = 0
+offset = 0
 
 //Is Mario flashing?
 isflashing = 0
@@ -199,7 +202,7 @@ if cannon = 0
         image_speed = 0.15
 
         //Choose the appropriate sprite
-        if myitem = noone
+        if holding = 0
             sprite_index = scr_mariowalk()
         else
         {
@@ -445,7 +448,7 @@ if cannon = 0
     speed = 0
 
     //Choose the appropriate sprite
-    if myitem = noone
+    if holding = 0
         sprite_index = scr_mariorunjump()
     else
         sprite_index = scr_mariohold()
@@ -608,12 +611,16 @@ y = other.posty
             <string>///Turn back into Mario
 
 //Create Mario
-instance_create(x,y,obj_mario)
+with instance_create(x,y,obj_mario)
+{
 
-//Retain speed and direction
-obj_mario.vspeed = vspeed
-obj_mario.hspeed = hspeed
-obj_mario.direct = direct
+    //Retain speed, direction, and holding
+    vspeed = other.vspeed
+    hspeed = other.hspeed
+    direct = other.direct
+    holding = other.holding
+
+}
 
 //Destroy
 instance_destroy()
@@ -644,7 +651,7 @@ instance_destroy()
 //Draw item when Mario is moving horizontally
 if myitem != noone
 and hspeed != 0
-    draw_sprite(myitem,0,x-8+10*direct+bugfix,y+15)
+    draw_sprite(myitem,0,x-8+10*direct+offset,y+15)
 
 //Make Mario flash
 if isflashing = 1
@@ -660,7 +667,7 @@ if isflashing = 1
 //Draw item when Mario is moving vertically
 if myitem != noone
 and hspeed = 0
-    draw_sprite(myitem,0,x-8+bugfix,y+16)
+    draw_sprite(myitem,0,x-8+offset,y+16)
 </string>
           </argument>
         </arguments>

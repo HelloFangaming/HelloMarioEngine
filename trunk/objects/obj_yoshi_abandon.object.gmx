@@ -31,7 +31,7 @@
 image_speed = 0
 
 //Facing direction
-direct = -1
+direct = 1
 </string>
           </argument>
         </arguments>

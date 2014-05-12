@@ -3,7 +3,7 @@
   <spriteName>spr_shell</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-2</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>obj_holdparent</parentName>
   <maskName>spr_square</maskName>
@@ -25,83 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
+            <string>///A shell being held
+
+//Do not animate
+image_speed = 0
+
+//Whether the object is being held
 held = 1
+
+//Force Mario to hold this
 obj_mario.holding = 2
+
+//Number of kills
 hitpoint = 0
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="1" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if held = 1
-    obj_mario.holding = 0
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if held = 1
-{
-    event_user(1)
-    if instance_exists(obj_mario)
-        if obj_mario.holding = 0
-        {
-            if keyboard_check(vk_control)
-                obj_mario.holding = 2
-            else
-            {
-                obj_mario.holding = 0
-                held = 0
-            }
-        }
-}
-if held = 0
-{
-    with instance_create(x,y,obj_shell)
-    {
-        sprite_index = other.sprite_index
-        kicked = 0
-    }
-    instance_destroy()
-}
-if visible = 0
-and instance_exists(obj_mario)
-    visible = 1
 </string>
           </argument>
         </arguments>
@@ -124,13 +60,50 @@ and instance_exists(obj_mario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.hardness &lt; 99
+            <string>///Hurt enemies
+if other.hardness &lt; 99
 {
     scr_musicalscale(id,other.id,1)
     with other event_user(0)
-    obj_mario.holding = 0
     event_user(0)
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Throw as a shell
+
+//Slope fix
+while collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom,obj_slopeparent,1,0)
+    y--
+
+//Make a regular shell
+with instance_create(x,y,obj_shell)
+{
+    sprite_index = other.sprite_index
+    kicked = 0
+}
+
+//Destroy
+instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -158,64 +131,6 @@ with instance_create(round(x),round(y+16),obj_enemy_dead) sprite_index = other.s
 
 //Destroy
 instance_destroy()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="5">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if held = 1
-{
-    global.carrieditem = object_index
-    global.carriedsprite = sprite_index
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="10" enumb="17">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-    exit
-if held = 1
-and obj_mario.holding = 2
-{
-    obj_mario.holding = 0
-    vspeed = 0
-    held = 0
-}
 </string>
           </argument>
         </arguments>

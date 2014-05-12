@@ -33,11 +33,14 @@ sprite_index = scr_mariowarp()
 //What happens when the door starts closing
 alarm[0] = 27
 
+//Whether Mario is holding something
+holding = 0
+
 //Held item
 myitem = noone
 
 //Whether the held item is offset
-bugfix = 0
+offset = 0
 </string>
           </argument>
         </arguments>
@@ -92,7 +95,7 @@ if depth = 2
 
 //Draw the held item if it exists
 if myitem != noone
-    draw_sprite(myitem,0,x-8+bugfix,y+16)
+    draw_sprite(myitem,0,x-8+offset,y+16)
 
 //Draw Mario
 draw_sprite(sprite_index,2,x,y)

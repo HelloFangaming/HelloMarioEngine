@@ -5,9 +5,363 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_physicsparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Parent of all SMB3 holdable items
+
+//Do not animate
+image_speed = 0
+
+//Whether the object is being held
+held = 0
+
+//Facing direction
+direct = 1
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Protect Mario from the horrors of holding nothing
+if held = 1
+    with obj_mario holding = 0
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///If the item is being held
+if held = 1
+{
+
+    //If Mario exists
+    if instance_exists(obj_mario)
+    {
+
+        //Snap to position
+        x = obj_mario.x-8+10*obj_mario.direct
+        y = obj_mario.y+15
+
+        //If control is still being held
+        if keyboard_check(vk_control)
+        {
+
+            //Make sure Mario is holding
+            obj_mario.holding = 2
+
+            //Use the same facing direction
+            direct = obj_mario.direct
+
+        }
+
+        //Otherwise
+        else if obj_mario.disablecontrols = 0
+        {
+
+            //Play kick sound
+            audio_play_sound(snd_kick,0,0)
+
+            //Make Mario kick it
+            with obj_mario event_user(7)
+
+            //Stop Mario from holding it
+            obj_mario.holding = 0
+
+            //Stop being held
+            held = 0
+
+            //Reset depth
+            depth = 0
+
+            //Get thrown
+            event_user(2)
+
+        }
+
+        //Be visible
+        visible = 1
+
+    }
+
+    //If warp Mario exists
+    else if instance_exists(obj_warpmario)
+    {
+
+        //Let warp Mario draw the item
+        obj_warpmario.myitem = sprite_index
+
+        //Snap to position
+        x = obj_warpmario.x-8
+        y = obj_warpmario.y+16
+
+        //Make sure Mario is holding
+        obj_warpmario.holding = 2
+
+        //Be invisible
+        visible = 0
+
+    }
+
+    //If door Mario exists
+    else if instance_exists(obj_doormario)
+    {
+
+        //Let door Mario draw the item
+        obj_doormario.myitem = sprite_index
+
+        //Snap to position
+        x = obj_doormario.x-8
+        y = obj_doormario.y+16
+
+        //Make sure Mario is holding
+        obj_doormario.holding = 2
+
+        //Be invisible
+        visible = 0
+
+    }
+
+    //If warp note block exists
+    else if instance_exists(obj_warpnoteblock)
+    {
+
+        //Snap to position
+        x = obj_warpnoteblock.x-8+10*obj_warpnoteblock.direct
+        y = obj_warpnoteblock.y+15
+
+        //Be visible
+        visible = 1
+
+    }
+
+    //If jump spawn exists
+    else if instance_exists(obj_jumpspawn)
+    {
+
+        //Snap to position
+        x = obj_jumpspawn.x+2
+        y = obj_jumpspawn.y+15
+
+        //Be visible
+        visible = 1
+
+    }
+
+    //Otherwise, stop being held
+    else
+        held = 0
+
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///If the item is not being held
+if held = 0
+{
+
+    //Default event
+    event_inherited()
+
+    //Friction
+    if hspeed &gt; 0
+        hspeed -= 0.075
+    if hspeed &lt; 0
+        hspeed += 0.075
+    if hspeed &lt; 0.125
+    and hspeed &gt; -0.125
+        hspeed = 0
+
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_solidtop">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Floor collision
+if y &lt; other.y-11 and vspeed &gt; 0
+{
+    y = other.y-16
+    vspeed = 0
+    gravity = 0
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_mario">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Interact with this item
+if held = 0
+{
+
+    //If Mario is above and moving down, use the stomp event
+    if other.bbox_bottom &lt; bbox_top-vspeed+5
+    and other.vspeed &gt; 0
+        event_user(1)
+
+    //Otherwise, if Mario can hold the item
+    else if scr_canhold()
+    {
+
+        //Force him to hold it
+        other.holding = 2
+
+        //Be held
+        held = 1
+
+        //Change depth
+        depth = -4
+
+        //Disable gravity
+        gravity = 0
+
+        //Stop movement
+        speed = 0
+
+    }
+
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Default thrown event
+hspeed = obj_mario.hspeed+1.5*obj_mario.direct
+
+//Move up when solids are not in the way
+if not place_meeting(x,y,obj_solid)
+    vspeed = -1
+
+//Slope fix
+while collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom,obj_slopeparent,1,0)
+    y--
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="11">
       <action>
         <libid>1</libid>
@@ -25,53 +379,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_deadmario)
-or instance_exists(obj_goalmario)
-{
-    held = 0
-    exit
-}
-else if instance_exists(obj_mario)
-{
-    if obj_mario.direct = 1
-        x = obj_mario.x+2
-    if obj_mario.direct = -1
-        x = obj_mario.x-18
-    y = obj_mario.y+15
-}
-else if instance_exists(obj_warpmario)
-{
-    visible = 0
-    obj_warpmario.myitem = sprite_index
-    x = obj_warpmario.x
-    y = obj_warpmario.y
-}
-else if instance_exists(obj_doormario)
-{
-    visible = 0
-    obj_doormario.myitem = sprite_index
-    x = obj_doormario.x-8
-    y = obj_doormario.y+16
-}
-else if instance_exists(obj_warpnoteblock)
-{
-    if obj_warpnoteblock.direct = 1
-        x = obj_warpnoteblock.x+2
-    if obj_warpnoteblock.direct = -1
-        x = obj_warpnoteblock.x-18
-    y = obj_warpnoteblock.y+15
-}
-else if instance_exists(obj_jumpspawn)
-{
-    x = obj_jumpspawn.x+2
-    y = obj_jumpspawn.y+15
-}
+            <string>///Default stomped event
+//Do nothing
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="10">
+    <event eventtype="7" enumb="5">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -88,61 +403,12 @@ else if instance_exists(obj_jumpspawn)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if held = 0
+            <string>///Remember the held item when the room ends
+if held = 1
 {
-    if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
-        vspeed = 0
-    else
-        gravity = 0.25
-    while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0)
-        y-=1
-    if collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_bottom-2,obj_blockparent,0,0)
-    and not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top+4,obj_solid,0,0)
-        vspeed = -4
-    if vspeed &lt; 0
-    and collision_rectangle(x,y-1,x+15,y-1,obj_solid,0,0)
-        vspeed = 1
-    if vspeed &gt; 4
-        vspeed = 4
-    if hspeed &gt; 0
-        hspeed-=0.075
-    if hspeed &lt; 0
-        hspeed+=0.075
-    if hspeed &lt; 0.125
-    and hspeed &gt; -0.125
-        hspeed = 0
-    if hspeed &gt; 0
-    and collision_rectangle(bbox_right-2,bbox_top,bbox_right+1,bbox_bottom-2,obj_solid,0,0)
-        hspeed = -hspeed
-    if hspeed &lt; 0
-    and collision_rectangle(bbox_left-1,bbox_top,bbox_left+2,bbox_bottom-2,obj_solid,0,0)
-        hspeed = -hspeed
+    global.carrieditem = object_index
+    global.carriedsprite = sprite_index
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if y &gt; room_height
-and held = 0
-    instance_destroy()
 </string>
           </argument>
         </arguments>

@@ -3,7 +3,7 @@
   <spriteName>spr_tongue</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-5</depth>
+  <depth>-6</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -75,7 +75,7 @@ and instance_exists(obj_yoshi)
 {
 
     //Where the tongue should be drawn
-    tongue1x = obj_yoshi.x+17*obj_mario.direct
+    tongue1x = obj_yoshi.x-3+20*obj_mario.direct
     tongue2x = t2*obj_mario.direct+tongue1x
     tongue3x = t3*obj_mario.direct+tongue1x
 
