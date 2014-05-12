@@ -110,7 +110,9 @@ gravity = 0.05
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Cap fall speed
+            <string>///Falling platform logic
+
+//Cap fall speed
 if vspeed &gt; 1.5
     vspeed = 1.5
 
@@ -122,13 +124,13 @@ and bbox_top &gt; room_height
     alarm[1] = 10
     gravity = 0
 }
-if not instance_exists(obj_mario)
-    exit
-if collision_rectangle(x,y-5,x+47,y+4,obj_mario,0,0)
-and not collision_rectangle(x,y-5,x+47,y+1,obj_solidtop,0,1)
-and obj_mario.y &lt; y-27
+
+//If Mario is on this falling platform, snap Mario vertically
+if collision_rectangle(bbox_left,bbox_top-5,bbox_right,bbox_top+4,obj_mario,0,0)
+and not collision_rectangle(bbox_left,bbox_top-5,bbox_right,bbox_top+1,obj_solidtop,0,1)
+and obj_mario.y &lt; y-26
 and obj_mario.state &lt; 2
-    obj_mario.y = y-32
+    obj_mario.y = ceil(bbox_top-32)
 </string>
           </argument>
         </arguments>

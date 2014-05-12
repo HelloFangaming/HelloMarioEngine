@@ -39,6 +39,9 @@ image_index = 2
 //State variable
 ready = 0
 
+//Previous previous x value
+xprevprev = x
+
 //Start following path later
 alarm[0] = 16
 </string>
@@ -103,10 +106,11 @@ ready = 1
 //If the leaf is falling, use the appropriate image index
 if ready = 1
 {
-    if x &gt; xprevious
+    if x &gt; xprevprev
         image_index = 2
     else
         image_index = 1
+    xprevprev = xprevious
 }
 
 //Destroy when it falls out of the level

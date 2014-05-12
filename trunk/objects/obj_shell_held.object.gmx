@@ -99,7 +99,11 @@ while collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom,obj_slope
 with instance_create(x,y,obj_shell)
 {
     sprite_index = other.sprite_index
-    kicked = 0
+    if obj_mario.x &lt; x+8
+        hspeed = 3
+    else
+        hspeed = -3
+    event_user(15)
 }
 
 //Destroy

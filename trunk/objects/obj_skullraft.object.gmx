@@ -42,6 +42,9 @@ myright = collision_point(x+24,y+8,obj_skullraft,0,1)
 //Length of raft
 length = 0
 
+//State variable
+ready = 0
+
 //Calculate length for leftmost skull in raft
 if myright = noone
 {
@@ -70,29 +73,32 @@ if myright = noone
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-or hspeed = 0
-    exit
-if collision_rectangle(x,y-5,x+15,y+4,obj_mario,0,0)
-and obj_mario.y &lt; y-27
+            <string>///Skull raft riding logic
+
+//If Mario is on this moving platform
+if collision_rectangle(bbox_left,bbox_top-5,bbox_right,bbox_top+4,obj_mario,0,0)
+and obj_mario.y &lt; y-26
 and obj_mario.state &lt; 2
 {
-    if not collision_rectangle(obj_mario.bbox_right+1,obj_mario.bbox_top,obj_mario.bbox_right+1,obj_mario.y+30,obj_solid,0,0)
-    and permission = 1
+
+    //Check for other skull rafts
+    var check = collision_rectangle(obj_mario.bbox_left,bbox_top-5,obj_mario.bbox_right,bbox_top+1,obj_skullraft,0,1)
+
+    //If no skull rafts are around, or the other one is lower
+    if not check
+    or (check.y &gt; y || (check.y = y &amp;&amp; check &gt; id))
     {
-        obj_mario.x += hspeed
-        with obj_skullraft permission = 0
+
+        //Move Mario horizontally if there is no solid in his way
+        if (hspeed &gt; 0 and not collision_rectangle(obj_mario.bbox_right+1,obj_mario.bbox_top,obj_mario.bbox_right+1,obj_mario.y+30,obj_solid,0,0))
+        or (hspeed &lt; 0 and not collision_rectangle(obj_mario.bbox_left-1,obj_mario.bbox_top,obj_mario.bbox_left-1,obj_mario.y+30,obj_solid,0,0))
+            obj_mario.x += hspeed
+
+        //Snap Mario vertically
+        obj_mario.y = ceil(bbox_top-32)
+
     }
-    temp = collision_rectangle(obj_mario.bbox_left,obj_mario.y+32,obj_mario.bbox_right,obj_mario.y+35,obj_skullraft,0,1)
-    if temp != noone
-    {
-        if temp.y &lt; y
-        {
-            obj_mario.y = ceil(temp.y-32)
-            exit
-        }
-    }
-    obj_mario.y = ceil(y-32)
+
 }
 </string>
           </argument>
@@ -123,7 +129,7 @@ if myright = noone
 {
 
     //Start the raft if Mario gets on the raft
-    if hspeed = 0
+    if ready = 0
     and collision_rectangle(bbox_left-length,bbox_top-2,bbox_right,bbox_top+4,obj_mario,0,0)
         event_user(0)
 
@@ -131,7 +137,6 @@ if myright = noone
     else if hspeed = 1
     and collision_rectangle(bbox_right,bbox_top,bbox_right,bbox_bottom,obj_solid,0,1)
     {
-        type = 1
         x = collision_rectangle(bbox_right,bbox_top,bbox_right,bbox_bottom,obj_solid,0,1).x-16
         event_user(1)
     }
@@ -152,9 +157,6 @@ else
 //Cap fall speed
 if vspeed &gt; 4
     vspeed = 4
-
-//Moving platform permission
-permission = 1
 </string>
           </argument>
         </arguments>
@@ -208,6 +210,7 @@ if myleft != noone
             <kind>1</kind>
             <string>///Start moving raft parts
 hspeed = 1
+ready = 1
 if myleft != noone
     with myleft event_user(0)
 </string>

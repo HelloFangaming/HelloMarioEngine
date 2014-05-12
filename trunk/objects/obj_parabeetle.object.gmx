@@ -64,25 +64,28 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Move inside view
+            <string>///Moving platform logic
+
+//Move inside view
 if outside_view()
     speed = 0
 else
     speed = 0.5
 
-if not instance_exists(obj_mario)
-    exit
-if collision_rectangle(x,y-5,x+15,y+4,obj_mario,0,0)
-and obj_mario.y &lt; y-27
+//If Mario is on this moving platform
+if collision_rectangle(bbox_left,bbox_top-5,bbox_right,bbox_top+4,obj_mario,0,0)
+and obj_mario.y &lt; y-26
 and obj_mario.state &lt; 2
 {
-    if not collision_rectangle(obj_mario.bbox_right+1,obj_mario.bbox_top,obj_mario.bbox_right+1,obj_mario.y+30,obj_solid,0,0)
-    and hspeed &gt; 0
+
+    //Move Mario horizontally if there is no solid in his way
+    if (hspeed &gt; 0 and not collision_rectangle(obj_mario.bbox_right+1,obj_mario.bbox_top,obj_mario.bbox_right+1,obj_mario.y+30,obj_solid,0,0))
+    or (hspeed &lt; 0 and not collision_rectangle(obj_mario.bbox_left-1,obj_mario.bbox_top,obj_mario.bbox_left-1,obj_mario.y+30,obj_solid,0,0))
         obj_mario.x += hspeed
-    if not collision_rectangle(obj_mario.bbox_left-1,obj_mario.bbox_top,obj_mario.bbox_left-1,obj_mario.y+30,obj_solid,0,0)
-    and hspeed &lt; 0
-        obj_mario.x += hspeed
-    obj_mario.y = y-32
+
+    //Snap Mario vertically
+    obj_mario.y = ceil(bbox_top-32)
+
 }
 </string>
           </argument>
