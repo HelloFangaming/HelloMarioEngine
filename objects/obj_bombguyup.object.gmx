@@ -68,7 +68,7 @@ image_yscale = -1</string>
         y = obj_warpmario.y
         visible = 0
         obj_warpmario.myitem = sprite_index
-        obj_warpmario.bugfix = 8
+        obj_warpmario.offset = 8
     }
     else if instance_exists(obj_doormario)
     {
@@ -76,7 +76,7 @@ image_yscale = -1</string>
         y = obj_doormario.y+32
         visible = 0
         obj_doormario.myitem = sprite_index
-        obj_doormario.bugfix = 8
+        obj_doormario.offset = 8
     }
     else if instance_exists(obj_warpnoteblock)
     {

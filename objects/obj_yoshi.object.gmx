@@ -649,21 +649,16 @@ else
         //Use the correct sprite
         sprite_index = other.mouthsprite
 
-        //Shells need to be in kick mode
+        //Shells need to be spit in a special way
         if object_index = obj_shell
-            event_user(15)
-
-        //Spit shells and bricks fast
-        if object_index = obj_shell
-        or object_index = obj_thrownbrick
+        {
             hspeed = 3*obj_mario.direct
+            event_user(15)
+        }
 
         //Spit out any other item normally
         else
-            hspeed = obj_mario.hspeed+1.5*obj_mario.direct
-
-        //Move up
-        vspeed = -1
+            event_user(2)
 
     }
 

@@ -1103,6 +1103,7 @@
     <script>scripts\scr_load.gml</script>
     <script>scripts\scr_musicalscale.gml</script>
     <script>scripts\scr_canpull.gml</script>
+    <script>scripts\scr_canhold.gml</script>
     <script>scripts\scr_return.gml</script>
     <script>scripts\scr_constant_get_sprite.gml</script>
     <script>scripts\scr_sprite_get_constant.gml</script>
@@ -1604,6 +1605,7 @@
             <object>objects\obj_magikoopa2</object>
             <object>objects\obj_magic</object>
             <object>objects\obj_bowserstatue_fire</object>
+            <object>objects\obj_mechakoopa_hold</object>
           </objects>
           <objects name="Airship">
             <object>objects\obj_bobomb_hold</object>

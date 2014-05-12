@@ -187,7 +187,7 @@ if hspeed != prevhspeed
     //Bump blocks
     instance_create(x+prevhspeed,y,obj_blockbumper)
 
-    //Shell bounce effects 
+    //Shell bounce effects
     with instance_create(x+prevhspeed+8+8*sign(prevhspeed),y+8,obj_smoke) sprite_index = spr_shellbump
 
 }
@@ -285,13 +285,9 @@ and (other.stompstyle = 0 or other.bbox_bottom &gt;= bbox_top-vspeed+5)
     if kicked = 0
     {
 
-        //If Mario is below the enemy, and control is pressed, pick it up
+        //If Mario is below the enemy, and he can hold it, pick it up
         if other.bbox_bottom &gt;= bbox_top-vspeed+5
-        and keyboard_check(vk_control)
-        and other.holding = 0
-        and other.isduck = 0
-        and other.state &lt; 3
-        and other.disablecontrols = 0
+        and scr_canhold()
         {
             with instance_create(x,y,obj_shell_held) sprite_index = other.sprite_index
             instance_destroy()

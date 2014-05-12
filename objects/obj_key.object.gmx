@@ -3,35 +3,11 @@
   <spriteName>spr_key</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-2</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>obj_holdparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>image_speed = 0
-held = 0
-gravity = 0.25</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="3" enumb="2">
       <action>
         <libid>1</libid>
@@ -49,37 +25,16 @@ gravity = 0.25</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if held = 1
-{
-    event_user(1)
-    if instance_exists(obj_mario)
-    {
-        if obj_mario.direct = 1
-            image_index = 0
-        else
-            image_index = 1
-        if obj_mario.holding = 0
-        {
-            if keyboard_check(vk_control)
-                obj_mario.holding = 2
-            else
-            {
-                audio_play_sound(snd_kick,0,0)
-                obj_mario.holding = 0
-                held = 0
-                if obj_mario.direct = 1
-                    hspeed = obj_mario.hspeed+1.5
-                if obj_mario.direct = -1
-                    hspeed = obj_mario.hspeed-1.5
-                vspeed = -1
-            }
-        }
-    }
-}
-event_user(0)
-if visible = 0
-and instance_exists(obj_mario)
-    visible = 1
+            <string>///Key facing direction
+
+//Default event
+event_inherited()
+
+//Update facing direction
+if direct = 1
+    image_index = 0
+else
+    image_index = 1
 </string>
           </argument>
         </arguments>
@@ -102,140 +57,11 @@ and instance_exists(obj_mario)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.visible = 1
+            <string>///Unlock doors
+if other.visible = 1
 {
     with other event_user(0)
-    obj_mario.holding = 0
     instance_destroy()
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_solidtop">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if y &lt; other.y-11 and vspeed &gt; 0
-{
-    y = other.y-16
-    vspeed = 0
-    gravity = 0
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_mario">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if held = 0
-and obj_mario.holding = 0
-and obj_mario.stompstyle = 0
-and keyboard_check(vk_control)
-and obj_mario.isduck = 0
-and obj_mario.state &lt; 3
-and not instance_exists(obj_statue)
-and not instance_exists(obj_slider)
-{
-    obj_mario.holding = 2
-    held = 1
-    gravity = 0
-    speed = 0
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="5">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if held = 1
-    global.carrieditem = object_index
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="10" enumb="17">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-    exit
-if held = 1
-and obj_mario.holding = 2
-{
-    audio_play_sound(snd_kick,0,0)
-    obj_mario.iamkicking = 1
-    obj_mario.alarm[6] = 10
-    obj_mario.holding = 0
-    held = 0
-    if obj_mario.direct = 1
-        hspeed = obj_mario.hspeed+1.5
-    if obj_mario.direct = -1
-        hspeed = obj_mario.hspeed-1.5
-    if collision_rectangle(bbox_right,bbox_top,bbox_right+1,bbox_bottom-2,obj_solid,0,0)
-    or collision_rectangle(bbox_left-1,bbox_top,bbox_left,bbox_bottom-2,obj_solid,0,0)
-        hspeed = -hspeed
-    vspeed = -1
 }
 </string>
           </argument>

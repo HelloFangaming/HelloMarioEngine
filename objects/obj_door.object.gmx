@@ -86,9 +86,6 @@ if mywarp
 else
 {
 
-    //Get rid of door Mario
-    with obj_doormario instance_destroy()
-
     //Check for a position change
     mywarp = instance_place(x,y,obj_postchange)
 
@@ -100,6 +97,9 @@ else
     else
         instance_create(x+8,y-16,obj_mario)
 
+    //Remember if something is being held
+    obj_mario.holding = obj_doormario.holding
+
     //Notify the level manager
     with obj_levelmanager
     {
@@ -109,6 +109,9 @@ else
 
     //Fade the screen
     with obj_persistent event_user(0)
+
+    //Get rid of door Mario
+    with obj_doormario instance_destroy()
 
 }
 </string>
