@@ -25,31 +25,38 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>type = 0
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_clockwise,0,0)
+            <string>///Moving pipe
+
+//No rotations
+type = 0
+
+//Start rotations
+if place_meeting(x,y,obj_clockwise)
 {
     speed = 1
     direction = 0
     type = 1
 }
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_cclockwise,0,0)
+else if place_meeting(x,y,obj_cclockwise)
 {
     speed = 1
     direction = 180
     type = 2
 }
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_clockwiseb,0,0)
+else if place_meeting(x,y,obj_clockwiseb)
 {
     speed = 1
     direction = 180
     type = 1
 }
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_cclockwiseb,0,0)
+else if place_meeting(x,y,obj_cclockwiseb)
 {
     speed = 1
     direction = 0
     type = 2
 }
+
+//Stretch the pipe
 image_yscale = room_height-y
 </string>
           </argument>
@@ -73,7 +80,10 @@ image_yscale = room_height-y
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type = 0
+            <string>///Moving pipe logic
+
+//Move based on arrow markers
+if type = 0
 {
     if collision_rectangle(bbox_left,bbox_top,bbox_right,y+15,obj_up,0,0)
         vspeed+=-0.0324
@@ -84,10 +94,13 @@ image_yscale = room_height-y
     if collision_rectangle(bbox_left,bbox_top,bbox_right,y+15,obj_right,0,0)
         hspeed+=0.0324
 }
+
+//Circular movenent
 else if type = 1
     direction += -0.89625
 else if type = 2
     direction += 0.89625
+
 if not instance_exists(obj_mario)
     exit
 if collision_rectangle(x,y-5,x+31,y+4,obj_mario,0,0)
@@ -133,8 +146,14 @@ if collision_rectangle(x+1,y+5,x+30,y+8,obj_mario,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(sprite_index,0,x,y)
-draw_sprite_ext(sprite_index,1,x,y+16,1,room_height,0,c_white,1)</string>
+            <string>///Draw a long pipe
+
+//Draw pipe top
+draw_sprite(sprite_index,0,x,y)
+
+//Draw a stretch pipe bottom
+draw_sprite_ext(sprite_index,1,x,y+16,1,room_height,0,c_white,1)
+</string>
           </argument>
         </arguments>
       </action>

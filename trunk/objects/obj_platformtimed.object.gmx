@@ -25,10 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Set these variables in the object's creation code.
-//time = Number of seconds the platform will move.
-ready = 0
+            <string>///Timed platforms
+
+/*
+**  This item uses creation code!
+**
+**  time = Number of seconds the platform will move
+**
+*/
+
+//Default Value:
 time = 1
+
+//State variable
+ready = 0
 </string>
           </argument>
         </arguments>
@@ -51,9 +61,14 @@ time = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>time -= 1
+            <string>///Time countdown
+time--
+
+//Keep ticking if there is time
 if time &gt; 0
     alarm[0] = 60
+
+//Otherwise, fall
 else
 {
     gravity = 0.125
@@ -81,7 +96,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if vspeed &gt; 1.5
+            <string>//Cap fall speed
+if vspeed &gt; 1.5
     vspeed = 1.5
 if not instance_exists(obj_mario)
     exit
@@ -119,7 +135,8 @@ and obj_mario.state &lt; 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 0
+            <string>///Start moving
+if ready = 0
 and obj_mario.y &lt; y-27
 {
     ready = 1
@@ -148,7 +165,9 @@ and obj_mario.y &lt; y-27
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy()</string>
+            <string>///Destroy
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
@@ -170,7 +189,10 @@ and obj_mario.y &lt; y-27
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(sprite_index,0,x,y)
+            <string>///Draw Timed Platform
+draw_sprite(sprite_index,0,x,y)
+
+//Draw time limit
 if time &gt; 0
     draw_sprite(spr_numbers,time,x+12,y+4)
 </string>

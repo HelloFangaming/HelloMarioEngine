@@ -8,6 +8,71 @@
   <parentName>obj_solid</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Delicious platforms
+
+//Offset
+offset = 0
+
+//Shaking
+shake = 0
+
+//Manage shaking
+alarm[1] = 2
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Shake
+if shake = 1
+{
+    if offset = 1
+        offset = -1
+    else
+        offset = 1
+}
+else
+    offset = 0
+alarm[1] = 2
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
@@ -25,12 +90,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = 2</string>
+            <string>///Start falling
+vspeed = 2
+</string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="3" enumb="2">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -47,31 +114,43 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if vspeed = 0
+            <string>///Donut logic
+
+//If not falling
+if vspeed = 0
 {
-    if not collision_rectangle(x,y-1,x+15,y+1,obj_mario,0,0)
+
+    //If Mario is above, shake
+    if collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_mario,0,0)
+        shake = 1
+
+    //Otherwise, wait to shake
+    else if sprite_index = spr_donut or shake = 0
     {
+        shake = 0
         alarm[0] = 30
-        sprite_index = spr_donut
     }
-    else
-        sprite_index = spr_donut_shake
+
 }
-if vspeed &gt; 0
+
+//Otherwise
+else
 {
+
     if collision_rectangle(x,y-5,x+15,y+4,obj_mario,0,0)
-    and not collision_rectangle(x,y-2,x+15,y+1,obj_solidtop,0,1)
-        if obj_mario.y &lt; y-27
-        and obj_mario.state &lt; 2
-        {
-            if collision_rectangle(obj_mario.x-10,obj_mario.y+32,obj_mario.x+11,obj_mario.y+35,obj_donut,0,1)
-                obj_mario.y+=vspeed/2
-            else
-                obj_mario.y+=vspeed
-        }
-    sprite_index = spr_donut
+    and obj_mario.y &lt; y-27
+    and obj_mario.state &lt; 2
+    {
+        temp = collision_rectangle(obj_mario.bbox_left,y-2,obj_mario.bbox_right,y+1,obj_solidtop,0,1)
+        if not temp
+        or (temp.object_index = obj_donut &amp;&amp; (temp.y &gt; y || (temp.y = y &amp;&amp; temp.id &gt; id)))
+            obj_mario.y = y-32
+    }
+
+    //Do not shake
+    shake = 0
+
 }
-depth = -1
 </string>
           </argument>
         </arguments>
@@ -94,7 +173,33 @@ depth = -1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy()</string>
+            <string>///Destroy
+instance_destroy()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw Donut Platform
+draw_sprite(sprite_index,0,x+offset,y)
+</string>
           </argument>
         </arguments>
       </action>

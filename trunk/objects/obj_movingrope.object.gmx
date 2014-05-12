@@ -25,36 +25,52 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Place these in the object creation code.
-//ropelength = How long you want the rope to be.
-alarm[0] = 15
-type = 0
-varid = instance_create(x,y+16,obj_movingrope_rope)
+            <string>///Moving rope
+
+/*
+**  This item uses creation code!
+**
+**  ropelength = How long you want the rope to be
+**
+*/
+
+//Default Value:
 ropelength = 1
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_clockwise,0,0)
+
+//No rotations
+type = 0
+
+//Start rotations
+if place_meeting(x,y,obj_clockwise)
 {
     speed = 1
     direction = 0
     type = 1
 }
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_cclockwise,0,0)
+else if place_meeting(x,y,obj_cclockwise)
 {
     speed = 1
     direction = 180
     type = 2
 }
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_clockwiseb,0,0)
+else if place_meeting(x,y,obj_clockwiseb)
 {
     speed = 1
     direction = 180
     type = 1
 }
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_cclockwiseb,0,0)
+else if place_meeting(x,y,obj_cclockwiseb)
 {
     speed = 1
     direction = 0
     type = 2
 }
+
+//Make rope
+rope = instance_create(x,y+16,obj_movingrope_rope)
+
+//Make sounds
+alarm[0] = 15
 </string>
           </argument>
         </arguments>
@@ -77,8 +93,9 @@ if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_cclockwiseb
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if outside_view()
-    with varid
+            <string>///Make sounds when in view
+if outside_view()
+    with rope
         if outside_view()
             other.alarm[0] = 101
 if alarm[0] != 101
@@ -109,14 +126,20 @@ alarm[0] = 15
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>varid.x = x
-varid.y = y+16
-varid.xspeed = hspeed
-varid.yspeed = vspeed
+            <string>//Snap rope to position
+rope.x = x
+rope.y = y+16
+
+//Give rope speed values
+rope.xspeed = hspeed
+rope.yspeed = vspeed
+
+//Circular motion
 if type = 1
     direction += -0.89625
 if type = 2
     direction += 0.89625
+
 if not instance_exists(obj_mario)
     exit
 if collision_rectangle(x,y-5,x+15,y+4,obj_mario,0,0)
@@ -159,7 +182,8 @@ and hspeed &lt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type = 0
+            <string>///Move right
+if type = 0
     hspeed+=0.0324
 </string>
           </argument>
@@ -183,7 +207,8 @@ and hspeed &lt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type = 0
+            <string>///Move left
+if type = 0
     hspeed+=-0.0324
 </string>
           </argument>
@@ -207,7 +232,8 @@ and hspeed &lt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type = 0
+            <string>///Move down
+if type = 0
     vspeed+=0.0324
 </string>
           </argument>
@@ -231,7 +257,8 @@ and hspeed &lt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type = 0
+            <string>///Move up
+if type = 0
     vspeed+=-0.0324
 </string>
           </argument>
@@ -255,7 +282,8 @@ and hspeed &lt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>varid.image_yscale = ropelength
+            <string>///Lengthen rope
+rope.image_yscale = ropelength
 </string>
           </argument>
         </arguments>
@@ -278,17 +306,16 @@ and hspeed &lt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(spr_movingrope,0,x,y)
-a = ropelength
-b = 16
-while a &gt; 0
+            <string>///Draw Moving Rope
+draw_sprite(spr_movingrope,0,x,y)
+
+//Draw rope
+for(var i = 1; i &lt;= ropelength; i++)
 {
-    if a = 1
-        draw_sprite(spr_movingrope,2,x,y+b)
+    if i = ropelength
+        draw_sprite(spr_movingrope,2,x,y+i*16)
     else
-        draw_sprite(spr_movingrope,1,x,y+b)
-    a-=1
-    b+=16
+        draw_sprite(spr_movingrope,1,x,y+i*16)
 }
 </string>
           </argument>

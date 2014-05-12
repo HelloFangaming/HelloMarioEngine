@@ -25,13 +25,29 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 1300
-alarm[2] = 1500
+            <string>///Special arrow platforms
+
+//Do not animate
 image_speed = 0
+
+//Going up
 image_index = 2
+
+//Next direction
 dir = 0
+
+//Move up
 vspeed = -0.5
-ready = 1</string>
+
+//State variable
+ready = 1
+
+//Alpha blink
+alarm[0] = 1300
+
+//Time limit
+alarm[2] = 1500
+</string>
           </argument>
         </arguments>
       </action>
@@ -53,25 +69,32 @@ ready = 1</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>dir += 1
+            <string>///Finish direction change
+
+//Increment direction choice
+dir++
+
+//Cap direction choice
 if dir = 5
     dir = 1
+
+//Choose a direction and image index
 if dir = 1
 {
     direction = 90
     image_index = 2
 }
-if dir = 2
+else if dir = 2
 {
     direction = 180
     image_index = 3
 }
-if dir = 3
+else if dir = 3
 {
     direction = 90
     image_index = 2
 }
-if dir = 4
+else if dir = 4
 {
     direction = 0
     image_index = 4
@@ -98,14 +121,16 @@ if dir = 4
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if x&gt;view_xview[0]-16
-and x&lt;view_xview[0]+336
-and y&lt;view_yview[0]+256
-and y&gt;view_yview[0]-16
+            <string>///Time is up
+
+//Make smoke and noise inside view
+if not outside_view()
 {
     audio_play_sound(snd_bump,0,0)
     instance_create(x+8,y,obj_smoke)
 }
+
+//Destroy
 instance_destroy()
 </string>
           </argument>
@@ -129,8 +154,10 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_alpha = 1
-alarm[0] = 4</string>
+            <string>///Alpha blink
+image_alpha = 1
+alarm[0] = 4
+</string>
           </argument>
         </arguments>
       </action>
@@ -152,8 +179,10 @@ alarm[0] = 4</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_alpha = 0
-alarm[1] = 4</string>
+            <string>///Alpha blink
+image_alpha = 0
+alarm[1] = 4
+</string>
           </argument>
         </arguments>
       </action>
@@ -196,6 +225,8 @@ and obj_mario.state &lt; 2
         instance_destroy()
     }
 }
+
+//Reset state
 else if ready = 1
     if not collision_rectangle(x,y-2,x+31,y+4,obj_mario,0,0)
         ready = 0
@@ -221,13 +252,24 @@ else if ready = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 0
+            <string>///If Mario gets on this platform
+if ready = 0
 and obj_mario.y &lt; y-27
 {
+
+    //On state
     ready = 1
+
+    //Play move sound
     audio_play_sound(snd_move,0,0)
+
+    //Change image index
     image_index = 1
+
+    //Finish animation
     alarm[3] = 4
+
+    //Choose a first horizontal direction
     if dir = 0
     {
         if obj_mario.direct = -1
@@ -235,6 +277,7 @@ and obj_mario.y &lt; y-27
         else
             dir = 3
     }
+
 }
 </string>
           </argument>

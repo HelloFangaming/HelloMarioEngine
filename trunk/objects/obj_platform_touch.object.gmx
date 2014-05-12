@@ -25,15 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>type = 0
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_right,0,0)
-    type = 0
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_up,0,0)
+            <string>///Touch-start moving platforms
+
+//Choose a starting direction
+if place_meeting(x,y,obj_up)
     type = 1
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_down,0,0)
+else if place_meeting(x,y,obj_down)
     type = 2
-if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_left,0,0)
+else if place_meeting(x,y,obj_left)
     type = 3
+else
+    type = 0
 </string>
           </argument>
         </arguments>
@@ -56,7 +58,9 @@ if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_left,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.05</string>
+            <string>///Fall
+gravity = 0.05
+</string>
           </argument>
         </arguments>
       </action>
@@ -78,7 +82,8 @@ if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_left,0,0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type = 4
+            <string>//Cap fall speed
+if type = 4
 and vspeed &gt; 1.5
     vspeed = 1.5
 if not instance_exists(obj_mario)
@@ -117,7 +122,8 @@ and obj_mario.state &lt; 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>speed = other.setspeed
+            <string>///Change the speed
+speed = other.setspeed
 </string>
           </argument>
         </arguments>
@@ -140,7 +146,8 @@ and obj_mario.state &lt; 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type &lt; 4
+            <string>///Stop and fall
+if type &lt; 4
 {
     type = 4
     speed = 0
@@ -168,7 +175,8 @@ and obj_mario.state &lt; 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if speed &gt; 0
+            <string>///Move right
+if speed &gt; 0
     direction = 0
 </string>
           </argument>
@@ -192,7 +200,8 @@ and obj_mario.state &lt; 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if speed &gt; 0
+            <string>///Move left
+if speed &gt; 0
     direction = 180
 </string>
           </argument>
@@ -216,7 +225,8 @@ and obj_mario.state &lt; 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if speed &gt; 0
+            <string>///Move down
+if speed &gt; 0
     direction = 270
 </string>
           </argument>
@@ -240,7 +250,8 @@ and obj_mario.state &lt; 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if speed &gt; 0
+            <string>///Move up
+if speed &gt; 0
     direction = 90
 </string>
           </argument>
@@ -264,7 +275,8 @@ and obj_mario.state &lt; 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type &lt; 4
+            <string>///Start moving
+if type &lt; 4
 and speed = 0
 {
     speed = 1
@@ -299,7 +311,9 @@ and speed = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy()</string>
+            <string>///Destroy
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>

@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 2</string>
+            <string>///Kills block train parts
+
+//Destroy
+alarm[0] = 2
+</string>
           </argument>
         </arguments>
       </action>
@@ -47,7 +51,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy()</string>
+            <string>///Destroy
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
@@ -69,7 +75,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with other instance_destroy()</string>
+            <string>///Destroy middle parts
+with other instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>

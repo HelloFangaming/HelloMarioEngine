@@ -25,9 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>speed = 0.75
+            <string>///Reznor's ride
+
+//Move
+speed = 0.75
+
+//Offset values
 offsetnext = 0
-offset = 0</string>
+offset = 0
+</string>
           </argument>
         </arguments>
       </action>
@@ -49,26 +55,29 @@ offset = 0</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if offsetnext = 0
-    offset = 2
-if offsetnext = 1
-    offset = 4
-if offsetnext = 2
-    offset = 6
-if offsetnext = 3
-    offset = 8
-if offsetnext = 4
-    offset = 6
-if offsetnext = 5
-    offset = 4
-if offsetnext = 6
-    offset = 2
-offsetnext += 1
+            <string>///Manage offset values
+switch offsetnext
+{
+    case 0: offset = 2 break
+    case 1: offset = 4 break
+    case 2: offset = 6 break
+    case 3: offset = 8 break
+    case 4: offset = 6 break
+    case 5: offset = 4 break
+    case 6: offset = 2 break
+}
+
+//Increment next offset
+offsetnext++
+
+//Finish animation
 if offsetnext = 7
 {
     offset = 0
     offsetnext = 0
 }
+
+//Otherwise, continue
 else
     alarm[0] = 1
 </string>
@@ -93,8 +102,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>direction -= 0.89625
-if not instance_exists(obj_mario)
+            <string>if not instance_exists(obj_mario)
     exit
 if collision_rectangle(x-16,y-5,x+15,y+4,obj_mario,0,0)
 and obj_mario.y &lt; y-27
@@ -136,12 +144,16 @@ and hspeed &lt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not instance_exists(obj_mario)
-    exit
-if collision_rectangle(x-16,y+15,x+15,y+19,obj_mario,0,0)
+            <string>///Reznor platform logic
+
+//Let Mario bump the platform
+if offset = 0
+and collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+4,obj_mario,0,0)
 and obj_mario.vspeed &lt; 0
-and offset = 0
     alarm[0] = 1
+
+//Circular motion
+direction -= 0.89625
 </string>
           </argument>
         </arguments>
@@ -164,7 +176,9 @@ and offset = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(spr_reznor_platform,0,x,y-offset)</string>
+            <string>///Draw Reznor's Platform
+draw_sprite(spr_reznor_platform,0,x,y-offset)
+</string>
           </argument>
         </arguments>
       </action>

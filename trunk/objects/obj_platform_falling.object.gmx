@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ready = 0</string>
+            <string>///Falling platforms
+
+//State variable
+ready = 0
+</string>
           </argument>
         </arguments>
       </action>
@@ -47,17 +51,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if x&lt;view_xview[0]-64
-or x&gt;view_xview[0]+336
-or ystart&lt;view_yview[0]-16
-or ystart&gt;view_yview[0]+256
+            <string>///Reappear at the starting location when outside view
+y = ystart
+if outside_view()
 {
     ready = 0
     vspeed = 0
     y = ystart
 }
 else
+{
+    y = room_height+64
     alarm[1] = 1
+}
 </string>
           </argument>
         </arguments>
@@ -80,7 +86,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gravity = 0.05</string>
+            <string>///Fall
+gravity = 0.05
+</string>
           </argument>
         </arguments>
       </action>
@@ -102,8 +110,18 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if vspeed &gt; 1.5
+            <string>//Cap fall speed
+if vspeed &gt; 1.5
     vspeed = 1.5
+
+//Reappear after falling out of the room
+if ready = 1
+and bbox_top &gt; room_height
+{
+    ready = 2
+    alarm[1] = 10
+    gravity = 0
+}
 if not instance_exists(obj_mario)
     exit
 if collision_rectangle(x,y-5,x+47,y+4,obj_mario,0,0)
@@ -133,39 +151,12 @@ and obj_mario.state &lt; 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ready = 0
+            <string>///Start falling
+if ready = 0
 and obj_mario.y &lt; y-27
 {
     ready = 1
     alarm[0] = 15
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if ready = 1
-{
-    ready = 2
-    alarm[1] = 10
-    gravity = 0
 }
 </string>
           </argument>

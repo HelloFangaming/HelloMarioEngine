@@ -25,11 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
-alarm[0] = 15
+            <string>///The front of a block train
+
+//Do not animate
+image_speed = 0
+
+//Move
 speed = 1
+
+//Create a part at the start
 instance_create(x,y,obj_blocktrain_middle)
-audio_play_sound(snd_engine,0,0)</string>
+
+//Make parts
+alarm[0] = 15
+</string>
           </argument>
         </arguments>
       </action>
@@ -51,18 +60,26 @@ audio_play_sound(snd_engine,0,0)</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>move_snap(16,16)
+            <string>///Make parts
+
+//Snap to grid
+move_snap(16,16)
+
+//Make part
 instance_create(x,y,obj_blocktrain_middle)
+
+//Make the back of the train snap and make a killer
 with myback
 {
     move_snap(16,16)
     instance_create(x,y,obj_blocktrain_killer)
 }
-if x&gt;view_xview[0]-16
-and x&lt;view_xview[0]+336
-and y&lt;view_yview[0]+256
-and y&gt;view_yview[0]-16
+
+//Make noise
+if not outside_view()
     audio_play_sound(snd_engine,0,0)
+
+//Keep making parts
 if speed != 0
     alarm[0] = 15/speed
 </string>
@@ -121,7 +138,8 @@ and hspeed &lt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if speed != other.setspeed
+            <string>///Change the speed
+if speed != other.setspeed
 {
     speed = other.setspeed
     myback.speed = other.setspeed
@@ -150,8 +168,11 @@ and hspeed &lt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>speed = 0
+            <string>///Stop moving
+speed = 0
 move_snap(16,16)
+
+//Stop the back too
 myback.speed = 0
 </string>
           </argument>
@@ -175,8 +196,10 @@ myback.speed = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>direction = 0
-move_snap(16,16)</string>
+            <string>///Move right
+direction = 0
+move_snap(16,16)
+</string>
           </argument>
         </arguments>
       </action>
@@ -198,8 +221,10 @@ move_snap(16,16)</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>direction = 180
-move_snap(16,16)</string>
+            <string>///Move left
+direction = 180
+move_snap(16,16)
+</string>
           </argument>
         </arguments>
       </action>
@@ -221,8 +246,10 @@ move_snap(16,16)</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>direction = 270
-move_snap(16,16)</string>
+            <string>///Move down
+direction = 270
+move_snap(16,16)
+</string>
           </argument>
         </arguments>
       </action>
@@ -244,8 +271,10 @@ move_snap(16,16)</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>direction = 90
-move_snap(16,16)</string>
+            <string>///Move up
+direction = 90
+move_snap(16,16)
+</string>
           </argument>
         </arguments>
       </action>
