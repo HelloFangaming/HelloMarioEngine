@@ -71,7 +71,7 @@ if not place_meeting(x,y,obj_mouser)
     //Become a bomb after landing
     if gravity = 0
     {
-        instance_create(x,y,obj_mouser_bomb)
+        instance_create(x,round(y),obj_mouser_bomb)
         instance_destroy()
     }
 

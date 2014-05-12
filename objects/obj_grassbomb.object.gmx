@@ -25,14 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15
+            <string>///An SMB2 bomb
+
+//Do not animate
+image_speed = 0
+
+//Whether this object is not held
 held = 0
-hitpoint = 0</string>
+
+//Number of kills
+hitpoint = 0
+
+//Flash + blow up
+alarm[0] = 100
+</string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_slopeparent">
+    <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -49,10 +60,77 @@ hitpoint = 0</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if held = 1
+            <string>///Explode
+instance_create(x-8,y,obj_explosion)
+instance_destroy()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Flash before exploding
+image_speed = 0.3
+alarm[1] = 100
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Thrown bomb logic
+if held = 1
 {
-    instance_create(x,y,obj_explosion)
-    instance_destroy()
+
+    //Previous hspeed
+    prevhspeed = hspeed
+
+    //Wall collisions
+    event_user(3)
+
+    //Floor collisions
+    event_user(4)
+
+    //If the direction changed, or it landed, blow up
+    if hspeed != prevhspeed
+    or gravity = 0
+    {
+        instance_create(x,y,obj_explosion)
+        instance_destroy()
+    }
+
 }
 </string>
           </argument>
@@ -76,37 +154,12 @@ hitpoint = 0</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; other.y-11 and vspeed &gt; 0 and held = 1
+            <string>///Floor collision
+if y &lt; other.y-11 and vspeed &gt; 0
 {
-    instance_create(x,y,obj_explosion)
-    instance_destroy()
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_solid">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if held = 1
-{
-    instance_create(x,y,obj_explosion)
-    instance_destroy()
+    y = other.y-16
+    vspeed = 0
+    gravity = 0
 }
 </string>
           </argument>

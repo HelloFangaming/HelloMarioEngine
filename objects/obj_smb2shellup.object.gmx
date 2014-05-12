@@ -25,15 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0
-image_yscale = -1
+            <string>///An SMB2 shell
+
+//Do not animate
+image_speed = 0
+
+//Whether this object is not held
 held = 0
+
+//Number of kills
+hitpoint = 0
+
+//Flip vertically
+image_yscale = -1
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="2">
+    <event eventtype="7" enumb="12">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -50,94 +60,18 @@ held = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if held = 0
+            <string>///Create a shell
+with instance_create(x,y-16,obj_shell)
 {
-    if instance_exists(obj_mario)
-    {
-        x = obj_mario.x-8
-        if global.powerup = cs_small
-            y = obj_mario.y+21
-        else
-            y = obj_mario.y+11
-        if obj_mario.holding = 0
-            obj_mario.holding = 1
-    }
-    else if instance_exists(obj_warpmario)
-    {
-        x = obj_warpmario.x
-        y = obj_warpmario.y
-        visible = 0
-        obj_warpmario.myitem = sprite_index
-    }
-    else if instance_exists(obj_doormario)
-    {
-        x = obj_doormario.x-8
-        y = obj_doormario.y+32
-        visible = 0
-        obj_doormario.myitem = sprite_index
-    }
-    else if instance_exists(obj_warpnoteblock)
-    {
-        x = obj_warpnoteblock.x-8
-        if global.powerup = cs_small
-            y = obj_warpnoteblock.y+21
-        else
-            y = obj_warpnoteblock.y+11
-    }
-    else if instance_exists(obj_jumpspawn)
-    {
-        x = obj_jumpspawn.x-8
-        if global.powerup = cs_small
-            y = obj_jumpspawn.y+21
-        else
-            y = obj_jumpspawn.y+11
-    }
-    else
-        instance_destroy()
+    hspeed = 3*obj_mario.direct
+    vspeed = -3
+    sprite_index = spr_smb2shell
+    image_speed = 0.15
+    event_user(15)
 }
-if vspeed &gt; 4
-    vspeed = 4
-if visible = 0
-and instance_exists(obj_mario)
-    visible = 1
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="17">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if visible = 1
-{
-    audio_play_sound(snd_hah,0,0)
-    audio_play_sound(snd_throw,0,0)
-    obj_mario.alarm[0] = 1
-    varid = instance_create(x,y-16,obj_shell)
-    with varid
-    {
-        thrownow = 1
-        hspeed = 3*obj_mario.direct
-        vspeed = -3
-        sprite_index = spr_smb2shell
-        image_speed = 0.15
-    }
-    instance_destroy()
-}
+
+//Destroy
+instance_destroy()
 </string>
           </argument>
         </arguments>

@@ -58,7 +58,7 @@ hitpoint = 0
           <argument>
             <kind>1</kind>
             <string>///Hurt enemies
-if hspeed != 0
+if (hspeed != 0 or held = 1)
 and other.hardness &lt; 99
 {
     scr_musicalscale(id,other.id,1)

@@ -3,10 +3,10 @@
   <spriteName>spr_digsand</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>8</depth>
   <persistent>0</persistent>
-  <parentName>obj_solidtop</parentName>
-  <maskName>spr_square</maskName>
+  <parentName>obj_pullparent</parentName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -25,44 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if instance_exists(obj_mario)
-{
-    audio_play_sound(snd_pickup,0,0)
-    obj_mario.visible = 1
-    obj_mario.holding = 0
-    with (obj_puller) instance_destroy()
-    varid = instance_create(x,y,obj_smoke)
-    varid.sprite_index = spr_digsand
-    instance_destroy()
-}
+            <string>///Pull on the sand
+
+//Is this thing heavy?
+isheavy = 0
+
+//Do not animate
+image_speed = 0
+
+//Solidtop object
+mytop = instance_create(x,y,obj_solidtop)
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="7" enumb="17">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -79,17 +57,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if collision_rectangle(x+1,y-4,x+14,y,obj_mario,0,0)
-and scr_canpull()
-{
-    if obj_mario.image_index = 2 and obj_mario.image_speed = 0
-        exit
-    obj_mario.visible = 0
-    instance_create(obj_mario.x,obj_mario.y,obj_puller)
-    obj_mario.holding = 1
-    audio_play_sound(snd_ya,0,0)
-    alarm[0] = 20
-}
+            <string>///Dig the sand
+with instance_create(x,y,obj_smoke) sprite_index = spr_digsand
+
+//Destroy solidtop
+with mytop instance_destroy()
+
+//Destroy
+instance_destroy()
 </string>
           </argument>
         </arguments>

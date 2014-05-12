@@ -25,8 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.5
-hitpoint = 0</string>
+            <string>///Kill everything on screen
+
+//Animate
+image_speed = 0.5
+
+//Number of kills
+hitpoint = 0
+</string>
           </argument>
         </arguments>
       </action>
@@ -76,7 +82,9 @@ if other.hardness &lt; 99
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy()</string>
+            <string>///Destroy
+instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>

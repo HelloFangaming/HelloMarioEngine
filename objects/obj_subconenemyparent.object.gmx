@@ -81,14 +81,23 @@ with mytop instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_mario)
+            <string>///Finish lifting an item
+if instance_exists(obj_mario)
 {
+
+    //Play pick up sound
     audio_play_sound(snd_pickup,0,0)
+
+    //Scream Yah! if it was heavy
     if isheavy = 1
         audio_play_sound(snd_yah,0,0)
-    obj_mario.visible = 1
+
+    ///Destroy puller
     with obj_puller instance_destroy()
+
+    //Pull something out
     event_user(7)
+
 }
 </string>
           </argument>
@@ -115,7 +124,7 @@ with mytop instance_destroy()
             <string>if instance_exists(mytop)
 {
     mytop.x = bbox_left
-    mytop.y = y
+    mytop.y = round(y)
     if collision_rectangle(bbox_left,y-5,bbox_right,y+4,obj_mario,0,0)
     and obj_mario.y &lt; y-26
     and obj_mario.state &lt; 2
@@ -127,23 +136,27 @@ with mytop instance_destroy()
         and hspeed &lt; 0
             obj_mario.x += hspeed
         obj_mario.y = ceil(y-32)
+        //Pull on it
         if scr_canpull()
         {
-            if obj_mario.image_index = 2 and obj_mario.image_speed = 0
-                exit
-            obj_mario.visible = 0
-            instance_create(obj_mario.x,obj_mario.y,obj_puller)
-            obj_mario.holding = 1
+
+            //Create a puller
+            instance_create(other.x,other.y,obj_puller)
+
+            //If it is heavy, take longer
             if isheavy = 1
             {
                 audio_play_sound(snd_eeegh,0,0)
                 alarm[0] = 90
             }
+
+            //Otherwise, take less time
             else
             {
                 audio_play_sound(snd_ya,0,0)
                 alarm[0] = 20
             }
+
         }
     }
 }

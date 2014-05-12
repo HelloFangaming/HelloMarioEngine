@@ -25,11 +25,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.coins += 1
+            <string>///Vegetable coins
+
+//Increment coins
+global.coins++
+
+//Animate
 image_speed = 0.15
+
+//Move up
 vspeed = -4
+
+//Gravity
 gravity = 0.125
-audio_play_sound(snd_coin,0,0)</string>
+
+//Play coin sound
+audio_play_sound(snd_coin,0,0)
+</string>
           </argument>
         </arguments>
       </action>
@@ -51,7 +63,8 @@ audio_play_sound(snd_coin,0,0)</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &gt; ystart
+            <string>///Destroy after falling below its original y value
+if y &gt; ystart
 {
     with instance_create(x,ystart,obj_score) event_user(0)
     instance_create(x+8,ystart-8,obj_sparkletrail)
