@@ -331,6 +331,7 @@ if instance_exists(obj_mario)
     //If Yoshi is not licking and control is pressed
     if licking = 0
     and keyboard_check_pressed(vk_control)
+    and obj_mario.disablecontrols = 0
     {
 
         //If mouth is empty, start licking

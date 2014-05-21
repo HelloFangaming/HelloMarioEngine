@@ -585,7 +585,7 @@ if file_exists("Settings.dat")
 else
 {
 
-    //No fullscreen
+    //Fullscreen is off by default
     fullscreen = 0
 
     //Set the default to HQ4X only if the screen is big enough to fit it
@@ -594,8 +594,8 @@ else
     else
         filter = 1
 
-    //VSync is on by default
-    vsync = 1
+    //VSync is off by default
+    vsync = 0
 
 }
 
