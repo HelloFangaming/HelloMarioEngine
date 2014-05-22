@@ -916,8 +916,8 @@ and collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,0)
 {
 
     //Prevent Mario's head from getting embed in the ceiling
-    if not collision_rectangle(bbox_left,bbox_bottom-1,bbox_right,bbox_bottom,obj_solidtop,0,0)
-    and not collision_rectangle(bbox_left,bbox_bottom-1,bbox_right,bbox_bottom,obj_slopeparent,1,0)
+    if gravity != 0
+    or state &gt; 2
         while collision_rectangle(bbox_left,bbox_top+1,bbox_right,bbox_top+1,obj_solid,1,0)
             y++
 
@@ -944,109 +944,114 @@ and collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,0)
 
 //If Mario is not climbing or wall climbing
 if state &lt; 3
-and disablecontrols = 0
 {
 
-    //If Mario is not jumping
-    if state != 2
+    //If Mario's controls are disabled
+    if disablecontrols = 0
     {
 
-        //Makes Mario duck
-        if keyboard_check(vk_down)
-        and global.powerup != cs_small
-        and global.powerup != cs_frog
-        and holding = 0
-        and noisy = 0
-            isduck = 1
-    
-        //Stops Mario from ducking
-        else if not keyboard_check(vk_down)
-            isduck = 0
-
-    }
-
-    //Handles powerup specific projectiles, tail spinning, and statue morphing
-    if keyboard_check_pressed(vk_control)
-    and holding = 0
-    and stompstyle = 0
-    {
-
-        //Make sure Mario is not standing on an object that can be picked up
-        if obj_levelmanager.barrier = 0
-        and not place_meeting(x,y+2,obj_subconenemyparent)
-        and not place_meeting(x,y+2,obj_pullparent)
-        and not place_meeting(x,y,obj_holdparent)
+        //If Mario is not jumping
+        if state != 2
         {
 
-            //Tanooki Statue
-            if global.powerup = cs_tanooki
-            and not instance_exists(obj_spinner)
-            and keyboard_check(vk_down)
-                instance_create(x,y,obj_statue)
+            //Makes Mario duck
+            if keyboard_check(vk_down)
+            and global.powerup != cs_small
+            and global.powerup != cs_frog
+            and holding = 0
+            and noisy = 0
+                isduck = 1
 
-            //If Mario is not ducking
-            else if isduck = 0
+            //Stops Mario from ducking
+            else if not keyboard_check(vk_down)
+                isduck = 0
+
+        }
+
+        //Handles powerup specific projectiles, tail spinning, and statue morphing
+        if keyboard_check_pressed(vk_control)
+        and holding = 0
+        and stompstyle = 0
+        {
+
+            //Make sure Mario is not standing on an object that can be picked up
+            if obj_levelmanager.barrier = 0
+            and not place_meeting(x,y+2,obj_subconenemyparent)
+            and not place_meeting(x,y+2,obj_pullparent)
+            and not place_meeting(x,y,obj_holdparent)
             {
 
-                //Fire Ball
-                if global.powerup = cs_fire
-                and instance_number(obj_fireball) &lt; 2
-                {
-                    firing = 9
-                    with instance_create(x,y+16,obj_fireball) hspeed = 3*other.direct
-                }
-
-                //Hammer
-                else if global.powerup = cs_hammer
-                and instance_number(obj_hammer) &lt; 2
-                {
-                    firing = 9
-                    with instance_create(x,y+16,obj_hammer) hspeed = 2*other.direct+other.hspeed
-                }
-
-                //Tail Spin
-                else if (global.powerup = cs_leaf or global.powerup = cs_tanooki)
+                //Tanooki Statue
+                if global.powerup = cs_tanooki
                 and not instance_exists(obj_spinner)
-                    instance_create(x,y,obj_spinner)
+                and keyboard_check(vk_down)
+                    instance_create(x,y,obj_statue)
 
-                //Bomb
-                else if global.powerup = cs_bomb
-                and instance_number(obj_minibomb) &lt; 1
+                //If Mario is not ducking
+                else if isduck = 0
                 {
-                    firing = 9
-                    with instance_create(x,y+16,obj_minibomb) hspeed = 1.5*other.direct+other.hspeed
-                }
 
-                //Ice Ball
-                else if (global.powerup = cs_ice or (global.powerup = cs_penguin and isswim = 0))
-                and not instance_exists(obj_iceball)
-                {
-                    firing = 9
-                    with instance_create(x,y+16,obj_iceball) hspeed = 3*other.direct
-                }
+                    //Fire Ball
+                    if global.powerup = cs_fire
+                    and instance_number(obj_fireball) &lt; 2
+                    {
+                        firing = 9
+                        with instance_create(x,y+16,obj_fireball) hspeed = 3*other.direct
+                    }
 
-                //Super Ball
-                else if global.powerup = cs_super
-                and instance_number(obj_superball) &lt; 2
-                {
-                    firing = 9
-                    with instance_create(x,y+16,obj_superball) hspeed = 2*other.direct
-                }
+                    //Hammer
+                    else if global.powerup = cs_hammer
+                    and instance_number(obj_hammer) &lt; 2
+                    {
+                        firing = 9
+                        with instance_create(x,y+16,obj_hammer) hspeed = 2*other.direct+other.hspeed
+                    }
 
-                //Shuriken
-                else if global.powerup = cs_ninja
-                and instance_number(obj_shuriken) &lt; 2
-                {
-                    firing = 9
-                    with instance_create(x,y+20,obj_shuriken) hspeed = 5*other.direct
-                }
+                    //Tail Spin
+                    else if (global.powerup = cs_leaf or global.powerup = cs_tanooki)
+                    and not instance_exists(obj_spinner)
+                        instance_create(x,y,obj_spinner)
 
-                //Boomerang
-                else if global.powerup = cs_boomerang
-                and instance_number(obj_boomerang_b) &lt; 2
-                {
-                    firing = 9
-                    with instance_create(x-8,y+16,obj_boomerang_b) hspeed = 1.5*other.direct
+                    //Bomb
+                    else if global.powerup = cs_bomb
+                    and instance_number(obj_minibomb) &lt; 1
+                    {
+                        firing = 9
+                        with instance_create(x,y+16,obj_minibomb) hspeed = 1.5*other.direct+other.hspeed
+                    }
+
+                    //Ice Ball
+                    else if (global.powerup = cs_ice or (global.powerup = cs_penguin and isswim = 0))
+                    and not instance_exists(obj_iceball)
+                    {
+                        firing = 9
+                        with instance_create(x,y+16,obj_iceball) hspeed = 3*other.direct
+                    }
+
+                    //Super Ball
+                    else if global.powerup = cs_super
+                    and instance_number(obj_superball) &lt; 2
+                    {
+                        firing = 9
+                        with instance_create(x,y+16,obj_superball) hspeed = 2*other.direct
+                    }
+
+                    //Shuriken
+                    else if global.powerup = cs_ninja
+                    and instance_number(obj_shuriken) &lt; 2
+                    {
+                        firing = 9
+                        with instance_create(x,y+20,obj_shuriken) hspeed = 5*other.direct
+                    }
+
+                    //Boomerang
+                    else if global.powerup = cs_boomerang
+                    and instance_number(obj_boomerang_b) &lt; 2
+                    {
+                        firing = 9
+                        with instance_create(x-8,y+16,obj_boomerang_b) hspeed = 1.5*other.direct
+                    }
+
                 }
 
             }
