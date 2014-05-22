@@ -233,10 +233,6 @@ if y &lt; other.y+5-sprite_height and vspeed &gt; 0
             <kind>1</kind>
             <string>///Prepare sprite
 
-//Move to the appropriate location
-x = bbox_left
-y = bbox_top
-
 //Select an appropriate ice sprite
 if bbox_bottom-bbox_top &gt; 18
 and bbox_right-bbox_left &gt; 18

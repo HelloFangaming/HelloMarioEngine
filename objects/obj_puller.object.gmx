@@ -37,9 +37,6 @@ with obj_mario
     visible = 0
     disablecontrols = 1
 }
-
-//Fail safe to prevent Mario from being stuck pulling nothing
-alarm[0] = 95
 </string>
           </argument>
         </arguments>
@@ -73,31 +70,6 @@ with obj_mario
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Fail safe to prevent Mario from getting stuck
-with obj_mario holding = 0
-instance_destroy()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -115,8 +87,9 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Snap to Mario if he exists
+            <string>///Snap to Mario if he is still there pulling the item
 if instance_exists(obj_mario)
+and place_meeting(x,y+4,pulled)
 {
     x = obj_mario.x
     y = obj_mario.y

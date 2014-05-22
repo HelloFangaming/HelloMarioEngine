@@ -108,13 +108,13 @@ and obj_mario.y &lt; y-26
 and obj_mario.state &lt; 2
 {
 
-    //Move Mario horizontally if there is no solid in his way
-    if (hspeed &gt; 0 and not collision_rectangle(obj_mario.bbox_right+1,obj_mario.bbox_top,obj_mario.bbox_right+1,obj_mario.y+30,obj_solid,0,0))
-    or (hspeed &lt; 0 and not collision_rectangle(obj_mario.bbox_left-1,obj_mario.bbox_top,obj_mario.bbox_left-1,obj_mario.y+30,obj_solid,0,0))
-        obj_mario.x += hspeed
-
     //Snap Mario vertically
     obj_mario.y = ceil(bbox_top-32)
+
+    //Move Mario horizontally if there is no solid in his way
+    if (hspeed &gt; 0 and not collision_rectangle(obj_mario.bbox_right+hspeed,obj_mario.bbox_top,obj_mario.bbox_right+hspeed,obj_mario.bbox_bottom-1,obj_solid,0,0))
+    or (hspeed &lt; 0 and not collision_rectangle(obj_mario.bbox_left+hspeed,obj_mario.bbox_top,obj_mario.bbox_left+hspeed,obj_mario.bbox_bottom-1,obj_solid,0,0))
+        obj_mario.x += hspeed
 
 }
 </string>

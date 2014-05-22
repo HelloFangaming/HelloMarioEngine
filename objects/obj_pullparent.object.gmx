@@ -100,7 +100,7 @@ and scr_canpull()
 {
 
     //Create a puller
-    instance_create(obj_mario.x,obj_mario.y,obj_puller)
+    with instance_create(obj_mario.x,obj_mario.y,obj_puller) pulled = other.id
 
     //If it is heavy, take longer
     if isheavy = 1

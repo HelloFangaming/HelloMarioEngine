@@ -422,6 +422,9 @@ else
 //Animate
 image_speed = 0.3
 
+//Force Mario to duck
+obj_mario.isduck = 1
+
 //Change animation
 alarm[1] = 6
 </string>

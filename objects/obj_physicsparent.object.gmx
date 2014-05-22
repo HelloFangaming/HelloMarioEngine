@@ -95,7 +95,8 @@ and not collision_rectangle(bbox_left,bbox_bottom-8,bbox_right,bbox_bottom-8,obj
 }
 
 //Check for floor objects
-if collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
+if (collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
+and not collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-4,obj_solidtop,0,0))
 or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0)
 {
     gravity = 0
