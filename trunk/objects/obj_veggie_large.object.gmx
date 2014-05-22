@@ -57,6 +57,9 @@ image_speed = 0.15
             <string>///Make extra large vegetable
 instance_create(obj_mario.x-8,obj_mario.y-5,obj_vegetable_large)
 
+//Make Mario hold it
+obj_mario.holding = 1
+
 //Play break sound
 audio_play_sound(snd_break,0,0)
 

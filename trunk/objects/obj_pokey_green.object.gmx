@@ -252,6 +252,9 @@ with instance_create(obj_mario.x,obj_mario.y+11,obj_vegenemy)
     image_speed = 0
 }
 
+//Make Mario hold it
+obj_mario.holding = 1
+
 //Destroy
 instance_destroy()
 </string>
