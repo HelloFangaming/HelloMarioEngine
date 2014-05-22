@@ -103,9 +103,9 @@ if other.hardness &lt; 2
 {
     with other
     {
-        with instance_create(bbox_left,bbox_top,obj_enemy_frozen)
+        with instance_create(x-sprite_xoffset,y-sprite_yoffset,obj_enemy_frozen)
         {
-            sprite_index = other.mask_index
+            sprite_index = other.sprite_index
             event_user(15)
         }
         audio_play_sound(snd_magic,0,0)
