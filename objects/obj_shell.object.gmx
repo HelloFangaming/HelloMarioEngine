@@ -128,6 +128,7 @@ else
             <kind>1</kind>
             <string>///Become vulnerable
 if not place_meeting(x,y,obj_blockbumper)
+and not place_meeting(x,y,obj_blockparent)
 {
     if sprite_index = spr_shell_buzzy
     or sprite_index = spr_shell_buzzy_down

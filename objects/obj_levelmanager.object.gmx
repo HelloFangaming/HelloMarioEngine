@@ -652,27 +652,9 @@ if barrier = 0
 and instance_exists(obj_mario)
 {
 
-    //If a reserve item exists
-    if global.reserveitem &gt; cs_small
-    {
-
-        //If space is pressed, or Mario becomes small after getting hurt
-        if keyboard_check_pressed(vk_space)
-        or (not instance_exists(obj_invincibility)
-        and not instance_exists(obj_slider)
-        and global.powerup = cs_small
-        and obj_mario.invincible = 1)
-        {
-
-            //Create the reserve item
-            with instance_create(view_xview[0]+152,view_yview[0]+8,obj_reserveitem) sprite_index = scr_constant_get_sprite(global.reserveitem)
-
-            //Remove the reserve item
-            global.reserveitem = cs_small
-
-        }
-
-    }
+    //If space is pressed, drop the reserve item
+    if keyboard_check_pressed(vk_space)
+        event_user(4)
 
     //If Mario moves off the left side of the screen
     if obj_mario.x &lt; view_xview[0]+5
@@ -730,6 +712,41 @@ if global.coins &gt; 99
 //Make the screen shake if thwomp sound plays
 if not audio_is_playing(snd_thwomp)
     alarm[11] = 2
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="14">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Drop the reserve item
+
+//If a reserve item exists
+if global.reserveitem &gt; cs_small
+{
+
+    //Create the reserve item
+    with instance_create(view_xview[0]+152,view_yview[0]+8,obj_reserveitem) sprite_index = scr_constant_get_sprite(global.reserveitem)
+
+    //Remove the reserve item
+    global.reserveitem = cs_small
+
+}
 </string>
           </argument>
         </arguments>
