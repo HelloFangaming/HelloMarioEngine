@@ -112,7 +112,7 @@ if held = 0
             audio_play_sound(snd_throw,0,0)
 
             //Reset holding variable
-            obj_mario.alarm[0] = 1
+            obj_mario.alarm[0] = 2
 
             //Gravity
             gravity = 0.25

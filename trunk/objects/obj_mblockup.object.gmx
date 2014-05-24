@@ -116,6 +116,42 @@ if y &lt; other.y+4 and vspeed &gt; 0
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Stay out of walls when thrown
+if not position_meeting(bbox_left+8,bbox_top,obj_solid)
+{
+    with instance_place(x,y,obj_solid)
+    {
+        if x &gt; other.x
+            other.x = bbox_left-16
+        else
+            other.x = bbox_right+1
+    }
+}
+
+//Default event
+event_inherited()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
   </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>

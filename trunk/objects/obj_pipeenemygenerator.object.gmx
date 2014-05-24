@@ -71,7 +71,14 @@ alarm[0] = 100
           <argument>
             <kind>1</kind>
             <string>///Change enemy depth
-with newenemy depth = 0
+instance_activate_object(newenemy)
+with newenemy
+{
+    if outside_view()
+        instance_destroy()
+    else
+        depth = 0
+}
 </string>
           </argument>
         </arguments>

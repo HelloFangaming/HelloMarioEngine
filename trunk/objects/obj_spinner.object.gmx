@@ -28,7 +28,7 @@
             <string>///A tail spin
 
 //Play the spin sound
-alarm[0] = 1
+audio_play_sound(snd_spin,0,0)
 
 //Animate
 image_speed = 0.3
@@ -68,30 +68,6 @@ bumper.alarm[0] = 0
             <string>///Make Mario visible
 with obj_mario visible = 1
 with bumper instance_destroy()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Play the spin sound
-audio_play_sound(snd_spin,0,0)
 </string>
           </argument>
         </arguments>
