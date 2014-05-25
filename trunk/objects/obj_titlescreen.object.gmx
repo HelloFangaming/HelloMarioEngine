@@ -144,7 +144,7 @@ if fade != 0
     draw_set_halign(fa_right)
 
     //Draw version information
-    draw_text(view_wview[0]-2,view_hview[0]-10,"V6.0")
+    draw_text(view_wview[0]-2,view_hview[0]-10,"V6.0.1")
 
 }
 
