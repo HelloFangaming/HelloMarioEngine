@@ -92,7 +92,6 @@ if visible = 0
 
         //If the key was eaten, chase Yoshi
         if instance_exists(obj_yoshi)
-        and obj_yoshi.fullmouth = 1
         and obj_yoshi.inmouth = obj_key
         {
             chasemode = 1
@@ -135,7 +134,6 @@ else
 
         //Chase Yoshi if it gets eaten
         else if instance_exists(obj_yoshi)
-        and obj_yoshi.fullmouth = 1
         and obj_yoshi.inmouth = obj_key
             chasemode = 1
 
@@ -154,7 +152,6 @@ else
 
         //If Yoshi still has the key, chase Yoshi
         if instance_exists(obj_yoshi)
-        and obj_yoshi.fullmouth = 1
         and obj_yoshi.inmouth = obj_key
             turn_towards_direction(point_direction(x,y,obj_yoshi.x,obj_yoshi.y),8)
 
