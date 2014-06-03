@@ -69,7 +69,7 @@ file_text_write_string(file,base64_encode(string(global.cardscore)))
 file_text_writeln(file)
 
 //Inventory Items
-for(var i = 0; i<16; i++)
+for(var i = 0; i < 16; i++)
 {
     file_text_write_string(file,base64_encode(string(global.inventory[i])))
     file_text_writeln(file)

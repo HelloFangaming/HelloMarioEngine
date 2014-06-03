@@ -162,8 +162,13 @@ if switchon = 1
     //Stop the switch song
     audio_stop_sound(snd_switchsong)
 
-    //Restart the music
-    alarm[0] = 1
+    //Restart the starman music if it was stopped due to overlap
+    if instance_exists(obj_invincibility)
+        audio_play_sound(snd_starman,99,1)
+
+    //Otherwise, restart the music
+    else
+        alarm[0] = 1
 
 }
 </string>
@@ -565,6 +570,7 @@ audio_stop_sound(levelmusic)
             <string>///Loop the music
 if not audio_is_playing(levelmusic)
 and musicdisabled = 0
+and switchon = 0
     audio_play_sound(levelmusic,99,1)
 </string>
           </argument>
@@ -879,6 +885,9 @@ if switchon = 0
         audio_play_sound(snd_switchsong,99,1)
         alarm[1] = 1
     }
+
+    //Prevent the starman music from overlapping
+    audio_stop_sound(snd_starman)
 
 }
 </string>

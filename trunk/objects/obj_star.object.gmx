@@ -122,7 +122,8 @@ else
     instance_create(x,y,obj_invincibility)
 
     //Start the star music
-    audio_play_sound(snd_starman,99,1)
+    if obj_levelmanager.switchon = 0
+        audio_play_sound(snd_starman,99,1)
 
     //Let's go!
     audio_play_sound(snd_letsgo,0,0)
