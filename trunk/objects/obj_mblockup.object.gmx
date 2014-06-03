@@ -74,8 +74,9 @@ if held = 1
     if hspeed != prevhspeed
         hspeed = 0
 
-    //Become a block after landing
+    //Become a block after landing, but only if Mario is not there
     if gravity = 0
+    and not place_meeting(x,y,obj_mario)
     {
         instance_create(x,round(y-16),obj_mblock)
         instance_destroy()

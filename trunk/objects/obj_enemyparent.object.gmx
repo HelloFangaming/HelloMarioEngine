@@ -205,7 +205,7 @@ and other.invincible != -1
 
         //Regular stomp
         else if (stomp = 0 or stomp = 3 or stomp = 5)
-        and not place_meeting(x,y,obj_swim)
+        and other.isswim = 0
         {
             with other event_user(1)
             if stomp = 0

@@ -1062,6 +1062,7 @@ if state &lt; 3
 
         //Stops Mario from ducking
         else if not keyboard_check(vk_down)
+        and not collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_solid,1,0)
             isduck = 0
 
     }
