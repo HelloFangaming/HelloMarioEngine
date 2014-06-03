@@ -340,7 +340,8 @@ while collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom,obj_slope
             <string>///Shatter
 
 //Play break sound
-audio_play_sound(snd_break,0,0)
+if not outside_view()
+    audio_play_sound(snd_break,0,0)
 
 //Make shards
 with instance_create(x+8,y,obj_shard)
