@@ -118,6 +118,11 @@ alarm[0] = 4
             <kind>1</kind>
             <string>///Retrieve item
 
+//Ignore if small Mario's head will get stuck
+if global.powerup = cs_small
+and collision_rectangle(other.bbox_left,other.bbox_top-16,other.bbox_right,other.bbox_top,obj_solid,1,0)
+    exit
+
 //If a mushroom is being retrieved
 if sprite_index = spr_mushroom
 {
