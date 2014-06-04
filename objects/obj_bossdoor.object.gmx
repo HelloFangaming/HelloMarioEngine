@@ -34,6 +34,49 @@ image_speed = 0
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Prevent the view from going too far to the right
+
+//If the view is too far
+if x &lt;= view_xview[0]
+{
+
+    //Make sure the view is perfect
+    view_xview[0] = x
+
+    //Stop the scrolling at the right spot
+    with obj_autoscroll
+    {
+        speed = 0
+        x = other.x+view_wview[0]/2-8
+    }
+
+}
+
+//Otherwise, keep checking
+else
+    alarm[3] = 1
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="2">
       <action>
         <libid>1</libid>
@@ -168,6 +211,9 @@ and obj_mario.x &gt; x+26
     audio_play_sound(snd_castlebreak,0,0)
     instance_create(x,y,obj_smoke)
     alarm[0] = 20
+
+    //Prevent the view from going too far to the right
+    alarm[3] = 1
 
 }
 </string>
