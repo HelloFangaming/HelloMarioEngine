@@ -1283,13 +1283,13 @@
         <object>objects\obj_podoboo</object>
         <object>objects\obj_thwomp</object>
         <object>objects\obj_thwimp</object>
-        <object>objects\obj_rotodisc</object>
         <object>objects\obj_netkoopa</object>
         <object>objects\obj_netspark</object>
         <object>objects\obj_littlespark</object>
         <object>objects\obj_fastspark</object>
         <object>objects\obj_giantspark</object>
         <object>objects\obj_phanto</object>
+        <object>objects\obj_rotodisc</object>
         <object>objects\obj_firebar</object>
         <object>objects\obj_firebar_large</object>
         <object>objects\obj_grinder</object>

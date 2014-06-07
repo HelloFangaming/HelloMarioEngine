@@ -70,7 +70,7 @@
 **
 */
 
-//Default Value:
+//Default Values:
 sprout[0] = cs_coin
 sprout[1] = cs_coin
 sprout[2] = cs_coin
