@@ -42,7 +42,6 @@ ready = 0
 
 //Create a solid
 mysolid = instance_create(x,y,obj_solid)
-
 </string>
           </argument>
         </arguments>
