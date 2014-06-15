@@ -608,13 +608,13 @@
         <sprite>sprites\spr_podoboo</sprite>
         <sprite>sprites\spr_thwomp</sprite>
         <sprite>sprites\spr_thwimp</sprite>
-        <sprite>sprites\spr_rotodisc</sprite>
         <sprite>sprites\spr_netkoopa</sprite>
         <sprite>sprites\spr_netkoopa2</sprite>
         <sprite>sprites\spr_netkoopaturn</sprite>
         <sprite>sprites\spr_spark</sprite>
         <sprite>sprites\spr_giantspark</sprite>
         <sprite>sprites\spr_phanto</sprite>
+        <sprite>sprites\spr_rotodisc</sprite>
         <sprite>sprites\spr_grinder</sprite>
         <sprite>sprites\spr_ballnchain</sprite>
         <sprite>sprites\spr_magikoopa</sprite>
