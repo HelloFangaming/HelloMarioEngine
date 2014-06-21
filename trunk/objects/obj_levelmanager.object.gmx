@@ -607,35 +607,35 @@ if instance_exists(obj_autoscroll)
 else if instance_exists(obj_mario)
 {
     x = obj_mario.x
-    y = obj_mario.y
+    y = obj_mario.y+16
 }
 
 //Follow goal Mario if he exists
 else if instance_exists(obj_goalmario)
 {
     x = obj_goalmario.x
-    y = obj_goalmario.y
+    y = obj_goalmario.y+16
 }
 
 //Follow warp Mario if he exists
 else if instance_exists(obj_warpmario)
 {
     x = obj_warpmario.x
-    y = obj_warpmario.y
+    y = obj_warpmario.y+16
 }
 
 //Follow jump spawn Mario if he exists
 else if instance_exists(obj_jumpspawn)
 {
     x = obj_jumpspawn.x
-    y = obj_jumpspawn.y
+    y = obj_jumpspawn.y+16
 }
 
 //Follow vine spawn Mario if he exists
 else if instance_exists(obj_vinespawn)
 {
     x = obj_vinespawn.x
-    y = obj_vinespawn.y
+    y = obj_vinespawn.y+16
 }
 
 //Do nor let the screen fall behind the classic scroll
