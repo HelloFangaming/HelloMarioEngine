@@ -638,7 +638,7 @@ else if instance_exists(obj_vinespawn)
     y = obj_vinespawn.y+16
 }
 
-//Do nor let the screen fall behind the classic scroll
+//Do not let the screen fall behind the classic scroll
 if instance_exists(obj_classicscroll)
 and x &lt; obj_classicscroll.x
     x = obj_classicscroll.x
