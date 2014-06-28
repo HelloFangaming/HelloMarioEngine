@@ -90,7 +90,7 @@ depth = 3
             <string>///Draw Mario entering a door
 
 //Draw the inside of the door if the door is closing
-if depth = 2
+if depth = 3
     draw_sprite(spr_door_inside,0,x-8,y+16)
 
 //Draw the held item if it exists
