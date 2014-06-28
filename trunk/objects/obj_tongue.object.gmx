@@ -236,8 +236,9 @@ and other.hardness &lt; 2
     or other.object_index = obj_jumpingkoopa
     or other.object_index = obj_buzzybeetle
     or other.object_index = obj_spiney
-    or other.object_index = obj_buzzybeetle
-    or other.object_index = obj_spiney
+    or other.object_index = obj_buzzy_ceiling
+    or other.object_index = obj_spiney_ceiling
+    or other.object_index = obj_nokobon
     or other.object_index = obj_mechakoopa
     or other.object_index = obj_bobomb
         with other event_user(5)
