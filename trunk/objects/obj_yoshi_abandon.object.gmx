@@ -95,6 +95,9 @@ and other.visible = 1
     other.x = x
     other.y = y
 
+    //Force him to hold Yoshi
+    other.holding = 3
+
     //Remember the correct Yoshi color
     if sprite_index = spr_yoshi_walk
         global.ycolor = 0

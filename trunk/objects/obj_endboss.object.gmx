@@ -27,30 +27,6 @@
             <kind>1</kind>
             <string>///Take points off the time, and add to the score
 
-//If there is more than 4 seconds left
-if global.timer &gt; 4
-{
-
-    //Add 500 to the score
-    score += 500
-
-    //Subtract 5 seconds from the time
-    global.timer -= 5
-
-}
-
-//Otherwise
-else
-{
-
-    //Add 100 to the score
-    score += 100
-
-    //Decrement the time
-    global.timer--
-
-}
-
 //If there is no time left
 if global.timer = 0
 {
@@ -66,6 +42,30 @@ if global.timer = 0
 //Otherwise
 else
 {
+
+    //If there is more than 4 seconds left
+    if global.timer &gt; 4
+    {
+
+        //Add 500 to the score
+        score += 500
+
+        //Subtract 5 seconds from the time
+        global.timer -= 5
+
+    }
+
+    //Otherwise
+    else
+    {
+
+        //Add 100 to the score
+        score += 100
+
+        //Decrement the time
+        global.timer--
+
+    }
 
     //Play the count sound
     audio_play_sound(snd_count,0,0)

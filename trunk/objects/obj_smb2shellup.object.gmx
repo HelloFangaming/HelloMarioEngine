@@ -64,7 +64,6 @@ image_yscale = -1
 with instance_create(x,y-16,obj_shell)
 {
     hspeed = 3*obj_mario.direct
-    vspeed = -3
     sprite_index = spr_smb2shell
     image_speed = 0.15
     event_user(15)
