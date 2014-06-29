@@ -136,15 +136,14 @@ if fade != 0
     //Set the alpha
     draw_set_alpha(fade)
 
-    //Powered by text
-    //You are allowed to remove the line below if you mention the Hello Mario Engine at least somewhere else
-    draw_text(2,2,"POWERED BY HELLO MARIO ENGINE")
-
-    //Align to the right
-    draw_set_halign(fa_right)
-
-    //Draw version information
-    draw_text(view_wview[0]-2,view_hview[0]-10,"V6.0.3")
+    /*
+    **  Powered by Hello Mario Engine text:
+    **
+    **  You are allowed to remove this as long as you
+    **  give credit for use of the "Hello Mario Engine" 
+    **  somewhere else. Thank you.
+    */
+    draw_text(2,2,"POWERED BY HELLO MARIO ENGINE V6.0.3")
 
 }
 

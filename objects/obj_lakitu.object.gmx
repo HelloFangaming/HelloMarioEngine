@@ -117,7 +117,7 @@ with instance_create(x,y,obj_lakituticker)
 if obj_levelmanager.x &gt; (xmax-xmin)/2+xmin
     x = view_xview[0]-64
 else
-    x = view_xview[0]+384
+    x = view_xview[0]+view_wview[0]+64
 
 //Make visible
 visible = 1
@@ -248,8 +248,8 @@ if follow != noone
             hspeed += -0.05
         if x &lt; view_xview[0]-15
             x = view_xview[0]-15
-        if x &gt; view_xview[0]+319
-            x = view_xview[0]+319
+        if x &gt; view_xview[0]+view_wview[0]-1
+            x = view_xview[0]+view_wview[0]-1
     }
 
     //Otherwise, get out
@@ -272,7 +272,7 @@ if follow != noone
 //Snap outside the level when outside the view
 if x &lt; view_xview[0]-32
     x = -32
-if x &gt; view_xview[0]+336
+if x &gt; view_xview[0]+view_wview[0]+16
     x = room_width+16
 
 //Snap to the correct y value

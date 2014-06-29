@@ -1163,7 +1163,7 @@ draw_sprite_ext(spr_mariohud,0,view_xview[0]+58,view_yview[0]+10,1,1,0,c_white,0
 draw_text(view_xview[0]+82,view_yview[0]+10,string_format(lives,2,0))
 
 //Draw the score
-draw_text(view_xview[0]+view_wview-66,view_yview[0]+10,string_add_zeros(score,7))
+draw_text(view_xview[0]+254,view_yview[0]+10,string_add_zeros(score,7))
 
 //Draw the coin count
 draw_sprite_ext(spr_coinhud,0,view_xview[0]+194,view_yview[0]+10,1,1,0,c_white,0.7)

@@ -185,7 +185,7 @@ if ready = 0
 
         //Create fire
         if outside_view()
-            fire = instance_create(view_xview[0]+327,ystart-32+irandom(4)*16,obj_bowserstatue_fire)
+            fire = instance_create(view_xview[0]+view_wview[0]+7,ystart-32+irandom(4)*16,obj_bowserstatue_fire)
         else
             fire = instance_create(x,y+8,obj_bowserstatue_fire)
 
