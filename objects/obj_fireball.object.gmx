@@ -78,7 +78,7 @@ if gravity = 0
 }
 
 //Melt ice
-with collision_rectangle(bbox_left-4,bbox_top-4,bbox_right+4,bbox_bottom+4,obj_icecoin,0,0)
+with collision_rectangle(bbox_left-6,bbox_top-4,bbox_right+6,bbox_bottom+4,obj_icecoin,0,0)
 {
     event_user(0)
     with other instance_destroy()

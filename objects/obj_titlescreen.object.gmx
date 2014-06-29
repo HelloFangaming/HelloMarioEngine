@@ -37,7 +37,7 @@ fade = 1
 alarm[0] = 120
 
 //Play music
-alarm[1] = 1
+alarm[1] = 2
 
 //Clear all data structures
 ds_map_clear(global.worldmap)

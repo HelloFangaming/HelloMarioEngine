@@ -6,7 +6,7 @@
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>obj_holdparent</parentName>
-  <maskName>&lt;undefined&gt;</maskName>
+  <maskName>spr_square</maskName>
   <events>
     <event eventtype="7" enumb="11">
       <action>
@@ -33,6 +33,9 @@ and obj_mario.visible = 1
     //Snap position
     obj_mario.x = x+8
     obj_mario.y = y-16
+
+    //Force him to hold shoe
+    obj_mario.holding = 3
 
     //Remember the correct shoe color
     if sprite_index = spr_kuriboshoe

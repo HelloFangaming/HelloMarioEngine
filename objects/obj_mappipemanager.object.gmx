@@ -55,7 +55,7 @@ else if global.pipetype = 1
           <argument>
             <kind>1</kind>
             <string>///Stop the music
-audio_stop_sound(snd_music_under)
+with obj_levelmanager event_user(3)
 </string>
           </argument>
         </arguments>
