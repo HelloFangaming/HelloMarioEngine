@@ -183,18 +183,27 @@ if ready = 0
     and obj_mario.x &gt; xmin
     {
 
+        //Fire variable
+        fire = noone
+
         //Create fire
-        if outside_view()
-            fire = instance_create(view_xview[0]+view_wview[0]+7,ystart-32+irandom(4)*16,obj_bowserstatue_fire)
-        else
+        if not outside_view()
             fire = instance_create(x,y+8,obj_bowserstatue_fire)
+        else if obj_mario.x &lt; x
+            fire = instance_create(view_xview[0]+view_wview[0]+7,ystart-32+irandom(4)*16,obj_bowserstatue_fire)
 
-        //Give the fire the right look
-        fire.sprite_index = spr_bowserfire
-        fire.image_xscale = -1
+        //With the fire
+        with fire
+        {
 
-        //Play fiery sound
-        audio_play_sound(snd_podoboo,0,0)
+            //Give it the right look
+            sprite_index = spr_bowserfire
+            image_xscale = -1
+
+            //Play fiery sound
+            audio_play_sound(snd_podoboo,0,0)
+
+        }
 
     }
 

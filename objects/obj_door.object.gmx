@@ -107,11 +107,11 @@ else
         alarm[6] = 2
     }
 
-    //Fade the screen
-    with obj_persistent event_user(0)
-
     //Get rid of door Mario
     with obj_doormario instance_destroy()
+
+    //Fade the screen
+    with obj_persistent event_user(0)
 
 }
 </string>
