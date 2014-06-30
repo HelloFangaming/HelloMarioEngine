@@ -649,9 +649,9 @@ instance_destroy()
             <string>///Draws Mario
 
 //Draw item when Mario is moving horizontally
-if myitem != noone
+if holding != 0
 and hspeed != 0
-    draw_sprite(myitem,0,x-8+10*direct+offset,y+15)
+    draw_sprite(myitem,0,x-sprite_get_width(myitem)/2+sprite_get_xoffset(myitem)+10*direct,bbox_bottom-sprite_get_height(myitem)+sprite_get_yoffset(myitem)-1)
 
 //Make Mario flash
 if isflashing = 1
@@ -665,9 +665,9 @@ if isflashing = 1
     shader_reset()
 
 //Draw item when Mario is moving vertically
-if myitem != noone
+if holding != 0
 and hspeed = 0
-    draw_sprite(myitem,0,x-8+offset,y+16)
+    draw_sprite(myitem,0,x-sprite_get_width(myitem)/2+sprite_get_xoffset(myitem),bbox_bottom-sprite_get_height(myitem)+sprite_get_yoffset(myitem))
 </string>
           </argument>
         </arguments>

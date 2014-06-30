@@ -59,7 +59,11 @@ direct = 1
             <kind>1</kind>
             <string>///Protect Mario from the horrors of holding nothing
 if held = 1
+{
     with obj_mario holding = 0
+    with obj_warpmario holding = 0
+    with obj_doormario holding = 0
+}
 </string>
           </argument>
         </arguments>

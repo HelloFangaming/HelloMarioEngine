@@ -37,46 +37,6 @@ image_speed = 0.15
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Finish lifting an item
-if instance_exists(obj_mario)
-{
-
-    //Play pick up sound
-    audio_play_sound(snd_pickup,0,0)
-
-    //Scream Yah! if it was heavy
-    if isheavy = 1
-        audio_play_sound(snd_yah,0,0)
-
-    ///Destroy puller
-    with obj_puller instance_destroy()
-
-    //Pull something out
-    event_user(7)
-
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -100,20 +60,10 @@ and scr_canpull()
 {
 
     //Create a puller
-    with instance_create(obj_mario.x,obj_mario.y,obj_puller) pulled = other.id
-
-    //If it is heavy, take longer
-    if isheavy = 1
+    with instance_create(obj_mario.x,obj_mario.y,obj_puller)
     {
-        audio_play_sound(snd_eeegh,0,0)
-        alarm[0] = 90
-    }
-
-    //Otherwise, take less time
-    else
-    {
-        audio_play_sound(snd_ya,0,0)
-        alarm[0] = 20
+        pulled = other.id
+        event_user(0)
     }
 
 }
