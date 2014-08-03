@@ -1338,7 +1338,6 @@ if disablecontrols = 0
         state = 2
         hspeed = -1.5*direct
         direct = -direct
-        exit
     }
 
 }
