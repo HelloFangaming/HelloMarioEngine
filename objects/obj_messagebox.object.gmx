@@ -223,7 +223,7 @@ if background_exists(back)
     draw_enable_alphablend(1)
 }
 
-//Draw the message vox
+//Draw the message box
 draw_sprite_ext(spr_messagebox,0,view_xview[0]+48,view_yview[0]+39,1,1,0,c_white,0.7)
 
 //If the text should be displayed
@@ -238,7 +238,7 @@ if showing = 1
     draw_set_font(global.messagefont)
 
     //Draw the text up to the number of letters that should be displayed
-    draw_text(view_xview[0]+54,view_yview[0]+43,string_copy(string_make_width(text,210),1,a))
+    draw_text(view_xview[0]+54,view_yview[0]+43,string_copy(text,1,a))
 
 }
 </string>
