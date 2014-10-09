@@ -209,7 +209,7 @@ and stompstyle = 0
         and instance_number(obj_minibomb) &lt; 1
         {
             firing = 9
-            with instance_create(x,y+16,obj_minibomb) hspeed = 1.5*other.direct+other.hspeed
+            with instance_create(x-4,y+16,obj_minibomb) hspeed = 1.5*other.direct+other.hspeed
         }
 
         //Ice Ball
