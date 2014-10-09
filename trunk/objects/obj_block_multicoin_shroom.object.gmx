@@ -133,8 +133,8 @@ if cointime = 0
 else if cointime = 2
     cointime = 3
 
-//Otherwise, make a coin
-else
+//Make a coin if the time has not run out
+if cointime &lt; 2
     instance_create(x,y,obj_blockcoin)
 </string>
           </argument>

@@ -288,7 +288,7 @@ else if keyboard_check_pressed(ord('R'))
     room_goto(rm_title)
 }
 
-//Fullscreen (Handled by GM: Studio
+//Fullscreen (Handled by GM: Studio)
 else if keyboard_check_pressed(vk_enter)
 {
     fullscreen = !fullscreen
