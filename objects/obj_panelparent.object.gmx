@@ -41,6 +41,12 @@ if value = "W"
     //Mark as beaten
     beaten = 1
 
+    //Prepare the open list
+    open[0] = 1
+    open[1] = 1
+    open[2] = 1
+    open[3] = 1
+
     //Beat the level
     event_user(0)
 

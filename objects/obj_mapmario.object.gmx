@@ -31,10 +31,6 @@
 if ds_map_exists(global.worldmap,"returnx")
 {
 
-    //Load the return variables
-    returnx = ds_map_find_value(global.worldmap,"returnx")
-    returny = ds_map_find_value(global.worldmap,"returny")
-
     //Load Mario's previous position
     x = ds_map_find_value(global.worldmap,"mapx")
     y = ds_map_find_value(global.worldmap,"mapy")
@@ -46,10 +42,14 @@ else
 {
 
     //Set the return variables to the current location
-    returnx = x
-    returny = y
+    ds_map_add(global.worldmap,"returnx",x)
+    ds_map_add(global.worldmap,"returny",y)
 
 }
+
+//Load the return variables
+returnx = ds_map_find_value(global.worldmap,"returnx")
+returny = ds_map_find_value(global.worldmap,"returny")
 
 //Recreate the card minigame panel if it was there previously
 if ds_map_find_value(global.worldmap,"cardgame") &gt; 0
@@ -333,6 +333,10 @@ and not instance_exists(obj_mapcard)
 //Set the new return values
 returnx = x
 returny = y
+
+//Save the return variables
+ds_map_replace(global.worldmap,"returnx",returnx)
+ds_map_replace(global.worldmap,"returny",returny)
 
 //Reset the clear global variable
 global.clear = 0
@@ -815,10 +819,6 @@ inventory = 0
           <argument>
             <kind>1</kind>
             <string>///What happens when Mario enters a level
-
-//Save the return variables
-ds_map_replace(global.worldmap,"returnx",returnx)
-ds_map_replace(global.worldmap,"returny",returny)
 
 //Save Mario's current location
 ds_map_replace(global.worldmap,"mapx",x)
