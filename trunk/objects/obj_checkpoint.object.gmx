@@ -58,6 +58,9 @@ image_speed = 0.15
 if sprite_index = spr_flag_bowser
 {
 
+    //Deactivate other checkpoints
+    with obj_checkpoint sprite_index = spr_flag_bowser
+
     //Switch to the Mario flag
     sprite_index = spr_flag_mario
 

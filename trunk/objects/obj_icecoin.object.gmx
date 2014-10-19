@@ -78,7 +78,7 @@ with myslip instance_destroy()
             <string>///Melt
 
 //Create a coin
-instance_create(x,y,obj_coin)
+with instance_create(x,y,obj_coin) image_index = obj_coin.image_index
 
 //Create smoke
 instance_create(x,y,obj_smoke)
