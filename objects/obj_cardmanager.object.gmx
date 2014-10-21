@@ -27,6 +27,10 @@
             <kind>1</kind>
             <string>///A game of card matching
 
+//Check if the previous card count exists
+if not ds_map_exists(global.cardgame,"COUNT")
+    ds_map_add(global.cardgame,"COUNT",0)
+
 //Remember the previous card count
 count = ds_map_find_value(global.cardgame,"COUNT")
 
