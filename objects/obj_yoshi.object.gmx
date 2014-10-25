@@ -651,7 +651,7 @@ else
     audio_play_sound(snd_spit,0,0)
 
     //Spit out the item
-    with instance_create(x-8+obj_mario.direct*2,y,inmouth)
+    with instance_create(x-8+obj_mario.direct*2,y+1,inmouth)
     {
 
         //Use the correct sprite
