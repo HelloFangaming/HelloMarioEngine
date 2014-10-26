@@ -19,7 +19,7 @@
     <option_android_arch_mipsr2>false</option_android_arch_mipsr2>
     <option_android_arch_mipsr2sf>false</option_android_arch_mipsr2sf>
     <option_android_arch_x86>True</option_android_arch_x86>
-    <option_android_build_version>3</option_android_build_version>
+    <option_android_build_version>4</option_android_build_version>
     <option_android_color_depth>0</option_android_color_depth>
     <option_android_display_name>Hello Mario Engine</option_android_display_name>
     <option_android_flurry_enable>0</option_android_flurry_enable>
@@ -117,7 +117,7 @@
     <option_ios_advertising_key></option_ios_advertising_key>
     <option_ios_advertising_type>iAds</option_ios_advertising_type>
     <option_ios_app_id></option_ios_app_id>
-    <option_ios_build_version>3</option_ios_build_version>
+    <option_ios_build_version>4</option_ios_build_version>
     <option_ios_certificate>&lt; Press refresh to fetch certificate list from Mac&gt;</option_ios_certificate>
     <option_ios_device_type>3</option_ios_device_type>
     <option_ios_display_name>Hello Mario Engine</option_ios_display_name>
@@ -172,7 +172,7 @@
     <option_mac_app_id></option_mac_app_id>
     <option_mac_appstore_incoming_allow>0</option_mac_appstore_incoming_allow>
     <option_mac_appstore_outgoing_allow>0</option_mac_appstore_outgoing_allow>
-    <option_mac_build_version>3</option_mac_build_version>
+    <option_mac_build_version>4</option_mac_build_version>
     <option_mac_copyright_info>Hello Fangaming</option_mac_copyright_info>
     <option_mac_create_app_store>-1</option_mac_create_app_store>
     <option_mac_display_name>Hello Mario Engine</option_mac_display_name>
@@ -229,7 +229,7 @@
     <option_textureGroup_count>1</option_textureGroup_count>
     <option_textureGroups0>Default</option_textureGroups0>
     <option_tizen_app_id>http://yourdomain/HelloMarioEngine</option_tizen_app_id>
-    <option_tizen_build_version>3</option_tizen_build_version>
+    <option_tizen_build_version>4</option_tizen_build_version>
     <option_tizen_display_name>Hello Mario Engine</option_tizen_display_name>
     <option_tizen_flurry_enable>0</option_tizen_flurry_enable>
     <option_tizen_flurry_id></option_tizen_flurry_id>
@@ -249,7 +249,7 @@
     <option_tizen_usesplash>False</option_tizen_usesplash>
     <option_use_new_audio>True</option_use_new_audio>
     <option_variableerrors>False</option_variableerrors>
-    <option_version>6.0.3.0</option_version>
+    <option_version>6.0.4.0</option_version>
     <option_version_build>0</option_version_build>
     <option_version_company>Hello Fangaming</option_version_company>
     <option_version_copyright></option_version_copyright>
@@ -257,7 +257,7 @@
     <option_version_major>6</option_version_major>
     <option_version_minor>0</option_version_minor>
     <option_version_product>Hello Mario Engine</option_version_product>
-    <option_version_release>3</option_version_release>
+    <option_version_release>4</option_version_release>
     <option_win8_advertising_appid></option_win8_advertising_appid>
     <option_win8_advertising_enable>0</option_win8_advertising_enable>
     <option_win8_advertising_key></option_win8_advertising_key>
@@ -265,7 +265,7 @@
     <option_win8_advertising_type></option_win8_advertising_type>
     <option_win8_analytics_enable>0</option_win8_analytics_enable>
     <option_win8_analytics_id></option_win8_analytics_id>
-    <option_win8_build_version>3</option_win8_build_version>
+    <option_win8_build_version>4</option_win8_build_version>
     <option_win8_certificate_location>Windows8_TemporaryKey.pfx</option_win8_certificate_location>
     <option_win8_display_name>Hello Mario Engine</option_win8_display_name>
     <option_win8_internet_capable>0</option_win8_internet_capable>
@@ -305,7 +305,7 @@
     <option_windows_major_version>6</option_windows_major_version>
     <option_windows_nsis_file>Configs\Default\windows\RunnerInstaller.nsi</option_windows_nsis_file>
     <option_windows_product_info>Hello Mario Engine</option_windows_product_info>
-    <option_windows_release_version>3</option_windows_release_version>
+    <option_windows_release_version>4</option_windows_release_version>
     <option_windows_runner_finished>Configs\Default\windows\Runner_finish.bmp</option_windows_runner_finished>
     <option_windows_runner_header>Configs\Default\windows\Runner_header.bmp</option_windows_runner_header>
     <option_windows_save_location>0</option_windows_save_location>
@@ -321,7 +321,7 @@
     <option_winphone_advertising_testing_enable>0</option_winphone_advertising_testing_enable>
     <option_winphone_advertising_type></option_winphone_advertising_type>
     <option_winphone_author>Hello Fangaming</option_winphone_author>
-    <option_winphone_build_version>3</option_winphone_build_version>
+    <option_winphone_build_version>4</option_winphone_build_version>
     <option_winphone_cycle_small_image>Configs\Default\WinPhone\CycleSmall.png</option_winphone_cycle_small_image>
     <option_winphone_cycle_wide_image_1>Configs\Default\WinPhone\CycleWide1.png</option_winphone_cycle_wide_image_1>
     <option_winphone_cycle_wide_image_2>Configs\Default\WinPhone\CycleWide2.png</option_winphone_cycle_wide_image_2>
