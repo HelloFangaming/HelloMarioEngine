@@ -431,6 +431,23 @@
         <sprite>sprites\spr_mario_boomerang_kick</sprite>
         <sprite>sprites\spr_mario_boomerang_ride</sprite>
       </sprites>
+      <sprites name="Wall Jump">
+        <sprite>sprites\spr_mario_walljump_walk</sprite>
+        <sprite>sprites\spr_mario_walljump_jump</sprite>
+        <sprite>sprites\spr_mario_walljump_run</sprite>
+        <sprite>sprites\spr_mario_walljump_runjump</sprite>
+        <sprite>sprites\spr_mario_walljump_skid</sprite>
+        <sprite>sprites\spr_mario_walljump_climb</sprite>
+        <sprite>sprites\spr_mario_walljump_swim</sprite>
+        <sprite>sprites\spr_mario_walljump_hold</sprite>
+        <sprite>sprites\spr_mario_walljump_carry</sprite>
+        <sprite>sprites\spr_mario_walljump_duck</sprite>
+        <sprite>sprites\spr_mario_walljump_goal</sprite>
+        <sprite>sprites\spr_mario_walljump_warp</sprite>
+        <sprite>sprites\spr_mario_walljump_slide</sprite>
+        <sprite>sprites\spr_mario_walljump_kick</sprite>
+        <sprite>sprites\spr_mario_walljump_ride</sprite>
+      </sprites>
       <sprite>sprites\spr_mario_dead</sprite>
       <sprite>sprites\spr_mario_pull</sprite>
       <sprite>sprites\spr_smallmask</sprite>
@@ -463,11 +480,14 @@
       <sprite>sprites\spr_redbrick_th</sprite>
       <sprite>sprites\spr_greenbrick</sprite>
       <sprite>sprites\spr_greenbrick_th</sprite>
+      <sprite>sprites\spr_bombbrick</sprite>
+      <sprite>sprites\spr_bombbrick_th</sprite>
       <sprite>sprites\spr_flipblock</sprite>
       <sprite>sprites\spr_noteblock</sprite>
       <sprite>sprites\spr_noteblock_yellow</sprite>
       <sprite>sprites\spr_noteblock_warp</sprite>
       <sprite>sprites\spr_messageblock</sprite>
+      <sprite>sprites\spr_block_pow</sprite>
       <sprite>sprites\spr_viewblock</sprite>
       <sprite>sprites\spr_viewblock_em</sprite>
       <sprite>sprites\spr_onoffblock</sprite>
@@ -533,8 +553,11 @@
         <sprite>sprites\spr_piranhaplant_side_red</sprite>
         <sprite>sprites\spr_piranhaplant_short</sprite>
         <sprite>sprites\spr_jumppiranha</sprite>
+        <sprite>sprites\spr_jumppiranha_red</sprite>
         <sprite>sprites\spr_firepiranha</sprite>
+        <sprite>sprites\spr_firepiranha_side</sprite>
         <sprite>sprites\spr_firepiranha_red</sprite>
+        <sprite>sprites\spr_firepiranga_side_red</sprite>
         <sprite>sprites\spr_walkpiranha</sprite>
         <sprite>sprites\spr_walkpiranha2</sprite>
         <sprite>sprites\spr_swooper</sprite>
@@ -611,6 +634,8 @@
         <sprite>sprites\spr_netkoopa</sprite>
         <sprite>sprites\spr_netkoopa2</sprite>
         <sprite>sprites\spr_netkoopaturn</sprite>
+        <sprite>sprites\spr_netkoopa_red</sprite>
+        <sprite>sprites\spr_netkoopa_hyper</sprite>
         <sprite>sprites\spr_spark</sprite>
         <sprite>sprites\spr_giantspark</sprite>
         <sprite>sprites\spr_phanto</sprite>
@@ -755,6 +780,7 @@
         <sprite>sprites\spr_mapmario_penguin</sprite>
         <sprite>sprites\spr_mapmario_propeller</sprite>
         <sprite>sprites\spr_mapmario_boomerang</sprite>
+        <sprite>sprites\spr_mapmario_walljump</sprite>
       </sprites>
       <sprite>sprites\spr_mapyoshi</sprite>
       <sprite>sprites\spr_mapyoshi_r</sprite>
@@ -845,6 +871,7 @@
         <sprite>sprites\spr_penguinsuit</sprite>
         <sprite>sprites\spr_propellershroom</sprite>
         <sprite>sprites\spr_boomerangflower</sprite>
+        <sprite>sprites\spr_walljumpshroom</sprite>
         <sprite>sprites\spr_1up</sprite>
         <sprite>sprites\spr_poison</sprite>
         <sprite>sprites\spr_star</sprite>
@@ -877,6 +904,7 @@
         <sprite>sprites\spr_spring_hidden</sprite>
         <sprite>sprites\spr_spring_timed</sprite>
         <sprite>sprites\spr_spring_super</sprite>
+        <sprite>sprites\spr_propellerblock</sprite>
         <sprite>sprites\spr_3upmoon</sprite>
         <sprite>sprites\spr_acecoin</sprite>
       </sprites>
@@ -1780,7 +1808,7 @@
       <room>rooms\rm_gameover</room>
     </rooms>
   </rooms>
-  <constants number="36">
+  <constants number="37">
     <constant name="cs_small">0</constant>
     <constant name="cs_big">1</constant>
     <constant name="cs_fire">2</constant>
@@ -1798,6 +1826,7 @@
     <constant name="cs_penguin">14</constant>
     <constant name="cs_propeller">15</constant>
     <constant name="cs_boomerang">16</constant>
+    <constant name="cs_walljump">17</constant>
     <constant name="cs_coin">-1</constant>
     <constant name="cs_greenyoshi">-10</constant>
     <constant name="cs_redyoshi">-11</constant>
