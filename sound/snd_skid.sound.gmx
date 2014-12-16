@@ -2,7 +2,7 @@
 <sound>
   <kind>0</kind>
   <extension>.ogg</extension>
-  <origname>C:\Users\Play\Documents\GameMaker\Projects\HME Master Source.gmx\\sound\audio\snd_skid.ogg</origname>
+  <origname>sound\audio\snd_skid.ogg</origname>
   <effects>0</effects>
   <volume>
     <volume>1</volume>
