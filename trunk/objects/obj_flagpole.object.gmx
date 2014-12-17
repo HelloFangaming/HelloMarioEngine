@@ -55,7 +55,7 @@ image_speed = 0
           <argument>
             <kind>1</kind>
             <string>///Stop Mario from jumping over the flagpole.
-if collision_rectangle(bbox_left,0,bbox_right,y,obj_mario,0,0)
+if collision_rectangle(bbox_left,-96,bbox_right,y,obj_mario,0,0)
 {
 
     //Stop Mario if he goes too far

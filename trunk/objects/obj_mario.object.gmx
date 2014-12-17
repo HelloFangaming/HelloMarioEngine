@@ -1137,8 +1137,8 @@ and isswim = 0
 }
 
 //Prevents Mario from going too high
-if y &lt; -48
-    y = -48
+if y &lt; -96
+    y = -96
 
 //Kill Mario if he falls out of the room
 else if bbox_top &gt; room_height

@@ -363,6 +363,7 @@
     <instance objName="obj_warproom" x="416" y="304" name="inst_24847DB2" locked="0" code="myroom = rm_pipesatdusk_cave" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_eswitch" x="992" y="208" name="inst_677584B2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="1424" y="192" name="inst_B0D50045" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="obj_propellerblock" x="96" y="352" name="inst_70EF0A7F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset" x="1120" y="416" w="16" h="16" xo="432" yo="32" id="10002335" name="tile_4E9CEC3A" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

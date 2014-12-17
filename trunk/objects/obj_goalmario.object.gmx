@@ -259,11 +259,6 @@ with obj_enemyparent
     instance_create(x,y,obj_smoke)
     instance_destroy()
 }
-with obj_shell
-{
-    instance_create(x,y,obj_smoke)
-    instance_destroy()
-}
 </string>
           </argument>
         </arguments>

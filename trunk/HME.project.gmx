@@ -1215,6 +1215,7 @@
       <object>objects\obj_noteblock_warp</object>
       <object>objects\obj_warpnoteblock_hidden</object>
       <object>objects\obj_messageblock</object>
+      <object>objects\obj_block_pow</object>
       <object>objects\obj_block_view</object>
       <object>objects\obj_onoffblock</object>
       <object>objects\obj_onoffplatform</object>
@@ -1462,6 +1463,7 @@
         <object>objects\obj_spring_hidden</object>
         <object>objects\obj_spring_timed</object>
         <object>objects\obj_spring_super</object>
+        <object>objects\obj_propellerblock</object>
         <object>objects\obj_3upmoon</object>
         <object>objects\obj_acecoin</object>
       </objects>
