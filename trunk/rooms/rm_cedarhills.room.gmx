@@ -227,11 +227,11 @@
     <instance objName="obj_pcoin" x="144" y="16" name="inst_CC2C45DD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bluebrick" x="400" y="256" name="inst_A8F2F965" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_triple_hidden" x="1440" y="16" name="inst_138B0E00" locked="0" code="sprout[1] = cs_1up" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bluebrick" x="432" y="256" name="inst_A007E8C4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_pow" x="32" y="336" name="inst_63ED7256" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_onoffplatform" x="1216" y="128" name="inst_6ECA2606" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_onoffplatform" x="1232" y="128" name="inst_5BBE03CF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_onoffplatform" x="1248" y="128" name="inst_1CA9CCEA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_redbrick" x="416" y="256" name="inst_EFED5C3E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_redbrick" x="432" y="256" name="inst_EFED5C3E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block" x="336" y="176" name="inst_7131970E" locked="0" code="sprite_index = spr_brick" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="16" y="336" name="inst_FB29E5AE" locked="0" code="varmsg = &quot;Try picking up that spring. P-switches, shells, and blue bricks can also be picked up!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="2016" y="304" name="inst_4FCE08CD" locked="0" code="varmsg = &quot;Did you notice the grassy things on the ground? If you press control on top of them, you can pick them up!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -462,7 +462,7 @@
     <instance objName="obj_pswitch" x="1408" y="288" name="inst_1F92ADD6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warproom" x="448" y="112" name="inst_355F33EE" locked="0" code="myroom = rm_cedarhills_sky" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_greenbrick" x="416" y="240" name="inst_19CB3D52" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_pow" x="32" y="336" name="inst_63ED7256" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bombbrick" x="416" y="256" name="inst_C4A306BB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset" x="16" y="144" w="32" h="32" xo="576" yo="368" id="10000398" name="tile_7C59E81B" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

@@ -129,9 +129,9 @@
     <instance objName="obj_coin" x="1824" y="48" name="inst_A09C2652" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="1840" y="64" name="inst_0D091F19" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="1824" y="80" name="inst_A6823037" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bluebrick" x="368" y="352" name="inst_EA7E144F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bluebrick" x="384" y="352" name="inst_26718D26" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bluebrick" x="384" y="336" name="inst_2E84951F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_propellerblock" x="96" y="352" name="inst_70EF0A7F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="1424" y="192" name="inst_B0D50045" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="obj_eswitch" x="992" y="208" name="inst_677584B2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bluebrick" x="1664" y="128" name="inst_DCDC8D9C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bluebrick" x="1664" y="144" name="inst_2A6C23E9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bluebrick" x="1680" y="144" name="inst_8BCB5464" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -141,12 +141,12 @@
     <instance objName="obj_redbrick" x="976" y="320" name="inst_52B2FBD4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_redbrick" x="960" y="320" name="inst_9EAC864F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_redbrick" x="976" y="304" name="inst_4268AAE9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_redbrick" x="1696" y="304" name="inst_E5727179" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_redbrick" x="1696" y="320" name="inst_39318EAA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_redbrick" x="1696" y="336" name="inst_60B23A77" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_redbrick" x="1712" y="336" name="inst_8E3CCCB1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_redbrick" x="1728" y="336" name="inst_CAA3B701" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_redbrick" x="1712" y="320" name="inst_FCF19648" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warproom" x="1920" y="336" name="inst_7876DA13" locked="0" code="myroom = rm_pipesatdusk_water" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warproom" x="416" y="304" name="inst_24847DB2" locked="0" code="myroom = rm_pipesatdusk_cave" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bombbrick" x="384" y="336" name="inst_2D34D971" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bombbrick" x="384" y="352" name="inst_3B503E8A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bombbrick" x="368" y="352" name="inst_13D7082F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_postchange" x="288" y="384" name="inst_B67CB69D" locked="0" code="postx = 992&#xA;posty = 80" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="32" y="96" name="inst_104A2AA8" locked="0" code="" scaleX="2" scaleY="12" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="64" y="96" name="inst_707A6CDA" locked="0" code="" scaleX="3" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="112" y="128" name="inst_48D675CB" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
@@ -358,12 +358,12 @@
     <instance objName="obj_postchange" x="208" y="240" name="inst_EEAEA147" locked="0" code="postx = 576&#xA;posty = 368" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_postchange" x="880" y="96" name="inst_E1C7C275" locked="0" code="postx = 576&#xA;posty = 368" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_postchange" x="1088" y="96" name="inst_6B286263" locked="0" code="postx = 1728&#xA;posty = 80" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_postchange" x="288" y="384" name="inst_B67CB69D" locked="0" code="postx = 992&#xA;posty = 80" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warproom" x="1920" y="336" name="inst_7876DA13" locked="0" code="myroom = rm_pipesatdusk_water" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warproom" x="416" y="304" name="inst_24847DB2" locked="0" code="myroom = rm_pipesatdusk_cave" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_eswitch" x="992" y="208" name="inst_677584B2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solid" x="1424" y="192" name="inst_B0D50045" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="obj_propellerblock" x="96" y="352" name="inst_70EF0A7F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_greenbrick" x="1728" y="336" name="inst_03F98A98" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_greenbrick" x="1712" y="336" name="inst_860FCFC6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_greenbrick" x="1696" y="336" name="inst_A9C18E4B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_greenbrick" x="1696" y="320" name="inst_4CCAA14B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_greenbrick" x="1712" y="320" name="inst_4AC39A09" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_greenbrick" x="1696" y="304" name="inst_8B15A63B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset" x="1120" y="416" w="16" h="16" xo="432" yo="32" id="10002335" name="tile_4E9CEC3A" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
