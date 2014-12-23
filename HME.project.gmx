@@ -1207,6 +1207,7 @@
       <object>objects\obj_bluebrick</object>
       <object>objects\obj_redbrick</object>
       <object>objects\obj_greenbrick</object>
+      <object>objects\obj_bombbrick</object>
       <object>objects\obj_flipblock</object>
       <object>objects\obj_noteblock</object>
       <object>objects\obj_noteblock_hidden</object>

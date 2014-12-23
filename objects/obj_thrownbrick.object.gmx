@@ -117,16 +117,7 @@ alarm[2] = 2
           <argument>
             <kind>1</kind>
             <string>///Destroy
-
-//Make smoke
-instance_create(x,y,obj_smoke)
-
-//Play bump sound inside view
-if not outside_view()
-    audio_play_sound(snd_bump,0,0)
-
-//Destroy
-instance_destroy()
+event_user(0)
 </string>
           </argument>
         </arguments>
@@ -223,8 +214,9 @@ if other.hardness &lt; 99
         event_user(0)
     }
 
-    //Red bricks always shatter
+    //Red/bomb bricks always shatter
     else if sprite_index = spr_redbrick_th
+    or sprite_index = spr_bombbrick_th
         event_user(0)
 
 }
@@ -255,6 +247,7 @@ if harmmario = 1
 {
     with other event_user(0)
     if sprite_index = spr_redbrick_th
+    or sprite_index = spr_bombbrick_th
     {
         event_user(0)
         instance_destroy()
@@ -343,6 +336,10 @@ while collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom,obj_slope
 //Play break sound
 if not outside_view()
     audio_play_sound(snd_break,0,0)
+
+//Bomb brick explosion
+if sprite_index = spr_bombbrick_th
+    instance_create(x,y,obj_explosion)
 
 //Make shards
 with instance_create(x+8,y,obj_shard)
