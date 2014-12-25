@@ -463,6 +463,7 @@
     <instance objName="obj_warproom" x="448" y="112" name="inst_355F33EE" locked="0" code="myroom = rm_cedarhills_sky" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_greenbrick" x="416" y="240" name="inst_19CB3D52" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bombbrick" x="416" y="256" name="inst_C4A306BB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_veggie_sprout" x="1200" y="288" name="inst_5EB96A9F" locked="0" code="sprout = cs_walljump" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset" x="16" y="144" w="32" h="32" xo="576" yo="368" id="10000398" name="tile_7C59E81B" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

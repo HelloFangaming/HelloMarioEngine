@@ -113,7 +113,7 @@
     <instance objName="obj_coin" x="64" y="240" name="inst_8BDCADDC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="80" y="256" name="inst_599654B5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="80" y="240" name="inst_0C66A30E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_brick" x="304" y="320" name="inst_705511CE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_pullmush" x="2240" y="320" name="inst_E4F38853" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="336" y="320" name="inst_E55F23AB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mario" x="56" y="272" name="inst_1085B067" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="960" y="32" name="inst_0C83ABBA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -233,7 +233,7 @@
     <instance objName="obj_warproom" x="2592" y="320" name="inst_D378D937" locked="0" code="myroom = rm_forthello_wendy" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warproom" x="2464" y="320" name="inst_C80AC529" locked="0" code="myroom = rm_forthello_boomboom" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warproom" x="2528" y="320" name="inst_449698B0" locked="0" code="myroom = rm_forthello_larry" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_pullmush" x="2240" y="320" name="inst_E4F38853" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="304" y="320" name="inst_BD2C3B39" locked="0" code="sprite_index = spr_brick&#xA;sprout = cs_walljump" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset" x="1584" y="96" w="32" h="48" xo="96" yo="320" id="10006906" name="tile_1A243087" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

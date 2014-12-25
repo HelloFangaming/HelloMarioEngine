@@ -44,6 +44,8 @@ switch argument2
         return instance_create(argument0,argument1,obj_propellershroom)
     case spr_boomerangflower:
         return instance_create(argument0,argument1,obj_boomerangflower)
+    case spr_walljumpshroom:
+        return instance_create(argument0,argument1,obj_walljumpshroom)
     case spr_hatch:
         return instance_create(argument0,argument1,obj_hatch)
     case spr_hatch_r:
