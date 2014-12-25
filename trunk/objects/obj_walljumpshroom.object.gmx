@@ -71,10 +71,10 @@ if hspeed != prevhspeed
 {
 
     //Move up
-    vspeed = -4
+    vspeed = -5
 
     //Boost jump
-    y-=1
+    y--
 
 }
 </string>
