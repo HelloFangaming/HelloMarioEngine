@@ -28,6 +28,7 @@ switch argument0
     case cs_penguin: return spr_penguinsuit
     case cs_propeller: return spr_propellershroom
     case cs_boomerang: return spr_boomerangflower
+    case cs_walljump: return spr_walljumpshroom
     case cs_greenyoshi: return spr_hatch
     case cs_redyoshi: return spr_hatch_r
     case cs_yellowyoshi: return spr_hatch_y

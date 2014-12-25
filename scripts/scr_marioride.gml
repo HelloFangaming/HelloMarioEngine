@@ -26,4 +26,5 @@ switch global.powerup
     case cs_penguin: return spr_mario_penguin_ride
     case cs_propeller: return spr_mario_propeller_ride
     case cs_boomerang: return spr_mario_boomerang_ride
+    case cs_walljump: return spr_mario_walljump_ride
 }
