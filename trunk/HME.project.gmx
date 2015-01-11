@@ -1262,6 +1262,7 @@
         <object>objects\obj_piranhaplant_short</object>
         <object>objects\obj_piranhaplant_down_short</object>
         <object>objects\obj_jumppiranha</object>
+        <object>objects\obj_jumppiranha_red</object>
         <object>objects\obj_firepiranha</object>
         <object>objects\obj_firepiranha_down</object>
         <object>objects\obj_firepiranha_red</object>
