@@ -1265,8 +1265,12 @@
         <object>objects\obj_jumppiranha_red</object>
         <object>objects\obj_firepiranha</object>
         <object>objects\obj_firepiranha_down</object>
+        <object>objects\obj_firepiranha_right</object>
+        <object>objects\obj_firepiranha_left</object>
         <object>objects\obj_firepiranha_red</object>
         <object>objects\obj_firepiranha_down_red</object>
+        <object>objects\obj_firepiranha_right_red</object>
+        <object>objects\obj_firepiranha_left_red</object>
         <object>objects\obj_ballpiranha</object>
         <object>objects\obj_ptooie</object>
         <object>objects\obj_swooper</object>
