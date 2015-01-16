@@ -371,6 +371,10 @@
     <instance objName="obj_bubble_coin" x="2144" y="224" name="inst_B306F635" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bubble_coin" x="2304" y="176" name="inst_62C6D91D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bubble_coin" x="2352" y="256" name="inst_E5AA5F57" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_firepiranha_right" x="2288" y="384" name="inst_E033C04E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_firepiranha_left" x="2128" y="384" name="inst_8C103E98" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_firepiranha_right_red" x="2256" y="352" name="inst_15179022" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_firepiranha_left_red" x="2160" y="352" name="inst_CA45F3A1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset" x="1120" y="416" w="16" h="16" xo="432" yo="32" id="10002335" name="tile_4E9CEC3A" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
