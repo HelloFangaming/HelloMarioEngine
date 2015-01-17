@@ -72,7 +72,7 @@ and obj_mario.x &lt; xmax
 {
 
     //Generate cheep cheep
-    instance_create(round((view_xview[0]+random(320))/16)*16,view_yview[0]+236,obj_generatorcheep)
+    instance_create(round((view_xview[0]+random(view_wview[0]))/16)*16,view_yview[0]+view_hview[0]-4,obj_generatorcheep)
 
     //Generate more later
     alarm[0] = 100
