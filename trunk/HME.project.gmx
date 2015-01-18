@@ -976,7 +976,6 @@
       <sprite>sprites\spr_enemymaskbig</sprite>
       <sprite>sprites\spr_enemymasktall</sprite>
       <sprite>sprites\spr_enemymasklong</sprite>
-      <sprite>sprites\spr_viewcover</sprite>
       <sprite>sprites\spr_slope_r</sprite>
       <sprite>sprites\spr_slope_l</sprite>
       <sprite>sprites\spr_slope_sr</sprite>

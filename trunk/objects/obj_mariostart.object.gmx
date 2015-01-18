@@ -113,7 +113,7 @@ alarm[1] = 60
             <string>///Draw the Mario Start! screen
 
 //Draw black in the back
-draw_sprite(spr_viewcover,0,view_xview[0],view_yview[0])
+draw_clear(c_black)
 
 //Draw the text
 draw_sprite(spr_mariostart,0,view_xview[0]+160,view_yview[0]+120)

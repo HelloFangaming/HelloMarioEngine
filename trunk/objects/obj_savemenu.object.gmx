@@ -67,12 +67,6 @@ menu[2] = "Continue without Saving"
             <kind>1</kind>
             <string>///Draw the save menu
 
-//Darken the screen
-draw_sprite_ext(spr_viewcover,0,view_xview[0],view_yview[0],1,1,0,c_white,0.4)
-
-//Draw the box
-draw_sprite_ext(spr_pause,2,view_xview[0]+160,view_yview[0]+120,1,1,0,c_white,0.7)
-
 //Center the text
 draw_set_halign(fa_center)
 
@@ -81,6 +75,14 @@ draw_set_alpha(0.7)
 
 //Set the font
 draw_set_font(global.font)
+
+//Darken the screen
+draw_set_color(c_black)
+draw_rectangle(view_xview[0],view_yview[0],view_xview[0]+view_wview[0],view_yview[0]+view_hview[0],0)
+draw_set_color(c_white)
+
+//Draw the box
+draw_sprite_ext(spr_pause,2,view_xview[0]+160,view_yview[0]+120,1,1,0,c_white,0.7)
 
 //Iterate over the menu items
 for(var i = 0; i &lt; 3; i++)
