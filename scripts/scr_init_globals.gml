@@ -23,6 +23,9 @@ lives = 5
 //Score
 score = 0
 
+//Mario Start!
+global.mariostart = 0
+
 //Whether a level is cleared
 global.clear = 0
 

@@ -643,8 +643,12 @@ if instance_exists(obj_classicscroll)
 and x &lt; obj_classicscroll.x
     x = obj_classicscroll.x
 
-//Parallax scrolling for layer 0 backgrounds
+//Horizontal parallax scrolling for layer 0 backgrounds
 background_x[0] = view_xview[0]/2
+
+//Vertical parallax scrolling for layer 0 backgrounds if needed
+if background_height[0] &lt; room_height
+    background_y[0] = view_yview[0]*(room_height-background_height[0])/(room_height-view_hview[0])
 
 //Deactivate things that have the following parents
 instance_deactivate_object(obj_deactenemyparent)
