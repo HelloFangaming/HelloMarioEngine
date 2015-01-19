@@ -135,7 +135,7 @@ and collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_mario
 //Smash the block if Mario spin jumps on it
 if global.powerup != cs_small
 and global.yoshi = 0
-and collision_rectangle(bbox_left,bbox_top-4,bbox_right,bbox_top,obj_mario,0,0)
+and collision_rectangle(bbox_left,bbox_top-5,bbox_right,bbox_top,obj_mario,0,0)
 and obj_mario.stompstyle = 1
 and obj_mario.vspeed &gt; 0
 {

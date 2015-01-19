@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>///Shatter when stomped on with a shoe
 if global.yoshi = 2
-and place_meeting(x,y-3,obj_mario)
+and place_meeting(x,y-5,obj_mario)
 and obj_mario.vspeed &gt; 0
 {
     with obj_mario event_user(1)

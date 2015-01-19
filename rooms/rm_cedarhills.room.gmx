@@ -227,7 +227,7 @@
     <instance objName="obj_pcoin" x="144" y="16" name="inst_CC2C45DD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bluebrick" x="400" y="256" name="inst_A8F2F965" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_triple_hidden" x="1440" y="16" name="inst_138B0E00" locked="0" code="sprout[1] = cs_1up" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block_pow" x="32" y="336" name="inst_63ED7256" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_veggie_sprout" x="1200" y="288" name="inst_5EB96A9F" locked="0" code="sprout = cs_walljump" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_onoffplatform" x="1216" y="128" name="inst_6ECA2606" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_onoffplatform" x="1232" y="128" name="inst_5BBE03CF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_onoffplatform" x="1248" y="128" name="inst_1CA9CCEA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -240,7 +240,7 @@
     <instance objName="obj_brick" x="128" y="384" name="inst_DAA1D0B5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="112" y="368" name="inst_E9350469" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="176" y="336" name="inst_720B89AE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_brick" x="208" y="336" name="inst_DE07195C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bombbrick" x="416" y="256" name="inst_C4A306BB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="224" y="336" name="inst_FBD2E70F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_checkpoint" x="1344" y="48" name="inst_75D13A38" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="976" y="48" name="inst_085523FC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -462,8 +462,7 @@
     <instance objName="obj_pswitch" x="1408" y="288" name="inst_1F92ADD6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warproom" x="448" y="112" name="inst_355F33EE" locked="0" code="myroom = rm_cedarhills_sky" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_greenbrick" x="416" y="240" name="inst_19CB3D52" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bombbrick" x="416" y="256" name="inst_C4A306BB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_veggie_sprout" x="1200" y="288" name="inst_5EB96A9F" locked="0" code="sprout = cs_walljump" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_pow" x="208" y="336" name="inst_4DB30EE4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset" x="16" y="144" w="32" h="32" xo="576" yo="368" id="10000398" name="tile_7C59E81B" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
