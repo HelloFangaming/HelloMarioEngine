@@ -648,6 +648,7 @@ background_x[0] = view_xview[0]/2
 
 //Vertical parallax scrolling for layer 0 backgrounds if needed
 if background_height[0] &lt; room_height
+and background_height[0] &gt; view_hview[0]
     background_y[0] = view_yview[0]*(room_height-background_height[0])/(room_height-view_hview[0])
 
 //Deactivate things that have the following parents
@@ -751,7 +752,7 @@ if global.reserveitem &gt; cs_small
 {
 
     //Create the reserve item
-    with instance_create(view_xview[0]+152,view_yview[0]+8,obj_reserveitem) sprite_index = scr_constant_get_sprite(global.reserveitem)
+    with instance_create(view_xview[0]+184,view_yview[0]+8,obj_reserveitem) sprite_index = scr_constant_get_sprite(global.reserveitem)
 
     //Remove the reserve item
     global.reserveitem = cs_small
@@ -1160,39 +1161,39 @@ draw_set_font(global.wdigits)
 draw_set_alpha(0.7)
 
 //Draw the HUD bar
-draw_sprite_ext(spr_hudbar,0,view_xview[0]+4,view_yview[0]+1,1,1,0,c_white,0.7)
+draw_sprite_ext(spr_hudbar,0,view_xview[0]+36,view_yview[0]+1,1,1,0,c_white,0.7)
 
 //Draw the lives
-draw_sprite_ext(spr_mariohud,0,view_xview[0]+58,view_yview[0]+10,1,1,0,c_white,0.7)
-draw_text(view_xview[0]+82,view_yview[0]+10,string_format(lives,2,0))
+draw_sprite_ext(spr_mariohud,0,view_xview[0]+90,view_yview[0]+10,1,1,0,c_white,0.7)
+draw_text(view_xview[0]+114,view_yview[0]+10,string_format(lives,2,0))
 
 //Draw the score
-draw_text(view_xview[0]+254,view_yview[0]+10,string_add_zeros(score,7))
+draw_text(view_xview[0]+286,view_yview[0]+10,string_add_zeros(score,7))
 
 //Draw the coin count
-draw_sprite_ext(spr_coinhud,0,view_xview[0]+194,view_yview[0]+10,1,1,0,c_white,0.7)
-draw_text(view_xview[0]+201,view_yview[0]+10,string_add_zeros(global.coins,2))
+draw_sprite_ext(spr_coinhud,0,view_xview[0]+226,view_yview[0]+10,1,1,0,c_white,0.7)
+draw_text(view_xview[0]+233,view_yview[0]+10,string_add_zeros(global.coins,2))
 
 //Draw the world number
-draw_sprite_ext(spr_worldhud,0,view_xview[0]+10,view_yview[0]+10,1,1,0,c_white,0.7)
-draw_sprite_ext(spr_numbersgold,global.world,view_xview[0]+42,view_yview[0]+10,1,1,0,c_white,0.7)
+draw_sprite_ext(spr_worldhud,0,view_xview[0]+42,view_yview[0]+10,1,1,0,c_white,0.7)
+draw_sprite_ext(spr_numbersgold,global.world,view_xview[0]+74,view_yview[0]+10,1,1,0,c_white,0.7)
 
 //Change the font
 draw_set_font(global.gdigits)
 
 //Draw the time
-draw_sprite_ext(spr_timehud,0,view_xview[0]+104,view_yview[0]+10,1,1,0,c_white,0.7)
-draw_text(view_xview[0]+114,view_yview[0]+10,string_add_zeros(global.timer,3))
+draw_sprite_ext(spr_timehud,0,view_xview[0]+136,view_yview[0]+10,1,1,0,c_white,0.7)
+draw_text(view_xview[0]+146,view_yview[0]+10,string_add_zeros(global.timer,3))
 
 //Draw the P-Meter
-draw_sprite_ext(spr_pmeter,pmeter,view_xview[0]+16,view_yview[0]+228,1,1,0,c_white,0.7)
+draw_sprite_ext(spr_pmeter,pmeter,view_xview[0]+16,view_yview[0]+204,1,1,0,c_white,0.7)
 
 //Draw the reserve items
 if global.reserveitem = cs_fire
 or global.reserveitem = cs_ice
-    draw_sprite_ext(scr_constant_get_sprite(global.reserveitem),anim,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
+    draw_sprite_ext(scr_constant_get_sprite(global.reserveitem),anim,view_xview[0]+184,view_yview[0]+7,1,1,0,c_white,0.7)
 else if global.reserveitem != cs_small
-    draw_sprite_ext(scr_constant_get_sprite(global.reserveitem),0,view_xview[0]+152,view_yview[0]+7,1,1,0,c_white,0.7)
+    draw_sprite_ext(scr_constant_get_sprite(global.reserveitem),0,view_xview[0]+184,view_yview[0]+7,1,1,0,c_white,0.7)
 
 //Reset the draw alpha
 draw_set_alpha(1)

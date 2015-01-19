@@ -116,7 +116,7 @@ alarm[1] = 60
 draw_clear(c_black)
 
 //Draw the text
-draw_sprite(spr_mariostart,0,view_xview[0]+160,view_yview[0]+120)
+draw_sprite(spr_mariostart,0,view_xview[0]+192,view_yview[0]+108)
 </string>
           </argument>
         </arguments>

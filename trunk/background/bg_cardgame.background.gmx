@@ -13,7 +13,7 @@
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>320</width>
-  <height>240</height>
+  <width>384</width>
+  <height>216</height>
   <data>images\bg_cardgame.png</data>
 </background>

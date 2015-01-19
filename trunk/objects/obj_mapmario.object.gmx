@@ -888,7 +888,7 @@ else if global.yoshi = 1
 }
 
 //Draw the HUD box
-draw_sprite_ext(spr_mapscreenbox,inventory,view_xview[0],view_yview[0]+210,1,1,0,c_white,0.7)
+draw_sprite_ext(spr_mapscreenbox,inventory,view_xview[0]+32,view_yview[0]+186,1,1,0,c_white,0.7)
 
 //If the inventory is not opened up
 if inventory = 0
@@ -901,20 +901,20 @@ if inventory = 0
     draw_set_font(global.font)
 
     //Draw the name of the panel Mario is on
-    draw_text(view_xview[0]+132,view_yview[0]+221,mytext)
+    draw_text(view_xview[0]+164,view_yview[0]+197,mytext)
 
     //Set the font
     draw_set_font(global.wdigits)
 
     //Draw the lives
-    draw_text(view_xview[0]+32,view_yview[0]+222,string_format(lives,2,0))
+    draw_text(view_xview[0]+64,view_yview[0]+198,string_format(lives,2,0))
 
     //Draw the score
-    draw_text(view_xview[0]+65,view_yview[0]+222,string_add_zeros(score,7))
+    draw_text(view_xview[0]+97,view_yview[0]+198,string_add_zeros(score,7))
 
     //Draw the reserve item
     if global.reserveitem != cs_small
-        draw_sprite_ext(scr_constant_get_sprite(global.reserveitem),0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
+        draw_sprite_ext(scr_constant_get_sprite(global.reserveitem),0,view_xview[0]+330,view_yview[0]+193,1,1,0,c_white,0.7)
 
     //Reset the draw alpha
     draw_set_alpha(1)
@@ -936,7 +936,7 @@ else
             shader_set(sha_outline)
 
         //Draw the item
-        draw_sprite_ext(scr_constant_get_sprite(global.inventory[i]),0,view_xview[0]+7+(i-1)*19,view_yview[0]+217,1,1,0,c_white,0.7)
+        draw_sprite_ext(scr_constant_get_sprite(global.inventory[i]),0,view_xview[0]+39+(i-1)*19,view_yview[0]+193,1,1,0,c_white,0.7)
 
     }
 
@@ -948,7 +948,7 @@ else
 
     //Draw the reserve item
     if global.reserveitem != cs_small
-        draw_sprite_ext(scr_constant_get_sprite(global.reserveitem),0,view_xview[0]+298,view_yview[0]+217,1,1,0,c_white,0.7)
+        draw_sprite_ext(scr_constant_get_sprite(global.reserveitem),0,view_xview[0]+330,view_yview[0]+193,1,1,0,c_white,0.7)
 
     //Reset shaders
     shader_reset()

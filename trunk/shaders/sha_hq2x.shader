@@ -11,8 +11,8 @@ varying vec4 v_vColour;
 void main()
 {
     //Set the view height and width here!
-    float x = 0.5 * (1.0 / 320.0);
-    float y = 0.5 * (1.0 / 240.0);
+    float x = 0.5 * (1.0 / 384.0);
+    float y = 0.5 * (1.0 / 216.0);
     vec2 dg1 = vec2( x, y);
     vec2 dg2 = vec2(-x, y);
     vec2 dx = vec2(x, 0.0);

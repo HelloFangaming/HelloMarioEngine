@@ -137,7 +137,7 @@ if ready = 0
 
     //If up is pressed not on the top row
     if keyboard_check_pressed(vk_up)
-    and y != 56
+    and y != 44
     {
 
         //Move to the card above
@@ -150,7 +150,7 @@ if ready = 0
 
     //If down is pressed not on the bottom row
     if keyboard_check_pressed(vk_down)
-    and y != 184
+    and y != 172
     {
 
         //Move to the card below
@@ -163,7 +163,7 @@ if ready = 0
 
     //If left is pressed not on the left row
     if keyboard_check_pressed(vk_left)
-    and x != 40
+    and x != 72
     {
 
         //Move to the card to the left
@@ -176,7 +176,7 @@ if ready = 0
 
     //If right is pressed not on the right row
     if keyboard_check_pressed(vk_right)
-    and x != 280
+    and x != 312
     {
 
         //Move to the card to the right

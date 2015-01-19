@@ -92,7 +92,7 @@ y = view_yview[0]+obj_angrysun_movement.y
           <argument>
             <kind>1</kind>
             <string>///Create movement object
-with instance_create(256,64,obj_angrysun_movement)
+with instance_create(288,48,obj_angrysun_movement)
 {
     xmin = other.xmin
     xmax = other.xmax
