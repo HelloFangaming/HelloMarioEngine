@@ -82,7 +82,7 @@ draw_rectangle(view_xview[0],view_yview[0],view_xview[0]+view_wview[0],view_yvie
 draw_set_color(c_white)
 
 //Draw the box
-draw_sprite_ext(spr_pause,2,view_xview[0]+160,view_yview[0]+120,1,1,0,c_white,0.7)
+draw_sprite_ext(spr_pause,2,view_xview[0]+192,view_yview[0]+108,1,1,0,c_white,0.7)
 
 //Iterate over the menu items
 for(var i = 0; i &lt; 3; i++)
@@ -97,7 +97,7 @@ for(var i = 0; i &lt; 3; i++)
         menu[i] = string_upper(menu[i])
 
     //Draw the text
-    draw_text(view_xview[0]+160,view_yview[0]+100+i*16,menu[i])
+    draw_text(view_xview[0]+192,view_yview[0]+88+i*16,menu[i])
 
 }
 
