@@ -589,7 +589,8 @@ else
     fullscreen = 0
 
     //Set the default to HQ4X only if the screen is big enough to fit it
-    if display_get_height() &gt;= 960
+    if display_get_width() &gt;= 1536
+    and display_get_height() &gt;= 864
         filter = 2
     else
         filter = 1
@@ -714,7 +715,7 @@ draw_set_font(global.font)
 draw_text(view_xview[0],view_yview[0],message)
 
 //Show FPS (Uncomment to enable)
-//draw_text(view_xview[0]+302,view_yview[0]+231,fps_real)
+//draw_text(view_xview[0]+366,view_yview[0]+207,fps_real)
 </string>
           </argument>
         </arguments>
