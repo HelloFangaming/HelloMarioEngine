@@ -196,7 +196,7 @@ and stompstyle = 0
         and instance_number(obj_hammer) &lt; 2
         {
             firing = 9
-            with instance_create(x,y+16,obj_hammer) hspeed = 2*other.direct+other.hspeed
+            with instance_create(x,y+16,obj_hammer) hspeed = 1.5*other.direct+other.hspeed
         }
 
         //Tail Spin
@@ -305,7 +305,7 @@ and instance_number(obj_fireball) &lt; 2
 //Hammer
 else if global.powerup = cs_hammer
 and instance_number(obj_hammer) &lt; 2
-    with instance_create(x,y+16,obj_hammer) hspeed = -2*other.direct
+    with instance_create(x,y+16,obj_hammer) hspeed = -1.5*other.direct
 
 //Ice Ball
 else if (global.powerup = cs_ice or global.powerup = cs_penguin)
@@ -353,7 +353,7 @@ and instance_number(obj_fireball) &lt; 2
 //Hammer
 else if global.powerup = cs_hammer
 and instance_number(obj_hammer) &lt; 2
-    with instance_create(x,y+16,obj_hammer) hspeed = 2*other.direct
+    with instance_create(x,y+16,obj_hammer) hspeed = 1.5*other.direct
 
 //Ice Ball
 else if (global.powerup = cs_ice or global.powerup = cs_penguin)

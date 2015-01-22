@@ -70,7 +70,7 @@ if not outside_view()
     audio_play_sound(snd_hammer,0,0)
 
     //Make hammer
-    with instance_create(x,y,obj_brohammer) hspeed = 2*other.direct
+    with instance_create(x,y,obj_brohammer) hspeed = 1.5*other.direct
 
     //Reverse direction
     direct = -direct

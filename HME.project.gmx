@@ -1735,7 +1735,7 @@
         <object>objects\obj_flag</object>
         <object>objects\obj_lightningsheet</object>
         <object>objects\obj_messagebox</object>
-        <object>objects\obj_pauseshade</object>
+        <object>objects\obj_pausemenu</object>
         <object>objects\obj_savemenu</object>
         <object>objects\obj_inventoryprev</object>
         <object>objects\obj_blockbumper</object>
