@@ -37,10 +37,10 @@ audio_play_sound(snd_fireball,0,0)
 image_speed = 0.15
 
 //Gravity
-gravity = 0.4
+gravity = 0.2
 
 //Move up
-vspeed = -8
+vspeed = -4.5
 </string>
           </argument>
         </arguments>
