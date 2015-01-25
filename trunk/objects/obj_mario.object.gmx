@@ -2268,13 +2268,13 @@ and global.yoshi = 0
 
     }
 
-    //Checks if ninja Mario is ready to climb a wall
+    //Handles checking whether Mario can wall climb or wall jump
     if (global.powerup = cs_ninja or global.powerup = cs_walljump)
     and vspeed &gt; 0
     and holding = 0
     {
 
-        //If the direction ninja Mario is facing is pressed, while a wall is in front of him
+        //If the direction Mario is facing is pressed, while a wall is in front of him
         if (keyboard_check(vk_right)
         and collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,1,0)
         and direct = 1)
