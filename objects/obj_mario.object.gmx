@@ -80,6 +80,9 @@ floatnow = 0
 //How much longer can bee Mario fly?
 beefly = 0
 
+//Did Mario wall jump?
+walljump = 0
+
 //Is Mario firing a projectile?
 firing = 0
 
@@ -421,7 +424,10 @@ iamkicking = 0
             <string>///Create Mario's skid smoke
 if skidnow = 1
 {
-    if direct = 1
+
+    //If Mario is wall jumping, reverse where the smoke appears
+    if (direct = 1 and state != 4)
+    or (direct = -1 and state = 4)
     {
         with instance_create(x+1,y+24,obj_smoke)
         {
@@ -437,6 +443,7 @@ if skidnow = 1
             depth = -6
         }
     }
+
 }
 alarm[5] = 8
 </string>
@@ -873,14 +880,31 @@ if isduck = 0
         sprite_index = scr_marioclimb()
     }
 
-    //Ninja Mario Wall Climbing
+    //Wall Climbing + Wall Jumping
     else if state = 4
     {
-        sprite_index = spr_mario_ninja_wallclimb
-        if vspeed = 0
-            image_speed = 0
+
+        //Ninja Mario Wall Climbing
+        if global.powerup = cs_ninja
+        {
+            sprite_index = spr_mario_ninja_wallclimb
+            if vspeed = 0
+                image_speed = 0
+            else
+                image_speed = 0.15
+        }
+
+        //Wall Jumping
         else
-            image_speed = 0.15
+        {
+            sprite_index = scr_marioskid()
+            if skidnow = 0
+            {
+                skidnow = 1
+                audio_play_sound(snd_skid,1,1)
+            }
+        }
+
     }
 
     //Kicking Animation
@@ -959,6 +983,9 @@ and not collision_rectangle(bbox_left,bbox_bottom-8,bbox_right,bbox_bottom-8,obj
 
         //Reset bee flying
         beefly = 0
+
+        //Reset wall jump
+        walljump = 0
 
     }
 
@@ -1191,6 +1218,9 @@ if y &lt; other.y-27 and vspeed &gt; 0
     //Reset bee flying
     beefly = 0
 
+    //Reset wall jump
+    walljump = 0
+
 }
 </string>
           </argument>
@@ -1281,26 +1311,24 @@ if invincible != -1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Mario's ninja climbing step event
+            <string>///Mario's wall climbing + wall jumping step event
 
-//Get out of this state if Mario does not have the ninja suit
-if global.powerup != cs_ninja
-{
+//If Mario does not have the appropriate powerup
+if (global.powerup != cs_ninja and global.powerup != cs_walljump)
 
-    //Anything but this state
-    state = 0
+//Or if ninja Mario is no longer facing a wall to climb
+or (global.powerup = cs_ninja
+and ((direct = 1 and not collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,1,0))
+or (direct = -1 and not collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,1,0))))
 
-    //No variable jumping
-    jumpnow = 0
+//Or if wall jump Mario moves away from the wall, or is not against a wall
+or (global.powerup != cs_ninja
+and (direct = -1 and (keyboard_check(vk_left) or not collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,1,0))
+or direct = 1 and (keyboard_check(vk_right) or not collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,1,0))))
 
-    //Do not execute the rest of this event
-    exit
-
-}
-
-//If Mario is no longer facing a wall to climb
-if (direct = 1 and not collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,1,0))
-or (direct = -1 and not collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,1,0))
+//Or if Mario reaches the floor
+or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
+or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0)
 {
 
     //Switch to the jump state
@@ -1309,42 +1337,67 @@ or (direct = -1 and not collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbo
     //Disable variable jumping
     jumpnow = 0
 
+    //Do not execute the rest of this event
+    exit
+
 }
 
-//If Mario's controls are not disabled
-if disablecontrols = 0
+//If Mario is in the ninja suit
+if global.powerup = cs_ninja
 {
-
     //Handle moving up
     if keyboard_check(vk_up)
     and not keyboard_check(vk_down)
+    and disablecontrols = 0
         vspeed = -1
 
     //Handle moving down
     else if keyboard_check(vk_down)
     and not keyboard_check(vk_up)
+    and disablecontrols = 0
         vspeed = 1
 
     //Stop moving
     else
         vspeed = 0
-
-    //Handle jumping
-    if keyboard_check_pressed(vk_shift)
-    {
-        vspeed = -3.75
-        audio_play_sound(snd_jump,0,0)
-        jumpnow = 1
-        state = 2
-        hspeed = -1.5*direct
-        direct = -direct
-    }
-
 }
 
-//Stop moving
+//If Mario is just wall jumping, slide down the wall
 else
-    vspeed = 0
+    vspeed = 1
+
+//Handle jumping
+if keyboard_check_pressed(vk_shift)
+and disablecontrols = 0
+{
+
+    //Jump
+    vspeed = -3.75
+
+    //Play the jump sound
+    audio_play_sound(snd_jump,0,0)
+
+    //Enable variable jumping
+    jumpnow = 1
+
+    //Switch to the jump state
+    state = 2
+
+    //Reverse direction if Mario is in the ninja suit
+    if global.powerup = cs_ninja
+        direct = -direct
+
+    //Otherwise, make wall jump effects
+    else
+    {
+        audio_play_sound(snd_stomp,0,0)
+        instance_create(x,y+32,obj_spinthump)
+    }
+
+    //Move away from the wall
+    hspeed = 3*direct
+
+}
 </string>
           </argument>
         </arguments>
@@ -1737,6 +1790,9 @@ if not place_meeting(x,y,obj_swim)
     //Reset bee Mario's timer
     beefly = 0
 
+    //Reset wall jump
+    walljump = 0
+
     //If Mario came out of the water from the top
     if place_meeting(x,y+2,obj_swim)
     {
@@ -1791,7 +1847,7 @@ if global.yoshi != 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Mario's default step script
+            <string>///Mario's default step event
 
 //Figure out Mario's state
 if (collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
@@ -1981,8 +2037,8 @@ else
             }
         }
 
-        //Change Mario's direction, unless he is ninja Mario jumping and not on a Yoshi
-        if not (global.powerup = cs_ninja and global.yoshi = 0 and state = 2)
+        //Change Mario's direction if he is not wall jumping
+        if walljump = 0
             direct = 1
 
     }
@@ -2015,8 +2071,8 @@ else
             }
         }
 
-        //Change Mario's direction, unless he is ninja Mario jumping and not on a Yoshi
-        if not (global.powerup = cs_ninja and global.yoshi = 0 and state = 2)
+        //Change Mario's direction if he is not wall jumping
+        if walljump = 0
             direct = -1
     }
 
@@ -2140,6 +2196,9 @@ and disablecontrols = 0
     //Disable carrot and bee Mario floating
     isfloating = 0
 
+    //Reset wall jump
+    walljump = 0
+
     //Stop carrot/bee Mario's floating sound
     if floatnow = 1
     {
@@ -2210,7 +2269,7 @@ and global.yoshi = 0
     }
 
     //Checks if ninja Mario is ready to climb a wall
-    if global.powerup = cs_ninja
+    if (global.powerup = cs_ninja or global.powerup = cs_walljump)
     and vspeed &gt; 0
     and holding = 0
     {
@@ -2236,12 +2295,19 @@ and global.yoshi = 0
             //Disable carrot and bee Mario floating
             isfloating = 0
 
+            //Change directions if not ninja climbing
+            if global.powerup != cs_ninja
+                direct = -direct
+
             //Stop carrot/bee Mario's floating sound
             if floatnow = 1
             {
                 audio_stop_sound(snd_spin)
                 floatnow = 0
             }
+
+            //He wall jumped
+            walljump = 1
 
         }
 
