@@ -40,6 +40,9 @@ back = -1
 //Message to display to the screen
 message = ""
 
+//Whether to show the FPS
+showfps = 0
+
 //Declare global variables
 scr_init_globals()
 
@@ -313,6 +316,12 @@ else if keyboard_check_pressed(ord('V'))
         message = "VSYNC OFF"
     }
     event_user(1)
+}
+
+//Toggle FPS display
+else if keyboard_check_pressed(ord('F'))
+{
+    showfps = !showfps
 }
 
 //Turn off filtering if ALT+1 is pressed
@@ -714,8 +723,13 @@ if background_exists(back)
 draw_set_font(global.font)
 draw_text(view_xview[0],view_yview[0],message)
 
-//Show FPS (Uncomment to enable)
-//draw_text(view_xview[0]+366,view_yview[0]+207,fps_real)
+//Show FPS
+if showfps
+{
+    draw_set_halign(fa_right)
+    draw_text(view_xview[0]+view_wview[0]-2,view_yview[0]+206,"FPS: "+string(fps)+" MAX FPS: "+string(fps_real))
+    draw_set_halign(fa_left)
+}
 </string>
           </argument>
         </arguments>
