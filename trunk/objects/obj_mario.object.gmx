@@ -28,7 +28,7 @@
             <string>///It's a me, Mario!
 
 //Mario's current state
-//0: Stand, 1: Walk, 2: Jump, 3: Climb 4:Wall Climb
+//0: Stand, 1: Walk, 2: Jump, 3: Climb 4: Wall Climb/Jump
 state = 0
 
 //Mario's direction
@@ -1004,7 +1004,7 @@ if isswim = 0
     if state = 3
         event_user(4)
 
-    //Wall climb script
+    //Wall climb/jump script
     else if state = 4
         event_user(5)
 
@@ -2283,7 +2283,7 @@ and global.yoshi = 0
         and direct = -1)
         {
 
-            //Make Mario start wall climbing
+            //Make Mario start wall climbing/jumping
             state = 4
 
             //Stop all vertical movement
