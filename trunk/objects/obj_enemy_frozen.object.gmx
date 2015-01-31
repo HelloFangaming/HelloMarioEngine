@@ -42,11 +42,11 @@ mytop = instance_create(x,y,obj_slippery)
 //Solid object
 mysolid = instance_create(x,y,obj_solid)
 
-//Shatter and destroy after a while
-alarm[1] = 500
-
 //Alpha blink before shattering
-alarm[2] = 400
+alarm[0] = 400
+
+//Shatter and destroy after a while
+alarm[2] = 500
 </string>
           </argument>
         </arguments>
@@ -81,31 +81,6 @@ with mysolid instance_destroy()
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="3">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Alpha blink
-image_alpha = 1
-alarm[2] = 2
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="2" enumb="2">
       <action>
         <libid>1</libid>
@@ -123,9 +98,10 @@ alarm[2] = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alpha blink
-image_alpha = 0.4
-alarm[3] = 2
+            <string>///Shatter and destroy
+if not outside_view()
+    event_user(0)
+instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -148,10 +124,34 @@ alarm[3] = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Shatter and destroy
-if not outside_view()
-    event_user(0)
-instance_destroy()
+            <string>///Alpha blink
+image_alpha = 1
+alarm[0] = 2
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Alpha blink
+image_alpha = 0.4
+alarm[1] = 2
 </string>
           </argument>
         </arguments>

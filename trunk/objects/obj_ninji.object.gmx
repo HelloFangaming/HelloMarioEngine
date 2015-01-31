@@ -47,7 +47,7 @@ mytop = instance_create(x-8,y,obj_solidtop)
 mytop.image_yscale = 0.5
 
 //Hop
-alarm[1] = 50
+alarm[0] = 50
 
 //Count hops
 hopcount = 0
@@ -56,7 +56,7 @@ hopcount = 0
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="1">
+    <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -96,7 +96,7 @@ else
 image_index = 1
 
 //Hop again
-alarm[1] = 100
+alarm[0] = 100
 </string>
           </argument>
         </arguments>

@@ -47,19 +47,19 @@ mytop = instance_create(x-8,y,obj_solidtop)
 mytop.image_yscale = 0.5
 
 //Hop
-alarm[1] = 50
+alarm[0] = 50
 
 //Count hops
 hopcount = 0
 
 //Shoot projectiles
-alarm[2] = 150
+alarm[1] = 150
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="2">
+    <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -78,13 +78,13 @@ alarm[2] = 150
             <kind>1</kind>
             <string>///Shoot projectile
 with instance_create(x,y+10,obj_snifitball) hspeed = other.direct*1.5
-alarm[2] = 180
+alarm[1] = 180
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="1">
+    <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -124,7 +124,7 @@ else
 image_index = 1
 
 //Hop again
-alarm[1] = 100
+alarm[0] = 100
 </string>
           </argument>
         </arguments>

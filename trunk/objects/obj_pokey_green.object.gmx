@@ -62,13 +62,13 @@ offsetnext = 0
 offsetdirect = 1
 
 //Manage offset values
-alarm[1] = 10
+alarm[0] = 10
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="1">
+    <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -105,7 +105,7 @@ if offsetnext = 4
     offsetnext = 0
 
 //Keep changing offset values
-alarm[1] = 10
+alarm[0] = 10
 </string>
           </argument>
         </arguments>

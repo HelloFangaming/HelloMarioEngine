@@ -37,7 +37,7 @@ image_speed = 0
 mysolid = instance_create(x,y,obj_solid)
 
 //Flash + blow up
-alarm[1] = 100
+alarm[0] = 100
 </string>
           </argument>
         </arguments>
@@ -67,7 +67,7 @@ with mysolid instance_destroy()
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="2">
+    <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -92,7 +92,7 @@ instance_destroy()
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="1">
+    <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -111,7 +111,7 @@ instance_destroy()
             <kind>1</kind>
             <string>///Flash before exploding
 image_speed = 0.3
-alarm[2] = 100
+alarm[1] = 100
 </string>
           </argument>
         </arguments>
@@ -138,8 +138,8 @@ alarm[2] = 100
 with instance_create(obj_mario.x-8,obj_mario.y-5,obj_grassbomb)
 {
     image_speed = other.image_speed
-    alarm[0] = other.alarm[1]
-    alarm[1] = other.alarm[2]
+    alarm[0] = other.alarm[0]
+    alarm[1] = other.alarm[1]
 }
 
 //Make Mario hold it
