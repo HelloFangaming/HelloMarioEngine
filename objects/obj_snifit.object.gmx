@@ -50,32 +50,7 @@ mytop = instance_create(x-8,y,obj_solidtop)
 mytop.image_yscale = 0.5
 
 //Prepare to shoot
-alarm[2] = 150
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="3">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Shoot projectile
-with instance_create(x,y+10,obj_snifitball) hspeed = other.direct*1.5
-alarm[1] = 15
+alarm[1] = 150
 </string>
           </argument>
         </arguments>
@@ -98,10 +73,9 @@ alarm[1] = 15
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Stop, and prepare to shoot
-hspeed = 0
-alarm[3] = 15
-image_speed = 0
+            <string>///Shoot projectile
+with instance_create(x,y+10,obj_snifitball) hspeed = other.direct*1.5
+alarm[0] = 15
 </string>
           </argument>
         </arguments>
@@ -124,9 +98,35 @@ image_speed = 0
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///Stop, and prepare to shoot
+hspeed = 0
+alarm[2] = 15
+image_speed = 0
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///Continue walking
 hspeed = 0.5*direct
-alarm[2] = 150
+alarm[1] = 150
 image_speed = 0.15
 </string>
           </argument>

@@ -275,6 +275,7 @@ and vspeed &gt; 0
 and other.hardness &lt; 99
 {
     scr_musicalscale(id,other.id,1)
+    hspeed = hspeed/2
     vspeed = -3
     with other event_user(0)
 }

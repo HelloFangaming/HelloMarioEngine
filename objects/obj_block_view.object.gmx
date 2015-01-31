@@ -113,39 +113,42 @@ switch floor(image_index)
         with instance_create(x,y,obj_powerupsprout) sprite_index = spr_boomerangflower
         break
     case 16:
-        with instance_create(x,y,obj_powerupsprout) sprite_index = spr_hatch
+        with instance_create(x,y,obj_powerupsprout) sprite_index = spr_walljumpshroom
         break
     case 17:
-        with instance_create(x,y,obj_powerupsprout) sprite_index = spr_hatch_r
+        with instance_create(x,y,obj_powerupsprout) sprite_index = spr_hatch
         break
     case 18:
-        with instance_create(x,y,obj_powerupsprout) sprite_index = spr_hatch_y
+        with instance_create(x,y,obj_powerupsprout) sprite_index = spr_hatch_r
         break
     case 19:
-        with instance_create(x,y,obj_powerupsprout) sprite_index = spr_hatch_b
+        with instance_create(x,y,obj_powerupsprout) sprite_index = spr_hatch_y
         break
     case 20:
-        with instance_create(x,y,obj_powerupsprout) sprite_index = spr_kuriboshoe
+        with instance_create(x,y,obj_powerupsprout) sprite_index = spr_hatch_b
         break
     case 21:
-        with instance_create(x,y,obj_powerupsprout) sprite_index = spr_baburushoe
+        with instance_create(x,y,obj_powerupsprout) sprite_index = spr_kuriboshoe
         break
     case 22:
-        with instance_create(x,y,obj_powerupsprout) sprite_index = spr_dossunshoe
+        with instance_create(x,y,obj_powerupsprout) sprite_index = spr_baburushoe
         break
     case 23:
-        with instance_create(x,y,obj_powerupsprout) sprite_index = spr_jugemushoe
+        with instance_create(x,y,obj_powerupsprout) sprite_index = spr_dossunshoe
         break
     case 24:
-        with instance_create(x,y,obj_powerupsprout) sprite_index = spr_1up
+        with instance_create(x,y,obj_powerupsprout) sprite_index = spr_jugemushoe
         break
     case 25:
-        with instance_create(x,y,obj_powerupsprout) sprite_index = spr_star
+        with instance_create(x,y,obj_powerupsprout) sprite_index = spr_1up
         break
     case 26:
-        with instance_create(x,y,obj_powerupsprout) sprite_index = spr_poison
+        with instance_create(x,y,obj_powerupsprout) sprite_index = spr_star
         break
     case 27:
+        with instance_create(x,y,obj_powerupsprout) sprite_index = spr_poison
+        break
+    case 28:
         with instance_create(x,y,obj_powerupsprout) sprite_index = spr_3upmoon
         break
 }
