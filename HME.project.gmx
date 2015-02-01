@@ -1317,6 +1317,8 @@
         <object>objects\obj_thwomp</object>
         <object>objects\obj_thwimp</object>
         <object>objects\obj_netkoopa</object>
+        <object>objects\obj_netkoopa_red</object>
+        <object>objects\obj_netkoopa_hyper</object>
         <object>objects\obj_netspark</object>
         <object>objects\obj_littlespark</object>
         <object>objects\obj_fastspark</object>

@@ -189,9 +189,9 @@
     <instance objName="obj_firebar" x="536" y="304" name="inst_57867B7A" locked="0" code="ready = 1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_firebar_large" x="776" y="352" name="inst_9D0D349C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grinder" x="2352" y="272" name="inst_8905C34E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_netkoopa" x="2016" y="320" name="inst_7DF6FB82" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_netkoopa" x="1936" y="272" name="inst_8ADA7E16" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_netkoopa" x="1856" y="176" name="inst_99683CF1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_netkoopa_red" x="2016" y="320" name="inst_ACA6B74E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_netkoopa_hyper" x="1952" y="272" name="inst_95B321F1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_netkoopa_red" x="1856" y="176" name="inst_F7D79D4B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_netspark" x="1968" y="336" name="inst_D37A36D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_netspark" x="1904" y="192" name="inst_68F5FC30" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_phanto" x="1152" y="16" name="inst_1C6EA848" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -214,7 +214,7 @@
     <instance objName="obj_vengine2" x="1568" y="208" name="inst_22EC0808" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ballnchain" x="1168" y="80" name="inst_A0B286B6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_podoboo_bounce" x="1728" y="96" name="inst_E119F887" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_magikoopa" x="32" y="0" name="inst_68F00CBF" locked="0" code="xmin = 1216&#xA;xmax = 2080" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_magikoopa" x="32" y="0" name="inst_68F00CBF" locked="0" code="xmin = 1216&#xA;xmax = 1808" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_engine2" x="880" y="64" name="inst_C4C61D46" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_hidden" x="0" y="240" name="inst_5B988780" locked="0" code="sprout = cs_star" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_spiked" x="944" y="32" name="inst_E26BA5E2" locked="0" code="sprout = cs_redyoshi" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
