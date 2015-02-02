@@ -62,7 +62,7 @@ alarm[0] = 100
             <kind>1</kind>
             <string>///Alpha blink
 image_alpha = 1
-alarm[0] = 5
+alarm[0] = 4
 </string>
           </argument>
         </arguments>
@@ -99,7 +99,7 @@ else
 {
     count--
     image_alpha = 0.6
-    alarm[1] = 5
+    alarm[1] = 4
 }
 </string>
           </argument>

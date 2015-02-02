@@ -86,7 +86,7 @@ event_inherited()
             <kind>1</kind>
             <string>///Alpha blink
 image_alpha = 1
-alarm[1] = 2
+alarm[1] = 4
 </string>
           </argument>
         </arguments>
@@ -111,7 +111,7 @@ alarm[1] = 2
             <kind>1</kind>
             <string>///Alpha blink
 image_alpha = 0.4
-alarm[2] = 2
+alarm[2] = 4
 </string>
           </argument>
         </arguments>

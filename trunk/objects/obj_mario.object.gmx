@@ -2181,7 +2181,7 @@ if state = 2
 
 //Makes Mario start climbing
 if place_meeting(x,y,obj_climb)
-and keyboard_check(vk_up)
+and (keyboard_check(vk_up) or keyboard_check(vk_down))
 and holding = 0
 and disablecontrols = 0
 {
