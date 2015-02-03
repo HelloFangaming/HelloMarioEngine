@@ -141,7 +141,7 @@ y--
 
 //Towards Mario
 if not instance_exists(obj_mario)
-or obj_mario.x &lt; x
+or obj_mario.x &lt; x+8
     hspeed = -1.375
 else
     hspeed = 1.375
@@ -271,6 +271,9 @@ if y &lt; other.y-11 and vspeed &gt; 0
 //Only make a shoe if flipped by a block
 if place_meeting(x,y,obj_blockparent)
 {
+
+    //Kill the goomba in the shoe
+    with instance_create(round(x),round(y+sprite_height),obj_enemy_dead) sprite_index = spr_goomba
 
     //Make a Kuribo Shoe
     with instance_create(x,y-6,obj_getshoe)
