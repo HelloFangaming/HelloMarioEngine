@@ -39,6 +39,9 @@ direct = 135
 //Do not animate
 image_speed = 0
 
+//The spit fire
+fire = noone
+
 //Come out of the pipe
 alarm[1] = 140
 
@@ -67,7 +70,8 @@ depth = 10
           <argument>
             <kind>1</kind>
             <string>///Spit more fire
-with instance_create(x,y-1,obj_plantfire) direction = other.direct
+fire = instance_create(x,y-1,obj_plantfire)
+fire.direction = direct
 </string>
           </argument>
         </arguments>
@@ -91,7 +95,8 @@ with instance_create(x,y-1,obj_plantfire) direction = other.direct
           <argument>
             <kind>1</kind>
             <string>///Spit fire
-with instance_create(x,y-1,obj_plantfire) direction = other.direct
+fire = instance_create(x,y-1,obj_plantfire)
+fire.direction = direct
 alarm[5] = 60
 </string>
           </argument>
@@ -268,7 +273,7 @@ else if direct = 315
     image_index = 6
 
 //Open mouth if there is fire in it
-if place_meeting(x,y,obj_plantfire)
+if place_meeting(x,y,fire)
     image_index++
 </string>
           </argument>

@@ -45,6 +45,9 @@ anim = 0
 //Mario's previous state
 stateprev = 0
 
+//Is Yoshi jumping?
+jumping = 0
+
 //Is blue Yoshi flying?
 flying = 0
 
@@ -245,62 +248,15 @@ if instance_exists(obj_mario)
     //Force him to hold Yoshi
     obj_mario.holding = 3
 
-    //Use licking sprites when licking
-    if licking = 1
-    {
-        if global.ycolor = 0
-            sprite_index = spr_yoshi_lick
-        else if global.ycolor = 1
-            sprite_index = spr_yoshi_lick_r
-        else if global.ycolor = 2
-            sprite_index = spr_yoshi_lick_y
-        else if global.ycolor = 3
-            sprite_index = spr_yoshi_lick_b
-        image_index = anim
-    }
-
-    //Otherwise
-    else
+    //If Yoshi is not licking anything
+    if licking = 0
     {
 
-        //If mouth is full, use hold sprites
-        if inmouth != noone
-        {
-            if global.ycolor = 0
-                sprite_index = spr_yoshi_hold
-            else if global.ycolor = 1
-                sprite_index = spr_yoshi_hold_r
-            else if global.ycolor = 2
-                sprite_index = spr_yoshi_hold_y
-            else if global.ycolor = 3
-                sprite_index = spr_yoshi_hold_b
-        }
-
-        //If walking, use walk sprites
-        else if obj_mario.state &lt; 2
-        {
-            if global.ycolor = 0
-                sprite_index = spr_yoshi_walk
-            else if global.ycolor = 1
-                sprite_index = spr_yoshi_walk_r
-            else if global.ycolor = 2
-                sprite_index = spr_yoshi_walk_y
-            else if global.ycolor = 3
-                sprite_index = spr_yoshi_walk_b
-        }
-
-        //Otherwise, use jump sprites
+        //Check whether Mario is jumping
+        if obj_mario.state = 2
+            jumping = 1
         else
-        {
-            if global.ycolor = 0
-                sprite_index = spr_yoshi_jump
-            else if global.ycolor = 1
-                sprite_index = spr_yoshi_jump_r
-            else if global.ycolor = 2
-                sprite_index = spr_yoshi_jump_y
-            else if global.ycolor = 3
-                sprite_index = spr_yoshi_jump_b
-        }
+            jumping = 0
 
         //Use stand pose if standing
         if obj_mario.state = 0
@@ -430,14 +386,7 @@ else if instance_exists(obj_goalmario)
     obj_goalmario.visible = 0
 
     //Use walk sprites
-    if global.ycolor = 0
-        sprite_index = spr_yoshi_walk
-    else if global.ycolor = 1
-        sprite_index = spr_yoshi_walk_r
-    else if global.ycolor = 2
-        sprite_index = spr_yoshi_walk_y
-    else if global.ycolor = 3
-        sprite_index = spr_yoshi_walk_b
+    jumping = 0
 
     //Use stand pose when still
     if obj_goalmario.hspeed = 0
@@ -464,14 +413,7 @@ else if instance_exists(obj_warpmario)
     obj_warpmario.visible = 0
 
     //Use walk sprites
-    if global.ycolor = 0
-        sprite_index = spr_yoshi_walk
-    else if global.ycolor = 1
-        sprite_index = spr_yoshi_walk_r
-    else if global.ycolor = 2
-        sprite_index = spr_yoshi_walk_y
-    else if global.ycolor = 3
-        sprite_index = spr_yoshi_walk_b
+    jumping = 0
 
     //Use stand pose when still
     if obj_warpmario.hspeed = 0
@@ -504,14 +446,7 @@ else if instance_exists(obj_warpnoteblock)
     obj_warpnoteblock.visible = 0
 
     //Use jump sprites
-    if global.ycolor = 0
-        sprite_index = spr_yoshi_jump
-    else if global.ycolor = 1
-        sprite_index = spr_yoshi_jump_r
-    else if global.ycolor = 2
-        sprite_index = spr_yoshi_jump_y
-    else if global.ycolor = 3
-        sprite_index = spr_yoshi_jump_b
+    jumping = 1
 
     //Use correct pose
     image_index = 0
@@ -533,14 +468,7 @@ else if instance_exists(obj_jumpspawn)
     obj_jumpspawn.visible = 0
 
     //Use jump sprites
-    if global.ycolor = 0
-        sprite_index = spr_yoshi_jump
-    else if global.ycolor = 1
-        sprite_index = spr_yoshi_jump_r
-    else if global.ycolor = 2
-        sprite_index = spr_yoshi_jump_y
-    else if global.ycolor = 3
-        sprite_index = spr_yoshi_jump_b
+    jumping = 1
 
     //Use correct pose
     image_index = 0
@@ -553,6 +481,65 @@ else if instance_exists(obj_jumpspawn)
 //If Mario dies, destroy
 else if instance_exists(obj_deadmario)
     instance_destroy()
+
+//Use licking sprites when licking
+if licking = 1
+{
+    if global.ycolor = 0
+        sprite_index = spr_yoshi_lick
+    else if global.ycolor = 1
+        sprite_index = spr_yoshi_lick_r
+    else if global.ycolor = 2
+        sprite_index = spr_yoshi_lick_y
+    else if global.ycolor = 3
+        sprite_index = spr_yoshi_lick_b
+    image_index = anim
+}
+
+//Otherwise
+else
+{
+
+    //If mouth is full, use hold sprites
+    if inmouth != noone
+    {
+        if global.ycolor = 0
+            sprite_index = spr_yoshi_hold
+        else if global.ycolor = 1
+            sprite_index = spr_yoshi_hold_r
+        else if global.ycolor = 2
+            sprite_index = spr_yoshi_hold_y
+        else if global.ycolor = 3
+            sprite_index = spr_yoshi_hold_b
+    }
+
+    //If walking, use walk sprites
+    else if jumping = 0
+    {
+        if global.ycolor = 0
+            sprite_index = spr_yoshi_walk
+        else if global.ycolor = 1
+            sprite_index = spr_yoshi_walk_r
+        else if global.ycolor = 2
+            sprite_index = spr_yoshi_walk_y
+        else if global.ycolor = 3
+            sprite_index = spr_yoshi_walk_b
+    }
+
+    //Otherwise, use jump sprites
+    else
+    {
+        if global.ycolor = 0
+            sprite_index = spr_yoshi_jump
+        else if global.ycolor = 1
+            sprite_index = spr_yoshi_jump_r
+        else if global.ycolor = 2
+            sprite_index = spr_yoshi_jump_y
+        else if global.ycolor = 3
+            sprite_index = spr_yoshi_jump_b
+    }
+
+}
 </string>
           </argument>
         </arguments>

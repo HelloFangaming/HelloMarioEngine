@@ -193,7 +193,7 @@ if gravity = 0
     //Otherwise, face Mario
     else if instance_exists(obj_mario)
     {
-        if x &gt; obj_mario.x
+        if x+8 &gt; obj_mario.x
             direct = -1
         else
             direct = 1
