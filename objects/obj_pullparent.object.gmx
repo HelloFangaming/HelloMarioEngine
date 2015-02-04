@@ -55,7 +55,8 @@ image_speed = 0.15
           <argument>
             <kind>1</kind>
             <string>///Let Mario pull on it
-if place_meeting(x,y-2,obj_mario)
+if collision_rectangle(bbox_left,bbox_top-5,bbox_right,bbox_top+4,obj_mario,0,0)
+and (obj_mario.y &lt; y-26 or (obj_mario.y &lt; y-10 and sprite_height &lt; 10))
 and scr_canpull()
 {
 
