@@ -101,6 +101,9 @@ isflashing = 0
 //How many consecutive stomps has Mario made?
 hitpoint = 0
 
+//State delay variable
+statedelay = 0
+
 //Handles Mario's skid smoke
 alarm[5] = 8
 
@@ -1659,13 +1662,24 @@ else
         else
             state = 1
 
+        //Reset state delay
+        statedelay = 0
+
     }
 
     //Mario is jumping if there is no ground below him
     else
     {
-        state = 2
+
+        //Delay the change to the jump state
+        if statedelay &gt; 4
+            state = 2
+        else
+            statedelay++
+
+        //Set gravity
         gravity = 0.125
+
     }
 
     //Prevent Mario from falling down too fast
@@ -1861,11 +1875,22 @@ and gravity = 0
     else
         state = 1
 
+    //Reset state delay
+    statedelay = 0
+
 }
 
 //Mario is jumping if there is no ground below him
 else
-    state = 2
+{
+
+    //Delay the change to the jump state
+    if statedelay &gt; 4
+        state = 2
+    else
+        statedelay++
+
+}
 
 //Check if Mario is standing on a slippery surface
 if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)
@@ -1903,8 +1928,7 @@ and disablecontrols = 0
 
 //Make sure that Mario can jump
 and ((jumpnow = 0
-and vspeed &lt;= 0
-and state != 2)
+and state &lt; 2)
 
 //Allow Mario to jump off of Yoshi or a shoe while in midair
 or (keyboard_check(vk_up)
@@ -2080,7 +2104,7 @@ else
     else if state != 2
     {
 
-        //If Mario is on a slippery surface
+        //If Mario is not on a slippery surface
         if isslip = 0
         {
 
@@ -2131,6 +2155,7 @@ else
 
 //If Mario is jumping
 if state = 2
+or statedelay &gt; 0
 {
 
     //Variable jumping
