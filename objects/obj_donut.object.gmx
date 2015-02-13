@@ -148,7 +148,7 @@ else
 
         //If not falling through, or falling through a lower donut, snap Mario vertically
         if not check
-        or (check.object_index = obj_donut &amp;&amp; (check.y &gt; y || (check.y = y &amp;&amp; check &gt; id)))
+        or ((check.object_index = obj_donut or check.object_index = obj_donut_red) and (check.y &gt; y or (check.y = y and check &gt; id)))
             obj_mario.y = ceil(bbox_top-32)
 
     }

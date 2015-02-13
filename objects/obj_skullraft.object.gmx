@@ -86,7 +86,7 @@ and obj_mario.state &lt; 2
 
     //If no skull rafts are around, or the other one is lower
     if not check
-    or (check.y &gt; y || (check.y = y &amp;&amp; check &gt; id))
+    or (check.y &gt; y or (check.y = y and check &gt; id))
     {
 
         //Snap Mario vertically
