@@ -1201,7 +1201,8 @@ else if bbox_top &gt; room_height
             <string>///Handle solid top collision
 
 //Is Mario hign enough to be standing on it?
-if y &lt; other.y-27 and vspeed &gt; 0
+if bbox_bottom &lt; other.yprevious+5
+and vspeed &gt; 0
 {
 
     //Snap to position
