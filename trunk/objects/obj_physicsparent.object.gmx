@@ -83,6 +83,7 @@ if other.vspeed &lt; 0
 
 //Embed into the slope to ensure correct slope mechanics
 if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+4,obj_slopeparent,1,0)
+and not collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-4,obj_slopeparent,1,0)
 and vspeed = 0
     y+=4
 
@@ -145,9 +146,15 @@ if bbox_top &gt; room_height
           <argument>
             <kind>1</kind>
             <string>///Default wall collisions
-if (hspeed &gt; 0 and collision_rectangle(bbox_right,bbox_top+1,bbox_right+hspeed*2,bbox_bottom-1,obj_solid,0,0))
-or (hspeed &lt; 0 and collision_rectangle(bbox_left+hspeed*2,bbox_top+1,bbox_left,bbox_bottom-1,obj_solid,0,0))
+if (hspeed &gt; 0 and collision_rectangle(bbox_right,bbox_top+1,bbox_right+1,bbox_bottom-1,obj_solid,0,0))
+or (hspeed &lt; 0 and collision_rectangle(bbox_left-1,bbox_top+1,bbox_left,bbox_bottom-1,obj_solid,0,0))
+{
     hspeed = -hspeed
+    while collision_rectangle(bbox_right,bbox_top+4,bbox_right,bbox_bottom-1,obj_solid,1,0)
+        x--
+    while collision_rectangle(bbox_left,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,1,0)
+        x++
+}
 </string>
           </argument>
         </arguments>

@@ -961,6 +961,7 @@ and skidnow = 1
 
 //Embed Mario into the slope if he is walking to ensure correct slope mechanics
 if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+4,obj_slopeparent,1,0)
+and not collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-4,obj_slopeparent,1,0)
 and state = 1
     y+=4
 
