@@ -145,7 +145,7 @@ if instance_exists(mytop)
 with instance_create(obj_mario.x,obj_mario.y+11,obj_vegenemy)
 {
     sprite_index = other.sprite_index
-    image_xscale = other.direct
+    image_index = other.image_index
 }
 
 //Make Mario hold it
