@@ -89,6 +89,9 @@ keyboard_set_map(ord('Z'),vk_control)
 if gamepad_is_connected(0)
     alarm[6] = 1
 
+//Set the epsilon value for floating point numbers
+math_set_epsilon(0.00001)
+
 //Disable application surface automatic drawing
 application_surface_draw_enable(0)
 </string>
