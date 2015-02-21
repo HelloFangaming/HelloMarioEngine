@@ -185,6 +185,9 @@ if held = 1
         x = obj_warpnoteblock.x-8+10*obj_warpnoteblock.direct
         y = obj_warpnoteblock.y+15
 
+        //Make sure Mario is holding
+        obj_warpnoteblock.holding = 2
+
         //Be visible
         visible = 1
 

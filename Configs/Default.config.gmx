@@ -19,7 +19,7 @@
     <option_android_arch_mipsr2>false</option_android_arch_mipsr2>
     <option_android_arch_mipsr2sf>false</option_android_arch_mipsr2sf>
     <option_android_arch_x86>True</option_android_arch_x86>
-    <option_android_build_version>0</option_android_build_version>
+    <option_android_build_version>1</option_android_build_version>
     <option_android_color_depth>0</option_android_color_depth>
     <option_android_display_name>Hello Mario Engine</option_android_display_name>
     <option_android_flurry_enable>0</option_android_flurry_enable>
@@ -63,8 +63,10 @@
     <option_android_texture_page>1024</option_android_texture_page>
     <option_android_use_test_ads>0</option_android_use_test_ads>
     <option_argumenterrors>True</option_argumenterrors>
+    <option_audioGroupCount>1</option_audioGroupCount>
     <option_author>Hello Fangaming</option_author>
     <option_backimage>nil</option_backimage>
+    <option_borderless>False</option_borderless>
     <option_changed>false</option_changed>
     <option_changeresolution>false</option_changeresolution>
     <option_closeesc>true</option_closeesc>
@@ -90,6 +92,7 @@
     <option_html5_advertising_type>Supersonic Ads</option_html5_advertising_type>
     <option_html5_allow_fullscreen>True</option_html5_allow_fullscreen>
     <option_html5_alwaysreload>False</option_html5_alwaysreload>
+    <option_html5_browser_title>Created with GameMaker:Studio</option_html5_browser_title>
     <option_html5_centergame>True</option_html5_centergame>
     <option_html5_flurry_enable>0</option_html5_flurry_enable>
     <option_html5_flurry_id></option_html5_flurry_id>
@@ -102,6 +105,7 @@
     <option_html5_interpolate>0</option_html5_interpolate>
     <option_html5_jsprepend></option_html5_jsprepend>
     <option_html5_loadingbar>-1</option_html5_loadingbar>
+    <option_html5_localrunalert>True</option_html5_localrunalert>
     <option_html5_outputdebugtoconsole>False</option_html5_outputdebugtoconsole>
     <option_html5_outputname>index.html</option_html5_outputname>
     <option_html5_scale>-1</option_html5_scale>
@@ -109,19 +113,20 @@
     <option_html5_splash_png>Configs\Default\html5\splash.png</option_html5_splash_png>
     <option_html5_texture_page>2048</option_html5_texture_page>
     <option_html5_use_test_ads>0</option_html5_use_test_ads>
+    <option_html5_usebuiltinparticles>True</option_html5_usebuiltinparticles>
     <option_html5_usesplash>False</option_html5_usesplash>
     <option_icon>nil</option_icon>
     <option_in_app_purchase_enable>0</option_in_app_purchase_enable>
     <option_in_app_purchase_sandbox_mode>0</option_in_app_purchase_sandbox_mode>
     <option_in_app_purchase_server_url></option_in_app_purchase_server_url>
-    <option_information>The Hello Mario Engine is an open source engine for Game Maker Studio containing features from a variety of different 2D Mario games.</option_information>
+    <option_information>The Hello Mario Engine is an open source Mario engine for GameMaker: Studio designed with user friendliness in mind. This engine is fully documented with thousands of code comments, and was designed to be easy to expand upon. The engine also includes tons of different powerups, over a hundred different enemies, and much, much more!</option_information>
     <option_interpolate>False</option_interpolate>
     <option_ios_adcolony_enable_V4VC>0</option_ios_adcolony_enable_V4VC>
     <option_ios_advertising_enable>0</option_ios_advertising_enable>
     <option_ios_advertising_key></option_ios_advertising_key>
     <option_ios_advertising_type>iAds</option_ios_advertising_type>
     <option_ios_app_id></option_ios_app_id>
-    <option_ios_build_version>0</option_ios_build_version>
+    <option_ios_build_version>1</option_ios_build_version>
     <option_ios_certificate>&lt; Press refresh to fetch certificate list from Mac&gt;</option_ios_certificate>
     <option_ios_device_type>3</option_ios_device_type>
     <option_ios_display_name>Hello Mario Engine</option_ios_display_name>
@@ -141,6 +146,8 @@
     <option_ios_ipad_retina_splash_png>Configs\Default\ios\iPadRetinasplash.png</option_ios_ipad_retina_splash_png>
     <option_ios_ipad_splash_png>Configs\Default\ios\iPadsplash.png</option_ios_ipad_splash_png>
     <option_ios_iphone5_splash_png>Configs\Default\ios\iPhone5splash.png</option_ios_iphone5_splash_png>
+    <option_ios_iphone6_splash_png>Configs\Default\ios\iPhone6splash.png</option_ios_iphone6_splash_png>
+    <option_ios_iphone6plus_splash_png>Configs\Default\ios\iPhone6Plussplash.png</option_ios_iphone6plus_splash_png>
     <option_ios_iphone_retina_splash_png>Configs\Default\ios\IphoneRetinasplash.png</option_ios_iphone_retina_splash_png>
     <option_ios_iphone_splash_png>Configs\Default\ios\iPhonesplash.png</option_ios_iphone_splash_png>
     <option_ios_major_version>6</option_ios_major_version>
@@ -176,7 +183,7 @@
     <option_mac_app_id></option_mac_app_id>
     <option_mac_appstore_incoming_allow>0</option_mac_appstore_incoming_allow>
     <option_mac_appstore_outgoing_allow>0</option_mac_appstore_outgoing_allow>
-    <option_mac_build_version>0</option_mac_build_version>
+    <option_mac_build_version>1</option_mac_build_version>
     <option_mac_copyright_info>Hello Fangaming</option_mac_copyright_info>
     <option_mac_create_app_store>-1</option_mac_create_app_store>
     <option_mac_display_name>Hello Mario Engine</option_mac_display_name>
@@ -245,7 +252,8 @@
     <option_savekey>true</option_savekey>
     <option_scale>-1</option_scale>
     <option_scaleprogress>true</option_scaleprogress>
-    <option_sci_UseSCI>false</option_sci_UseSCI>
+    <option_sci_UseSCI>0</option_sci_UseSCI>
+    <option_sci_serverLocation></option_sci_serverLocation>
     <option_screenkey>True</option_screenkey>
     <option_screenshotkey>true</option_screenshotkey>
     <option_shortcircuit>True</option_shortcircuit>
@@ -262,7 +270,7 @@
     <option_textureGroup_count>1</option_textureGroup_count>
     <option_textureGroups0>Default</option_textureGroups0>
     <option_tizen_app_id>http://yourdomain/HelloMarioEngine</option_tizen_app_id>
-    <option_tizen_build_version>0</option_tizen_build_version>
+    <option_tizen_build_version>1</option_tizen_build_version>
     <option_tizen_display_name>Hello Mario Engine</option_tizen_display_name>
     <option_tizen_flurry_enable>0</option_tizen_flurry_enable>
     <option_tizen_flurry_id></option_tizen_flurry_id>
@@ -282,7 +290,7 @@
     <option_tizen_usesplash>False</option_tizen_usesplash>
     <option_use_new_audio>True</option_use_new_audio>
     <option_variableerrors>False</option_variableerrors>
-    <option_version>6.1.0.0</option_version>
+    <option_version>6.1.1.0</option_version>
     <option_version_build>0</option_version_build>
     <option_version_company>Hello Fangaming</option_version_company>
     <option_version_copyright></option_version_copyright>
@@ -290,7 +298,7 @@
     <option_version_major>6</option_version_major>
     <option_version_minor>1</option_version_minor>
     <option_version_product>Hello Mario Engine</option_version_product>
-    <option_version_release>0</option_version_release>
+    <option_version_release>1</option_version_release>
     <option_win8_advertising_appid></option_win8_advertising_appid>
     <option_win8_advertising_enable>0</option_win8_advertising_enable>
     <option_win8_advertising_key></option_win8_advertising_key>
@@ -298,7 +306,7 @@
     <option_win8_advertising_type></option_win8_advertising_type>
     <option_win8_analytics_enable>0</option_win8_analytics_enable>
     <option_win8_analytics_id></option_win8_analytics_id>
-    <option_win8_build_version>0</option_win8_build_version>
+    <option_win8_build_version>1</option_win8_build_version>
     <option_win8_certificate_location>Windows8_TemporaryKey.pfx</option_win8_certificate_location>
     <option_win8_display_name>Hello Mario Engine</option_win8_display_name>
     <option_win8_internet_capable>0</option_win8_internet_capable>
@@ -338,7 +346,7 @@
     <option_windows_major_version>6</option_windows_major_version>
     <option_windows_nsis_file>Configs\Default\windows\RunnerInstaller.nsi</option_windows_nsis_file>
     <option_windows_product_info>Hello Mario Engine</option_windows_product_info>
-    <option_windows_release_version>0</option_windows_release_version>
+    <option_windows_release_version>1</option_windows_release_version>
     <option_windows_runner_finished>Configs\Default\windows\Runner_finish.bmp</option_windows_runner_finished>
     <option_windows_runner_header>Configs\Default\windows\Runner_header.bmp</option_windows_runner_header>
     <option_windows_save_location>0</option_windows_save_location>
@@ -354,7 +362,7 @@
     <option_winphone_advertising_testing_enable>0</option_winphone_advertising_testing_enable>
     <option_winphone_advertising_type></option_winphone_advertising_type>
     <option_winphone_author>Hello Fangaming</option_winphone_author>
-    <option_winphone_build_version>0</option_winphone_build_version>
+    <option_winphone_build_version>1</option_winphone_build_version>
     <option_winphone_cycle_small_image>Configs\Default\WinPhone\CycleSmall.png</option_winphone_cycle_small_image>
     <option_winphone_cycle_wide_image_1>Configs\Default\WinPhone\CycleWide1.png</option_winphone_cycle_wide_image_1>
     <option_winphone_cycle_wide_image_2>Configs\Default\WinPhone\CycleWide2.png</option_winphone_cycle_wide_image_2>
@@ -408,16 +416,20 @@
     <option_xbone_build_version>0</option_xbone_build_version>
     <option_xbone_description></option_xbone_description>
     <option_xbone_display_name></option_xbone_display_name>
+    <option_xbone_events_manifest_index>-1</option_xbone_events_manifest_index>
     <option_xbone_foreground_text>light</option_xbone_foreground_text>
     <option_xbone_interpolation>-1</option_xbone_interpolation>
     <option_xbone_major_version>0</option_xbone_major_version>
     <option_xbone_minor_version>0</option_xbone_minor_version>
     <option_xbone_publisher></option_xbone_publisher>
     <option_xbone_publisher_display_name></option_xbone_publisher_display_name>
+    <option_xbone_require_xbox_live>0</option_xbone_require_xbox_live>
     <option_xbone_revision_version>0</option_xbone_revision_version>
     <option_xbone_scale>-1</option_xbone_scale>
+    <option_xbone_service_config_id></option_xbone_service_config_id>
     <option_xbone_splash_screen_colour>#FFFFFF</option_xbone_splash_screen_colour>
     <option_xbone_texture_page>1024</option_xbone_texture_page>
+    <option_xbone_title_id></option_xbone_title_id>
   </Options>
   <ConfigConstants/>
 </Config>
