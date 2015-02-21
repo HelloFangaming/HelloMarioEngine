@@ -177,6 +177,9 @@ if held = 0
         x = obj_warpnoteblock.x-sprite_width/2+sprite_xoffset
         y = obj_warpnoteblock.y+11
 
+        //Make sure Mario is carrying
+        obj_warpnoteblock.holding = 1
+
         //Be visible
         visible = 1
 
