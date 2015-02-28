@@ -37,7 +37,10 @@
 */
 
 //Default Value:
-image_index = 0
+if place_snapped(32,16)
+    image_index = 0
+else
+    image_index = 1
 
 //Do not animate
 image_speed = 0

@@ -39,10 +39,12 @@
 */
 
 //Default Value:
-if position_meeting(x+8,y-8,obj_solid)
-    image_index = 2
-else
+if place_snapped(32,16)
     image_index = 0
+else
+    image_index = 1
+if position_meeting(x+8,y-8,obj_solid)
+    image_index += 2
 
 //Do not animate
 image_speed = 0
