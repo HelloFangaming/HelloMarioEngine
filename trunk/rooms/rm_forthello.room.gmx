@@ -203,7 +203,7 @@
     <instance objName="obj_diacannon" x="1728" y="144" name="inst_40E75585" locked="0" code="image_index = 1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_diacannon" x="2032" y="128" name="inst_54945E5C" locked="0" code="image_index = 2" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mechakoopa" x="976" y="80" name="inst_9F1A9900" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_diacannon" x="1776" y="208" name="inst_C5716D71" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_diacannon" x="1776" y="208" name="inst_C5716D71" locked="0" code="image_index = 0" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_sidecannon" x="1696" y="176" name="inst_C6264531" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_sidecannon" x="1840" y="64" name="inst_DF543718" locked="0" code="image_index = 1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_quadcannon" x="1760" y="32" name="inst_7F57C3CF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

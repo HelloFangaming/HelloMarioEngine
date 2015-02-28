@@ -60,6 +60,9 @@ image_speed = 0.15
 //Move him down slowly
 other.y+=0.5
 
+//Disable spin jump
+other.stompstyle = 0
+
 //If the jump key is pressed
 if keyboard_check_pressed(vk_shift)
 {

@@ -37,7 +37,7 @@
 */
 
 //Default Value:
-if place_snapped(32,16)
+if place_snapped(16,32)
     ready = 1
 else
     ready = -1
