@@ -959,6 +959,42 @@ and skidnow = 1
             <kind>1</kind>
             <string>///Handles Mario's physics and movement
 
+//If Mario is moving down
+if vspeed &gt; 0
+{
+
+    //Check for a solidtop below Mario
+    var solidtop = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom,obj_solidtop,0,0)
+
+    //If Mario is above a solidtop
+    if solidtop
+    and bbox_bottom &lt; solidtop.yprevious+5
+    {
+
+        //Snap to position
+        y = solidtop.y+floor(y-bbox_bottom)
+
+        //Stop vertical movement
+        vspeed = 0
+        gravity = 0
+
+        //Allow Mario to jump
+        if jumpnow = 2
+            jumpnow = 0
+
+        //Reset hit counter
+        hitpoint = 0
+
+        //Reset bee flying
+        beefly = 0
+
+        //Reset wall jump
+        walljump = 0
+
+    }
+
+}
+
 //Embed Mario into the slope if he is walking to ensure correct slope mechanics
 if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+4,obj_slopeparent,1,0)
 and not collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-4,obj_slopeparent,1,0)
@@ -1176,56 +1212,6 @@ else if bbox_top &gt; room_height
 {
     instance_create(x,room_height-32,obj_deadmario)
     instance_destroy()
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_solidtop">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Handle solid top collision
-
-//Is Mario hign enough to be standing on it?
-if bbox_bottom &lt; other.yprevious+5
-and vspeed &gt; 0
-{
-
-    //Snap to position
-    y = other.y-32
-
-    //Stop vertical movement
-    vspeed = 0
-    gravity = 0
-
-    //Allow Mario to jump
-    if jumpnow = 2
-        jumpnow = 0
-
-    //Reset hit counter
-    hitpoint = 0
-
-    //Reset bee flying
-    beefly = 0
-
-    //Reset wall jump
-    walljump = 0
-
 }
 </string>
           </argument>
@@ -1489,8 +1475,10 @@ if disablecontrols = 0
 else
     speed = 0
 
-//If Mario is no longer on a climbable surface
+//If Mario is no longer on a climbable surface, or reaches the floor
 if not place_meeting(x,y,obj_climb)
+or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_solidtop,0,0)
+or collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0)
 {
 
     //Switch to the jump state
@@ -2208,7 +2196,7 @@ or statedelay &gt; 0
 
 //Makes Mario start climbing
 if place_meeting(x,y,obj_climb)
-and (keyboard_check(vk_up) or keyboard_check(vk_down))
+and (keyboard_check(vk_up) or (keyboard_check(vk_down) and isduck = 0))
 and holding = 0
 and disablecontrols = 0
 {

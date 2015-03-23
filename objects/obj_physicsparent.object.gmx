@@ -81,6 +81,24 @@ if other.vspeed &lt; 0
             <kind>1</kind>
             <string>///Default floor/ceiling collisions
 
+//When moving down
+if vspeed &gt; 0
+{
+
+    //Check for a solidtop below
+    var solidtop = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom,obj_solidtop,0,0)
+
+    //Handle solidtop collisions
+    if solidtop
+    and bbox_bottom &lt; solidtop.yprevious+5
+        y = solidtop.y+floor(y-bbox_bottom)
+
+    //Cap fall speed
+    if vspeed &gt; 4
+        vspeed = 4
+
+}
+
 //Embed into the slope to ensure correct slope mechanics
 if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+4,obj_slopeparent,1,0)
 and not collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-4,obj_slopeparent,1,0)
@@ -116,10 +134,6 @@ and collision_rectangle(bbox_left+1,bbox_top-1,bbox_right-1,bbox_top-1,obj_solid
     vspeed = 0
 }
 
-//Cap fall speed
-if vspeed &gt; 4
-    vspeed = 4
-
 //Destroy when it falls out of the level
 if bbox_top &gt; room_height
     instance_destroy()
@@ -146,13 +160,13 @@ if bbox_top &gt; room_height
           <argument>
             <kind>1</kind>
             <string>///Default wall collisions
-if (hspeed &gt; 0 and collision_rectangle(bbox_right,bbox_top+1,bbox_right+1,bbox_bottom-1,obj_solid,0,0))
-or (hspeed &lt; 0 and collision_rectangle(bbox_left-1,bbox_top+1,bbox_left,bbox_bottom-1,obj_solid,0,0))
+if (hspeed &gt; 0 and collision_rectangle(bbox_right,bbox_top+1,bbox_right+1,bbox_bottom-4,obj_solid,0,0))
+or (hspeed &lt; 0 and collision_rectangle(bbox_left-1,bbox_top+1,bbox_left,bbox_bottom-4,obj_solid,0,0))
 {
     hspeed = -hspeed
-    while collision_rectangle(bbox_right,bbox_top+4,bbox_right,bbox_bottom-1,obj_solid,1,0)
+    while collision_rectangle(bbox_right,bbox_top+4,bbox_right,bbox_bottom-4,obj_solid,1,0)
         x--
-    while collision_rectangle(bbox_left,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,1,0)
+    while collision_rectangle(bbox_left,bbox_top+4,bbox_left,bbox_bottom-4,obj_solid,1,0)
         x++
 }
 </string>

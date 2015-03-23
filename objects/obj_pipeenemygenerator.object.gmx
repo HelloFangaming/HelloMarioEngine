@@ -53,6 +53,42 @@ alarm[0] = 100
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Maintain enemy y value
+instance_activate_object(newenemy)
+with newenemy
+{
+    if outside_view()
+        instance_destroy()
+    else
+    {
+        y = other.y+16
+        vspeed = 0
+        if depth = 10
+            other.alarm[2] = 1
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
@@ -71,14 +107,7 @@ alarm[0] = 100
           <argument>
             <kind>1</kind>
             <string>///Change enemy depth
-instance_activate_object(newenemy)
-with newenemy
-{
-    if outside_view()
-        instance_destroy()
-    else
-        depth = 0
-}
+with newenemy depth = 0
 </string>
           </argument>
         </arguments>
@@ -132,6 +161,9 @@ if instance_number(myenemy) &lt; 6
 
     //Change depth back later
     alarm[1] = 30
+
+    //Maintain y value
+    alarm[2] = 1
 
 }
 

@@ -96,27 +96,34 @@ and obj_mario.x &lt; x+72
 and y &lt; obj_mario.y
 {
     ready = 1
-    gravity = 0.25
     image_index = 1
 }
 
 //Land on the ground
 else if ready = 1
-and gravity = 0
 {
 
-    //State variable
-    ready = 2
+    //Floor collisions
+    event_user(4)
 
-    //Thwomp sound
-    audio_play_sound(snd_thwomp,0,0)
+    //When on ground
+    if gravity = 0
+    {
 
-    //Smoke effects
-    instance_create(x-4,y+16,obj_smoke)
-    instance_create(x+20,y+16,obj_smoke)
+        //State variable
+        ready = 2
 
-    //Rise
-    alarm[0] = 60
+        //Thwomp sound
+        audio_play_sound(snd_thwomp,0,0)
+
+        //Smoke effects
+        instance_create(x-4,y+16,obj_smoke)
+        instance_create(x+20,y+16,obj_smoke)
+
+        //Rise
+        alarm[0] = 60
+
+    }
 
 }
 
@@ -127,39 +134,6 @@ and y &lt; ystart+1
     ready = 0
     vspeed = 0
     y = ystart
-}
-
-//Cap fall speed
-if vspeed &gt; 4
-    vspeed = 4
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_solidtop">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Floor collision
-if y &lt; other.y-sprite_height+5 and vspeed &gt; 0
-{
-    y = other.y-sprite_height
-    vspeed = 0
-    gravity = 0
 }
 </string>
           </argument>
