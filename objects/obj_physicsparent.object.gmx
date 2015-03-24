@@ -86,12 +86,12 @@ if vspeed &gt; 0
 {
 
     //Check for a solidtop below
-    var solidtop = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom,obj_solidtop,0,0)
+    var solidtop = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+vspeed,obj_solidtop,0,0)
 
     //Handle solidtop collisions
     if solidtop
     and bbox_bottom &lt; solidtop.yprevious+5
-        y = solidtop.y+floor(y-bbox_bottom)
+        y = solidtop.y+floor(y-bbox_bottom-0.9)
 
     //Cap fall speed
     if vspeed &gt; 4

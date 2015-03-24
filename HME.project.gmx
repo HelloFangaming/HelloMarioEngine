@@ -1818,7 +1818,7 @@
       <room>rooms\rm_gameover</room>
     </rooms>
   </rooms>
-  <constants number="37">
+  <constants number="38">
     <constant name="cs_small">0</constant>
     <constant name="cs_big">1</constant>
     <constant name="cs_fire">2</constant>
@@ -1855,7 +1855,8 @@
     <constant name="cs_superspring">-24</constant>
     <constant name="cs_pswitch">-25</constant>
     <constant name="cs_eswitch">-26</constant>
-    <constant name="cs_beanstalk">-27</constant>
+    <constant name="cs_propellerblock">-27</constant>
+    <constant name="cs_beanstalk">-28</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

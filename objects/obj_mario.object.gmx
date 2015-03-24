@@ -964,7 +964,7 @@ if vspeed &gt; 0
 {
 
     //Check for a solidtop below Mario
-    var solidtop = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom,obj_solidtop,0,0)
+    var solidtop = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+vspeed,obj_solidtop,0,0)
 
     //If Mario is above a solidtop
     if solidtop
@@ -972,7 +972,7 @@ if vspeed &gt; 0
     {
 
         //Snap to position
-        y = solidtop.y+floor(y-bbox_bottom)
+        y = solidtop.y-32
 
         //Stop vertical movement
         vspeed = 0

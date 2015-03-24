@@ -98,4 +98,6 @@ switch argument2
         return instance_create(argument0,argument1,obj_pswitch)
     case spr_eswitch:
         return instance_create(argument0,argument1,obj_eswitch)
+    case spr_propellerblock:
+        return instance_create(argument0,argument1,obj_propellerblock)
 }
