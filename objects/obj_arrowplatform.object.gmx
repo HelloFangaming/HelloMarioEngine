@@ -64,7 +64,7 @@ ready = 0
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_mario">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -83,6 +83,7 @@ ready = 0
             <kind>1</kind>
             <string>///Generate arrow platforms
 if ready = 0
+and collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_mario,0,0)
 and obj_mario.y &lt; y-27
 {
 

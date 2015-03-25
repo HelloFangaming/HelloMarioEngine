@@ -112,6 +112,15 @@ gravity = 0.05
             <kind>1</kind>
             <string>///Falling platform logic
 
+//Start falling when Mario steps on it
+if ready = 0
+and collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_mario,0,0)
+and obj_mario.y &lt; y-27
+{
+    ready = 1
+    alarm[0] = 15
+}
+
 //Cap fall speed
 if vspeed &gt; 1.5
     vspeed = 1.5
@@ -131,35 +140,6 @@ and not collision_rectangle(obj_mario.bbox_left,bbox_top-5,obj_mario.bbox_right,
 and obj_mario.y &lt; y-26
 and obj_mario.state &lt; 2
     obj_mario.y = ceil(bbox_top-32)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_mario">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Start falling
-if ready = 0
-and obj_mario.y &lt; y-27
-{
-    ready = 1
-    alarm[0] = 15
-}
 </string>
           </argument>
         </arguments>

@@ -101,9 +101,10 @@ event_inherited()
 if ready = 0
 and global.powerup != cs_small
 and global.yoshi = 0
-and collision_rectangle(bbox_left,bbox_top-5,bbox_right,bbox_top,obj_mario,0,0)
+and instance_exists(obj_mario)
 and obj_mario.stompstyle = 1
 and obj_mario.vspeed &gt; 0
+and place_meeting(x,y-obj_mario.vspeed*2.5,obj_mario)
 {
     with obj_mario event_user(1)
     audio_play_sound(snd_break,0,0)
