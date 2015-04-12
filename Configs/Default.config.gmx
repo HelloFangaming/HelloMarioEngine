@@ -119,7 +119,7 @@
     <option_in_app_purchase_enable>0</option_in_app_purchase_enable>
     <option_in_app_purchase_sandbox_mode>0</option_in_app_purchase_sandbox_mode>
     <option_in_app_purchase_server_url></option_in_app_purchase_server_url>
-    <option_information>The Hello Mario Engine is an open source Mario engine for GameMaker: Studio designed with user friendliness in mind. This engine is fully documented with thousands of code comments, and was designed to be easy to expand upon. The engine also includes tons of different powerups, over a hundred different enemies, and much, much more!</option_information>
+    <option_information>The Hello Mario Engine is an open source Mario engine for GameMaker: Studio that is feature packed, and designed to be easy to expand upon with user friendliness as a priority. The engine is fully documented with thousands of code comments, and includes tons of different powerups, over a hundred different enemies, and much, much more!</option_information>
     <option_interpolate>False</option_interpolate>
     <option_ios_adcolony_enable_V4VC>0</option_ios_adcolony_enable_V4VC>
     <option_ios_advertising_enable>0</option_ios_advertising_enable>
