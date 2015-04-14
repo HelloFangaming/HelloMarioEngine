@@ -267,7 +267,7 @@ and image_index = 0
           <argument>
             <kind>1</kind>
             <string>///Boom boom death
-with instance_create(round(x),round(y+16),obj_enemy_dead)
+with instance_create(round(x),round(y+sprite_height),obj_enemy_dead)
 {
     sprite_index = spr_boomboom_misc
     image_xscale = other.direct

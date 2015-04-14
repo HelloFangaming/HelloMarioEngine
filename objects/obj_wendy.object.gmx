@@ -305,7 +305,7 @@ and gravity = 0
           <argument>
             <kind>1</kind>
             <string>///Wendy death
-with instance_create(round(x),round(y+16),obj_enemy_dead)
+with instance_create(round(x),round(y),obj_enemy_dead)
 {
     sprite_index = spr_wendy_jump
     image_xscale = other.direct

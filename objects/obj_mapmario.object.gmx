@@ -334,6 +334,10 @@ and not instance_exists(obj_mapcard)
 returnx = x
 returny = y
 
+//Save Mario's current location
+ds_map_replace(global.worldmap,"mapx",x)
+ds_map_replace(global.worldmap,"mapy",y)
+
 //Save the return variables
 ds_map_replace(global.worldmap,"returnx",returnx)
 ds_map_replace(global.worldmap,"returny",returny)

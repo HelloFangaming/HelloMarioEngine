@@ -369,7 +369,7 @@ if hardness = 2
           <argument>
             <kind>1</kind>
             <string>///Mouser death
-with instance_create(round(x),round(y+16),obj_enemy_dead)
+with instance_create(round(x),round(y+sprite_height),obj_enemy_dead)
 {
     sprite_index = spr_mouser_hurt
     image_xscale = other.direct
