@@ -2196,7 +2196,7 @@ or statedelay &gt; 0
 
 //Makes Mario start climbing
 if place_meeting(x,y,obj_climb)
-and (keyboard_check(vk_up) or (keyboard_check(vk_down) and isduck = 0))
+and (keyboard_check(vk_up) or (keyboard_check(vk_down) and state = 2))
 and holding = 0
 and disablecontrols = 0
 {

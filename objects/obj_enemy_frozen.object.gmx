@@ -226,6 +226,13 @@ if sprite_index = spr_frozenenemy_big
 
 //Make solid the same size as the ice
 mysolid.mask_index = sprite_index
+
+//Prevent the solid from messing with floor collisions
+if sprite_index = spr_frozenenemy_tall
+or sprite_index = spr_frozenenemy_big
+    mysolid.image_yscale = 0.8
+else
+    mysolid.image_yscale = 0.6
 </string>
           </argument>
         </arguments>

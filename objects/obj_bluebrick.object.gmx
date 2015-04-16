@@ -31,7 +31,7 @@
 image_speed = 0.15
 
 //Throw sprite
-throwsprite = spr_throwblock_th
+throwsprite = spr_bluebrick_th
 </string>
           </argument>
         </arguments>

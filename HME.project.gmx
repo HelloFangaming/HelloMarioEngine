@@ -475,7 +475,7 @@
       </sprites>
       <sprite>sprites\spr_brick</sprite>
       <sprite>sprites\spr_bluebrick</sprite>
-      <sprite>sprites\spr_throwblock_th</sprite>
+      <sprite>sprites\spr_bluebrick_th</sprite>
       <sprite>sprites\spr_redbrick</sprite>
       <sprite>sprites\spr_redbrick_th</sprite>
       <sprite>sprites\spr_greenbrick</sprite>
