@@ -1681,9 +1681,22 @@ else
     and disablecontrols = 0
     {
 
-        //Swim higher if up is being pressed
+        //If up is being pressed
         if keyboard_check(vk_up)
+        {
+
+            //Swim higher
             vspeed = -3.5
+
+            //Get off of Yoshi if he is on one
+            if global.yoshi = 1
+                with obj_yoshi event_user(1)
+
+            //Get off of a shoe if he is on one
+            else if global.yoshi = 2
+                with obj_kuriboshoe event_user(0)
+
+        }
 
         //Swim lower if down is being pressed
         else if keyboard_check(vk_down)
