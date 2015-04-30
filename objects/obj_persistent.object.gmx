@@ -190,7 +190,12 @@ alarm[6] = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Because GM: Studio is buggy, delay enabling the filter
+            <string>///Because GM: Studio is buggy, delay applying settings
+
+//Apply fullscreen
+window_set_fullscreen(fullscreen)
+
+//Apply filtering and VSync
 event_user(1)
 </string>
           </argument>
@@ -690,10 +695,7 @@ else
 
 }
 
-//Fullscreen
-window_set_fullscreen(fullscreen)
-
-//Apply filtering
+//Apply loaded settings
 alarm[5] = 1
 
 //Play the coin sound at the splash screen
