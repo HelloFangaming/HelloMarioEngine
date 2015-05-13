@@ -2,7 +2,7 @@
 
 /*
 **  Usage:
-**      scr_musicalscale(object,playsound)
+**      scr_musicalscale(killer,enemy,playsound)
 **
 **  Given:
 **      killer      Object that is doing the killing
