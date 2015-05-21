@@ -2460,7 +2460,7 @@ and floatnow = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Make Mario bounce off an enemy
+            <string>///Make Mario bounce off of something
 if not instance_exists(obj_slider)
 {
 
@@ -2469,6 +2469,11 @@ if not instance_exists(obj_slider)
         jumpnow = 1
     else
         jumpnow = 2
+
+    //Switch to the jump state
+    state = 2
+
+    //Bounce up
     vspeed = -4
 
 }
