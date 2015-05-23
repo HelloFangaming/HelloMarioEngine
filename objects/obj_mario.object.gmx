@@ -2461,22 +2461,21 @@ and floatnow = 1
           <argument>
             <kind>1</kind>
             <string>///Make Mario bounce off of something
-if not instance_exists(obj_slider)
-{
 
-    //Enable variable jumping if shift is held down
-    if keyboard_check(vk_shift)
-        jumpnow = 1
-    else
-        jumpnow = 2
+//Enable variable jumping if shift is held down
+if keyboard_check(vk_shift)
+    jumpnow = 1
+else
+    jumpnow = 2
 
-    //Switch to the jump state
-    state = 2
+//Switch to the jump state
+state = 2
 
-    //Bounce up
-    vspeed = -4
+//Bounce up
+vspeed = -4
 
-}
+//Boost jump
+y--
 </string>
           </argument>
         </arguments>

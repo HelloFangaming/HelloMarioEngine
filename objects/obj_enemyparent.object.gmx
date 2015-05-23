@@ -207,15 +207,29 @@ and other.invincible != -1
         else if (stomp = 0 or stomp = 3 or stomp = 5)
         and other.isswim = 0
         {
-            with other event_user(1)
+
+            //Prevent certain enemies from getting double stomped
+            if vspeed &lt; 0
+            {
+                y = yprevious
+                if other.vspeed &gt; 0
+                    other.y = other.yprevious
+            }
+
+            //Bounce Mario off enemy
+            if not instance_exists(obj_slider)
+                with other event_user(1)
+
+            //Stomp effects
             if stomp = 0
                 scr_musicalscale(other.id,id,1)
             else if stomp = 3
                 scr_musicalscale(other.id,id,0)
-            else if stomp = 5
-            and other.stompstyle = 1
-                instance_create(other.x,other.y+32,obj_spinthump)
+            instance_create(other.x,other.y+32,obj_spinthump)
+
+            //Stomp the enemy
             event_user(1)
+
         }
 
     }
