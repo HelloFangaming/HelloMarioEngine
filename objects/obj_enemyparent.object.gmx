@@ -317,15 +317,20 @@ event_user(0)
           <argument>
             <kind>1</kind>
             <string>///Turn at enemies script
-if (hspeed &gt; 0 and collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_enemyparent,0,1))
-or (hspeed &lt; 0 and collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_enemyparent,0,1))
-    hspeed = -hspeed
-
-//Prevent overlapping enemies from getting stuck
-var overlap = collision_point((bbox_left+bbox_right)*0.5,bbox_bottom-4,obj_enemyparent,0,1)
+var overlap = collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-4,obj_enemyparent,0,1)
 if overlap
-and sign(hspeed) = sign(overlap.hspeed)
-    hspeed = sign(overlap.hspeed)*-hspeed
+{
+
+    //Go right if you are further to the right, or in the same spot and a higher id
+    if (bbox_left+bbox_right)*0.5 &gt; (overlap.bbox_left+overlap.bbox_right)*0.5
+    or ((bbox_left+bbox_right)*0.5 = (overlap.bbox_left+overlap.bbox_right)*0.5 and id &gt; overlap.id)
+        hspeed = abs(hspeed)
+
+    //Otherwise, go left
+    else
+        hspeed = -abs(hspeed)
+
+}
 </string>
           </argument>
         </arguments>
