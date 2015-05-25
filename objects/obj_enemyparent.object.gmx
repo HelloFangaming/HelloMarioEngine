@@ -320,6 +320,12 @@ event_user(0)
 if (hspeed &gt; 0 and collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_enemyparent,0,1))
 or (hspeed &lt; 0 and collision_rectangle(bbox_left+hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_enemyparent,0,1))
     hspeed = -hspeed
+
+//Prevent overlapping enemies from getting stuck
+var overlap = collision_point((bbox_left+bbox_right)*0.5,bbox_bottom-4,obj_enemyparent,0,1)
+if overlap
+and sign(hspeed) = sign(overlap.hspeed)
+    hspeed = sign(overlap.hspeed)*-hspeed
 </string>
           </argument>
         </arguments>
