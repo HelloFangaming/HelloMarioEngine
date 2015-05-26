@@ -274,27 +274,27 @@ else
 //Make body parts turn around in order
 if ready = 0
 {
-    mybody[0].alarm[0] = 20
-    mybody[1].alarm[0] = 36
-    mybody[2].alarm[0] = 52
-    mybody[3].alarm[0] = 68
+    with mybody[0] alarm[0] = 20
+    with mybody[1] alarm[0] = 36
+    with mybody[2] alarm[0] = 52
+    with mybody[3] alarm[0] = 68
 }
 
 //Faster if angry, and continue chasing Mario
 else
 {
-    mybody[0].alarm[0] = 10
-    mybody[1].alarm[0] = 18
-    mybody[2].alarm[0] = 26
-    mybody[3].alarm[0] = 34
+    with mybody[0] alarm[0] = 10
+    with mybody[1] alarm[0] = 18
+    with mybody[2] alarm[0] = 26
+    with mybody[3] alarm[0] = 34
     alarm[0] = 50
 }
 
 //Set their next direction
-mybody[0].nextdirect = direct
-mybody[1].nextdirect = direct
-mybody[2].nextdirect = direct
-mybody[3].nextdirect = direct
+with mybody[0] nextdirect = other.direct
+with mybody[1] nextdirect = other.direct
+with mybody[2] nextdirect = other.direct
+with mybody[3] nextdirect = other.direct
 </string>
           </argument>
         </arguments>

@@ -118,14 +118,9 @@ else
         //If it touches the key, return everything back to the way it was
         if position_meeting(x+8,y+8,mykey)
         {
-            mykey.x = oldx
-            mykey.y = oldy
+            with mykey instance_destroy()
+            mykey = instance_create(oldx,oldy,obj_key)
             event_user(14)
-            if mykey.held = 1
-            {
-                mykey.held = 0
-                obj_mario.holding = 0
-            }
         }
 
         //If the key still exists, give chase
