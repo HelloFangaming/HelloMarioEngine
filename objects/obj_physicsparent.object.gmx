@@ -127,9 +127,9 @@ else
 
 //Ceiling check
 if vspeed &lt; 0
-and collision_rectangle(bbox_left+1,bbox_top-1,bbox_right-1,bbox_top-1,obj_solid,1,0)
+and collision_rectangle(bbox_left+1,bbox_top+vspeed-1,bbox_right-1,bbox_top-1,obj_solid,1,0)
 {
-    while collision_rectangle(bbox_left+1,bbox_top-1,bbox_right-1,bbox_top-1,obj_solid,1,0)
+    while collision_rectangle(bbox_left+1,bbox_top,bbox_right-1,bbox_top,obj_solid,1,0)
         y++
     vspeed = 0
 }

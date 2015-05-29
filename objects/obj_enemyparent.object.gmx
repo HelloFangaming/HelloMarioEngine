@@ -168,9 +168,10 @@ and other.vspeed &lt; 0
             <kind>1</kind>
             <string>///Mario stomp script
 
-//If both can interact with each other
+//If both can interact with each other, and Mario is not sliding
 if stomp != -1
 and other.invincible != -1
+and not instance_exists(obj_slider)
 {
 
     //If Mario is above the enemy
@@ -217,8 +218,7 @@ and other.invincible != -1
             }
 
             //Bounce Mario off enemy
-            if not instance_exists(obj_slider)
-                with other event_user(1)
+            with other event_user(1)
 
             //Stomp effects
             if stomp = 0
