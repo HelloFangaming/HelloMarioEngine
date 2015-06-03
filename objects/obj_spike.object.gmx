@@ -118,7 +118,7 @@ and (obj_mario.x &lt; x-32 or obj_mario.x &gt; x+32)
     hspeed = 0
 
     //Create spike ball
-    with instance_create(x-8,y,obj_spikeball) dir = other.direct
+    with instance_create(round(x-8),y,obj_spikeball) dir = other.direct
 
     //Continue walking later
     alarm[1] = 52

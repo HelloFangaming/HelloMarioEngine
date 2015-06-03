@@ -3,7 +3,7 @@
   <spriteName>spr_sidecannon</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>1</depth>
   <persistent>0</persistent>
   <parentName>obj_deactivation</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -71,7 +71,7 @@ alarm[0] = 80
             <kind>1</kind>
             <string>///Launch cannonballs
 audio_play_sound(snd_thwomp,0,0)
-with instance_create(x+8,y+8,obj_cannonball)
+with instance_create(x,y,obj_cannonball)
 {
     if other.image_index = 0
     {
@@ -79,12 +79,12 @@ with instance_create(x+8,y+8,obj_cannonball)
         or x &gt; obj_mario.x
         {
             direction = 225
-            instance_create(x-8,y+8,obj_smoke)
+            y+=16
         }
         else
         {
             direction = 45
-            instance_create(x+8,y-8,obj_smoke)
+            x+=16
         }
     }
     else
@@ -93,14 +93,15 @@ with instance_create(x+8,y+8,obj_cannonball)
         or x &gt; obj_mario.x
         {
             direction = 135
-            instance_create(x-8,y-8,obj_smoke)
         }
         else
         {
             direction = 315
-            instance_create(x+8,y+8,obj_smoke)
+            x+=16
+            y+=16
         }
     }
+    instance_create(x,y,obj_smoke)
 }
 alarm[0] = 200
 </string>
