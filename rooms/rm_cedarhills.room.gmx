@@ -264,7 +264,7 @@
     <instance objName="obj_messageblock" x="400" y="64" name="inst_A9EC0D32" locked="0" code="varmsg = &quot;Well, there is a key, but what is it for?&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="1136" y="80" name="inst_4014549F" locked="0" code="varmsg = &quot;If you collect 5 Ace Coins, you will get a 1up!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="2400" y="16" name="inst_15D90B25" locked="0" code="varmsg = &quot;Bringing a key to this keyhole will open up a secret exit on the world map!&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_noteblock" x="1744" y="176" name="inst_730EFA53" locked="0" code="mypowerup = cs_frog" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_noteblock" x="1744" y="176" name="inst_730EFA53" locked="0" code="sprout = cs_frog" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="1184" y="32" name="inst_8AF138BC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block" x="192" y="336" name="inst_4259E788" locked="0" code="sprout = cs_shell" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block" x="176" y="32" name="inst_2A41F1C9" locked="0" code="sprout = cs_pswitch" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

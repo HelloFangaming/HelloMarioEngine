@@ -119,7 +119,7 @@
     <instance objName="obj_brick" x="2512" y="224" name="inst_52E75CF6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="2048" y="16" name="inst_A587A95C" locked="0" code="varmsg = &quot;Haha, you found a secret block! Too bad I don't do anything...&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="1328" y="272" name="inst_5339060E" locked="0" code="varmsg = &quot;You can use the spin jump to bounce over those pokeys, or you can use the rope if you are lazy.&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_noteblock" x="496" y="320" name="inst_5EA0BEFE" locked="0" code="mypowerup = cs_shell" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_noteblock" x="496" y="320" name="inst_5EA0BEFE" locked="0" code="sprout = cs_shell" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_noteblock_warp" x="336" y="64" name="inst_5DB0F102" locked="0" code="myroom = rm_wildsands_sky" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block" x="944" y="64" name="inst_24141AE3" locked="0" code="sprout = cs_blueyoshi" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block" x="1184" y="192" name="inst_12626761" locked="0" code="sprout = cs_dossunshoe" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

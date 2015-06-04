@@ -34,7 +34,7 @@ hardness = 0
 stomp = 1
 
 //Animate
-image_speed = 0.5
+image_speed = 0.3
 
 //Move up
 vspeed = -0.5
