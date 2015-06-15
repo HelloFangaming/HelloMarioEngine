@@ -34,7 +34,7 @@ image_speed = 0.15
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_solidtop">
+    <event eventtype="4" ename="obj_flagpole">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -52,12 +52,16 @@ image_speed = 0.15
           <argument>
             <kind>1</kind>
             <string>///When the flag reaches the bottom of the flagpole
+if y &gt; other.y+144
+{
 
-//Stop moving
-vspeed = 0
+    //Stop moving
+    vspeed = 0
 
-//Snap to above the solidtop
-y = other.y-16
+    //Snap to bottom of the flagpole
+    y = other.y+144
+
+}
 </string>
           </argument>
         </arguments>

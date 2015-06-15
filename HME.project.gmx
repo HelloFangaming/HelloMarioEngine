@@ -946,7 +946,7 @@
       <sprite>sprites\spr_door_hidden</sprite>
       <sprite>sprites\spr_door_inside</sprite>
       <sprite>sprites\spr_door_lock</sprite>
-      <sprite>sprites\spr_bombdoor</sprite>
+      <sprite>sprites\spr_door_boards</sprite>
     </sprites>
     <sprites name="HUD">
       <sprite>sprites\spr_hudbar</sprite>
