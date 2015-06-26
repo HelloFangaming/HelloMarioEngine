@@ -140,7 +140,7 @@ if fade != 0
     **  Powered by Hello Mario Engine text:
     **
     **  You are allowed to remove this as long as you
-    **  give credit for use of the "Hello Mario Engine" 
+    **  give credit for use of the "Hello Mario Engine"
     **  somewhere else. Thank you.
     */
     draw_text(2,2,"POWERED BY HELLO MARIO ENGINE V6.1.2")
@@ -198,7 +198,7 @@ draw_set_alpha(1)
           <argument>
             <kind>1</kind>
             <string>///Select a lower menu item
-if menu_choice &lt; 2 
+if menu_choice &lt; 2
 {
     menu_choice++
     audio_play_sound(snd_move,0,0)

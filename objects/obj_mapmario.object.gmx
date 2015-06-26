@@ -518,7 +518,7 @@ else if ready = 0
         }
 
         //If the left key is pressed
-        else if keyboard_check_pressed(vk_left) 
+        else if keyboard_check_pressed(vk_left)
         {
 
             //If there is no solid in the way
@@ -635,7 +635,7 @@ else if ready = 0
     }
 
     //If he is moving, reset the text
-    else 
+    else
         mytext = ""
 
 }

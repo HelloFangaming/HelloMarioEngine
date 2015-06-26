@@ -101,7 +101,7 @@ alarm[0] = 150
 if instance_exists(obj_mario)
 {
     ready = 1
-    xtarget = obj_mario.x 
+    xtarget = obj_mario.x
     ytarget = obj_mario.y
     alarm[1] = 30
 }

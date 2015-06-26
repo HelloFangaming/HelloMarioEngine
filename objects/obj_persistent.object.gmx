@@ -34,7 +34,7 @@ mode = 0
 //How much the screen is faded
 done = 0
 
-//Screenshot of the game, if it exists 
+//Screenshot of the game, if it exists
 back = -1
 
 //Message to display to the screen
@@ -659,7 +659,7 @@ file_text_close(file)
 if file_exists("Settings.dat")
 {
 
-    //Open the file 
+    //Open the file
     var file = file_text_open_read("Settings.dat")
 
     //Set fullscreen mode based on the read value

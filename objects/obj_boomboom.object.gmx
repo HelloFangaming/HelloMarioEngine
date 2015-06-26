@@ -80,7 +80,7 @@ or obj_mario.x &lt; x
     hspeed = -1
 else
     hspeed = 1
-    
+
 //Reset state
 ready = 0
 

@@ -70,7 +70,7 @@ ready = 0
 
 //Sprite change
 sprite_index = spr_wendy
-    
+
 //Reset state
 ready = 0
 

@@ -252,7 +252,7 @@ if place_meeting(x,y,obj_blockparent)
         vspeed = -5
         direct = other.direct
     }
-    
+
     //Destroy
     instance_destroy()
 

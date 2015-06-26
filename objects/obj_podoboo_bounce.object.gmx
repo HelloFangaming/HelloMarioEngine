@@ -93,7 +93,7 @@ else
 if vspeed &lt; 0
     vdirect = 1
 else
-    vdirect = -1  
+    vdirect = -1
 </string>
           </argument>
         </arguments>
