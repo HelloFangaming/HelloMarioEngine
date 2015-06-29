@@ -253,7 +253,7 @@ if ready = 0
     alarm[3] = 60
 
     //Throw more later
-    alarm[0] = 200
+    alarm[0] = 210
 
 }
 </string>

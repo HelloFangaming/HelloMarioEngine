@@ -3,7 +3,7 @@
   <spriteName>spr_grassbomb</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-1</depth>
   <persistent>0</persistent>
   <parentName>obj_physicsparent</parentName>
   <maskName>spr_square</maskName>
@@ -55,26 +55,23 @@ vspeed = -1
           <argument>
             <kind>1</kind>
             <string>///Thrown bomb logic
-if not place_meeting(x,y,obj_mouser)
+
+//Previous hspeed
+prevhspeed = hspeed
+
+//Default event
+event_inherited()
+
+//If the direction changed, stop horizontal motion
+if hspeed != prevhspeed
+    hspeed = 0
+
+//Become a bomb after landing
+if gravity = 0
+and not place_meeting(x,y+1,obj_mouser)
 {
-
-    //Previous hspeed
-    prevhspeed = hspeed
-
-    //Default event
-    event_inherited()
-
-    //If the direction changed, stop horizontal motion
-    if hspeed != prevhspeed
-        hspeed = 0
-
-    //Become a bomb after landing
-    if gravity = 0
-    {
-        instance_create(x,round(y),obj_mouser_bomb)
-        instance_destroy()
-    }
-
+    instance_create(x,round(y),obj_mouser_bomb)
+    instance_destroy()
 }
 </string>
           </argument>

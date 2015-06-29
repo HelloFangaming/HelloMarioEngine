@@ -114,7 +114,12 @@ alarm[0] = 10
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Do NOT inherit floor/ceiling collisions
+            <string>///Turn at slopes
+if (hspeed &gt; 0
+and collision_point(bbox_right,bbox_bottom,obj_slopeparent,1,0))
+or (hspeed &lt; 0
+and collision_point(bbox_left,bbox_bottom,obj_slopeparent,1,0))
+    hspeed = -hspeed
 </string>
           </argument>
         </arguments>

@@ -169,6 +169,13 @@ if place_meeting(x,y,obj_swim)
         else if y &lt; swimspot
             vspeed = 1
 
+        //Turn at slopes
+        if (hspeed &gt; 0
+        and collision_point(bbox_right+hspeed*2,bbox_bottom,obj_slopeparent,1,0))
+        or (hspeed &lt; 0
+        and collision_point(bbox_left+hspeed*2,bbox_bottom,obj_slopeparent,1,0))
+            hspeed = -hspeed
+
         //If Mario is above, and there is no water above
         if not place_meeting(x,y-40,obj_swim)
         and instance_exists(obj_mario)
@@ -192,6 +199,13 @@ if place_meeting(x,y,obj_swim)
 
     }
 
+    //Remember the water level when re-entering
+    else if hopnow = 2
+    {
+        hopnow = 0
+        swimspot = instance_place(x,y,obj_swim).y+16
+    }
+
 }
 
 //Otherwise, change hopnow
@@ -200,34 +214,6 @@ else
     if hopnow = 0
         vspeed = -4
     hopnow = 2
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_swim">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Remember the water level when re-entering
-if hopnow = 2
-{
-    hopnow = 0
-    swimspot = other.y+16
 }
 </string>
           </argument>

@@ -63,8 +63,8 @@ vspeed = -4.5
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Destroy outside view
-if outside_view()
+            <string>///Destroy below view
+if y &gt; view_yview[0] + view_hview[0]
     instance_destroy()
 
 //Correct facing direction
