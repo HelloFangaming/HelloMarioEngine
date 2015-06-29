@@ -244,7 +244,7 @@ if ready = 0
     image_index = 2
 
     //Throw bomb
-    with instance_create(x-8-8*direct,y,obj_mouser_thrownbomb) hspeed = other.direct*(random(3)+2)
+    with instance_create(x-8-8*direct,y,obj_mouser_thrownbomb) hspeed = other.direct*(random(2.5)+2.5)
 
     //Play throw sound
     audio_play_sound(snd_hammer,0,0)

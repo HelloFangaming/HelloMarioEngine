@@ -6,4 +6,4 @@ The engine is open source, and is licensed under the **New BSD License**. This l
 
 Before importing the **Hello Mario Engine**, make sure that your copy of GameMaker: Studio has been updated to at least version 1.4. Otherwise, things will not work properly. Do not report any errors you get from using older versions unless they also occur after you update. This engine is not tested on mobile platforms. If you are using the free version of GameMaker: Studio, make sure you upgrade it to the Standard version before importing. Upgrading to Standard is free, but requires registration.
 
-Find out more about this engine's features on its [GitHub page](http://hellofangaming.github.io/HelloMarioEngine/).
+Find out more about this engine's features on its [official website](http://hellofangaming.github.io/HelloMarioEngine/), hosted on GitHub!
