@@ -281,17 +281,16 @@ else
 }
 
 //Move more to the left if on a right slope
-if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+3,obj_slope_sr,1,0)
-or collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+3,obj_slope_r,1,0)
+if collision_point(bbox_right,bbox_bottom+1,obj_slopeparent,1,0)
     hspeed -= 0.1
 
 //Move more to the right if on a left slope
-else if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+3,obj_slope_sl,1,0)
-or collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+3,obj_slope_l,1,0)
+if collision_point(bbox_left,bbox_bottom+1,obj_slopeparent,1,0)
     hspeed += 0.1
 
-//Destroy if not sliding fast enough
-else if abs(hspeed) &lt; 0.05
+//Destroy if not sliding fast enough and not on a slope
+if abs(hspeed) &lt; 0.05
+and not collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+3,obj_slopeparent,1,0)
     instance_destroy()
 
 //Prevent Mario from sliding too fast
