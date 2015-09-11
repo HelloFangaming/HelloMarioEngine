@@ -288,11 +288,6 @@ if collision_point(bbox_right,bbox_bottom+1,obj_slopeparent,1,0)
 if collision_point(bbox_left,bbox_bottom+1,obj_slopeparent,1,0)
     hspeed += 0.1
 
-//Destroy if not sliding fast enough and not on a slope
-if abs(hspeed) &lt; 0.05
-and not collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+3,obj_slopeparent,1,0)
-    instance_destroy()
-
 //Prevent Mario from sliding too fast
 if hspeed &gt; 3
     hspeed = 3
@@ -301,7 +296,8 @@ if hspeed &lt; -3
 
 //If Mario is on the ground, and not on a slope
 if obj_mario.state &lt; 2
-and not collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+3,obj_slopeparent,1,0)
+and not collision_point(bbox_right,bbox_bottom+1,obj_slopeparent,1,0)
+and not collision_point(bbox_left,bbox_bottom+1,obj_slopeparent,1,0)
 {
 
     //Set the friction based on the sliding type
@@ -309,6 +305,10 @@ and not collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+3,obj_s
         friction = 0.1
     else
         friction = 0.02
+
+    //Destroy if not sliding fast enough
+    if abs(hspeed) &lt; 0.05
+        instance_destroy()
 
 }
 
