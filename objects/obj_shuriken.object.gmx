@@ -59,15 +59,39 @@ if hspeed &gt; 0
 else
     image_angle += 60
 
-//Destroy when hitting surfaces
+//Destroy when hitting solids
 if place_meeting(x,y,obj_solid)
-or (hspeed &gt; 0 and (place_meeting(x,y,obj_slope_r) or place_meeting(x,y,obj_slope_sr)))
-or (hspeed &lt; 0 and (place_meeting(x,y,obj_slope_l) or place_meeting(x,y,obj_slope_sl)))
     event_user(0)
 
 //Destroy outside view
 if outside_view()
     instance_destroy()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_slopeparent">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Destroy when hitting slopes
+if (hspeed &gt; 0 and not position_meeting(other.bbox_left,other.bbox_top,other))
+or (hspeed &lt; 0 and not position_meeting(other.bbox_right,other.bbox_top,other))
+    event_user(0)
 </string>
           </argument>
         </arguments>

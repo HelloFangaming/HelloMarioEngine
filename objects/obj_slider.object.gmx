@@ -142,8 +142,7 @@ else
             <string>///Create smoke
 
 //Create smoke on the left for left slopes
-if collision_rectangle(x-8,y+32,x+7,y+34,obj_slope_l,1,1)
-or collision_rectangle(x-8,y+32,x+7,y+34,obj_slope_sl,1,1)
+if collision_point(bbox_left-3,bbox_bottom+1,obj_slopeparent,1,0)
 {
     with instance_create(x-8,y+24,obj_smoke)
     {
@@ -153,8 +152,7 @@ or collision_rectangle(x-8,y+32,x+7,y+34,obj_slope_sl,1,1)
 }
 
 //Create smoke on the right for right slopes
-else if collision_rectangle(x-8,y+32,x+7,y+34,obj_slope_r,1,1)
-or collision_rectangle(x-8,y+32,x+7,y+34,obj_slope_sr,1,1)
+if collision_point(bbox_right+3,bbox_bottom+1,obj_slopeparent,1,0)
 {
     with instance_create(x+1,y+24,obj_smoke)
     {
