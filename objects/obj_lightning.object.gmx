@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_physicsparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -27,8 +27,8 @@
             <kind>1</kind>
             <string>///Sumo lightning
 
-//Move down
-vspeed = 4
+//More gravity
+gravity = 0.3
 </string>
           </argument>
         </arguments>
@@ -86,7 +86,7 @@ alarm[1] = 15
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_solidtop">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -103,27 +103,37 @@ alarm[1] = 15
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Land on the ground
+            <string>///Lightning logic
 if visible = 1
 {
 
-    //Become invisible
-    visible = 0
+    //Default event
+    event_inherited()
 
-    //Land
-    y = other.y-16
+    //Create flames when landing on the ground
+    if gravity = 0
+    {
 
-    //Stop moving
-    vspeed = 0
+        //Become invisible
+        visible = 0
 
-    //Play flames sound
-    audio_play_sound(snd_flames,0,0)
+        //Stop moving
+        vspeed = 0
 
-    //Create first flame
-    instance_create(x,y-16,obj_sumoflame)
+        //Play flames sound
+        audio_play_sound(snd_flames,0,0)
 
-    //Make more
-    alarm[0] = 15
+        //Create first flame
+        instance_create(x,y-16,obj_sumoflame)
+
+        //Make more
+        alarm[0] = 15
+
+    }
+
+    //More gravity
+    else
+        gravity = 0.3
 
 }
 </string>
