@@ -185,6 +185,7 @@ if ready = 0
 
     //If Mario bumps from below
     if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_mario,0,0)
+    and obj_mario.state = 2
     {
 
         //This block is hit

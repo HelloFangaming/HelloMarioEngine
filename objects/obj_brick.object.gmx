@@ -112,25 +112,7 @@ instance_destroy()
           <argument>
             <kind>1</kind>
             <string>///Check for Mario bonking his head on this block
-if ready = 0
-and collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_mario,0,0)
-{
-
-    //The block is hit
-    ready = 1
-
-    //Move up
-    vspeed = -2
-
-    //Bump normally if Mario is small
-    if global.powerup = cs_small
-        alarm[2] = 4
-
-    //Otherwise, smash it
-    else
-        alarm[0] = 4
-
-}
+event_inherited()
 
 //Smash the block if Mario spin jumps on it
 if global.powerup != cs_small
@@ -142,6 +124,34 @@ and place_meeting(x,y-obj_mario.vspeed*2.5,obj_mario)
 {
     with obj_mario event_user(1)
     alarm[0] = 1
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Bump normally if Mario is small
+if global.powerup = cs_small
+{
+    alarm[0] = 0
+    alarm[2] = 4
 }
 </string>
           </argument>

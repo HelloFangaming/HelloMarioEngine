@@ -146,6 +146,7 @@ if collision_rectangle(bbox_left,bbox_top-5,bbox_right,bbox_top,obj_mario,0,0)
             <kind>1</kind>
             <string>///If Mario bumps the block when it is rightside up
 if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_mario,0,0)
+and obj_mario.state = 2
 and image_index = 0
 {
 

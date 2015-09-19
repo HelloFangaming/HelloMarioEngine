@@ -174,8 +174,8 @@ or (hspeed &lt; 0 and collision_rectangle(bbox_left+hspeed,bbox_top+1,bbox_left,
           <argument>
             <kind>1</kind>
             <string>///Check for Mario bonking his head on this block
-if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+4,obj_mario,0,0)
-and obj_mario.vspeed &lt; 0
+if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_mario,0,0)
+and obj_mario.state = 2
 {
 
     //Create a new block, give it the same item, and bump it
