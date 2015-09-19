@@ -85,10 +85,6 @@ keyboard_set_map(ord('X'),vk_shift)
 //Make the z key do everything the control key does
 keyboard_set_map(ord('Z'),vk_control)
 
-//Handle gamepad support
-if gamepad_is_connected(0)
-    alarm[6] = 1
-
 //Set the epsilon value for floating point numbers
 math_set_epsilon(0.00001)
 
@@ -220,6 +216,12 @@ event_user(1)
           <argument>
             <kind>1</kind>
             <string>///Go to the title screen
+
+//Handle gamepad support
+if gamepad_is_connected(0)
+    alarm[6] = 1
+
+//Go to the title room
 room_goto(rm_title)
 </string>
           </argument>
