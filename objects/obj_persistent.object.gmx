@@ -95,80 +95,6 @@ application_surface_draw_enable(0)
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="6">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Gamepad support
-
-//Up button
-if gamepad_button_check_pressed(0,gp_padu)
-    keyboard_key_press(vk_up)
-else if gamepad_button_check_released(0,gp_padu)
-    keyboard_key_release(vk_up)
-
-//Down button
-if gamepad_button_check_pressed(0,gp_padd)
-    keyboard_key_press(vk_down)
-else if gamepad_button_check_released(0,gp_padd)
-    keyboard_key_release(vk_down)
-
-//Left button
-if gamepad_button_check_pressed(0,gp_padl)
-    keyboard_key_press(vk_left)
-else if gamepad_button_check_released(0,gp_padl)
-    keyboard_key_release(vk_left)
-
-//Right button
-if gamepad_button_check_pressed(0,gp_padr)
-    keyboard_key_press(vk_right)
-else if gamepad_button_check_released(0,gp_padr)
-    keyboard_key_release(vk_right)
-
-//A button
-if gamepad_button_check_pressed(0,gp_face1)
-    keyboard_key_press(vk_shift)
-else if gamepad_button_check_released(0,gp_face1)
-    keyboard_key_release(vk_shift)
-
-//B button
-if gamepad_button_check_pressed(0,gp_face2)
-    keyboard_key_press(vk_control)
-else if gamepad_button_check_released(0,gp_face2)
-    keyboard_key_release(vk_control)
-
-//Start button
-if gamepad_button_check_pressed(0,gp_start)
-    keyboard_key_press(vk_enter)
-else if gamepad_button_check_released(0,gp_start)
-    keyboard_key_release(vk_enter)
-
-//Select button
-if gamepad_button_check_pressed(0,gp_select)
-    keyboard_key_press(vk_space)
-else if gamepad_button_check_released(0,gp_select)
-    keyboard_key_release(vk_space)
-
-//Continue
-alarm[6] = 1
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="2" enumb="5">
       <action>
         <libid>1</libid>
@@ -343,6 +269,82 @@ if not instance_exists(obj_mariostart)
 //Delete the screenshot
 if background_exists(back)
     background_delete(back)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Gamepad support
+
+if gamepad_is_connected(0)
+{
+//Up button
+if gamepad_button_check_pressed(0,gp_padu)
+    keyboard_key_press(vk_up)
+else if gamepad_button_check_released(0,gp_padu)
+    keyboard_key_release(vk_up)
+
+//Down button
+if gamepad_button_check_pressed(0,gp_padd)
+    keyboard_key_press(vk_down)
+else if gamepad_button_check_released(0,gp_padd)
+    keyboard_key_release(vk_down)
+
+//Left button
+if gamepad_button_check_pressed(0,gp_padl)
+    keyboard_key_press(vk_left)
+else if gamepad_button_check_released(0,gp_padl)
+    keyboard_key_release(vk_left)
+
+//Right button
+if gamepad_button_check_pressed(0,gp_padr)
+    keyboard_key_press(vk_right)
+else if gamepad_button_check_released(0,gp_padr)
+    keyboard_key_release(vk_right)
+
+//A button
+if gamepad_button_check_pressed(0,gp_face1)
+    keyboard_key_press(vk_shift)
+else if gamepad_button_check_released(0,gp_face1)
+    keyboard_key_release(vk_shift)
+
+//B/Y button
+if (gamepad_button_check_pressed(0,gp_face2) and not gamepad_button_check(0,gp_face3))
+or (gamepad_button_check_pressed(0,gp_face3) and not gamepad_button_check(0,gp_face2))
+    keyboard_key_press(vk_control)
+else if (gamepad_button_check_released(0,gp_face2) and not gamepad_button_check(0,gp_face3))
+     or (gamepad_button_check_released(0,gp_face3) and not gamepad_button_check(0,gp_face2))
+    keyboard_key_release(vk_control)
+
+//Start button
+if gamepad_button_check_pressed(0,gp_start)
+    keyboard_key_press(vk_enter)
+else if gamepad_button_check_released(0,gp_start)
+    keyboard_key_release(vk_enter)
+
+//Select button
+if gamepad_button_check_pressed(0,gp_select)
+    keyboard_key_press(vk_space)
+else if gamepad_button_check_released(0,gp_select)
+    keyboard_key_release(vk_space)
+}
 </string>
           </argument>
         </arguments>
