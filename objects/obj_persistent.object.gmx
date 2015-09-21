@@ -85,85 +85,14 @@ keyboard_set_map(ord('X'),vk_shift)
 //Make the z key do everything the control key does
 keyboard_set_map(ord('Z'),vk_control)
 
+//Handle gamepad support
+gamepad = gamepad_is_connected(0)
+
 //Set the epsilon value for floating point numbers
 math_set_epsilon(0.00001)
 
 //Disable application surface automatic drawing
 application_surface_draw_enable(0)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="6">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Gamepad support
-
-//Up button
-if gamepad_button_check_pressed(0,gp_padu)
-    keyboard_key_press(vk_up)
-else if gamepad_button_check_released(0,gp_padu)
-    keyboard_key_release(vk_up)
-
-//Down button
-if gamepad_button_check_pressed(0,gp_padd)
-    keyboard_key_press(vk_down)
-else if gamepad_button_check_released(0,gp_padd)
-    keyboard_key_release(vk_down)
-
-//Left button
-if gamepad_button_check_pressed(0,gp_padl)
-    keyboard_key_press(vk_left)
-else if gamepad_button_check_released(0,gp_padl)
-    keyboard_key_release(vk_left)
-
-//Right button
-if gamepad_button_check_pressed(0,gp_padr)
-    keyboard_key_press(vk_right)
-else if gamepad_button_check_released(0,gp_padr)
-    keyboard_key_release(vk_right)
-
-//A button
-if gamepad_button_check_pressed(0,gp_face1)
-    keyboard_key_press(vk_shift)
-else if gamepad_button_check_released(0,gp_face1)
-    keyboard_key_release(vk_shift)
-
-//B button
-if gamepad_button_check_pressed(0,gp_face2)
-    keyboard_key_press(vk_control)
-else if gamepad_button_check_released(0,gp_face2)
-    keyboard_key_release(vk_control)
-
-//Start button
-if gamepad_button_check_pressed(0,gp_start)
-    keyboard_key_press(vk_enter)
-else if gamepad_button_check_released(0,gp_start)
-    keyboard_key_release(vk_enter)
-
-//Select button
-if gamepad_button_check_pressed(0,gp_select)
-    keyboard_key_press(vk_space)
-else if gamepad_button_check_released(0,gp_select)
-    keyboard_key_release(vk_space)
-
-//Continue
-alarm[6] = 1
 </string>
           </argument>
         </arguments>
@@ -216,12 +145,6 @@ event_user(1)
           <argument>
             <kind>1</kind>
             <string>///Go to the title screen
-
-//Handle gamepad support
-if gamepad_is_connected(0)
-    alarm[6] = 1
-
-//Go to the title room
 room_goto(rm_title)
 </string>
           </argument>
@@ -348,6 +271,87 @@ if background_exists(back)
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Gamepad support
+if gamepad
+{
+
+    //Up button
+    if gamepad_button_check_pressed(0,gp_padu)
+        keyboard_key_press(vk_up)
+    else if gamepad_button_check_released(0,gp_padu)
+        keyboard_key_release(vk_up)
+
+    //Down button
+    if gamepad_button_check_pressed(0,gp_padd)
+        keyboard_key_press(vk_down)
+    else if gamepad_button_check_released(0,gp_padd)
+        keyboard_key_release(vk_down)
+
+    //Left button
+    if gamepad_button_check_pressed(0,gp_padl)
+        keyboard_key_press(vk_left)
+    else if gamepad_button_check_released(0,gp_padl)
+        keyboard_key_release(vk_left)
+
+    //Right button
+    if gamepad_button_check_pressed(0,gp_padr)
+        keyboard_key_press(vk_right)
+    else if gamepad_button_check_released(0,gp_padr)
+        keyboard_key_release(vk_right)
+
+    //A button
+    if gamepad_button_check_pressed(0,gp_face1)
+        keyboard_key_press(vk_shift)
+    else if gamepad_button_check_released(0,gp_face1)
+        keyboard_key_release(vk_shift)
+
+    //B button
+    if gamepad_button_check_pressed(0,gp_face2)
+        keyboard_key_press(vk_control)
+    else if gamepad_button_check_released(0,gp_face2)
+        keyboard_key_release(vk_control)
+
+    //X button
+    if gamepad_button_check_pressed(0,gp_face3)
+        keyboard_key_press(ord('Z'))
+    else if gamepad_button_check_released(0,gp_face3)
+        keyboard_key_release(ord('Z'))
+
+    //Start button
+    if gamepad_button_check_pressed(0,gp_start)
+        keyboard_key_press(vk_enter)
+    else if gamepad_button_check_released(0,gp_start)
+        keyboard_key_release(vk_enter)
+
+    //Select button
+    if gamepad_button_check_pressed(0,gp_select)
+        keyboard_key_press(vk_space)
+    else if gamepad_button_check_released(0,gp_select)
+        keyboard_key_release(vk_space)
+
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="5" enumb="18">
       <action>
         <libid>1</libid>
@@ -383,7 +387,7 @@ else if keyboard_check_pressed(ord('R'))
 else if keyboard_check_pressed(vk_enter)
 {
     fullscreen = !fullscreen
-    if fullscreen = 1
+    if fullscreen
         message = "FULLSCREEN ON"
     else
         message = "FULLSCREEN OFF"
@@ -393,16 +397,22 @@ else if keyboard_check_pressed(vk_enter)
 //Toggles VSync
 else if keyboard_check_pressed(ord('V'))
 {
-    if vsync = 0
-    {
-        vsync = 1
+    vsync = !vsync
+    if vsync
         message = "VSYNC ON"
-    }
     else
-    {
-        vsync = 0
         message = "VSYNC OFF"
-    }
+    event_user(1)
+}
+
+//Toggles Gamepad
+else if keyboard_check_pressed(ord('G'))
+{
+    gamepad = !gamepad
+    if gamepad
+        message = "GAMEPAD ON"
+    else
+        message = "GAMEPAD OFF"
     event_user(1)
 }
 
