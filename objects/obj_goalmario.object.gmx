@@ -5,8 +5,8 @@
   <visible>-1</visible>
   <depth>-5</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
-  <maskName>&lt;undefined&gt;</maskName>
+  <parentName>obj_physicsparent</parentName>
+  <maskName>spr_bigmask</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -51,6 +51,10 @@ image_speed = 0
 
 //Use the goal sprite
 sprite_index = scr_mariogoal()
+
+//Use small mask for small Mario
+if global.powerup = cs_small
+    mask_index = spr_smallmask
 
 //Move down
 vspeed = 1.5
@@ -210,7 +214,7 @@ if image_alpha &gt; 0
             <kind>1</kind>
             <string>///Start walking to the goal castle
 
-//Set state
+//Physics state
 ready = 2
 
 //Play the flagpole music
@@ -222,15 +226,12 @@ audio_play_sound(snd_yahoo,0,0)
 //Face right
 image_xscale = 1
 
-//Use the jump sprite
-sprite_index = scr_mariojump()
-
 //Jump rightwards
 hspeed = 1
 vspeed = -3
 
-//Enable gravity
-gravity = 0.225
+//Animate
+image_speed = 0.15
 </string>
           </argument>
         </arguments>
@@ -253,72 +254,63 @@ gravity = 0.225
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Destroy all enemies
+            <string>///Goal Mario logic
+
+//Destroy all enemies
 with obj_enemyparent
 {
     instance_create(x,y,obj_smoke)
     instance_destroy()
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_solidtop">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Land on the ground
 
-//Disable gravity
-gravity = 0
-
-//Stop moving down
-vspeed = 0
-
-//Snap to the collision object
-y = other.y-32
-
-//If Mario finished sliding down the flagpole
-if ready = 0
+//When in the physics or countdown state
+if ready = 2
+or ready = 3
 {
 
-    //Increment state
-    ready++
+    //Prevent physics parent from destroying (Hack)
+    if bbox_top &gt; room_height
+    {
+        if ready = 2
+            hspeed = -1
+        y = room_height-32
+        visible = 0
+    }
 
-    //Move left 3 pixels
-    x -= 3
+    //Default event
+    event_inherited()
 
-    //Face left
-    image_xscale = -1
+    //If Mario reached a wall or fell out of the room when in the physics state
+    if ready = 2
+    and hspeed &lt; 0
+    {
 
-}
+        //Countdown state
+        ready = 3
 
-//If Mario landed on the ground after jumping off the flagpole
-else if ready = 2
-{
+        //Begin countdown state
+        event_user(15)
 
-    //Increment state
-    ready++
+        //Stop walking
+        hspeed = 0
 
-    //Use walking sprite
-    sprite_index = scr_mariowalk()
+    }
 
-    //Animate
-    image_speed = 0.15
+    //When on the ground, use walking sprite
+    if gravity = 0
+        sprite_index = scr_mariowalk()
+
+    //Otherwise
+    else
+    {
+
+        //Use the jump sprite
+        sprite_index = scr_mariojump()
+
+        //Use the correct image index
+        image_index = 0
+
+    }
 
 }
 </string>
@@ -347,14 +339,18 @@ else if ready = 2
 
 //If goal Mario walked far enough
 if x &gt; other.x
-and ready = 3
+and ready = 2
+and gravity = 0
 {
 
     //Snap to the castle's door
     x = other.x
 
-    //Increment the state variable
-    ready++
+    //In castle state
+    ready = 4
+
+    //Begin countdown state
+    event_user(15)
 
     //Stop moving
     hspeed = 0
@@ -362,22 +358,88 @@ and ready = 3
     //Fade into the castle
     alarm[1] = 10
 
-    //Start the countdown if there is a time limit
-    if global.timer &gt; 0
-        alarm[2] = 1
-    else
-        alarm[3] = 1
-
-    //Do not animate
-    image_speed = 0
-
-    //Use the correct image index
-    image_index = 0
-
     //Use the warp sprite
     sprite_index = scr_mariowarp()
 
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_flagpole">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///When Mario reaches the bottom of the flagpole
+if ready = 0
+and y &gt; other.y+128
+{
+
+    //Stop moving
+    vspeed = 0
+
+    //Snap to bottom of the flagpole
+    y = other.y+128
+
+    //Ready to jump state
+    ready = 1
+
+    //Move left 3 pixels
+    x -= 3
+
+    //Face left
+    image_xscale = -1
+
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="25">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Begin countdown state
+
+//Start the countdown if there is a time limit
+if global.timer &gt; 0
+    alarm[2] = 1
+else
+    alarm[3] = 1
+
+//Do not animate
+image_speed = 0
+
+//Use the correct image index
+image_index = 0
 </string>
           </argument>
         </arguments>
