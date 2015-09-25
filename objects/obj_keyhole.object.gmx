@@ -157,7 +157,7 @@ and instance_exists(obj_mario)
     //Save the state of the key
     kx = round(other.x)
     ky = round(other.y)
-    ki = other.image_index
+    kd = other.direct
 
     //Delete the key
     with other instance_destroy()
@@ -216,7 +216,7 @@ if ready != 0
     if ready = 1
     or ready = 2
     {
-        draw_sprite_ext(spr_key,ki,kx,ky,1,1,0,c_white,fade)
+        draw_sprite_ext(spr_key,0,kx+8-8*kd,ky,kd,1,0,c_white,fade)
         draw_sprite_ext(ms,mi,mx,my,md,1,0,c_white,fade)
     }
 

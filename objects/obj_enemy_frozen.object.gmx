@@ -39,9 +39,6 @@ isheavy = 0
 //A collision object for Mario to ride
 mytop = instance_create(x,y,obj_slippery)
 
-//Solid object
-mysolid = instance_create(x,y,obj_solid)
-
 //Alpha blink before shattering
 alarm[0] = 400
 
@@ -223,6 +220,23 @@ or sprite_index = spr_frozenenemy_big
 //Make big ice heavy
 if sprite_index = spr_frozenenemy_big
     isheavy = 1
+
+//Prevent frozen enemies from spawning inside solids
+if not collision_rectangle(bbox_right,bbox_top,bbox_right,bbox_bottom,obj_solid,1,0)
+    while collision_rectangle(bbox_left,bbox_top,bbox_left,bbox_bottom,obj_solid,1,0)
+        x++
+else if not collision_rectangle(bbox_left,bbox_top,bbox_left,bbox_bottom,obj_solid,1,0)
+    while collision_rectangle(bbox_right,bbox_top,bbox_right,bbox_bottom,obj_solid,1,0)
+        x--
+else if not collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom,obj_solid,1,0)
+    while collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,0)
+        y++
+else if not collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,0)
+    while collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom,obj_solid,1,0)
+        y--
+
+//Solid object
+mysolid = instance_create(x,y,obj_solid)
 
 //Make solid the same size as the ice
 mysolid.mask_index = sprite_index
