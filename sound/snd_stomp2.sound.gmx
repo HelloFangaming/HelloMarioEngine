@@ -25,4 +25,5 @@
   <compressed>1</compressed>
   <streamed>0</streamed>
   <uncompressOnLoad>1</uncompressOnLoad>
+  <audioGroup>0</audioGroup>
 </sound>
