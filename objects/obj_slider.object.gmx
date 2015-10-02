@@ -142,7 +142,7 @@ else
             <string>///Create smoke
 
 //Create smoke on the left for left slopes
-if collision_point(bbox_left-3,bbox_bottom+1,obj_slopeparent,1,0)
+if collision_rectangle(bbox_left-3,bbox_bottom,bbox_left,bbox_bottom+2,obj_slopeparent,1,0)
 {
     with instance_create(x-8,y+24,obj_smoke)
     {
@@ -152,7 +152,7 @@ if collision_point(bbox_left-3,bbox_bottom+1,obj_slopeparent,1,0)
 }
 
 //Create smoke on the right for right slopes
-if collision_point(bbox_right+3,bbox_bottom+1,obj_slopeparent,1,0)
+if collision_rectangle(bbox_right,bbox_bottom,bbox_right+3,bbox_bottom+2,obj_slopeparent,1,0)
 {
     with instance_create(x+1,y+24,obj_smoke)
     {
@@ -279,11 +279,11 @@ else
 }
 
 //Move more to the left if on a right slope
-if collision_point(bbox_right,bbox_bottom+1,obj_slopeparent,1,0)
+if collision_rectangle(bbox_right,bbox_bottom,bbox_right,bbox_bottom+2,obj_slopeparent,1,0)
     hspeed -= 0.1
 
 //Move more to the right if on a left slope
-if collision_point(bbox_left,bbox_bottom+1,obj_slopeparent,1,0)
+if collision_rectangle(bbox_left,bbox_bottom,bbox_left,bbox_bottom+2,obj_slopeparent,1,0)
     hspeed += 0.1
 
 //Prevent Mario from sliding too fast
@@ -294,8 +294,8 @@ if hspeed &lt; -3
 
 //If Mario is on the ground, and not on a slope
 if obj_mario.state &lt; 2
-and not collision_point(bbox_right,bbox_bottom+1,obj_slopeparent,1,0)
-and not collision_point(bbox_left,bbox_bottom+1,obj_slopeparent,1,0)
+and not collision_rectangle(bbox_right,bbox_bottom,bbox_right,bbox_bottom+2,obj_slopeparent,1,0)
+and not collision_rectangle(bbox_left,bbox_bottom,bbox_left,bbox_bottom+2,obj_slopeparent,1,0)
 {
 
     //Set the friction based on the sliding type
