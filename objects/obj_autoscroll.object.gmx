@@ -80,7 +80,7 @@ if instance_exists(obj_mario)
 
         //If Mario gets squished on the left side of the screen, kill him
         if obj_mario.x &lt; view_xview[0]+6
-        and collision_line(obj_mario.x+5,obj_mario.bbox_top+2,obj_mario.x+5,obj_mario.y+30,obj_solid,1,0)
+        and collision_rectangle(obj_mario.x+5,obj_mario.bbox_top+2,obj_mario.x+5,obj_mario.y+30,obj_solid,1,0)
         {
             instance_create(view_xview[0]+8,obj_mario.y,obj_deadmario)
             with obj_mario instance_destroy()
@@ -88,7 +88,7 @@ if instance_exists(obj_mario)
 
         //If Mario gets squished on the right side of the screen, kill him
         else if obj_mario.x &gt; view_xview[0]+view_wview[0]-6
-        and collision_line(obj_mario.x-5,obj_mario.bbox_top+2,obj_mario.x-5,obj_mario.y+30,obj_solid,1,0)
+        and collision_rectangle(obj_mario.x-5,obj_mario.bbox_top+2,obj_mario.x-5,obj_mario.y+30,obj_solid,1,0)
         {
             instance_create(view_xview[0]+view_wview[0]-8,obj_mario.y,obj_deadmario)
             with obj_mario instance_destroy()

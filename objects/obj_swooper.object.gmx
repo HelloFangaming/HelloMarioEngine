@@ -94,15 +94,14 @@ hspeed = direct
 if instance_exists(obj_mario)
 and obj_mario.y &gt; y
 {
-    vspeed = 7
+    vspeed = 4
     y++
     sprite_index = spr_swooper_fly
     audio_play_sound(snd_swooper,0,0)
     alarm[1] = 2
 }
-
-//Swoop down again
-alarm[0] = 200
+else
+    alarm[0] = 60
 </string>
           </argument>
         </arguments>
@@ -143,11 +142,15 @@ if vspeed &lt; 0
         vspeed = 0
         gravity = 0
         sprite_index = spr_swooper
+
+        //Swoop down again
+        alarm[0] = 120
+
     }
 
     //Cap fall speed
-    if vspeed &lt; -4
-        vspeed = -4
+    if vspeed &lt; -2
+        vspeed = -2
 
 }
 
@@ -164,12 +167,12 @@ and collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_solid,0,0)
     }
 }
 else
-    gravity = 0.25
+    gravity = 0.1
 
 //Bounce off floors
 if collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+vspeed,obj_solidtop,0,0)
 or collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+vspeed,obj_slopeparent,1,0)
-    vspeed = -1
+    vspeed = -0.5
 </string>
           </argument>
         </arguments>

@@ -69,8 +69,8 @@ image_speed = 0.15
 event_inherited()
 
 //Custom turn at ledges script
-if (hspeed &gt; 0 and not collision_line(bbox_right+6,bbox_bottom-1,bbox_right+6,bbox_bottom+15,obj_solidtop,0,0))
-or (hspeed &lt; 0 and not collision_line(bbox_left-6,bbox_bottom-1,bbox_left-6,bbox_bottom+15,obj_solidtop,0,0))
+if (hspeed &gt; 0 and not collision_rectangle(bbox_right+6,bbox_bottom-1,bbox_right+6,bbox_bottom+15,obj_solidtop,0,0))
+or (hspeed &lt; 0 and not collision_rectangle(bbox_left-6,bbox_bottom-1,bbox_left-6,bbox_bottom+15,obj_solidtop,0,0))
     hspeed = -hspeed
 </string>
           </argument>

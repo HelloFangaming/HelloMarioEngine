@@ -74,7 +74,7 @@ vspeed = -0.75
 
 //Climb down if there is no climbable surface above
 if vspeed &lt; 0
-and not collision_line(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_climb,0,0)
+and not collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_climb,0,0)
 {
     vspeed = 1.5
     direct = -1
@@ -82,7 +82,7 @@ and not collision_line(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_climb,0,0)
 
 //Climb up if there is no climbable surface below
 else if vspeed &gt; 0
-and not collision_line(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_climb,0,0)
+and not collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_climb,0,0)
 {
     vspeed = -0.75
     direct = 1
