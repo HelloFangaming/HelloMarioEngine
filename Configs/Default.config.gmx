@@ -555,7 +555,7 @@
     <option_windows_runner_finished>Configs\Default\windows\Runner_finish.bmp</option_windows_runner_finished>
     <option_windows_runner_header>Configs\Default\windows\Runner_header.bmp</option_windows_runner_header>
     <option_windows_save_location>0</option_windows_save_location>
-    <option_windows_sleep_margin>1</option_windows_sleep_margin>
+    <option_windows_sleep_margin>0</option_windows_sleep_margin>
     <option_windows_splash_background_colour>#000000</option_windows_splash_background_colour>
     <option_windows_splash_screen>Configs\Default\windows\splash.png</option_windows_splash_screen>
     <option_windows_steam_app_id>0</option_windows_steam_app_id>
