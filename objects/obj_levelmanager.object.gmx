@@ -156,8 +156,8 @@ if switchon = 1
     with obj_pplatform event_user(1)
 
     //Turn on conveyor belts
-    with obj_conveyor_left image_speed = 0.75
-    with obj_conveyor_right image_speed = 0.75
+    with obj_conveyor_left image_speed = 0.5
+    with obj_conveyor_right image_speed = 0.5
 
     //Stop the switch song
     audio_stop_sound(snd_switchsong)
