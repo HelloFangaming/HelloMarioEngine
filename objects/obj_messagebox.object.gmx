@@ -156,32 +156,24 @@ showing = 1
             <kind>1</kind>
             <string>///Split up the message if it is too long
 
-//The number of newlines in the message
-var newlines = 0
+//Make sure that the font is correct before formatting
+draw_set_font(global.messagefont)
 
 //Iterate over all the characters in the message
 for(var i = 1; i &lt;= string_length(text); i++)
 {
 
-    //If the current character is a newline
-    if string_char_at(text,i) = "#"
+    //If the text is too tall
+    if string_height(string_copy(text,1,min(i+1,string_length(text)))) &gt; 70
     {
 
-        //Increment the number of newlines
-        newlines++
+        //Split off the lines after the new line to be displayed later
+        new_text = string_copy(text,i+1,string_length(text)-i)
+        text = string_copy(text,1,i)
 
-        //At the fourth newline
-        if newlines = 4
-        {
+        //Break out of the loop
+        break
 
-            //Split off the lines after the fourth line to be displayed later
-            new_text = string_copy(text,i+1,string_length(text)-i)
-            text = string_copy(text,1,i)
-
-            //Break out of the loop
-            break
-
-        }
     }
 
 }
