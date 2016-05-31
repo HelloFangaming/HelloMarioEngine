@@ -31,10 +31,34 @@
 **  This item uses creation code!
 **
 **  item = Pick from below:
+**      cs_big
+**      cs_fire
+**      cs_hammer
+**      cs_tanooki
+**      cs_frog
+**      cs_bomb
+**      cs_ice
+**      cs_super
+**      cs_carrot
+**      cs_ninja
+**      cs_bee
+**      cs_shell
+**      cs_penguin
+**      cs_propeller
+**      cs_boomerang
+**      cs_walljump
+**      cs_greenyoshi
+**      cs_redyoshi
+**      cs_yellowyoshi
+**      cs_blueyoshi
 **      cs_kuriboshoe
 **      cs_baburushoe
 **      cs_dossunshoe
 **      cs_jugemushoe
+**      cs_1up
+**      cs_3up
+**      cs_poison
+**      cs_star
 **      cs_key
 **      cs_spring
 **      cs_superspring
@@ -80,7 +104,8 @@ alarm[10] = 2
 audio_play_sound(snd_pop,0,0)
 
 //Make the correct item
-scr_sprite_make_object(x+8,y+8,sprite)
+if item != -1
+    scr_sprite_make_object(x+8,y+8,sprite)
 
 //Destroy
 instance_destroy()
@@ -107,7 +132,8 @@ instance_destroy()
           <argument>
             <kind>1</kind>
             <string>///Set the sprite to the creation code item
-sprite = scr_constant_get_sprite(item)
+if item != -1
+    sprite = scr_constant_get_sprite(item)
 </string>
           </argument>
         </arguments>
@@ -131,17 +157,25 @@ sprite = scr_constant_get_sprite(item)
           <argument>
             <kind>1</kind>
             <string>///Draw the bubble
+if item != -1
+{
 
-//Do not draw these items animated
-if sprite = spr_key
-or sprite = spr_spring
-or sprite = spr_spring_super
-or sprite = spr_eswitch
-    draw_sprite(sprite,0,x+8,y+8)
+    //Do not draw these items animated
+    if sprite = spr_key
+    or sprite = spr_spring
+    or sprite = spr_spring_super
+    or sprite = spr_eswitch
+    or sprite = spr_hatch
+    or sprite = spr_hatch_r
+    or sprite = spr_hatch_y
+    or sprite = spr_hatch_b
+        draw_sprite(sprite,0,x+8,y+8)
 
-//Otherwise, draw the item animated
-else
-    draw_sprite(sprite,image_index,x+8,y+8)
+    //Otherwise, draw the item animated
+    else
+        draw_sprite(sprite,image_index,x+8,y+8)
+
+}
 
 //Draw the bubble
 draw_sprite(sprite_index,image_index,x,y)
