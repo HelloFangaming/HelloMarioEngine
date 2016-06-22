@@ -22,7 +22,7 @@
     <option_android_arch_mipsr2sf>false</option_android_arch_mipsr2sf>
     <option_android_arch_x86>True</option_android_arch_x86>
     <option_android_build_tools_version>23.0.1</option_android_build_tools_version>
-    <option_android_build_version>3</option_android_build_version>
+    <option_android_build_version>4</option_android_build_version>
     <option_android_color_depth>0</option_android_color_depth>
     <option_android_compile_sdk_version>23</option_android_compile_sdk_version>
     <option_android_display_name>Hello Mario Engine</option_android_display_name>
@@ -101,7 +101,7 @@
     <option_androidfire_background_png>Configs\Default\amazonfire\icons\background.png</option_androidfire_background_png>
     <option_androidfire_banner_png>Configs\Default\amazonfire\icons\banner.png</option_androidfire_banner_png>
     <option_androidfire_build_tools_version>23.0.1</option_androidfire_build_tools_version>
-    <option_androidfire_build_version>0</option_androidfire_build_version>
+    <option_androidfire_build_version>4</option_androidfire_build_version>
     <option_androidfire_color_depth>0</option_androidfire_color_depth>
     <option_androidfire_compile_sdk_version>23</option_androidfire_compile_sdk_version>
     <option_androidfire_display_name>HME</option_androidfire_display_name>
@@ -125,9 +125,9 @@
     <option_androidfire_large_icon_png>Configs\Default\amazonfire\icons\large_icon.png</option_androidfire_large_icon_png>
     <option_androidfire_licensing_enable>false</option_androidfire_licensing_enable>
     <option_androidfire_licensing_key></option_androidfire_licensing_key>
-    <option_androidfire_major_version>1</option_androidfire_major_version>
+    <option_androidfire_major_version>6</option_androidfire_major_version>
     <option_androidfire_min_sdk_version>9</option_androidfire_min_sdk_version>
-    <option_androidfire_minor_version>0</option_androidfire_minor_version>
+    <option_androidfire_minor_version>1</option_androidfire_minor_version>
     <option_androidfire_moga>0</option_androidfire_moga>
     <option_androidfire_orient_landscape>True</option_androidfire_orient_landscape>
     <option_androidfire_orient_landscape_flipped>True</option_androidfire_orient_landscape_flipped>
@@ -169,7 +169,7 @@
     <option_androidtv_background_png>Configs\Default\androidtv\icons\background.png</option_androidtv_background_png>
     <option_androidtv_banner_png>Configs\Default\androidtv\icons\banner.png</option_androidtv_banner_png>
     <option_androidtv_build_tools_version>23.0.1</option_androidtv_build_tools_version>
-    <option_androidtv_build_version>0</option_androidtv_build_version>
+    <option_androidtv_build_version>4</option_androidtv_build_version>
     <option_androidtv_color_depth>0</option_androidtv_color_depth>
     <option_androidtv_compile_sdk_version>23</option_androidtv_compile_sdk_version>
     <option_androidtv_display_name>HME</option_androidtv_display_name>
@@ -193,8 +193,8 @@
     <option_androidtv_large_icon_png>Configs\Default\androidtv\icons\large_icon.png</option_androidtv_large_icon_png>
     <option_androidtv_licensing_enable>0</option_androidtv_licensing_enable>
     <option_androidtv_licensing_key></option_androidtv_licensing_key>
-    <option_androidtv_major_version>1</option_androidtv_major_version>
-    <option_androidtv_minor_version>0</option_androidtv_minor_version>
+    <option_androidtv_major_version>6</option_androidtv_major_version>
+    <option_androidtv_minor_version>1</option_androidtv_minor_version>
     <option_androidtv_moga>0</option_androidtv_moga>
     <option_androidtv_package_company>companyname</option_androidtv_package_company>
     <option_androidtv_package_domain>com</option_androidtv_package_domain>
@@ -277,7 +277,7 @@
     <option_ios_advertising_key></option_ios_advertising_key>
     <option_ios_advertising_type>iAds</option_ios_advertising_type>
     <option_ios_app_id></option_ios_app_id>
-    <option_ios_build_version>3</option_ios_build_version>
+    <option_ios_build_version>4</option_ios_build_version>
     <option_ios_certificate>&lt; Press refresh to fetch certificate list from Mac&gt;</option_ios_certificate>
     <option_ios_device_type>3</option_ios_device_type>
     <option_ios_display_name>Hello Mario Engine</option_ios_display_name>
@@ -344,7 +344,7 @@
     <option_linux_steam_app_id>0</option_linux_steam_app_id>
     <option_linux_sync>0</option_linux_sync>
     <option_linux_texture_page>2048</option_linux_texture_page>
-    <option_linux_version_build>3</option_linux_version_build>
+    <option_linux_version_build>4</option_linux_version_build>
     <option_linux_version_major>6</option_linux_version_major>
     <option_linux_version_minor>1</option_linux_version_minor>
     <option_loadalpha>255</option_loadalpha>
@@ -354,7 +354,7 @@
     <option_mac_app_id></option_mac_app_id>
     <option_mac_appstore_incoming_allow>0</option_mac_appstore_incoming_allow>
     <option_mac_appstore_outgoing_allow>0</option_mac_appstore_outgoing_allow>
-    <option_mac_build_version>3</option_mac_build_version>
+    <option_mac_build_version>4</option_mac_build_version>
     <option_mac_copyright_info>Hello Fangaming</option_mac_copyright_info>
     <option_mac_create_app_store>-1</option_mac_create_app_store>
     <option_mac_display_name>Hello Mario Engine</option_mac_display_name>
@@ -442,7 +442,7 @@
     <option_textureGroup_count>1</option_textureGroup_count>
     <option_textureGroups0>Default</option_textureGroups0>
     <option_tizen_app_id>http://yourdomain/HelloMarioEngine</option_tizen_app_id>
-    <option_tizen_build_version>3</option_tizen_build_version>
+    <option_tizen_build_version>4</option_tizen_build_version>
     <option_tizen_display_name>Hello Mario Engine</option_tizen_display_name>
     <option_tizen_flurry_enable>0</option_tizen_flurry_enable>
     <option_tizen_flurry_id></option_tizen_flurry_id>
@@ -462,7 +462,7 @@
     <option_tizen_usesplash>False</option_tizen_usesplash>
     <option_use_new_audio>True</option_use_new_audio>
     <option_variableerrors>False</option_variableerrors>
-    <option_version>6.1.3.0</option_version>
+    <option_version>6.1.4.0</option_version>
     <option_version_build>0</option_version_build>
     <option_version_company>Hello Fangaming</option_version_company>
     <option_version_copyright></option_version_copyright>
@@ -470,7 +470,7 @@
     <option_version_major>6</option_version_major>
     <option_version_minor>1</option_version_minor>
     <option_version_product>Hello Mario Engine</option_version_product>
-    <option_version_release>3</option_version_release>
+    <option_version_release>4</option_version_release>
     <option_win8_advertising_appid></option_win8_advertising_appid>
     <option_win8_advertising_enable>0</option_win8_advertising_enable>
     <option_win8_advertising_key></option_win8_advertising_key>
@@ -478,7 +478,7 @@
     <option_win8_advertising_type></option_win8_advertising_type>
     <option_win8_analytics_enable>0</option_win8_analytics_enable>
     <option_win8_analytics_id></option_win8_analytics_id>
-    <option_win8_build_version>3</option_win8_build_version>
+    <option_win8_build_version>4</option_win8_build_version>
     <option_win8_certificate_location>Windows8_TemporaryKey.pfx</option_win8_certificate_location>
     <option_win8_display_name>Hello Mario Engine</option_win8_display_name>
     <option_win8_internet_capable>0</option_win8_internet_capable>
@@ -507,7 +507,7 @@
     <option_win8_store_logo>Configs\Default\Windows8\logos\logo50.png</option_win8_store_logo>
     <option_win8_texture_page>1024</option_win8_texture_page>
     <option_win8_wide_logo>Configs\Default\Windows8\logos\logo310.png</option_win8_wide_logo>
-    <option_winUAP_build_version>0</option_winUAP_build_version>
+    <option_winUAP_build_version>4</option_winUAP_build_version>
     <option_winUAP_certificate_location>WinUWPRunner_TemporaryKey.pfx</option_winUAP_certificate_location>
     <option_winUAP_display_name>HME</option_winUAP_display_name>
     <option_winUAP_internet_capable>0</option_winUAP_internet_capable>
@@ -518,9 +518,9 @@
     <option_winUAP_logo>Configs\Default\WindowsUAP\logos\Logo.scale-100.png</option_winUAP_logo>
     <option_winUAP_logo_background_colour>#000000</option_winUAP_logo_background_colour>
     <option_winUAP_logo_foreground_text>light</option_winUAP_logo_foreground_text>
-    <option_winUAP_major_version>1</option_winUAP_major_version>
+    <option_winUAP_major_version>6</option_winUAP_major_version>
     <option_winUAP_microphone_capable>0</option_winUAP_microphone_capable>
-    <option_winUAP_minor_version>0</option_winUAP_minor_version>
+    <option_winUAP_minor_version>1</option_winUAP_minor_version>
     <option_winUAP_native_cpu>x86</option_winUAP_native_cpu>
     <option_winUAP_package_display_name>YourPackageDisplayName</option_winUAP_package_display_name>
     <option_winUAP_package_name>YourPackageName</option_winUAP_package_name>
@@ -551,7 +551,7 @@
     <option_windows_major_version>6</option_windows_major_version>
     <option_windows_nsis_file>Configs\Default\windows\RunnerInstaller.nsi</option_windows_nsis_file>
     <option_windows_product_info>Hello Mario Engine</option_windows_product_info>
-    <option_windows_release_version>3</option_windows_release_version>
+    <option_windows_release_version>4</option_windows_release_version>
     <option_windows_runner_finished>Configs\Default\windows\Runner_finish.bmp</option_windows_runner_finished>
     <option_windows_runner_header>Configs\Default\windows\Runner_header.bmp</option_windows_runner_header>
     <option_windows_save_location>0</option_windows_save_location>
@@ -571,7 +571,7 @@
     <option_winphone_advertising_testing_enable>0</option_winphone_advertising_testing_enable>
     <option_winphone_advertising_type></option_winphone_advertising_type>
     <option_winphone_author>Hello Fangaming</option_winphone_author>
-    <option_winphone_build_version>3</option_winphone_build_version>
+    <option_winphone_build_version>4</option_winphone_build_version>
     <option_winphone_cycle_small_image>Configs\Default\WinPhone\CycleSmall.png</option_winphone_cycle_small_image>
     <option_winphone_cycle_wide_image_1>Configs\Default\WinPhone\CycleWide1.png</option_winphone_cycle_wide_image_1>
     <option_winphone_cycle_wide_image_2>Configs\Default\WinPhone\CycleWide2.png</option_winphone_cycle_wide_image_2>
