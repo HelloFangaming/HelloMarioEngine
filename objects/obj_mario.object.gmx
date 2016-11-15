@@ -969,6 +969,7 @@ if vspeed &gt; 0
     //If Mario is above a solidtop
     if solidtop
     and bbox_bottom &lt; solidtop.yprevious+5
+    and not collision_rectangle(bbox_left,bbox_top+4,bbox_right,solidtop.y-1,obj_solid,1,0)
     {
 
         //Snap to position
@@ -1030,7 +1031,7 @@ and not collision_rectangle(bbox_left,bbox_bottom-8,bbox_right,bbox_bottom-8,obj
     }
 
     //Prevent Mario from getting embed inside a slope
-    if vspeed &gt; -0.8
+    if vspeed &gt; -0.85
         while collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom,obj_slopeparent,1,0)
             y--
 

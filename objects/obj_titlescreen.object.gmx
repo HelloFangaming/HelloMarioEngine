@@ -137,13 +137,14 @@ if fade != 0
     draw_set_alpha(fade)
 
     /*
-    **  Powered by Hello Mario Engine text:
+    **  Powered by Hello Mario Engine text
     **
-    **  You are allowed to remove this as long as you
-    **  give credit for use of the "Hello Mario Engine"
-    **  somewhere else. Thank you.
+    **  This engine's license requires attribution!
+    **  If you remove this line, give credit for
+    **  use of the "Hello Mario Engine" somewhere
+    **  else. Thank you. -Hello Fangaming
     */
-    draw_text(2,2,"POWERED BY HELLO MARIO ENGINE V6.1.4")
+    draw_text(2,2,"POWERED BY HELLO MARIO ENGINE V6.1.5")
 
 }
 
