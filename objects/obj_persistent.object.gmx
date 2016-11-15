@@ -258,9 +258,6 @@ if not instance_exists(obj_mariostart)
     //Activate everything
     instance_activate_all()
 
-    //Resume particles
-    part_system_automatic_update(1,1)
-
 }
 
 //Delete the screenshot
@@ -532,9 +529,6 @@ if mode = 0
     //Take a screenshot
     back = background_create_from_surface(application_surface,0,0,view_wview[0],view_hview[0],0,0)
 
-    //Pause particles
-    part_system_automatic_update(1,0)
-
     //Deactivate everything
     instance_deactivate_all(1)
 
@@ -695,8 +689,13 @@ else
     //Fullscreen is off by default
     fullscreen = 0
 
+    //Filtering is off if the shaders fail to compile
+    if not shader_is_compiled(sha_hq2x)
+    or not shader_is_compiled(sha_hq4x)
+        filter = 0
+
     //Set the default to HQ4X only if the screen is big enough to fit it
-    if display_get_width() &gt;= 1536
+    else if display_get_width() &gt;= 1536
     and display_get_height() &gt;= 864
         filter = 2
     else

@@ -27,13 +27,6 @@
             <kind>1</kind>
             <string>///Create a storm!
 
-/*
-**  This item uses creation code!
-**
-**  image_blend = Rain color
-**
-*/
-
 //Create thunder after a random amount of time
 alarm[0] = random(60)+100
 
@@ -115,8 +108,9 @@ alarm[0] = random(120)+130
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Generate rain particles
-effect_create_above(ef_rain,0,0,0,image_blend)
+            <string>///Generate rain
+instance_create(view_xview[0]+random(view_wview[0]+480),view_yview[0]-8,obj_rain)
+instance_create(view_xview[0]+random(view_wview[0]+480),view_yview[0]-8,obj_rain)
 </string>
           </argument>
         </arguments>

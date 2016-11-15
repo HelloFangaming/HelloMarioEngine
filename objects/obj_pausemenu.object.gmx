@@ -27,9 +27,6 @@
             <kind>1</kind>
             <string>///The pause menu
 
-//Pause particles
-part_system_automatic_update(1,0)
-
 //Take a screenshot
 back = background_create_from_surface(application_surface,0,0,640,480,0,0)
 
@@ -75,9 +72,6 @@ menu[2] = "Quit Game"
 
 //Activate everything
 instance_activate_all()
-
-//Resume particles
-part_system_automatic_update(1,1)
 
 //Delete the screenshot
 if background_exists(back)

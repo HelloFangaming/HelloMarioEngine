@@ -40,9 +40,6 @@ varmsg = "No message set!"
 //Can the text be seen?
 showing = 0
 
-//Pause particles
-part_system_automatic_update(1,0)
-
 //Create a screenshot
 back = background_create_from_surface(application_surface,0,0,640,480,0,0)
 
@@ -288,9 +285,6 @@ if showing = 1
 
             //Activate everything
             instance_activate_all()
-
-            //Resume particles
-            part_system_automatic_update(1,1)
 
             //Delete the screenshot
             if background_exists(back)

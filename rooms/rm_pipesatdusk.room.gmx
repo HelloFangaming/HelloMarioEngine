@@ -248,7 +248,7 @@
     <instance objName="obj_conveyor_left" x="416" y="96" name="inst_3C79364A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_conveyor_left" x="432" y="96" name="inst_F915B8A8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_conveyor_left" x="448" y="96" name="inst_94B58680" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_stormmaker" x="16" y="0" name="inst_EE840ABA" locked="0" code="image_blend = c_teal" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_stormmaker" x="16" y="0" name="inst_EE840ABA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slope_r" x="1792" y="368" name="inst_A03AD663" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slope_r" x="1824" y="352" name="inst_79B3434F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_shyguybig" x="1616" y="256" name="inst_175CFAF2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

@@ -1035,6 +1035,7 @@
         <sprite>sprites\spr_shellbump</sprite>
         <sprite>sprites\spr_splash</sprite>
         <sprite>sprites\spr_lavasplash</sprite>
+        <sprite>sprites\spr_rain</sprite>
       </sprites>
       <sprite>sprites\spr_warptop</sprite>
       <sprite>sprites\spr_warpsides</sprite>
@@ -1731,6 +1732,7 @@
           <object>objects\obj_spinthump</object>
           <object>objects\obj_bubble</object>
           <object>objects\obj_sparkletrail</object>
+          <object>objects\obj_rain</object>
         </objects>
         <object>objects\obj_mapcard</object>
         <object>objects\obj_explosion</object>
