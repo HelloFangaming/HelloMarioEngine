@@ -107,17 +107,17 @@ y--
 //Move in the direction it is facing
 hspeed = direct
 
-//Make tail parts all face the same direction
-mypart[0].direct = direct
-mypart[1].direct = direct
-mypart[2].direct = direct
-mypart[3].direct = direct
-
-//Make tail parts jump
-mypart[0].alarm[0] = 5
-mypart[1].alarm[0] = 10
-mypart[2].alarm[0] = 15
-mypart[3].alarm[0] = 20
+//Make tail parts face the same direction and jump
+for(var i = 0; i &lt; 4; i++)
+{
+    with mypart[i]
+    {
+        x = other.x
+        y = other.y
+        direct = other.direct
+        alarm[0] = 5*(i+1)
+    }
+}
 </string>
           </argument>
         </arguments>

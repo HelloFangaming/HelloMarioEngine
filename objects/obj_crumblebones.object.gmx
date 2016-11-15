@@ -6,7 +6,7 @@
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>obj_enemyparent</parentName>
-  <maskName>&lt;undefined&gt;</maskName>
+  <maskName>spr_enemymask</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>

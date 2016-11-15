@@ -102,13 +102,7 @@ event_user(4)
 
 //If on the ground, land if it is still moving
 if gravity = 0
-{
-    if hspeed != 0
-    {
-        hspeed = 0
-        alarm[0] = 100
-    }
-}
+    hspeed = 0
 
 //Use less gravity
 else
