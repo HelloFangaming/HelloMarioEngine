@@ -315,9 +315,9 @@ if gamepad
 
     //A button
     if gamepad_button_check_pressed(0,gp_face1)
-        keyboard_key_press(vk_shift)
+        keyboard_key_press(ord('X'))
     else if gamepad_button_check_released(0,gp_face1)
-        keyboard_key_release(vk_shift)
+        keyboard_key_release(ord('X'))
 
     //B button
     if gamepad_button_check_pressed(0,gp_face2)
