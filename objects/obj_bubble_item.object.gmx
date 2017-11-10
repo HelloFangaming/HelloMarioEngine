@@ -34,6 +34,7 @@
 **      cs_big
 **      cs_fire
 **      cs_hammer
+**      cs_leaf
 **      cs_tanooki
 **      cs_frog
 **      cs_bomb
@@ -161,7 +162,8 @@ if item != -1
 {
 
     //Do not draw these items animated
-    if sprite = spr_key
+    if sprite = spr_leaf
+    or sprite = spr_key
     or sprite = spr_spring
     or sprite = spr_spring_super
     or sprite = spr_eswitch

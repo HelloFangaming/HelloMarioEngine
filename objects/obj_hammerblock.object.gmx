@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>///Shatter when hit with an enemy hammer
-with other event_user(0)
+audio_play_sound(snd_bump,0,0)
 event_user(0)
 </string>
           </argument>
@@ -51,7 +51,7 @@ event_user(0)
           <argument>
             <kind>1</kind>
             <string>///Shatter when hit with a hammer
-with other event_user(0)
+audio_play_sound(snd_bump,0,0)
 event_user(0)
 </string>
           </argument>

@@ -57,14 +57,12 @@ image_speed = 0.15
             <kind>1</kind>
             <string>///Mario jumping out
 
-//Move him down slowly
-other.y+=0.5
-
 //Disable spin jump
 other.stompstyle = 0
 
 //If the jump key is pressed
-if keyboard_check_pressed(vk_shift)
+if other.jumpnow != 1
+and keyboard_check_pressed(vk_shift)
 {
 
     //Play the jump sound
@@ -81,9 +79,9 @@ if keyboard_check_pressed(vk_shift)
 
 }
 
-//Stop vertical speed
-if other.vspeed &gt; 0
-    other.vspeed = 0
+//Move him down slowly
+if other.vspeed &gt; 0.5
+    other.vspeed = 0.5
 </string>
           </argument>
         </arguments>
