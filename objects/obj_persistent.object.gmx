@@ -88,6 +88,12 @@ keyboard_set_map(ord('Z'),vk_control)
 //Handle gamepad support
 gamepad = gamepad_is_connected(0)
 
+//Gamepad left stick
+leftstick[0] = 0
+leftstick[1] = 0
+leftstick[2] = 0
+leftstick[3] = 0
+
 //Set the epsilon value for floating point numbers
 math_set_epsilon(0.00001)
 
@@ -289,25 +295,81 @@ if background_exists(back)
 if gamepad
 {
 
-    //Up button
+    //Up on left stick
+    if leftstick[0] = 0
+    and gamepad_axis_value(0,gp_axislv) &lt;= -0.5
+    {
+        leftstick[0] = 1
+        keyboard_key_press(vk_up)
+    }
+    else if leftstick[0] = 1
+    and gamepad_axis_value(0,gp_axislv) &gt; -0.5
+    {
+        leftstick[0] = 0
+        keyboard_key_release(vk_up)
+    }
+
+    //Down on left stick
+    if leftstick[1] = 0
+    and gamepad_axis_value(0,gp_axislv) &gt;= 0.5
+    {
+        leftstick[1] = 1
+        keyboard_key_press(vk_down)
+    }
+    else if leftstick[1] = 1
+    and gamepad_axis_value(0,gp_axislv) &lt; 0.5
+    {
+        leftstick[1] = 0
+        keyboard_key_release(vk_down)
+    }
+
+    //Left on left stick
+    if leftstick[2] = 0
+    and gamepad_axis_value(0,gp_axislh) &lt;= -0.5
+    {
+        leftstick[2] = 1
+        keyboard_key_press(vk_left)
+    }
+    else if leftstick[2] = 1
+    and gamepad_axis_value(0,gp_axislh) &gt; -0.5
+    {
+        leftstick[2] = 0
+        keyboard_key_release(vk_left)
+    }
+
+    //Right on left stick
+    if leftstick[3] = 0
+    and gamepad_axis_value(0,gp_axislh) &gt;= 0.5
+    {
+        leftstick[3] = 1
+        keyboard_key_press(vk_right)
+    }
+    else if leftstick[3] = 1
+    and gamepad_axis_value(0,gp_axislh) &lt; 0.5
+    {
+        leftstick[3] = 0
+        keyboard_key_release(vk_right)
+    }
+
+    //Up on d-pad
     if gamepad_button_check_pressed(0,gp_padu)
         keyboard_key_press(vk_up)
     else if gamepad_button_check_released(0,gp_padu)
         keyboard_key_release(vk_up)
 
-    //Down button
+    //Down on d-pad
     if gamepad_button_check_pressed(0,gp_padd)
         keyboard_key_press(vk_down)
     else if gamepad_button_check_released(0,gp_padd)
         keyboard_key_release(vk_down)
 
-    //Left button
+    //Left on d-pad
     if gamepad_button_check_pressed(0,gp_padl)
         keyboard_key_press(vk_left)
     else if gamepad_button_check_released(0,gp_padl)
         keyboard_key_release(vk_left)
 
-    //Right button
+    //Right on d-pad
     if gamepad_button_check_pressed(0,gp_padr)
         keyboard_key_press(vk_right)
     else if gamepad_button_check_released(0,gp_padr)
