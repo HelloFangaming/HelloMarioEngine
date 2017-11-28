@@ -1,4 +1,4 @@
-#Hello Mario Engine
+# Hello Mario Engine
 
 The **Hello Mario Engine** is an open source Mario engine for **GameMaker: Studio** that is feature packed, and designed to be easy to expand upon with user friendliness as a priority. The engine is fully documented with thousands of code comments, and includes tons of different powerups, over a hundred different enemies, and much, much more!
 

@@ -176,8 +176,9 @@ if place_meeting(x,y,obj_swim)
         and collision_point(bbox_left+hspeed*2,bbox_bottom,obj_slopeparent,1,0))
             hspeed = -hspeed
 
-        //If Mario is above, and there is no water above
+        //If Mario is above, and there is no water or solids above
         if not place_meeting(x,y-40,obj_swim)
+        and not place_meeting(x,y-40,obj_solid)
         and instance_exists(obj_mario)
         and obj_mario.x &gt; x-56
         and obj_mario.x &lt; x+56
