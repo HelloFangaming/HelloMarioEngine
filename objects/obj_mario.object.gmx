@@ -678,7 +678,7 @@ if isduck = 0
             else
             {
                 image_speed = 0
-                image_index = 0
+                image_index = 0.99
                 sprite_index = scr_mariowalk()
             }
 
@@ -689,7 +689,7 @@ if isduck = 0
         {
 
             //Animate based on horizontal speed
-            image_speed = hspeed/10
+            image_speed = abs(hspeed/10)
 
             //Frog Mario only walks
             if global.powerup = cs_frog
@@ -846,12 +846,12 @@ if isduck = 0
         if state = 0
         {
             image_speed = 0
-            image_index = 0
+            image_index = 0.99
         }
 
         //Walking State
         if state = 1
-            image_speed = hspeed/10
+            image_speed = abs(hspeed/10)
 
         //Jumping State
         if state = 2
