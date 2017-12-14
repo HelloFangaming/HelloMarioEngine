@@ -69,7 +69,7 @@ and keyboard_check_pressed(vk_shift)
     audio_play_sound(snd_jump,0,0)
 
     //Make Mario move upwards
-    other.vspeed = -2.85
+    other.vspeed = -3.85
 
     //Enable variable jumping
     other.jumpnow = 1
