@@ -103,7 +103,7 @@ if other.hardness &lt; 2
 {
     with other
     {
-        with instance_create(x-sprite_xoffset,y-sprite_yoffset,obj_enemy_frozen)
+        with instance_create(round(x-sprite_xoffset),round(y-sprite_yoffset),obj_enemy_frozen)
         {
             sprite_index = other.sprite_index
             event_user(15)

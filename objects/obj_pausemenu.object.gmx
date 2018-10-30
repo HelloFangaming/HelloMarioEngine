@@ -245,8 +245,8 @@ if menu_choice = 0
 
 }
 
-//For the second menu item
-else if menu_choice = 1
+//Otherwise
+else
 {
 
     //Activate the level manager...
@@ -265,20 +265,21 @@ else if menu_choice = 1
     //Play the correct sound
     audio_play_sound(snd_correct,0,0)
 
-    //Return to the world map
-    scr_return()
+    //For the second menu item, return to the world map
+    if menu_choice = 1
+        scr_return()
 
-}
+    //For the last menu item
+    else
+    {
 
-//For the last menu item
-else
-{
+        //Re-initialise all variables
+        scr_init_globals()
 
-    //Play the correct sound
-    audio_play_sound(snd_correct,0,0)
+        //Go to the title screen
+        room_goto(rm_title)
 
-    //End the game
-    game_end()
+    }
 
 }
 </string>

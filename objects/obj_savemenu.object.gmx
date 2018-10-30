@@ -194,15 +194,26 @@ if menu_choice = 2
 else
 {
 
-    //Play the whistle sound
-    audio_play_sound(snd_whistle,0,0)
-
     //Save the game
     scr_save(global.file)
 
     //End the game if the second menu item is selected
     if menu_choice = 1
-        game_end()
+    {
+
+        //Stop all sounds
+        audio_stop_all()
+
+        //Re-initialise all variables
+        scr_init_globals()
+
+        //Go to the title screen
+        room_goto(rm_title)
+
+    }
+
+    //Play the whistle sound
+    audio_play_sound(snd_whistle,0,0)
 
 }
 

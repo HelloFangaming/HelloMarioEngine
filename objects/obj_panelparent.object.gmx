@@ -116,6 +116,31 @@ and place_meeting(x,y,obj_mapmario)
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="14">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Remember the open list
+if beaten = 0
+    ds_map_replace(global.worldmap,string(id),string(open[0])+string(open[1])+string(open[2])+string(open[3]))
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="13">
       <action>
         <libid>1</libid>
@@ -188,31 +213,6 @@ if beaten = 0
     event_user(1)
 
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="5">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Remember the open list
-if beaten = 0
-    ds_map_replace(global.worldmap,string(id),string(open[0])+string(open[1])+string(open[2])+string(open[3]))
 </string>
           </argument>
         </arguments>

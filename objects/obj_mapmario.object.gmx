@@ -222,6 +222,7 @@ if panel
 
             //Unlock the panel's upper path
             panel.open[1] = 1
+            with panel event_user(4)
 
             //Make the lock destroy itself
             with lock event_user(0)
@@ -237,6 +238,7 @@ if panel
 
             //Unlock the panel's lower path
             panel.open[0] = 1
+            with panel event_user(4)
 
             //Make the lock destroy itself
             with lock event_user(0)
@@ -252,6 +254,7 @@ if panel
 
             //Unlock the panel's leftward path
             panel.open[3] = 1
+            with panel event_user(4)
 
             //Make the lock destroy itself
             with lock event_user(0)
@@ -267,6 +270,7 @@ if panel
 
             //Unlock the panel's rightward path
             panel.open[2] = 1
+            with panel event_user(4)
 
             //Make the lock destroy itself
             with lock event_user(0)
@@ -393,6 +397,9 @@ if panel
     //Open the panel's right direction if he is moving right
     else if direction = 0
         panel.open[3] = 1
+
+    //Save open list
+    with panel event_user(4)
 
 }
 
