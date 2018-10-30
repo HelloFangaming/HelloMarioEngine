@@ -132,7 +132,7 @@
     <instance objName="obj_kuriboblock" x="320" y="144" name="inst_39CA47A7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_kuriboblock" x="336" y="144" name="inst_8E41C395" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_kuriboblock" x="352" y="144" name="inst_88AA353D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_spiney_ceiling" x="328" y="32" name="inst_BD5CE1F2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_spiny_ceiling" x="328" y="32" name="inst_BD5CE1F2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_right" x="176" y="80" name="inst_C09B66EA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_left" x="304" y="80" name="inst_0E84C14D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_piranhaplant_short" x="384" y="144" name="inst_A1297CBD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

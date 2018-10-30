@@ -37,7 +37,7 @@
 **  enemy = Select an enemy
 **      1: Goomba
 **      2: Koopa
-**      3: Spiney
+**      3: Spiny
 **      4: Random
 **
 */
@@ -138,9 +138,9 @@ if enemy = 1
 else if enemy = 2
     myenemy = obj_koopa
 else if enemy = 3
-    myenemy = obj_spiney
+    myenemy = obj_spiny
 else if enemy = 4
-    myenemy = choose(obj_goomba,obj_koopa,obj_spiney)
+    myenemy = choose(obj_goomba,obj_koopa,obj_spiny)
 
 //If there are less than six enemies
 if instance_number(myenemy) &lt; 6

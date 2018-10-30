@@ -395,7 +395,7 @@
     <instance objName="obj_jumpingkoopa" x="1864" y="352" name="inst_6A1277E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_spike" x="1272" y="320" name="inst_D6894E32" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bobomb" x="1464" y="288" name="inst_E773D948" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_spiney" x="984" y="96" name="inst_81318D02" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_spiny" x="984" y="96" name="inst_81318D02" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_nipper" x="56" y="256" name="inst_2BC37D95" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_nipper" x="72" y="256" name="inst_ED0FB0D9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_montymole" x="2672" y="384" name="inst_865ACB97" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -415,8 +415,8 @@
     <instance objName="obj_starblock" x="1104" y="160" name="inst_26550D10" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_switchblock" x="1536" y="256" name="inst_F3D71F7F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_switchblock" x="272" y="112" name="inst_7182A131" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_roundgoomba" x="584" y="368" name="inst_14C24DD0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_roundgoomba_parachute" x="1944" y="208" name="inst_3FEB6755" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_galoomba" x="584" y="368" name="inst_14C24DD0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_galoomba_parachute" x="1944" y="208" name="inst_3FEB6755" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bulletgenerator" x="16" y="0" name="inst_6549F1EB" locked="0" code="xmin = 2064&#xA;xmax = 2352" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_winged" x="2624" y="336" name="inst_4DD0F7B5" locked="0" code="sprout = cs_superspring" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_movingsaw" x="2624" y="208" name="inst_EFF78069" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

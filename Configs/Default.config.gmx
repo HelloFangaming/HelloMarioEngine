@@ -22,7 +22,7 @@
     <option_android_arch_mipsr2sf>false</option_android_arch_mipsr2sf>
     <option_android_arch_x86>True</option_android_arch_x86>
     <option_android_build_tools_version>23.0.1</option_android_build_tools_version>
-    <option_android_build_version>6</option_android_build_version>
+    <option_android_build_version>0</option_android_build_version>
     <option_android_color_depth>0</option_android_color_depth>
     <option_android_compile_sdk_version>23</option_android_compile_sdk_version>
     <option_android_display_name>Hello Mario Engine</option_android_display_name>
@@ -54,7 +54,7 @@
     <option_android_lint>-1</option_android_lint>
     <option_android_major_version>6</option_android_major_version>
     <option_android_min_sdk_version>9</option_android_min_sdk_version>
-    <option_android_minor_version>1</option_android_minor_version>
+    <option_android_minor_version>2</option_android_minor_version>
     <option_android_mmedia_ads>0</option_android_mmedia_ads>
     <option_android_moga>0</option_android_moga>
     <option_android_mopub_ads>0</option_android_mopub_ads>
@@ -103,7 +103,7 @@
     <option_androidfire_background_png>Configs\Default\amazonfire\icons\background.png</option_androidfire_background_png>
     <option_androidfire_banner_png>Configs\Default\amazonfire\icons\banner.png</option_androidfire_banner_png>
     <option_androidfire_build_tools_version>23.0.1</option_androidfire_build_tools_version>
-    <option_androidfire_build_version>6</option_androidfire_build_version>
+    <option_androidfire_build_version>0</option_androidfire_build_version>
     <option_androidfire_color_depth>0</option_androidfire_color_depth>
     <option_androidfire_compile_sdk_version>23</option_androidfire_compile_sdk_version>
     <option_androidfire_display_name>HME</option_androidfire_display_name>
@@ -130,7 +130,7 @@
     <option_androidfire_lint>0</option_androidfire_lint>
     <option_androidfire_major_version>6</option_androidfire_major_version>
     <option_androidfire_min_sdk_version>9</option_androidfire_min_sdk_version>
-    <option_androidfire_minor_version>1</option_androidfire_minor_version>
+    <option_androidfire_minor_version>2</option_androidfire_minor_version>
     <option_androidfire_moga>0</option_androidfire_moga>
     <option_androidfire_orient_landscape>True</option_androidfire_orient_landscape>
     <option_androidfire_orient_landscape_flipped>True</option_androidfire_orient_landscape_flipped>
@@ -172,7 +172,7 @@
     <option_androidtv_background_png>Configs\Default\androidtv\icons\background.png</option_androidtv_background_png>
     <option_androidtv_banner_png>Configs\Default\androidtv\icons\banner.png</option_androidtv_banner_png>
     <option_androidtv_build_tools_version>23.0.1</option_androidtv_build_tools_version>
-    <option_androidtv_build_version>6</option_androidtv_build_version>
+    <option_androidtv_build_version>0</option_androidtv_build_version>
     <option_androidtv_color_depth>0</option_androidtv_color_depth>
     <option_androidtv_compile_sdk_version>23</option_androidtv_compile_sdk_version>
     <option_androidtv_display_name>HME</option_androidtv_display_name>
@@ -198,7 +198,7 @@
     <option_androidtv_licensing_key></option_androidtv_licensing_key>
     <option_androidtv_lint>-1</option_androidtv_lint>
     <option_androidtv_major_version>6</option_androidtv_major_version>
-    <option_androidtv_minor_version>1</option_androidtv_minor_version>
+    <option_androidtv_minor_version>2</option_androidtv_minor_version>
     <option_androidtv_moga>0</option_androidtv_moga>
     <option_androidtv_package_company>companyname</option_androidtv_package_company>
     <option_androidtv_package_domain>com</option_androidtv_package_domain>
@@ -282,7 +282,7 @@
     <option_ios_advertising_key></option_ios_advertising_key>
     <option_ios_advertising_type>iAds</option_ios_advertising_type>
     <option_ios_app_id></option_ios_app_id>
-    <option_ios_build_version>6</option_ios_build_version>
+    <option_ios_build_version>0</option_ios_build_version>
     <option_ios_certificate>&lt; Press refresh to fetch certificate list from Mac&gt;</option_ios_certificate>
     <option_ios_device_type>3</option_ios_device_type>
     <option_ios_display_name>Hello Mario Engine</option_ios_display_name>
@@ -303,6 +303,24 @@
     <option_ios_icon_57>Configs\Default\ios\icons\icon57.png</option_ios_icon_57>
     <option_ios_icon_72>Configs\Default\ios\icons\icon72.png</option_ios_icon_72>
     <option_ios_icon_76>Configs\Default\ios\icons\icon76.png</option_ios_icon_76>
+    <option_ios_icon_ipad_app_152>Configs\Default\ios\icons\app\ipad_152.png</option_ios_icon_ipad_app_152>
+    <option_ios_icon_ipad_app_76>Configs\Default\ios\icons\app\ipad_76.png</option_ios_icon_ipad_app_76>
+    <option_ios_icon_ipad_notification_20>Configs\Default\ios\icons\notification\ipad_20.png</option_ios_icon_ipad_notification_20>
+    <option_ios_icon_ipad_notification_40>Configs\Default\ios\icons\notification\ipad_40.png</option_ios_icon_ipad_notification_40>
+    <option_ios_icon_ipad_pro_app_167>Configs\Default\ios\icons\app\ipad_pro_167.png</option_ios_icon_ipad_pro_app_167>
+    <option_ios_icon_ipad_settings_29>Configs\Default\ios\icons\settings\ipad_29.png</option_ios_icon_ipad_settings_29>
+    <option_ios_icon_ipad_settings_58>Configs\Default\ios\icons\settings\ipad_58.png</option_ios_icon_ipad_settings_58>
+    <option_ios_icon_ipad_spotlight_40>Configs\Default\ios\icons\spotlight\ipad_40.png</option_ios_icon_ipad_spotlight_40>
+    <option_ios_icon_ipad_spotlight_80>Configs\Default\ios\icons\spotlight\ipad_80.png</option_ios_icon_ipad_spotlight_80>
+    <option_ios_icon_iphone_app_120>Configs\Default\ios\icons\app\iphone_120.png</option_ios_icon_iphone_app_120>
+    <option_ios_icon_iphone_app_180>Configs\Default\ios\icons\app\iphone_180.png</option_ios_icon_iphone_app_180>
+    <option_ios_icon_iphone_notification_40>Configs\Default\ios\icons\notification\iphone_40.png</option_ios_icon_iphone_notification_40>
+    <option_ios_icon_iphone_notification_60>Configs\Default\ios\icons\notification\iphone_60.png</option_ios_icon_iphone_notification_60>
+    <option_ios_icon_iphone_settings_58>Configs\Default\ios\icons\settings\iphone_58.png</option_ios_icon_iphone_settings_58>
+    <option_ios_icon_iphone_settings_87>Configs\Default\ios\icons\settings\iphone_87.png</option_ios_icon_iphone_settings_87>
+    <option_ios_icon_iphone_spotlight_120>Configs\Default\ios\icons\spotlight\iphone_120.png</option_ios_icon_iphone_spotlight_120>
+    <option_ios_icon_iphone_spotlight_80>Configs\Default\ios\icons\spotlight\iphone_80.png</option_ios_icon_iphone_spotlight_80>
+    <option_ios_icon_itunes_artwork_1024>Configs\Default\ios\icons\itunes\itunes_1024.png</option_ios_icon_itunes_artwork_1024>
     <option_ios_interpolate>0</option_ios_interpolate>
     <option_ios_ipad_retina_splash_png>Configs\Default\ios\iPadRetinasplash.png</option_ios_ipad_retina_splash_png>
     <option_ios_ipad_retina_splash_portrait_png>Configs\Default\ios\iPadRetinasplashPortrait.png</option_ios_ipad_retina_splash_portrait_png>
@@ -314,12 +332,24 @@
     <option_ios_iphone6_splash_portrait_png>Configs\Default\ios\iPhone6splashPortrait.png</option_ios_iphone6_splash_portrait_png>
     <option_ios_iphone6plus_splash_png>Configs\Default\ios\iPhone6Plussplash.png</option_ios_iphone6plus_splash_png>
     <option_ios_iphone6plus_splash_portrait_png>Configs\Default\ios\iPhone6PlussplashPortrait.png</option_ios_iphone6plus_splash_portrait_png>
+    <option_ios_iphone7_splash_png>Configs\Default\ios\iPhone7splash.png</option_ios_iphone7_splash_png>
+    <option_ios_iphone7_splash_portrait_png>Configs\Default\ios\iPhone7splashPortrait.png</option_ios_iphone7_splash_portrait_png>
+    <option_ios_iphone7plus_splash_png>Configs\Default\ios\iPhone7Plussplash.png</option_ios_iphone7plus_splash_png>
+    <option_ios_iphone7plus_splash_portrait_png>Configs\Default\ios\iPhone7PlussplashPortrait.png</option_ios_iphone7plus_splash_portrait_png>
+    <option_ios_iphone8_splash_png>Configs\Default\ios\iPhone8splash.png</option_ios_iphone8_splash_png>
+    <option_ios_iphone8_splash_portrait_png>Configs\Default\ios\iPhone8splashPortrait.png</option_ios_iphone8_splash_portrait_png>
+    <option_ios_iphone8plus_splash_png>Configs\Default\ios\iPhone8Plussplash.png</option_ios_iphone8plus_splash_png>
+    <option_ios_iphone8plus_splash_portrait_png>Configs\Default\ios\iPhone8PlussplashPortrait.png</option_ios_iphone8plus_splash_portrait_png>
     <option_ios_iphone_retina_splash_png>Configs\Default\ios\IphoneRetinasplash.png</option_ios_iphone_retina_splash_png>
     <option_ios_iphone_retina_splash_portrait_png>Configs\Default\ios\IphoneRetinasplashPortrait.png</option_ios_iphone_retina_splash_portrait_png>
     <option_ios_iphone_splash_png>Configs\Default\ios\iPhonesplash.png</option_ios_iphone_splash_png>
     <option_ios_iphone_splash_portrait_png>Configs\Default\ios\iPhonesplashPortrait.png</option_ios_iphone_splash_portrait_png>
+    <option_ios_iphonese_splash_png>Configs\Default\ios\iPhonesesplash.png</option_ios_iphonese_splash_png>
+    <option_ios_iphonese_splash_portrait_png>Configs\Default\ios\iPhonesesplashPortrait.png</option_ios_iphonese_splash_portrait_png>
+    <option_ios_iphonex_splash_png>Configs\Default\ios\iPhonexsplash.png</option_ios_iphonex_splash_png>
+    <option_ios_iphonex_splash_portrait_png>Configs\Default\ios\iPhonexsplashPortrait.png</option_ios_iphonex_splash_portrait_png>
     <option_ios_major_version>6</option_ios_major_version>
-    <option_ios_minor_version>1</option_ios_minor_version>
+    <option_ios_minor_version>2</option_ios_minor_version>
     <option_ios_orient_landscape>-1</option_ios_orient_landscape>
     <option_ios_orient_landscape_right>-1</option_ios_orient_landscape_right>
     <option_ios_orient_portrait>0</option_ios_orient_portrait>
@@ -350,9 +380,9 @@
     <option_linux_steam_app_id>0</option_linux_steam_app_id>
     <option_linux_sync>0</option_linux_sync>
     <option_linux_texture_page>2048</option_linux_texture_page>
-    <option_linux_version_build>6</option_linux_version_build>
+    <option_linux_version_build>0</option_linux_version_build>
     <option_linux_version_major>6</option_linux_version_major>
-    <option_linux_version_minor>1</option_linux_version_minor>
+    <option_linux_version_minor>2</option_linux_version_minor>
     <option_loadalpha>255</option_loadalpha>
     <option_loadimage>nil</option_loadimage>
     <option_loadtransparent>false</option_loadtransparent>
@@ -360,7 +390,7 @@
     <option_mac_app_id></option_mac_app_id>
     <option_mac_appstore_incoming_allow>0</option_mac_appstore_incoming_allow>
     <option_mac_appstore_outgoing_allow>0</option_mac_appstore_outgoing_allow>
-    <option_mac_build_version>6</option_mac_build_version>
+    <option_mac_build_version>0</option_mac_build_version>
     <option_mac_copyright_info>Hello Fangaming</option_mac_copyright_info>
     <option_mac_create_app_store>-1</option_mac_create_app_store>
     <option_mac_display_name>Hello Mario Engine</option_mac_display_name>
@@ -371,7 +401,7 @@
     <option_mac_interpolate>0</option_mac_interpolate>
     <option_mac_major_version>6</option_mac_major_version>
     <option_mac_menu_dock>0</option_mac_menu_dock>
-    <option_mac_minor_version>1</option_mac_minor_version>
+    <option_mac_minor_version>2</option_mac_minor_version>
     <option_mac_output_dir>~/GameMaker-Studio/HelloMarioEngine</option_mac_output_dir>
     <option_mac_scale>-1</option_mac_scale>
     <option_mac_screenkey>-1</option_mac_screenkey>
@@ -390,8 +420,8 @@
     <option_priority>0</option_priority>
     <option_ps3_build_version>0</option_ps3_build_version>
     <option_ps3_interpolate>-1</option_ps3_interpolate>
-    <option_ps3_major_version>1</option_ps3_major_version>
-    <option_ps3_minor_version>0</option_ps3_minor_version>
+    <option_ps3_major_version>6</option_ps3_major_version>
+    <option_ps3_minor_version>2</option_ps3_minor_version>
     <option_ps3_nptitleid></option_ps3_nptitleid>
     <option_ps3_nptitlepassphrase>Memo1</option_ps3_nptitlepassphrase>
     <option_ps3_nptitlesecret>Memo1</option_ps3_nptitlesecret>
@@ -404,8 +434,8 @@
     <option_ps4_build_version>0</option_ps4_build_version>
     <option_ps4_displaycursor>0</option_ps4_displaycursor>
     <option_ps4_interpolate>-1</option_ps4_interpolate>
-    <option_ps4_major_version>1</option_ps4_major_version>
-    <option_ps4_minor_version>0</option_ps4_minor_version>
+    <option_ps4_major_version>6</option_ps4_major_version>
+    <option_ps4_minor_version>2</option_ps4_minor_version>
     <option_ps4_nptitleid></option_ps4_nptitleid>
     <option_ps4_nptitlesecret>Memo1</option_ps4_nptitlesecret>
     <option_ps4_package_id></option_ps4_package_id>
@@ -417,8 +447,8 @@
     <option_psvita_fronttouch>0</option_psvita_fronttouch>
     <option_psvita_interpolate>-1</option_psvita_interpolate>
     <option_psvita_interpolation>true</option_psvita_interpolation>
-    <option_psvita_major_version>1</option_psvita_major_version>
-    <option_psvita_minor_version>0</option_psvita_minor_version>
+    <option_psvita_major_version>6</option_psvita_major_version>
+    <option_psvita_minor_version>2</option_psvita_minor_version>
     <option_psvita_nptitleid></option_psvita_nptitleid>
     <option_psvita_nptitlepassphrase>Memo1</option_psvita_nptitlepassphrase>
     <option_psvita_nptitlesecret>Memo1</option_psvita_nptitlesecret>
@@ -451,7 +481,7 @@
     <option_textureGroup_count>1</option_textureGroup_count>
     <option_textureGroups0>Default</option_textureGroups0>
     <option_tizen_app_id>http://yourdomain/HelloMarioEngine</option_tizen_app_id>
-    <option_tizen_build_version>6</option_tizen_build_version>
+    <option_tizen_build_version>0</option_tizen_build_version>
     <option_tizen_display_name>Hello Mario Engine</option_tizen_display_name>
     <option_tizen_flurry_enable>0</option_tizen_flurry_enable>
     <option_tizen_flurry_id></option_tizen_flurry_id>
@@ -461,7 +491,7 @@
     <option_tizen_icon>Configs\Default\tizen\icon117.png</option_tizen_icon>
     <option_tizen_interpolate>0</option_tizen_interpolate>
     <option_tizen_major_version>6</option_tizen_major_version>
-    <option_tizen_minor_version>1</option_tizen_minor_version>
+    <option_tizen_minor_version>2</option_tizen_minor_version>
     <option_tizen_network_urls></option_tizen_network_urls>
     <option_tizen_orientation>1</option_tizen_orientation>
     <option_tizen_push_enable>0</option_tizen_push_enable>
@@ -470,14 +500,14 @@
     <option_tizen_texture_page>1024</option_tizen_texture_page>
     <option_tizen_usesplash>False</option_tizen_usesplash>
     <option_tvos_app_id></option_tvos_app_id>
-    <option_tvos_build_version>6</option_tvos_build_version>
+    <option_tvos_build_version>0</option_tvos_build_version>
     <option_tvos_certificate>&lt; Press refresh to fetch certificate list from Mac&gt;</option_tvos_certificate>
     <option_tvos_display_name>HME</option_tvos_display_name>
     <option_tvos_icon_1280>Configs\Default\tvos\icons\icon1280.png</option_tvos_icon_1280>
     <option_tvos_icon_400>Configs\Default\tvos\icons\icon400.png</option_tvos_icon_400>
     <option_tvos_interpolate>-1</option_tvos_interpolate>
     <option_tvos_major_version>6</option_tvos_major_version>
-    <option_tvos_minor_version>1</option_tvos_minor_version>
+    <option_tvos_minor_version>2</option_tvos_minor_version>
     <option_tvos_scale>-1</option_tvos_scale>
     <option_tvos_splash_png>Configs\Default\tvos\splash.png</option_tvos_splash_png>
     <option_tvos_splash_time>0</option_tvos_splash_time>
@@ -485,13 +515,13 @@
     <option_use_fast_collision>False</option_use_fast_collision>
     <option_use_new_audio>True</option_use_new_audio>
     <option_variableerrors>False</option_variableerrors>
-    <option_version>6.1.6.0</option_version>
+    <option_version>6.2.0.0</option_version>
     <option_version_build>0</option_version_build>
     <option_version_company>Hello Fangaming</option_version_company>
     <option_version_copyright></option_version_copyright>
     <option_version_description></option_version_description>
     <option_version_major>6</option_version_major>
-    <option_version_minor>1</option_version_minor>
+    <option_version_minor>2</option_version_minor>
     <option_version_product>Hello Mario Engine</option_version_product>
     <option_version_release>6</option_version_release>
     <option_win8_advertising_appid></option_win8_advertising_appid>
@@ -501,7 +531,7 @@
     <option_win8_advertising_type></option_win8_advertising_type>
     <option_win8_analytics_enable>0</option_win8_analytics_enable>
     <option_win8_analytics_id></option_win8_analytics_id>
-    <option_win8_build_version>6</option_win8_build_version>
+    <option_win8_build_version>0</option_win8_build_version>
     <option_win8_certificate_location>Windows8_TemporaryKey.pfx</option_win8_certificate_location>
     <option_win8_display_name>Hello Mario Engine</option_win8_display_name>
     <option_win8_internet_capable>0</option_win8_internet_capable>
@@ -513,7 +543,7 @@
     <option_win8_logo_foreground_text>light</option_win8_logo_foreground_text>
     <option_win8_major_version>6</option_win8_major_version>
     <option_win8_microphone_capable>0</option_win8_microphone_capable>
-    <option_win8_minor_version>1</option_win8_minor_version>
+    <option_win8_minor_version>2</option_win8_minor_version>
     <option_win8_native_certificate_location>Win8NativeRunner_TemporaryKey.pfx</option_win8_native_certificate_location>
     <option_win8_native_cpu>x86</option_win8_native_cpu>
     <option_win8_package_display_name>HelloMarioEngine</option_win8_package_display_name>
@@ -532,7 +562,7 @@
     <option_win8_texture_page>1024</option_win8_texture_page>
     <option_win8_wide_logo>Configs\Default\Windows8\logos\logo310.png</option_win8_wide_logo>
     <option_winUAP_allowfullscreen>false</option_winUAP_allowfullscreen>
-    <option_winUAP_build_version>6</option_winUAP_build_version>
+    <option_winUAP_build_version>0</option_winUAP_build_version>
     <option_winUAP_certificate_location>WinUWPRunner_TemporaryKey.pfx</option_winUAP_certificate_location>
     <option_winUAP_display_name>HME</option_winUAP_display_name>
     <option_winUAP_fullscreen>false</option_winUAP_fullscreen>
@@ -546,7 +576,7 @@
     <option_winUAP_logo_foreground_text>light</option_winUAP_logo_foreground_text>
     <option_winUAP_major_version>6</option_winUAP_major_version>
     <option_winUAP_microphone_capable>0</option_winUAP_microphone_capable>
-    <option_winUAP_minor_version>1</option_winUAP_minor_version>
+    <option_winUAP_minor_version>2</option_winUAP_minor_version>
     <option_winUAP_native_cpu>x86</option_winUAP_native_cpu>
     <option_winUAP_package_display_name>YourPackageDisplayName</option_winUAP_package_display_name>
     <option_winUAP_package_name>YourPackageName</option_winUAP_package_name>
@@ -574,11 +604,11 @@
     <option_windows_enable_steam>0</option_windows_enable_steam>
     <option_windows_game_icon>Configs\Default\windows\runner_icon.ico</option_windows_game_icon>
     <option_windows_license>Configs\Default\windows\License.txt</option_windows_license>
-    <option_windows_mainor_version>1</option_windows_mainor_version>
+    <option_windows_mainor_version>2</option_windows_mainor_version>
     <option_windows_major_version>6</option_windows_major_version>
     <option_windows_nsis_file>Configs\Default\windows\RunnerInstaller.nsi</option_windows_nsis_file>
     <option_windows_product_info>Hello Mario Engine</option_windows_product_info>
-    <option_windows_release_version>6</option_windows_release_version>
+    <option_windows_release_version>0</option_windows_release_version>
     <option_windows_runner_finished>Configs\Default\windows\Runner_finish.bmp</option_windows_runner_finished>
     <option_windows_runner_header>Configs\Default\windows\Runner_header.bmp</option_windows_runner_header>
     <option_windows_save_location>0</option_windows_save_location>
@@ -598,7 +628,7 @@
     <option_winphone_advertising_testing_enable>0</option_winphone_advertising_testing_enable>
     <option_winphone_advertising_type></option_winphone_advertising_type>
     <option_winphone_author>Hello Fangaming</option_winphone_author>
-    <option_winphone_build_version>6</option_winphone_build_version>
+    <option_winphone_build_version>0</option_winphone_build_version>
     <option_winphone_cycle_small_image>Configs\Default\WinPhone\CycleSmall.png</option_winphone_cycle_small_image>
     <option_winphone_cycle_wide_image_1>Configs\Default\WinPhone\CycleWide1.png</option_winphone_cycle_wide_image_1>
     <option_winphone_cycle_wide_image_2>Configs\Default\WinPhone\CycleWide2.png</option_winphone_cycle_wide_image_2>
@@ -636,7 +666,7 @@
     <option_winphone_landscape_allowed>-1</option_winphone_landscape_allowed>
     <option_winphone_landscape_flipped_allowed>0</option_winphone_landscape_flipped_allowed>
     <option_winphone_major_version>6</option_winphone_major_version>
-    <option_winphone_minor_version>1</option_winphone_minor_version>
+    <option_winphone_minor_version>2</option_winphone_minor_version>
     <option_winphone_portrait_allowed>0</option_winphone_portrait_allowed>
     <option_winphone_publisher>Hello Fangaming</option_winphone_publisher>
     <option_winphone_publisher_id>f47823f0-220d-459a-bf68-b6ea984b24a8</option_winphone_publisher_id>
@@ -657,8 +687,8 @@
     <option_xbone_foreground_text>light</option_xbone_foreground_text>
     <option_xbone_interpolation>-1</option_xbone_interpolation>
     <option_xbone_languages>"&lt;!-- Insert the languages your title supports here --&gt;","&lt;!-- os_get_language will only return languages that are listed --&gt;","&lt;!-- ""en"" is supported by default --&gt;","&lt;!-- Resource Language=""en-us""/ --&gt;"</option_xbone_languages>
-    <option_xbone_major_version>0</option_xbone_major_version>
-    <option_xbone_minor_version>0</option_xbone_minor_version>
+    <option_xbone_major_version>6</option_xbone_major_version>
+    <option_xbone_minor_version>2</option_xbone_minor_version>
     <option_xbone_network_manifest_file></option_xbone_network_manifest_file>
     <option_xbone_product_id></option_xbone_product_id>
     <option_xbone_publisher></option_xbone_publisher>

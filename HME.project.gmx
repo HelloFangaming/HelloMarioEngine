@@ -511,9 +511,9 @@
         <sprite>sprites\spr_paragoomba</sprite>
         <sprite>sprites\spr_paragoomba2</sprite>
         <sprite>sprites\spr_bubblegoomba</sprite>
-        <sprite>sprites\spr_roundgoomba</sprite>
-        <sprite>sprites\spr_roundgoomba_hold</sprite>
-        <sprite>sprites\spr_roundgoomba_parachute</sprite>
+        <sprite>sprites\spr_galoomba</sprite>
+        <sprite>sprites\spr_galoomba_hold</sprite>
+        <sprite>sprites\spr_galoomba_parachute</sprite>
         <sprite>sprites\spr_kuribohead</sprite>
         <sprite>sprites\spr_koopa</sprite>
         <sprite>sprites\spr_shell</sprite>
@@ -545,8 +545,8 @@
         <sprite>sprites\spr_buzzybeetle</sprite>
         <sprite>sprites\spr_shell_buzzy</sprite>
         <sprite>sprites\spr_shell_buzzy_down</sprite>
-        <sprite>sprites\spr_spiney</sprite>
-        <sprite>sprites\spr_spiney_dead</sprite>
+        <sprite>sprites\spr_spiny</sprite>
+        <sprite>sprites\spr_spiny_dead</sprite>
         <sprite>sprites\spr_piranhaplant</sprite>
         <sprite>sprites\spr_piranhaplant_side</sprite>
         <sprite>sprites\spr_piranhaplant_red</sprite>
@@ -557,7 +557,7 @@
         <sprite>sprites\spr_firepiranha</sprite>
         <sprite>sprites\spr_firepiranha_side</sprite>
         <sprite>sprites\spr_firepiranha_red</sprite>
-        <sprite>sprites\spr_firepiranga_side_red</sprite>
+        <sprite>sprites\spr_firepiranha_side_red</sprite>
         <sprite>sprites\spr_walkpiranha</sprite>
         <sprite>sprites\spr_walkpiranha2</sprite>
         <sprite>sprites\spr_swooper</sprite>
@@ -581,7 +581,7 @@
         <sprite>sprites\spr_torpedoted</sprite>
         <sprite>sprites\spr_ripvanfish_sleep</sprite>
         <sprite>sprites\spr_ripvanfish</sprite>
-        <sprite>sprites\spr_porchupuffer</sprite>
+        <sprite>sprites\spr_porcupuffer</sprite>
         <sprite>sprites\spr_lavalotus</sprite>
         <sprite>sprites\spr_lavalotus_spit</sprite>
         <sprite>sprites\spr_lavalotusball</sprite>
@@ -1230,8 +1230,8 @@
         <object>objects\obj_goomba</object>
         <object>objects\obj_paragoomba</object>
         <object>objects\obj_bubblegoomba</object>
-        <object>objects\obj_roundgoomba</object>
-        <object>objects\obj_roundgoomba_parachute</object>
+        <object>objects\obj_galoomba</object>
+        <object>objects\obj_galoomba_parachute</object>
         <object>objects\obj_shoegoomba</object>
         <object>objects\obj_koopa</object>
         <object>objects\obj_koopa_red</object>
@@ -1248,9 +1248,9 @@
       </objects>
       <objects name="Cave">
         <object>objects\obj_buzzybeetle</object>
-        <object>objects\obj_spiney</object>
+        <object>objects\obj_spiny</object>
         <object>objects\obj_buzzy_ceiling</object>
-        <object>objects\obj_spiney_ceiling</object>
+        <object>objects\obj_spiny_ceiling</object>
         <object>objects\obj_piranhaplant</object>
         <object>objects\obj_piranhaplant_down</object>
         <object>objects\obj_piranhaplant_right</object>
@@ -1285,7 +1285,7 @@
         <object>objects\obj_spikedcheep</object>
         <object>objects\obj_torpedolaunch</object>
         <object>objects\obj_ripvanfish</object>
-        <object>objects\obj_porchupuffer</object>
+        <object>objects\obj_porcupuffer</object>
         <object>objects\obj_lavalotus</object>
         <object>objects\obj_fishbone</object>
         <object>objects\obj_blooper</object>
@@ -1604,7 +1604,7 @@
         </objects>
         <objects name="Enemy">
           <objects name="Land">
-            <object>objects\obj_roundgoomba_hold</object>
+            <object>objects\obj_galoomba_hold</object>
             <object>objects\obj_spikeball</object>
             <object>objects\obj_wiggler_body</object>
           </objects>

@@ -101,7 +101,7 @@
     <instance objName="obj_cheepcheep" x="552" y="192" name="inst_B488FE33" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_cheepcheep" x="904" y="160" name="inst_CAE5162D" locked="0" code="sprite_index = spr_greencheep" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ripvanfish" x="904" y="320" name="inst_C53F79F1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_porchupuffer" x="560" y="240" name="inst_8817FB3A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_porcupuffer" x="560" y="240" name="inst_8817FB3A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_fishbone" x="480" y="304" name="inst_488102A1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_blooper" x="752" y="352" name="inst_0A5540F1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_blowpipe_top" x="816" y="400" name="inst_3947A260" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

@@ -144,7 +144,7 @@ if fade != 0
     **  use of the "Hello Mario Engine" somewhere
     **  else. Thank you. -Hello Fangaming
     */
-    draw_text(2,2,"POWERED BY HELLO MARIO ENGINE V6.1.6")
+    draw_text(2,2,"POWERED BY HELLO MARIO ENGINE V6.2")
 
 }
 

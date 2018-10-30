@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Likes to throw spineys at Mario
+            <string>///Likes to throw spinys at Mario
 
 /*
 **  This item uses creation code!
@@ -193,7 +193,7 @@ alarm[1] = 10
 if instance_number(obj_mario)
 and obj_mario.x &gt; xmin
 and obj_mario.x &lt; xmax
-and instance_number(obj_spiney) &lt; 6
+and instance_number(obj_spiny) &lt; 6
     sprite_index = spr_lakitu_throw
 
 //Throw more

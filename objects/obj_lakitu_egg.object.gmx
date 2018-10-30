@@ -76,10 +76,10 @@ if gravity = 0
         y--
     }
 
-    //Otherwise, become a spiney
+    //Otherwise, become a spiny
     else
     {
-        instance_create(x+8,y,obj_spiney)
+        instance_create(x+8,y,obj_spiny)
         instance_destroy()
     }
 
