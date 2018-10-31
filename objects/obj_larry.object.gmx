@@ -111,10 +111,11 @@ if ready = 0
 
     //If Larry can hop
     if sprite_index = spr_larry
+    and gravity = 0
     {
 
         //Move up
-        vspeed = -3
+        vspeed = -4
 
         //Boost jump
         y--
@@ -391,7 +392,7 @@ if sprite_index = spr_larry_attack
     sprite_index = spr_larry
 
     //Create projectiles
-    with instance_create(x,y,obj_magiccircle) event_user(0)
+    with instance_create(x-4+10*direct,y,obj_magiccircle) event_user(0)
 
     //Play a magical sound
     audio_play_sound(snd_magic,0,0)

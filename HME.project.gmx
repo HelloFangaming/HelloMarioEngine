@@ -711,12 +711,29 @@
         <sprite>sprites\spr_larry_attack</sprite>
         <sprite>sprites\spr_larry_shell</sprite>
         <sprite>sprites\spr_larry_jump</sprite>
-        <sprite>sprites\spr_magiccircles</sprite>
+        <sprite>sprites\spr_morton</sprite>
+        <sprite>sprites\spr_morton_attack</sprite>
+        <sprite>sprites\spr_morton_shell</sprite>
+        <sprite>sprites\spr_morton_jump</sprite>
         <sprite>sprites\spr_wendy</sprite>
         <sprite>sprites\spr_wendy_attack</sprite>
         <sprite>sprites\spr_wendy_shell</sprite>
         <sprite>sprites\spr_wendy_jump</sprite>
+        <sprite>sprites\spr_iggy</sprite>
+        <sprite>sprites\spr_iggy_attack</sprite>
+        <sprite>sprites\spr_iggy_shell</sprite>
+        <sprite>sprites\spr_iggy_jump</sprite>
+        <sprite>sprites\spr_roy</sprite>
+        <sprite>sprites\spr_roy_attack</sprite>
+        <sprite>sprites\spr_roy_shell</sprite>
+        <sprite>sprites\spr_roy_jump</sprite>
+        <sprite>sprites\spr_lemmy</sprite>
+        <sprite>sprites\spr_lemmy_attack</sprite>
+        <sprite>sprites\spr_ludwig</sprite>
+        <sprite>sprites\spr_ludwig_attack</sprite>
+        <sprite>sprites\spr_magiccircles</sprite>
         <sprite>sprites\spr_magicring</sprite>
+        <sprite>sprites\spr_magicball</sprite>
         <sprite>sprites\spr_birdo</sprite>
         <sprite>sprites\spr_birdo_shoot</sprite>
         <sprite>sprites\spr_birdo_hurt</sprite>
@@ -1381,7 +1398,12 @@
         <object>objects\obj_endboss</object>
         <object>objects\obj_boomboom</object>
         <object>objects\obj_larry</object>
+        <object>objects\obj_morton</object>
         <object>objects\obj_wendy</object>
+        <object>objects\obj_iggy</object>
+        <object>objects\obj_roy</object>
+        <object>objects\obj_lemmy</object>
+        <object>objects\obj_ludwig</object>
         <object>objects\obj_birdo</object>
         <object>objects\obj_mouser</object>
         <object>objects\obj_reznor</object>
@@ -1665,6 +1687,8 @@
           <objects name="Boss">
             <object>objects\obj_magiccircle</object>
             <object>objects\obj_magicring</object>
+            <object>objects\obj_magicball</object>
+            <object>objects\obj_lemmyball</object>
             <object>objects\obj_birdo_egg</object>
             <object>objects\obj_mouser_bomb</object>
             <object>objects\obj_mouser_thrownbomb</object>
@@ -1796,7 +1820,12 @@
       <room>rooms\rm_forthello</room>
       <room>rooms\rm_forthello_boomboom</room>
       <room>rooms\rm_forthello_larry</room>
+      <room>rooms\rm_forthello_morton</room>
       <room>rooms\rm_forthello_wendy</room>
+      <room>rooms\rm_forthello_iggy</room>
+      <room>rooms\rm_forthello_roy</room>
+      <room>rooms\rm_forthello_lemmy</room>
+      <room>rooms\rm_forthello_ludwig</room>
       <room>rooms\rm_forthello_birdo</room>
       <room>rooms\rm_forthello_mouser</room>
       <room>rooms\rm_forthello_reznor</room>

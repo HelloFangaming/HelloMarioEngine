@@ -111,13 +111,14 @@ if ready = 0
 
     //If Wendy can hop
     if sprite_index = spr_wendy
+    and gravity = 0
     {
 
         //Hop higher if hurt
         if hitpoints = 1
             vspeed = -7
         else
-            vspeed = -3
+            vspeed = -4
 
         //Boost jump
         y--
@@ -394,7 +395,7 @@ if sprite_index = spr_wendy_attack
     sprite_index = spr_wendy
 
     //Create projectiles
-    with instance_create(x,y,obj_magicring) hspeed = 2*other.direct
+    with instance_create(x-8+10*direct,y,obj_magicring) hspeed = 2*other.direct
 
     //Play a magical sound
     audio_play_sound(snd_magic,0,0)
