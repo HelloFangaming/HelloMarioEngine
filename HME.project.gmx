@@ -1741,6 +1741,13 @@
             <object>objects\obj_propellershroom</object>
             <object>objects\obj_boomerangflower</object>
             <object>objects\obj_walljumpshroom</object>
+            <object>objects\obj_acorn</object>
+            <object>objects\obj_cloudflower</object>
+            <object>objects\obj_rockshroom</object>
+            <object>objects\obj_pyreflower</object>
+            <object>objects\obj_swoopersuit</object>
+            <object>objects\obj_karatesuit</object>
+            <object>objects\obj_supercrown</object>
             <object>objects\obj_star</object>
           </objects>
           <objects name="Rides">

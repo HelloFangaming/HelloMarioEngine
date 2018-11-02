@@ -17,4 +17,5 @@ switch global.powerup
     case cs_ninja: return spr_mario_ninja_shoot
     case cs_penguin: return spr_mario_penguin_shoot
     case cs_boomerang: return spr_mario_boomerang_shoot
+    case cs_pyre: return spr_mario_pyre_shoot
 }

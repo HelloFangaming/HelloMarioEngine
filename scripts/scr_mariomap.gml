@@ -27,4 +27,11 @@ switch global.powerup
     case cs_propeller: return spr_mapmario_propeller
     case cs_boomerang: return spr_mapmario_boomerang
     case cs_walljump: return spr_mapmario_walljump
+    case cs_squirrel: return spr_mapmario_squirrel
+    case cs_cloud: return spr_mapmario_cloud
+    case cs_rock: return spr_mapmario_rock
+    case cs_pyre: return spr_mapmario_pyre
+    case cs_swooper: return spr_mapmario_swooper
+    case cs_karate: return spr_mapmario_karate
+    case cs_crown: return spr_mapmario_crown
 }
