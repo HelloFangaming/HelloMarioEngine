@@ -38,5 +38,12 @@
     <frame index="15">images\spr_mario_pull_15.png</frame>
     <frame index="16">images\spr_mario_pull_16.png</frame>
     <frame index="17">images\spr_mario_pull_17.png</frame>
+    <frame index="18">images\spr_mario_pull_18.png</frame>
+    <frame index="19">images\spr_mario_pull_19.png</frame>
+    <frame index="20">images\spr_mario_pull_20.png</frame>
+    <frame index="21">images\spr_mario_pull_21.png</frame>
+    <frame index="22">images\spr_mario_pull_22.png</frame>
+    <frame index="23">images\spr_mario_pull_23.png</frame>
+    <frame index="24">images\spr_mario_pull_24.png</frame>
   </frames>
 </sprite>

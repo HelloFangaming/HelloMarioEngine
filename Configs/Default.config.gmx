@@ -228,7 +228,7 @@
     <option_facebook_app_display_name></option_facebook_app_display_name>
     <option_facebook_appid></option_facebook_appid>
     <option_facebook_enable>0</option_facebook_enable>
-    <option_fast_collision_compatibility>false</option_fast_collision_compatibility>
+    <option_fast_collision_compatibility>False</option_fast_collision_compatibility>
     <option_freeze>false</option_freeze>
     <option_frequency>0</option_frequency>
     <option_frontimage>nil</option_frontimage>
@@ -434,8 +434,8 @@
     <option_ps4_build_version>0</option_ps4_build_version>
     <option_ps4_displaycursor>0</option_ps4_displaycursor>
     <option_ps4_interpolate>-1</option_ps4_interpolate>
-    <option_ps4_major_version>6</option_ps4_major_version>
-    <option_ps4_minor_version>2</option_ps4_minor_version>
+    <option_ps4_major_version>1</option_ps4_major_version>
+    <option_ps4_minor_version>0</option_ps4_minor_version>
     <option_ps4_nptitleid></option_ps4_nptitleid>
     <option_ps4_nptitlesecret>Memo1</option_ps4_nptitlesecret>
     <option_ps4_package_id></option_ps4_package_id>
@@ -447,8 +447,8 @@
     <option_psvita_fronttouch>0</option_psvita_fronttouch>
     <option_psvita_interpolate>-1</option_psvita_interpolate>
     <option_psvita_interpolation>true</option_psvita_interpolation>
-    <option_psvita_major_version>6</option_psvita_major_version>
-    <option_psvita_minor_version>2</option_psvita_minor_version>
+    <option_psvita_major_version>1</option_psvita_major_version>
+    <option_psvita_minor_version>0</option_psvita_minor_version>
     <option_psvita_nptitleid></option_psvita_nptitleid>
     <option_psvita_nptitlepassphrase>Memo1</option_psvita_nptitlepassphrase>
     <option_psvita_nptitlesecret>Memo1</option_psvita_nptitlesecret>
@@ -523,7 +523,7 @@
     <option_version_major>6</option_version_major>
     <option_version_minor>2</option_version_minor>
     <option_version_product>Hello Mario Engine</option_version_product>
-    <option_version_release>6</option_version_release>
+    <option_version_release>0</option_version_release>
     <option_win8_advertising_appid></option_win8_advertising_appid>
     <option_win8_advertising_enable>0</option_win8_advertising_enable>
     <option_win8_advertising_key></option_win8_advertising_key>
@@ -561,11 +561,11 @@
     <option_win8_store_logo>Configs\Default\Windows8\logos\logo50.png</option_win8_store_logo>
     <option_win8_texture_page>1024</option_win8_texture_page>
     <option_win8_wide_logo>Configs\Default\Windows8\logos\logo310.png</option_win8_wide_logo>
-    <option_winUAP_allowfullscreen>false</option_winUAP_allowfullscreen>
+    <option_winUAP_allowfullscreen>0</option_winUAP_allowfullscreen>
     <option_winUAP_build_version>0</option_winUAP_build_version>
     <option_winUAP_certificate_location>WinUWPRunner_TemporaryKey.pfx</option_winUAP_certificate_location>
     <option_winUAP_display_name>HME</option_winUAP_display_name>
-    <option_winUAP_fullscreen>false</option_winUAP_fullscreen>
+    <option_winUAP_fullscreen>0</option_winUAP_fullscreen>
     <option_winUAP_internet_capable>0</option_winUAP_internet_capable>
     <option_winUAP_interpolate>0</option_winUAP_interpolate>
     <option_winUAP_landscape_allowed>-1</option_winUAP_landscape_allowed>
@@ -687,8 +687,8 @@
     <option_xbone_foreground_text>light</option_xbone_foreground_text>
     <option_xbone_interpolation>-1</option_xbone_interpolation>
     <option_xbone_languages>"&lt;!-- Insert the languages your title supports here --&gt;","&lt;!-- os_get_language will only return languages that are listed --&gt;","&lt;!-- ""en"" is supported by default --&gt;","&lt;!-- Resource Language=""en-us""/ --&gt;"</option_xbone_languages>
-    <option_xbone_major_version>6</option_xbone_major_version>
-    <option_xbone_minor_version>2</option_xbone_minor_version>
+    <option_xbone_major_version>0</option_xbone_major_version>
+    <option_xbone_minor_version>0</option_xbone_minor_version>
     <option_xbone_network_manifest_file></option_xbone_network_manifest_file>
     <option_xbone_product_id></option_xbone_product_id>
     <option_xbone_publisher></option_xbone_publisher>

@@ -49,5 +49,12 @@
     <frame index="26">images\spr_viewblock_26.png</frame>
     <frame index="27">images\spr_viewblock_27.png</frame>
     <frame index="28">images\spr_viewblock_28.png</frame>
+    <frame index="29">images\spr_viewblock_29.png</frame>
+    <frame index="30">images\spr_viewblock_30.png</frame>
+    <frame index="31">images\spr_viewblock_31.png</frame>
+    <frame index="32">images\spr_viewblock_32.png</frame>
+    <frame index="33">images\spr_viewblock_33.png</frame>
+    <frame index="34">images\spr_viewblock_34.png</frame>
+    <frame index="35">images\spr_viewblock_35.png</frame>
   </frames>
 </sprite>
