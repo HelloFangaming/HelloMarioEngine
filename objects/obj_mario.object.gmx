@@ -250,6 +250,14 @@ and stompstyle = 0
             with instance_create(x-8,y+16,obj_boomerang_b) hspeed = 1.5*other.direct
         }
 
+        //Pyre Ball
+        else if global.powerup = cs_pyre
+        and instance_number(obj_pyreball) &lt; 2
+        {
+            firing = 9
+            with instance_create(x,y+16,obj_pyreball) hspeed = 3*other.direct
+        }
+
     }
 
 }
@@ -327,6 +335,11 @@ and instance_number(obj_superball) &lt; 2
 else if global.powerup = cs_ninja
 and instance_number(obj_shuriken) &lt; 2
     with instance_create(x,y+20,obj_shuriken) hspeed = -5*other.direct
+
+//Pyre Ball
+else if global.powerup = cs_pyre
+and instance_number(obj_pyreball) &lt; 2
+    with instance_create(x,y+16,obj_pyreball) hspeed = -3*other.direct
 </string>
           </argument>
         </arguments>
@@ -375,6 +388,11 @@ and instance_number(obj_superball) &lt; 2
 else if global.powerup = cs_ninja
 and instance_number(obj_shuriken) &lt; 2
     with instance_create(x,y+20,obj_shuriken) hspeed = 5*other.direct
+
+//Pyre Ball
+else if global.powerup = cs_pyre
+and instance_number(obj_pyreball) &lt; 2
+    with instance_create(x,y+16,obj_pyreball) hspeed = 3*other.direct
 
 //Second Projectile
 alarm[8] = 10
@@ -620,6 +638,7 @@ if isduck = 0
     or global.powerup = cs_ninja
     or global.powerup = cs_penguin
     or global.powerup = cs_boomerang
+    or global.powerup = cs_pyre
     {
         if firing &gt; 0
             firing--

@@ -1771,6 +1771,7 @@
           <object>objects\obj_superball</object>
           <object>objects\obj_shuriken</object>
           <object>objects\obj_boomerang_b</object>
+          <object>objects\obj_pyreball</object>
           <object>objects\obj_invincibility</object>
         </objects>
         <objects name="Enemy">
