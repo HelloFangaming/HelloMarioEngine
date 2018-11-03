@@ -120,7 +120,6 @@
     <instance objName="obj_veggie_coin" x="1440" y="128" name="inst_DC2E9B7F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_boomerangblock" x="1600" y="176" name="inst_BB76B4FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_veggie_bomb" x="160" y="224" name="inst_8E79E5E4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_veggie_small" x="336" y="224" name="inst_F377CB92" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_veggie_small" x="1824" y="352" name="inst_2EB88F5C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_veggie_small" x="1872" y="352" name="inst_FF2A83C3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_veggie_coin" x="1920" y="352" name="inst_C82CACB1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -269,7 +268,6 @@
     <instance objName="obj_block" x="192" y="336" name="inst_4259E788" locked="0" code="sprout = cs_shell" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block" x="176" y="32" name="inst_2A41F1C9" locked="0" code="sprout = cs_pswitch" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block" x="592" y="64" name="inst_8BADD26C" locked="0" code="sprout = cs_spring" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_noteblock" x="1744" y="80" name="inst_8B2FC45F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_triple" x="576" y="320" name="inst_48D724E7" locked="0" code="sprout[0] = cs_greenyoshi&#xA;sprout[1] = cs_beanstalk&#xA;sprout[2] = cs_leaf" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block" x="208" y="32" name="inst_750A71CB" locked="0" code="sprout = cs_kuriboshoe" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block" x="992" y="48" name="inst_AFD0A60E" locked="0" code="sprout = cs_1up" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -278,8 +276,8 @@
     <instance objName="obj_block" x="1184" y="240" name="inst_507A4674" locked="0" code="sprout = cs_star" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block" x="1200" y="240" name="inst_7FAF92B8" locked="0" code="sprout = cs_penguin" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block" x="1344" y="32" name="inst_9A9EA12F" locked="0" code="sprout = cs_poison" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block" x="1760" y="80" name="inst_B6748133" locked="0" code="sprout = cs_tanooki" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block" x="1728" y="80" name="inst_2414C0F9" locked="0" code="sprout = cs_hammer" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="1760" y="96" name="inst_B6748133" locked="0" code="sprout = cs_tanooki" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="1728" y="96" name="inst_2414C0F9" locked="0" code="sprout = cs_hammer" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block" x="2384" y="16" name="inst_4CB703E7" locked="0" code="sprout = cs_ice" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block" x="2416" y="16" name="inst_2405E426" locked="0" code="sprout = cs_carrot" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_donut_red" x="144" y="64" name="inst_DE9EF693" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -466,6 +464,9 @@
     <instance objName="obj_messageblock" x="16" y="336" name="inst_51C9C8BF" locked="0" code="varmsg = &quot;Welcome to the world of the Hello Mario Engine! These test areas showcase the various features included in the engine. Like what you see? Then why not try making your own levels too?&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="192" y="32" name="inst_1A0FB4E1" locked="0" code="varmsg = &quot;Did you know that the Hello Mario Engine includes thousands of code comments in order to help you understand the game's code?&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="1568" y="128" name="inst_C7F0D1D0" locked="0" code="varmsg = &quot;Over a hundred different enemies are included in this engine. Can you find and kill them all?&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_veggie_sprout" x="336" y="224" name="inst_B6622E77" locked="0" code="sprout = cs_squirrel" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_veggie_sprout" x="1728" y="224" name="inst_A5D5EB7C" locked="0" code="sprout = cs_rock" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_triple" x="1728" y="32" name="inst_D68CF9D2" locked="0" code="sprout[0] = cs_cloud&#xA;sprout[1] = cs_pyre&#xA;sprout[2] = cs_karate" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset" x="16" y="144" w="32" h="32" xo="576" yo="368" id="10000398" name="tile_7C59E81B" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

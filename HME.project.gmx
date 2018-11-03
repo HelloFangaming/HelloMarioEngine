@@ -1983,6 +1983,7 @@
       <room>rooms\rm_forthello_bowser</room>
     </rooms>
     <rooms name="Special">
+      <room>rooms\rm_poweruptest</room>
       <room>rooms\rm_mushroomhouse</room>
       <room>rooms\rm_roulette</room>
       <room>rooms\rm_cardgame</room>
