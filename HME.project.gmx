@@ -1715,10 +1715,11 @@
           <object>objects\obj_warpnoteblock</object>
           <object>objects\obj_doormario</object>
           <object>objects\obj_puller</object>
-          <object>objects\obj_spinner</object>
-          <object>objects\obj_statue</object>
           <object>objects\obj_wallrunner</object>
           <object>objects\obj_slider</object>
+          <object>objects\obj_spinner</object>
+          <object>objects\obj_statue</object>
+          <object>objects\obj_karateattack</object>
         </objects>
         <objects name="Powerup">
           <objects name="Pickup">
@@ -1771,6 +1772,7 @@
           <object>objects\obj_superball</object>
           <object>objects\obj_shuriken</object>
           <object>objects\obj_boomerang_b</object>
+          <object>objects\obj_cloud</object>
           <object>objects\obj_pyreball</object>
           <object>objects\obj_invincibility</object>
         </objects>

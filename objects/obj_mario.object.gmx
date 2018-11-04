@@ -258,6 +258,11 @@ and stompstyle = 0
             with instance_create(x,y+16,obj_pyreball) hspeed = 3*other.direct
         }
 
+        //Karate Attack
+        else if global.powerup = cs_karate
+        and not instance_exists(obj_karateattack)
+            instance_create(x,y,obj_karateattack)
+
     }
 
 }
@@ -2426,6 +2431,43 @@ and global.yoshi = 0
     //Stop floating
     else
         isfloating = 0
+
+    //Handle cloud Mario cloud creation
+    if global.powerup = cs_cloud
+    and keyboard_check_pressed(vk_shift)
+    and jumpnow != 1
+    {
+
+        //Create up to 3 clouds
+        var count = 0
+        with obj_cloud
+        {
+            if count &lt; num
+                count = num
+        }
+
+        //Do not create more until the 3rd is gone
+        if count &lt; 3
+        {
+
+            //Set spin jump variable
+            stompstyle = 1
+
+            //Play spin jump sound
+            audio_play_sound(snd_spin,0,0)
+
+            //Stop horizontal movement
+            hspeed = 0
+
+            //Move up
+            vspeed = -3
+
+            //Create cloud
+            with instance_create(x-24,y+32,obj_cloud) num = count+1
+
+        }
+
+    }
 
 }
 
