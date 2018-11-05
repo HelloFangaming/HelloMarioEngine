@@ -106,15 +106,11 @@ with collision_rectangle(bbox_left-6,bbox_top-4,bbox_right+6,bbox_bottom+4,obj_i
           <argument>
             <kind>1</kind>
             <string>///Hurt enemies
-if other.hardness = 0
+if other.hardness &lt; 99
 {
     scr_musicalscale(id,other.id,1)
     with other event_user(0)
 }
-
-//Otherwise, get killed
-else if other.hardness &lt; 100
-    event_user(0)
 </string>
           </argument>
         </arguments>

@@ -627,6 +627,7 @@
       <sprite>sprites\spr_shard_g</sprite>
       <sprite>sprites\spr_shard_y</sprite>
       <sprite>sprites\spr_shard_m</sprite>
+      <sprite>sprites\spr_shard_rock</sprite>
       <sprite>sprites\spr_beanstalk</sprite>
       <sprite>sprites\spr_vine</sprite>
     </sprites>
@@ -1719,6 +1720,7 @@
           <object>objects\obj_slider</object>
           <object>objects\obj_spinner</object>
           <object>objects\obj_statue</object>
+          <object>objects\obj_rockroller</object>
           <object>objects\obj_karateattack</object>
         </objects>
         <objects name="Powerup">

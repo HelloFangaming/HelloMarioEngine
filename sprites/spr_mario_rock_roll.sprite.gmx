@@ -2,8 +2,8 @@
 <sprite>
   <type>0</type>
   <xorig>22</xorig>
-  <yorigin>12</yorigin>
-  <colkind>1</colkind>
+  <yorigin>22</yorigin>
+  <colkind>2</colkind>
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>

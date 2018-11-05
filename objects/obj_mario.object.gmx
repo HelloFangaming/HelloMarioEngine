@@ -250,6 +250,11 @@ and stompstyle = 0
             with instance_create(x-8,y+16,obj_boomerang_b) hspeed = 1.5*other.direct
         }
 
+        //Rock Roller
+        else if global.powerup = cs_rock
+        and not instance_exists(obj_rockroller)
+            instance_create(x,y+10,obj_rockroller)
+
         //Pyre Ball
         else if global.powerup = cs_pyre
         and instance_number(obj_pyreball) &lt; 2
