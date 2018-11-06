@@ -83,6 +83,9 @@ beefly = 0
 //Did Mario wall jump?
 walljump = 0
 
+//Did squirrel Mario propel upwards yet?
+squirrelpropel = 0
+
 //Is Mario firing a projectile?
 firing = 0
 
@@ -836,8 +839,32 @@ if isduck = 0
                         image_index = 0
                 }
 
+                //Squirrel Mario floating
+                if global.powerup = cs_squirrel
+                and (squirrelpropel = 1 or (vspeed &gt; 0 and keyboard_check(vk_shift)))
+                {
+                    sprite_index = spr_mario_squirrel_float
+                    if vspeed &lt; 0
+                        image_index = 0
+                    else if squirrelpropel = 0
+                        image_index = 1
+                    else
+                        image_speed = 0.15
+                }
+
+                //Super Crown Mario floating
+                else if global.powerup = cs_crown
+                and vspeed &gt;= 0
+                {
+                    image_speed = 0.15
+                    if vspeed &gt; 0
+                        sprite_index = spr_mario_crown_fall
+                    else
+                        sprite_index = spr_mario_crown_float
+                }
+
                 //Run only when P-Meter is full
-                if obj_levelmanager.pmeter &lt; 6
+                else if obj_levelmanager.pmeter &lt; 6
                     sprite_index = scr_mariojump()
                 else
                     sprite_index = scr_mariorunjump()
@@ -931,6 +958,7 @@ if isduck = 0
         {
             sprite_index = scr_marioskid()
             if skidnow = 0
+            and global.powerup != cs_squirrel
             {
                 skidnow = 1
                 audio_play_sound(snd_skid,1,1)
@@ -1021,6 +1049,9 @@ if vspeed &gt; 0
         //Reset wall jump
         walljump = 0
 
+        //Reset squirrel propel
+        squirrelpropel = 0
+
     }
 
 }
@@ -1056,6 +1087,9 @@ and not collision_rectangle(bbox_left,bbox_bottom-8,bbox_right,bbox_bottom-8,obj
 
         //Reset wall jump
         walljump = 0
+
+        //Reset squirrel propel
+        squirrelpropel = 0
 
     }
 
@@ -1143,7 +1177,8 @@ and collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,0)
         jumpnow = 2
 
         //Max out Bee Mario's flight timer
-        beefly = 128
+        if global.powerup = cs_bee
+            beefly = 128
 
     }
 
@@ -1335,7 +1370,7 @@ if invincible != -1
             <string>///Mario's wall climbing + wall jumping step event
 
 //If Mario does not have the appropriate powerup
-if (global.powerup != cs_ninja and global.powerup != cs_walljump)
+if (global.powerup != cs_ninja and global.powerup != cs_walljump and global.powerup != cs_squirrel)
 
 //Or if ninja Mario is no longer facing a wall to climb
 or (global.powerup = cs_ninja
@@ -1383,8 +1418,8 @@ if global.powerup = cs_ninja
         vspeed = 0
 }
 
-//If Mario is just wall jumping, slide down the wall
-else
+//If Mario is just wall jumping, and not in the squirrel suit, slide down the wall
+else if global.powerup != cs_squirrel
     vspeed = 1
 
 //Handle jumping
@@ -1840,6 +1875,9 @@ if not place_meeting(x,y,obj_swim)
     //Reset wall jump
     walljump = 0
 
+    //Reset squirrel propel
+    squirrelpropel = 0
+
     //If Mario came out of the water from the top
     if place_meeting(x,y+2,obj_swim)
     {
@@ -2257,6 +2295,9 @@ and disablecontrols = 0
     //Reset wall jump
     walljump = 0
 
+    //Reset squirrel propel
+    squirrelpropel = 0
+
     //Stop carrot/bee Mario's floating sound
     if floatnow = 1
     {
@@ -2327,7 +2368,7 @@ and global.yoshi = 0
     }
 
     //Handles checking whether Mario can wall climb or wall jump
-    if (global.powerup = cs_ninja or global.powerup = cs_walljump)
+    if (global.powerup = cs_ninja or global.powerup = cs_walljump or global.powerup = cs_squirrel)
     and vspeed &gt; 0
     and holding = 0
     {
@@ -2437,7 +2478,48 @@ and global.yoshi = 0
     else
         isfloating = 0
 
-    //Handle cloud Mario cloud creation
+    //Handle squirrel Mario's flying
+    if global.powerup = cs_squirrel
+    and holding = 0
+    {
+
+        //If Mario hasn't propelled yet
+        if squirrelpropel = 0
+        {
+
+            //If the jump key is pressed while moving downwards, propel upwards
+            if vspeed &gt; 0
+            and keyboard_check_pressed(vk_shift)
+            {
+
+                //Propel
+                squirrelpropel = 1
+
+                //Move up
+                vspeed = -3.85
+
+                //Enable variable jumping
+                jumpnow = 1
+
+                //Sound effect
+                audio_play_sound(snd_spin,0,0)
+
+            }
+
+            //If the jump key is held down, float
+            else if vspeed &gt; 0.5
+            and keyboard_check(vk_shift)
+                vspeed = 0.5
+
+        }
+
+        //Otherwise, float down more
+        else if vspeed &gt; 2
+            vspeed = 2
+
+    }
+
+    //Handle cloud Mario's cloud creation
     if global.powerup = cs_cloud
     and keyboard_check_pressed(vk_shift)
     and jumpnow != 1
@@ -2468,10 +2550,26 @@ and global.yoshi = 0
             vspeed = -3
 
             //Create cloud
-            with instance_create(x-24,y+32,obj_cloud) num = count+1
+            with instance_create(round(x-24),round(y+32),obj_cloud) num = count+1
 
         }
 
+    }
+
+    //Handle super crown Mario's floating
+    if global.powerup = cs_crown
+    {
+        if beefly &lt; 128
+        and vspeed &gt;= 0
+        and holding = 0
+        and keyboard_check(vk_shift)
+        {
+            vspeed = 0
+            gravity = 0
+            beefly++
+        }
+        else if vspeed &lt; 0
+            beefly = 0
     }
 
 }
@@ -2543,6 +2641,9 @@ vspeed = -4
 
 //Boost jump
 y--
+
+//Reset squirrel propel
+squirrelpropel = 0
 </string>
           </argument>
         </arguments>
