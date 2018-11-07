@@ -234,7 +234,14 @@ else
 attack = 2
 
 //Thrust Mario forwards
-with obj_mario hspeed = 2*direct
+with obj_mario
+{
+    if (direct = 1 and keyboard_check(vk_right))
+    or (direct = -1 and keyboard_check(vk_left))
+        hspeed = 3*direct
+    else
+        hspeed = 2*direct
+}
 </string>
           </argument>
         </arguments>
@@ -379,6 +386,9 @@ and obj_mario.hspeed = 0
         //Recoil
         with obj_mario hspeed = -direct*2
 
+        //Cancel airdash
+        airdash = 0
+
         //Animate
         if combo != 2
             image_index = 0
@@ -435,6 +445,7 @@ audio_play_sound(choose(snd_hah,snd_ya,snd_yah),0,0)
 //Ground attack
 if instance_exists(obj_mario)
 and obj_mario.state &lt; 2
+and not keyboard_check(vk_up)
 {
     image_index = 0
     attack = 1
@@ -446,14 +457,43 @@ else
 {
     attack = 2
     combo = 2
-    airdash = 1
-    alarm[6] = 10
+    image_index = 5
 
-    //Thrust Mario forwards
+    //Thrust Mario
     with obj_mario
     {
+
+        //Forwards
         hspeed = 3*direct
-        vspeed = 0
+
+        //Upwards
+        if keyboard_check(vk_up)
+        {
+            vspeed = -4
+            y--
+        }
+
+        //Downwards
+        else if keyboard_check(vk_down)
+            vspeed = 4
+
+        //Airdash
+        else
+        {
+            vspeed = 0
+            other.airdash = 1
+
+            //Forward thrust airdash
+            if (direct = 1 and keyboard_check(vk_right))
+            or (direct = -1 and keyboard_check(vk_left))
+                other.alarm[6] = 25
+
+            //Normal airdash
+            else
+                other.alarm[6] = 10
+
+        }
+
     }
 
 }
