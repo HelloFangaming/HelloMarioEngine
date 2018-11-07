@@ -77,14 +77,17 @@ isfloating = 0
 //Is the float sound effect playing?
 floatnow = 0
 
-//How much longer can bee Mario fly?
-beefly = 0
+//How much longer can bee/crown Mario fly/float?
+powerupfly = 0
 
 //Did Mario wall jump?
 walljump = 0
 
 //Did squirrel Mario propel upwards yet?
 squirrelpropel = 0
+
+//Did Mario double jump?
+doublejump = 0
 
 //Is Mario firing a projectile?
 firing = 0
@@ -852,6 +855,17 @@ if isduck = 0
                         image_speed = 0.15
                 }
 
+                //Swooper Mario flapping
+                else if global.powerup = cs_swooper
+                and powerupfly = 1
+                {
+                    sprite_index = spr_mario_swooper_flap
+                    if vspeed &gt; 0
+                        image_index = 0
+                    else
+                        image_index = 1
+                }
+
                 //Super Crown Mario floating
                 else if global.powerup = cs_crown
                 and vspeed &gt;= 0
@@ -1043,14 +1057,17 @@ if vspeed &gt; 0
         //Reset hit counter
         hitpoint = 0
 
-        //Reset bee flying
-        beefly = 0
+        //Reset flying
+        powerupfly = 0
 
         //Reset wall jump
         walljump = 0
 
         //Reset squirrel propel
         squirrelpropel = 0
+
+        //Reset double jump
+        doublejump = 0
 
     }
 
@@ -1082,14 +1099,17 @@ and not collision_rectangle(bbox_left,bbox_bottom-8,bbox_right,bbox_bottom-8,obj
         //Reset hit counter
         hitpoint = 0
 
-        //Reset bee flying
-        beefly = 0
+        //Reset flying
+        powerupfly = 0
 
         //Reset wall jump
         walljump = 0
 
         //Reset squirrel propel
         squirrelpropel = 0
+
+        //Reset double jump
+        doublejump = 0
 
     }
 
@@ -1178,7 +1198,7 @@ and collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,0)
 
         //Max out Bee Mario's flight timer
         if global.powerup = cs_bee
-            beefly = 128
+            powerupfly = 128
 
     }
 
@@ -1235,6 +1255,18 @@ and isswim = 0
     //Make Mario start swimming
     isswim = 1
 
+    //Reset flying
+    powerupfly = 0
+
+    //Reset wall jump
+    walljump = 0
+
+    //Reset squirrel propel
+    squirrelpropel = 0
+
+    //Reset double jump
+    doublejump = 0
+
     //If Mario is entering from the top
     if collision_point(x,y+33,obj_swim,0,0)
     and not collision_point(x,y,obj_swim,0,0)
@@ -1272,11 +1304,29 @@ and isswim = 0
 if y &lt; -96
     y = -96
 
-//Kill Mario if he falls out of the room
+//If he falls out of the room
 else if bbox_top &gt; room_height
 {
-    instance_create(x,room_height-32,obj_deadmario)
-    instance_destroy()
+
+    //Give crown Mario one last chance to survive
+    if global.powerup = cs_crown
+    and doublejump != -1
+    {
+        doublejump = -1
+        vspeed = -4.5
+        y -= 8
+        jumpnow = 1
+        audio_play_sound(snd_jump,0,0)
+        audio_play_sound(snd_stomp,0,0)
+    }
+
+    //Otherwise, kill Mario
+    else
+    {
+        instance_create(x,room_height-32,obj_deadmario)
+        instance_destroy()
+    }
+
 }
 </string>
           </argument>
@@ -1869,15 +1919,6 @@ if not place_meeting(x,y,obj_swim)
     //Reset variable jumping
     jumpnow = 0
 
-    //Reset bee Mario's timer
-    beefly = 0
-
-    //Reset wall jump
-    walljump = 0
-
-    //Reset squirrel propel
-    squirrelpropel = 0
-
     //If Mario came out of the water from the top
     if place_meeting(x,y+2,obj_swim)
     {
@@ -2013,8 +2054,13 @@ and isduck = 0
 and holding = 0))
 {
 
+    //Jump extra high as swooper Mario when the P-meter is flashing
+    if global.powerup = cs_swooper
+    and obj_levelmanager.pmeter &gt; 5
+        vspeed = -6.7
+
     //Jump higher if Mario is running
-    if abs(hspeed) &gt; 2.8
+    else if abs(hspeed) &gt; 2.8
         vspeed = -4.5
 
     //If Mario is not running
@@ -2292,11 +2338,17 @@ and disablecontrols = 0
     //Disable carrot and bee Mario floating
     isfloating = 0
 
+    //Reset flying
+    powerupfly = 0
+
     //Reset wall jump
     walljump = 0
 
     //Reset squirrel propel
     squirrelpropel = 0
+
+    //Reset double jump
+    doublejump = 0
 
     //Stop carrot/bee Mario's floating sound
     if floatnow = 1
@@ -2413,7 +2465,7 @@ and global.yoshi = 0
     }
 
     //Handles carrot and bee Mario's floating
-    if (global.powerup = cs_carrot or (global.powerup = cs_bee and beefly &lt; 128))
+    if (global.powerup = cs_carrot or (global.powerup = cs_bee and powerupfly &lt; 128))
     and keyboard_check(vk_shift)
     {
 
@@ -2433,7 +2485,7 @@ and global.yoshi = 0
                 vspeed = -1.5
 
                 //Make the bee timer tick extra because of the initial push
-                beefly += 8
+                powerupfly += 8
 
             }
 
@@ -2456,7 +2508,7 @@ and global.yoshi = 0
                 vspeed = -1.5
 
                 //Make the bee timer tick
-                beefly++
+                powerupfly++
 
                 //Slow bee Mario down if he is moving too fast
                 if hspeed &gt; 1
@@ -2521,8 +2573,8 @@ and global.yoshi = 0
 
     //Handle cloud Mario's cloud creation
     if global.powerup = cs_cloud
-    and keyboard_check_pressed(vk_shift)
     and jumpnow != 1
+    and keyboard_check_pressed(vk_shift)
     {
 
         //Create up to 3 clouds
@@ -2556,20 +2608,68 @@ and global.yoshi = 0
 
     }
 
-    //Handle super crown Mario's floating
+    //Handle swooper Mario flapping
+    if global.powerup = cs_swooper
+    and holding = 0
+    and vspeed &gt;= 4
+    and keyboard_check(vk_shift)
+    {
+
+        //Fly
+        powerupfly = 1
+
+        //Move up
+        vspeed = -2.8
+
+        //Enable variable jumping
+        jumpnow = 1
+
+        //Sound effect
+        audio_play_sound(snd_swooper,0,0)
+
+    }
+
+    //Handle super crown Mario's floating and double jumping
     if global.powerup = cs_crown
     {
-        if beefly &lt; 128
+
+        //Double jump
+        if doublejump = 0
+        and jumpnow != 1
+        and keyboard_check_pressed(vk_shift)
+        {
+
+            //Double jump
+            doublejump = 1
+
+            //Move up
+            vspeed = -3.85
+
+            //Enable variable jumping
+            jumpnow = 1
+
+            //Play the jump sound
+            audio_play_sound(snd_jump,0,0)
+
+            //Make wall jump effects
+            audio_play_sound(snd_stomp,0,0)
+            instance_create(x,y+32,obj_spinthump)
+
+        }
+
+        //Floating
+        if powerupfly &lt; 128
         and vspeed &gt;= 0
         and holding = 0
         and keyboard_check(vk_shift)
         {
             vspeed = 0
             gravity = 0
-            beefly++
+            powerupfly++
         }
         else if vspeed &lt; 0
-            beefly = 0
+            powerupfly = 0
+
     }
 
 }
