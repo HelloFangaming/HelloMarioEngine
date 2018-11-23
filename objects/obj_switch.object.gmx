@@ -152,7 +152,8 @@ alarm[1] = 390
 
 //If Mario jumps on the unpressed switch
 if other.y &lt; y-24
-and image_speed = 0
+and other.vspeed &gt; 0
+and instance_exists(mysolid)
 {
 
     //Play a thwomp sound
