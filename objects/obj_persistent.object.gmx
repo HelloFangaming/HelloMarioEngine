@@ -520,6 +520,93 @@ alarm[3] = 60
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="13">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Delete on screen controls
+for(var i = 0; i &lt; array_length_1d(mobile_keys); i++)
+    virtual_key_delete(mobile_keys[i])
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Set up on screen controls
+
+//Temporary variable
+var s
+
+//Normal
+if filter = 0
+    s = 1
+
+//HQ2X
+else if filter = 1
+    s = 2
+
+//HQ4X
+else if filter = 2
+    s = 4
+
+//Up
+mobile_keys[0] = virtual_key_add(34*s,118*s,32*s,32*s,vk_up)
+
+//Down
+mobile_keys[1] = virtual_key_add(34*s,182*s,32*s,32*s,vk_down)
+
+//Left
+mobile_keys[2] = virtual_key_add(2*s,150*s,32*s,32*s,vk_left)
+
+//Right
+mobile_keys[3] = virtual_key_add(66*s,150*s,32*s,32*s,vk_right)
+
+//Jump
+mobile_keys[4] = virtual_key_add(350*s,150*s,32*s,32*s,vk_shift)
+
+//Run
+mobile_keys[5] = virtual_key_add(310*s,150*s,32*s,32*s,vk_control)
+
+//Pause
+mobile_keys[6] = virtual_key_add(350*s,2*s,32*s,32*s,vk_enter)
+
+//Inventory
+mobile_keys[7] = virtual_key_add(2*s,2*s,32*s,32*s,vk_space)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="11">
       <action>
         <libid>1</libid>
@@ -565,6 +652,13 @@ display_set_gui_size(view_wview[0]*s,view_hview[0]*s)
 
 //Center the window
 alarm[2] = 1
+
+//Reset mobile controls
+if os_type = os_android or os_type = os_ios
+{
+    event_user(3)
+    event_user(2)
+}
 </string>
           </argument>
         </arguments>
@@ -666,6 +760,10 @@ alarm[1] = 1
             <string>///Fade the screen to black, unless you just opened up the game
 if mode = 1
     event_user(0)
+
+//Set up on screen controls
+if os_type = os_android or os_type = os_ios
+    event_user(2)
 </string>
           </argument>
         </arguments>
@@ -890,6 +988,56 @@ if showfps
     draw_set_halign(fa_right)
     draw_text(view_xview[0]+view_wview[0]-2,view_yview[0]+206,"FPS: "+string(fps)+" MAX FPS: "+string(fps_real))
     draw_set_halign(fa_left)
+}
+
+//Draw on screen controls
+if (os_type = os_android or os_type = os_ios)
+and (instance_exists(obj_levelmanager) or instance_exists(obj_mapmario) or instance_exists(obj_titlescreen))
+{
+
+    //Set the font
+    draw_set_font(global.font)
+
+    //Center the text
+    draw_set_halign(fa_center)
+
+    //Set the aplha
+    draw_set_alpha(0.6)
+
+    //Up
+    draw_rectangle(view_xview[0]+34,view_yview[0]+118,view_xview[0]+34+31,view_yview[0]+118+31,0)
+
+    //Down
+    draw_rectangle(view_xview[0]+34,view_yview[0]+182,view_xview[0]+34+31,view_yview[0]+182+31,0)
+
+    //Left
+    draw_rectangle(view_xview[0]+2,view_yview[0]+150,view_xview[0]+2+31,view_yview[0]+150+31,0)
+
+    //Right
+    draw_rectangle(view_xview[0]+66,view_yview[0]+150,view_xview[0]+66+31,view_yview[0]+150+31,0)
+
+    //Jump
+    draw_rectangle(view_xview[0]+350,view_yview[0]+150,view_xview[0]+350+31,view_yview[0]+150+31,0)
+    draw_text(view_xview[0]+350+15,view_yview[0]+150+12,"A")
+
+    //Run
+    draw_rectangle(view_xview[0]+310,view_yview[0]+150,view_xview[0]+310+31,view_yview[0]+150+31,0)
+    draw_text(view_xview[0]+310+15,view_yview[0]+150+12,"B")
+
+    //Pause
+    draw_rectangle(view_xview[0]+350,view_yview[0]+2,view_xview[0]+350+31,view_yview[0]+2+31,0)
+    draw_text(view_xview[0]+350+15,view_yview[0]+2+12,"+")
+
+    //Inventory
+    draw_rectangle(view_xview[0]+2,view_yview[0]+2,view_xview[0]+2+31,view_yview[0]+2+31,0)
+    draw_text(view_xview[0]+2+15,view_yview[0]+2+12,"-")
+
+    //Reset text alignment
+    draw_set_halign(fa_left)
+
+    //Reset alpha
+    draw_set_alpha(1)
+
 }
 </string>
           </argument>
