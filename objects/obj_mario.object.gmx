@@ -2403,6 +2403,7 @@ and global.yoshi = 0
     if (global.powerup = cs_leaf or global.powerup = cs_tanooki)
     and keyboard_check_pressed(vk_shift)
     and jumpnow != 1
+    and wiggle &lt; 12
     {
 
         //Fly if the P-meter is flashing and float otherwise
