@@ -34,4 +34,5 @@ switch global.powerup
     case cs_swooper: return spr_mapmario_swooper
     case cs_karate: return spr_mapmario_karate
     case cs_crown: return spr_mapmario_crown
+    case cs_gold: return spr_mapmario_gold
 }

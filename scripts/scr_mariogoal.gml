@@ -34,4 +34,5 @@ switch global.powerup
     case cs_swooper: return spr_mario_swooper_goal
     case cs_karate: return spr_mario_karate_goal
     case cs_crown: return spr_mario_crown_goal
+    case cs_gold: return spr_mario_gold_goal
 }

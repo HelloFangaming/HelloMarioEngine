@@ -45,5 +45,6 @@
     <frame index="22">images\spr_mario_pull_22.png</frame>
     <frame index="23">images\spr_mario_pull_23.png</frame>
     <frame index="24">images\spr_mario_pull_24.png</frame>
+    <frame index="25">images\spr_mario_pull_25.png</frame>
   </frames>
 </sprite>

@@ -268,7 +268,15 @@ and stompstyle = 0
             firing = 9
             with instance_create(x,y+16,obj_pyreball) hspeed = 3*other.direct
         }
-
+        
+        //Gold Ball
+        if global.powerup = cs_gold
+        and instance_number(obj_goldball) &lt; 2
+        {
+            firing = 9
+            with instance_create(x,y+16,obj_goldball) hspeed = 3*other.direct
+        }
+        
         //Karate Attack
         else if global.powerup = cs_karate
         and not instance_exists(obj_karateattack)
@@ -356,6 +364,11 @@ and instance_number(obj_shuriken) &lt; 2
 else if global.powerup = cs_pyre
 and instance_number(obj_pyreball) &lt; 2
     with instance_create(x,y+16,obj_pyreball) hspeed = -3*other.direct
+
+//Gold Ball
+if global.powerup = cs_gold
+and instance_number(obj_goldball) &lt; 2
+    with instance_create(x,y+16,obj_goldball) hspeed = -3*other.direct
 </string>
           </argument>
         </arguments>
@@ -409,6 +422,11 @@ and instance_number(obj_shuriken) &lt; 2
 else if global.powerup = cs_pyre
 and instance_number(obj_pyreball) &lt; 2
     with instance_create(x,y+16,obj_pyreball) hspeed = 3*other.direct
+
+//Gold Ball
+if global.powerup = cs_gold
+and instance_number(obj_goldball) &lt; 2
+    with instance_create(x,y+16,obj_goldball) hspeed = 3*other.direct
 
 //Second Projectile
 alarm[8] = 10
@@ -655,6 +673,7 @@ if isduck = 0
     or global.powerup = cs_penguin
     or global.powerup = cs_boomerang
     or global.powerup = cs_pyre
+    or global.powerup = cs_gold
     {
         if firing &gt; 0
             firing--
