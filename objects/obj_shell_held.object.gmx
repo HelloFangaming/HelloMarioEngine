@@ -34,7 +34,7 @@ image_speed = 0
 held = 1
 
 //Force Mario to hold this
-obj_mario.holding = 2
+with obj_mario holding = 2
 
 //Number of kills
 hitpoint = 0
