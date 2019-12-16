@@ -248,6 +248,11 @@ if instance_exists(obj_mario)
     //Force him to hold Yoshi
     obj_mario.holding = 3
 
+    //Force unduck if ducking
+    if obj_mario.isduck = 1
+    and not collision_rectangle(obj_mario.bbox_left,obj_mario.bbox_top-16,obj_mario.bbox_right,obj_mario.bbox_top,obj_solid,1,0)
+        obj_mario.isduck = 0
+
     //If Yoshi is not licking anything
     if licking = 0
     {
