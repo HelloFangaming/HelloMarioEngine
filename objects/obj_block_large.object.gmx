@@ -167,9 +167,6 @@ if sprout != cs_coin
 
 //Make the block look empty
 image_index = 1
-
-//Create three 1ups
-alarm[2] = 1
 </string>
           </argument>
         </arguments>
