@@ -62,10 +62,6 @@
     <instance objName="obj_onoffplatform" x="144" y="16" name="inst_25C0309F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpbottom" x="112" y="176" name="inst_F6554D72" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpmario" x="496" y="400" name="inst_0C7D6A6D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_largeblock_frog" x="624" y="80" name="inst_1296CF8E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_largeblock_hammer" x="464" y="80" name="inst_4D69A6F5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_largeblock_tanooki" x="544" y="304" name="inst_E23D9C98" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_largeblock_1ups" x="848" y="64" name="inst_00972AE7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_onoffblock" x="272" y="176" name="inst_C0D9E5DC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="32" y="16" name="inst_ECEA4D35" locked="0" code="" scaleX="4" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="160" y="16" name="inst_775AC720" locked="0" code="" scaleX="48" scaleY="1" colour="4294967295" rotation="0"/>
@@ -122,6 +118,10 @@
     <instance objName="obj_onoffplatform" x="560" y="112" name="inst_5BA46195" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_onoffplatform" x="560" y="128" name="inst_539C8F1B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_onoffplatform" x="544" y="128" name="inst_B066B102" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_large" x="464" y="80" name="inst_7CECDE84" locked="0" code="sprout = cs_hammer" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_large" x="624" y="80" name="inst_676A0B7B" locked="0" code="sprout = cs_frog" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_large" x="544" y="304" name="inst_C4FA1148" locked="0" code="sprout = cs_tanooki" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block_large" x="848" y="64" name="inst_0380986B" locked="0" code="sprout = cs_1up" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset" x="384" y="384" w="16" h="32" xo="16" yo="240" id="10001515" name="tile_5F024151" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

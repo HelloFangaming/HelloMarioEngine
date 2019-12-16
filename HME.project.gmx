@@ -1348,10 +1348,7 @@
         <object>objects\obj_block_triple_hidden</object>
         <object>objects\obj_block_spiked</object>
         <object>objects\obj_block_winged</object>
-        <object>objects\obj_largeblock_hammer</object>
-        <object>objects\obj_largeblock_tanooki</object>
-        <object>objects\obj_largeblock_frog</object>
-        <object>objects\obj_largeblock_1ups</object>
+        <object>objects\obj_block_large</object>
       </objects>
       <objects name="Gray Blocks">
         <object>objects\obj_flowerblock</object>
