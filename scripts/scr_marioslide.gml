@@ -34,4 +34,5 @@ switch global.powerup
     case cs_swooper: return spr_mario_swooper_slide
     case cs_karate: return spr_mario_karate_slide
     case cs_crown: return spr_mario_crown_slide
+    case cs_gold: return spr_mario_gold_slide
 }

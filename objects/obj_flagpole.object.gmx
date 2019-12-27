@@ -115,6 +115,22 @@ else if other.y &lt; y+112
 else
     with instance_create(x,other.y,obj_score) event_user(0)
 
+//Revert
+if global.powerup = cs_gold
+{
+    instance_create(x,y,obj_gold_explosion);
+    with (instance_create(x,y,obj_gold_explosion))
+    {
+        value = 0.055;
+    }
+    with (instance_create(x,y,obj_gold_explosion))
+    {
+        value = 0.03;
+    }
+    
+    global.powerup = cs_fire;
+}
+    
 //Create goal Mario
 instance_create(x+9,other.y,obj_goalmario)
 

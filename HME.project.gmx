@@ -574,6 +574,24 @@
         <sprite>sprites\spr_mario_crown_fall</sprite>
         <sprite>sprites\spr_mario_crown_float</sprite>
       </sprites>
+      <sprites name="Gold">
+        <sprite>sprites\spr_mario_gold_walk</sprite>
+        <sprite>sprites\spr_mario_gold_jump</sprite>
+        <sprite>sprites\spr_mario_gold_run</sprite>
+        <sprite>sprites\spr_mario_gold_runjump</sprite>
+        <sprite>sprites\spr_mario_gold_skid</sprite>
+        <sprite>sprites\spr_mario_gold_climb</sprite>
+        <sprite>sprites\spr_mario_gold_swim</sprite>
+        <sprite>sprites\spr_mario_gold_hold</sprite>
+        <sprite>sprites\spr_mario_gold_carry</sprite>
+        <sprite>sprites\spr_mario_gold_duck</sprite>
+        <sprite>sprites\spr_mario_gold_goal</sprite>
+        <sprite>sprites\spr_mario_gold_warp</sprite>
+        <sprite>sprites\spr_mario_gold_shoot</sprite>
+        <sprite>sprites\spr_mario_gold_slide</sprite>
+        <sprite>sprites\spr_mario_gold_kick</sprite>
+        <sprite>sprites\spr_mario_gold_ride</sprite>
+      </sprites>
       <sprite>sprites\spr_mario_dead</sprite>
       <sprite>sprites\spr_mario_pull</sprite>
       <sprite>sprites\spr_smallmask</sprite>
@@ -911,6 +929,7 @@
         <sprite>sprites\spr_mapmario_small</sprite>
         <sprite>sprites\spr_mapmario_big</sprite>
         <sprite>sprites\spr_mapmario_fire</sprite>
+        <sprite>sprites\spr_mapmario_gold</sprite>
         <sprite>sprites\spr_mapmario_hammer</sprite>
         <sprite>sprites\spr_mapmario_leaf</sprite>
         <sprite>sprites\spr_mapmario_tanooki</sprite>
@@ -1031,6 +1050,7 @@
         <sprite>sprites\spr_swoopersuit</sprite>
         <sprite>sprites\spr_karatesuit</sprite>
         <sprite>sprites\spr_supercrown</sprite>
+        <sprite>sprites\spr_goldflower</sprite>
         <sprite>sprites\spr_1up</sprite>
         <sprite>sprites\spr_poison</sprite>
         <sprite>sprites\spr_star</sprite>
@@ -1158,6 +1178,7 @@
     </sprites>
     <sprites name="Projectiles">
       <sprite>sprites\spr_fireball</sprite>
+      <sprite>sprites\spr_goldball</sprite>
       <sprite>sprites\spr_hammer2</sprite>
       <sprite>sprites\spr_minibomb</sprite>
       <sprite>sprites\spr_iceball</sprite>
@@ -1197,6 +1218,8 @@
         <sprite>sprites\spr_splash</sprite>
         <sprite>sprites\spr_lavasplash</sprite>
         <sprite>sprites\spr_rain</sprite>
+        <sprite>sprites\spr_gold_ball_glow</sprite>
+        <sprite>sprites\spr_gold_explosion</sprite>
       </sprites>
       <sprite>sprites\spr_warptop</sprite>
       <sprite>sprites\spr_warpsides</sprite>
@@ -1750,6 +1773,7 @@
             <object>objects\obj_swoopersuit</object>
             <object>objects\obj_karatesuit</object>
             <object>objects\obj_supercrown</object>
+            <object>objects\obj_goldflower</object>
             <object>objects\obj_star</object>
           </objects>
           <objects name="Rides">
@@ -1767,6 +1791,7 @@
           <object>objects\obj_grasspowerup</object>
           <object>objects\obj_getpowerup</object>
           <object>objects\obj_fireball</object>
+          <object>objects\obj_goldball</object>
           <object>objects\obj_hammer</object>
           <object>objects\obj_minibomb</object>
           <object>objects\obj_iceball</object>
@@ -1913,6 +1938,7 @@
         </objects>
         <object>objects\obj_mapcard</object>
         <object>objects\obj_explosion</object>
+        <object>objects\obj_gold_explosion</object>
         <object>objects\obj_flag</object>
         <object>objects\obj_lightningsheet</object>
         <object>objects\obj_messagebox</object>
@@ -2003,7 +2029,7 @@
       <room>rooms\rm_gameover</room>
     </rooms>
   </rooms>
-  <constants number="45">
+  <constants number="46">
     <constant name="cs_small">0</constant>
     <constant name="cs_big">1</constant>
     <constant name="cs_fire">2</constant>
@@ -2029,6 +2055,7 @@
     <constant name="cs_swooper">22</constant>
     <constant name="cs_karate">23</constant>
     <constant name="cs_crown">24</constant>
+    <constant name="cs_gold">25</constant>
     <constant name="cs_coin">-1</constant>
     <constant name="cs_greenyoshi">-10</constant>
     <constant name="cs_redyoshi">-11</constant>
